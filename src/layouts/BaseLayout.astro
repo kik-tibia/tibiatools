@@ -1,0 +1,30 @@
+---
+const { title = "TibiaTools" } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body { margin: 0; font-family: system-ui, sans-serif; line-height: 1.5; }
+      header, main { max-width: 960px; margin: 0 auto; padding: 1rem; }
+      nav a { margin-right: .75rem; text-decoration: none; }
+      nav a.active { text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>TibiaTools</h1>
+      <nav>
+        <a href="/" class={Astro.url.pathname === "/" ? "active" : ""}>Home</a>
+        <a href="/tools/info" class={Astro.url.pathname.startsWith("/tools/info") ? "active" : ""}>Info</a>
+        <a href="/tools/calculator" class={Astro.url.pathname.startsWith("/tools/calculator") ? "active" : ""}>Calculator</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

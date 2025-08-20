@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SumCalc from "../../components/SumCalc.svelte";
+---
+<BaseLayout title="Calculator Tool">
+  <h2>Basic Calculator</h2>
+  <p>Enter two numbers; the sum updates instantly.</p>
+
+  <!-- Hydrate this Svelte island only when visible -->
+  <SumCalc client:visible />
+</BaseLayout>

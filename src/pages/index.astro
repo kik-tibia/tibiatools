@@ -1,16 +1,11 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="TibiaTools — Home">
+  <h2>Welcome</h2>
+  <p>This is a minimal Astro + Svelte + TS starter.</p>
+  <ul>
+    <li><a href="/tools/info">Info tool (static)</a></li>
+    <li><a href="/tools/calculator">Calculator tool (interactive)</a></li>
+  </ul>
+</BaseLayout>
