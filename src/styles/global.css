@@ -1,0 +1,36 @@
+:root {
+    color-scheme: light dark;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    line-height: 1.5;
+}
+
+header,
+main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+nav a {
+    margin-right: .75rem;
+    text-decoration: none;
+}
+
+nav a.active {
+    text-decoration: underline;
+}
+
+label {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: .75rem;
+}
+
+label input {
+    width: 10rem;
+}
