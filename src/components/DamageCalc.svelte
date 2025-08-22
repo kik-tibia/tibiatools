@@ -17,22 +17,57 @@
   };
 
   const spells = spellsRaw as unknown as Spell[];
+  export let initial:
+    | {
+        // Build A (1)
+        L1?: string;
+        B1?: string;
+        S1?: string;
+        ML1?: string;
+        W1?: string;
+        // Build B (2)
+        L2?: string;
+        B2?: string;
+        S2?: string;
+        ML2?: string;
+        W2?: string;
+      }
+    | undefined;
+  type BuildInputs = {
+    level: string | number | null;
+    bonus: string | number | null;
+    skill: string | number | null;
+    magicLevel: string | number | null;
+    weapon: string | number | null;
+  };
 
-  let level: string | number | null = "";
-  let bonus: string | number | null = "";
-  let skill: string | number | null = "";
-  let magicLevel: string | number | null = "";
-  let weapon: string | number | null = "";
+  let A: BuildInputs = {
+    level: initial?.L1 ?? "",
+    bonus: initial?.B1 ?? "",
+    skill: initial?.S1 ?? "",
+    magicLevel: initial?.ML1 ?? "",
+    weapon: initial?.W1 ?? "",
+  };
+  let B: BuildInputs = {
+    level: initial?.L2 ?? "",
+    bonus: initial?.B2 ?? "",
+    skill: initial?.S2 ?? "",
+    magicLevel: initial?.ML2 ?? "",
+    weapon: initial?.W2 ?? "",
+  };
 
   const n = (v: unknown) => Number((v ?? "").toString().trim()) || 0;
 
-  $: L = n(level);
-  $: B = n(bonus);
-  $: S = n(skill);
-  $: ML = n(magicLevel);
-  $: W = n(weapon);
-  $: step = Math.floor((Math.sqrt(2 * L + 2025) + 5) / 10);
-  $: F = step * 100 - 450 + Math.floor((L + 1000) / step - 50 * step) + B;
+  const derive = (inp: BuildInputs) => {
+    const L = n(inp.level);
+    const B = n(inp.bonus);
+    const S = n(inp.skill);
+    const ML = n(inp.magicLevel);
+    const W = n(inp.weapon);
+    const step = Math.floor((Math.sqrt(2 * L + 2025) + 5) / 10);
+    const F = step * 100 - 450 + Math.floor((L + 1000) / step - 50 * step) + B;
+    return { F, ML, S, W };
+  };
 
   const computeAvg = (spell: Spell, F: number, ML: number, S: number, W: number) => {
     const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
@@ -48,25 +83,32 @@
       ? F + round((1 + minMax * variation) * ((spell.power / spell.skillFactor) * ML + spell.power / 4))
       : F + round((1 + minMax * variation) * ((spell.power / spell.skillFactor) * S * W + spell.power / 4));
   };
+  const computeResults = (inp: BuildInputs) => {
+    const { F, ML, S, W } = derive(inp);
+    return spells.map((spell) => ({
+      ...spell,
+      min: computeMinMax(spell, -1, F, ML, S, W),
+      avg: computeAvg(spell, F, ML, S, W),
+      max: computeMinMax(spell, 1, F, ML, S, W),
+    }));
+  };
 
-  $: results = spells.map((spell) => ({
-    ...spell,
-    avg: computeAvg(spell, F, ML, S, W),
-    min: computeMinMax(spell, -1, F, ML, S, W),
-    max: computeMinMax(spell, 1, F, ML, S, W),
-  }));
+  $: resultsA = computeResults(A);
+  $: resultsB = computeResults(B);
 
-  let mounted = false;
+  // For tie/highlight logic: map by spell.id to compare avgs
+  const byId = (arr: any[]) => {
+    const m = new Map<string, any>();
+    for (const x of arr) m.set(x.id, x);
+    return m;
+  };
+  $: mapA = byId(resultsA);
+  $: mapB = byId(resultsB);
+  const isAHigher = (id: string) => (mapA.get(id)?.avg ?? -Infinity) > (mapB.get(id)?.avg ?? -Infinity);
+  const isBHigher = (id: string) => (mapB.get(id)?.avg ?? -Infinity) > (mapA.get(id)?.avg ?? -Infinity);
+  // (ties: neither gets highlight)
 
-  function readFromUrl() {
-    const p = new URLSearchParams(window.location.search);
-    level = p.get("L") ?? "";
-    bonus = p.get("B") ?? "";
-    skill = p.get("S") ?? "";
-    magicLevel = p.get("ML") ?? "";
-    weapon = p.get("W") ?? "";
-  }
-
+  let didHydrate = false;
   function writeToUrl() {
     const p = new URLSearchParams(window.location.search);
     const setOrDel = (k: string, v: unknown) => {
@@ -74,12 +116,16 @@
       if (s) p.set(k, s);
       else p.delete(k);
     };
-    setOrDel("L", level);
-    setOrDel("B", bonus);
-    setOrDel("S", skill);
-    setOrDel("ML", magicLevel);
-    setOrDel("W", weapon);
-
+    setOrDel("L1", A.level);
+    setOrDel("B1", A.bonus);
+    setOrDel("S1", A.skill);
+    setOrDel("ML1", A.magicLevel);
+    setOrDel("W1", A.weapon);
+    setOrDel("L2", B.level);
+    setOrDel("B2", B.bonus);
+    setOrDel("S2", B.skill);
+    setOrDel("ML2", B.magicLevel);
+    setOrDel("W2", B.weapon);
     const qs = p.toString();
     const url = qs
       ? `${window.location.pathname}?${qs}${window.location.hash}`
@@ -89,30 +135,46 @@
 
   let t: number | undefined;
   function scheduleWrite() {
+    if (!didHydrate) return;
     if (t) window.clearTimeout(t);
     t = window.setTimeout(writeToUrl, 150);
   }
 
   onMount(() => {
-    mounted = true;
-    readFromUrl();
-    const onPop = () => readFromUrl();
+    didHydrate = true;
+    const onPop = () => {
+      const q = new URLSearchParams(window.location.search);
+      A.level = q.get("L1") ?? "";
+      A.bonus = q.get("B1") ?? "";
+      A.skill = q.get("S1") ?? "";
+      A.magicLevel = q.get("ML1") ?? "";
+      A.weapon = q.get("W1") ?? "";
+      B.level = q.get("L2") ?? "";
+      B.bonus = q.get("B2") ?? "";
+      B.skill = q.get("S2") ?? "";
+      B.magicLevel = q.get("ML2") ?? "";
+      B.weapon = q.get("W2") ?? "";
+    };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
   });
 
-  // React to input changes after mount
-  $: if (mounted) {
-    level;
-    bonus;
-    skill;
-    magicLevel;
-    weapon;
+  $: {
+    A.level;
+    A.bonus;
+    A.skill;
+    A.magicLevel;
+    A.weapon;
     scheduleWrite();
   }
-
-  // ui helpers
-  const fmt = (x: number) => Math.round(x); // or use toFixed(2) if you prefer decimals
+  $: {
+    B.level;
+    B.bonus;
+    B.skill;
+    B.magicLevel;
+    B.weapon;
+    scheduleWrite();
+  }
 
   let copied = false;
   async function copyLink() {
@@ -122,128 +184,81 @@
   }
 </script>
 
-<section class="grid">
-  <form class="stack" on:submit|preventDefault>
-    <div class="row">
-      <button type="button" on:click={copyLink}>{copied ? "Copied!" : "Share"}</button>
-      <button
-        type="button"
-        on:click={() => {
-          level = bonus = skill = magicLevel = weapon = "";
-        }}>Reset</button
-      >
-    </div>
-    <label>
-      <span>Level</span>
-      <input type="number" bind:value={level} inputmode="numeric" placeholder="e.g. 120" />
-    </label>
-    <label>
-      <span>Bonus Damage</span>
-      <input type="number" bind:value={bonus} inputmode="numeric" placeholder="e.g. 15" />
-    </label>
-    <label>
-      <span>Skill</span>
-      <input type="number" bind:value={skill} inputmode="numeric" placeholder="e.g. 100" />
-    </label>
-    <label>
-      <span>Magic Level</span>
-      <input type="number" bind:value={magicLevel} inputmode="numeric" placeholder="e.g. 100" />
-    </label>
-    <label>
-      <span>Weapon Attack</span>
-      <input type="number" bind:value={weapon} inputmode="numeric" placeholder="e.g. 50" />
-    </label>
-  </form>
-</section>
-<section class="results-wrap">
-  <table class="results">
-    <thead>
-      <tr>
-        <th class="spell">Spell</th>
-        <th class="num">Min</th>
-        <th class="num">Avg</th>
-        <th class="num">Max</th>
-      </tr>
-    </thead>
-    <tbody>
-      {#each results as r}
-        <tr>
-          <td class="spell">
-            <div class="spell-name">{r.name}</div>
-            <div class="meta">
-              <span class="badge">{r.scalesWith}</span>
-            </div>
-          </td>
-          <td class="num range">{r.min}</td>
-          <td class="num">{r.avg}</td>
-          <td class="num range">{r.max}</td>
-        </tr>
-      {/each}
-    </tbody>
-  </table>
+<section class="toolbar">
+  <button type="button" on:click={copyLink}>{copied ? "Copied!" : "Share"}</button>
+  <button
+    type="button"
+    on:click={() => {
+      A.level = A.bonus = A.skill = A.magicLevel = A.weapon = "";
+      B.level = B.bonus = B.skill = B.magicLevel = B.weapon = "";
+    }}>Reset both</button
+  >
 </section>
 
-<style>
-  .grid {
-    display: grid;
-    gap: 1.25rem;
-    grid-template-columns: 1fr;
-  }
-  @media (min-width: 760px) {
-    .grid {
-      grid-template-columns: 1fr 1fr;
-      align-items: start;
-    }
-  }
+<section class="compare-grid">
+  <!-- Build A -->
+  <div class="panel">
+    <h3>Build A</h3>
+    <form class="stack" on:submit|preventDefault>
+      <label><span>Level</span><input type="number" bind:value={A.level} inputmode="numeric" /></label>
+      <label><span>Bonus Damage</span><input type="number" bind:value={A.bonus} inputmode="numeric" /></label>
+      <label><span>Skill</span><input type="number" bind:value={A.skill} inputmode="numeric" /></label>
+      <label><span>Magic Level</span><input type="number" bind:value={A.magicLevel} inputmode="numeric" /></label>
+      <label><span>Weapon Attack</span><input type="number" bind:value={A.weapon} inputmode="numeric" /></label>
+    </form>
 
-  .stack {
-    display: grid;
-    gap: 0.75rem;
-    max-width: 420px;
-  }
-  label {
-    display: grid;
-    gap: 0.25rem;
-  }
-  input {
-    padding: 0.5rem;
-    font: inherit;
-  }
+    <table class="results">
+      <thead>
+        <tr><th class="spell">Spell</th><th class="num">Min</th><th class="num">Avg</th><th class="num">Max</th></tr>
+      </thead>
+      <tbody>
+        {#each resultsA as r}
+          <tr class:highlight={isAHigher(r.id)}>
+            <td class="spell">
+              <div class="spell-name">{r.name}</div>
+              <div class="meta">
+                <span class="badge">{r.scalesWith}</span>
+              </div>
+            </td>
+            <td class="num range">{r.min}</td>
+            <td class="num">{r.avg}</td>
+            <td class="num range">{r.max}</td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  </div>
 
-  .row {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-  button {
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #bbb;
-    border-radius: 0.5rem;
-    background: transparent;
-    cursor: pointer;
-  }
+  <!-- Build B -->
+  <div class="panel">
+    <h3>Build B</h3>
+    <form class="stack" on:submit|preventDefault>
+      <label><span>Level</span><input type="number" bind:value={B.level} inputmode="numeric" /></label>
+      <label><span>Bonus Damage</span><input type="number" bind:value={B.bonus} inputmode="numeric" /></label>
+      <label><span>Skill</span><input type="number" bind:value={B.skill} inputmode="numeric" /></label>
+      <label><span>Magic Level</span><input type="number" bind:value={B.magicLevel} inputmode="numeric" /></label>
+      <label><span>Weapon Attack</span><input type="number" bind:value={B.weapon} inputmode="numeric" /></label>
+    </form>
 
-  .results h3 {
-    margin: 0 0 0.5rem 0;
-  }
-  .results ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 0.5rem;
-  }
-  .results li {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 0.5rem;
-  }
-  .spell {
-    font-weight: 600;
-  }
-  .val {
-    font-variant-numeric: tabular-nums;
-  }
-</style>
+    <table class="results">
+      <thead>
+        <tr><th class="spell">Spell</th><th class="num">Min</th><th class="num">Avg</th><th class="num">Max</th></tr>
+      </thead>
+      <tbody>
+        {#each resultsB as r}
+          <tr class:highlight={isBHigher(r.id)}>
+            <td class="spell">
+              <div class="spell-name">{r.name}</div>
+              <div class="meta">
+                <span class="badge">{r.scalesWith}</span>
+              </div>
+            </td>
+            <td class="num range">{r.min}</td>
+            <td class="num">{r.avg}</td>
+            <td class="num range">{r.max}</td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  </div>
+</section>
