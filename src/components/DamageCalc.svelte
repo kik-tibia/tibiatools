@@ -34,6 +34,9 @@
         W2?: string;
       }
     | undefined;
+
+  let showSecondBuild = Boolean(initial?.L2 || initial?.B2 || initial?.S2 || initial?.ML2 || initial?.W2);
+
   type BuildInputs = {
     level: string | number | null;
     bonus: string | number | null;
@@ -116,11 +119,15 @@
     setOrDel("S1", A.skill);
     setOrDel("ML1", A.magicLevel);
     setOrDel("W1", A.weapon);
-    setOrDel("L2", B.level);
-    setOrDel("B2", B.bonus);
-    setOrDel("S2", B.skill);
-    setOrDel("ML2", B.magicLevel);
-    setOrDel("W2", B.weapon);
+    if (showSecondBuild) {
+      setOrDel("L2", B.level);
+      setOrDel("B2", B.bonus);
+      setOrDel("S2", B.skill);
+      setOrDel("ML2", B.magicLevel);
+      setOrDel("W2", B.weapon);
+    } else {
+      ["L2", "B2", "S2", "ML2", "W2"].forEach((k) => p.delete(k));
+    }
     const qs = p.toString();
     const url = qs
       ? `${window.location.pathname}?${qs}${window.location.hash}`
@@ -149,6 +156,7 @@
       B.skill = q.get("S2") ?? "";
       B.magicLevel = q.get("ML2") ?? "";
       B.weapon = q.get("W2") ?? "";
+      showSecondBuild = Boolean(q.get("L2") || q.get("B2") || q.get("S2") || q.get("ML2") || q.get("W2"));
     };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
@@ -175,8 +183,17 @@
     on:click={() => {
       A.level = A.bonus = A.skill = A.magicLevel = A.weapon = "";
       B.level = B.bonus = B.skill = B.magicLevel = B.weapon = "";
-    }}>Reset both</button
+    }}>Reset</button
   >
+  <button
+    type="button"
+    on:click={() => {
+      showSecondBuild = !showSecondBuild;
+      scheduleWrite();
+    }}
+  >
+    {showSecondBuild ? "Hide second build" : "Compare a second build"}
+  </button>
 </section>
 
 <section class="compare-grid">
@@ -191,14 +208,16 @@
     isHigher={isAHigher}
   />
 
-  <BuildPanel
-    title="Build B"
-    bind:level={B.level}
-    bind:bonus={B.bonus}
-    bind:skill={B.skill}
-    bind:magicLevel={B.magicLevel}
-    bind:weapon={B.weapon}
-    results={resultsB}
-    isHigher={isBHigher}
-  />
+  {#if showSecondBuild}
+    <BuildPanel
+      title="Build B"
+      bind:level={B.level}
+      bind:bonus={B.bonus}
+      bind:skill={B.skill}
+      bind:magicLevel={B.magicLevel}
+      bind:weapon={B.weapon}
+      results={resultsB}
+      isHigher={isBHigher}
+    />
+  {/if}
 </section>
