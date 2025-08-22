@@ -39,6 +39,20 @@ label {
     cursor: pointer;
 }
 
+.compare-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+/* side-by-side when wider than 900px */
+@media (min-width: 900px) {
+    .compare-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+        /* makes tables line up at the top */
+    }
+}
+
 .compare-grid input {
     width: 12rem;
     padding: 0.2rem;

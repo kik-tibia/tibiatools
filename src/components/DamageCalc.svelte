@@ -1,6 +1,7 @@
 <script lang="ts">
   import spellsRaw from "src/data/spells.json";
   import { onMount } from "svelte";
+  import BuildPanel from "./BuildPanel.svelte";
 
   type Rounding = "floor" | "round" | "ceil";
   type ScalesWith = "magic" | "melee" | "distance" | "none";
@@ -96,17 +97,11 @@
   $: resultsA = computeResults(A);
   $: resultsB = computeResults(B);
 
-  // For tie/highlight logic: map by spell.id to compare avgs
-  const byId = (arr: any[]) => {
-    const m = new Map<string, any>();
-    for (const x of arr) m.set(x.id, x);
-    return m;
-  };
-  $: mapA = byId(resultsA);
-  $: mapB = byId(resultsB);
-  const isAHigher = (id: string) => (mapA.get(id)?.avg ?? -Infinity) > (mapB.get(id)?.avg ?? -Infinity);
-  const isBHigher = (id: string) => (mapB.get(id)?.avg ?? -Infinity) > (mapA.get(id)?.avg ?? -Infinity);
-  // (ties: neither gets highlight)
+  const toMap = (arr: any[]) => new Map(arr.map((x) => [x.id, x]));
+  $: mapA = toMap(resultsA);
+  $: mapB = toMap(resultsB);
+  const isAHigher = (id: string) => (mapA.get(id)?.avg ?? -Infinity) >= (mapB.get(id)?.avg ?? -Infinity);
+  const isBHigher = (id: string) => (mapB.get(id)?.avg ?? -Infinity) >= (mapA.get(id)?.avg ?? -Infinity);
 
   let didHydrate = false;
   function writeToUrl() {
@@ -160,19 +155,8 @@
   });
 
   $: {
-    A.level;
-    A.bonus;
-    A.skill;
-    A.magicLevel;
-    A.weapon;
-    scheduleWrite();
-  }
-  $: {
-    B.level;
-    B.bonus;
-    B.skill;
-    B.magicLevel;
-    B.weapon;
+    A;
+    B;
     scheduleWrite();
   }
 
@@ -196,69 +180,25 @@
 </section>
 
 <section class="compare-grid">
-  <!-- Build A -->
-  <div class="panel">
-    <h3>Build A</h3>
-    <form class="stack" on:submit|preventDefault>
-      <label><span>Level</span><input type="number" bind:value={A.level} inputmode="numeric" /></label>
-      <label><span>Bonus Damage</span><input type="number" bind:value={A.bonus} inputmode="numeric" /></label>
-      <label><span>Skill</span><input type="number" bind:value={A.skill} inputmode="numeric" /></label>
-      <label><span>Magic Level</span><input type="number" bind:value={A.magicLevel} inputmode="numeric" /></label>
-      <label><span>Weapon Attack</span><input type="number" bind:value={A.weapon} inputmode="numeric" /></label>
-    </form>
+  <BuildPanel
+    title="Build A"
+    bind:level={A.level}
+    bind:bonus={A.bonus}
+    bind:skill={A.skill}
+    bind:magicLevel={A.magicLevel}
+    bind:weapon={A.weapon}
+    results={resultsA}
+    isHigher={isAHigher}
+  />
 
-    <table class="results">
-      <thead>
-        <tr><th class="spell">Spell</th><th class="num">Min</th><th class="num">Avg</th><th class="num">Max</th></tr>
-      </thead>
-      <tbody>
-        {#each resultsA as r}
-          <tr class:highlight={isAHigher(r.id)}>
-            <td class="spell">
-              <div class="spell-name">{r.name}</div>
-              <div class="meta">
-                <span class="badge">{r.scalesWith}</span>
-              </div>
-            </td>
-            <td class="num range">{r.min}</td>
-            <td class="num">{r.avg}</td>
-            <td class="num range">{r.max}</td>
-          </tr>
-        {/each}
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Build B -->
-  <div class="panel">
-    <h3>Build B</h3>
-    <form class="stack" on:submit|preventDefault>
-      <label><span>Level</span><input type="number" bind:value={B.level} inputmode="numeric" /></label>
-      <label><span>Bonus Damage</span><input type="number" bind:value={B.bonus} inputmode="numeric" /></label>
-      <label><span>Skill</span><input type="number" bind:value={B.skill} inputmode="numeric" /></label>
-      <label><span>Magic Level</span><input type="number" bind:value={B.magicLevel} inputmode="numeric" /></label>
-      <label><span>Weapon Attack</span><input type="number" bind:value={B.weapon} inputmode="numeric" /></label>
-    </form>
-
-    <table class="results">
-      <thead>
-        <tr><th class="spell">Spell</th><th class="num">Min</th><th class="num">Avg</th><th class="num">Max</th></tr>
-      </thead>
-      <tbody>
-        {#each resultsB as r}
-          <tr class:highlight={isBHigher(r.id)}>
-            <td class="spell">
-              <div class="spell-name">{r.name}</div>
-              <div class="meta">
-                <span class="badge">{r.scalesWith}</span>
-              </div>
-            </td>
-            <td class="num range">{r.min}</td>
-            <td class="num">{r.avg}</td>
-            <td class="num range">{r.max}</td>
-          </tr>
-        {/each}
-      </tbody>
-    </table>
-  </div>
+  <BuildPanel
+    title="Build B"
+    bind:level={B.level}
+    bind:bonus={B.bonus}
+    bind:skill={B.skill}
+    bind:magicLevel={B.magicLevel}
+    bind:weapon={B.weapon}
+    results={resultsB}
+    isHigher={isBHigher}
+  />
 </section>
