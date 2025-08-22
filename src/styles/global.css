@@ -34,3 +34,108 @@ label {
 label input {
     width: 10rem;
 }
+
+.results-wrap {
+    margin-top: 1rem;
+}
+
+.results {
+    max-width: 600px;
+    border-collapse: collapse;
+    background: var(--table-bg, transparent);
+    border: 1px solid #555555;
+    border-radius: .5rem;
+    overflow: hidden;
+    /* keeps rounded corners */
+    font-variant-numeric: tabular-nums;
+    /* align digits */
+}
+
+.results thead th {
+    text-align: left;
+    padding: .6rem .75rem;
+    border-bottom: 1px solid #555555;
+    font-weight: 600;
+}
+
+.results td {
+    padding: .55rem .75rem;
+    border-bottom: 1px solid #555555;
+}
+
+.results tbody tr:nth-child(even) td {
+    background: color-mix(in oklab, Canvas 95%, black 5%);
+}
+
+.results .num {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.results .range {
+    font-size: 1rem;
+    color: #777777;
+}
+
+.results .spell {
+    width: 100%;
+}
+
+.spell-name {
+    font-weight: 600;
+}
+
+.meta {
+    display: inline-flex;
+    gap: .35rem;
+    margin-left: .4rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: .1rem .4rem;
+    border: 1px solid #d0d0d0;
+    border-radius: .4rem;
+    font-size: .75rem;
+    text-transform: capitalize;
+}
+
+.badge.subtle {
+    opacity: .7;
+}
+
+/* Mobile: stack rows into cards */
+@media (max-width: 600px) {
+    .results thead {
+        display: none;
+    }
+
+    .results,
+    .results tbody,
+    .results tr,
+    .results td {
+        display: block;
+        width: 100%;
+    }
+
+    .results tr {
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .results td {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+    }
+
+    .results td.spell {
+        grid-template-columns: 1fr;
+    }
+
+    .results td.num::before {
+        content: attr(data-label);
+        opacity: .7;
+        padding-right: .75rem;
+        font-weight: 500;
+    }
+}

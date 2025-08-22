@@ -1,9 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
-import SumCalc from "@components/SumCalc.svelte";
+import DamageCalc from "@components/DamageCalc.svelte";
 ---
-<BaseLayout title="Calculator Tool">
-  <h2>Basic Calculator</h2>
-  <p>Enter two numbers; the sum updates instantly.</p>
-  <SumCalc client:load />
+<BaseLayout title="Damage and Healing Calculator">
+  <DamageCalc client:load />
 </BaseLayout>

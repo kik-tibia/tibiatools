@@ -1,0 +1,54 @@
+[
+    {
+        "id": "avalanche",
+        "name": "Avalanche Rune",
+        "scalesWith": "magic",
+        "power": 50,
+        "skillFactor": 25,
+        "buckets": 50,
+        "vocations": [
+            "druid",
+            "knight",
+            "monk",
+            "paladin",
+            "sorcerer"
+        ],
+        "rounding": "floor"
+    },
+    {
+        "id": "fierce-berserk",
+        "name": "Fierce Berserk",
+        "scalesWith": "melee",
+        "power": 92,
+        "skillFactor": 1000,
+        "buckets": 50,
+        "vocations": [
+            "knight"
+        ],
+        "rounding": "round"
+    },
+    {
+        "id": "berserk",
+        "name": "Berserk",
+        "scalesWith": "melee",
+        "power": 44,
+        "skillFactor": 1000,
+        "buckets": 50,
+        "vocations": [
+            "knight"
+        ],
+        "rounding": "round"
+    },
+    {
+        "id": "groundshaker",
+        "name": "Groundshaker",
+        "scalesWith": "melee",
+        "power": 32,
+        "skillFactor": 1000,
+        "buckets": 50,
+        "vocations": [
+            "knight"
+        ],
+        "rounding": "round"
+    }
+]
