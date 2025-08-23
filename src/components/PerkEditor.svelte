@@ -12,25 +12,20 @@
     return 0.01;
   }
 
-  function setValue(ap: ActivePerk, p: PerkParam, raw: string) {
-    let v: number | string = raw;
-    if (p.type === "int" || p.type === "number" || p.type === "percent") {
-      const n = Number(raw);
-      v = Number.isFinite(n) ? n : 0;
-    }
-    ap.values[p.key] = v;
+  function setValue(ap: ActivePerk, v: number) {
+    ap.value = v;
     // nudge reactivity
     active = active.slice();
   }
 
-  function onNumInput(ap: ActivePerk, p: PerkParam, e: Event) {
+  function onNumInput(ap: ActivePerk, e: Event) {
     const target = e.target as HTMLInputElement;
-    setValue(ap, p, target.value);
+    setValue(ap, Number(target.value));
   }
 
-  function onEnumChange(ap: ActivePerk, p: PerkParam, e: Event) {
+  function onEnumChange(ap: ActivePerk, e: Event) {
     const target = e.target as HTMLSelectElement;
-    setValue(ap, p, target.value);
+    setValue(ap, Number(target.value));
   }
 
   function remove(id: string) {
@@ -45,32 +40,7 @@
       <div class="perk-chip">
         <strong>{def.name}</strong>
         <button type="button" aria-label="Remove" on:click={() => remove(ap.id)}>×</button>
-
-        <div class="perk-fields">
-          {#each def.params as p (p.key)}
-            <label>
-              <span>{p.label}</span>
-
-              {#if p.type === "enum"}
-                <select value={String(ap.values[p.key] ?? p.default)} on:change={(e) => onEnumChange(ap, p, e)}>
-                  {#each p.options ?? [] as opt}
-                    <option value={opt.value}>{opt.label}</option>
-                  {/each}
-                </select>
-              {:else}
-                <input
-                  type="number"
-                  min={p.min}
-                  max={p.max}
-                  step={stepOf(p)}
-                  value={String(ap.values[p.key] ?? p.default)}
-                  on:input={(e) => onNumInput(ap, p, e)}
-                  inputmode={p.type === "int" ? "numeric" : "decimal"}
-                />
-              {/if}
-            </label>
-          {/each}
-        </div>
+        <input type="number" value={String(ap.value)} on:input={(e) => onNumInput(ap, e)} inputmode="numeric" />
       </div>
     {/if}
   {/each}
