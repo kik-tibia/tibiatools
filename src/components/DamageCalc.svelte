@@ -2,6 +2,9 @@
   import spellsRaw from "src/data/spells.json";
   import { onMount } from "svelte";
   import BuildPanel from "./BuildPanel.svelte";
+  import type { ActivePerk } from "src/lib/perk-types";
+  import { packState, unpackState } from "src/lib/url-pack";
+  import type { CalculatorState } from "src/lib/build-state";
 
   type Rounding = "floor" | "round" | "ceil";
   type ScalesWith = "magic" | "melee" | "distance" | "none";
@@ -18,24 +21,7 @@
   };
 
   const spells = spellsRaw as unknown as Spell[];
-  export let initial:
-    | {
-        // Build A (1)
-        L1?: string;
-        B1?: string;
-        S1?: string;
-        ML1?: string;
-        W1?: string;
-        // Build B (2)
-        L2?: string;
-        B2?: string;
-        S2?: string;
-        ML2?: string;
-        W2?: string;
-      }
-    | undefined;
-
-  let showSecondBuild = Boolean(initial?.L2 || initial?.B2 || initial?.S2 || initial?.ML2 || initial?.W2);
+  export let initial: CalculatorState;
 
   type BuildInputs = {
     level: string | number | null;
@@ -45,20 +31,31 @@
     weapon: string | number | null;
   };
 
-  let A: BuildInputs = {
-    level: initial?.L1 ?? "",
-    bonus: initial?.B1 ?? "",
-    skill: initial?.S1 ?? "",
-    magicLevel: initial?.ML1 ?? "",
-    weapon: initial?.W1 ?? "",
-  };
-  let B: BuildInputs = {
-    level: initial?.L2 ?? "",
-    bonus: initial?.B2 ?? "",
-    skill: initial?.S2 ?? "",
-    magicLevel: initial?.ML2 ?? "",
-    weapon: initial?.W2 ?? "",
-  };
+  let A: BuildInputs = { ...initial.A.inputs };
+  let B: BuildInputs = { ...initial.B.inputs };
+  let activePerksA: ActivePerk[] = initial.A.perks ?? [];
+  let activePerksB: ActivePerk[] = initial.B.perks ?? [];
+  let showSecondBuild: boolean = !!initial.showSecondBuild;
+
+  function currentState(): CalculatorState {
+    return {
+      v: 1,
+      showSecondBuild,
+      A: { inputs: A, perks: activePerksA },
+      B: { inputs: B, perks: activePerksB },
+    };
+  }
+
+  function writePackedToUrl() {
+    const q = new URLSearchParams(window.location.search);
+    q.set("s", packState(currentState()));
+
+    const qs = q.toString();
+    const url = qs
+      ? `${window.location.pathname}?${qs}${window.location.hash}`
+      : `${window.location.pathname}${window.location.hash}`;
+    window.history.replaceState(null, "", url);
+  }
 
   const n = (v: unknown) => Number((v ?? "").toString().trim()) || 0;
 
@@ -87,18 +84,21 @@
       ? F + round((1 + minMax * variation) * ((spell.power / spell.skillFactor) * ML + spell.power / 4))
       : F + round((1 + minMax * variation) * ((spell.power / spell.skillFactor) * S * W + spell.power / 4));
   };
-  const computeResults = (inp: BuildInputs) => {
+
+  const computeResults = (inp: BuildInputs, activePerks: ActivePerk[]) => {
     const { F, ML, S, W } = derive(inp);
-    return spells.map((spell) => ({
-      ...spell,
-      min: computeMinMax(spell, -1, F, ML, S, W),
-      avg: computeAvg(spell, F, ML, S, W),
-      max: computeMinMax(spell, 1, F, ML, S, W),
-    }));
+    return spells.map((spell) => {
+      return {
+        ...spell,
+        min: computeMinMax(spell, -1, F, ML, S, W),
+        avg: computeAvg(spell, F, ML, S, W),
+        max: computeMinMax(spell, 1, F, ML, S, W),
+      };
+    });
   };
 
-  $: resultsA = computeResults(A);
-  $: resultsB = computeResults(B);
+  $: resultsA = computeResults(A, activePerksA);
+  $: resultsB = computeResults(B, activePerksB);
 
   const toMap = (arr: any[]) => new Map(arr.map((x) => [x.id, x]));
   $: mapA = toMap(resultsA);
@@ -107,56 +107,25 @@
   const isBHigher = (id: string) => (mapB.get(id)?.avg ?? -Infinity) >= (mapA.get(id)?.avg ?? -Infinity);
 
   let didHydrate = false;
-  function writeToUrl() {
-    const p = new URLSearchParams(window.location.search);
-    const setOrDel = (k: string, v: unknown) => {
-      const s = (v ?? "").toString().trim();
-      if (s) p.set(k, s);
-      else p.delete(k);
-    };
-    setOrDel("L1", A.level);
-    setOrDel("B1", A.bonus);
-    setOrDel("S1", A.skill);
-    setOrDel("ML1", A.magicLevel);
-    setOrDel("W1", A.weapon);
-    if (showSecondBuild) {
-      setOrDel("L2", B.level);
-      setOrDel("B2", B.bonus);
-      setOrDel("S2", B.skill);
-      setOrDel("ML2", B.magicLevel);
-      setOrDel("W2", B.weapon);
-    } else {
-      ["L2", "B2", "S2", "ML2", "W2"].forEach((k) => p.delete(k));
-    }
-    const qs = p.toString();
-    const url = qs
-      ? `${window.location.pathname}?${qs}${window.location.hash}`
-      : `${window.location.pathname}${window.location.hash}`;
-    window.history.replaceState(null, "", url);
-  }
 
   let t: number | undefined;
   function scheduleWrite() {
     if (!didHydrate) return;
     if (t) window.clearTimeout(t);
-    t = window.setTimeout(writeToUrl, 150);
+    t = window.setTimeout(writePackedToUrl, 150);
   }
 
   onMount(() => {
     didHydrate = true;
     const onPop = () => {
-      const q = new URLSearchParams(window.location.search);
-      A.level = q.get("L1") ?? "";
-      A.bonus = q.get("B1") ?? "";
-      A.skill = q.get("S1") ?? "";
-      A.magicLevel = q.get("ML1") ?? "";
-      A.weapon = q.get("W1") ?? "";
-      B.level = q.get("L2") ?? "";
-      B.bonus = q.get("B2") ?? "";
-      B.skill = q.get("S2") ?? "";
-      B.magicLevel = q.get("ML2") ?? "";
-      B.weapon = q.get("W2") ?? "";
-      showSecondBuild = Boolean(q.get("L2") || q.get("B2") || q.get("S2") || q.get("ML2") || q.get("W2"));
+      const s = new URLSearchParams(window.location.search).get("s");
+      const st = unpackState(s);
+      if (!st) return;
+      showSecondBuild = !!st.showSecondBuild;
+      A = { ...A, ...st.A.inputs };
+      B = { ...B, ...st.B.inputs };
+      activePerksA = st.A.perks ?? [];
+      activePerksB = st.B.perks ?? [];
     };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
@@ -165,6 +134,9 @@
   $: {
     A;
     B;
+    activePerksA;
+    activePerksB;
+    showSecondBuild;
     scheduleWrite();
   }
 
@@ -204,6 +176,7 @@
     bind:skill={A.skill}
     bind:magicLevel={A.magicLevel}
     bind:weapon={A.weapon}
+    bind:activePerks={activePerksA}
     results={resultsA}
     isHigher={isAHigher}
   />
@@ -216,6 +189,7 @@
       bind:skill={B.skill}
       bind:magicLevel={B.magicLevel}
       bind:weapon={B.weapon}
+      bind:activePerks={activePerksB}
       results={resultsB}
       isHigher={isBHigher}
     />

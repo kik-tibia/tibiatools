@@ -1,19 +1,10 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import DamageCalc from "@components/DamageCalc.svelte";
-const p = Astro.url.searchParams;
-const initial = {
-  L1: p.get("L1") ?? "",
-  B1: p.get("B1") ?? "",
-  S1: p.get("S1") ?? "",
-  ML1: p.get("ML1") ?? "",
-  W1: p.get("W1") ?? "",
-  L2: p.get("L2") ?? "",
-  B2: p.get("B2") ?? "",
-  S2: p.get("S2") ?? "",
-  ML2: p.get("ML2") ?? "",
-  W2: p.get("W2") ?? "",
-};
+import { unpackState } from "@lib/url-pack";
+import { defaultState } from "@lib/build-state";
+const s = Astro.url.searchParams.get('s')
+const initial = unpackState(s) ?? defaultState();
 ---
 <BaseLayout title="Damage and Healing Calculator">
     <DamageCalc client:load {initial} />

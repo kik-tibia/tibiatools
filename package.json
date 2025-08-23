@@ -12,6 +12,7 @@
     "@astrojs/node": "^9.4.3",
     "@astrojs/svelte": "^7.1.0",
     "astro": "^5.13.2",
+    "lz-string": "^1.5.0",
     "svelte": "^5.38.2",
     "typescript": "^5.9.2"
   }
