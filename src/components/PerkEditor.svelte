@@ -34,14 +34,20 @@
 </script>
 
 <div class="perk-editor">
-  {#each active as ap (ap.id)}
-    {@const def = registry.get(ap.id)}
-    {#if def}
-      <div class="perk-chip">
-        <strong>{def.name}</strong>
-        <button type="button" aria-label="Remove" on:click={() => remove(ap.id)}>×</button>
-        <input type="number" value={String(ap.value)} on:input={(e) => onNumInput(ap, e)} inputmode="numeric" />
-      </div>
-    {/if}
-  {/each}
+  <form class="stack">
+    {#each active as ap (ap.id)}
+      {@const def = registry.get(ap.id)}
+      {#if def}
+        <div class="perk-chip">
+          <label>
+            <span>{def.name}</span>
+            <div>
+              <button type="button" aria-label="Remove" on:click={() => remove(ap.id)}>×</button>
+              <input type="number" value={String(ap.value)} on:input={(e) => onNumInput(ap, e)} inputmode="numeric" />
+            </div>
+          </label>
+        </div>
+      {/if}
+    {/each}
+  </form>
 </div>

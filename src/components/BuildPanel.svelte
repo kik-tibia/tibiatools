@@ -9,9 +9,7 @@
 
   function addPerk(id: string) {
     const def = registry.get(id)!;
-    const values: Record<string, number | string> = {};
-    for (const prm of def.params) values[prm.key] = prm.default;
-    activePerks = [...activePerks, { id, values }];
+    activePerks = [...activePerks, { id, value: 0 }];
   }
   function removePerk(id: string) {
     activePerks = activePerks.filter((p) => p.id !== id);

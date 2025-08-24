@@ -54,7 +54,7 @@ label {
 }
 
 .compare-grid input {
-    width: 12rem;
+    width: 6rem;
     padding: 0.2rem;
     font: inherit;
 }
@@ -68,6 +68,7 @@ label {
     display: grid;
     gap: 0.5rem;
     max-width: 420px;
+    padding-bottom: 0.5rem;
 }
 
 .results-wrap {
