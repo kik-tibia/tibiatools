@@ -10,7 +10,7 @@
 </script>
 
 <div class="perk-picker">
-  <input placeholder="Search perks…" bind:value={q} />
+  <input class="perk-search" placeholder="Search perks…" bind:value={q} />
   <ul>
     {#each filtered as p}
       <li><button type="button" on:click={() => onAdd(p.id)}>{p.name}</button></li>
@@ -20,3 +20,9 @@
     <p class="subtle">{selectedIds.length} selected</p>
   {/if}
 </div>
+
+<style>
+  .perk-search {
+    width: 8rem;
+  }
+</style>
