@@ -3,18 +3,24 @@
   import { onMount } from "svelte";
   import BuildPanel from "./BuildPanel.svelte";
   import type { ActivePerk } from "src/lib/perk-types";
+  import type { PerkDef } from "src/data/perks";
+  import { perks } from "src/data/perks";
   import { packState, unpackState } from "src/lib/url-pack";
   import type { CalculatorState } from "src/lib/build-state";
 
-  type Rounding = "floor" | "round" | "ceil";
+  type SpellType = "spell" | "healing" | "rune";
   type ScalesWith = "magic" | "melee" | "distance" | "none";
+  type Element = "ice" | "weapon";
+  type Rounding = "floor" | "round" | "ceil";
 
   type Spell = {
     id: string;
     name: string;
+    spellType: SpellType;
+    scalesWith: ScalesWith;
+    element: Element;
     power: number;
     skillFactor: number;
-    scalesWith: ScalesWith;
     buckets: number;
     vocations: string[];
     rounding: Rounding;
@@ -70,29 +76,72 @@
     return { F, ML, S, W };
   };
 
-  const computeAvg = (spell: Spell, F: number, ML: number, S: number, W: number) => {
+  const computeAvg = (spell: Spell, P: number, F: number, ML: number, S: number, W: number) => {
     const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
     return spell.scalesWith === "magic"
-      ? F + round((spell.power / spell.skillFactor) * ML + spell.power / 4)
-      : F + round((spell.power / spell.skillFactor) * S * W + spell.power / 4);
+      ? F + round((P / spell.skillFactor) * ML + P / 4)
+      : F + round((P / spell.skillFactor) * S * W + P / 4);
   };
 
-  const computeMinMax = (spell: Spell, minMax: number, F: number, ML: number, S: number, W: number) => {
+  const computeMinMax = (spell: Spell, minMax: number, P: number, F: number, ML: number, S: number, W: number) => {
     const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
-    const variation = spell.buckets / spell.power / 2;
+    const variation = spell.buckets / P / 2;
     return spell.scalesWith === "magic"
-      ? F + round((1 + minMax * variation) * ((spell.power / spell.skillFactor) * ML + spell.power / 4))
-      : F + round((1 + minMax * variation) * ((spell.power / spell.skillFactor) * S * W + spell.power / 4));
+      ? F + round((1 + minMax * variation) * ((P / spell.skillFactor) * ML + P / 4))
+      : F + round((1 + minMax * variation) * ((P / spell.skillFactor) * S * W + P / 4));
+  };
+
+  const perkDefsById: Record<string, PerkDef> = Object.fromEntries(perks.map((p) => [p.id, p]));
+  type ActivePerkWithDef = ActivePerk & { def: PerkDef };
+
+  type SpellState = { P: number; F: number; ML: number; S: number; W: number };
+
+  const applyPerkToSpell = (spell: Spell, perk: ActivePerkWithDef, state: SpellState): SpellState => {
+    const { P, F, ML, S, W } = state;
+
+    if (
+      perk.def.scope === "all" ||
+      perk.def.scope === spell.id ||
+      perk.def.scope === spell.spellType ||
+      perk.def.scope === spell.element
+    ) {
+      switch (perk.def.bonusType) {
+        case "base-damage":
+          return { ...state, P: P * (1 + perk.value / 100) };
+        case "crit-chance":
+          return state;
+        case "magic-level":
+          return { ...state, ML: ML + perk.value };
+        case "axe-percent-extra":
+          return { ...state, F: F + Math.floor((S * perk.value) / 100) };
+        case "fishing-percent-extra":
+          return { ...state, F: F + Math.floor((S * perk.value) / 100) };
+      }
+    }
+
+    return state;
   };
 
   const computeResults = (inp: BuildInputs, activePerks: ActivePerk[]) => {
+    const withDefs: ActivePerkWithDef[] = activePerks
+      .map((ap) => {
+        const def = perkDefsById[ap.id];
+        if (!def) {
+          console.warn(`Unknown perk id: ${ap.id}`);
+          return null;
+        }
+        return { ...ap, def };
+      })
+      .filter((x): x is ActivePerkWithDef => x !== null);
     const { F, ML, S, W } = derive(inp);
     return spells.map((spell) => {
+      const initial: SpellState = { P: spell.power, F, ML, S, W };
+      const final = withDefs.reduce((acc, perk) => applyPerkToSpell(spell, perk, acc), initial);
       return {
         ...spell,
-        min: computeMinMax(spell, -1, F, ML, S, W),
-        avg: computeAvg(spell, F, ML, S, W),
-        max: computeMinMax(spell, 1, F, ML, S, W),
+        min: computeMinMax(spell, -1, final.P, final.F, final.ML, final.S, final.W),
+        avg: computeAvg(spell, final.P, final.F, final.ML, final.S, final.W),
+        max: computeMinMax(spell, 1, final.P, final.F, final.ML, final.S, final.W),
       };
     });
   };

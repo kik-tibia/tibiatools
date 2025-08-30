@@ -4,7 +4,6 @@ import type { CalculatorState } from "./build-state";
 export function packState(state: CalculatorState): string {
     // Tip: ensure numbers not Infinity/NaN before JSON.stringify if needed
     const json = JSON.stringify(state);
-    console.log(json)
     return LZString.compressToEncodedURIComponent(json); // URL-safe
 }
 

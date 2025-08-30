@@ -1,16 +1,9 @@
 <script lang="ts">
-  import type { PerkDef, PerkParam } from "src/data/perks";
+  import type { PerkDef } from "src/data/perks";
   import type { ActivePerk } from "src/lib/perk-types";
 
   export let registry: Map<string, PerkDef>;
   export let active: ActivePerk[]; // parent binds this
-
-  function stepOf(p: PerkParam): number | undefined {
-    if (p.step != null) return p.step;
-    if (p.type === "int") return 1;
-    if (p.type === "percent") return 0.1;
-    return 0.01;
-  }
 
   function setValue(ap: ActivePerk, v: number) {
     ap.value = v;

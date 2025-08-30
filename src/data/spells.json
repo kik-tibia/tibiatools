@@ -2,7 +2,9 @@
     {
         "id": "avalanche",
         "name": "Avalanche Rune",
+        "spellType": "rune",
         "scalesWith": "magic",
+        "element": "ice",
         "power": 50,
         "skillFactor": 25,
         "buckets": 50,
@@ -18,7 +20,9 @@
     {
         "id": "fierce-berserk",
         "name": "Fierce Berserk",
+        "spellType": "spell",
         "scalesWith": "melee",
+        "element": "weapon",
         "power": 92,
         "skillFactor": 1000,
         "buckets": 50,
@@ -30,7 +34,9 @@
     {
         "id": "berserk",
         "name": "Berserk",
+        "spellType": "spell",
         "scalesWith": "melee",
+        "element": "weapon",
         "power": 44,
         "skillFactor": 1000,
         "buckets": 50,
@@ -42,7 +48,9 @@
     {
         "id": "groundshaker",
         "name": "Groundshaker",
+        "spellType": "spell",
         "scalesWith": "melee",
+        "element": "weapon",
         "power": 32,
         "skillFactor": 1000,
         "buckets": 50,

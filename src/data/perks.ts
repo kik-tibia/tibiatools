@@ -10,9 +10,9 @@ export type PerkParam = {
 };
 
 export type PerkScope =
-    | "auto-attacks"
-    | "spells"
-    | "runes"
+    | "auto-attack"
+    | "spell"
+    | "rune"
     | "ice"
     | "fierce-berserk"
     | "all";
@@ -48,7 +48,7 @@ export const perks: PerkDef[] = [
     {
         id: "runes-crit-chance",
         name: "Runes critical hit chance",
-        scope: "runes",
+        scope: "rune",
         bonusType: "crit-chance"
     },
     {
@@ -60,13 +60,13 @@ export const perks: PerkDef[] = [
     {
         id: "axe-percent-spell-damage",
         name: "% axe fighting as extra damage for spells",
-        scope: "spells",
+        scope: "spell",
         bonusType: "axe-percent-extra"
     },
     {
         id: "fishing-percent-aa-damage",
         name: "% fishing as extra damage for auto-attacks",
-        scope: "auto-attacks",
+        scope: "auto-attack",
         bonusType: "fishing-percent-extra"
     },
 ]
