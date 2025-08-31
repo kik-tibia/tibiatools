@@ -8,10 +8,8 @@
 
   export let title = "Build";
 
-  // single two-way bound object from parent
   export let build: Build;
 
-  // helpers: reassign `build` so Svelte propagates to parent
   function setStat<K extends keyof BuildStats>(key: K, value: BuildStats[K]) {
     build = { ...build, stats: { ...build.stats, [key]: value } };
   }
@@ -19,10 +17,8 @@
     build = { ...build, perks: [...build.perks, { id, value: 0 }] };
   }
 
-  // computed results for this build (array of { id, name, min, avg, max, scalesWith, rounding, ... })
   export let results: any[] = [];
 
-  // function to decide if a row should be highlighted
   export let isHigher: (id: string) => boolean = () => false;
 </script>
 
@@ -30,8 +26,7 @@
   <h3>{title}</h3>
 
   <PerkPicker all={perks} selectedIds={build.perks.map((p) => p.id)} onAdd={addPerk} />
-  <!-- Can't bind to an expression like build.perks; listen to the generated `active` event -->
-  <PerkEditor active={build.perks} on:activeChange={(e) => (build = { ...build, perks: e.detail })} {registry} />
+  <PerkEditor active={build.perks} onActiveChange={(next) => (build = { ...build, perks: next })} {registry} />
 
   <div class="panel">
     <form class="stack" on:submit|preventDefault>
