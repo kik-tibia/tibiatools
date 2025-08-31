@@ -6,7 +6,7 @@
   import type { PerkDef } from "src/data/perks";
   import { perks } from "src/data/perks";
   import { packState, unpackState } from "src/lib/url-pack";
-  import type { CalculatorState } from "src/lib/build-state";
+  import type { Build, BuildStats, CalculatorState } from "src/lib/build-state";
 
   type SpellType = "spell" | "healing" | "rune";
   type ScalesWith = "magic" | "melee" | "distance" | "none";
@@ -26,46 +26,26 @@
     rounding: Rounding;
   };
 
+  type ActivePerkWithDef = ActivePerk & { def: PerkDef };
+
+  type SpellState = { P: number; F: number; ML: number; S: number; W: number };
+
   const spells = spellsRaw as unknown as Spell[];
   export let initial: CalculatorState;
 
-  type BuildInputs = {
-    level: string | number | null;
-    bonus: string | number | null;
-    skill: string | number | null;
-    magicLevel: string | number | null;
-    weapon: string | number | null;
-  };
+  let A: Build = { stats: { ...initial.A.stats }, perks: initial.A.perks ?? [] };
+  let B: Build = { stats: { ...initial.B.stats }, perks: initial.B.perks ?? [] };
 
-  let A: BuildInputs = { ...initial.A.inputs };
-  let B: BuildInputs = { ...initial.B.inputs };
-  let activePerksA: ActivePerk[] = initial.A.perks ?? [];
-  let activePerksB: ActivePerk[] = initial.B.perks ?? [];
   let showSecondBuild: boolean = !!initial.showSecondBuild;
 
   function currentState(): CalculatorState {
-    return {
-      v: 1,
-      showSecondBuild,
-      A: { inputs: A, perks: activePerksA },
-      B: { inputs: B, perks: activePerksB },
-    };
-  }
-
-  function writePackedToUrl() {
-    const q = new URLSearchParams(window.location.search);
-    q.set("s", packState(currentState()));
-
-    const qs = q.toString();
-    const url = qs
-      ? `${window.location.pathname}?${qs}${window.location.hash}`
-      : `${window.location.pathname}${window.location.hash}`;
-    window.history.replaceState(null, "", url);
+    console.log(A);
+    return { showSecondBuild, A, B };
   }
 
   const n = (v: unknown) => Number((v ?? "").toString().trim()) || 0;
 
-  const derive = (inp: BuildInputs) => {
+  const derive = (inp: BuildStats) => {
     const L = n(inp.level);
     const B = n(inp.bonus);
     const S = n(inp.skill);
@@ -92,9 +72,6 @@
   };
 
   const perkDefsById: Record<string, PerkDef> = Object.fromEntries(perks.map((p) => [p.id, p]));
-  type ActivePerkWithDef = ActivePerk & { def: PerkDef };
-
-  type SpellState = { P: number; F: number; ML: number; S: number; W: number };
 
   const applyPerkToSpell = (spell: Spell, perk: ActivePerkWithDef, state: SpellState): SpellState => {
     const { P, F, ML, S, W } = state;
@@ -122,7 +99,7 @@
     return state;
   };
 
-  const computeResults = (inp: BuildInputs, activePerks: ActivePerk[]) => {
+  const computeResults = (inp: BuildStats, activePerks: ActivePerk[]) => {
     const withDefs: ActivePerkWithDef[] = activePerks
       .map((ap) => {
         const def = perkDefsById[ap.id];
@@ -135,8 +112,11 @@
       .filter((x): x is ActivePerkWithDef => x !== null);
     const { F, ML, S, W } = derive(inp);
     return spells.map((spell) => {
+      console.log("------- computing " + spell.name);
       const initial: SpellState = { P: spell.power, F, ML, S, W };
-      const final = withDefs.reduce((acc, perk) => applyPerkToSpell(spell, perk, acc), initial);
+      const final: SpellState = withDefs.reduce((acc, perk) => applyPerkToSpell(spell, perk, acc), initial);
+      console.log(initial);
+      console.log(final);
       return {
         ...spell,
         min: computeMinMax(spell, -1, final.P, final.F, final.ML, final.S, final.W),
@@ -146,8 +126,8 @@
     });
   };
 
-  $: resultsA = computeResults(A, activePerksA);
-  $: resultsB = computeResults(B, activePerksB);
+  $: resultsA = computeResults(A.stats, A.perks);
+  $: resultsB = computeResults(B.stats, B.perks);
 
   const toMap = (arr: any[]) => new Map(arr.map((x) => [x.id, x]));
   $: mapA = toMap(resultsA);
@@ -155,9 +135,20 @@
   const isAHigher = (id: string) => (mapA.get(id)?.avg ?? -Infinity) >= (mapB.get(id)?.avg ?? -Infinity);
   const isBHigher = (id: string) => (mapB.get(id)?.avg ?? -Infinity) >= (mapA.get(id)?.avg ?? -Infinity);
 
-  let didHydrate = false;
+  function writePackedToUrl() {
+    const q = new URLSearchParams(window.location.search);
+    q.set("s", packState(currentState()));
 
+    const qs = q.toString();
+    const url = qs
+      ? `${window.location.pathname}?${qs}${window.location.hash}`
+      : `${window.location.pathname}${window.location.hash}`;
+    window.history.replaceState(null, "", url);
+  }
+
+  let didHydrate = false;
   let t: number | undefined;
+
   function scheduleWrite() {
     if (!didHydrate) return;
     if (t) window.clearTimeout(t);
@@ -171,10 +162,8 @@
       const st = unpackState(s);
       if (!st) return;
       showSecondBuild = !!st.showSecondBuild;
-      A = { ...A, ...st.A.inputs };
-      B = { ...B, ...st.B.inputs };
-      activePerksA = st.A.perks ?? [];
-      activePerksB = st.B.perks ?? [];
+      A = { stats: { ...A.stats, ...st.A.stats }, perks: st.A.perks ?? [] };
+      B = { stats: { ...B.stats, ...st.B.stats }, perks: st.B.perks ?? [] };
     };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
@@ -183,8 +172,6 @@
   $: {
     A;
     B;
-    activePerksA;
-    activePerksB;
     showSecondBuild;
     scheduleWrite();
   }
@@ -202,8 +189,8 @@
   <button
     type="button"
     on:click={() => {
-      A.level = A.bonus = A.skill = A.magicLevel = A.weapon = "";
-      B.level = B.bonus = B.skill = B.magicLevel = B.weapon = "";
+      A = { stats: { level: "", bonus: "", skill: "", magicLevel: "", weapon: "" }, perks: [] };
+      B = { stats: { level: "", bonus: "", skill: "", magicLevel: "", weapon: "" }, perks: [] };
     }}>Reset</button
   >
   <button
@@ -218,29 +205,9 @@
 </section>
 
 <section class="compare-grid">
-  <BuildPanel
-    title="Build A"
-    bind:level={A.level}
-    bind:bonus={A.bonus}
-    bind:skill={A.skill}
-    bind:magicLevel={A.magicLevel}
-    bind:weapon={A.weapon}
-    bind:activePerks={activePerksA}
-    results={resultsA}
-    isHigher={isAHigher}
-  />
+  <BuildPanel title="Build A" bind:build={A} results={resultsA} isHigher={isAHigher} />
 
   {#if showSecondBuild}
-    <BuildPanel
-      title="Build B"
-      bind:level={B.level}
-      bind:bonus={B.bonus}
-      bind:skill={B.skill}
-      bind:magicLevel={B.magicLevel}
-      bind:weapon={B.weapon}
-      bind:activePerks={activePerksB}
-      results={resultsB}
-      isHigher={isBHigher}
-    />
+    <BuildPanel title="Build B" bind:build={B} results={resultsB} isHigher={isBHigher} />
   {/if}
 </section>

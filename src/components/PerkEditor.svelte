@@ -1,28 +1,33 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
   import type { PerkDef } from "src/data/perks";
   import type { ActivePerk } from "src/lib/perk-types";
 
+  const dispatch = createEventDispatcher<{ activeChange: ActivePerk[] }>();
+
   export let registry: Map<string, PerkDef>;
-  export let active: ActivePerk[]; // parent binds this
+  export let active: ActivePerk[] = []; // parent passes/updates this
 
-  function setValue(ap: ActivePerk, v: number) {
-    ap.value = v;
-    // nudge reactivity
-    active = active.slice();
+  // Single source of truth for updates (dispatches exactly once)
+  function setActive(next: ActivePerk[]) {
+    active = next;
+    dispatch("activeChange", active);
   }
 
-  function onNumInput(ap: ActivePerk, e: Event) {
-    const target = e.target as HTMLInputElement;
-    setValue(ap, Number(target.value));
+  // Prefer immutable update over in-place mutation
+  function setValue(id: string, v: number) {
+    const next = active.map((a) => (a.id === id ? { ...a, value: v } : a));
+    setActive(next);
   }
 
-  function onEnumChange(ap: ActivePerk, e: Event) {
-    const target = e.target as HTMLSelectElement;
-    setValue(ap, Number(target.value));
+  // One handler that works for both <input> and <select>
+  function onInput(id: string, e: Event) {
+    const el = e.target as HTMLInputElement | HTMLSelectElement;
+    setValue(id, Number(el.value));
   }
 
   function remove(id: string) {
-    active = active.filter((a) => a.id !== id);
+    setActive(active.filter((a) => a.id !== id));
   }
 </script>
 
@@ -36,7 +41,7 @@
             <span>{def.name}</span>
             <div>
               <button type="button" aria-label="Remove" on:click={() => remove(ap.id)}>×</button>
-              <input type="number" value={String(ap.value)} on:input={(e) => onNumInput(ap, e)} inputmode="numeric" />
+              <input type="number" value={ap.value} on:input={(e) => onInput(ap.id, e)} />
             </div>
           </label>
         </div>

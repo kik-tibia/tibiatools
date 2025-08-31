@@ -3,7 +3,6 @@
   export let all: PerkDef[] = [];
   export let selectedIds: string[] = [];
   export let onAdd: (id: string) => void;
-  export let onRemove: (id: string) => void;
 
   let q = "";
   $: filtered = all.filter((p) => p.name.toLowerCase().includes(q.toLowerCase()) && !selectedIds.includes(p.id));

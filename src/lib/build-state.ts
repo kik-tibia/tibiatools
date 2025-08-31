@@ -1,6 +1,6 @@
 import type { ActivePerk } from "./perk-types";
 
-export type BuildInputs = {
+export type BuildStats = {
     level: string | number | null;
     bonus: string | number | null;
     skill: string | number | null;
@@ -8,16 +8,16 @@ export type BuildInputs = {
     weapon: string | number | null;
 };
 
+export type Build = { stats: BuildStats; perks: ActivePerk[] };
+
 export type CalculatorState = {
-    v: 1;                  // schema version
     showSecondBuild: boolean;
-    A: { inputs: BuildInputs; perks: ActivePerk[] };
-    B: { inputs: BuildInputs; perks: ActivePerk[] };
+    A: Build;
+    B: Build;
 };
 
 export const defaultState = (): CalculatorState => ({
-    v: 1,
     showSecondBuild: false,
-    A: { inputs: { level: "", bonus: "", skill: "", magicLevel: "", weapon: "" }, perks: [] },
-    B: { inputs: { level: "", bonus: "", skill: "", magicLevel: "", weapon: "" }, perks: [] },
+    A: { stats: { level: "", bonus: "", skill: "", magicLevel: "", weapon: "" }, perks: [] },
+    B: { stats: { level: "", bonus: "", skill: "", magicLevel: "", weapon: "" }, perks: [] },
 });

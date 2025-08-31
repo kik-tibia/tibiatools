@@ -2,25 +2,22 @@
   import { perks } from "src/data/perks";
   import PerkPicker from "./PerkPicker.svelte";
   import PerkEditor from "./PerkEditor.svelte";
-  import type { ActivePerk } from "src/lib/perk-types";
+  import type { Build, BuildStats } from "src/lib/build-state";
 
-  export let activePerks: ActivePerk[] = []; // bind from parent
   const registry = new Map(perks.map((p) => [p.id, p]));
 
-  function addPerk(id: string) {
-    const def = registry.get(id)!;
-    activePerks = [...activePerks, { id, value: 0 }];
-  }
-  function removePerk(id: string) {
-    activePerks = activePerks.filter((p) => p.id !== id);
-  }
   export let title = "Build";
-  // two-way bound fields
-  export let level: string | number | null = "";
-  export let bonus: string | number | null = "";
-  export let skill: string | number | null = "";
-  export let magicLevel: string | number | null = "";
-  export let weapon: string | number | null = "";
+
+  // single two-way bound object from parent
+  export let build: Build;
+
+  // helpers: reassign `build` so Svelte propagates to parent
+  function setStat<K extends keyof BuildStats>(key: K, value: BuildStats[K]) {
+    build = { ...build, stats: { ...build.stats, [key]: value } };
+  }
+  function addPerk(id: string) {
+    build = { ...build, perks: [...build.perks, { id, value: 0 }] };
+  }
 
   // computed results for this build (array of { id, name, min, avg, max, scalesWith, rounding, ... })
   export let results: any[] = [];
@@ -31,15 +28,58 @@
 
 <div>
   <h3>{title}</h3>
-  <PerkPicker all={perks} selectedIds={activePerks.map((p) => p.id)} onAdd={addPerk} onRemove={removePerk} />
-  <PerkEditor bind:active={activePerks} {registry} />
+
+  <PerkPicker all={perks} selectedIds={build.perks.map((p) => p.id)} onAdd={addPerk} />
+  <!-- Can't bind to an expression like build.perks; listen to the generated `active` event -->
+  <PerkEditor active={build.perks} on:activeChange={(e) => (build = { ...build, perks: e.detail })} {registry} />
+
   <div class="panel">
     <form class="stack" on:submit|preventDefault>
-      <label><span>Level</span><input type="number" bind:value={level} inputmode="numeric" /></label>
-      <label><span>Bonus Damage</span><input type="number" bind:value={bonus} inputmode="numeric" /></label>
-      <label><span>Skill</span><input type="number" bind:value={skill} inputmode="numeric" /></label>
-      <label><span>Magic Level</span><input type="number" bind:value={magicLevel} inputmode="numeric" /></label>
-      <label><span>Weapon Attack</span><input type="number" bind:value={weapon} inputmode="numeric" /></label>
+      <label
+        ><span>Level</span>
+        <input
+          type="number"
+          inputmode="numeric"
+          value={build.stats.level}
+          on:input={(e) => setStat("level", e.currentTarget.value)}
+        />
+      </label>
+      <label
+        ><span>Bonus Damage</span>
+        <input
+          type="number"
+          inputmode="numeric"
+          value={build.stats.bonus}
+          on:input={(e) => setStat("bonus", e.currentTarget.value)}
+        />
+      </label>
+      <label
+        ><span>Skill</span>
+        <input
+          type="number"
+          inputmode="numeric"
+          value={build.stats.skill}
+          on:input={(e) => setStat("skill", e.currentTarget.value)}
+        />
+      </label>
+      <label
+        ><span>Magic Level</span>
+        <input
+          type="number"
+          inputmode="numeric"
+          value={build.stats.magicLevel}
+          on:input={(e) => setStat("magicLevel", e.currentTarget.value)}
+        />
+      </label>
+      <label
+        ><span>Weapon Attack</span>
+        <input
+          type="number"
+          inputmode="numeric"
+          value={build.stats.weapon}
+          on:input={(e) => setStat("weapon", e.currentTarget.value)}
+        />
+      </label>
     </form>
 
     <table class="results">

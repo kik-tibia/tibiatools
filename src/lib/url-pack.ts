@@ -13,8 +13,6 @@ export function unpackState(s: string | null): CalculatorState | null {
         const json = LZString.decompressFromEncodedURIComponent(s);
         if (!json) return null;
         const obj = JSON.parse(json);
-        // Quick guard: require version
-        if (!obj || typeof obj.v !== "number") return null;
         return obj as CalculatorState;
     } catch {
         return null;
