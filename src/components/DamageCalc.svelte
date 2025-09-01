@@ -2,6 +2,7 @@
   import spellsRaw from "src/data/spells.json";
   import { onMount } from "svelte";
   import BuildPanel from "./BuildPanel.svelte";
+  import ResultsTable from "./ResultsTable.svelte";
   import type { ActivePerk } from "src/lib/perk-types";
   import type { PerkDef } from "src/data/perks";
   import { perks } from "src/data/perks";
@@ -205,9 +206,15 @@
 </section>
 
 <section class="compare-grid">
-  <BuildPanel title="Build A" bind:build={A} results={resultsA} isHigher={isAHigher} />
+  <div class="panel">
+    <BuildPanel title="Build A" bind:build={A} />
+    <ResultsTable results={resultsA} isHigher={isAHigher} />
+  </div>
 
   {#if showSecondBuild}
-    <BuildPanel title="Build B" bind:build={B} results={resultsB} isHigher={isBHigher} />
+    <div class="panel">
+      <BuildPanel title="Build B" bind:build={B} />
+      <ResultsTable results={resultsB} isHigher={isBHigher} />
+    </div>
   {/if}
 </section>
