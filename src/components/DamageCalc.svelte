@@ -7,25 +7,9 @@
   import type { PerkDef } from "src/data/perks";
   import { perks } from "src/data/perks";
   import { packState, unpackState } from "src/lib/url-pack";
+  import { computeAvg, computeMinMax } from "src/lib/calc";
   import type { Build, BuildStats, CalculatorState } from "src/lib/build-state";
-
-  type SpellType = "spell" | "healing" | "rune";
-  type ScalesWith = "magic" | "melee" | "distance" | "none";
-  type Element = "ice" | "weapon";
-  type Rounding = "floor" | "round" | "ceil";
-
-  type Spell = {
-    id: string;
-    name: string;
-    spellType: SpellType;
-    scalesWith: ScalesWith;
-    element: Element;
-    power: number;
-    skillFactor: number;
-    buckets: number;
-    vocations: string[];
-    rounding: Rounding;
-  };
+  import type { Spell } from "src/data/spells";
 
   type ActivePerkWithDef = ActivePerk & { def: PerkDef };
 
@@ -55,21 +39,6 @@
     const step = Math.floor((Math.sqrt(2 * L + 2025) + 5) / 10);
     const F = step * 100 - 450 + Math.floor((L + 1000) / step - 50 * step) + B;
     return { F, ML, S, W };
-  };
-
-  const computeAvg = (spell: Spell, P: number, F: number, ML: number, S: number, W: number) => {
-    const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
-    return spell.scalesWith === "magic"
-      ? F + round((P / spell.skillFactor) * ML + P / 4)
-      : F + round((P / spell.skillFactor) * S * W + P / 4);
-  };
-
-  const computeMinMax = (spell: Spell, minMax: number, P: number, F: number, ML: number, S: number, W: number) => {
-    const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
-    const variation = spell.buckets / P / 2;
-    return spell.scalesWith === "magic"
-      ? F + round((1 + minMax * variation) * ((P / spell.skillFactor) * ML + P / 4))
-      : F + round((1 + minMax * variation) * ((P / spell.skillFactor) * S * W + P / 4));
   };
 
   const perkDefsById: Record<string, PerkDef> = Object.fromEntries(perks.map((p) => [p.id, p]));
