@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { perks } from "src/data/perks";
+  import { perks } from "@data/perks";
   import PerkPicker from "./PerkPicker.svelte";
   import PerkEditor from "./PerkEditor.svelte";
-  import type { Build, BuildStats } from "src/lib/build-state";
+  import type { Build, BuildStats } from "@lib/build-state";
 
   export let results: any[] = [];
 

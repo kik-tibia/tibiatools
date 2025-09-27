@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { PerkDef } from "src/data/perks";
+  import type { PerkDef } from "@data/perks";
   import { Fzf, type FzfOptions, type FzfResultItem } from "fzf";
   export let all: PerkDef[] = [];
   export let selectedIds: string[] = [];

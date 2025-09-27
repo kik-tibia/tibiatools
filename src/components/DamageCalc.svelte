@@ -1,19 +1,15 @@
 <script lang="ts">
-  import spellsRaw from "src/data/spells.json";
+  import spellsRaw from "@data/spells.json";
   import { onMount } from "svelte";
   import BuildPanel from "./BuildPanel.svelte";
   import ResultsTable from "./ResultsTable.svelte";
-  import type { ActivePerk } from "src/lib/perk-types";
-  import type { PerkDef } from "src/data/perks";
-  import { perks } from "src/data/perks";
-  import { packState, unpackState } from "src/lib/url-pack";
-  import { computeAvg, computeMinMax } from "src/lib/calc";
-  import type { Build, BuildStats, CalculatorState } from "src/lib/build-state";
-  import type { Spell } from "src/data/spells";
-
-  type ActivePerkWithDef = ActivePerk & { def: PerkDef };
-
-  type SpellState = { P: number; F: number; ML: number; S: number; W: number };
+  import type { ActivePerk, ActivePerkWithDef, SpellState } from "@lib/calc/types";
+  import type { PerkDef } from "@data/perks";
+  import { perks } from "@data/perks";
+  import { packState, unpackState } from "@lib/url-pack";
+  import { computeAvg, computeMinMax } from "@lib/damage-calc";
+  import type { Build, BuildStats, CalculatorState } from "@lib/build-state";
+  import type { Spell } from "@data/spells";
 
   const spells = spellsRaw as unknown as Spell[];
   export let initial: CalculatorState;

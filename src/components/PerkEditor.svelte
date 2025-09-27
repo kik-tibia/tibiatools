@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { PerkDef } from "src/data/perks";
-  import type { ActivePerk } from "src/lib/perk-types";
+  import type { PerkDef } from "@data/perks";
+  import type { ActivePerk } from "@lib/perk-types";
 
   export let registry: Map<string, PerkDef>;
   export let active: ActivePerk[] = [];
