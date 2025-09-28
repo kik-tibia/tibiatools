@@ -1,17 +1,13 @@
 <script lang="ts">
-  import spellsRaw from "@data/spells.json";
   import { onMount } from "svelte";
+
+  import { computeResults } from "@lib/damage-calc";
+  import { packState, unpackState } from "@lib/url-pack";
+  import type { Build, CalculatorState } from "@lib/build-state";
+
   import BuildPanel from "./BuildPanel.svelte";
   import ResultsTable from "./ResultsTable.svelte";
-  import type { ActivePerk, ActivePerkWithDef, SpellState } from "@lib/calc/types";
-  import type { PerkDef } from "@data/perks";
-  import { perks } from "@data/perks";
-  import { packState, unpackState } from "@lib/url-pack";
-  import { computeAvg, computeMinMax } from "@lib/damage-calc";
-  import type { Build, BuildStats, CalculatorState } from "@lib/build-state";
-  import type { Spell } from "@data/spells";
 
-  const spells = spellsRaw as unknown as Spell[];
   export let initial: CalculatorState;
 
   let A: Build = { stats: { ...initial.A.stats }, perks: initial.A.perks ?? [] };
@@ -23,74 +19,6 @@
     console.log(A);
     return { showSecondBuild, A, B };
   }
-
-  const n = (v: unknown) => Number((v ?? "").toString().trim()) || 0;
-
-  const derive = (inp: BuildStats) => {
-    const L = n(inp.level);
-    const B = n(inp.bonus);
-    const S = n(inp.skill);
-    const ML = n(inp.magicLevel);
-    const W = n(inp.weapon);
-    const step = Math.floor((Math.sqrt(2 * L + 2025) + 5) / 10);
-    const F = step * 100 - 450 + Math.floor((L + 1000) / step - 50 * step) + B;
-    return { F, ML, S, W };
-  };
-
-  const perkDefsById: Record<string, PerkDef> = Object.fromEntries(perks.map((p) => [p.id, p]));
-
-  const applyPerkToSpell = (spell: Spell, perk: ActivePerkWithDef, state: SpellState): SpellState => {
-    const { P, F, ML, S, W } = state;
-
-    if (
-      perk.def.scope === "all" ||
-      perk.def.scope === spell.id ||
-      perk.def.scope === spell.spellType ||
-      perk.def.scope === spell.element
-    ) {
-      switch (perk.def.bonusType) {
-        case "base-damage":
-          return { ...state, P: P * (1 + perk.value / 100) };
-        case "crit-chance":
-          return state;
-        case "magic-level":
-          return { ...state, ML: ML + perk.value };
-        case "axe-percent-extra":
-          return { ...state, F: F + Math.floor((S * perk.value) / 100) };
-        case "fishing-percent-extra":
-          return { ...state, F: F + Math.floor((S * perk.value) / 100) };
-      }
-    }
-
-    return state;
-  };
-
-  const computeResults = (inp: BuildStats, activePerks: ActivePerk[]) => {
-    const withDefs: ActivePerkWithDef[] = activePerks
-      .map((ap) => {
-        const def = perkDefsById[ap.id];
-        if (!def) {
-          console.warn(`Unknown perk id: ${ap.id}`);
-          return null;
-        }
-        return { ...ap, def };
-      })
-      .filter((x): x is ActivePerkWithDef => x !== null);
-    const { F, ML, S, W } = derive(inp);
-    return spells.map((spell) => {
-      console.log("------- computing " + spell.name);
-      const initial: SpellState = { P: spell.power, F, ML, S, W };
-      const final: SpellState = withDefs.reduce((acc, perk) => applyPerkToSpell(spell, perk, acc), initial);
-      console.log(initial);
-      console.log(final);
-      return {
-        ...spell,
-        min: computeMinMax(spell, -1, final.P, final.F, final.ML, final.S, final.W),
-        avg: computeAvg(spell, final.P, final.F, final.ML, final.S, final.W),
-        max: computeMinMax(spell, 1, final.P, final.F, final.ML, final.S, final.W),
-      };
-    });
-  };
 
   $: resultsA = computeResults(A.stats, A.perks);
   $: resultsB = computeResults(B.stats, B.perks);
