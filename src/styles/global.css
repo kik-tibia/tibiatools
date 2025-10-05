@@ -67,6 +67,7 @@ label {
 .compare-grid .panel {
     display: contents;
     gap: 0.75rem;
+    overflow: hidden;
 }
 
 .compare-grid .stack {
@@ -76,55 +77,6 @@ label {
     padding-bottom: 0.5rem;
 }
 
-.results-wrap {
-    margin-top: 1rem;
-}
-
-.results {
-    max-width: 600px;
-    border-collapse: collapse;
-    background: var(--table-bg, transparent);
-    border: 1px solid #555555;
-    border-radius: .5rem;
-    overflow: hidden;
-    /* keeps rounded corners */
-    font-variant-numeric: tabular-nums;
-    /* align digits */
-}
-
-.results thead th {
-    text-align: left;
-    padding: .6rem .75rem;
-    border-bottom: 1px solid #555555;
-    font-weight: 600;
-}
-
-.results td {
-    padding: .55rem .75rem;
-    border-bottom: 1px solid #555555;
-}
-
-.results .num {
-    text-align: right;
-    white-space: nowrap;
-}
-
-.results .range {
-    font-size: 1rem;
-    color: #777777;
-}
-
-.results .spell {
-    width: 100%;
-}
-
-.results .highlight {
-    background: rgba(50, 255, 0, 0.12);
-}
-
-.spell-name {
-    font-weight: 600;
-}
 
 .meta {
     display: inline-flex;

@@ -83,11 +83,13 @@ export const computeResults = (inp: BuildStats, activePerks: ActivePerk[]) => {
         const final: SpellState = withDefs.reduce((acc, perk) => applyPerkToSpell(spell, perk, acc), initial);
         console.log(initial);
         console.log(final);
+        const avg = computeAvg(spell, final.P, final.F, final.ML, final.S, final.W);
         return {
             ...spell,
             min: computeMinMax(spell, -1, final.P, final.F, final.ML, final.S, final.W),
-            avg: computeAvg(spell, final.P, final.F, final.ML, final.S, final.W),
+            avg,
             max: computeMinMax(spell, 1, final.P, final.F, final.ML, final.S, final.W),
+            effectiveAvg: Math.round(avg * 1.1),
         };
     });
 };

@@ -18,6 +18,24 @@
         "rounding": "floor"
     },
     {
+        "id": "thunderstorm",
+        "name": "Thunderstorm Rune",
+        "spellType": "rune",
+        "scalesWith": "magic",
+        "element": "energy",
+        "power": 45,
+        "skillFactor": 25,
+        "buckets": 40,
+        "vocations": [
+            "druid",
+            "knight",
+            "monk",
+            "paladin",
+            "sorcerer"
+        ],
+        "rounding": "floor"
+    },
+    {
         "id": "fierce-berserk",
         "name": "Fierce Berserk",
         "spellType": "spell",
