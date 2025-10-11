@@ -5,7 +5,7 @@
 body {
     margin: 0;
     font-family: system-ui, sans-serif;
-    line-height: 1.5;
+    line-height: 1.2;
 }
 
 header,
@@ -28,7 +28,7 @@ label {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
-    gap: .75rem;
+    gap: .5rem;
 }
 
 .toolbar button {
@@ -60,7 +60,7 @@ label {
 
 .compare-grid input {
     width: 6rem;
-    padding: 0.2rem;
+    padding: 0.1rem;
     font: inherit;
 }
 
@@ -73,7 +73,7 @@ label {
 .compare-grid .stack {
     display: grid;
     gap: 0.5rem;
-    max-width: 420px;
+    width: 100%;
     padding-bottom: 0.5rem;
 }
 
@@ -84,18 +84,6 @@ label {
     margin-left: .4rem;
 }
 
-.badge {
-    display: inline-block;
-    padding: .1rem .4rem;
-    border: 1px solid #d0d0d0;
-    border-radius: .4rem;
-    font-size: .75rem;
-    text-transform: capitalize;
-}
-
-.badge.subtle {
-    opacity: .7;
-}
 
 /* Mobile: stack rows into cards */
 @media (max-width: 700px) {

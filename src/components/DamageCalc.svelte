@@ -99,7 +99,7 @@
 </section>
 
 <section class="compare-grid">
-  <div class="panel">
+  <div class="panel" style="padding-right: 1rem">
     <BuildPanel title="Build A" bind:build={A} />
     <ResultsTable results={resultsA} isHigher={isAHigher} />
   </div>

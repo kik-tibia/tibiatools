@@ -107,7 +107,7 @@
 <style>
   .perk-picker {
     position: relative;
-    max-width: 24rem;
+    max-width: 30rem;
   }
 
   .combo {
@@ -116,7 +116,8 @@
 
   .perk-search {
     width: 100%;
-    padding: 0.5rem 2rem 0.5rem 0.625rem;
+    box-sizing: border-box;
+    padding: 0.5rem 0rem 0.5rem 0.625rem;
     border: 1px solid hsl(0 0% 40%);
     border-radius: 0.5rem;
     outline: none;

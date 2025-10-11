@@ -15,14 +15,6 @@
       <thead>
         <tr>
           <th class="desc" rowspan="2">Spell</th>
-          <th class="desc" colspan="3">
-            <span class="field-tip">
-              <button type="button" class="tip-trigger" aria-describedby="tip-raw">Raw</button>
-              <span id="tip-raw" role="tooltip" class="tip-content">
-                The damage you would deal to a completely defenseless target, ignoring resistances, crits, etc.
-              </span>
-            </span>
-          </th>
           <th class="desc">
             <span class="field-tip">
               <button type="button" class="tip-trigger" aria-describedby="tip-effective">Effective</button>
@@ -31,12 +23,20 @@
               </span>
             </span>
           </th>
+          <th class="desc" colspan="3">
+            <span class="field-tip">
+              <button type="button" class="tip-trigger" aria-describedby="tip-raw">Raw</button>
+              <span id="tip-raw" role="tooltip" class="tip-content">
+                The damage you would deal to a completely defenseless target, ignoring resistances, crits, etc.
+              </span>
+            </span>
+          </th>
         </tr>
         <tr>
+          <th class="num">Avg</th>
           <th class="num">Min</th>
           <th class="num">Avg</th>
           <th class="num">Max</th>
-          <th class="num">Avg</th>
         </tr>
       </thead>
       <tbody>
@@ -44,12 +44,11 @@
           <tr class:highlight={isHigher(r.id)}>
             <td class="spell">
               <div class="spell-name">{r.name}</div>
-              <div class="meta"><span class="badge">{r.scalesWith}</span></div>
             </td>
+            <td class="num" data-label="Effective Avg">{r.effectiveAvg}</td>
             <td class="num range" data-label="Min">{r.min}</td>
             <td class="num" data-label="Avg">{r.avg}</td>
             <td class="num range" data-label="Max">{r.max}</td>
-            <td class="num range" data-label="Effective Avg">{r.effectiveAvg}</td>
           </tr>
         {/each}
       </tbody>
@@ -73,13 +72,13 @@
     font-weight: 600;
   }
 
-  thead tr:nth-child(2) th:nth-child(1),
-  thead tr:nth-child(2) th:nth-child(2) {
+  thead tr:nth-child(2) th:nth-child(2),
+  thead tr:nth-child(2) th:nth-child(3) {
     border-right: none;
   }
 
-  thead tr:nth-child(2) th:nth-child(2),
-  thead tr:nth-child(2) th:nth-child(3) {
+  thead tr:nth-child(2) th:nth-child(3),
+  thead tr:nth-child(2) th:nth-child(4) {
     border-left: none;
   }
 

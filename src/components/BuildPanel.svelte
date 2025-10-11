@@ -18,59 +18,56 @@
   }
 </script>
 
-<div>
+<div style="padding-right: 1rem">
   <h3>{title}</h3>
-
-  <PerkPicker all={perks} selectedIds={build.perks.map((p) => p.id)} onAdd={addPerk} />
-  <PerkEditor active={build.perks} onActiveChange={(next) => (build = { ...build, perks: next })} {registry} />
 
   <div class="panel">
     <form class="stack" on:submit|preventDefault>
-      <label
-        ><span>Level</span>
+      <label>
+        <span>Level</span>
         <input
           type="number"
           inputmode="numeric"
           value={build.stats.level}
-          on:input={(e) => setStat("level", e.currentTarget.value)}
-        />
+          on:input={(e) => setStat("level", e.currentTarget.value)} />
       </label>
-      <label
-        ><span>Bonus Damage</span>
+      <label>
+        <span>Bonus Damage</span>
         <input
           type="number"
           inputmode="numeric"
           value={build.stats.bonus}
-          on:input={(e) => setStat("bonus", e.currentTarget.value)}
-        />
+          on:input={(e) => setStat("bonus", e.currentTarget.value)} />
       </label>
-      <label
-        ><span>Skill</span>
-        <input
-          type="number"
-          inputmode="numeric"
-          value={build.stats.skill}
-          on:input={(e) => setStat("skill", e.currentTarget.value)}
-        />
-      </label>
-      <label
-        ><span>Magic Level</span>
+      <label>
+        <span>Magic Level</span>
         <input
           type="number"
           inputmode="numeric"
           value={build.stats.magicLevel}
-          on:input={(e) => setStat("magicLevel", e.currentTarget.value)}
-        />
+          on:input={(e) => setStat("magicLevel", e.currentTarget.value)} />
       </label>
-      <label
-        ><span>Weapon Attack</span>
+      <label>
+        <span>Skill</span>
+        <input
+          type="number"
+          inputmode="numeric"
+          value={build.stats.skill}
+          on:input={(e) => setStat("skill", e.currentTarget.value)} />
+      </label>
+      <label>
+        <span>Weapon Attack</span>
         <input
           type="number"
           inputmode="numeric"
           value={build.stats.weapon}
-          on:input={(e) => setStat("weapon", e.currentTarget.value)}
-        />
+          on:input={(e) => setStat("weapon", e.currentTarget.value)} />
       </label>
     </form>
+  </div>
+
+  <div style="margin-top: 0.5rem">
+    <PerkPicker all={perks} selectedIds={build.perks.map((p) => p.id)} onAdd={addPerk} />
+    <PerkEditor active={build.perks} onActiveChange={(next) => (build = { ...build, perks: next })} {registry} />
   </div>
 </div>
