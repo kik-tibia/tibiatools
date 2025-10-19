@@ -63,6 +63,22 @@
           value={build.stats.weapon}
           on:input={(e) => setStat("weapon", e.currentTarget.value)} />
       </label>
+      <label>
+        <span>Crit Chance %</span>
+        <input
+          type="number"
+          inputmode="numeric"
+          value={build.stats.critChance}
+          on:input={(e) => setStat("critChance", e.currentTarget.value)} />
+      </label>
+      <label>
+        <span>Crit Damage %</span>
+        <input
+          type="number"
+          inputmode="numeric"
+          value={build.stats.critDamage}
+          on:input={(e) => setStat("critDamage", e.currentTarget.value)} />
+      </label>
     </form>
   </div>
 

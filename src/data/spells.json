@@ -1,5 +1,23 @@
 [
     {
+        "id": "auto-attack",
+        "name": "Auto Attack",
+        "spellType": "auto",
+        "scalesWith": "melee",
+        "element": "weapon",
+        "power": 0,
+        "skillFactor": 0,
+        "buckets": 150,
+        "vocations": [
+            "druid",
+            "knight",
+            "monk",
+            "paladin",
+            "sorcerer"
+        ],
+        "rounding": "round"
+    },
+    {
         "id": "avalanche",
         "name": "Avalanche Rune",
         "spellType": "rune",

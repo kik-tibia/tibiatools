@@ -26,8 +26,10 @@
   const toMap = (arr: any[]) => new Map(arr.map((x) => [x.id, x]));
   $: mapA = toMap(resultsA);
   $: mapB = toMap(resultsB);
-  const isAHigher = (id: string) => (mapA.get(id)?.avg ?? -Infinity) >= (mapB.get(id)?.avg ?? -Infinity);
-  const isBHigher = (id: string) => (mapB.get(id)?.avg ?? -Infinity) >= (mapA.get(id)?.avg ?? -Infinity);
+  const isAHigher = (id: string) =>
+    (mapA.get(id)?.effectiveAvg ?? -Infinity) >= (mapB.get(id)?.effectiveAvg ?? -Infinity);
+  const isBHigher = (id: string) =>
+    (mapB.get(id)?.effectiveAvg ?? -Infinity) >= (mapA.get(id)?.effectiveAvg ?? -Infinity);
 
   function writePackedToUrl() {
     const q = new URLSearchParams(window.location.search);
@@ -83,17 +85,23 @@
   <button
     type="button"
     on:click={() => {
-      A = { stats: { level: "", bonus: "", skill: "", magicLevel: "", weapon: "" }, perks: [] };
-      B = { stats: { level: "", bonus: "", skill: "", magicLevel: "", weapon: "" }, perks: [] };
-    }}>Reset</button
-  >
+      A = {
+        stats: { level: "", bonus: "", skill: "", magicLevel: "", weapon: "", critChance: "", critDamage: "" },
+        perks: [],
+      };
+      B = {
+        stats: { level: "", bonus: "", skill: "", magicLevel: "", weapon: "", critChance: "", critDamage: "" },
+        perks: [],
+      };
+    }}>
+    Reset
+  </button>
   <button
     type="button"
     on:click={() => {
       showSecondBuild = !showSecondBuild;
       scheduleWrite();
-    }}
-  >
+    }}>
     {showSecondBuild ? "Hide second build" : "Compare a second build"}
   </button>
 </section>

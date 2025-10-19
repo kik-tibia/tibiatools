@@ -66,8 +66,7 @@
       aria-controls="perk-listbox"
       aria-expanded={open}
       aria-autocomplete="list"
-      aria-haspopup="listbox"
-    />
+      aria-haspopup="listbox" />
     <svg class="chev" viewBox="0 0 20 20" aria-hidden="true">
       <path d="M5 7l5 6 5-6" />
     </svg>
@@ -82,8 +81,7 @@
             role="option"
             aria-selected={i === activeIndex}
             class:selected={i === activeIndex}
-            on:mousedown|preventDefault={() => select(p)}
-          >
+            on:mousedown|preventDefault={() => select(p)}>
             {p.name}
           </li>
         {/each}
@@ -91,18 +89,8 @@
     </ul>
   {/if}
 
-  {#if selectedIds.length}
-    <p class="subtle">{selectedIds.length} selected</p>
-  {/if}
+  <p class="subtle">{selectedIds.length} selected</p>
 </div>
-
-<!-- Usage in BuildPanel.svelte (unchanged signature):
-  <PerkPicker
-    all={perks}
-    selectedIds={build.perks.map((p) => p.id)}
-    onAdd={addPerk}
-  />
--->
 
 <style>
   .perk-picker {
