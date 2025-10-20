@@ -8,6 +8,8 @@ export type BuildStats = {
   weapon: string | number | null;
   critChance: string | number | null;
   critDamage: string | number | null;
+  shielding: string | number | null;
+  fishing: string | number | null;
 };
 
 export type Build = { stats: BuildStats; perks: ActivePerk[] };
@@ -21,11 +23,31 @@ export type CalculatorState = {
 export const defaultState = (): CalculatorState => ({
   showSecondBuild: false,
   A: {
-    stats: { level: "", bonus: "", skill: "", magicLevel: "", weapon: "", critChance: "", critDamage: "" },
+    stats: {
+      level: "",
+      bonus: "",
+      skill: "",
+      magicLevel: "",
+      weapon: "",
+      critChance: "",
+      critDamage: "",
+      shielding: "",
+      fishing: "",
+    },
     perks: [],
   },
   B: {
-    stats: { level: "", bonus: "", skill: "", magicLevel: "", weapon: "", critChance: "", critDamage: "" },
+    stats: {
+      level: "",
+      bonus: "",
+      skill: "",
+      magicLevel: "",
+      weapon: "",
+      critChance: "",
+      critDamage: "",
+      shielding: "",
+      fishing: "",
+    },
     perks: [],
   },
 });

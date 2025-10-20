@@ -7,7 +7,6 @@
   const registry = new Map(perks.map((p) => [p.id, p]));
 
   export let title = "Build";
-
   export let build: Build;
 
   function setStat<K extends keyof BuildStats>(key: K, value: BuildStats[K]) {
@@ -16,6 +15,8 @@
   function addPerk(id: string) {
     build = { ...build, perks: [...build.perks, { id, value: 0 }] };
   }
+
+  let showAdvanced = Boolean(build?.stats?.shielding ?? 0) || Boolean(build?.stats?.fishing ?? 0);
 </script>
 
 <div style="padding-right: 1rem">
@@ -79,6 +80,28 @@
           value={build.stats.critDamage}
           on:input={(e) => setStat("critDamage", e.currentTarget.value)} />
       </label>
+
+      <details class="advanced" bind:open={showAdvanced}>
+        <summary>More stats</summary>
+        <div class="stack">
+          <label>
+            <span>Shielding</span>
+            <input
+              type="number"
+              inputmode="numeric"
+              value={build.stats.shielding ?? 0}
+              on:input={(e) => setStat("shielding", e.currentTarget.value)} />
+          </label>
+          <label>
+            <span>Fishing</span>
+            <input
+              type="number"
+              inputmode="numeric"
+              value={build.stats.fishing ?? 0}
+              on:input={(e) => setStat("fishing", e.currentTarget.value)} />
+          </label>
+        </div>
+      </details>
     </form>
   </div>
 
@@ -87,3 +110,16 @@
     <PerkEditor active={build.perks} onActiveChange={(next) => (build = { ...build, perks: next })} {registry} />
   </div>
 </div>
+
+<style>
+  details.advanced > summary {
+    cursor: pointer;
+    user-select: none;
+    margin-top: 0.25rem;
+    padding: 0.25rem 0;
+    font-weight: 600;
+  }
+  details.advanced[open] > summary {
+    margin-bottom: 0.25rem;
+  }
+</style>

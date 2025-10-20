@@ -86,11 +86,31 @@
     type="button"
     on:click={() => {
       A = {
-        stats: { level: "", bonus: "", skill: "", magicLevel: "", weapon: "", critChance: "", critDamage: "" },
+        stats: {
+          level: "",
+          bonus: "",
+          skill: "",
+          magicLevel: "",
+          weapon: "",
+          critChance: "",
+          critDamage: "",
+          shielding: "",
+          fishing: "",
+        },
         perks: [],
       };
       B = {
-        stats: { level: "", bonus: "", skill: "", magicLevel: "", weapon: "", critChance: "", critDamage: "" },
+        stats: {
+          level: "",
+          bonus: "",
+          skill: "",
+          magicLevel: "",
+          weapon: "",
+          critChance: "",
+          critDamage: "",
+          shielding: "",
+          fishing: "",
+        },
         perks: [],
       };
     }}>

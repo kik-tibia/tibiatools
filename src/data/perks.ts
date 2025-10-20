@@ -1,15 +1,4 @@
-export type ParamType = "percent" | "number" | "int" | "enum";
-
-export type PerkParam = {
-  key: string; // id for this parameter (e.g. "mult", "amount", "stat")
-  label: string; // UI label
-  type: ParamType;
-  min?: number;
-  max?: number;
-  step?: number;
-  options?: { value: string; label: string }[]; // for enum
-  default: number | string;
-};
+import perksRaw from "@data/perks.json";
 
 export type PerkScope = "auto-attack" | "spell" | "rune" | "ice" | "fierce-berserk" | "all";
 
@@ -28,50 +17,7 @@ export type PerkDef = {
   bonusType: PerkBonusType;
 };
 
-export const perks: PerkDef[] = [
-  {
-    id: "fierce-berserk-base",
-    name: "Fierce Berserk (exori gran) base damage",
-    scope: "fierce-berserk",
-    bonusType: "base-damage",
-  },
-  {
-    id: "crit-chance",
-    name: "Critical hit chance",
-    scope: "all",
-    bonusType: "crit-chance",
-  },
-  {
-    id: "auto-crit-chance",
-    name: "Critical hit chance for auto-attacks",
-    scope: "auto-attack",
-    bonusType: "crit-chance",
-  },
-  {
-    id: "runes-crit-chance",
-    name: "Runes critical hit chance",
-    scope: "rune",
-    bonusType: "crit-chance",
-  },
-  {
-    id: "ice-magic-level",
-    name: "Ice magic level",
-    scope: "ice",
-    bonusType: "magic-level",
-  },
-  {
-    id: "axe-percent-spell-damage",
-    name: "% axe fighting as extra damage for spells",
-    scope: "spell",
-    bonusType: "axe-percent-extra",
-  },
-  {
-    id: "fishing-percent-aa-damage",
-    name: "% fishing as extra damage for auto-attacks",
-    scope: "auto-attack",
-    bonusType: "fishing-percent-extra",
-  },
-];
+export const perks: PerkDef[] = perksRaw as PerkDef[];
 
 /*
  * PERK TYPES (with examples):
