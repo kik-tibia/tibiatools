@@ -39,6 +39,8 @@ const applyPerkToSpell = (spell: Spell, perk: ActivePerkWithDef, state: SpellSta
         return { ...state, P: P * (1 + perk.value / 100) };
       case "crit-chance":
         return { ...state, critChance: critChance + perk.value };
+      case "crit-damage":
+        return { ...state, critDamage: critDamage + perk.value };
       case "magic-level":
         return { ...state, ML: ML + perk.value };
       case "axe-percent-extra":

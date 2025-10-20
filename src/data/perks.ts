@@ -5,6 +5,7 @@ export type PerkScope = "auto-attack" | "spell" | "rune" | "ice" | "fierce-berse
 export type PerkBonusType =
   | "base-damage"
   | "crit-chance"
+  | "crit-damage"
   | "magic-level"
   | "axe-percent-extra"
   | "fishing-percent-extra"

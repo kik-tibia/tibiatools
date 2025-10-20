@@ -1,0 +1,50 @@
+[
+  {
+    "id": "crit-chance",
+    "name": "Critical hit chance",
+    "scope": "all",
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "auto-crit-chance",
+    "name": "Critical hit chance for auto-attacks",
+    "scope": "auto-attack",
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "auto-crit-damage",
+    "name": "Critical % extra damage for auto-attacks",
+    "scope": "auto-attack",
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "runes-crit-chance",
+    "name": "Runes critical hit chance",
+    "scope": "rune",
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "fierce-berserk-base",
+    "name": "Fierce Berserk (exori gran) base damage",
+    "scope": "fierce-berserk",
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "ice-magic-level",
+    "name": "Ice magic level",
+    "scope": "ice",
+    "bonusType": "magic-level"
+  },
+  {
+    "id": "axe-percent-spell-damage",
+    "name": "% axe fighting as extra damage for spells",
+    "scope": "spell",
+    "bonusType": "axe-percent-extra"
+  },
+  {
+    "id": "fishing-percent-aa-damage",
+    "name": "% fishing as extra damage for auto-attacks",
+    "scope": "auto-attack",
+    "bonusType": "fishing-percent-extra"
+  }
+]
