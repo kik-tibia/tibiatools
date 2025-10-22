@@ -26,10 +26,8 @@
   const toMap = (arr: any[]) => new Map(arr.map((x) => [x.id, x]));
   $: mapA = toMap(resultsA);
   $: mapB = toMap(resultsB);
-  const isAHigher = (id: string) =>
-    (mapA.get(id)?.effectiveAvg ?? -Infinity) >= (mapB.get(id)?.effectiveAvg ?? -Infinity);
-  const isBHigher = (id: string) =>
-    (mapB.get(id)?.effectiveAvg ?? -Infinity) >= (mapA.get(id)?.effectiveAvg ?? -Infinity);
+  const isAHigher = (id: string) => Number(mapA.get(id)?.effectiveAvg) >= Number(mapB.get(id)?.effectiveAvg);
+  const isBHigher = (id: string) => Number(mapB.get(id)?.effectiveAvg) >= Number(mapA.get(id)?.effectiveAvg);
 
   function writePackedToUrl() {
     const q = new URLSearchParams(window.location.search);
@@ -92,10 +90,10 @@
           skill: "",
           magicLevel: "",
           weapon: "",
-          critChance: "",
-          critDamage: "",
           shielding: "",
           fishing: "",
+          critChance: "",
+          critDamage: "",
         },
         perks: [],
       };
@@ -106,10 +104,10 @@
           skill: "",
           magicLevel: "",
           weapon: "",
-          critChance: "",
-          critDamage: "",
           shielding: "",
           fishing: "",
+          critChance: "",
+          critDamage: "",
         },
         perks: [],
       };
@@ -139,3 +137,15 @@
     </div>
   {/if}
 </section>
+
+<style>
+  .compare-grid {
+    display: grid;
+    gap: 1rem;
+
+    grid-template-rows: auto 1fr;
+
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+  }
+</style>

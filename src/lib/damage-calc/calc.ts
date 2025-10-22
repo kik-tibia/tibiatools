@@ -26,7 +26,7 @@ const computeMinMax = (spell: Spell, minMax: number, P: number, F: number, ML: n
 const perkDefsById: Record<string, PerkDef> = Object.fromEntries(perks.map((p) => [p.id, p]));
 
 const applyPerkToSpell = (spell: Spell, perk: ActivePerkWithDef, state: SpellState): SpellState => {
-  const { P, F, ML, S, W, critChance, critDamage } = state;
+  const { P, F, ML, S, W, shielding, critChance, critDamage } = state;
 
   if (
     perk.def.scope === "all" ||
@@ -45,6 +45,8 @@ const applyPerkToSpell = (spell: Spell, perk: ActivePerkWithDef, state: SpellSta
         return { ...state, ML: ML + perk.value };
       case "axe-percent-extra":
         return { ...state, F: F + Math.floor((S * perk.value) / 100) };
+      case "shield-percent-extra":
+        return { ...state, F: F + Math.floor((shielding * perk.value) / 100) };
       case "fishing-percent-extra":
         return { ...state, F: F + Math.floor((S * perk.value) / 100) };
     }
@@ -60,11 +62,13 @@ const derive = (inp: BuildStats) => {
   const S = n(inp.skill);
   const ML = n(inp.magicLevel);
   const W = n(inp.weapon);
+  const shielding = n(inp.shielding);
+  const fishing = n(inp.fishing);
   const step = Math.floor((Math.sqrt(2 * L + 2025) + 5) / 10);
   const F = step * 100 - 450 + Math.floor((L + 1000) / step - 50 * step) + B;
   const critChance = n(inp.critChance);
   const critDamage = n(inp.critDamage);
-  return { F, ML, S, W, critChance, critDamage };
+  return { F, ML, S, W, shielding, fishing, critChance, critDamage };
 };
 
 const assignDefsToPerks = (activePerks: ActivePerk[]) => {
@@ -102,11 +106,11 @@ const computeDamageRanges = (spell: Spell, state: SpellState) => {
 
 export const computeResults = (inp: BuildStats, activePerks: ActivePerk[]) => {
   const perksWithDefs: ActivePerkWithDef[] = assignDefsToPerks(activePerks);
-  const { F, ML, S, W, critChance, critDamage } = derive(inp);
+  const { F, ML, S, W, shielding, fishing, critChance, critDamage } = derive(inp);
   const spellResults = spells
     .filter((s) => s.spellType !== "rune") // TODO remove this eventually
     .map((spell) => {
-      const initial: SpellState = { P: spell.power, F, ML, S, W, critChance, critDamage };
+      const initial: SpellState = { P: spell.power, F, ML, S, W, shielding, fishing, critChance, critDamage };
       const final: SpellState = perksWithDefs.reduce((acc, perk) => applyPerkToSpell(spell, perk, acc), initial);
       return computeDamageRanges(spell, final);
     });

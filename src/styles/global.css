@@ -39,30 +39,14 @@ label {
     cursor: pointer;
 }
 
-.compare-grid {
-    display: grid;
-    gap: 1rem;
-
-    grid-template-rows: auto 1fr;
-
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(0, 1fr);
-}
-
 /* side-by-side when wider than 900px */
 @media (min-width: 900px) {
     .compare-grid {
         grid-template-columns: 1fr 1fr;
         align-items: start;
-        /* makes tables line up at the top */
     }
 }
 
-.compare-grid input {
-    width: 6rem;
-    padding: 0.1rem;
-    font: inherit;
-}
 
 .compare-grid .panel {
     display: contents;

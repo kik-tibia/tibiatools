@@ -13,6 +13,8 @@ export type SpellState = {
   ML: number;
   S: number;
   W: number;
+  shielding: number;
+  fishing: number;
   critChance: number;
   critDamage: number;
 };

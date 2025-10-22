@@ -1,7 +1,7 @@
 [
     {
         "id": "auto-attack",
-        "name": "Auto Attack",
+        "name": "Auto-attack",
         "spellType": "auto",
         "scalesWith": "melee",
         "element": "weapon",

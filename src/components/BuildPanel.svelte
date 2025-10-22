@@ -122,4 +122,10 @@
   details.advanced[open] > summary {
     margin-bottom: 0.25rem;
   }
+
+  input {
+    width: 6rem;
+    padding: 0.1rem;
+    font: inherit;
+  }
 </style>

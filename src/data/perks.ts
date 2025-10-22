@@ -8,6 +8,7 @@ export type PerkBonusType =
   | "crit-damage"
   | "magic-level"
   | "axe-percent-extra"
+  | "shield-percent-extra"
   | "fishing-percent-extra"
   | "all";
 

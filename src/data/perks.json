@@ -42,6 +42,18 @@
     "bonusType": "axe-percent-extra"
   },
   {
+    "id": "shield-percent-spell-damage",
+    "name": "% shielding as extra damage for spells",
+    "scope": "spell",
+    "bonusType": "shield-percent-extra"
+  },
+  {
+    "id": "axe-percent-aa-damage",
+    "name": "% axe fighting as extra damage for auto-attacks",
+    "scope": "auto-attack",
+    "bonusType": "axe-percent-extra"
+  },
+  {
     "id": "fishing-percent-aa-damage",
     "name": "% fishing as extra damage for auto-attacks",
     "scope": "auto-attack",
