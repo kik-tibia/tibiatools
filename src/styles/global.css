@@ -31,14 +31,6 @@ label {
     gap: .5rem;
 }
 
-.toolbar button {
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #bbb;
-    border-radius: 0.5rem;
-    background: transparent;
-    cursor: pointer;
-}
-
 /* side-by-side when wider than 900px */
 @media (min-width: 900px) {
     .compare-grid {

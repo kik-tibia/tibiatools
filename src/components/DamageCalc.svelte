@@ -148,4 +148,12 @@
     grid-auto-flow: column;
     grid-auto-columns: minmax(0, 1fr);
   }
+
+  .toolbar button {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #bbb;
+    border-radius: 0.5rem;
+    background: transparent;
+    cursor: pointer;
+  }
 </style>

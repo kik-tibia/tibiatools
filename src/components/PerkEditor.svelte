@@ -41,3 +41,11 @@
     {/each}
   </form>
 </div>
+
+<style>
+  input {
+    width: 6rem;
+    padding: 0.1rem;
+    font: inherit;
+  }
+</style>

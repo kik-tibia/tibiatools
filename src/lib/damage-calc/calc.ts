@@ -6,6 +6,15 @@ import type { PerkDef } from "@data/perks";
 import type { Spell } from "src/data/spells";
 import type { ActivePerk, ActivePerkWithDef, SpellState } from "@lib/damage-calc";
 
+/* calculate power via base power and any perks
+ * use the updated power and your skills to calculate base damage
+ * add on flat damage from level, wheel, and any extra damage perks
+ * multiply by additional damage bonus if applicable (amp kor, ulus)
+ * multiply by target's resistance and mitigation
+ * if physical damage, subtract the armor block
+ * roll for crit and fatal, if successful, multiply by the extra damage bonus including any crit damage perks
+ */
+
 const spells = spellsRaw as unknown as Spell[];
 
 const computeAvg = (spell: Spell, P: number, F: number, ML: number, S: number, W: number) => {
@@ -90,6 +99,8 @@ const computeDamageRanges = (spell: Spell, state: SpellState) => {
     const min = Math.floor(state.F + attackValueWithoutFlat / 2);
     const avg = Math.floor(state.F + attackValueWithoutFlat);
     const max = Math.floor(state.F + attackValueWithoutFlat * 2);
+    // TODO here we are assuming that perks such as "extra damage for auto attacks" get their bonus added after crit,
+    // but should it be before, so that crit can have an effect on the bonus?
     const effectiveAvg = (
       (1 - state.critChance / 100) * avg +
       (state.critChance / 100) * (state.F + attackValueWithoutFlat * 1.85) * (1 + state.critDamage / 100)
