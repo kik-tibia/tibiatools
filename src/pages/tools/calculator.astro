@@ -6,6 +6,6 @@ import { defaultState } from "@lib/build-state";
 const s = Astro.url.searchParams.get('s')
 const initial = unpackState(s) ?? defaultState();
 ---
-<BaseLayout title="Damage and Healing Calculator">
+<BaseLayout title="Damage Calculator">
     <DamageCalc client:load {initial} />
 </BaseLayout>

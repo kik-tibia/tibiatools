@@ -10,7 +10,7 @@ body {
 
 header,
 main {
-    max-width: 960px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 1rem;
 }
@@ -31,17 +31,11 @@ label {
     gap: .5rem;
 }
 
-/* side-by-side when wider than 900px */
-@media (min-width: 900px) {
-    .compare-grid {
-        grid-template-columns: 1fr 1fr;
-        align-items: start;
-    }
-}
 
 
 .compare-grid .panel {
     display: contents;
+    justify-self: center;
     gap: 0.75rem;
     overflow: hidden;
 }

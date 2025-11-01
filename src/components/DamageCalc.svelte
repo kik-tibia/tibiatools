@@ -143,10 +143,17 @@
     display: grid;
     gap: 1rem;
 
+    justify-content: center;
     grid-template-rows: auto 1fr;
 
     grid-auto-flow: column;
     grid-auto-columns: minmax(0, 1fr);
+  }
+  /* side-by-side when wider than 900px */
+  @media (min-width: 900px) {
+    .compare-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   .toolbar button {

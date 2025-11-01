@@ -30,6 +30,12 @@
     "bonusType": "base-damage"
   },
   {
+    "id": "fierce-berserk-crit",
+    "name": "Fierce Berserk (exori gran) critical hit damage",
+    "scope": "fierce-berserk",
+    "bonusType": "crit-damage"
+  },
+  {
     "id": "ice-magic-level",
     "name": "Ice magic level",
     "scope": "ice",
