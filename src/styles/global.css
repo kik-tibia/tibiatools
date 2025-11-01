@@ -33,14 +33,14 @@ label {
 
 
 
-.compare-grid .panel {
+.main-grid .panel {
     display: contents;
     justify-self: center;
     gap: 0.75rem;
     overflow: hidden;
 }
 
-.compare-grid .stack {
+.main-grid .stack {
     display: grid;
     gap: 0.5rem;
     width: 100%;
@@ -55,9 +55,9 @@ label {
 }
 
 
-/* Mobile: stack rows into cards */
+/* TODO redo all of this after the css rehaul */
 @media (max-width: 700px) {
-    .compare-grid {
+    .main-grid {
         grid-auto-flow: row;
         grid-auto-columns: unset;
         grid-template-rows: unset;

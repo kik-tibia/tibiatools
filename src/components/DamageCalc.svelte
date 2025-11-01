@@ -124,7 +124,7 @@
   </button>
 </section>
 
-<section class="compare-grid">
+<section class="main-grid">
   <div class="panel" style="padding-right: 1rem">
     <BuildPanel title="Build A" bind:build={A} />
     <ResultsTable results={resultsA} isHigher={isAHigher} />
@@ -139,7 +139,7 @@
 </section>
 
 <style>
-  .compare-grid {
+  .main-grid {
     display: grid;
     gap: 1rem;
 
@@ -151,7 +151,7 @@
   }
   /* side-by-side when wider than 900px */
   @media (min-width: 900px) {
-    .compare-grid {
+    .main-grid {
       grid-template-columns: repeat(3, 1fr);
     }
   }
