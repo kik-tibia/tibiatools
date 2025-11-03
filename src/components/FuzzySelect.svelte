@@ -1,32 +1,32 @@
 <script lang="ts">
-  import type { PerkDef } from "@data/perks";
-  import { Fzf, type FzfOptions, type FzfResultItem } from "fzf";
-  export let all: PerkDef[] = [];
+  import { Fzf } from "fzf";
+
+  export let all: any[] = [];
   export let selectedIds: string[] = [];
+  export let getId: (x: any) => string = (x: any) => x?.id;
+  export let getLabel: (x: any) => string = (x: any) => x?.name ?? "";
   export let onAdd: (id: string) => void;
 
   let q = "";
   let open = false;
   let activeIndex = 0;
 
-  $: available = all.filter((p) => !selectedIds.includes(p.id));
-  $: fzfOptions = { selector: (p: PerkDef) => p.name } as FzfOptions<PerkDef>;
-  $: fzf = new Fzf(available, fzfOptions);
+  $: available = all.filter((x) => !selectedIds.includes(getId(x)));
 
-  $: results = q ? fzf.find(q).map((r: FzfResultItem<PerkDef>) => r.item) : available;
+  $: fzf = new Fzf(available as any, { selector: (x: any) => getLabel(x) } as any);
 
-  function select(p: PerkDef) {
-    onAdd(p.id);
-    // reset input for quick subsequent adds
+  let results: any[] = [];
+  $: results = q ? fzf.find(q).map((r: any) => r.item) : available;
+
+  function select(item: any) {
+    onAdd(getId(item));
     q = "";
     open = false;
     activeIndex = 0;
   }
 
   function onKeydown(e: KeyboardEvent) {
-    if (!open && (e.key.length === 1 || e.key === "ArrowDown")) {
-      open = true;
-    }
+    if (!open && (e.key.length === 1 || e.key === "ArrowDown")) open = true;
     if (!open) return;
 
     if (e.key === "ArrowDown") {
@@ -48,7 +48,6 @@
   }
 
   function handleBlur() {
-    // Delay so clicks on options can register before closing
     setTimeout(() => (open = false), 120);
   }
 </script>
@@ -82,7 +81,7 @@
             aria-selected={i === activeIndex}
             class:selected={i === activeIndex}
             on:mousedown|preventDefault={() => select(p)}>
-            {p.name}
+            {getLabel(p)}
           </li>
         {/each}
       {/if}

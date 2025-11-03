@@ -1,6 +1,6 @@
 <script lang="ts">
   import { perks } from "@data/perks";
-  import PerkPicker from "./PerkPicker.svelte";
+  import FuzzySelect from "./FuzzySelect.svelte";
   import PerkEditor from "./PerkEditor.svelte";
   import type { Build, BuildStats } from "@lib/build-state";
 
@@ -106,7 +106,7 @@
   </div>
 
   <div style="margin-top: 0.5rem">
-    <PerkPicker all={perks} selectedIds={build.perks.map((p) => p.id)} onAdd={addPerk} />
+    <FuzzySelect all={perks} selectedIds={build.perks.map((p) => p.id)} onAdd={addPerk} />
     <PerkEditor active={build.perks} onActiveChange={(next) => (build = { ...build, perks: next })} {registry} />
   </div>
 </div>
