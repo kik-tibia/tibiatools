@@ -95,7 +95,7 @@ const assignDefsToPerks = (activePerks: ActivePerk[]) => {
 
 const computeDamageRanges = (spell: Spell, state: SpellState) => {
   if (spell.spellType === "auto") {
-    const attackValueWithoutFlat = Math.floor((Math.floor((6 * state.W) / 5) * (state.S + 4)) / 28);
+    const attackValueWithoutFlat = (Math.floor((6 * state.W) / 5) * (state.S + 4)) / 28;
     const min = Math.floor(state.F + attackValueWithoutFlat / 2);
     const avg = Math.floor(state.F + attackValueWithoutFlat);
     const max = Math.floor(state.F + attackValueWithoutFlat * 2);
@@ -103,7 +103,7 @@ const computeDamageRanges = (spell: Spell, state: SpellState) => {
     // but should it be before, so that crit can have an effect on the bonus?
     const effectiveAvg = (
       (1 - state.critChance / 100) * avg +
-      (state.critChance / 100) * (state.F + attackValueWithoutFlat * 1.85) * (1 + state.critDamage / 100)
+      (state.critChance / 100) * (state.F + attackValueWithoutFlat * 1.83) * (1 + state.critDamage / 100)
     ).toFixed(1);
     return { ...spell, min, avg, max, effectiveAvg };
   } else {
