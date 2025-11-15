@@ -1,3 +1,5 @@
+import spellsRaw from "@data/spells.json";
+
 export type SpellType = "auto" | "spell" | "healing" | "rune";
 export type ScalesWith = "magic" | "melee" | "distance" | "none";
 export type Element = "ice" | "weapon";
@@ -15,3 +17,5 @@ export type Spell = {
   vocations: string[];
   rounding: Rounding;
 };
+
+export const spells: Spell[] = spellsRaw as Spell[];

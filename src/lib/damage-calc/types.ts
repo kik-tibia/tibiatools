@@ -18,3 +18,6 @@ export type SpellState = {
   critChance: number;
   critDamage: number;
 };
+
+// TODO add avg targets
+export type RotationSpell = { id: string; ratio: number };

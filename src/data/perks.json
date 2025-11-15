@@ -36,6 +36,12 @@
     "bonusType": "crit-damage"
   },
   {
+    "id": "groundshaker-base",
+    "name": "Groundshaker (exori mas) base damage",
+    "scope": "groundshaker",
+    "bonusType": "base-damage"
+  },
+  {
     "id": "ice-magic-level",
     "name": "Ice magic level",
     "scope": "ice",

@@ -1,12 +1,13 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import { computeResults } from "@lib/damage-calc";
+  import { computeResults, type RotationSpell } from "@lib/damage-calc";
   import { packState, unpackState } from "@lib/url-pack";
   import type { Build, CalculatorState } from "@lib/build-state";
 
   import BuildPanel from "./BuildPanel.svelte";
   import ResultsTable from "./ResultsTable.svelte";
+  import RotationPanel from "./RotationPanel.svelte";
 
   export let initial: CalculatorState;
 
@@ -15,9 +16,11 @@
 
   let showSecondBuild: boolean = !!initial.showSecondBuild;
 
+  let rotation: RotationSpell[] = initial.rotation;
+
   function currentState(): CalculatorState {
     console.log(A);
-    return { showSecondBuild, A, B };
+    return { A, B, showSecondBuild, rotation };
   }
 
   $: resultsA = computeResults(A.stats, A.perks);
@@ -55,9 +58,10 @@
       const s = new URLSearchParams(window.location.search).get("s");
       const st = unpackState(s);
       if (!st) return;
-      showSecondBuild = !!st.showSecondBuild;
       A = { stats: { ...A.stats, ...st.A.stats }, perks: st.A.perks ?? [] };
       B = { stats: { ...B.stats, ...st.B.stats }, perks: st.B.perks ?? [] };
+      showSecondBuild = !!st.showSecondBuild;
+      rotation = st.rotation ?? [];
     };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
@@ -67,6 +71,7 @@
     A;
     B;
     showSecondBuild;
+    rotation;
     scheduleWrite();
   }
 
@@ -111,6 +116,7 @@
         },
         perks: [],
       };
+      rotation = [];
     }}>
     Reset
   </button>
@@ -125,7 +131,10 @@
 </section>
 
 <section class="main-grid">
-  <div class="panel" style="padding-right: 1rem">
+  <div class="panel">
+    <RotationPanel bind:rotation />
+  </div>
+  <div class="panel">
     <BuildPanel title="Build A" bind:build={A} />
     <ResultsTable results={resultsA} isHigher={isAHigher} />
   </div>
@@ -143,12 +152,19 @@
     display: grid;
     gap: 1rem;
 
-    justify-content: center;
-    grid-template-rows: auto 1fr;
-
     grid-auto-flow: column;
-    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-columns: 1fr;
+
+    align-items: start;
   }
+
+  .panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 0;
+  }
+
   /* side-by-side when wider than 900px */
   @media (min-width: 900px) {
     .main-grid {

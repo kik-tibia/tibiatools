@@ -1,4 +1,4 @@
-import type { ActivePerk } from "./damage-calc";
+import type { ActivePerk, Rotation } from "./damage-calc";
 
 export type BuildStats = {
   level: string | number | null;
@@ -15,13 +15,13 @@ export type BuildStats = {
 export type Build = { stats: BuildStats; perks: ActivePerk[] };
 
 export type CalculatorState = {
-  showSecondBuild: boolean;
   A: Build;
   B: Build;
+  showSecondBuild: boolean;
+  rotation: Rotation;
 };
 
 export const defaultState = (): CalculatorState => ({
-  showSecondBuild: false,
   A: {
     stats: {
       level: "",
@@ -50,4 +50,6 @@ export const defaultState = (): CalculatorState => ({
     },
     perks: [],
   },
+  showSecondBuild: false,
+  rotation: [],
 });

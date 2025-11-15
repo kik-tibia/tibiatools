@@ -1,6 +1,8 @@
 <script lang="ts">
   import { Fzf } from "fzf";
 
+  export let selectType: String;
+
   export let all: any[] = [];
   export let selectedIds: string[] = [];
   export let getId: (x: any) => string = (x: any) => x?.id;
@@ -52,17 +54,17 @@
   }
 </script>
 
-<div class="perk-picker">
+<div class="fuzzy-select">
   <div class="combo">
     <input
-      class="perk-search"
-      placeholder="Search perks…"
+      class="fuzzy-search"
+      placeholder="Search {selectType}…"
       bind:value={q}
       on:focus={handleFocus}
       on:blur={handleBlur}
       on:keydown={onKeydown}
       role="combobox"
-      aria-controls="perk-listbox"
+      aria-controls="{selectType}-listbox"
       aria-expanded={open}
       aria-autocomplete="list"
       aria-haspopup="listbox" />
@@ -71,7 +73,7 @@
     </svg>
   </div>
   {#if open}
-    <ul id="perk-listbox" class="dropdown" role="listbox">
+    <ul id="{selectType}-listbox" class="dropdown" role="listbox">
       {#if results.length === 0}
         <li class="empty">No matches</li>
       {:else}
@@ -92,7 +94,7 @@
 </div>
 
 <style>
-  .perk-picker {
+  .fuzzy-select {
     position: relative;
     max-width: 30rem;
   }
@@ -101,7 +103,7 @@
     position: relative;
   }
 
-  .perk-search {
+  .fuzzy-search {
     width: 100%;
     box-sizing: border-box;
     padding: 0.5rem 0rem 0.5rem 0.625rem;
@@ -111,7 +113,7 @@
     background: hsl(220 10% 15%); /* dark input background */
     color: hsl(0 0% 95%); /* light text */
   }
-  .perk-search:focus {
+  .fuzzy-search:focus {
     border-color: hsl(220 90% 65%);
     box-shadow: 0 0 0 3px hsl(220 90% 65% / 0.3);
   }
