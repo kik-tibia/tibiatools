@@ -95,8 +95,8 @@
 
 <style>
   .fuzzy-select {
+    width: 24rem;
     position: relative;
-    max-width: 30rem;
   }
 
   .combo {

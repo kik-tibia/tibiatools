@@ -10,23 +10,18 @@
 
   function addSpell(id: string) {
     if (rotation.some((r) => r.id === id)) return;
-    rotation = [...rotation, { id, ratio: 1 }];
+    rotation = [...rotation, { id, targets: 1, ratio: 1 }];
   }
 </script>
 
 <div style="padding-right: 1rem">
   <h3>Rotation</h3>
 
-  <div style="margin-top: 0.5rem">
+  <div class="rotation-panel">
     <FuzzySelect selectType="spells" all={spells} selectedIds={rotation.map((rs) => rs.id)} onAdd={addSpell} />
     <RotationEditor active={rotation} onActiveChange={(next) => (rotation = next)} {registry} />
   </div>
 </div>
 
 <style>
-  input {
-    width: 6rem;
-    padding: 0.1rem;
-    font: inherit;
-  }
 </style>
