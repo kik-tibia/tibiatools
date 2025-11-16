@@ -18,7 +18,11 @@
   <h3>Rotation</h3>
 
   <div class="rotation-panel">
-    <FuzzySelect selectType="spells" all={spells} selectedIds={rotation.map((rs) => rs.id)} onAdd={addSpell} />
+    <FuzzySelect
+      selectType="spells"
+      all={spells.filter((s) => s.id !== "auto-attack")}
+      selectedIds={rotation.map((rs) => rs.id)}
+      onAdd={addSpell} />
     <RotationEditor active={rotation} onActiveChange={(next) => (rotation = next)} {registry} />
   </div>
 </div>

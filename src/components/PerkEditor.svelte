@@ -24,28 +24,34 @@
 </script>
 
 <div class="perk-editor">
-  <form class="stack">
-    {#each active as ap (ap.id)}
-      {@const def = registry.get(ap.id)}
+  <form class="perk-grid">
+    {#each active as a (a.id)}
+      {@const def = registry.get(a.id)}
       {#if def}
-        <div class="perk-chip">
-          <label>
-            <span>{def.name}</span>
-            <div>
-              <button type="button" aria-label="Remove" on:click={() => remove(ap.id)}>×</button>
-              <input type="number" value={ap.value} on:input={(e) => onInput(ap.id, e)} />
-            </div>
-          </label>
-        </div>
+        <div>{def.name}</div>
+        <input type="number" value={a.value} on:input={(e) => onInput(a.id, e)} />
+        <button type="button" aria-label="Remove" on:click={() => remove(a.id)}>×</button>
       {/if}
     {/each}
   </form>
 </div>
 
 <style>
-  input {
+  .perk-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 6rem auto;
+    column-gap: 1rem;
+    row-gap: 0.25rem;
+    align-items: center;
+  }
+
+  .perk-grid input {
     width: 6rem;
     padding: 0.1rem;
     font: inherit;
+  }
+
+  .perk-grid button {
+    justify-self: end;
   }
 </style>

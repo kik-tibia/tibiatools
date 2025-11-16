@@ -7,13 +7,13 @@
   },
   {
     "id": "auto-crit-chance",
-    "name": "Critical hit chance for auto-attacks",
+    "name": "Critical hit chance for auto‑attacks",
     "scope": "auto-attack",
     "bonusType": "crit-chance"
   },
   {
     "id": "auto-crit-damage",
-    "name": "Critical % extra damage for auto-attacks",
+    "name": "Critical % extra damage for auto‑attacks",
     "scope": "auto-attack",
     "bonusType": "crit-damage"
   },
@@ -61,13 +61,13 @@
   },
   {
     "id": "axe-percent-aa-damage",
-    "name": "% axe fighting as extra damage for auto-attacks",
+    "name": "% axe fighting as extra damage for auto‑attacks",
     "scope": "auto-attack",
     "bonusType": "axe-percent-extra"
   },
   {
     "id": "fishing-percent-aa-damage",
-    "name": "% fishing as extra damage for auto-attacks",
+    "name": "% fishing as extra damage for auto‑attacks",
     "scope": "auto-attack",
     "bonusType": "fishing-percent-extra"
   }
