@@ -40,7 +40,7 @@
             <td class="spell">
               <div class="spell-name">{r.name}</div>
             </td>
-            <td class="num" data-label="Effective Avg">{r.effectiveAvg}</td>
+            <td class="num" data-label="Effective Avg">{r.effectiveAvg.toFixed(1)}</td>
             <td class="num range" data-label="Min">{r.min}</td>
             <td class="num" data-label="Avg">{r.avg}</td>
             <td class="num range" data-label="Max">{r.max}</td>

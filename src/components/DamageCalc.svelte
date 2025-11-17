@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import { computeResults, type RotationSpell } from "@lib/damage-calc";
+  import { computeDpt, computeResults, type RotationSpell } from "@lib/damage-calc";
   import { packState, unpackState } from "@lib/url-pack";
   import type { Build, CalculatorState } from "@lib/build-state";
 
@@ -25,6 +25,8 @@
 
   $: resultsA = computeResults(A.stats, A.perks);
   $: resultsB = computeResults(B.stats, B.perks);
+  $: effectiveDptA = computeDpt(resultsA, rotation);
+  $: effectiveDptB = computeDpt(resultsB, rotation);
 
   const toMap = (arr: any[]) => new Map(arr.map((x) => [x.id, x]));
   $: mapA = toMap(resultsA);
@@ -136,12 +138,20 @@
   </div>
   <div class="panel">
     <BuildPanel title="Build A" bind:build={A} />
+    <div>
+      <span class="dpt-desc">Average effective damage per turn</span>
+      <span class="dpt-value">{effectiveDptA.toFixed(1)}</span>
+    </div>
     <ResultsTable results={resultsA} isHigher={isAHigher} />
   </div>
 
   {#if showSecondBuild}
     <div class="panel">
       <BuildPanel title="Build B" bind:build={B} />
+      <div>
+        <span class="dpt-desc">Average effective damage per turn</span>
+        <span class="dpt-value">{effectiveDptB.toFixed(1)}</span>
+      </div>
       <ResultsTable results={resultsB} isHigher={isBHigher} />
     </div>
   {/if}
@@ -178,5 +188,13 @@
     border-radius: 0.5rem;
     background: transparent;
     cursor: pointer;
+  }
+
+  .dpt-desc {
+    float: left;
+  }
+  .dpt-value {
+    float: right;
+    font-variant-numeric: tabular-nums;
   }
 </style>

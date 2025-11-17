@@ -3,8 +3,8 @@ import spellsRaw from "@data/spells.json";
 
 import type { BuildStats } from "@lib/build-state";
 import type { PerkDef } from "@data/perks";
-import type { Spell } from "src/data/spells";
-import type { ActivePerk, ActivePerkWithDef, SpellState } from "@lib/damage-calc";
+import type { Spell, SpellDamage } from "src/data/spells";
+import type { ActivePerk, ActivePerkWithDef, RotationSpell, SpellState } from "@lib/damage-calc";
 
 /* calculate power via base power and any perks
  * use the updated power and your skills to calculate base damage
@@ -93,7 +93,7 @@ const assignDefsToPerks = (activePerks: ActivePerk[]) => {
     .filter((x): x is ActivePerkWithDef => x !== null);
 };
 
-const computeDamageRanges = (spell: Spell, state: SpellState) => {
+const computeDamageRanges = (spell: Spell, state: SpellState): SpellDamage => {
   if (spell.spellType === "auto") {
     const attackValueWithoutFlat = (Math.floor((6 * state.W) / 5) * (state.S + 4)) / 28;
     const min = Math.floor(state.F + attackValueWithoutFlat / 2);
@@ -101,16 +101,15 @@ const computeDamageRanges = (spell: Spell, state: SpellState) => {
     const max = Math.floor(state.F + attackValueWithoutFlat * 2);
     // TODO here we are assuming that perks such as "extra damage for auto attacks" get their bonus added after crit,
     // but should it be before, so that crit can have an effect on the bonus?
-    const effectiveAvg = (
+    const effectiveAvg =
       (1 - state.critChance / 100) * avg +
-      (state.critChance / 100) * (state.F + attackValueWithoutFlat * 1.83) * (1 + state.critDamage / 100)
-    ).toFixed(1);
+      (state.critChance / 100) * (state.F + attackValueWithoutFlat * 1.83) * (1 + state.critDamage / 100);
     return { ...spell, min, avg, max, effectiveAvg };
   } else {
     const avg = computeAvg(spell, state.P, state.F, state.ML, state.S, state.W);
     const min = computeMinMax(spell, -1, state.P, state.F, state.ML, state.S, state.W);
     const max = computeMinMax(spell, 1, state.P, state.F, state.ML, state.S, state.W);
-    const effectiveAvg = (avg * ((state.critChance * state.critDamage) / 10000 + 1)).toFixed(1);
+    const effectiveAvg = avg * ((state.critChance * state.critDamage) / 10000 + 1);
     return { ...spell, min, avg, max, effectiveAvg };
   }
 };
@@ -126,4 +125,13 @@ export const computeResults = (inp: BuildStats, activePerks: ActivePerk[]) => {
       return computeDamageRanges(spell, final);
     });
   return spellResults;
+};
+
+export const computeDpt = (spellDamages: SpellDamage[], rotation: RotationSpell[]) => {
+  const ratioSum = rotation.reduce((sum, r) => sum + r.ratio, 0);
+  return rotation.reduce((damage, r) => {
+    const spellDamage = spellDamages.find((s) => s.id == r.id)?.effectiveAvg ?? 0;
+    const weightedDamage = (spellDamage * r.targets * r.ratio) / ratioSum;
+    return damage + weightedDamage;
+  }, 0);
 };

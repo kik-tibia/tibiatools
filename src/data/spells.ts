@@ -19,3 +19,10 @@ export type Spell = {
 };
 
 export const spells: Spell[] = spellsRaw as Spell[];
+
+export interface SpellDamage extends Spell {
+  min: number;
+  avg: number;
+  max: number;
+  effectiveAvg: number;
+}
