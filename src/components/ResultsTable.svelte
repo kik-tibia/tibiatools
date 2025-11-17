@@ -1,63 +1,88 @@
 <script lang="ts">
   export let results: any[] = [];
+  export let effectiveDpt: number;
 
   export let isHigher: (id: string) => boolean = () => false;
+  export let isDptHigher: boolean;
 </script>
 
+<div class="dpt" class:highlight={isDptHigher}>
+  <span class="dpt-desc field-tip">
+    <button type="button" class="tip-trigger" aria-describedby="tip-effective">
+      Average effective damage per turn
+    </button>
+    <span id="tip-effective" role="tooltip" class="tip-content">
+      The average damage you would deal, using the defined rotation, taking into account resistances, armor, mitigation,
+      crits and fatals.
+    </span>
+  </span>
+  <span class="dpt-value">{effectiveDpt.toFixed(1)}</span>
+</div>
 <div>
-  <div class="panel">
-    <table class="results">
-      <thead>
-        <tr>
-          <th class="desc" rowspan="2">Spell</th>
-          <th class="desc">
-            <span class="field-tip">
-              <button type="button" class="tip-trigger" aria-describedby="tip-effective">Effective</button>
-              <span id="tip-effective" role="tooltip" class="tip-content">
-                The average damage you would deal, taking into account resistances, armor, mitigation, crits and fatals.
-              </span>
+  <table class="results">
+    <thead>
+      <tr>
+        <th class="desc" rowspan="2">Spell</th>
+        <th class="desc">
+          <span class="field-tip">
+            <button type="button" class="tip-trigger" aria-describedby="tip-effective">Effective</button>
+            <span id="tip-effective" role="tooltip" class="tip-content">
+              The average damage you would deal, taking into account resistances, armor, mitigation, crits and fatals.
             </span>
-          </th>
-          <th class="desc" colspan="3">
-            <span class="field-tip">
-              <button type="button" class="tip-trigger" aria-describedby="tip-raw">Raw</button>
-              <span id="tip-raw" role="tooltip" class="tip-content">
-                The damage you would deal to a completely defenseless target, ignoring resistances, crits, etc.
-              </span>
+          </span>
+        </th>
+        <th class="desc" colspan="3">
+          <span class="field-tip">
+            <button type="button" class="tip-trigger" aria-describedby="tip-raw">Raw</button>
+            <span id="tip-raw" role="tooltip" class="tip-content">
+              The damage you would deal to a completely defenseless target, ignoring resistances, crits, etc.
             </span>
-          </th>
+          </span>
+        </th>
+      </tr>
+      <tr>
+        <th class="num">Avg</th>
+        <th class="num">Min</th>
+        <th class="num">Avg</th>
+        <th class="num">Max</th>
+      </tr>
+    </thead>
+    <tbody>
+      {#each results as r}
+        <tr class:highlight={isHigher(r.id)}>
+          <td class="spell">
+            <div class="spell-name">{r.name}</div>
+          </td>
+          <td class="num" data-label="Effective Avg">{r.effectiveAvg.toFixed(1)}</td>
+          <td class="num range" data-label="Min">{r.min}</td>
+          <td class="num" data-label="Avg">{r.avg}</td>
+          <td class="num range" data-label="Max">{r.max}</td>
         </tr>
-        <tr>
-          <th class="num">Avg</th>
-          <th class="num">Min</th>
-          <th class="num">Avg</th>
-          <th class="num">Max</th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each results as r}
-          <tr class:highlight={isHigher(r.id)}>
-            <td class="spell">
-              <div class="spell-name">{r.name}</div>
-            </td>
-            <td class="num" data-label="Effective Avg">{r.effectiveAvg.toFixed(1)}</td>
-            <td class="num range" data-label="Min">{r.min}</td>
-            <td class="num" data-label="Avg">{r.avg}</td>
-            <td class="num range" data-label="Max">{r.max}</td>
-          </tr>
-        {/each}
-      </tbody>
-    </table>
-  </div>
+      {/each}
+    </tbody>
+  </table>
 </div>
 
 <style>
+  .dpt {
+    padding: 0.4rem 0.4rem;
+    border: 1px solid #555555;
+    margin-bottom: 1rem;
+  }
+  .dpt-desc {
+    float: left;
+  }
+  .dpt-value {
+    float: right;
+    font-variant-numeric: tabular-nums;
+  }
   table {
     max-width: 600px;
     border-collapse: collapse;
     overflow: visible;
     border: 1px solid #555555;
     font-variant-numeric: tabular-nums;
+    font-size: 0.9rem;
   }
 
   thead th {
@@ -77,13 +102,8 @@
     border-left: none;
   }
 
-  th,
   td {
-    white-space: nowrap;
-  }
-
-  td {
-    padding: 0.55rem 0.75rem;
+    padding: 0.4rem 0.4rem;
     border-bottom: 1px solid #555555;
   }
 
@@ -96,7 +116,7 @@
   }
 
   .range {
-    font-size: 1rem;
+    font-size: 0.85rem;
     color: #777777;
   }
 

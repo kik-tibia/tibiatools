@@ -33,6 +33,8 @@
   $: mapB = toMap(resultsB);
   const isAHigher = (id: string) => Number(mapA.get(id)?.effectiveAvg) >= Number(mapB.get(id)?.effectiveAvg);
   const isBHigher = (id: string) => Number(mapB.get(id)?.effectiveAvg) >= Number(mapA.get(id)?.effectiveAvg);
+  $: isDptAHigher = effectiveDptA >= effectiveDptB;
+  $: isDptBHigher = effectiveDptB >= effectiveDptA;
 
   function writePackedToUrl() {
     const q = new URLSearchParams(window.location.search);
@@ -140,24 +142,16 @@
   <div class="panel build-panel-a">
     <BuildPanel title="Build A" bind:build={A} />
   </div>
-  <div class="results-panel-a">
-    <div>
-      <span class="dpt-desc">Average effective damage per turn</span>
-      <span class="dpt-value">{effectiveDptA.toFixed(1)}</span>
-    </div>
-    <ResultsTable results={resultsA} isHigher={isAHigher} />
+  <div class="panel results-panel-a">
+    <ResultsTable results={resultsA} effectiveDpt={effectiveDptA} isDptHigher={isDptAHigher} isHigher={isAHigher} />
   </div>
 
   {#if showSecondBuild}
-    <div class="build-panel-b">
+    <div class="panel build-panel-b">
       <BuildPanel title="Build B" bind:build={B} />
     </div>
-    <div class="results-panel-b">
-      <div>
-        <span class="dpt-desc">Average effective damage per turn</span>
-        <span class="dpt-value">{effectiveDptB.toFixed(1)}</span>
-      </div>
-      <ResultsTable results={resultsB} isHigher={isBHigher} />
+    <div class="panel results-panel-b">
+      <ResultsTable results={resultsB} effectiveDpt={effectiveDptB} isDptHigher={isDptBHigher} isHigher={isBHigher} />
     </div>
   {/if}
 </section>
@@ -166,7 +160,6 @@
   .panel {
     display: grid;
     grid-template-rows: auto 1fr;
-    gap: 1rem;
     min-width: 0;
   }
 
@@ -212,13 +205,5 @@
     border-radius: 0.5rem;
     background: transparent;
     cursor: pointer;
-  }
-
-  .dpt-desc {
-    float: left;
-  }
-  .dpt-value {
-    float: right;
-    font-variant-numeric: tabular-nums;
   }
 </style>

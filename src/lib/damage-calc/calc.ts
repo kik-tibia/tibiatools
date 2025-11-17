@@ -129,9 +129,13 @@ export const computeResults = (inp: BuildStats, activePerks: ActivePerk[]) => {
 
 export const computeDpt = (spellDamages: SpellDamage[], rotation: RotationSpell[]) => {
   const ratioSum = rotation.reduce((sum, r) => sum + r.ratio, 0);
-  return rotation.reduce((damage, r) => {
-    const spellDamage = spellDamages.find((s) => s.id == r.id)?.effectiveAvg ?? 0;
-    const weightedDamage = (spellDamage * r.targets * r.ratio) / ratioSum;
-    return damage + weightedDamage;
-  }, 0);
+  const autoAttackDamage = spellDamages.find((s) => s.id == "auto-attack")?.effectiveAvg ?? 0;
+  return (
+    autoAttackDamage +
+    rotation.reduce((damage, r) => {
+      const spellDamage = spellDamages.find((s) => s.id == r.id)?.effectiveAvg ?? 0;
+      const weightedDamage = (spellDamage * r.targets * r.ratio) / ratioSum;
+      return damage + weightedDamage;
+    }, 0)
+  );
 };
