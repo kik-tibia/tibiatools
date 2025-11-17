@@ -31,15 +31,6 @@ label {
     gap: .5rem;
 }
 
-
-
-.main-grid .panel {
-    display: contents;
-    justify-self: center;
-    gap: 0.75rem;
-    overflow: hidden;
-}
-
 .main-grid .stack {
     display: grid;
     gap: 0.5rem;
@@ -47,13 +38,11 @@ label {
     padding-bottom: 0.5rem;
 }
 
-
 .meta {
     display: inline-flex;
     gap: .35rem;
     margin-left: .4rem;
 }
-
 
 /* TODO redo all of this after the css rehaul */
 @media (max-width: 700px) {

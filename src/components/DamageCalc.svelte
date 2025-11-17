@@ -132,12 +132,15 @@
   </button>
 </section>
 
-<section class="main-grid">
-  <div class="panel">
+<section class="main-grid" class:has-second-build={showSecondBuild}>
+  <div class="panel rotation-panel">
     <RotationPanel bind:rotation />
   </div>
-  <div class="panel">
+
+  <div class="panel build-panel-a">
     <BuildPanel title="Build A" bind:build={A} />
+  </div>
+  <div class="results-panel-a">
     <div>
       <span class="dpt-desc">Average effective damage per turn</span>
       <span class="dpt-value">{effectiveDptA.toFixed(1)}</span>
@@ -146,8 +149,10 @@
   </div>
 
   {#if showSecondBuild}
-    <div class="panel">
+    <div class="build-panel-b">
       <BuildPanel title="Build B" bind:build={B} />
+    </div>
+    <div class="results-panel-b">
       <div>
         <span class="dpt-desc">Average effective damage per turn</span>
         <span class="dpt-value">{effectiveDptB.toFixed(1)}</span>
@@ -158,27 +163,46 @@
 </section>
 
 <style>
-  .main-grid {
-    display: grid;
-    gap: 1rem;
-
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
-
-    align-items: start;
-  }
-
   .panel {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto 1fr;
     gap: 1rem;
     min-width: 0;
   }
 
-  /* side-by-side when wider than 900px */
   @media (min-width: 900px) {
     .main-grid {
-      grid-template-columns: repeat(3, 1fr);
+      display: grid;
+      gap: 1rem;
+
+      /* Default: only one build */
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "rotation buildA"
+        "rotation resultsA";
+    }
+
+    .main-grid.has-second-build {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas:
+        "rotation buildA  buildB"
+        "rotation resultsA resultsB";
+    }
+
+    .rotation-panel {
+      grid-area: rotation;
+    }
+    .build-panel-a {
+      grid-area: buildA;
+    }
+    .results-panel-a {
+      grid-area: resultsA;
+    }
+    .build-panel-b {
+      grid-area: buildB;
+    }
+    .results-panel-b {
+      grid-area: resultsB;
     }
   }
 
