@@ -103,7 +103,7 @@ const computeDamageRanges = (spell: Spell, state: SpellState): SpellDamage => {
     // but should it be before, so that crit can have an effect on the bonus?
     const effectiveAvg =
       (1 - state.critChance / 100) * avg +
-      (state.critChance / 100) * (state.F + attackValueWithoutFlat * 1.83) * (1 + state.critDamage / 100);
+      (state.critChance / 100) * (state.F + attackValueWithoutFlat * 1.75) * (1 + state.critDamage / 100);
     return { ...spell, min, avg, max, effectiveAvg };
   } else {
     const avg = computeAvg(spell, state.P, state.F, state.ML, state.S, state.W);
