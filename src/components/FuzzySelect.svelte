@@ -119,9 +119,23 @@
   }
 
   .dropdown {
-    background: hsl(220 10% 10%); /* dark dropdown */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    margin-top: 0.25rem;
+    padding: 0;
+    list-style: none;
+
+    background: hsl(220 10% 10%);
     border: 1px solid hsl(0 0% 30%);
-    color: hsl(0 0% 95%); /* light text */
+    color: hsl(0 0% 95%);
+    border-radius: 0.5rem;
+
+    max-height: 6rem;
+    overflow-y: auto;
+    z-index: 10;
   }
   .dropdown li:hover,
   .dropdown li.selected {
