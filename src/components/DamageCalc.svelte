@@ -35,6 +35,8 @@
   const isBHigher = (id: string) => Number(mapB.get(id)?.effectiveAvg) >= Number(mapA.get(id)?.effectiveAvg);
   $: isDptAHigher = effectiveDptA >= effectiveDptB;
   $: isDptBHigher = effectiveDptB >= effectiveDptA;
+  $: pctIncreaseA = (effectiveDptA / effectiveDptB - 1) * 100;
+  $: pctIncreaseB = (effectiveDptB / effectiveDptA - 1) * 100;
 
   function writePackedToUrl() {
     const q = new URLSearchParams(window.location.search);
@@ -132,6 +134,7 @@
     }}>
     {showSecondBuild ? "Hide second build" : "Compare a second build"}
   </button>
+  <span>{pctIncreaseA.toFixed(2)}% / {pctIncreaseB.toFixed(2)}%</span>
 </section>
 
 <section class="main-grid" class:has-second-build={showSecondBuild}>

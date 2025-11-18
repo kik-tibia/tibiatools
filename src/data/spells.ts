@@ -7,6 +7,7 @@ export type Rounding = "floor" | "round" | "ceil";
 
 export type Spell = {
   id: string;
+  scope: string;
   name: string;
   spellType: SpellType;
   scalesWith: ScalesWith;
@@ -14,11 +15,16 @@ export type Spell = {
   power: number;
   skillFactor: number;
   buckets: number;
+  additionalDamageMultiplier: number;
   vocations: string[];
   rounding: Rounding;
 };
 
-export const spells: Spell[] = spellsRaw as Spell[];
+export const spells: Spell[] = (spellsRaw as Spell[]).map((s) => ({
+  ...s,
+  scope: s.scope ?? s.id,
+  additionalDamageMultiplier: s.additionalDamageMultiplier ?? 1,
+}));
 
 export interface SpellDamage extends Spell {
   min: number;

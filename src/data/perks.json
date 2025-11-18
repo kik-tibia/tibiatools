@@ -36,10 +36,34 @@
     "bonusType": "crit-damage"
   },
   {
+    "id": "fierce-berserk-crit-chance",
+    "name": "Fierce Berserk (exori gran) critical hit chance",
+    "scope": "fierce-berserk",
+    "bonusType": "crit-chance"
+  },
+  {
     "id": "groundshaker-base",
     "name": "Groundshaker (exori mas) base damage",
     "scope": "groundshaker",
     "bonusType": "base-damage"
+  },
+  {
+    "id": "exec-throw-base",
+    "name": "Executioner's Throw (exori amp kor) base damage",
+    "scope": "exec-throw",
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "exec-throw-crit",
+    "name": "Executioner's Throw (exori amp kor) critical hit damage",
+    "scope": "exec-throw",
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "exec-throw-crit-chance",
+    "name": "Executioner's Throw (exori amp kor) critical hit chance",
+    "scope": "exec-throw",
+    "bonusType": "crit-chance"
   },
   {
     "id": "ice-magic-level",

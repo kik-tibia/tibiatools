@@ -1,9 +1,8 @@
 import { perks } from "@data/perks";
-import spellsRaw from "@data/spells.json";
 
 import type { BuildStats } from "@lib/build-state";
 import type { PerkDef } from "@data/perks";
-import type { Spell, SpellDamage } from "src/data/spells";
+import { spells, type Spell, type SpellDamage } from "src/data/spells";
 import type { ActivePerk, ActivePerkWithDef, RotationSpell, SpellState } from "@lib/damage-calc";
 
 /* calculate power via base power and any perks
@@ -15,21 +14,25 @@ import type { ActivePerk, ActivePerkWithDef, RotationSpell, SpellState } from "@
  * roll for crit and fatal, if successful, multiply by the extra damage bonus including any crit damage perks
  */
 
-const spells = spellsRaw as unknown as Spell[];
-
-const computeAvg = (spell: Spell, P: number, F: number, ML: number, S: number, W: number) => {
+const computeAvg = (spell: Spell, state: SpellState) => {
+  const { P, F, ML, S, W } = state;
   const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
-  return spell.scalesWith === "magic"
-    ? F + round((P / spell.skillFactor) * ML + P / 4)
-    : F + round((P / spell.skillFactor) * S * W + P / 4);
+  const damage =
+    spell.scalesWith === "magic"
+      ? F + round((P / spell.skillFactor) * ML + P / 4)
+      : F + round((P / spell.skillFactor) * S * W + P / 4);
+  return Math.ceil(damage * spell.additionalDamageMultiplier);
 };
 
-const computeMinMax = (spell: Spell, minMax: number, P: number, F: number, ML: number, S: number, W: number) => {
+const computeMinMax = (spell: Spell, minMax: number, state: SpellState) => {
+  const { P, F, ML, S, W } = state;
   const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
   const variation = spell.buckets / P / 2;
-  return spell.scalesWith === "magic"
-    ? F + round((1 + minMax * variation) * ((P / spell.skillFactor) * ML + P / 4))
-    : F + round((1 + minMax * variation) * ((P / spell.skillFactor) * S * W + P / 4));
+  const damage =
+    spell.scalesWith === "magic"
+      ? F + round((1 + minMax * variation) * ((P / spell.skillFactor) * ML + P / 4))
+      : F + round((1 + minMax * variation) * ((P / spell.skillFactor) * S * W + P / 4));
+  return Math.ceil(damage * spell.additionalDamageMultiplier);
 };
 
 const perkDefsById: Record<string, PerkDef> = Object.fromEntries(perks.map((p) => [p.id, p]));
@@ -39,7 +42,7 @@ const applyPerkToSpell = (spell: Spell, perk: ActivePerkWithDef, state: SpellSta
 
   if (
     perk.def.scope === "all" ||
-    perk.def.scope === spell.id ||
+    perk.def.scope === spell.scope ||
     perk.def.scope === spell.spellType ||
     perk.def.scope === spell.element
   ) {
@@ -99,16 +102,14 @@ const computeDamageRanges = (spell: Spell, state: SpellState): SpellDamage => {
     const min = Math.floor(state.F + attackValueWithoutFlat / 2);
     const avg = Math.floor(state.F + attackValueWithoutFlat);
     const max = Math.floor(state.F + attackValueWithoutFlat * 2);
-    // TODO here we are assuming that perks such as "extra damage for auto attacks" get their bonus added after crit,
-    // but should it be before, so that crit can have an effect on the bonus?
     const effectiveAvg =
       (1 - state.critChance / 100) * avg +
       (state.critChance / 100) * (state.F + attackValueWithoutFlat * 1.75) * (1 + state.critDamage / 100);
     return { ...spell, min, avg, max, effectiveAvg };
   } else {
-    const avg = computeAvg(spell, state.P, state.F, state.ML, state.S, state.W);
-    const min = computeMinMax(spell, -1, state.P, state.F, state.ML, state.S, state.W);
-    const max = computeMinMax(spell, 1, state.P, state.F, state.ML, state.S, state.W);
+    const avg = computeAvg(spell, state);
+    const min = computeMinMax(spell, -1, state);
+    const max = computeMinMax(spell, 1, state);
     const effectiveAvg = avg * ((state.critChance * state.critDamage) / 10000 + 1);
     return { ...spell, min, avg, max, effectiveAvg };
   }
