@@ -48,6 +48,18 @@
     "bonusType": "base-damage"
   },
   {
+    "id": "groundshaker-crit",
+    "name": "Groundshaker (exori mas) critical hit damage",
+    "scope": "groundshaker",
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "groundshaker-crit-chance",
+    "name": "Groundshaker (exori mas) critical hit chance",
+    "scope": "groundshaker",
+    "bonusType": "crit-chance"
+  },
+  {
     "id": "exec-throw-base",
     "name": "Executioner's Throw (exori amp kor) base damage",
     "scope": "exec-throw",
@@ -84,6 +96,12 @@
     "bonusType": "shield-percent-extra"
   },
   {
+    "id": "ml-percent-spell-damage",
+    "name": "% magic level as extra damage for spells",
+    "scope": "spell",
+    "bonusType": "magic-level-percent-extra"
+  },
+  {
     "id": "axe-percent-aa-damage",
     "name": "% axe fighting as extra damage for auto‑attacks",
     "scope": "auto-attack",
@@ -94,5 +112,11 @@
     "name": "% fishing as extra damage for auto‑attacks",
     "scope": "auto-attack",
     "bonusType": "fishing-percent-extra"
+  },
+  {
+    "id": "ml-percent-aa-damage",
+    "name": "% magic level as extra damage for auto‑attacks",
+    "scope": "auto-attack",
+    "bonusType": "magic-level-percent-extra"
   }
 ]

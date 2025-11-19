@@ -10,6 +10,7 @@ export type PerkBonusType =
   | "axe-percent-extra"
   | "shield-percent-extra"
   | "fishing-percent-extra"
+  | "magic-level-percent-extra"
   | "all";
 
 export type PerkDef = {

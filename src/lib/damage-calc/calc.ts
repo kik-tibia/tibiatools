@@ -38,7 +38,7 @@ const computeMinMax = (spell: Spell, minMax: number, state: SpellState) => {
 const perkDefsById: Record<string, PerkDef> = Object.fromEntries(perks.map((p) => [p.id, p]));
 
 const applyPerkToSpell = (spell: Spell, perk: ActivePerkWithDef, state: SpellState): SpellState => {
-  const { P, F, ML, S, W, shielding, critChance, critDamage } = state;
+  const { P, F, ML, S, W, shielding, fishing, critChance, critDamage } = state;
 
   if (
     perk.def.scope === "all" ||
@@ -60,7 +60,9 @@ const applyPerkToSpell = (spell: Spell, perk: ActivePerkWithDef, state: SpellSta
       case "shield-percent-extra":
         return { ...state, F: F + Math.floor((shielding * perk.value) / 100) };
       case "fishing-percent-extra":
-        return { ...state, F: F + Math.floor((S * perk.value) / 100) };
+        return { ...state, F: F + Math.floor((fishing * perk.value) / 100) };
+      case "magic-level-percent-extra":
+        return { ...state, F: F + Math.floor((ML * perk.value) / 100) };
     }
   }
 

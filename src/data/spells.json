@@ -96,9 +96,38 @@
         "rounding": "round"
     },
     {
+        "id": "front-sweep",
+        "name": "Front Sweep",
+        "spellType": "spell",
+        "scalesWith": "melee",
+        "element": "weapon",
+        "power": 72,
+        "skillFactor": 1000,
+        "buckets": 40,
+        "vocations": [
+            "knight"
+        ],
+        "rounding": "round"
+    },
+    {
+        "id": "exec-throw-0",
+        "scope": "exec-throw",
+        "name": "Executioner's Throw (No Bonus)",
+        "spellType": "spell",
+        "scalesWith": "melee",
+        "element": "weapon",
+        "power": 60,
+        "skillFactor": 1000,
+        "buckets": 10,
+        "vocations": [
+            "knight"
+        ],
+        "rounding": "round"
+    },
+    {
         "id": "exec-throw-1",
         "scope": "exec-throw",
-        "name": "Executioner's Throw 1",
+        "name": "Executioner's Throw (Stage 1)",
         "spellType": "spell",
         "scalesWith": "melee",
         "element": "weapon",
@@ -114,7 +143,7 @@
     {
         "id": "exec-throw-2",
         "scope": "exec-throw",
-        "name": "Executioner's Throw 2",
+        "name": "Executioner's Throw (Stage 2)",
         "spellType": "spell",
         "scalesWith": "melee",
         "element": "weapon",
@@ -122,6 +151,36 @@
         "skillFactor": 1000,
         "buckets": 10,
         "additionalDamageMultiplier": 2.25,
+        "vocations": [
+            "knight"
+        ],
+        "rounding": "round"
+    },
+    {
+        "id": "exec-throw-3",
+        "scope": "exec-throw",
+        "name": "Executioner's Throw (Stage 3)",
+        "spellType": "spell",
+        "scalesWith": "melee",
+        "element": "weapon",
+        "power": 60,
+        "skillFactor": 1000,
+        "buckets": 10,
+        "additionalDamageMultiplier": 2.5,
+        "vocations": [
+            "knight"
+        ],
+        "rounding": "round"
+    },
+    {
+        "id": "annihilation",
+        "name": "Annihilation",
+        "spellType": "spell",
+        "scalesWith": "melee",
+        "element": "weapon",
+        "power": 125,
+        "skillFactor": 1000,
+        "buckets": 80,
         "vocations": [
             "knight"
         ],
