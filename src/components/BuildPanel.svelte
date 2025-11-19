@@ -30,7 +30,7 @@
           type="number"
           inputmode="numeric"
           value={build.stats.level}
-          on:input={(e) => setStat("level", e.currentTarget.value)} />
+          on:input={(e) => setStat("level", e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
       </label>
       <label>
         <span>Bonus Damage</span>
@@ -38,7 +38,7 @@
           type="number"
           inputmode="numeric"
           value={build.stats.bonus}
-          on:input={(e) => setStat("bonus", e.currentTarget.value)} />
+          on:input={(e) => setStat("bonus", e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
       </label>
       <label>
         <span>Magic Level</span>
@@ -46,7 +46,8 @@
           type="number"
           inputmode="numeric"
           value={build.stats.magicLevel}
-          on:input={(e) => setStat("magicLevel", e.currentTarget.value)} />
+          on:input={(e) =>
+            setStat("magicLevel", e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
       </label>
       <label>
         <span>Skill</span>
@@ -54,7 +55,7 @@
           type="number"
           inputmode="numeric"
           value={build.stats.skill}
-          on:input={(e) => setStat("skill", e.currentTarget.value)} />
+          on:input={(e) => setStat("skill", e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
       </label>
       <label>
         <span>Weapon Attack</span>
@@ -62,7 +63,7 @@
           type="number"
           inputmode="numeric"
           value={build.stats.weapon}
-          on:input={(e) => setStat("weapon", e.currentTarget.value)} />
+          on:input={(e) => setStat("weapon", e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
       </label>
       <label>
         <span>Crit Chance %</span>
@@ -70,7 +71,8 @@
           type="number"
           inputmode="numeric"
           value={build.stats.critChance}
-          on:input={(e) => setStat("critChance", e.currentTarget.value)} />
+          on:input={(e) =>
+            setStat("critChance", e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
       </label>
       <label>
         <span>Crit Damage %</span>
@@ -78,19 +80,30 @@
           type="number"
           inputmode="numeric"
           value={build.stats.critDamage}
-          on:input={(e) => setStat("critDamage", e.currentTarget.value)} />
+          on:input={(e) =>
+            setStat("critDamage", e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
       </label>
 
       <details class="advanced" bind:open={showAdvanced}>
         <summary>More stats</summary>
         <div class="stack">
           <label>
+            <span>Fatal Chance %</span>
+            <input
+              type="number"
+              inputmode="numeric"
+              value={build.stats.fatalChance ?? 0}
+              on:input={(e) =>
+                setStat("fatalChance", e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
+          </label>
+          <label>
             <span>Shielding</span>
             <input
               type="number"
               inputmode="numeric"
               value={build.stats.shielding ?? 0}
-              on:input={(e) => setStat("shielding", e.currentTarget.value)} />
+              on:input={(e) =>
+                setStat("shielding", e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
           </label>
           <label>
             <span>Fishing</span>
@@ -98,7 +111,8 @@
               type="number"
               inputmode="numeric"
               value={build.stats.fishing ?? 0}
-              on:input={(e) => setStat("fishing", e.currentTarget.value)} />
+              on:input={(e) =>
+                setStat("fishing", e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
           </label>
         </div>
       </details>

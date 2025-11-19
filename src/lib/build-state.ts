@@ -1,15 +1,16 @@
 import type { ActivePerk, Rotation } from "./damage-calc";
 
 export type BuildStats = {
-  level: string | number | null;
-  bonus: string | number | null;
-  skill: string | number | null;
-  magicLevel: string | number | null;
-  weapon: string | number | null;
-  critChance: string | number | null;
-  critDamage: string | number | null;
-  shielding: string | number | null;
-  fishing: string | number | null;
+  level: number | null;
+  bonus: number | null;
+  skill: number | null;
+  magicLevel: number | null;
+  weapon: number | null;
+  critChance: number | null;
+  critDamage: number | null;
+  fatalChance: number | null;
+  shielding: number | null;
+  fishing: number | null;
 };
 
 export type Build = { stats: BuildStats; perks: ActivePerk[] };
@@ -21,35 +22,27 @@ export type CalculatorState = {
   rotation: Rotation;
 };
 
+const defaultStats = () => ({
+  level: 8,
+  bonus: 0,
+  skill: 10,
+  magicLevel: 0,
+  weapon: 0,
+  critChance: 10,
+  critDamage: 50,
+  fatalChance: 0,
+  shielding: 10,
+  fishing: 10,
+});
+
+const defaultBuild = () => ({
+  stats: defaultStats(),
+  perks: [],
+});
+
 export const defaultState = (): CalculatorState => ({
-  A: {
-    stats: {
-      level: "",
-      bonus: "",
-      skill: "",
-      magicLevel: "",
-      weapon: "",
-      shielding: "",
-      fishing: "",
-      critChance: "",
-      critDamage: "",
-    },
-    perks: [],
-  },
-  B: {
-    stats: {
-      level: "",
-      bonus: "",
-      skill: "",
-      magicLevel: "",
-      weapon: "",
-      shielding: "",
-      fishing: "",
-      critChance: "",
-      critDamage: "",
-    },
-    perks: [],
-  },
+  A: defaultBuild(),
+  B: defaultBuild(),
   showSecondBuild: false,
   rotation: [],
 });

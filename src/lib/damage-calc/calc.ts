@@ -76,13 +76,14 @@ const derive = (inp: BuildStats) => {
   const S = n(inp.skill);
   const ML = n(inp.magicLevel);
   const W = n(inp.weapon);
+  const critChance = n(inp.critChance);
+  const critDamage = n(inp.critDamage);
+  const fatalChance = n(inp.fatalChance);
   const shielding = n(inp.shielding);
   const fishing = n(inp.fishing);
   const step = Math.floor((Math.sqrt(2 * L + 2025) + 5) / 10);
   const F = step * 100 - 450 + Math.floor((L + 1000) / step - 50 * step) + B;
-  const critChance = n(inp.critChance);
-  const critDamage = n(inp.critDamage);
-  return { F, ML, S, W, shielding, fishing, critChance, critDamage };
+  return { F, ML, S, W, critChance, critDamage, fatalChance, shielding, fishing };
 };
 
 const assignDefsToPerks = (activePerks: ActivePerk[]) => {
@@ -99,31 +100,55 @@ const assignDefsToPerks = (activePerks: ActivePerk[]) => {
 };
 
 const computeDamageRanges = (spell: Spell, state: SpellState): SpellDamage => {
+  const c = state.critChance / 100;
+  const o = state.fatalChance / 100;
+  const pCrit = c * (1 - o);
+  const pFatal = o * (1 - c);
+  const pCritFatal = c * o;
+  const pNoBonus = (1 - c) * (1 - o);
+
   if (spell.spellType === "auto") {
     const attackValueWithoutFlat = (Math.floor((6 * state.W) / 5) * (state.S + 4)) / 28;
     const min = Math.floor(state.F + attackValueWithoutFlat / 2);
     const avg = Math.floor(state.F + attackValueWithoutFlat);
     const max = Math.floor(state.F + attackValueWithoutFlat * 2);
+
     const effectiveAvg =
-      (1 - state.critChance / 100) * avg +
-      (state.critChance / 100) * (state.F + attackValueWithoutFlat * 1.75) * (1 + state.critDamage / 100);
+      pNoBonus * avg +
+      pCrit * (state.F + attackValueWithoutFlat * 1.75) * (1 + state.critDamage / 100) +
+      pFatal * (state.F + attackValueWithoutFlat * 1.75) * 1.6 +
+      pCritFatal * (state.F + attackValueWithoutFlat * 1.75) * (1.6 + state.critDamage / 100);
+
     return { ...spell, min, avg, max, effectiveAvg };
   } else {
     const avg = computeAvg(spell, state);
     const min = computeMinMax(spell, -1, state);
     const max = computeMinMax(spell, 1, state);
-    const effectiveAvg = avg * ((state.critChance * state.critDamage) / 10000 + 1);
+    const effectiveAvg =
+      avg *
+      (pNoBonus + pCrit * (1 + state.critDamage / 100) + pFatal * 1.6 + pCritFatal * (1.6 + state.critDamage / 100));
     return { ...spell, min, avg, max, effectiveAvg };
   }
 };
 
 export const computeResults = (inp: BuildStats, activePerks: ActivePerk[]) => {
   const perksWithDefs: ActivePerkWithDef[] = assignDefsToPerks(activePerks);
-  const { F, ML, S, W, shielding, fishing, critChance, critDamage } = derive(inp);
+  const { F, ML, S, W, critChance, critDamage, fatalChance, shielding, fishing } = derive(inp);
   const spellResults = spells
     .filter((s) => s.spellType !== "rune") // TODO remove this eventually
     .map((spell) => {
-      const initial: SpellState = { P: spell.power, F, ML, S, W, shielding, fishing, critChance, critDamage };
+      const initial: SpellState = {
+        P: spell.power,
+        F,
+        ML,
+        S,
+        W,
+        critChance,
+        critDamage,
+        fatalChance,
+        shielding,
+        fishing,
+      };
       const final: SpellState = perksWithDefs.reduce((acc, perk) => applyPerkToSpell(spell, perk, acc), initial);
       return computeDamageRanges(spell, final);
     });

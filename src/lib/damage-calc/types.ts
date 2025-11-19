@@ -13,10 +13,11 @@ export type SpellState = {
   ML: number;
   S: number;
   W: number;
-  shielding: number;
-  fishing: number;
   critChance: number;
   critDamage: number;
+  fatalChance: number;
+  shielding: number;
+  fishing: number;
 };
 
 export type RotationSpell = { id: string; targets: number; ratio: number };
