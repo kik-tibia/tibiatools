@@ -1,9 +1,11 @@
 <script lang="ts">
   export let results: any[] = [];
   export let effectiveDpt: number;
+  export let effectiveDph: number;
 
   export let isHigher: (id: string) => boolean = () => false;
   export let isDptHigher: boolean;
+  export let isDphHigher: boolean;
 </script>
 
 <div class="dpt" class:highlight={isDptHigher}>
@@ -12,12 +14,24 @@
       Average effective damage per turn
     </button>
     <span id="tip-effective" role="tooltip" class="tip-content">
-      The average damage you would deal, using the defined rotation, taking into account resistances, armor, mitigation,
-      crits and fatals.
+      The average damage you would deal per turn, using the defined rotation, taking into account resistances, armor,
+      mitigation, crits and fatals.
     </span>
   </span>
   <span class="dpt-value">{effectiveDpt.toFixed(1)}</span>
 </div>
+
+<div class="dpt" class:highlight={isDphHigher}>
+  <span class="dpt-desc field-tip">
+    <button type="button" class="tip-trigger" aria-describedby="tip-effective">Average effective damage per hit</button>
+    <span id="tip-effective" role="tooltip" class="tip-content">
+      The average damage you would deal per hit, using the defined rotation, taking into account resistances, armor,
+      mitigation, crits and fatals.
+    </span>
+  </span>
+  <span class="dpt-value">{effectiveDph.toFixed(1)}</span>
+</div>
+
 <div>
   <table class="results">
     <thead>

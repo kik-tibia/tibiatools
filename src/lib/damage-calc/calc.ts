@@ -155,6 +155,7 @@ export const computeResults = (inp: BuildStats, activePerks: ActivePerk[]) => {
   return spellResults;
 };
 
+// damage per turn
 export const computeDpt = (spellDamages: SpellDamage[], rotation: RotationSpell[]) => {
   const ratioSum = rotation.reduce((sum, r) => sum + r.ratio, 0);
   const autoAttackDamage = spellDamages.find((s) => s.id == "auto-attack")?.effectiveAvg ?? 0;
@@ -165,5 +166,21 @@ export const computeDpt = (spellDamages: SpellDamage[], rotation: RotationSpell[
       const weightedDamage = (spellDamage * r.targets * r.ratio) / ratioSum;
       return damage + weightedDamage;
     }, 0)
+  );
+};
+
+// damage per hit
+export const computeDph = (spellDamages: SpellDamage[], rotation: RotationSpell[]) => {
+  // the +1 is for auto-attacks (would need to be +1 * targets for diamond arrows)
+  const ratioSum = rotation.reduce((sum, r) => sum + r.targets * r.ratio, 0) + 1;
+  const autoAttackDamage = spellDamages.find((s) => s.id == "auto-attack")?.effectiveAvg ?? 0;
+  return (
+    (rotation.reduce((damage, r) => {
+      const spellDamage = spellDamages.find((s) => s.id == r.id)?.effectiveAvg ?? 0;
+      const weightedDamage = spellDamage * r.targets * r.ratio;
+      return damage + weightedDamage;
+    }, 0) +
+      autoAttackDamage) /
+    ratioSum
   );
 };

@@ -1,9 +1,9 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import { computeDpt, computeResults, type RotationSpell } from "@lib/damage-calc";
+  import { computeDph, computeDpt, computeResults, type RotationSpell } from "@lib/damage-calc";
   import { packState, unpackState } from "@lib/url-pack";
-  import type { Build, CalculatorState } from "@lib/build-state";
+  import { defaultBuild, type Build, type CalculatorState } from "@lib/build-state";
 
   import BuildPanel from "./BuildPanel.svelte";
   import ResultsTable from "./ResultsTable.svelte";
@@ -27,6 +27,8 @@
   $: resultsB = computeResults(B.stats, B.perks);
   $: effectiveDptA = computeDpt(resultsA, rotation);
   $: effectiveDptB = computeDpt(resultsB, rotation);
+  $: effectiveDphA = computeDph(resultsA, rotation);
+  $: effectiveDphB = computeDph(resultsB, rotation);
 
   const toMap = (arr: any[]) => new Map(arr.map((x) => [x.id, x]));
   $: mapA = toMap(resultsA);
@@ -35,6 +37,8 @@
   const isBHigher = (id: string) => Number(mapB.get(id)?.effectiveAvg) >= Number(mapA.get(id)?.effectiveAvg);
   $: isDptAHigher = effectiveDptA >= effectiveDptB;
   $: isDptBHigher = effectiveDptB >= effectiveDptA;
+  $: isDphAHigher = effectiveDphA >= effectiveDphB;
+  $: isDphBHigher = effectiveDphB >= effectiveDphA;
   $: pctIncreaseA = (effectiveDptA / effectiveDptB - 1) * 100;
   $: pctIncreaseB = (effectiveDptB / effectiveDptA - 1) * 100;
 
@@ -94,34 +98,8 @@
   <button
     type="button"
     on:click={() => {
-      A = {
-        stats: {
-          level: "",
-          bonus: "",
-          skill: "",
-          magicLevel: "",
-          weapon: "",
-          shielding: "",
-          fishing: "",
-          critChance: "",
-          critDamage: "",
-        },
-        perks: [],
-      };
-      B = {
-        stats: {
-          level: "",
-          bonus: "",
-          skill: "",
-          magicLevel: "",
-          weapon: "",
-          shielding: "",
-          fishing: "",
-          critChance: "",
-          critDamage: "",
-        },
-        perks: [],
-      };
+      A = defaultBuild();
+      B = defaultBuild();
       rotation = [];
     }}>
     Reset
@@ -146,7 +124,13 @@
     <BuildPanel title="Build A" bind:build={A} />
   </div>
   <div class="panel results-panel-a">
-    <ResultsTable results={resultsA} effectiveDpt={effectiveDptA} isDptHigher={isDptAHigher} isHigher={isAHigher} />
+    <ResultsTable
+      results={resultsA}
+      effectiveDpt={effectiveDptA}
+      isDptHigher={isDptAHigher}
+      effectiveDph={effectiveDphA}
+      isDphHigher={isDphAHigher}
+      isHigher={isAHigher} />
   </div>
 
   {#if showSecondBuild}
@@ -154,7 +138,13 @@
       <BuildPanel title="Build B" bind:build={B} />
     </div>
     <div class="panel results-panel-b">
-      <ResultsTable results={resultsB} effectiveDpt={effectiveDptB} isDptHigher={isDptBHigher} isHigher={isBHigher} />
+      <ResultsTable
+        results={resultsB}
+        effectiveDpt={effectiveDptB}
+        isDptHigher={isDptBHigher}
+        effectiveDph={effectiveDphB}
+        isDphHigher={isDphBHigher}
+        isHigher={isBHigher} />
     </div>
   {/if}
 </section>

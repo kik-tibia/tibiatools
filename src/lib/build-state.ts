@@ -1,4 +1,4 @@
-import type { ActivePerk, Rotation } from "./damage-calc";
+import type { ActivePerk, RotationSpell } from "./damage-calc";
 
 export type BuildStats = {
   level: number | null;
@@ -19,7 +19,7 @@ export type CalculatorState = {
   A: Build;
   B: Build;
   showSecondBuild: boolean;
-  rotation: Rotation;
+  rotation: RotationSpell[];
 };
 
 const defaultStats = () => ({
@@ -35,7 +35,7 @@ const defaultStats = () => ({
   fishing: 10,
 });
 
-const defaultBuild = () => ({
+export const defaultBuild = () => ({
   stats: defaultStats(),
   perks: [],
 });
