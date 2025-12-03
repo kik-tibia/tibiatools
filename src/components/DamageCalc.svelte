@@ -106,24 +106,41 @@
   </button>
   <button
     type="button"
+    class="compare-btn"
+    class:active={showSecondBuild}
     on:click={() => {
       showSecondBuild = !showSecondBuild;
       scheduleWrite();
     }}>
-    {showSecondBuild ? "Hide second build" : "Compare a second build"}
+    {showSecondBuild ? "Hide comparison" : "Compare builds"}
   </button>
-  <span>{pctIncreaseA.toFixed(2)}% / {pctIncreaseB.toFixed(2)}%</span>
+  {#if showSecondBuild}
+    <span class="pct-diff">
+      <span class="label-a">A:</span>
+      {pctIncreaseA > 0 ? "+" : ""}{pctIncreaseA.toFixed(1)}%
+      <span class="label-b">B:</span>
+      {pctIncreaseB > 0 ? "+" : ""}{pctIncreaseB.toFixed(1)}%
+    </span>
+  {/if}
 </section>
 
-<section class="main-grid" class:has-second-build={showSecondBuild}>
+<section class="main-grid" class:comparing={showSecondBuild}>
   <div class="panel rotation-panel">
     <RotationPanel bind:rotation />
   </div>
 
-  <div class="panel build-panel-a">
-    <BuildPanel title="Build A" bind:build={A} />
+  <div class="panel build-panel">
+    <BuildPanel bind:buildA={A} bind:buildB={B} {showSecondBuild} />
   </div>
+
   <div class="panel results-panel-a">
+    <h3 class="results-title">
+      {#if showSecondBuild}
+        <span class="build-indicator build-a">Build A</span>
+      {:else}
+        Results
+      {/if}
+    </h3>
     <ResultsTable
       results={resultsA}
       effectiveDpt={effectiveDptA}
@@ -134,10 +151,10 @@
   </div>
 
   {#if showSecondBuild}
-    <div class="panel build-panel-b">
-      <BuildPanel title="Build B" bind:build={B} />
-    </div>
     <div class="panel results-panel-b">
+      <h3 class="results-title">
+        <span class="build-indicator build-b">Build B</span>
+      </h3>
       <ResultsTable
         results={resultsB}
         effectiveDpt={effectiveDptB}
@@ -150,46 +167,12 @@
 </section>
 
 <style>
-  .panel {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    min-width: 0;
-  }
-
-  @media (min-width: 900px) {
-    .main-grid {
-      display: grid;
-      gap: 1rem;
-
-      /* Default: only one build */
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas:
-        "rotation buildA"
-        "rotation resultsA";
-    }
-
-    .main-grid.has-second-build {
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-areas:
-        "rotation buildA  buildB"
-        "rotation resultsA resultsB";
-    }
-
-    .rotation-panel {
-      grid-area: rotation;
-    }
-    .build-panel-a {
-      grid-area: buildA;
-    }
-    .results-panel-a {
-      grid-area: resultsA;
-    }
-    .build-panel-b {
-      grid-area: buildB;
-    }
-    .results-panel-b {
-      grid-area: resultsB;
-    }
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 1rem;
   }
 
   .toolbar button {
@@ -198,5 +181,103 @@
     border-radius: 0.5rem;
     background: transparent;
     cursor: pointer;
+    color: inherit;
+    transition:
+      background-color 0.15s,
+      border-color 0.15s;
+  }
+
+  .toolbar button:hover {
+    background: hsl(220 10% 20%);
+  }
+
+  .compare-btn.active {
+    background: hsl(220 50% 25%);
+    border-color: hsl(220 50% 45%);
+  }
+
+  .pct-diff {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.75rem;
+    background: hsl(220 10% 15%);
+    border-radius: 0.5rem;
+  }
+
+  .label-a {
+    color: hsl(210, 80%, 70%);
+    font-weight: 600;
+  }
+
+  .label-b {
+    color: hsl(30, 80%, 70%);
+    font-weight: 600;
+    margin-left: 0.75rem;
+  }
+
+  .panel {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-width: 0;
+  }
+
+  .results-title {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .build-indicator {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.9rem;
+  }
+
+  .build-indicator.build-a {
+    background: rgba(100, 180, 255, 0.2);
+    color: hsl(210, 80%, 70%);
+  }
+
+  .build-indicator.build-b {
+    background: rgba(255, 180, 100, 0.2);
+    color: hsl(30, 80%, 70%);
+  }
+
+  @media (min-width: 900px) {
+    .main-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: minmax(250px, 1fr) minmax(300px, 1.2fr) minmax(280px, 1fr);
+      grid-template-areas: "rotation build resultsA";
+    }
+
+    .main-grid.comparing {
+      grid-template-columns: minmax(250px, 1fr) minmax(360px, 1.4fr) minmax(250px, 1fr) minmax(250px, 1fr);
+      grid-template-areas: "rotation build resultsA resultsB";
+    }
+
+    .rotation-panel {
+      grid-area: rotation;
+    }
+    .build-panel {
+      grid-area: build;
+    }
+    .results-panel-a {
+      grid-area: resultsA;
+    }
+    .results-panel-b {
+      grid-area: resultsB;
+    }
+  }
+
+  @media (max-width: 899px) {
+    .main-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .main-grid.comparing .results-panel-a,
+    .main-grid.comparing .results-panel-b {
+      border-top: 1px solid hsl(0 0% 30%);
+      padding-top: 1rem;
+    }
   }
 </style>
