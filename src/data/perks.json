@@ -60,6 +60,24 @@
     "bonusType": "crit-chance"
   },
   {
+    "id": "front-sweep-base",
+    "name": "Front Sweep (exori min) base damage",
+    "scope": "front-sweep",
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "front-sweep-crit",
+    "name": "Front Sweep (exori min) critical hit damage",
+    "scope": "front-sweep",
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "front-sweep-crit-chance",
+    "name": "Front Sweep (exori min) critical hit chance",
+    "scope": "front-sweep",
+    "bonusType": "crit-chance"
+  },
+  {
     "id": "exec-throw-base",
     "name": "Executioner's Throw (exori amp kor) base damage",
     "scope": "exec-throw",
