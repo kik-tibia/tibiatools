@@ -89,13 +89,10 @@
       {/if}
     </ul>
   {/if}
-
-  <p class="subtle">{selectedIds.length} selected</p>
 </div>
 
 <style>
   .fuzzy-select {
-    width: 24rem;
     position: relative;
   }
 

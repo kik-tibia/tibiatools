@@ -2,8 +2,6 @@
   import { perks } from "@data/perks";
   import { spells } from "@data/spells";
   import FuzzySelect from "./FuzzySelect.svelte";
-  import PerkEditor from "./PerkEditor.svelte";
-  import RotationEditor from "./RotationEditor.svelte";
   import type { Build, BuildStats } from "@lib/build-state";
   import type { RotationSpell } from "@lib/damage-calc";
 
@@ -38,11 +36,69 @@
     }
   }
 
-  // Get union of perk IDs from both builds
+  // Perk helpers
   $: allPerkIds = [...new Set([...buildA.perks.map((p) => p.id), ...buildB.perks.map((p) => p.id)])];
 
-  // Get union of rotation spell IDs from both builds
+  function getPerkValueA(id: string): number {
+    return buildA.perks.find((p) => p.id === id)?.value ?? 0;
+  }
+  function getPerkValueB(id: string): number {
+    return buildB.perks.find((p) => p.id === id)?.value ?? 0;
+  }
+  function setPerkValueA(id: string, v: number) {
+    const exists = buildA.perks.some((p) => p.id === id);
+    if (exists) {
+      buildA = { ...buildA, perks: buildA.perks.map((a) => (a.id === id ? { ...a, value: v } : a)) };
+    } else {
+      buildA = { ...buildA, perks: [...buildA.perks, { id, value: v }] };
+    }
+  }
+  function setPerkValueB(id: string, v: number) {
+    const exists = buildB.perks.some((p) => p.id === id);
+    if (exists) {
+      buildB = { ...buildB, perks: buildB.perks.map((a) => (a.id === id ? { ...a, value: v } : a)) };
+    } else {
+      buildB = { ...buildB, perks: [...buildB.perks, { id, value: v }] };
+    }
+  }
+  function removePerkA(id: string) {
+    buildA = { ...buildA, perks: buildA.perks.filter((a) => a.id !== id) };
+  }
+  function removePerkB(id: string) {
+    buildB = { ...buildB, perks: buildB.perks.filter((a) => a.id !== id) };
+  }
+
+  // Rotation helpers
   $: allRotationIds = [...new Set([...rotationA.map((r) => r.id), ...rotationB.map((r) => r.id)])];
+
+  function getRotationA(id: string): RotationSpell {
+    return rotationA.find((r) => r.id === id) ?? { id, targets: 1, ratio: 1 };
+  }
+  function getRotationB(id: string): RotationSpell {
+    return rotationB.find((r) => r.id === id) ?? { id, targets: 1, ratio: 1 };
+  }
+  function setRotationValueA(id: string, field: "targets" | "ratio", v: number) {
+    const exists = rotationA.some((r) => r.id === id);
+    if (exists) {
+      rotationA = rotationA.map((r) => (r.id === id ? { ...r, [field]: v } : r));
+    } else {
+      rotationA = [...rotationA, { id, targets: field === "targets" ? v : 1, ratio: field === "ratio" ? v : 1 }];
+    }
+  }
+  function setRotationValueB(id: string, field: "targets" | "ratio", v: number) {
+    const exists = rotationB.some((r) => r.id === id);
+    if (exists) {
+      rotationB = rotationB.map((r) => (r.id === id ? { ...r, [field]: v } : r));
+    } else {
+      rotationB = [...rotationB, { id, targets: field === "targets" ? v : 1, ratio: field === "ratio" ? v : 1 }];
+    }
+  }
+  function removeRotationA(id: string) {
+    rotationA = rotationA.filter((r) => r.id !== id);
+  }
+  function removeRotationB(id: string) {
+    rotationB = rotationB.filter((r) => r.id !== id);
+  }
 
   let showAdvanced =
     Boolean(buildA?.stats?.shielding ?? 0) ||
@@ -71,132 +127,241 @@
 
   $: basicFields = statFields.filter((f) => !f.advanced);
   $: advancedFields = statFields.filter((f) => f.advanced);
+  $: visibleFields = showAdvanced ? statFields : basicFields;
+
+  $: colCount = showSecondBuild ? 3 : 2;
 </script>
 
-<div class="merged-build-panel">
-  <div class="panel-header">
-    <h3>Build Stats</h3>
+<table class="build-table" class:two-builds={showSecondBuild}>
+  <colgroup>
+    <col class="col-labels" />
+    <col class="col-build" />
     {#if showSecondBuild}
-      <div class="build-labels">
-        <span class="build-label build-a">A</span>
-        <span class="build-label build-b">B</span>
-      </div>
+      <col class="col-build" />
     {/if}
-  </div>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Build Stats</th>
+      <th>
+        {#if showSecondBuild}
+          <span class="build-label build-a">Build A</span>
+        {/if}
+      </th>
+      {#if showSecondBuild}
+        <th>
+          <span class="build-label build-b">Build B</span>
+        </th>
+      {/if}
+    </tr>
+  </thead>
+  <tbody>
+    <!-- ==================== BASIC STATS SECTION ==================== -->
+    <tr class="section-header">
+      <td><h4>Basic Stats</h4></td>
+      <td></td>
+      {#if showSecondBuild}<td></td>{/if}
+    </tr>
 
-  <div class="basic-stats-section">
-    <h4>Basic Stats</h4>
-    <form class="stats-form" on:submit|preventDefault>
-      {#each basicFields as field}
-        <div class="stat-row">
-          <span class="stat-label">{field.label}</span>
-          <div class="stat-inputs" class:single={!showSecondBuild}>
+    {#each visibleFields as field}
+      <tr class="data-row">
+        <td>{field.label}</td>
+        <td>
+          <input
+            type="number"
+            inputmode="numeric"
+            class="input-a"
+            value={buildA.stats[field.key]}
+            on:input={(e) =>
+              setStatA(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
+        </td>
+        {#if showSecondBuild}
+          <td>
             <input
               type="number"
               inputmode="numeric"
-              class="input-a"
-              value={buildA.stats[field.key]}
+              class="input-b"
+              value={buildB.stats[field.key]}
               on:input={(e) =>
-                setStatA(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
-            {#if showSecondBuild}
-              <input
-                type="number"
-                inputmode="numeric"
-                class="input-b"
-                value={buildB.stats[field.key]}
-                on:input={(e) =>
-                  setStatB(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
-            {/if}
-          </div>
-        </div>
-      {/each}
+                setStatB(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
+          </td>
+        {/if}
+      </tr>
+    {/each}
 
-      <details class="advanced" bind:open={showAdvanced}>
-        <summary>More stats</summary>
-        {#each advancedFields as field}
-          <div class="stat-row">
-            <span class="stat-label">{field.label}</span>
-            <div class="stat-inputs" class:single={!showSecondBuild}>
+    <tr class="data-row">
+      <td>
+        <button type="button" class="toggle-advanced" on:click={() => (showAdvanced = !showAdvanced)}>
+          {showAdvanced ? "▼ Less stats" : "▶ More stats"}
+        </button>
+      </td>
+      <td></td>
+      {#if showSecondBuild}<td></td>{/if}
+    </tr>
+
+    <!-- ==================== PERKS SECTION ==================== -->
+    <tr class="section-header">
+      <td><h4>Perks</h4></td>
+      <td></td>
+      {#if showSecondBuild}<td></td>{/if}
+    </tr>
+
+    <tr class="data-row">
+      <td>
+        <FuzzySelect selectType="perks" all={perks} selectedIds={allPerkIds} onAdd={addPerk} />
+      </td>
+      <td></td>
+      {#if showSecondBuild}<td></td>{/if}
+    </tr>
+
+    {#each allPerkIds as id (id)}
+      {@const def = perkRegistry.get(id)}
+      {#if def}
+        <tr class="data-row">
+          <td class="item-name">{def.name}</td>
+          <td>
+            <div class="input-with-remove">
               <input
                 type="number"
-                inputmode="numeric"
                 class="input-a"
-                value={buildA.stats[field.key] ?? 0}
-                on:input={(e) =>
-                  setStatA(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
-              {#if showSecondBuild}
+                value={getPerkValueA(id)}
+                on:input={(e) => setPerkValueA(id, Number(e.currentTarget.value))} />
+              <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removePerkA(id)}>×</button>
+            </div>
+          </td>
+          {#if showSecondBuild}
+            <td>
+              <div class="input-with-remove">
                 <input
                   type="number"
-                  inputmode="numeric"
                   class="input-b"
-                  value={buildB.stats[field.key] ?? 0}
-                  on:input={(e) =>
-                    setStatB(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
-              {/if}
+                  value={getPerkValueB(id)}
+                  on:input={(e) => setPerkValueB(id, Number(e.currentTarget.value))} />
+                <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removePerkB(id)}>×</button>
+              </div>
+            </td>
+          {/if}
+        </tr>
+      {/if}
+    {/each}
+
+    <!-- ==================== ROTATION SECTION ==================== -->
+    <tr class="section-header">
+      <td><h4>Rotation</h4></td>
+      <td class="sub-header">{allRotationIds.length > 0 ? "Targets / Ratio" : ""}</td>
+      {#if showSecondBuild}
+        <td class="sub-header">{allRotationIds.length > 0 ? "Targets / Ratio" : ""}</td>
+      {/if}
+    </tr>
+
+    <tr class="data-row">
+      <td>
+        <FuzzySelect
+          selectType="spells"
+          all={spells.filter((s) => s.id !== "auto-attack")}
+          selectedIds={allRotationIds}
+          onAdd={addSpellToRotation} />
+      </td>
+      <td></td>
+      {#if showSecondBuild}<td></td>{/if}
+    </tr>
+
+    {#each allRotationIds as id (id)}
+      {@const def = spellRegistry.get(id)}
+      {@const rotA = getRotationA(id)}
+      {@const rotB = getRotationB(id)}
+      {#if def}
+        <tr class="data-row">
+          <td class="item-name">{def.name}</td>
+          <td>
+            <div class="input-with-remove">
+              <input
+                type="number"
+                class="input-a small"
+                value={rotA.targets}
+                on:input={(e) => setRotationValueA(id, "targets", Number(e.currentTarget.value))} />
+              <input
+                type="number"
+                class="input-a small"
+                value={rotA.ratio}
+                on:input={(e) => setRotationValueA(id, "ratio", Number(e.currentTarget.value))} />
+              <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removeRotationA(id)}>
+                ×
+              </button>
             </div>
-          </div>
-        {/each}
-      </details>
-    </form>
-  </div>
-
-  <div class="perks-section">
-    <h4>Perks</h4>
-    <FuzzySelect selectType="perks" all={perks} selectedIds={allPerkIds} onAdd={addPerk} />
-    <PerkEditor
-      perkIdsA={buildA.perks}
-      perkIdsB={buildB.perks}
-      {showSecondBuild}
-      onChangeA={(next) => (buildA = { ...buildA, perks: next })}
-      onChangeB={(next) => (buildB = { ...buildB, perks: next })}
-      registry={perkRegistry} />
-  </div>
-
-  <div class="rotation-section">
-    <h4>Rotation</h4>
-    <FuzzySelect
-      selectType="spells"
-      all={spells.filter((s) => s.id !== "auto-attack")}
-      selectedIds={allRotationIds}
-      onAdd={addSpellToRotation} />
-    <RotationEditor
-      {rotationA}
-      {rotationB}
-      {showSecondBuild}
-      onChangeA={(next) => (rotationA = next)}
-      onChangeB={(next) => (rotationB = next)}
-      registry={spellRegistry} />
-  </div>
-</div>
+          </td>
+          {#if showSecondBuild}
+            <td>
+              <div class="input-with-remove">
+                <input
+                  type="number"
+                  class="input-b small"
+                  value={rotB.targets}
+                  on:input={(e) => setRotationValueB(id, "targets", Number(e.currentTarget.value))} />
+                <input
+                  type="number"
+                  class="input-b small"
+                  value={rotB.ratio}
+                  on:input={(e) => setRotationValueB(id, "ratio", Number(e.currentTarget.value))} />
+                <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removeRotationB(id)}>
+                  ×
+                </button>
+              </div>
+            </td>
+          {/if}
+        </tr>
+      {/if}
+    {/each}
+  </tbody>
+</table>
 
 <style>
-  .merged-build-panel {
-    padding: 0 1rem 1rem 0;
+  .build-table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    border: 1px solid hsl(0 0% 30%);
   }
 
-  .panel-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
+  col.col-build {
+    width: 160px;
   }
 
-  .panel-header h3 {
-    margin: 0;
+  /* Header row */
+  thead th {
+    background: hsl(220 10% 18%);
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid hsl(0 0% 30%);
   }
 
-  .build-labels {
-    display: flex;
-    gap: 0.5rem;
-    padding-right: 0.25rem;
+  /* All cells get vertical borders */
+  tbody td {
+    padding: 0.35rem 0.75rem;
+    border-left: 1px solid hsl(0 0% 30%);
+    border-right: 1px solid hsl(0 0% 30%);
+    vertical-align: middle;
   }
 
+  /* Section header rows get top border */
+  .section-header td {
+    border-top: 1px solid hsl(0 0% 30%);
+    padding-top: 0.6rem;
+    padding-bottom: 0.4rem;
+  }
+
+  /* Last row of table needs bottom border */
+  tbody tr:last-child td {
+    border-bottom: 1px solid hsl(0 0% 30%);
+  }
+
+  /* Build labels */
   .build-label {
-    width: 5.5rem;
+    display: inline-block;
     text-align: center;
     font-weight: 600;
     font-size: 0.875rem;
-    padding: 0.25rem 0;
+    padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
   }
 
@@ -210,94 +375,93 @@
     color: hsl(30, 80%, 70%);
   }
 
-  .stats-form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
+  /* Section headers */
+  h4 {
+    margin: 0;
   }
 
-  .stat-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
+  .sub-header {
+    font-size: 0.75rem;
+    color: hsl(0 0% 60%);
   }
 
-  .stat-label {
-    flex: 1;
-    min-width: 0;
+  /* Item names (perks, spells) */
+  .item-name {
+    font-size: 0.9rem;
   }
 
-  .stat-inputs {
-    display: flex;
-    gap: 0.5rem;
-    flex-shrink: 0;
-  }
-
-  .stat-inputs.single {
-    width: 5.5rem;
-  }
-
-  .stat-inputs input {
-    width: 5.5rem;
+  /* Inputs */
+  input[type="number"] {
+    width: 5rem;
     padding: 0.25rem 0.4rem;
     font: inherit;
     border: 1px solid hsl(0 0% 40%);
     border-radius: 0.25rem;
     background: hsl(220 10% 15%);
     color: inherit;
+    text-align: right;
   }
 
-  .stat-inputs input.input-a {
+  input.input-a {
     border-color: hsl(210, 50%, 40%);
   }
 
-  .stat-inputs input.input-b {
+  input.input-b {
     border-color: hsl(30, 50%, 40%);
   }
 
-  .stat-inputs input:focus {
+  input:focus {
     outline: none;
     box-shadow: 0 0 0 2px hsl(220 90% 65% / 0.3);
   }
 
-  details.advanced > summary {
+  input.small {
+    width: 2.5rem;
+    text-align: center;
+  }
+
+  /* Input with remove button */
+  .input-with-remove {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  /* Toggle button */
+  .toggle-advanced {
+    background: none;
+    border: none;
+    color: inherit;
     cursor: pointer;
-    user-select: none;
-    margin-top: 0.5rem;
-    padding: 0.25rem 0;
+    font: inherit;
     font-weight: 600;
+    padding: 0;
+    text-align: left;
   }
 
-  details.advanced[open] > summary {
-    margin-bottom: 0.5rem;
+  .toggle-advanced:hover {
+    color: hsl(220 90% 70%);
   }
 
-  details.advanced > .stat-row {
-    margin-top: 0.4rem;
+  /* Remove button */
+  .remove-btn {
+    padding: 0.1rem 0.4rem;
+    font-size: 1rem;
+    line-height: 1;
+    background: transparent;
+    border: 1px solid hsl(0 0% 40%);
+    border-radius: 0.25rem;
+    color: inherit;
+    cursor: pointer;
+    flex-shrink: 0;
   }
 
-  .basic-stats-section {
-    margin-top: 1rem;
+  .remove-btn:hover {
+    background: hsl(0, 50%, 30%);
+    border-color: hsl(0, 50%, 40%);
   }
 
-  .basic-stats-section h4 {
-    margin: 0 0 0.5rem 0;
-  }
-
-  .perks-section {
-    margin-top: 1rem;
-  }
-
-  .perks-section h4 {
-    margin: 0 0 0.5rem 0;
-  }
-
-  .rotation-section {
-    margin-top: 1rem;
-  }
-
-  .rotation-section h4 {
-    margin: 0 0 0.5rem 0;
+  td :global(.fuzzy-select) {
+    width: 100%;
   }
 </style>

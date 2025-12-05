@@ -248,7 +248,7 @@
     }
 
     .main-grid.comparing {
-      grid-template-columns: 1.5fr 1fr 1fr;
+      grid-template-columns: 620px 420px 420px;
       grid-template-areas: "build resultsA resultsB";
     }
 
