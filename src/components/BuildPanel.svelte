@@ -84,34 +84,10 @@
     {/if}
   </div>
 
-  <form class="stats-form" on:submit|preventDefault>
-    {#each basicFields as field}
-      <div class="stat-row">
-        <span class="stat-label">{field.label}</span>
-        <div class="stat-inputs" class:single={!showSecondBuild}>
-          <input
-            type="number"
-            inputmode="numeric"
-            class="input-a"
-            value={buildA.stats[field.key]}
-            on:input={(e) =>
-              setStatA(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
-          {#if showSecondBuild}
-            <input
-              type="number"
-              inputmode="numeric"
-              class="input-b"
-              value={buildB.stats[field.key]}
-              on:input={(e) =>
-                setStatB(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
-          {/if}
-        </div>
-      </div>
-    {/each}
-
-    <details class="advanced" bind:open={showAdvanced}>
-      <summary>More stats</summary>
-      {#each advancedFields as field}
+  <div class="basic-stats-section">
+    <h4>Basic Stats</h4>
+    <form class="stats-form" on:submit|preventDefault>
+      {#each basicFields as field}
         <div class="stat-row">
           <span class="stat-label">{field.label}</span>
           <div class="stat-inputs" class:single={!showSecondBuild}>
@@ -119,7 +95,7 @@
               type="number"
               inputmode="numeric"
               class="input-a"
-              value={buildA.stats[field.key] ?? 0}
+              value={buildA.stats[field.key]}
               on:input={(e) =>
                 setStatA(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
             {#if showSecondBuild}
@@ -127,15 +103,42 @@
                 type="number"
                 inputmode="numeric"
                 class="input-b"
-                value={buildB.stats[field.key] ?? 0}
+                value={buildB.stats[field.key]}
                 on:input={(e) =>
                   setStatB(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
             {/if}
           </div>
         </div>
       {/each}
-    </details>
-  </form>
+
+      <details class="advanced" bind:open={showAdvanced}>
+        <summary>More stats</summary>
+        {#each advancedFields as field}
+          <div class="stat-row">
+            <span class="stat-label">{field.label}</span>
+            <div class="stat-inputs" class:single={!showSecondBuild}>
+              <input
+                type="number"
+                inputmode="numeric"
+                class="input-a"
+                value={buildA.stats[field.key] ?? 0}
+                on:input={(e) =>
+                  setStatA(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
+              {#if showSecondBuild}
+                <input
+                  type="number"
+                  inputmode="numeric"
+                  class="input-b"
+                  value={buildB.stats[field.key] ?? 0}
+                  on:input={(e) =>
+                    setStatB(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
+              {/if}
+            </div>
+          </div>
+        {/each}
+      </details>
+    </form>
+  </div>
 
   <div class="perks-section">
     <h4>Perks</h4>
@@ -272,6 +275,14 @@
 
   details.advanced > .stat-row {
     margin-top: 0.4rem;
+  }
+
+  .basic-stats-section {
+    margin-top: 1rem;
+  }
+
+  .basic-stats-section h4 {
+    margin: 0 0 0.5rem 0;
   }
 
   .perks-section {
