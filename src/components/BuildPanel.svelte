@@ -1,14 +1,20 @@
 <script lang="ts">
   import { perks } from "@data/perks";
+  import { spells } from "@data/spells";
   import FuzzySelect from "./FuzzySelect.svelte";
   import PerkEditor from "./PerkEditor.svelte";
+  import RotationEditor from "./RotationEditor.svelte";
   import type { Build, BuildStats } from "@lib/build-state";
+  import type { RotationSpell } from "@lib/damage-calc";
 
-  const registry = new Map(perks.map((p) => [p.id, p]));
+  const perkRegistry = new Map(perks.map((p) => [p.id, p]));
+  const spellRegistry = new Map(spells.map((s) => [s.id, s]));
 
   export let buildA: Build;
   export let buildB: Build;
   export let showSecondBuild: boolean = false;
+  export let rotationA: RotationSpell[] = [];
+  export let rotationB: RotationSpell[] = [];
 
   function setStatA<K extends keyof BuildStats>(key: K, value: BuildStats[K]) {
     buildA = { ...buildA, stats: { ...buildA.stats, [key]: value } };
@@ -24,8 +30,19 @@
     }
   }
 
+  function addSpellToRotation(id: string) {
+    if (rotationA.some((r) => r.id === id)) return;
+    rotationA = [...rotationA, { id, targets: 1, ratio: 1 }];
+    if (showSecondBuild) {
+      rotationB = [...rotationB, { id, targets: 1, ratio: 1 }];
+    }
+  }
+
   // Get union of perk IDs from both builds
   $: allPerkIds = [...new Set([...buildA.perks.map((p) => p.id), ...buildB.perks.map((p) => p.id)])];
+
+  // Get union of rotation spell IDs from both builds
+  $: allRotationIds = [...new Set([...rotationA.map((r) => r.id), ...rotationB.map((r) => r.id)])];
 
   let showAdvanced =
     Boolean(buildA?.stats?.shielding ?? 0) ||
@@ -129,7 +146,23 @@
       {showSecondBuild}
       onChangeA={(next) => (buildA = { ...buildA, perks: next })}
       onChangeB={(next) => (buildB = { ...buildB, perks: next })}
-      {registry} />
+      registry={perkRegistry} />
+  </div>
+
+  <div class="rotation-section">
+    <h4>Rotation</h4>
+    <FuzzySelect
+      selectType="spells"
+      all={spells.filter((s) => s.id !== "auto-attack")}
+      selectedIds={allRotationIds}
+      onAdd={addSpellToRotation} />
+    <RotationEditor
+      {rotationA}
+      {rotationB}
+      {showSecondBuild}
+      onChangeA={(next) => (rotationA = next)}
+      onChangeB={(next) => (rotationB = next)}
+      registry={spellRegistry} />
   </div>
 </div>
 
@@ -246,6 +279,14 @@
   }
 
   .perks-section h4 {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .rotation-section {
+    margin-top: 1rem;
+  }
+
+  .rotation-section h4 {
     margin: 0 0 0.5rem 0;
   }
 </style>

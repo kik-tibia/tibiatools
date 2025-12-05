@@ -7,7 +7,6 @@
 
   import BuildPanel from "./BuildPanel.svelte";
   import ResultsTable from "./ResultsTable.svelte";
-  import RotationPanel from "./RotationPanel.svelte";
 
   export let initial: CalculatorState;
 
@@ -16,19 +15,20 @@
 
   let showSecondBuild: boolean = !!initial.showSecondBuild;
 
-  let rotation: RotationSpell[] = initial.rotation;
+  let rotationA: RotationSpell[] = initial.rotation;
+  let rotationB: RotationSpell[] = initial.rotation.map((r) => ({ ...r }));
 
   function currentState(): CalculatorState {
     console.log(A);
-    return { A, B, showSecondBuild, rotation };
+    return { A, B, showSecondBuild, rotation: rotationA };
   }
 
   $: resultsA = computeResults(A.stats, A.perks);
   $: resultsB = computeResults(B.stats, B.perks);
-  $: effectiveDptA = computeDpt(resultsA, rotation);
-  $: effectiveDptB = computeDpt(resultsB, rotation);
-  $: effectiveDphA = computeDph(resultsA, rotation);
-  $: effectiveDphB = computeDph(resultsB, rotation);
+  $: effectiveDptA = computeDpt(resultsA, rotationA);
+  $: effectiveDptB = computeDpt(resultsB, rotationB);
+  $: effectiveDphA = computeDph(resultsA, rotationA);
+  $: effectiveDphB = computeDph(resultsB, rotationB);
 
   const toMap = (arr: any[]) => new Map(arr.map((x) => [x.id, x]));
   $: mapA = toMap(resultsA);
@@ -71,7 +71,8 @@
       A = { stats: { ...A.stats, ...st.A.stats }, perks: st.A.perks ?? [] };
       B = { stats: { ...B.stats, ...st.B.stats }, perks: st.B.perks ?? [] };
       showSecondBuild = !!st.showSecondBuild;
-      rotation = st.rotation ?? [];
+      rotationA = st.rotation ?? [];
+      rotationB = st.rotation?.map((r) => ({ ...r })) ?? [];
     };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
@@ -81,7 +82,8 @@
     A;
     B;
     showSecondBuild;
-    rotation;
+    rotationA;
+    rotationB;
     scheduleWrite();
   }
 
@@ -100,7 +102,8 @@
     on:click={() => {
       A = defaultBuild();
       B = defaultBuild();
-      rotation = [];
+      rotationA = [];
+      rotationB = [];
     }}>
     Reset
   </button>
@@ -117,20 +120,16 @@
   {#if showSecondBuild}
     <span class="pct-diff">
       <span class="label-a">A:</span>
-      {pctIncreaseA > 0 ? "+" : ""}{pctIncreaseA.toFixed(1)}%
+      {pctIncreaseA > 0 ? "+" : ""}{pctIncreaseA.toFixed(2)}%
       <span class="label-b">B:</span>
-      {pctIncreaseB > 0 ? "+" : ""}{pctIncreaseB.toFixed(1)}%
+      {pctIncreaseB > 0 ? "+" : ""}{pctIncreaseB.toFixed(2)}%
     </span>
   {/if}
 </section>
 
 <section class="main-grid" class:comparing={showSecondBuild}>
-  <div class="panel rotation-panel">
-    <RotationPanel bind:rotation />
-  </div>
-
   <div class="panel build-panel">
-    <BuildPanel bind:buildA={A} bind:buildB={B} {showSecondBuild} />
+    <BuildPanel bind:buildA={A} bind:buildB={B} bind:rotationA bind:rotationB {showSecondBuild} />
   </div>
 
   <div class="panel results-panel-a">
@@ -244,18 +243,15 @@
     .main-grid {
       display: grid;
       gap: 1rem;
-      grid-template-columns: minmax(250px, 1fr) minmax(300px, 1.2fr) minmax(280px, 1fr);
-      grid-template-areas: "rotation build resultsA";
+      grid-template-columns: minmax(320px, 1.5fr) minmax(280px, 1fr);
+      grid-template-areas: "build resultsA";
     }
 
     .main-grid.comparing {
-      grid-template-columns: minmax(250px, 1fr) minmax(360px, 1.4fr) minmax(250px, 1fr) minmax(250px, 1fr);
-      grid-template-areas: "rotation build resultsA resultsB";
+      grid-template-columns: 1.3fr 1fr 1fr;
+      grid-template-areas: "build resultsA resultsB";
     }
 
-    .rotation-panel {
-      grid-area: rotation;
-    }
     .build-panel {
       grid-area: build;
     }

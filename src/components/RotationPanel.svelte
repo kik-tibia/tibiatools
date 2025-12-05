@@ -23,7 +23,7 @@
       all={spells.filter((s) => s.id !== "auto-attack")}
       selectedIds={rotation.map((rs) => rs.id)}
       onAdd={addSpell} />
-    <RotationEditor active={rotation} onActiveChange={(next) => (rotation = next)} {registry} />
+    <!-- <RotationEditor active={rotation} onActiveChange={(next) => (rotation = next)} {registry} /> -->
   </div>
 </div>
 
