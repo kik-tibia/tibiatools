@@ -58,20 +58,23 @@
   {#if allSpellIds.length > 0}
     <form class="rotation-grid" class:two-builds={showSecondBuild}>
       <div class="header-cell">Spell</div>
-      <div class="header-cell header-group">
-        <span>Targets</span>
-        {#if showSecondBuild}<span class="sub-labels">
-            <span class="label-a">A</span>
-            <span class="label-b">B</span>
-          </span>{/if}
-      </div>
-      <div class="header-cell header-group">
-        <span>Ratio</span>
-        {#if showSecondBuild}<span class="sub-labels">
-            <span class="label-a">A</span>
-            <span class="label-b">B</span>
-          </span>{/if}
-      </div>
+      {#if showSecondBuild}
+        <div class="header-cell header-group">
+          <span class="sub-labels">
+            <span>Targets</span>
+            <span>Ratio</span>
+          </span>
+        </div>
+        <div class="header-cell header-group">
+          <span class="sub-labels">
+            <span>Targets</span>
+            <span>Ratio</span>
+          </span>
+        </div>
+      {:else}
+        <div class="header-cell">Targets</div>
+        <div class="header-cell">Ratio</div>
+      {/if}
       <div class="header-cell"></div>
 
       {#each allSpellIds as id (id)}
@@ -80,18 +83,23 @@
         {@const rotB = getRotationB(id)}
         {#if def}
           <div class="spell-name">{def.name}</div>
-          <div class="input-group" class:single={!showSecondBuild}>
-            <input type="number" class="input-a" value={rotA.targets} on:input={(e) => onInputA(id, "targets", e)} />
-            {#if showSecondBuild}
+          {#if showSecondBuild}
+            <div class="input-group-pair">
+              <input type="number" class="input-a" value={rotA.targets} on:input={(e) => onInputA(id, "targets", e)} />
+              <input type="number" class="input-a" value={rotA.ratio} on:input={(e) => onInputA(id, "ratio", e)} />
+            </div>
+            <div class="input-group-pair">
               <input type="number" class="input-b" value={rotB.targets} on:input={(e) => onInputB(id, "targets", e)} />
-            {/if}
-          </div>
-          <div class="input-group" class:single={!showSecondBuild}>
-            <input type="number" class="input-a" value={rotA.ratio} on:input={(e) => onInputA(id, "ratio", e)} />
-            {#if showSecondBuild}
               <input type="number" class="input-b" value={rotB.ratio} on:input={(e) => onInputB(id, "ratio", e)} />
-            {/if}
-          </div>
+            </div>
+          {:else}
+            <div class="input-single">
+              <input type="number" class="input-a" value={rotA.targets} on:input={(e) => onInputA(id, "targets", e)} />
+            </div>
+            <div class="input-single">
+              <input type="number" class="input-a" value={rotA.ratio} on:input={(e) => onInputA(id, "ratio", e)} />
+            </div>
+          {/if}
           <button type="button" class="remove-btn" aria-label="Remove" on:click={() => remove(id)}>×</button>
         {/if}
       {/each}
@@ -124,40 +132,27 @@
 
   .sub-labels {
     display: flex;
-    gap: 0.25rem;
+    gap: 0.5rem;
     font-size: 0.75rem;
-  }
-
-  .label-a {
-    width: 2.5rem;
-    text-align: center;
-    color: hsl(210, 80%, 70%);
-  }
-
-  .label-b {
-    width: 2.5rem;
-    text-align: center;
-    color: hsl(30, 80%, 70%);
+    color: hsl(0 0% 60%);
   }
 
   .spell-name {
     min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     font-size: 0.9rem;
   }
 
-  .input-group {
+  .input-group-pair {
     display: flex;
     gap: 0.25rem;
   }
 
-  .input-group.single {
+  .input-single {
     width: 2.75rem;
   }
 
-  .input-group input {
+  .input-group-pair input,
+  .input-single input {
     width: 2.5rem;
     padding: 0.2rem 0.3rem;
     font: inherit;
@@ -169,15 +164,17 @@
     text-align: center;
   }
 
-  .input-group input.input-a {
+  .input-group-pair input.input-a,
+  .input-single input.input-a {
     border-color: hsl(210, 50%, 40%);
   }
 
-  .input-group input.input-b {
+  .input-group-pair input.input-b {
     border-color: hsl(30, 50%, 40%);
   }
 
-  .input-group input:focus {
+  .input-group-pair input:focus,
+  .input-single input:focus {
     outline: none;
     box-shadow: 0 0 0 2px hsl(220 90% 65% / 0.3);
   }
