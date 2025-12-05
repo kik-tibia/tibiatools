@@ -169,6 +169,7 @@
         <td>
           <input
             type="number"
+            step="any"
             inputmode="numeric"
             class="input-a"
             value={buildA.stats[field.key]}
@@ -179,6 +180,7 @@
           <td>
             <input
               type="number"
+              step="any"
               inputmode="numeric"
               class="input-b"
               value={buildB.stats[field.key]}
@@ -223,6 +225,7 @@
             <div class="input-with-remove">
               <input
                 type="number"
+                step="any"
                 class="input-a"
                 value={getPerkValueA(id)}
                 on:input={(e) => setPerkValueA(id, Number(e.currentTarget.value))} />
@@ -234,6 +237,7 @@
               <div class="input-with-remove">
                 <input
                   type="number"
+                  step="any"
                   class="input-b"
                   value={getPerkValueB(id)}
                   on:input={(e) => setPerkValueB(id, Number(e.currentTarget.value))} />
@@ -277,11 +281,13 @@
             <div class="input-with-remove">
               <input
                 type="number"
+                step="any"
                 class="input-a small"
                 value={rotA.targets}
                 on:input={(e) => setRotationValueA(id, "targets", Number(e.currentTarget.value))} />
               <input
                 type="number"
+                step="any"
                 class="input-a small"
                 value={rotA.ratio}
                 on:input={(e) => setRotationValueA(id, "ratio", Number(e.currentTarget.value))} />
@@ -295,11 +301,13 @@
               <div class="input-with-remove">
                 <input
                   type="number"
+                  step="any"
                   class="input-b small"
                   value={rotB.targets}
                   on:input={(e) => setRotationValueB(id, "targets", Number(e.currentTarget.value))} />
                 <input
                   type="number"
+                  step="any"
                   class="input-b small"
                   value={rotB.ratio}
                   on:input={(e) => setRotationValueB(id, "ratio", Number(e.currentTarget.value))} />
@@ -390,9 +398,13 @@
     font-size: 0.9rem;
   }
 
+  input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   /* Inputs */
   input[type="number"] {
-    width: 5rem;
     padding: 0.25rem 0.4rem;
     font: inherit;
     border: 1px solid hsl(0 0% 40%);
@@ -400,6 +412,13 @@
     background: hsl(220 10% 15%);
     color: inherit;
     text-align: right;
+    -moz-appearance: textfield;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
   input.input-a {
@@ -415,16 +434,17 @@
     box-shadow: 0 0 0 2px hsl(220 90% 65% / 0.3);
   }
 
-  input.small {
-    width: 2.5rem;
-    text-align: center;
-  }
-
   /* Input with remove button */
   .input-with-remove {
     display: flex;
     align-items: center;
     gap: 0.25rem;
+  }
+
+  .input-with-remove input[type="number"] {
+    flex: 1;
+    min-width: 0;
+    width: auto;
   }
 
   /* Toggle button */
