@@ -117,14 +117,6 @@
     }}>
     {showSecondBuild ? "Hide comparison" : "Compare builds"}
   </button>
-  {#if showSecondBuild}
-    <span class="pct-diff">
-      <span class="label-a">A:</span>
-      {pctIncreaseA > 0 ? "+" : ""}{pctIncreaseA.toFixed(2)}%
-      <span class="label-b">B:</span>
-      {pctIncreaseB > 0 ? "+" : ""}{pctIncreaseB.toFixed(2)}%
-    </span>
-  {/if}
 </section>
 
 <section class="main-grid" class:comparing={showSecondBuild}>
@@ -136,6 +128,9 @@
     <h3 class="results-title">
       {#if showSecondBuild}
         <span class="build-indicator build-a">Build A</span>
+        <span class="pct-diff" class:positive={pctIncreaseA > 0} class:negative={pctIncreaseA < 0}>
+          {pctIncreaseA > 0 ? "+" : ""}{pctIncreaseA.toFixed(2)}%
+        </span>
       {:else}
         Results
       {/if}
@@ -153,6 +148,9 @@
     <div class="panel results-panel-b">
       <h3 class="results-title">
         <span class="build-indicator build-b">Build B</span>
+        <span class="pct-diff" class:positive={pctIncreaseB > 0} class:negative={pctIncreaseB < 0}>
+          {pctIncreaseB > 0 ? "+" : ""}{pctIncreaseB.toFixed(2)}%
+        </span>
       </h3>
       <ResultsTable
         results={resultsB}
@@ -195,24 +193,6 @@
     border-color: hsl(220 50% 45%);
   }
 
-  .pct-diff {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.75rem;
-    background: hsl(220 10% 15%);
-    border-radius: 0.5rem;
-  }
-
-  .label-a {
-    color: hsl(210, 80%, 70%);
-    font-weight: 600;
-  }
-
-  .label-b {
-    color: hsl(30, 80%, 70%);
-    font-weight: 600;
-    margin-left: 0.75rem;
-  }
-
   .panel {
     display: grid;
     grid-template-rows: auto 1fr;
@@ -221,6 +201,9 @@
 
   .results-title {
     margin: 0 0 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
 
   .build-indicator {
@@ -237,6 +220,22 @@
   .build-indicator.build-b {
     background: rgba(255, 180, 100, 0.2);
     color: hsl(30, 80%, 70%);
+  }
+
+  .pct-diff {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    background: hsl(220 10% 15%);
+    border-radius: 0.25rem;
+  }
+
+  .pct-diff.positive {
+    color: hsl(120, 60%, 60%);
+  }
+
+  .pct-diff.negative {
+    color: hsl(0, 60%, 65%);
   }
 
   @media (min-width: 900px) {
