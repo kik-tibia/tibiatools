@@ -252,10 +252,8 @@
     <!-- ==================== ROTATION SECTION ==================== -->
     <tr class="section-header">
       <td><h4>Rotation</h4></td>
-      <td class="sub-header">{allRotationIds.length > 0 ? "Targets / Ratio" : ""}</td>
-      {#if showSecondBuild}
-        <td class="sub-header">{allRotationIds.length > 0 ? "Targets / Ratio" : ""}</td>
-      {/if}
+      <td></td>
+      {#if showSecondBuild}<td></td>{/if}
     </tr>
 
     <tr class="data-row">
@@ -266,8 +264,10 @@
           selectedIds={allRotationIds}
           onAdd={addSpellToRotation} />
       </td>
-      <td></td>
-      {#if showSecondBuild}<td></td>{/if}
+      <td class="sub-header">{allRotationIds.length > 0 ? "Targets / Ratio" : ""}</td>
+      {#if showSecondBuild}
+        <td class="sub-header">{allRotationIds.length > 0 ? "Targets / Ratio" : ""}</td>
+      {/if}
     </tr>
 
     {#each allRotationIds as id (id)}
