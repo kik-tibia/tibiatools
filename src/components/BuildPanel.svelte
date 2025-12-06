@@ -100,11 +100,7 @@
     rotationB = rotationB.filter((r) => r.id !== id);
   }
 
-  let showAdvanced =
-    Boolean(buildA?.stats?.shielding ?? 0) ||
-    Boolean(buildA?.stats?.fishing ?? 0) ||
-    Boolean(buildB?.stats?.shielding ?? 0) ||
-    Boolean(buildB?.stats?.fishing ?? 0);
+  let showAdvanced = false;
 
   type StatField = {
     key: keyof BuildStats;
@@ -126,10 +122,7 @@
   ];
 
   $: basicFields = statFields.filter((f) => !f.advanced);
-  $: advancedFields = statFields.filter((f) => f.advanced);
   $: visibleFields = showAdvanced ? statFields : basicFields;
-
-  $: colCount = showSecondBuild ? 3 : 2;
 </script>
 
 <table class="build-table" class:two-builds={showSecondBuild}>
@@ -444,6 +437,7 @@
     color: inherit;
     text-align: right;
     -moz-appearance: textfield;
+    appearance: textfield;
   }
 
   input[type="number"]::-webkit-outer-spin-button,
