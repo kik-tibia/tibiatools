@@ -180,7 +180,9 @@
 
   .field-tip .tip-content {
     position: absolute;
-    top: -5px;
+    top: -5rem;
+    left: auto;
+    right: 0;
     font-size: 0.8rem;
     white-space: normal;
     display: inline-block;
