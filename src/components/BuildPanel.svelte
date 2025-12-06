@@ -264,9 +264,23 @@
           selectedIds={allRotationIds}
           onAdd={addSpellToRotation} />
       </td>
-      <td class="sub-header">{allRotationIds.length > 0 ? "Targets / Ratio" : ""}</td>
+      <td class="sub-header rotation-label-cell">
+        {#if allRotationIds.length > 0}
+          <div class="rotation-labels">
+            <span>Targets</span>
+            <span>Ratio</span>
+          </div>
+        {/if}
+      </td>
       {#if showSecondBuild}
-        <td class="sub-header">{allRotationIds.length > 0 ? "Targets / Ratio" : ""}</td>
+        <td class="sub-header rotation-label-cell">
+          {#if allRotationIds.length > 0}
+            <div class="rotation-labels">
+              <span>Targets</span>
+              <span>Ratio</span>
+            </div>
+          {/if}
+        </td>
       {/if}
     </tr>
 
@@ -391,6 +405,23 @@
   .sub-header {
     font-size: 0.75rem;
     color: hsl(0 0% 60%);
+  }
+
+  .rotation-label-cell {
+    padding-bottom: 0;
+    vertical-align: bottom;
+  }
+
+  /* Rotation labels - align with inputs below */
+  .rotation-labels {
+    display: flex;
+    gap: 0.25rem;
+    padding-right: 1.65rem; /* account for remove button width */
+  }
+
+  .rotation-labels span {
+    flex: 1;
+    text-align: center;
   }
 
   /* Item names (perks, spells) */
