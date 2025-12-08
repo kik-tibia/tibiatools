@@ -36,15 +36,21 @@
     }
   }
 
-  // Perk helpers
-  $: allPerkIds = [...new Set([...buildA.perks.map((p) => p.id), ...buildB.perks.map((p) => p.id)])];
+  // Perk helpers - maintain stable order
+  let perkOrder: string[] = [];
+  $: {
+    const currentIds = new Set([...buildA.perks.map((p) => p.id), ...buildB.perks.map((p) => p.id)]);
+    // Remove IDs that are no longer in either build
+    perkOrder = perkOrder.filter((id) => currentIds.has(id));
+    // Add any new IDs that aren't in our order yet
+    for (const id of currentIds) {
+      if (!perkOrder.includes(id)) {
+        perkOrder.push(id);
+      }
+    }
+  }
+  $: allPerkIds = perkOrder;
 
-  function getPerkValueA(id: string): number {
-    return buildA.perks.find((p) => p.id === id)?.value ?? 0;
-  }
-  function getPerkValueB(id: string): number {
-    return buildB.perks.find((p) => p.id === id)?.value ?? 0;
-  }
   function setPerkValueA(id: string, v: number) {
     const exists = buildA.perks.some((p) => p.id === id);
     if (exists) {
@@ -68,15 +74,21 @@
     buildB = { ...buildB, perks: buildB.perks.filter((a) => a.id !== id) };
   }
 
-  // Rotation helpers
-  $: allRotationIds = [...new Set([...rotationA.map((r) => r.id), ...rotationB.map((r) => r.id)])];
+  // Rotation helpers - maintain stable order
+  let rotationOrder: string[] = [];
+  $: {
+    const currentIds = new Set([...rotationA.map((r) => r.id), ...rotationB.map((r) => r.id)]);
+    // Remove IDs that are no longer in either build
+    rotationOrder = rotationOrder.filter((id) => currentIds.has(id));
+    // Add any new IDs that aren't in our order yet
+    for (const id of currentIds) {
+      if (!rotationOrder.includes(id)) {
+        rotationOrder.push(id);
+      }
+    }
+  }
+  $: allRotationIds = rotationOrder;
 
-  function getRotationA(id: string): RotationSpell {
-    return rotationA.find((r) => r.id === id) ?? { id, targets: 1, ratio: 1 };
-  }
-  function getRotationB(id: string): RotationSpell {
-    return rotationB.find((r) => r.id === id) ?? { id, targets: 1, ratio: 1 };
-  }
   function setRotationValueA(id: string, field: "targets" | "ratio", v: number) {
     const exists = rotationA.some((r) => r.id === id);
     if (exists) {
@@ -92,6 +104,12 @@
     } else {
       rotationB = [...rotationB, { id, targets: field === "targets" ? v : 1, ratio: field === "ratio" ? v : 1 }];
     }
+  }
+  function addRotationA(id: string) {
+    rotationA = [...rotationA, { id, targets: 1, ratio: 1 }];
+  }
+  function addRotationB(id: string) {
+    rotationB = [...rotationB, { id, targets: 1, ratio: 1 }];
   }
   function removeRotationA(id: string) {
     rotationA = rotationA.filter((r) => r.id !== id);
@@ -215,27 +233,53 @@
         <tr class="data-row">
           <td class="item-name">{def.name}</td>
           <td>
-            <div class="input-with-remove">
-              <input
-                type="number"
-                step="any"
-                class="input-a"
-                value={getPerkValueA(id)}
-                on:input={(e) => setPerkValueA(id, Number(e.currentTarget.value))} />
-              <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removePerkA(id)}>×</button>
-            </div>
-          </td>
-          {#if showSecondBuild}
-            <td>
+            {#if buildA.perks.some((p) => p.id === id)}
               <div class="input-with-remove">
                 <input
                   type="number"
                   step="any"
-                  class="input-b"
-                  value={getPerkValueB(id)}
-                  on:input={(e) => setPerkValueB(id, Number(e.currentTarget.value))} />
-                <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removePerkB(id)}>×</button>
+                  class="input-a"
+                  value={buildA.perks.find((p) => p.id === id)?.value ?? 0}
+                  on:input={(e) => setPerkValueA(id, Number(e.currentTarget.value))} />
+                <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removePerkA(id)}>×</button>
               </div>
+            {:else}
+              <div class="add-placeholder">
+                <button
+                  type="button"
+                  class="add-btn input-a"
+                  aria-label="Add to Build A"
+                  on:click={() => setPerkValueA(id, 0)}>
+                  +
+                </button>
+              </div>
+            {/if}
+          </td>
+          {#if showSecondBuild}
+            <td>
+              {#if buildB.perks.some((p) => p.id === id)}
+                <div class="input-with-remove">
+                  <input
+                    type="number"
+                    step="any"
+                    class="input-b"
+                    value={buildB.perks.find((p) => p.id === id)?.value ?? 0}
+                    on:input={(e) => setPerkValueB(id, Number(e.currentTarget.value))} />
+                  <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removePerkB(id)}>
+                    ×
+                  </button>
+                </div>
+              {:else}
+                <div class="add-placeholder">
+                  <button
+                    type="button"
+                    class="add-btn input-b"
+                    aria-label="Add to Build B"
+                    on:click={() => setPerkValueB(id, 0)}>
+                    +
+                  </button>
+                </div>
+              {/if}
             </td>
           {/if}
         </tr>
@@ -279,49 +323,71 @@
 
     {#each allRotationIds as id (id)}
       {@const def = spellRegistry.get(id)}
-      {@const rotA = getRotationA(id)}
-      {@const rotB = getRotationB(id)}
       {#if def}
         <tr class="data-row">
           <td class="item-name">{def.name}</td>
           <td>
-            <div class="input-with-remove">
-              <input
-                type="number"
-                step="any"
-                class="input-a small"
-                value={rotA.targets}
-                on:input={(e) => setRotationValueA(id, "targets", Number(e.currentTarget.value))} />
-              <input
-                type="number"
-                step="any"
-                class="input-a small"
-                value={rotA.ratio}
-                on:input={(e) => setRotationValueA(id, "ratio", Number(e.currentTarget.value))} />
-              <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removeRotationA(id)}>
-                ×
-              </button>
-            </div>
-          </td>
-          {#if showSecondBuild}
-            <td>
+            {#if rotationA.some((r) => r.id === id)}
               <div class="input-with-remove">
                 <input
                   type="number"
                   step="any"
-                  class="input-b small"
-                  value={rotB.targets}
-                  on:input={(e) => setRotationValueB(id, "targets", Number(e.currentTarget.value))} />
+                  class="input-a small"
+                  value={rotationA.find((r) => r.id === id)?.targets ?? 1}
+                  on:input={(e) => setRotationValueA(id, "targets", Number(e.currentTarget.value))} />
                 <input
                   type="number"
                   step="any"
-                  class="input-b small"
-                  value={rotB.ratio}
-                  on:input={(e) => setRotationValueB(id, "ratio", Number(e.currentTarget.value))} />
-                <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removeRotationB(id)}>
+                  class="input-a small"
+                  value={rotationA.find((r) => r.id === id)?.ratio ?? 1}
+                  on:input={(e) => setRotationValueA(id, "ratio", Number(e.currentTarget.value))} />
+                <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removeRotationA(id)}>
                   ×
                 </button>
               </div>
+            {:else}
+              <div class="add-placeholder">
+                <button
+                  type="button"
+                  class="add-btn input-a"
+                  aria-label="Add to Build A"
+                  on:click={() => addRotationA(id)}>
+                  +
+                </button>
+              </div>
+            {/if}
+          </td>
+          {#if showSecondBuild}
+            <td>
+              {#if rotationB.some((r) => r.id === id)}
+                <div class="input-with-remove">
+                  <input
+                    type="number"
+                    step="any"
+                    class="input-b small"
+                    value={rotationB.find((r) => r.id === id)?.targets ?? 1}
+                    on:input={(e) => setRotationValueB(id, "targets", Number(e.currentTarget.value))} />
+                  <input
+                    type="number"
+                    step="any"
+                    class="input-b small"
+                    value={rotationB.find((r) => r.id === id)?.ratio ?? 1}
+                    on:input={(e) => setRotationValueB(id, "ratio", Number(e.currentTarget.value))} />
+                  <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removeRotationB(id)}>
+                    ×
+                  </button>
+                </div>
+              {:else}
+                <div class="add-placeholder">
+                  <button
+                    type="button"
+                    class="add-btn input-b"
+                    aria-label="Add to Build B"
+                    on:click={() => addRotationB(id)}>
+                    +
+                  </button>
+                </div>
+              {/if}
             </td>
           {/if}
         </tr>
@@ -504,6 +570,49 @@
   .remove-btn:hover {
     background: hsl(0, 50%, 30%);
     border-color: hsl(0, 50%, 40%);
+  }
+
+  /* Add placeholder and button */
+  .add-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .add-btn {
+    padding: 0.25rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1;
+    background: transparent;
+    border: 1px dashed hsl(0 0% 40%);
+    border-radius: 0.25rem;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.7;
+    transition:
+      opacity 0.15s,
+      background-color 0.15s;
+  }
+
+  .add-btn:hover {
+    opacity: 1;
+    background: hsl(220 10% 20%);
+  }
+
+  .add-btn.input-a {
+    border-color: hsl(210, 50%, 40%);
+  }
+
+  .add-btn.input-a:hover {
+    background: hsl(210, 30%, 25%);
+  }
+
+  .add-btn.input-b {
+    border-color: hsl(30, 50%, 40%);
+  }
+
+  .add-btn.input-b:hover {
+    background: hsl(30, 30%, 25%);
   }
 
   td :global(.fuzzy-select) {
