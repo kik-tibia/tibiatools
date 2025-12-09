@@ -73,7 +73,7 @@
     buildB = { ...buildB, perks: buildB.perks.filter((a) => a.id !== id) };
   }
 
-  // Rotation helpers - maintain stable order
+  // Rotation helpers - maintain stable order, with auto-attack always first
   let rotationOrder: string[] = [];
   $: {
     const currentIds = new Set([...buildA.rotation.map((r) => r.id), ...buildB.rotation.map((r) => r.id)]);
@@ -86,7 +86,12 @@
       }
     }
   }
-  $: allRotationIds = rotationOrder;
+  // Sort to always show auto-attack first
+  $: allRotationIds = rotationOrder.toSorted((a, b) => {
+    if (a === "auto-attack") return -1;
+    if (b === "auto-attack") return 1;
+    return 0;
+  });
 
   function setRotationValueA(id: string, field: "targets" | "ratio", v: number) {
     const exists = buildA.rotation.some((r) => r.id === id);
@@ -151,6 +156,9 @@
 
   $: basicFields = statFields.filter((f) => !f.advanced);
   $: visibleFields = showAdvanced ? statFields : basicFields;
+
+  // Helper to check if a spell is auto-attack
+  const isAutoAttack = (id: string) => id === "auto-attack";
 </script>
 
 <table class="build-table" class:two-builds={showSecondBuild}>
@@ -305,11 +313,7 @@
 
     <tr class="data-row">
       <td>
-        <FuzzySelect
-          selectType="spells"
-          all={spells.filter((s) => s.id !== "auto-attack")}
-          selectedIds={allRotationIds}
-          onAdd={addSpellToRotation} />
+        <FuzzySelect selectType="spells" all={spells} selectedIds={allRotationIds} onAdd={addSpellToRotation} />
       </td>
       <td class="sub-header rotation-label-cell">
         {#if allRotationIds.length > 0}
@@ -333,6 +337,7 @@
 
     {#each allRotationIds as id (id)}
       {@const def = spellRegistry.get(id)}
+      {@const isAuto = isAutoAttack(id)}
       {#if def}
         <tr class="data-row">
           <td class="item-name">{def.name}</td>
@@ -345,13 +350,20 @@
                   class="input-a small"
                   value={buildA.rotation.find((r) => r.id === id)?.targets ?? 1}
                   on:input={(e) => setRotationValueA(id, "targets", Number(e.currentTarget.value))} />
-                <input
-                  type="number"
-                  step="any"
-                  class="input-a small"
-                  value={buildA.rotation.find((r) => r.id === id)?.ratio ?? 1}
-                  on:input={(e) => setRotationValueA(id, "ratio", Number(e.currentTarget.value))} />
-                <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removeRotationA(id)}>
+                {#if !isAuto}
+                  <input
+                    type="number"
+                    step="any"
+                    class="input-a small"
+                    value={buildA.rotation.find((r) => r.id === id)?.ratio ?? 1}
+                    on:input={(e) => setRotationValueA(id, "ratio", Number(e.currentTarget.value))} />
+                {/if}
+                <button
+                  type="button"
+                  class="remove-btn"
+                  class:push-right={isAuto}
+                  aria-label="Remove"
+                  on:click={() => removeRotationA(id)}>
                   ×
                 </button>
               </div>
@@ -377,13 +389,20 @@
                     class="input-b small"
                     value={buildB.rotation.find((r) => r.id === id)?.targets ?? 1}
                     on:input={(e) => setRotationValueB(id, "targets", Number(e.currentTarget.value))} />
-                  <input
-                    type="number"
-                    step="any"
-                    class="input-b small"
-                    value={buildB.rotation.find((r) => r.id === id)?.ratio ?? 1}
-                    on:input={(e) => setRotationValueB(id, "ratio", Number(e.currentTarget.value))} />
-                  <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removeRotationB(id)}>
+                  {#if !isAuto}
+                    <input
+                      type="number"
+                      step="any"
+                      class="input-b small"
+                      value={buildB.rotation.find((r) => r.id === id)?.ratio ?? 1}
+                      on:input={(e) => setRotationValueB(id, "ratio", Number(e.currentTarget.value))} />
+                  {/if}
+                  <button
+                    type="button"
+                    class="remove-btn"
+                    class:push-right={isAuto}
+                    aria-label="Remove"
+                    on:click={() => removeRotationB(id)}>
                     ×
                   </button>
                 </div>
@@ -543,9 +562,18 @@
   }
 
   .input-with-remove input[type="number"] {
-    flex: 1;
+    flex: 1 1 0;
     min-width: 0;
     width: auto;
+  }
+
+  .input-with-remove input[type="number"].small {
+    flex: 0 0 auto;
+    width: 3.2rem;
+  }
+
+  .input-with-remove input[type="number"].small:nth-child(2) {
+    margin-left: auto;
   }
 
   /* Toggle button */
@@ -575,6 +603,10 @@
     color: inherit;
     cursor: pointer;
     flex-shrink: 0;
+  }
+
+  .remove-btn.push-right {
+    margin-left: auto;
   }
 
   .remove-btn:hover {

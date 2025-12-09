@@ -157,13 +157,20 @@ export const computeResults = (inp: BuildStats, activePerks: ActivePerk[]) => {
 
 // damage per turn
 export const computeDpt = (spellDamages: SpellDamage[], rotation: RotationSpell[]) => {
-  const ratioSum = rotation.reduce((sum, r) => sum + r.ratio, 0);
-  const autoAttackDamage = spellDamages.find((s) => s.id == "auto-attack")?.effectiveAvg ?? 0;
+  const hasAutoAttack = rotation.some((r) => r.id === "auto-attack");
+  const spellRotation = rotation.filter((r) => r.id !== "auto-attack");
+  const ratioSum = spellRotation.reduce((sum, r) => sum + r.ratio, 0);
+
+  const autoAttackDamage = hasAutoAttack
+    ? (spellDamages.find((s) => s.id === "auto-attack")?.effectiveAvg ?? 0) *
+      (rotation.find((r) => r.id === "auto-attack")?.targets ?? 1)
+    : 0;
+
   return (
     autoAttackDamage +
-    rotation.reduce((damage, r) => {
-      const spellDamage = spellDamages.find((s) => s.id == r.id)?.effectiveAvg ?? 0;
-      const weightedDamage = (spellDamage * r.targets * r.ratio) / ratioSum;
+    spellRotation.reduce((damage, r) => {
+      const spellDamage = spellDamages.find((s) => s.id === r.id)?.effectiveAvg ?? 0;
+      const weightedDamage = ratioSum > 0 ? (spellDamage * r.targets * r.ratio) / ratioSum : 0;
       return damage + weightedDamage;
     }, 0)
   );
@@ -171,12 +178,29 @@ export const computeDpt = (spellDamages: SpellDamage[], rotation: RotationSpell[
 
 // damage per hit
 export const computeDph = (spellDamages: SpellDamage[], rotation: RotationSpell[]) => {
-  const ratioSum = rotation.reduce((sum, r) => sum + r.ratio, 0);
-  rotation = [...rotation, { id: "auto-attack", targets: 1, ratio: ratioSum }];
-  const ratioTargetSum = rotation.reduce((sum, r) => sum + r.targets * r.ratio, 0);
+  const hasAutoAttack = rotation.some((r) => r.id === "auto-attack");
+  const spellRotation = rotation.filter((r) => r.id !== "auto-attack");
+  const ratioSum = spellRotation.reduce((sum, r) => sum + r.ratio, 0);
+
+  // Build the full rotation including auto-attack if present
+  const fullRotation = hasAutoAttack
+    ? [
+        ...spellRotation,
+        {
+          id: "auto-attack",
+          targets: rotation.find((r) => r.id === "auto-attack")?.targets ?? 1,
+          ratio: ratioSum || 1,
+        },
+      ]
+    : spellRotation;
+
+  const ratioTargetSum = fullRotation.reduce((sum, r) => sum + r.targets * r.ratio, 0);
+
+  if (ratioTargetSum === 0) return 0;
+
   return (
-    rotation.reduce((damage, r) => {
-      const spellDamage = spellDamages.find((s) => s.id == r.id)?.effectiveAvg ?? 0;
+    fullRotation.reduce((damage, r) => {
+      const spellDamage = spellDamages.find((s) => s.id === r.id)?.effectiveAvg ?? 0;
       const weightedDamage = spellDamage * r.targets * r.ratio;
       return damage + weightedDamage;
     }, 0) / ratioTargetSum
