@@ -32,10 +32,11 @@
   $: mapB = toMap(resultsB);
   const isAHigher = (id: string) => Number(mapA.get(id)?.effectiveAvg) >= Number(mapB.get(id)?.effectiveAvg);
   const isBHigher = (id: string) => Number(mapB.get(id)?.effectiveAvg) >= Number(mapA.get(id)?.effectiveAvg);
-  $: isDptAHigher = effectiveDptA >= effectiveDptB;
-  $: isDptBHigher = effectiveDptB >= effectiveDptA;
-  $: isDphAHigher = effectiveDphA >= effectiveDphB;
-  $: isDphBHigher = effectiveDphB >= effectiveDphA;
+  const epsilon = 1e-9;
+  $: isDptAHigher = effectiveDptA >= effectiveDptB - epsilon;
+  $: isDptBHigher = effectiveDptB >= effectiveDptA - epsilon;
+  $: isDphAHigher = effectiveDphA >= effectiveDphB - epsilon;
+  $: isDphBHigher = effectiveDphB >= effectiveDphA - epsilon;
   $: pctIncreaseA = (effectiveDptA / effectiveDptB - 1) * 100;
   $: pctIncreaseB = (effectiveDptB / effectiveDptA - 1) * 100;
 

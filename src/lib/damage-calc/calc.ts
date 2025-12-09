@@ -171,16 +171,14 @@ export const computeDpt = (spellDamages: SpellDamage[], rotation: RotationSpell[
 
 // damage per hit
 export const computeDph = (spellDamages: SpellDamage[], rotation: RotationSpell[]) => {
-  // the +1 is for auto-attacks (would need to be +1 * targets for diamond arrows)
-  const ratioSum = rotation.reduce((sum, r) => sum + r.targets * r.ratio, 0) + 1;
-  const autoAttackDamage = spellDamages.find((s) => s.id == "auto-attack")?.effectiveAvg ?? 0;
+  const ratioSum = rotation.reduce((sum, r) => sum + r.ratio, 0);
+  rotation = [...rotation, { id: "auto-attack", targets: 1, ratio: ratioSum }];
+  const ratioTargetSum = rotation.reduce((sum, r) => sum + r.targets * r.ratio, 0);
   return (
-    (rotation.reduce((damage, r) => {
+    rotation.reduce((damage, r) => {
       const spellDamage = spellDamages.find((s) => s.id == r.id)?.effectiveAvg ?? 0;
       const weightedDamage = spellDamage * r.targets * r.ratio;
       return damage + weightedDamage;
-    }, 0) +
-      autoAttackDamage) /
-    ratioSum
+    }, 0) / ratioTargetSum
   );
 };
