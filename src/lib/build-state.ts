@@ -13,13 +13,12 @@ export type BuildStats = {
   fishing: number | null;
 };
 
-export type Build = { stats: BuildStats; perks: ActivePerk[] };
+export type Build = { stats: BuildStats; perks: ActivePerk[]; rotation: RotationSpell[] };
 
 export type CalculatorState = {
   A: Build;
   B: Build;
   showSecondBuild: boolean;
-  rotation: RotationSpell[];
 };
 
 const defaultStats = () => ({
@@ -38,11 +37,11 @@ const defaultStats = () => ({
 export const defaultBuild = () => ({
   stats: defaultStats(),
   perks: [],
+  rotation: [],
 });
 
 export const defaultState = (): CalculatorState => ({
   A: defaultBuild(),
   B: defaultBuild(),
   showSecondBuild: false,
-  rotation: [],
 });

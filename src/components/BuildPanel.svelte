@@ -3,7 +3,6 @@
   import { spells } from "@data/spells";
   import FuzzySelect from "./FuzzySelect.svelte";
   import type { Build, BuildStats } from "@lib/build-state";
-  import type { RotationSpell } from "@lib/damage-calc";
 
   const perkRegistry = new Map(perks.map((p) => [p.id, p]));
   const spellRegistry = new Map(spells.map((s) => [s.id, s]));
@@ -11,8 +10,6 @@
   export let buildA: Build;
   export let buildB: Build;
   export let showSecondBuild: boolean = false;
-  export let rotationA: RotationSpell[] = [];
-  export let rotationB: RotationSpell[] = [];
 
   function setStatA<K extends keyof BuildStats>(key: K, value: BuildStats[K]) {
     buildA = { ...buildA, stats: { ...buildA.stats, [key]: value } };
@@ -28,11 +25,11 @@
     }
   }
 
+  // TODO defense against adding same spell twice
   function addSpellToRotation(id: string) {
-    if (rotationA.some((r) => r.id === id)) return;
-    rotationA = [...rotationA, { id, targets: 1, ratio: 1 }];
+    buildA = { ...buildA, rotation: [...buildA.rotation, { id, targets: 1, ratio: 1 }] };
     if (showSecondBuild) {
-      rotationB = [...rotationB, { id, targets: 1, ratio: 1 }];
+      buildB = { ...buildB, rotation: [...buildB.rotation, { id, targets: 1, ratio: 1 }] };
     }
   }
 
@@ -54,18 +51,20 @@
   function setPerkValueA(id: string, v: number) {
     const exists = buildA.perks.some((p) => p.id === id);
     if (exists) {
-      buildA = { ...buildA, perks: buildA.perks.map((a) => (a.id === id ? { ...a, value: v } : a)) };
+      buildA.perks = buildA.perks.map((a) => (a.id === id ? { ...a, value: v } : a));
     } else {
-      buildA = { ...buildA, perks: [...buildA.perks, { id, value: v }] };
+      buildA.perks = [...buildA.perks, { id, value: v }];
     }
+    buildA = buildA;
   }
   function setPerkValueB(id: string, v: number) {
     const exists = buildB.perks.some((p) => p.id === id);
     if (exists) {
-      buildB = { ...buildB, perks: buildB.perks.map((a) => (a.id === id ? { ...a, value: v } : a)) };
+      buildB.perks = buildB.perks.map((a) => (a.id === id ? { ...a, value: v } : a));
     } else {
-      buildB = { ...buildB, perks: [...buildB.perks, { id, value: v }] };
+      buildB.perks = [...buildB.perks, { id, value: v }];
     }
+    buildB = buildB;
   }
   function removePerkA(id: string) {
     buildA = { ...buildA, perks: buildA.perks.filter((a) => a.id !== id) };
@@ -77,7 +76,7 @@
   // Rotation helpers - maintain stable order
   let rotationOrder: string[] = [];
   $: {
-    const currentIds = new Set([...rotationA.map((r) => r.id), ...rotationB.map((r) => r.id)]);
+    const currentIds = new Set([...buildA.rotation.map((r) => r.id), ...buildB.rotation.map((r) => r.id)]);
     // Remove IDs that are no longer in either build
     rotationOrder = rotationOrder.filter((id) => currentIds.has(id));
     // Add any new IDs that aren't in our order yet
@@ -90,32 +89,43 @@
   $: allRotationIds = rotationOrder;
 
   function setRotationValueA(id: string, field: "targets" | "ratio", v: number) {
-    const exists = rotationA.some((r) => r.id === id);
+    const exists = buildA.rotation.some((r) => r.id === id);
     if (exists) {
-      rotationA = rotationA.map((r) => (r.id === id ? { ...r, [field]: v } : r));
+      buildA.rotation = buildA.rotation.map((r) => (r.id === id ? { ...r, [field]: v } : r));
     } else {
-      rotationA = [...rotationA, { id, targets: field === "targets" ? v : 1, ratio: field === "ratio" ? v : 1 }];
+      buildA.rotation = [
+        ...buildA.rotation,
+        { id, targets: field === "targets" ? v : 1, ratio: field === "ratio" ? v : 1 },
+      ];
     }
+    buildA = buildA;
   }
   function setRotationValueB(id: string, field: "targets" | "ratio", v: number) {
-    const exists = rotationB.some((r) => r.id === id);
+    const exists = buildB.rotation.some((r) => r.id === id);
     if (exists) {
-      rotationB = rotationB.map((r) => (r.id === id ? { ...r, [field]: v } : r));
+      buildB.rotation = buildB.rotation.map((r) => (r.id === id ? { ...r, [field]: v } : r));
     } else {
-      rotationB = [...rotationB, { id, targets: field === "targets" ? v : 1, ratio: field === "ratio" ? v : 1 }];
+      buildB.rotation = [
+        ...buildB.rotation,
+        { id, targets: field === "targets" ? v : 1, ratio: field === "ratio" ? v : 1 },
+      ];
     }
+    buildB = buildB;
   }
+
   function addRotationA(id: string) {
-    rotationA = [...rotationA, { id, targets: 1, ratio: 1 }];
+    buildA.rotation = [...buildA.rotation, { id, targets: 1, ratio: 1 }];
+    buildA = buildA;
   }
   function addRotationB(id: string) {
-    rotationB = [...rotationB, { id, targets: 1, ratio: 1 }];
+    buildB.rotation = [...buildB.rotation, { id, targets: 1, ratio: 1 }];
+    buildB = buildB;
   }
   function removeRotationA(id: string) {
-    rotationA = rotationA.filter((r) => r.id !== id);
+    buildA = { ...buildA, rotation: buildA.rotation.filter((a) => a.id !== id) };
   }
   function removeRotationB(id: string) {
-    rotationB = rotationB.filter((r) => r.id !== id);
+    buildB = { ...buildB, rotation: buildB.rotation.filter((a) => a.id !== id) };
   }
 
   let showAdvanced = false;
@@ -327,19 +337,19 @@
         <tr class="data-row">
           <td class="item-name">{def.name}</td>
           <td>
-            {#if rotationA.some((r) => r.id === id)}
+            {#if buildA.rotation.some((r) => r.id === id)}
               <div class="input-with-remove">
                 <input
                   type="number"
                   step="any"
                   class="input-a small"
-                  value={rotationA.find((r) => r.id === id)?.targets ?? 1}
+                  value={buildA.rotation.find((r) => r.id === id)?.targets ?? 1}
                   on:input={(e) => setRotationValueA(id, "targets", Number(e.currentTarget.value))} />
                 <input
                   type="number"
                   step="any"
                   class="input-a small"
-                  value={rotationA.find((r) => r.id === id)?.ratio ?? 1}
+                  value={buildA.rotation.find((r) => r.id === id)?.ratio ?? 1}
                   on:input={(e) => setRotationValueA(id, "ratio", Number(e.currentTarget.value))} />
                 <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removeRotationA(id)}>
                   ×
@@ -359,19 +369,19 @@
           </td>
           {#if showSecondBuild}
             <td>
-              {#if rotationB.some((r) => r.id === id)}
+              {#if buildB.rotation.some((r) => r.id === id)}
                 <div class="input-with-remove">
                   <input
                     type="number"
                     step="any"
                     class="input-b small"
-                    value={rotationB.find((r) => r.id === id)?.targets ?? 1}
+                    value={buildB.rotation.find((r) => r.id === id)?.targets ?? 1}
                     on:input={(e) => setRotationValueB(id, "targets", Number(e.currentTarget.value))} />
                   <input
                     type="number"
                     step="any"
                     class="input-b small"
-                    value={rotationB.find((r) => r.id === id)?.ratio ?? 1}
+                    value={buildB.rotation.find((r) => r.id === id)?.ratio ?? 1}
                     on:input={(e) => setRotationValueB(id, "ratio", Number(e.currentTarget.value))} />
                   <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removeRotationB(id)}>
                     ×

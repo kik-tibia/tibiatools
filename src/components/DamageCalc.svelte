@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  import { computeDph, computeDpt, computeResults, type RotationSpell } from "@lib/damage-calc";
+  import { computeDph, computeDpt, computeResults } from "@lib/damage-calc";
   import { packState, unpackState } from "@lib/url-pack";
   import { defaultBuild, type Build, type CalculatorState } from "@lib/build-state";
 
@@ -10,25 +10,22 @@
 
   export let initial: CalculatorState;
 
-  let A: Build = { stats: { ...initial.A.stats }, perks: initial.A.perks ?? [] };
-  let B: Build = { stats: { ...initial.B.stats }, perks: initial.B.perks ?? [] };
+  let A: Build = initial.A;
+  let B: Build = initial.B;
 
   let showSecondBuild: boolean = !!initial.showSecondBuild;
 
-  let rotationA: RotationSpell[] = initial.rotation;
-  let rotationB: RotationSpell[] = initial.rotation.map((r) => ({ ...r }));
-
   function currentState(): CalculatorState {
     console.log(A);
-    return { A, B, showSecondBuild, rotation: rotationA };
+    return { A, B, showSecondBuild };
   }
 
   $: resultsA = computeResults(A.stats, A.perks);
   $: resultsB = computeResults(B.stats, B.perks);
-  $: effectiveDptA = computeDpt(resultsA, rotationA);
-  $: effectiveDptB = computeDpt(resultsB, rotationB);
-  $: effectiveDphA = computeDph(resultsA, rotationA);
-  $: effectiveDphB = computeDph(resultsB, rotationB);
+  $: effectiveDptA = computeDpt(resultsA, A.rotation);
+  $: effectiveDptB = computeDpt(resultsB, B.rotation);
+  $: effectiveDphA = computeDph(resultsA, A.rotation);
+  $: effectiveDphB = computeDph(resultsB, B.rotation);
 
   const toMap = (arr: any[]) => new Map(arr.map((x) => [x.id, x]));
   $: mapA = toMap(resultsA);
@@ -68,11 +65,9 @@
       const s = new URLSearchParams(window.location.search).get("s");
       const st = unpackState(s);
       if (!st) return;
-      A = { stats: { ...A.stats, ...st.A.stats }, perks: st.A.perks ?? [] };
-      B = { stats: { ...B.stats, ...st.B.stats }, perks: st.B.perks ?? [] };
+      A = st.A;
+      B = st.B;
       showSecondBuild = !!st.showSecondBuild;
-      rotationA = st.rotation ?? [];
-      rotationB = st.rotation?.map((r) => ({ ...r })) ?? [];
     };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
@@ -82,8 +77,6 @@
     A;
     B;
     showSecondBuild;
-    rotationA;
-    rotationB;
     scheduleWrite();
   }
 
@@ -102,8 +95,6 @@
     on:click={() => {
       A = defaultBuild();
       B = defaultBuild();
-      rotationA = [];
-      rotationB = [];
     }}>
     Reset
   </button>
@@ -121,7 +112,7 @@
 
 <section class="main-grid" class:comparing={showSecondBuild}>
   <div class="panel build-panel">
-    <BuildPanel bind:buildA={A} bind:buildB={B} bind:rotationA bind:rotationB {showSecondBuild} />
+    <BuildPanel bind:buildA={A} bind:buildB={B} {showSecondBuild} />
   </div>
 
   <div class="panel results-panel-a">
