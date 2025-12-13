@@ -33,20 +33,18 @@
     }
   }
 
-  // Perk helpers - maintain stable order
-  let perkOrder: string[] = [];
+  let allSelectedPerkIds: string[] = [];
   $: {
     const currentIds = new Set([...buildA.perks.map((p) => p.id), ...buildB.perks.map((p) => p.id)]);
     // Remove IDs that are no longer in either build
-    perkOrder = perkOrder.filter((id) => currentIds.has(id));
-    // Add any new IDs that aren't in our order yet
+    allSelectedPerkIds = allSelectedPerkIds.filter((id) => currentIds.has(id));
+    // Add any new IDs that aren't in the order
     for (const id of currentIds) {
-      if (!perkOrder.includes(id)) {
-        perkOrder.push(id);
+      if (!allSelectedPerkIds.includes(id)) {
+        allSelectedPerkIds.push(id);
       }
     }
   }
-  $: allPerkIds = perkOrder;
 
   function setPerkValueA(id: string, v: number) {
     const exists = buildA.perks.some((p) => p.id === id);
@@ -73,25 +71,24 @@
     buildB = { ...buildB, perks: buildB.perks.filter((a) => a.id !== id) };
   }
 
+  // TODO it's still not ideal - on page refresh, the order can get changed
   // Rotation helpers - maintain stable order, with auto-attack always first
-  let rotationOrder: string[] = [];
+  let allSelectedRotationIds: string[] = [];
   $: {
     const currentIds = new Set([...buildA.rotation.map((r) => r.id), ...buildB.rotation.map((r) => r.id)]);
-    // Remove IDs that are no longer in either build
-    rotationOrder = rotationOrder.filter((id) => currentIds.has(id));
-    // Add any new IDs that aren't in our order yet
+    let filtered = allSelectedRotationIds.filter((id) => currentIds.has(id));
     for (const id of currentIds) {
-      if (!rotationOrder.includes(id)) {
-        rotationOrder.push(id);
+      if (!filtered.includes(id)) {
+        filtered.push(id);
       }
     }
+    // Sort to always show auto-attack first
+    allSelectedRotationIds = filtered.toSorted((a, b) => {
+      if (a === "auto-attack") return -1;
+      if (b === "auto-attack") return 1;
+      return 0;
+    });
   }
-  // Sort to always show auto-attack first
-  $: allRotationIds = rotationOrder.toSorted((a, b) => {
-    if (a === "auto-attack") return -1;
-    if (b === "auto-attack") return 1;
-    return 0;
-  });
 
   function setRotationValueA(id: string, field: "targets" | "ratio", v: number) {
     const exists = buildA.rotation.some((r) => r.id === id);
@@ -157,7 +154,6 @@
   $: basicFields = statFields.filter((f) => !f.advanced);
   $: visibleFields = showAdvanced ? statFields : basicFields;
 
-  // Helper to check if a spell is auto-attack
   const isAutoAttack = (id: string) => id === "auto-attack";
 </script>
 
@@ -239,13 +235,13 @@
 
     <tr class="data-row">
       <td>
-        <FuzzySelect selectType="perks" all={perks} selectedIds={allPerkIds} onAdd={addPerk} />
+        <FuzzySelect selectType="perks" all={perks} selectedIds={allSelectedPerkIds} onAdd={addPerk} />
       </td>
       <td></td>
       {#if showSecondBuild}<td></td>{/if}
     </tr>
 
-    {#each allPerkIds as id (id)}
+    {#each allSelectedPerkIds as id (id)}
       {@const def = perkRegistry.get(id)}
       {#if def}
         <tr class="data-row">
@@ -313,10 +309,10 @@
 
     <tr class="data-row">
       <td>
-        <FuzzySelect selectType="spells" all={spells} selectedIds={allRotationIds} onAdd={addSpellToRotation} />
+        <FuzzySelect selectType="spells" all={spells} selectedIds={allSelectedRotationIds} onAdd={addSpellToRotation} />
       </td>
       <td class="sub-header rotation-label-cell">
-        {#if allRotationIds.length > 0}
+        {#if allSelectedRotationIds.length > 0}
           <div class="rotation-labels">
             <span>Targets</span>
             <span>Ratio</span>
@@ -325,7 +321,7 @@
       </td>
       {#if showSecondBuild}
         <td class="sub-header rotation-label-cell">
-          {#if allRotationIds.length > 0}
+          {#if allSelectedRotationIds.length > 0}
             <div class="rotation-labels">
               <span>Targets</span>
               <span>Ratio</span>
@@ -335,7 +331,7 @@
       {/if}
     </tr>
 
-    {#each allRotationIds as id (id)}
+    {#each allSelectedRotationIds as id (id)}
       {@const def = spellRegistry.get(id)}
       {@const isAuto = isAutoAttack(id)}
       {#if def}

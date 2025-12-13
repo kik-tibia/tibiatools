@@ -121,7 +121,7 @@
       {#if showSecondBuild}
         <span class="build-indicator build-a">Build A</span>
         <span class="pct-diff" class:positive={pctIncreaseA > 0} class:negative={pctIncreaseA < 0}>
-          {pctIncreaseA > 0 ? "+" : ""}{pctIncreaseA.toFixed(2)}%
+          {pctIncreaseA > 0 ? "+" : ""}{pctIncreaseA.toFixed(2)}% per turn
         </span>
       {:else}
         Results
@@ -141,7 +141,7 @@
       <h3 class="results-title">
         <span class="build-indicator build-b">Build B</span>
         <span class="pct-diff" class:positive={pctIncreaseB > 0} class:negative={pctIncreaseB < 0}>
-          {pctIncreaseB > 0 ? "+" : ""}{pctIncreaseB.toFixed(2)}%
+          {pctIncreaseB > 0 ? "+" : ""}{pctIncreaseB.toFixed(2)}% per turn
         </span>
       </h3>
       <ResultsTable
