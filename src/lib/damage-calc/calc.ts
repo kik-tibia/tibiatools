@@ -178,22 +178,9 @@ export const computeDpt = (spellDamages: SpellDamage[], rotation: RotationSpell[
 
 // damage per hit
 export const computeDph = (spellDamages: SpellDamage[], rotation: RotationSpell[]) => {
-  const hasAutoAttack = rotation.some((r) => r.id === "auto-attack");
   const spellRotation = rotation.filter((r) => r.id !== "auto-attack");
   const ratioSum = spellRotation.reduce((sum, r) => sum + r.ratio, 0);
-
-  // Build the full rotation including auto-attack if present
-  const fullRotation = hasAutoAttack
-    ? [
-        ...spellRotation,
-        {
-          id: "auto-attack",
-          targets: rotation.find((r) => r.id === "auto-attack")?.targets ?? 1,
-          ratio: ratioSum || 1,
-        },
-      ]
-    : spellRotation;
-
+  const fullRotation = rotation.map((r) => (r.id === "auto-attack" ? { ...r, ratio: ratioSum || 1 } : r));
   const ratioTargetSum = fullRotation.reduce((sum, r) => sum + r.targets * r.ratio, 0);
 
   if (ratioTargetSum === 0) return 0;
