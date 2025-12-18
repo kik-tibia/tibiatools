@@ -1,4 +1,4 @@
-import type { ActivePerk, RotationSpell } from "./damage-calc";
+import type { ActivePerk, RotationSpell, WeaponBuild } from "./damage-calc";
 
 export type BuildStats = {
   level: number | null;
@@ -13,7 +13,7 @@ export type BuildStats = {
   fishing: number | null;
 };
 
-export type Build = { stats: BuildStats; perks: ActivePerk[]; rotation: RotationSpell[] };
+export type Build = { stats: BuildStats; weapon: WeaponBuild; perks: ActivePerk[]; rotation: RotationSpell[] };
 
 export type CalculatorState = {
   A: Build;
@@ -34,8 +34,13 @@ const defaultStats = () => ({
   fishing: 10,
 });
 
+const defaultWeapon = () => ({
+  id: "fists",
+});
+
 export const defaultBuild = () => ({
   stats: defaultStats(),
+  weapon: defaultWeapon(),
   perks: [],
   rotation: [],
 });

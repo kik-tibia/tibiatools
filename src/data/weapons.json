@@ -1,5 +1,17 @@
 [
   {
+    "id": "fists",
+    "name": "Fists",
+    "attack": 7,
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ]
+  },
+  {
     "id": "sanguine-razor",
     "name": "Sanguine Razor",
     "attack": 58,
