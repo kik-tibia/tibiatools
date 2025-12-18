@@ -154,10 +154,4 @@
     opacity: 0.6;
     pointer-events: none;
   }
-
-  .subtle {
-    color: hsl(0 0% 40%);
-    font-size: 0.875rem;
-    margin-top: 0.5rem;
-  }
 </style>

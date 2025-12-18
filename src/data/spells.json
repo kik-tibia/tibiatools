@@ -1,189 +1,189 @@
 [
-    {
-        "id": "auto-attack",
-        "name": "Auto-attack",
-        "spellType": "auto",
-        "scalesWith": "melee",
-        "element": "weapon",
-        "power": 0,
-        "skillFactor": 0,
-        "buckets": 150,
-        "vocations": [
-            "druid",
-            "knight",
-            "monk",
-            "paladin",
-            "sorcerer"
-        ],
-        "rounding": "round"
-    },
-    {
-        "id": "avalanche",
-        "name": "Avalanche Rune",
-        "spellType": "rune",
-        "scalesWith": "magic",
-        "element": "ice",
-        "power": 50,
-        "skillFactor": 25,
-        "buckets": 50,
-        "vocations": [
-            "druid",
-            "knight",
-            "monk",
-            "paladin",
-            "sorcerer"
-        ],
-        "rounding": "floor"
-    },
-    {
-        "id": "thunderstorm",
-        "name": "Thunderstorm Rune",
-        "spellType": "rune",
-        "scalesWith": "magic",
-        "element": "energy",
-        "power": 45,
-        "skillFactor": 25,
-        "buckets": 40,
-        "vocations": [
-            "druid",
-            "knight",
-            "monk",
-            "paladin",
-            "sorcerer"
-        ],
-        "rounding": "floor"
-    },
-    {
-        "id": "fierce-berserk",
-        "name": "Fierce Berserk",
-        "spellType": "spell",
-        "scalesWith": "melee",
-        "element": "weapon",
-        "power": 92,
-        "skillFactor": 1000,
-        "buckets": 50,
-        "vocations": [
-            "knight"
-        ],
-        "rounding": "round"
-    },
-    {
-        "id": "berserk",
-        "name": "Berserk",
-        "spellType": "spell",
-        "scalesWith": "melee",
-        "element": "weapon",
-        "power": 44,
-        "skillFactor": 1000,
-        "buckets": 50,
-        "vocations": [
-            "knight"
-        ],
-        "rounding": "round"
-    },
-    {
-        "id": "groundshaker",
-        "name": "Groundshaker",
-        "spellType": "spell",
-        "scalesWith": "melee",
-        "element": "weapon",
-        "power": 32,
-        "skillFactor": 1000,
-        "buckets": 50,
-        "vocations": [
-            "knight"
-        ],
-        "rounding": "round"
-    },
-    {
-        "id": "front-sweep",
-        "name": "Front Sweep",
-        "spellType": "spell",
-        "scalesWith": "melee",
-        "element": "weapon",
-        "power": 72,
-        "skillFactor": 1000,
-        "buckets": 40,
-        "vocations": [
-            "knight"
-        ],
-        "rounding": "round"
-    },
-    {
-        "id": "exec-throw-0",
-        "scope": "exec-throw",
-        "name": "Executioner's Throw (No Bonus)",
-        "spellType": "spell",
-        "scalesWith": "melee",
-        "element": "weapon",
-        "power": 60,
-        "skillFactor": 1000,
-        "buckets": 10,
-        "vocations": [
-            "knight"
-        ],
-        "rounding": "round"
-    },
-    {
-        "id": "exec-throw-1",
-        "scope": "exec-throw",
-        "name": "Executioner's Throw (Stage 1)",
-        "spellType": "spell",
-        "scalesWith": "melee",
-        "element": "weapon",
-        "power": 60,
-        "skillFactor": 1000,
-        "buckets": 10,
-        "additionalDamageMultiplier": 2,
-        "vocations": [
-            "knight"
-        ],
-        "rounding": "round"
-    },
-    {
-        "id": "exec-throw-2",
-        "scope": "exec-throw",
-        "name": "Executioner's Throw (Stage 2)",
-        "spellType": "spell",
-        "scalesWith": "melee",
-        "element": "weapon",
-        "power": 60,
-        "skillFactor": 1000,
-        "buckets": 10,
-        "additionalDamageMultiplier": 2.25,
-        "vocations": [
-            "knight"
-        ],
-        "rounding": "round"
-    },
-    {
-        "id": "exec-throw-3",
-        "scope": "exec-throw",
-        "name": "Executioner's Throw (Stage 3)",
-        "spellType": "spell",
-        "scalesWith": "melee",
-        "element": "weapon",
-        "power": 60,
-        "skillFactor": 1000,
-        "buckets": 10,
-        "additionalDamageMultiplier": 2.5,
-        "vocations": [
-            "knight"
-        ],
-        "rounding": "round"
-    },
-    {
-        "id": "annihilation",
-        "name": "Annihilation",
-        "spellType": "spell",
-        "scalesWith": "melee",
-        "element": "weapon",
-        "power": 125,
-        "skillFactor": 1000,
-        "buckets": 80,
-        "vocations": [
-            "knight"
-        ],
-        "rounding": "round"
-    }
+  {
+    "id": "auto-attack",
+    "name": "Auto-attack",
+    "spellType": "auto",
+    "scalesWith": "melee",
+    "element": "weapon",
+    "power": 0,
+    "skillFactor": 0,
+    "buckets": 150,
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "rounding": "round"
+  },
+  {
+    "id": "avalanche",
+    "name": "Avalanche Rune",
+    "spellType": "rune",
+    "scalesWith": "magic",
+    "element": "ice",
+    "power": 50,
+    "skillFactor": 25,
+    "buckets": 50,
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "thunderstorm",
+    "name": "Thunderstorm Rune",
+    "spellType": "rune",
+    "scalesWith": "magic",
+    "element": "energy",
+    "power": 45,
+    "skillFactor": 25,
+    "buckets": 40,
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "fierce-berserk",
+    "name": "Fierce Berserk",
+    "spellType": "spell",
+    "scalesWith": "melee",
+    "element": "weapon",
+    "power": 92,
+    "skillFactor": 1000,
+    "buckets": 50,
+    "vocations": [
+      "knight"
+    ],
+    "rounding": "round"
+  },
+  {
+    "id": "berserk",
+    "name": "Berserk",
+    "spellType": "spell",
+    "scalesWith": "melee",
+    "element": "weapon",
+    "power": 44,
+    "skillFactor": 1000,
+    "buckets": 50,
+    "vocations": [
+      "knight"
+    ],
+    "rounding": "round"
+  },
+  {
+    "id": "groundshaker",
+    "name": "Groundshaker",
+    "spellType": "spell",
+    "scalesWith": "melee",
+    "element": "weapon",
+    "power": 32,
+    "skillFactor": 1000,
+    "buckets": 50,
+    "vocations": [
+      "knight"
+    ],
+    "rounding": "round"
+  },
+  {
+    "id": "front-sweep",
+    "name": "Front Sweep",
+    "spellType": "spell",
+    "scalesWith": "melee",
+    "element": "weapon",
+    "power": 72,
+    "skillFactor": 1000,
+    "buckets": 40,
+    "vocations": [
+      "knight"
+    ],
+    "rounding": "round"
+  },
+  {
+    "id": "exec-throw-0",
+    "scope": "exec-throw",
+    "name": "Executioner's Throw (No Bonus)",
+    "spellType": "spell",
+    "scalesWith": "melee",
+    "element": "weapon",
+    "power": 60,
+    "skillFactor": 1000,
+    "buckets": 10,
+    "vocations": [
+      "knight"
+    ],
+    "rounding": "round"
+  },
+  {
+    "id": "exec-throw-1",
+    "scope": "exec-throw",
+    "name": "Executioner's Throw (Stage 1)",
+    "spellType": "spell",
+    "scalesWith": "melee",
+    "element": "weapon",
+    "power": 60,
+    "skillFactor": 1000,
+    "buckets": 10,
+    "additionalDamageMultiplier": 2,
+    "vocations": [
+      "knight"
+    ],
+    "rounding": "round"
+  },
+  {
+    "id": "exec-throw-2",
+    "scope": "exec-throw",
+    "name": "Executioner's Throw (Stage 2)",
+    "spellType": "spell",
+    "scalesWith": "melee",
+    "element": "weapon",
+    "power": 60,
+    "skillFactor": 1000,
+    "buckets": 10,
+    "additionalDamageMultiplier": 2.25,
+    "vocations": [
+      "knight"
+    ],
+    "rounding": "round"
+  },
+  {
+    "id": "exec-throw-3",
+    "scope": "exec-throw",
+    "name": "Executioner's Throw (Stage 3)",
+    "spellType": "spell",
+    "scalesWith": "melee",
+    "element": "weapon",
+    "power": 60,
+    "skillFactor": 1000,
+    "buckets": 10,
+    "additionalDamageMultiplier": 2.5,
+    "vocations": [
+      "knight"
+    ],
+    "rounding": "round"
+  },
+  {
+    "id": "annihilation",
+    "name": "Annihilation",
+    "spellType": "spell",
+    "scalesWith": "melee",
+    "element": "weapon",
+    "power": 125,
+    "skillFactor": 1000,
+    "buckets": 80,
+    "vocations": [
+      "knight"
+    ],
+    "rounding": "round"
+  }
 ]

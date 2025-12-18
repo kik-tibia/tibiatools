@@ -1,0 +1,29 @@
+[
+  {
+    "id": "sanguine-razor",
+    "name": "Sanguine Razor",
+    "attack": 58,
+    "attackEnergy": 50,
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
+    "id": "sanguine-blade",
+    "name": "Sanguine Blade",
+    "attack": 54,
+    "attackFire": 46,
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
+    "id": "sanguine-bow",
+    "name": "Sanguine Bow",
+    "attack": 9,
+    "ammo": "arrows",
+    "vocations": [
+      "paladin"
+    ]
+  }
+]

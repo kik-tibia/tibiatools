@@ -1,0 +1,26 @@
+{
+  "arrows": [
+    {
+      "id": "diamond-arrow",
+      "name": "Diamond Arrow",
+      "attack": 37
+    },
+    {
+      "id": "crystalline-arrow",
+      "name": "Crystalline Arrow",
+      "attack": 65
+    }
+  ],
+  "bolts": [
+    {
+      "id": "spectral-bolt",
+      "name": "Spectral Bolt",
+      "attack": 78
+    },
+    {
+      "id": "infernal-bolt",
+      "name": "Infernal Bolt",
+      "attack": 72
+    }
+  ]
+}
