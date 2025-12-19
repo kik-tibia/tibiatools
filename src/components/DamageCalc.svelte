@@ -20,8 +20,8 @@
     return { A, B, showSecondBuild };
   }
 
-  $: resultsA = computeResults(A.stats, A.perks);
-  $: resultsB = computeResults(B.stats, B.perks);
+  $: resultsA = computeResults(A.stats, A.weapon, A.perks);
+  $: resultsB = computeResults(B.stats, B.weapon, B.perks);
   $: effectiveDptA = computeDpt(resultsA, A.rotation);
   $: effectiveDptB = computeDpt(resultsB, B.rotation);
   $: effectiveDphA = computeDph(resultsA, A.rotation);

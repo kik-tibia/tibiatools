@@ -203,7 +203,6 @@
     { key: "bonus", label: "Bonus Damage" },
     { key: "magicLevel", label: "Magic Level" },
     { key: "skill", label: "Skill" },
-    { key: "weapon", label: "Weapon Attack" },
     { key: "critChance", label: "Crit Chance %" },
     { key: "critDamage", label: "Crit Damage %" },
     { key: "fatalChance", label: "Fatal Chance %", advanced: true },

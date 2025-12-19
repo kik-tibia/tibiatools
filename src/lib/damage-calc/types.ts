@@ -22,4 +22,4 @@ export type SpellState = {
 
 export type RotationSpell = { id: string; targets: number; ratio: number };
 
-export type WeaponBuild = { id: String; ammo?: String };
+export type WeaponBuild = { id: string; ammo?: string };

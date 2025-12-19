@@ -1,9 +1,11 @@
 import { perks } from "@data/perks";
+import { weapons, ammo } from "@data/weapons";
 
 import type { BuildStats } from "@lib/build-state";
 import type { PerkDef } from "@data/perks";
 import { spells, type Spell, type SpellDamage } from "src/data/spells";
-import type { ActivePerk, ActivePerkWithDef, RotationSpell, SpellState } from "@lib/damage-calc";
+import type { ActivePerk, ActivePerkWithDef, RotationSpell, SpellState, WeaponBuild } from "@lib/damage-calc";
+import type { Ammo, Weapon } from "@data/weapons";
 
 /* calculate power via base power and any perks
  * use the updated power and your skills to calculate base damage
@@ -35,7 +37,9 @@ const computeMinMax = (spell: Spell, minMax: number, state: SpellState) => {
   return Math.ceil(damage * spell.additionalDamageMultiplier);
 };
 
-const perkDefsById: Record<string, PerkDef> = Object.fromEntries(perks.map((p) => [p.id, p]));
+const perkDefsById: Record<string, PerkDef> = Object.fromEntries(perks.map((i) => [i.id, i]));
+const weaponsById: Record<string, Weapon> = Object.fromEntries(weapons.map((i) => [i.id, i]));
+const ammoById: Record<string, Ammo> = Object.fromEntries(ammo.map((i) => [i.id, i]));
 
 const applyPerkToSpell = (spell: Spell, perk: ActivePerkWithDef, state: SpellState): SpellState => {
   const { P, F, ML, S, W, shielding, fishing, critChance, critDamage } = state;
@@ -75,7 +79,6 @@ const derive = (inp: BuildStats) => {
   const B = n(inp.bonus);
   const S = n(inp.skill);
   const ML = n(inp.magicLevel);
-  const W = n(inp.weapon);
   const critChance = n(inp.critChance);
   const critDamage = n(inp.critDamage);
   const fatalChance = n(inp.fatalChance);
@@ -83,7 +86,7 @@ const derive = (inp: BuildStats) => {
   const fishing = n(inp.fishing);
   const step = Math.floor((Math.sqrt(2 * L + 2025) + 5) / 10);
   const F = step * 100 - 450 + Math.floor((L + 1000) / step - 50 * step) + B;
-  return { F, ML, S, W, critChance, critDamage, fatalChance, shielding, fishing };
+  return { F, ML, S, critChance, critDamage, fatalChance, shielding, fishing };
 };
 
 const assignDefsToPerks = (activePerks: ActivePerk[]) => {
@@ -107,6 +110,7 @@ const computeDamageRanges = (spell: Spell, state: SpellState): SpellDamage => {
   const pCritFatal = c * o;
   const pNoBonus = (1 - c) * (1 - o);
 
+  // TODO handle diamond arrows not having high roll
   if (spell.spellType === "auto") {
     const attackValueWithoutFlat = (Math.floor((6 * state.W) / 5) * (state.S + 4)) / 28;
     const min = Math.floor(state.F + attackValueWithoutFlat / 2);
@@ -131,27 +135,26 @@ const computeDamageRanges = (spell: Spell, state: SpellState): SpellDamage => {
   }
 };
 
-export const computeResults = (inp: BuildStats, activePerks: ActivePerk[]) => {
+export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks: ActivePerk[]) => {
   const perksWithDefs: ActivePerkWithDef[] = assignDefsToPerks(activePerks);
-  const { F, ML, S, W, critChance, critDamage, fatalChance, shielding, fishing } = derive(inp);
-  const spellResults = spells
-    .filter((s) => s.spellType !== "rune") // TODO remove this eventually
-    .map((spell) => {
-      const initial: SpellState = {
-        P: spell.power,
-        F,
-        ML,
-        S,
-        W,
-        critChance,
-        critDamage,
-        fatalChance,
-        shielding,
-        fishing,
-      };
-      const final: SpellState = perksWithDefs.reduce((acc, perk) => applyPerkToSpell(spell, perk, acc), initial);
-      return computeDamageRanges(spell, final);
-    });
+  const { F, ML, S, critChance, critDamage, fatalChance, shielding, fishing } = derive(inp);
+  const W = weaponsById[weapon.id].attack + (weapon.ammo ? ammoById[weapon.ammo].attack : 0);
+  const spellResults = spells.map((spell) => {
+    const initial: SpellState = {
+      P: spell.power,
+      F,
+      ML,
+      S,
+      W,
+      critChance,
+      critDamage,
+      fatalChance,
+      shielding,
+      fishing,
+    };
+    const final: SpellState = perksWithDefs.reduce((acc, perk) => applyPerkToSpell(spell, perk, acc), initial);
+    return computeDamageRanges(spell, final);
+  });
   return spellResults;
 };
 

@@ -5,7 +5,6 @@ export type BuildStats = {
   bonus: number | null;
   skill: number | null;
   magicLevel: number | null;
-  weapon: number | null;
   critChance: number | null;
   critDamage: number | null;
   fatalChance: number | null;
@@ -26,7 +25,6 @@ const defaultStats = () => ({
   bonus: 0,
   skill: 10,
   magicLevel: 0,
-  weapon: 0,
   critChance: 10,
   critDamage: 50,
   fatalChance: 0,
