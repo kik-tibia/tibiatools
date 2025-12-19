@@ -58,7 +58,7 @@
   <div class="combo">
     <input
       class="fuzzy-search"
-      placeholder="Search {selectType}…"
+      placeholder="Search {selectType}"
       bind:value={q}
       on:focus={handleFocus}
       on:blur={handleBlur}

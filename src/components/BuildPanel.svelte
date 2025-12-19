@@ -1,11 +1,14 @@
 <script lang="ts">
   import { perks } from "@data/perks";
   import { spells } from "@data/spells";
+  import { weapons, ammo } from "@data/weapons";
   import FuzzySelect from "./FuzzySelect.svelte";
   import type { Build, BuildStats } from "@lib/build-state";
 
   const perkRegistry = new Map(perks.map((p) => [p.id, p]));
   const spellRegistry = new Map(spells.map((s) => [s.id, s]));
+  const weaponRegistry = new Map(weapons.map((w) => [w.id, w]));
+  const ammoRegistry = new Map(ammo.map((a) => [a.id, a]));
 
   export let buildA: Build;
   export let buildB: Build;
@@ -16,6 +19,63 @@
   }
   function setStatB<K extends keyof BuildStats>(key: K, value: BuildStats[K]) {
     buildB = { ...buildB, stats: { ...buildB.stats, [key]: value } };
+  }
+
+  // Weapon helpers
+  $: weaponA = weaponRegistry.get(buildA.weapon.id as string);
+  $: weaponB = weaponRegistry.get(buildB.weapon.id as string);
+
+  $: availableAmmoA = weaponA?.ammo ? ammo.filter((a) => a.type === weaponA.ammo) : [];
+  $: availableAmmoB = weaponB?.ammo ? ammo.filter((a) => a.type === weaponB.ammo) : [];
+
+  function setWeaponA(id: string) {
+    const weapon = weaponRegistry.get(id);
+    const currentAmmo = buildA.weapon.ammo ? ammoRegistry.get(buildA.weapon.ammo as string) : null;
+    const keepAmmo = weapon?.ammo && currentAmmo && currentAmmo.type === weapon.ammo;
+    buildA = {
+      ...buildA,
+      weapon: {
+        id,
+        ammo: keepAmmo ? buildA.weapon.ammo : undefined,
+      },
+    };
+  }
+
+  function setWeaponB(id: string) {
+    const weapon = weaponRegistry.get(id);
+    const currentAmmo = buildB.weapon.ammo ? ammoRegistry.get(buildB.weapon.ammo as string) : null;
+    const keepAmmo = weapon?.ammo && currentAmmo && currentAmmo.type === weapon.ammo;
+    buildB = {
+      ...buildB,
+      weapon: {
+        id,
+        ammo: keepAmmo ? buildB.weapon.ammo : undefined,
+      },
+    };
+  }
+
+  function setAmmoA(id: string) {
+    buildA = { ...buildA, weapon: { ...buildA.weapon, ammo: id } };
+  }
+
+  function setAmmoB(id: string) {
+    buildB = { ...buildB, weapon: { ...buildB.weapon, ammo: id } };
+  }
+
+  function clearWeaponA() {
+    buildA = { ...buildA, weapon: { id: "fists", ammo: undefined } };
+  }
+
+  function clearWeaponB() {
+    buildB = { ...buildB, weapon: { id: "fists", ammo: undefined } };
+  }
+
+  function clearAmmoA() {
+    buildA = { ...buildA, weapon: { ...buildA.weapon, ammo: undefined } };
+  }
+
+  function clearAmmoB() {
+    buildB = { ...buildB, weapon: { ...buildB.weapon, ammo: undefined } };
   }
 
   function addPerk(id: string) {
@@ -226,6 +286,87 @@
       {#if showSecondBuild}<td></td>{/if}
     </tr>
 
+    <!-- ==================== WEAPON SECTION ==================== -->
+    <tr class="section-header">
+      <td><h4>Weapon</h4></td>
+      <td></td>
+      {#if showSecondBuild}<td></td>{/if}
+    </tr>
+
+    <tr class="data-row">
+      <td>Weapon</td>
+      <td>
+        <div class="weapon-cell">
+          <FuzzySelect selectType="weapons" all={weapons} selectedIds={[]} onAdd={setWeaponA} />
+          {#if weaponA}
+            <div class="selected-item input-with-remove">
+              <span class="selected-name selected-name-a">{weaponA.name}</span>
+              {#if weaponA.id !== "fists"}
+                <button type="button" class="remove-btn push-right" aria-label="Clear" on:click={clearWeaponA}>
+                  ×
+                </button>
+              {/if}
+            </div>
+          {/if}
+        </div>
+      </td>
+      {#if showSecondBuild}
+        <td>
+          <div class="weapon-cell">
+            <FuzzySelect selectType="weapons" all={weapons} selectedIds={[]} onAdd={setWeaponB} />
+            {#if weaponB}
+              <div class="selected-item">
+                <span class="selected-name selected-name-b">{weaponB.name}</span>
+                {#if weaponB.id !== "fists"}
+                  <button type="button" class="remove-btn" aria-label="Clear" on:click={clearWeaponB}>×</button>
+                {/if}
+              </div>
+            {/if}
+          </div>
+        </td>
+      {/if}
+    </tr>
+
+    {#if weaponA?.ammo || (showSecondBuild && weaponB?.ammo)}
+      <tr class="data-row">
+        <td>Ammo</td>
+        <td>
+          {#if weaponA?.ammo}
+            <div class="weapon-cell">
+              <FuzzySelect selectType="ammo" all={availableAmmoA} selectedIds={[]} onAdd={setAmmoA} />
+              {#if buildA.weapon.ammo}
+                {@const selectedAmmo = ammoRegistry.get(buildA.weapon.ammo as string)}
+                {#if selectedAmmo}
+                  <div class="selected-item">
+                    <span class="selected-name selected-name-a">{selectedAmmo.name}</span>
+                    <button type="button" class="remove-btn" aria-label="Clear" on:click={clearAmmoA}>×</button>
+                  </div>
+                {/if}
+              {/if}
+            </div>
+          {/if}
+        </td>
+        {#if showSecondBuild}
+          <td>
+            {#if weaponB?.ammo}
+              <div class="weapon-cell">
+                <FuzzySelect selectType="ammo" all={availableAmmoB} selectedIds={[]} onAdd={setAmmoB} />
+                {#if buildB.weapon.ammo}
+                  {@const selectedAmmo = ammoRegistry.get(buildB.weapon.ammo as string)}
+                  {#if selectedAmmo}
+                    <div class="selected-item">
+                      <span class="selected-name selected-name-b">{selectedAmmo.name}</span>
+                      <button type="button" class="remove-btn" aria-label="Clear" on:click={clearAmmoB}>×</button>
+                    </div>
+                  {/if}
+                {/if}
+              </div>
+            {/if}
+          </td>
+        {/if}
+      </tr>
+    {/if}
+
     <!-- ==================== PERKS SECTION ==================== -->
     <tr class="section-header">
       <td><h4>Perks</h4></td>
@@ -430,7 +571,7 @@
   }
 
   col.col-build {
-    width: 160px;
+    width: 170px;
   }
 
   /* Header row */
@@ -565,7 +706,7 @@
 
   .input-with-remove input[type="number"].small {
     flex: 0 0 auto;
-    width: 3.2rem;
+    width: 3.5rem;
   }
 
   .input-with-remove input[type="number"].small:nth-child(2) {
@@ -655,5 +796,31 @@
 
   td :global(.fuzzy-select) {
     width: 100%;
+  }
+
+  /* Weapon section styles */
+  .weapon-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .selected-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .selected-name {
+    font-size: 0.9rem;
+    text-decoration-line: underline;
+    text-decoration-thickness: 0.1rem;
+  }
+  .selected-name-a {
+    text-decoration-color: hsl(210, 50%, 40%);
+  }
+  .selected-name-b {
+    text-decoration-color: hsl(30, 50%, 40%);
   }
 </style>
