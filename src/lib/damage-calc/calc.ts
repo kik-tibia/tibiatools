@@ -102,7 +102,7 @@ const assignDefsToPerks = (activePerks: ActivePerk[]) => {
     .filter((x): x is ActivePerkWithDef => x !== null);
 };
 
-const computeDamageRanges = (spell: Spell, state: SpellState): SpellDamage => {
+const computeDamageRanges = (spell: Spell, state: SpellState, aoeAA: boolean): SpellDamage => {
   const c = state.critChance / 100;
   const o = state.fatalChance / 100;
   const pCrit = c * (1 - o);
@@ -110,18 +110,19 @@ const computeDamageRanges = (spell: Spell, state: SpellState): SpellDamage => {
   const pCritFatal = c * o;
   const pNoBonus = (1 - c) * (1 - o);
 
-  // TODO handle diamond arrows not having high roll
   if (spell.spellType === "auto") {
     const attackValueWithoutFlat = (Math.floor((6 * state.W) / 5) * (state.S + 4)) / 28;
     const min = Math.floor(state.F + attackValueWithoutFlat / 2);
     const avg = Math.floor(state.F + attackValueWithoutFlat);
     const max = Math.floor(state.F + attackValueWithoutFlat * 2);
 
-    const effectiveAvg =
-      pNoBonus * avg +
-      pCrit * (state.F + attackValueWithoutFlat * 1.75) * (1 + state.critDamage / 100) +
-      pFatal * (state.F + attackValueWithoutFlat * 1.75) * 1.6 +
-      pCritFatal * (state.F + attackValueWithoutFlat * 1.75) * (1.6 + state.critDamage / 100);
+    const effectiveAvg = aoeAA
+      ? avg *
+        (pNoBonus + pCrit * (1 + state.critDamage / 100) + pFatal * 1.6 + pCritFatal * (1.6 + state.critDamage / 100))
+      : pNoBonus * avg +
+        pCrit * (state.F + attackValueWithoutFlat * 1.75) * (1 + state.critDamage / 100) +
+        pFatal * (state.F + attackValueWithoutFlat * 1.75) * 1.6 +
+        pCritFatal * (state.F + attackValueWithoutFlat * 1.75) * (1.6 + state.critDamage / 100);
 
     return { ...spell, min, avg, max, effectiveAvg };
   } else {
@@ -138,7 +139,10 @@ const computeDamageRanges = (spell: Spell, state: SpellState): SpellDamage => {
 export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks: ActivePerk[]) => {
   const perksWithDefs: ActivePerkWithDef[] = assignDefsToPerks(activePerks);
   const { F, ML, S, critChance, critDamage, fatalChance, shielding, fishing } = derive(inp);
-  const W = weaponsById[weapon.id].attack + (weapon.ammo ? ammoById[weapon.ammo].attack : 0);
+  const weaponDef = weaponsById[weapon.id];
+  const ammoDef = weapon.ammo ? ammoById[weapon.ammo] : null;
+  const W = weaponDef.attack + (ammoDef?.attack ?? 0);
+  const aoeAA = ammoDef?.aoe ?? false;
   const spellResults = spells.map((spell) => {
     const initial: SpellState = {
       P: spell.power,
@@ -153,7 +157,7 @@ export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks
       fishing,
     };
     const final: SpellState = perksWithDefs.reduce((acc, perk) => applyPerkToSpell(spell, perk, acc), initial);
-    return computeDamageRanges(spell, final);
+    return computeDamageRanges(spell, final, aoeAA);
   });
   return spellResults;
 };

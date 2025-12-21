@@ -3,24 +3,28 @@
     {
       "id": "diamond-arrow",
       "name": "Diamond Arrow",
-      "attack": 37
+      "attack": 37,
+      "aoe": true
     },
     {
       "id": "crystalline-arrow",
       "name": "Crystalline Arrow",
-      "attack": 65
+      "attack": 65,
+      "aoe": false
     }
   ],
   "bolts": [
     {
       "id": "spectral-bolt",
       "name": "Spectral Bolt",
-      "attack": 78
+      "attack": 78,
+      "aoe": false
     },
     {
       "id": "infernal-bolt",
       "name": "Infernal Bolt",
-      "attack": 72
+      "attack": 72,
+      "aoe": false
     }
   ]
 }

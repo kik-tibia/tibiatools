@@ -22,6 +22,7 @@ type AmmoRaw = {
   id: string;
   name: string;
   attack: number;
+  aoe: boolean;
 };
 
 type AmmoData = {
