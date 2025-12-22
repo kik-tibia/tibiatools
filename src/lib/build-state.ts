@@ -1,6 +1,9 @@
 import type { ActivePerk, RotationSpell, WeaponBuild } from "./damage-calc";
 
+export type Vocation = "knight" | "paladin" | "sorcerer" | "druid" | "monk";
+
 export type BuildStats = {
+  vocation: Vocation;
   level: number | null;
   bonus: number | null;
   skill: number | null;
@@ -20,7 +23,8 @@ export type CalculatorState = {
   showSecondBuild: boolean;
 };
 
-const defaultStats = () => ({
+const defaultStats = (): BuildStats => ({
+  vocation: "knight",
   level: 8,
   bonus: 0,
   skill: 10,
@@ -32,7 +36,7 @@ const defaultStats = () => ({
   fishing: 10,
 });
 
-const defaultWeapon = () => ({
+const defaultWeapon = (): WeaponBuild => ({
   id: "fists",
 });
 
