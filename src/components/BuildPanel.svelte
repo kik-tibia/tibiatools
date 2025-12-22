@@ -286,80 +286,87 @@
     </tr>
 
     <!-- ==================== WEAPON SECTION ==================== -->
+
     <tr class="section-header">
       <td><h4>Weapon</h4></td>
-      <td></td>
-      {#if showSecondBuild}<td></td>{/if}
-    </tr>
-
-    <tr class="data-row">
-      <td>Weapon</td>
       <td>
-        <div class="weapon-cell">
-          <FuzzySelect selectType="weapons" all={weapons} selectedIds={[]} onAdd={setWeaponA} />
-          {#if weaponA}
-            <div class="selected-item input-with-remove">
-              <span class="selected-name selected-name-a">{weaponA.name}</span>
-              {#if weaponA.id !== "fists"}
-                <button type="button" class="remove-btn push-right" aria-label="Clear" on:click={clearWeaponA}>
-                  ×
-                </button>
-              {/if}
-            </div>
-          {/if}
-        </div>
+        <FuzzySelect selectType="weapons" all={weapons} selectedIds={[]} onAdd={setWeaponA} />
       </td>
       {#if showSecondBuild}
         <td>
-          <div class="weapon-cell">
-            <FuzzySelect selectType="weapons" all={weapons} selectedIds={[]} onAdd={setWeaponB} />
-            {#if weaponB}
-              <div class="selected-item">
-                <span class="selected-name selected-name-b">{weaponB.name}</span>
-                {#if weaponB.id !== "fists"}
-                  <button type="button" class="remove-btn" aria-label="Clear" on:click={clearWeaponB}>×</button>
-                {/if}
-              </div>
+          <FuzzySelect selectType="weapons" all={weapons} selectedIds={[]} onAdd={setWeaponB} />
+        </td>
+      {/if}
+    </tr>
+    <tr class="data-row">
+      <td></td>
+      <td>
+        {#if weaponA}
+          <div class="selected-item input-with-remove">
+            <span class="selected-name selected-name-a">{weaponA.name}</span>
+            {#if weaponA.id !== "fists"}
+              <button type="button" class="remove-btn push-right" aria-label="Clear" on:click={clearWeaponA}>×</button>
             {/if}
           </div>
+        {/if}
+      </td>
+      {#if showSecondBuild}
+        <td>
+          {#if weaponB}
+            <div class="selected-item">
+              <span class="selected-name selected-name-b">{weaponB.name}</span>
+              {#if weaponB.id !== "fists"}
+                <button type="button" class="remove-btn" aria-label="Clear" on:click={clearWeaponB}>×</button>
+              {/if}
+            </div>
+          {/if}
         </td>
       {/if}
     </tr>
 
     {#if weaponA?.ammo || (showSecondBuild && weaponB?.ammo)}
       <tr class="data-row">
-        <td>Ammo</td>
+        <td></td>
         <td>
           {#if weaponA?.ammo}
-            <div class="weapon-cell">
-              <FuzzySelect selectType="ammo" all={availableAmmoA} selectedIds={[]} onAdd={setAmmoA} />
-              {#if buildA.weapon.ammo}
-                {@const selectedAmmo = ammoRegistry.get(buildA.weapon.ammo as string)}
-                {#if selectedAmmo}
-                  <div class="selected-item">
-                    <span class="selected-name selected-name-a">{selectedAmmo.name}</span>
-                    <button type="button" class="remove-btn" aria-label="Clear" on:click={clearAmmoA}>×</button>
-                  </div>
-                {/if}
-              {/if}
-            </div>
+            <FuzzySelect selectType="ammo" all={availableAmmoA} selectedIds={[]} onAdd={setAmmoA} />
           {/if}
         </td>
         {#if showSecondBuild}
           <td>
             {#if weaponB?.ammo}
-              <div class="weapon-cell">
-                <FuzzySelect selectType="ammo" all={availableAmmoB} selectedIds={[]} onAdd={setAmmoB} />
-                {#if buildB.weapon.ammo}
-                  {@const selectedAmmo = ammoRegistry.get(buildB.weapon.ammo as string)}
-                  {#if selectedAmmo}
-                    <div class="selected-item">
-                      <span class="selected-name selected-name-b">{selectedAmmo.name}</span>
-                      <button type="button" class="remove-btn" aria-label="Clear" on:click={clearAmmoB}>×</button>
-                    </div>
-                  {/if}
+              <FuzzySelect selectType="ammo" all={availableAmmoB} selectedIds={[]} onAdd={setAmmoB} />
+            {/if}
+          </td>
+        {/if}
+      </tr>
+      <tr class="data-row">
+        <td></td>
+        <td>
+          {#if weaponA?.ammo}
+            {#if buildA.weapon.ammo}
+              {@const selectedAmmo = ammoRegistry.get(buildA.weapon.ammo as string)}
+              {#if selectedAmmo}
+                <div class="selected-item">
+                  <span class="selected-name selected-name-a">{selectedAmmo.name}</span>
+                  <button type="button" class="remove-btn" aria-label="Clear" on:click={clearAmmoA}>×</button>
+                </div>
+              {/if}
+            {/if}
+          {/if}
+        </td>
+        {#if showSecondBuild}
+          <td>
+            {#if weaponB?.ammo}
+              {#if buildB.weapon.ammo}
+                {@const selectedAmmo = ammoRegistry.get(buildB.weapon.ammo as string)}
+                {#if selectedAmmo}
+                  <div class="selected-item">
+                    <span class="selected-name selected-name-b">{selectedAmmo.name}</span>
+                    <button type="button" class="remove-btn" aria-label="Clear" on:click={clearAmmoB}>×</button>
+                  </div>
                 {/if}
-              </div>
+              {/if}
             {/if}
           </td>
         {/if}
