@@ -185,5 +185,19 @@
       "knight"
     ],
     "rounding": "round"
+  },
+  {
+    "id": "divine-caldera",
+    "name": "Divine Caldera",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "holy",
+    "power": 140,
+    "skillFactor": 25,
+    "buckets": 40,
+    "vocations": [
+      "paladin"
+    ],
+    "rounding": "round"
   }
 ]

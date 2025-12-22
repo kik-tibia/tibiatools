@@ -1,5 +1,11 @@
 [
   {
+    "id": "attack",
+    "name": "+ attack",
+    "scope": "melee",
+    "bonusType": "attack"
+  },
+  {
     "id": "crit-chance",
     "name": "Critical hit chance",
     "scope": "all",
@@ -19,8 +25,20 @@
   },
   {
     "id": "runes-crit-chance",
-    "name": "Runes critical hit chance",
+    "name": "Critical hit chance for runes",
     "scope": "rune",
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "runes-crit-damage",
+    "name": "Critical % extra damage for runes",
+    "scope": "rune",
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "holy-crit-chance",
+    "name": "Holy critical hit chance",
+    "scope": "holy",
     "bonusType": "crit-chance"
   },
   {
@@ -96,9 +114,33 @@
     "bonusType": "crit-chance"
   },
   {
+    "id": "divine-caldera-base",
+    "name": "Divine Caldera (exevo mas san) base damage",
+    "scope": "divine-caldera",
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "divine-caldera-crit",
+    "name": "Divine Caldera (exevo mas san) critical hit damage",
+    "scope": "divine-caldera",
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "divine-caldera-crit-chance",
+    "name": "Divine Caldera (exevo mas san) critical hit chance",
+    "scope": "divine-caldera",
+    "bonusType": "crit-chance"
+  },
+  {
     "id": "ice-magic-level",
     "name": "Ice magic level",
     "scope": "ice",
+    "bonusType": "magic-level"
+  },
+  {
+    "id": "holy-magic-level",
+    "name": "Holy magic level",
+    "scope": "holy",
     "bonusType": "magic-level"
   },
   {
@@ -108,10 +150,46 @@
     "bonusType": "axe-percent-extra"
   },
   {
-    "id": "shield-percent-spell-damage",
-    "name": "% shielding as extra damage for spells",
+    "id": "axe-percent-aa-damage",
+    "name": "% axe fighting as extra damage for auto‑attacks",
+    "scope": "auto-attack",
+    "bonusType": "axe-percent-extra"
+  },
+  {
+    "id": "club-percent-spell-damage",
+    "name": "% club fighting as extra damage for spells",
     "scope": "spell",
-    "bonusType": "shield-percent-extra"
+    "bonusType": "club-percent-extra"
+  },
+  {
+    "id": "club-percent-aa-damage",
+    "name": "% club fighting as extra damage for auto‑attacks",
+    "scope": "auto-attack",
+    "bonusType": "club-percent-extra"
+  },
+  {
+    "id": "sword-percent-spell-damage",
+    "name": "% sword fighting as extra damage for spells",
+    "scope": "spell",
+    "bonusType": "sword-percent-extra"
+  },
+  {
+    "id": "sword-percent-aa-damage",
+    "name": "% sword fighting as extra damage for auto‑attacks",
+    "scope": "auto-attack",
+    "bonusType": "sword-percent-extra"
+  },
+  {
+    "id": "distance-percent-spell-damage",
+    "name": "% distance fighting as extra damage for spells",
+    "scope": "spell",
+    "bonusType": "distance-percent-extra"
+  },
+  {
+    "id": "distance-percent-aa-damage",
+    "name": "% distance fighting as extra damage for auto‑attacks",
+    "scope": "auto-attack",
+    "bonusType": "distance-percent-extra"
   },
   {
     "id": "ml-percent-spell-damage",
@@ -120,21 +198,27 @@
     "bonusType": "magic-level-percent-extra"
   },
   {
-    "id": "axe-percent-aa-damage",
-    "name": "% axe fighting as extra damage for auto‑attacks",
+    "id": "ml-percent-aa-damage",
+    "name": "% magic level as extra damage for auto‑attacks",
     "scope": "auto-attack",
-    "bonusType": "axe-percent-extra"
+    "bonusType": "magic-level-percent-extra"
+  },
+  {
+    "id": "shield-percent-spell-damage",
+    "name": "% shielding as extra damage for spells",
+    "scope": "spell",
+    "bonusType": "shield-percent-extra"
+  },
+  {
+    "id": "shield-percent-aa-damage",
+    "name": "% shielding as extra damage for auto-attacks",
+    "scope": "auto-attack",
+    "bonusType": "shield-percent-extra"
   },
   {
     "id": "fishing-percent-aa-damage",
     "name": "% fishing as extra damage for auto‑attacks",
     "scope": "auto-attack",
     "bonusType": "fishing-percent-extra"
-  },
-  {
-    "id": "ml-percent-aa-damage",
-    "name": "% magic level as extra damage for auto‑attacks",
-    "scope": "auto-attack",
-    "bonusType": "magic-level-percent-extra"
   }
 ]

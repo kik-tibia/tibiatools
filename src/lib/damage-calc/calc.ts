@@ -5,7 +5,7 @@ import type { BuildStats } from "@lib/build-state";
 import type { PerkDef } from "@data/perks";
 import { spells, type Spell, type SpellDamage } from "src/data/spells";
 import type { ActivePerk, ActivePerkWithDef, RotationSpell, SpellState, WeaponBuild } from "@lib/damage-calc";
-import type { Ammo, Weapon } from "@data/weapons";
+import type { Ammo, SkillType, Weapon } from "@data/weapons";
 
 /* calculate power via base power and any perks
  * use the updated power and your skills to calculate base damage
@@ -41,14 +41,20 @@ const perkDefsById: Record<string, PerkDef> = Object.fromEntries(perks.map((i) =
 const weaponsById: Record<string, Weapon> = Object.fromEntries(weapons.map((i) => [i.id, i]));
 const ammoById: Record<string, Ammo> = Object.fromEntries(ammo.map((i) => [i.id, i]));
 
-const applyPerkToSpell = (spell: Spell, perk: ActivePerkWithDef, state: SpellState): SpellState => {
+const applyPerkToSpell = (
+  spell: Spell,
+  perk: ActivePerkWithDef,
+  skillType: SkillType,
+  state: SpellState,
+): SpellState => {
   const { P, F, ML, S, W, shielding, fishing, critChance, critDamage } = state;
 
   if (
     perk.def.scope === "all" ||
     perk.def.scope === spell.scope ||
     perk.def.scope === spell.spellType ||
-    perk.def.scope === spell.element
+    perk.def.scope === spell.element ||
+    perk.def.scope === spell.scalesWith
   ) {
     switch (perk.def.bonusType) {
       case "base-damage":
@@ -57,10 +63,18 @@ const applyPerkToSpell = (spell: Spell, perk: ActivePerkWithDef, state: SpellSta
         return { ...state, critChance: critChance + perk.value };
       case "crit-damage":
         return { ...state, critDamage: critDamage + perk.value };
+      case "attack":
+        return { ...state, W: W + perk.value };
       case "magic-level":
         return { ...state, ML: ML + perk.value };
       case "axe-percent-extra":
-        return { ...state, F: F + Math.floor((S * perk.value) / 100) };
+        return skillType == "axe" ? { ...state, F: F + Math.floor((S * perk.value) / 100) } : state;
+      case "club-percent-extra":
+        return skillType == "club" ? { ...state, F: F + Math.floor((S * perk.value) / 100) } : state;
+      case "sword-percent-extra":
+        return skillType == "sword" ? { ...state, F: F + Math.floor((S * perk.value) / 100) } : state;
+      case "distance-percent-extra":
+        return skillType == "distance" ? { ...state, F: F + Math.floor((S * perk.value) / 100) } : state;
       case "shield-percent-extra":
         return { ...state, F: F + Math.floor((shielding * perk.value) / 100) };
       case "fishing-percent-extra":
@@ -139,10 +153,14 @@ const computeDamageRanges = (spell: Spell, state: SpellState, aoeAA: boolean): S
 export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks: ActivePerk[]) => {
   const perksWithDefs: ActivePerkWithDef[] = assignDefsToPerks(activePerks);
   const { F, ML, S, critChance, critDamage, fatalChance, shielding, fishing } = derive(inp);
+
   const weaponDef = weaponsById[weapon.id];
   const ammoDef = weapon.ammo ? ammoById[weapon.ammo] : null;
+
   const W = weaponDef.attack + (ammoDef?.attack ?? 0);
+  const skillType = weaponDef.skill;
   const aoeAA = ammoDef?.aoe ?? false;
+
   const spellResults = spells.map((spell) => {
     const initial: SpellState = {
       P: spell.power,
@@ -156,7 +174,10 @@ export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks
       shielding,
       fishing,
     };
-    const final: SpellState = perksWithDefs.reduce((acc, perk) => applyPerkToSpell(spell, perk, acc), initial);
+    const final: SpellState = perksWithDefs.reduce(
+      (acc, perk) => applyPerkToSpell(spell, perk, skillType, acc),
+      initial,
+    );
     return computeDamageRanges(spell, final, aoeAA);
   });
   return spellResults;

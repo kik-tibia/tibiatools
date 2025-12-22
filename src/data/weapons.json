@@ -3,6 +3,7 @@
     "id": "fists",
     "name": "Fists",
     "attack": 7,
+    "skill": "fist",
     "vocations": [
       "druid",
       "knight",
@@ -16,6 +17,7 @@
     "name": "Sanguine Razor",
     "attack": 58,
     "attackEnergy": 50,
+    "skill": "sword",
     "vocations": [
       "knight"
     ]
@@ -25,6 +27,7 @@
     "name": "Sanguine Blade",
     "attack": 54,
     "attackFire": 46,
+    "skill": "sword",
     "vocations": [
       "knight"
     ]
@@ -34,6 +37,57 @@
     "name": "Sanguine Bow",
     "attack": 9,
     "ammo": "arrows",
+    "skill": "distance",
+    "vocations": [
+      "paladin"
+    ]
+  },
+  {
+    "id": "rift-bow",
+    "name": "Rift Bow",
+    "attack": 5,
+    "ammo": "arrows",
+    "skill": "distance",
+    "vocations": [
+      "paladin"
+    ]
+  },
+  {
+    "id": "bow-of-destruction",
+    "name": "Bow of Destruction",
+    "attack": 5,
+    "ammo": "arrows",
+    "skill": "distance",
+    "vocations": [
+      "paladin"
+    ]
+  },
+  {
+    "id": "eldritch-bow",
+    "name": "Eldritch Bow",
+    "attack": 6,
+    "ammo": "arrows",
+    "skill": "distance",
+    "vocations": [
+      "paladin"
+    ]
+  },
+  {
+    "id": "falcon-bow",
+    "name": "Falcon Bow",
+    "attack": 6,
+    "ammo": "arrows",
+    "skill": "distance",
+    "vocations": [
+      "paladin"
+    ]
+  },
+  {
+    "id": "rending-inferniarch-bow",
+    "name": "Rending Inferniarch Bow",
+    "attack": 7,
+    "ammo": "arrows",
+    "skill": "distance",
     "vocations": [
       "paladin"
     ]

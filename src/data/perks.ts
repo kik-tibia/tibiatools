@@ -1,13 +1,17 @@
 import perksRaw from "@data/perks.json";
 
-export type PerkScope = "auto-attack" | "spell" | "rune" | "ice" | "fierce-berserk" | "all";
+export type PerkScope = "auto-attack" | "melee" | "spell" | "rune" | "ice" | "fierce-berserk" | "all";
 
 export type PerkBonusType =
   | "base-damage"
   | "crit-chance"
   | "crit-damage"
+  | "attack"
   | "magic-level"
   | "axe-percent-extra"
+  | "club-percent-extra"
+  | "sword-percent-extra"
+  | "distance-percent-extra"
   | "shield-percent-extra"
   | "fishing-percent-extra"
   | "magic-level-percent-extra"
