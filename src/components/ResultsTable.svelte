@@ -1,5 +1,9 @@
 <script lang="ts">
-  export let results: any[] = [];
+  import type { Vocation } from "@lib/build-state";
+  import type { SpellState } from "@lib/damage-calc";
+
+  export let results: SpellState[] = [];
+  export let vocation: Vocation;
   export let effectiveDpt: number;
   export let effectiveDph: number;
 

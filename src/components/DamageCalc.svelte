@@ -129,6 +129,7 @@
     </h3>
     <ResultsTable
       results={resultsA}
+      vocation={A.stats.vocation}
       effectiveDpt={effectiveDptA}
       isDptHigher={isDptAHigher}
       effectiveDph={effectiveDphA}
@@ -146,6 +147,7 @@
       </h3>
       <ResultsTable
         results={resultsB}
+        vocation={B.stats.vocation}
         effectiveDpt={effectiveDptB}
         isDptHigher={isDptBHigher}
         effectiveDph={effectiveDphB}
