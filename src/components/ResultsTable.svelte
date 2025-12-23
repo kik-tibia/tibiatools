@@ -1,8 +1,8 @@
 <script lang="ts">
+  import type { SpellDamage } from "@data/spells";
   import type { Vocation } from "@lib/build-state";
-  import type { SpellState } from "@lib/damage-calc";
 
-  export let results: SpellState[] = [];
+  export let results: SpellDamage[] = [];
   export let vocation: Vocation;
   export let effectiveDpt: number;
   export let effectiveDph: number;
@@ -10,6 +10,8 @@
   export let isHigher: (id: string) => boolean = () => false;
   export let isDptHigher: boolean;
   export let isDphHigher: boolean;
+
+  $: vocResults = results.filter((i) => i.vocations.includes(vocation));
 </script>
 
 <div>
@@ -76,7 +78,7 @@
         </tr>
       </thead>
       <tbody>
-        {#each results as r}
+        {#each vocResults as r}
           <tr class:highlight={isHigher(r.id)}>
             <td class="spell">
               <div class="spell-name">{r.name}</div>

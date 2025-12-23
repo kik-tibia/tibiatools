@@ -23,7 +23,12 @@
     buildB = { ...buildB, stats: { ...buildB.stats, [key]: value } };
   }
 
-  // Weapon helpers
+  $: vocationA = buildA.stats.vocation;
+  $: vocationB = buildB.stats.vocation;
+  $: weaponsForA = weapons.filter((i) => i.vocations.includes(vocationA));
+  $: weaponsForB = weapons.filter((i) => i.vocations.includes(vocationB));
+  $: spellsForAB = spells.filter((i) => i.vocations.includes(vocationA) || i.vocations.includes(vocationB));
+
   $: weaponA = weaponRegistry.get(buildA.weapon.id as string);
   $: weaponB = weaponRegistry.get(buildB.weapon.id as string);
 
@@ -323,11 +328,11 @@
     <tr class="section-header">
       <td><h4>Weapon</h4></td>
       <td>
-        <FuzzySelect selectType="weapons" all={weapons} selectedIds={[]} onAdd={setWeaponA} />
+        <FuzzySelect selectType="weapons" all={weaponsForA} selectedIds={[]} onAdd={setWeaponA} />
       </td>
       {#if showSecondBuild}
         <td>
-          <FuzzySelect selectType="weapons" all={weapons} selectedIds={[]} onAdd={setWeaponB} />
+          <FuzzySelect selectType="weapons" all={weaponsForB} selectedIds={[]} onAdd={setWeaponB} />
         </td>
       {/if}
     </tr>
@@ -489,7 +494,11 @@
 
     <tr class="data-row">
       <td>
-        <FuzzySelect selectType="spells" all={spells} selectedIds={allSelectedRotationIds} onAdd={addSpellToRotation} />
+        <FuzzySelect
+          selectType="spells"
+          all={spellsForAB}
+          selectedIds={allSelectedRotationIds}
+          onAdd={addSpellToRotation} />
       </td>
       <td class="sub-header rotation-label-cell">
         {#if allSelectedRotationIds.length > 0}
