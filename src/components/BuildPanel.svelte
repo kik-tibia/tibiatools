@@ -3,12 +3,14 @@
   import { spells } from "@data/spells";
   import { weapons, ammo } from "@data/weapons";
   import FuzzySelect from "./FuzzySelect.svelte";
-  import type { Build, BuildStats } from "@lib/build-state";
+  import type { Build, BuildStats, Vocation } from "@lib/build-state";
 
   const perkRegistry = new Map(perks.map((p) => [p.id, p]));
   const spellRegistry = new Map(spells.map((s) => [s.id, s]));
   const weaponRegistry = new Map(weapons.map((w) => [w.id, w]));
   const ammoRegistry = new Map(ammo.map((a) => [a.id, a]));
+
+  const vocations: Vocation[] = ["knight", "paladin", "sorcerer", "druid", "monk"];
 
   export let buildA: Build;
   export let buildB: Build;
@@ -214,6 +216,10 @@
   $: visibleFields = showAdvanced ? statFields : basicFields;
 
   const isAutoAttack = (id: string) => id === "auto-attack";
+
+  function capitalize(s: string): string {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
 </script>
 
 <table class="build-table" class:two-builds={showSecondBuild}>
@@ -245,6 +251,33 @@
       <td><h4>Basic Stats</h4></td>
       <td></td>
       {#if showSecondBuild}<td></td>{/if}
+    </tr>
+
+    <!-- Vocation dropdown -->
+    <tr class="data-row">
+      <td>Vocation</td>
+      <td>
+        <select
+          class="vocation-select input-a"
+          value={buildA.stats.vocation}
+          on:change={(e) => setStatA("vocation", e.currentTarget.value as Vocation)}>
+          {#each vocations as voc}
+            <option value={voc}>{capitalize(voc)}</option>
+          {/each}
+        </select>
+      </td>
+      {#if showSecondBuild}
+        <td>
+          <select
+            class="vocation-select input-b"
+            value={buildB.stats.vocation}
+            on:change={(e) => setStatB("vocation", e.currentTarget.value as Vocation)}>
+            {#each vocations as voc}
+              <option value={voc}>{capitalize(voc)}</option>
+            {/each}
+          </select>
+        </td>
+      {/if}
     </tr>
 
     {#each visibleFields as field}
@@ -697,6 +730,31 @@
     box-shadow: 0 0 0 2px hsl(220 90% 65% / 0.3);
   }
 
+  .vocation-select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.25rem 0.4rem;
+    font: inherit;
+    border: 1px solid hsl(0 0% 40%);
+    border-radius: 0.25rem;
+    background: hsl(220 10% 15%);
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .vocation-select.input-a {
+    border-color: hsl(210, 50%, 40%);
+  }
+
+  .vocation-select.input-b {
+    border-color: hsl(30, 50%, 40%);
+  }
+
+  .vocation-select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(220 90% 65% / 0.3);
+  }
+
   /* Input with remove button */
   .input-with-remove {
     display: flex;
@@ -802,13 +860,6 @@
 
   td :global(.fuzzy-select) {
     width: 100%;
-  }
-
-  /* Weapon section styles */
-  .weapon-cell {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
   }
 
   .selected-item {
