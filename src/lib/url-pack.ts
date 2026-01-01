@@ -3,8 +3,6 @@ import type { CalculatorState, Build, BuildStats } from "./build-state";
 import type { ActivePerk, RotationSpell, WeaponBuild } from "./damage-calc";
 
 /**
- * Compact format using positional arrays:
- *
  * State = [BuildA, BuildB, showSecondBuild]
  * Build = [Stats, Weapon, Perks, Rotation]
  * Stats = [vocation, level, bonus, skill, magicLevel, critChance, critDamage, fatalChance, shielding, fishing]
