@@ -16,7 +16,6 @@
   let showSecondBuild: boolean = !!initial.showSecondBuild;
 
   function currentState(): CalculatorState {
-    console.log(A);
     return { A, B, showSecondBuild };
   }
 
