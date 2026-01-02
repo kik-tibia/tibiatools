@@ -11,6 +11,12 @@ export type BuildStats = {
   critChance: number | null;
   critDamage: number | null;
   fatalChance: number | null;
+  baseMagicLevel: number | null;
+  axe: number | null;
+  club: number | null;
+  sword: number | null;
+  fist: number | null;
+  distance: number | null;
   shielding: number | null;
   fishing: number | null;
 };
@@ -32,8 +38,14 @@ const defaultStats = (): BuildStats => ({
   critChance: 10,
   critDamage: 50,
   fatalChance: 0,
-  shielding: 10,
-  fishing: 10,
+  baseMagicLevel: 0,
+  axe: 0,
+  club: 0,
+  sword: 0,
+  fist: 0,
+  distance: 0,
+  shielding: 0,
+  fishing: 0,
 });
 
 const defaultWeapon = (): WeaponBuild => ({

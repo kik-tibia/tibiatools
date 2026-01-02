@@ -203,6 +203,7 @@
     key: keyof BuildStats;
     label: string;
     advanced?: boolean;
+    tooltip?: string;
   };
 
   const statFields: StatField[] = [
@@ -213,6 +214,37 @@
     { key: "critChance", label: "Crit Chance %" },
     { key: "critDamage", label: "Crit Damage %" },
     { key: "fatalChance", label: "Fatal Chance %", advanced: true },
+    { key: "baseMagicLevel", label: "Base Magic Level", advanced: true, tooltip: "Required for Runic Mastery" },
+    {
+      key: "axe",
+      label: "Axe Fighting",
+      advanced: true,
+      tooltip: "Overrides Skill if set. Only needed when using a weapon with a secondary skill proficiency perk.",
+    },
+    {
+      key: "club",
+      label: "Club Fighting",
+      advanced: true,
+      tooltip: "Overrides Skill if set. Only needed when using a weapon with a secondary skill proficiency perk.",
+    },
+    {
+      key: "sword",
+      label: "Sword Fighting",
+      advanced: true,
+      tooltip: "Overrides Skill if set. Only needed when using a weapon with a secondary skill proficiency perk.",
+    },
+    {
+      key: "fist",
+      label: "Fist Fighting",
+      advanced: true,
+      tooltip: "Overrides Skill if set. Only needed when using a weapon with a secondary skill proficiency perk.",
+    },
+    {
+      key: "distance",
+      label: "Distance Fighting",
+      advanced: true,
+      tooltip: "Overrides Skill if set. Only needed when using a weapon with a secondary skill proficiency perk.",
+    },
     { key: "shielding", label: "Shielding", advanced: true },
     { key: "fishing", label: "Fishing", advanced: true },
   ];
@@ -287,7 +319,16 @@
 
     {#each visibleFields as field}
       <tr class="data-row">
-        <td>{field.label}</td>
+        {#if field.tooltip}
+          <td>
+            <span class="field-tip">
+              <button type="button" class="tip-trigger" aria-describedby="tip-effective">{field.label}</button>
+              <span id="tip-effective" role="tooltip" class="tip-content">{field.tooltip}</span>
+            </span>
+          </td>
+        {:else}
+          <td>{field.label}</td>
+        {/if}
         <td>
           <input
             type="number"
