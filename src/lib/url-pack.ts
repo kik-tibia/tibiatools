@@ -5,7 +5,7 @@ import type { ActivePerk, RotationSpell, WeaponBuild } from "./damage-calc";
 /**
  * State = [BuildA, BuildB, showSecondBuild]
  * Build = [Stats, Weapon, Perks, Rotation]
- * Stats = [vocation, level, bonus, skill, magicLevel, critChance, critDamage, fatalChance, shielding, fishing]
+ * Stats = [vocation, level, bonus, ... ]
  * Weapon = "id" | ["id", "ammoId"]
  * Perks = [[id, value], ...]
  * Rotation = [[id, targets, ratio], ...]
@@ -21,6 +21,12 @@ const STATS_KEYS: (keyof BuildStats)[] = [
   "critChance",
   "critDamage",
   "fatalChance",
+  "baseMagicLevel",
+  "axe",
+  "club",
+  "sword",
+  "fist",
+  "distance",
   "shielding",
   "fishing",
 ];
