@@ -19,7 +19,7 @@
     <tbody>
       <tr class:highlight={isDptHigher}>
         <td class="summary-label">
-          <span class="field-tip">
+          <span class="field-tip tip-right">
             <button type="button" class="tip-trigger" aria-describedby="tip-dpt">
               Average effective damage per turn
             </button>
@@ -33,7 +33,7 @@
       </tr>
       <tr class:highlight={isDphHigher}>
         <td class="summary-label">
-          <span class="field-tip">
+          <span class="field-tip tip-right">
             <button type="button" class="tip-trigger" aria-describedby="tip-dph">
               Average effective damage per hit
             </button>
@@ -54,7 +54,7 @@
         <tr>
           <th class="desc" rowspan="2">Spell</th>
           <th class="desc">
-            <span class="field-tip">
+            <span class="field-tip tip-right">
               <button type="button" class="tip-trigger" aria-describedby="tip-effective">Effective</button>
               <span id="tip-effective" role="tooltip" class="tip-content">
                 The average damage you would deal, taking into account resistances, armor, mitigation, crits and fatals.
@@ -62,7 +62,7 @@
             </span>
           </th>
           <th class="desc" colspan="3">
-            <span class="field-tip">
+            <span class="field-tip tip-right">
               <button type="button" class="tip-trigger" aria-describedby="tip-raw">Raw</button>
               <span id="tip-raw" role="tooltip" class="tip-content">
                 The damage you would deal to a completely defenseless target, ignoring resistances, crits, etc.

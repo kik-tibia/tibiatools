@@ -1,90 +1,90 @@
 :root {
-    color-scheme: light dark;
+  color-scheme: light dark;
 }
 
 body {
-    margin: 0;
-    font-family: system-ui, sans-serif;
-    line-height: 1.2;
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.2;
 }
 
 header,
 main {
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 1rem;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 nav a {
-    margin-right: .75rem;
-    text-decoration: none;
+  margin-right: 0.75rem;
+  text-decoration: none;
 }
 
 nav a.active {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 label {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: .5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .main-grid .stack {
-    display: grid;
-    gap: 0.5rem;
-    width: 100%;
-    padding-bottom: 0.5rem;
+  display: grid;
+  gap: 0.5rem;
+  width: 100%;
+  padding-bottom: 0.5rem;
 }
 
 .meta {
-    display: inline-flex;
-    gap: .35rem;
-    margin-left: .4rem;
+  display: inline-flex;
+  gap: 0.35rem;
+  margin-left: 0.4rem;
 }
 
 /* TODO redo all of this after the css rehaul */
 @media (max-width: 700px) {
-    .main-grid {
-        grid-auto-flow: row;
-        grid-auto-columns: unset;
-        grid-template-rows: unset;
-        grid-template-columns: 1fr;
-    }
+  .main-grid {
+    grid-auto-flow: row;
+    grid-auto-columns: unset;
+    grid-template-rows: unset;
+    grid-template-columns: 1fr;
+  }
 
-    .results thead {
-        display: none;
-    }
+  .results thead {
+    display: none;
+  }
 
-    .results,
-    .results tbody,
-    .results tr,
-    .results td {
-        display: block;
-        width: 100%;
-    }
+  .results,
+  .results tbody,
+  .results tr,
+  .results td {
+    display: block;
+    width: 100%;
+  }
 
-    .results tr {
-        border-bottom: 1px solid #e5e5e5;
-    }
+  .results tr {
+    border-bottom: 1px solid #e5e5e5;
+  }
 
-    .results td {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: center;
-    }
+  .results td {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
 
-    .results td.spell {
-        grid-template-columns: 1fr;
-    }
+  .results td.spell {
+    grid-template-columns: 1fr;
+  }
 
-    .results td.num::before {
-        content: attr(data-label);
-        opacity: .7;
-        padding-right: .75rem;
-        font-weight: 500;
-    }
+  .results td.num::before {
+    content: attr(data-label);
+    opacity: 0.7;
+    padding-right: 0.75rem;
+    font-weight: 500;
+  }
 }
 
 .field-tip {
@@ -94,9 +94,9 @@ label {
 
 .field-tip .tip-content {
   position: absolute;
-  top: -5rem;
-  left: auto;
-  right: 0;
+  bottom: calc(100% + 4px);
+  left: 0;
+  right: auto;
   font-size: 0.8rem;
   white-space: normal;
   display: inline-block;
@@ -109,6 +109,11 @@ label {
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
+}
+
+.field-tip.tip-right .tip-content {
+  left: auto;
+  right: 0;
 }
 
 .tip-trigger {
