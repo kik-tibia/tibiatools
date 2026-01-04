@@ -199,5 +199,50 @@
       "paladin"
     ],
     "rounding": "round"
+  },
+  {
+    "id": "divine-grenade-1",
+    "scope": "divine-grenade",
+    "name": "Divine Grenade (Stage 1)",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "holy",
+    "power": 190,
+    "skillFactor": 25,
+    "buckets": 100,
+    "vocations": [
+      "paladin"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "divine-grenade-2",
+    "scope": "divine-grenade",
+    "name": "Divine Grenade (Stage 2)",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "holy",
+    "power": 220,
+    "skillFactor": 25,
+    "buckets": 100,
+    "vocations": [
+      "paladin"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "divine-grenade-3",
+    "scope": "divine-grenade",
+    "name": "Divine Grenade (Stage 3)",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "holy",
+    "power": 250,
+    "skillFactor": 25,
+    "buckets": 100,
+    "vocations": [
+      "paladin"
+    ],
+    "rounding": "floor"
   }
 ]
