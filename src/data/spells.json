@@ -25,7 +25,7 @@
     "element": "ice",
     "power": 50,
     "skillFactor": 25,
-    "buckets": 50,
+    "buckets": 40,
     "vocations": [
       "druid",
       "knight",
@@ -75,7 +75,7 @@
     "element": "weapon",
     "power": 44,
     "skillFactor": 1000,
-    "buckets": 50,
+    "buckets": 24,
     "vocations": [
       "knight"
     ],
@@ -89,7 +89,7 @@
     "element": "weapon",
     "power": 32,
     "skillFactor": 1000,
-    "buckets": 50,
+    "buckets": 18,
     "vocations": [
       "knight"
     ],
