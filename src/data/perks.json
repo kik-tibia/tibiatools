@@ -12,6 +12,12 @@
     "bonusType": "crit-chance"
   },
   {
+    "id": "crit-damage",
+    "name": "Critical hit damage",
+    "scope": "all",
+    "bonusType": "crit-damage"
+  },
+  {
     "id": "auto-crit-chance",
     "name": "Critical hit chance for auto‑attacks",
     "scope": "auto-attack",

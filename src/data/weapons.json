@@ -23,11 +23,48 @@
     ]
   },
   {
+    "id": "crypt-slicer",
+    "name": "Crypt Slicer",
+    "attack": 58,
+    "skill": "sword",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
+    "id": "soulshredder",
+    "name": "Soulshredder",
+    "attack": 57,
+    "attackIce": 47,
+    "skill": "sword",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
     "id": "sanguine-blade",
     "name": "Sanguine Blade",
     "attack": 54,
     "attackFire": 46,
     "skill": "sword",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
+    "id": "eldritch-claymore",
+    "name": "Eldritch Claymore",
+    "attack": 56,
+    "skill": "sword",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
+    "id": "demonwing-axe",
+    "name": "Demonwing Axe",
+    "attack": 53,
+    "skill": "axe",
     "vocations": [
       "knight"
     ]

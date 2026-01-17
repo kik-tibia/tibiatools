@@ -12,6 +12,7 @@ export type PerkBonusType =
   | "club-percent-extra"
   | "sword-percent-extra"
   | "distance-percent-extra"
+  | "fist-percent-extra"
   | "shield-percent-extra"
   | "fishing-percent-extra"
   | "magic-level-percent-extra"

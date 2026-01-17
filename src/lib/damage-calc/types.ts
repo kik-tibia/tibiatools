@@ -8,14 +8,20 @@ export type ActivePerk = {
 export type ActivePerkWithDef = ActivePerk & { def: PerkDef };
 
 export type SpellState = {
-  P: number;
-  F: number;
-  ML: number;
-  S: number;
-  W: number;
+  basePower: number;
+  flat: number;
+  magicLevel: number;
+  skill: number;
+  weaponAttack: number;
   critChance: number;
   critDamage: number;
   fatalChance: number;
+  baseMagicLevel: number;
+  axe: number;
+  club: number;
+  sword: number;
+  fist: number;
+  distance: number;
   shielding: number;
   fishing: number;
 };

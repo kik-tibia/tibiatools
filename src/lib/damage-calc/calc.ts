@@ -14,10 +14,12 @@ import type { Ammo, SkillType, Weapon } from "@data/weapons";
  * multiply by target's resistance and mitigation
  * if physical damage, subtract the armor block
  * roll for crit and fatal, if successful, multiply by the extra damage bonus including any crit damage perks
+ * calculate leech at this point
+ * multiply damage by attack prey and talisman
  */
 
 const computeAvg = (spell: Spell, state: SpellState) => {
-  const { P, F, ML, S, W } = state;
+  const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W } = state;
   const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
   const damage =
     spell.scalesWith === "magic"
@@ -27,7 +29,7 @@ const computeAvg = (spell: Spell, state: SpellState) => {
 };
 
 const computeMinMax = (spell: Spell, minMax: number, state: SpellState) => {
-  const { P, F, ML, S, W } = state;
+  const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W } = state;
   const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
   const variation = spell.buckets / P / 2;
   const damage =
@@ -47,7 +49,23 @@ const applyPerkToSpell = (
   skillType: SkillType,
   state: SpellState,
 ): SpellState => {
-  const { P, F, ML, S, W, shielding, fishing, critChance, critDamage } = state;
+  const {
+    basePower: P,
+    flat: F,
+    magicLevel: ML,
+    skill,
+    weaponAttack: W,
+    critChance,
+    critDamage,
+    baseMagicLevel,
+    axe,
+    club,
+    sword,
+    fist,
+    distance,
+    shielding,
+    fishing,
+  } = state;
 
   if (
     perk.def.scope === "all" ||
@@ -58,29 +76,41 @@ const applyPerkToSpell = (
   ) {
     switch (perk.def.bonusType) {
       case "base-damage":
-        return { ...state, P: P * (1 + perk.value / 100) };
+        return { ...state, basePower: P * (1 + perk.value / 100) };
       case "crit-chance":
         return { ...state, critChance: critChance + perk.value };
       case "crit-damage":
         return { ...state, critDamage: critDamage + perk.value };
       case "attack":
-        return { ...state, W: W + perk.value };
+        return { ...state, weaponAttack: W + perk.value };
       case "magic-level":
-        return { ...state, ML: ML + perk.value };
-      case "axe-percent-extra":
-        return skillType == "axe" ? { ...state, F: F + Math.floor((S * perk.value) / 100) } : state;
-      case "club-percent-extra":
-        return skillType == "club" ? { ...state, F: F + Math.floor((S * perk.value) / 100) } : state;
-      case "sword-percent-extra":
-        return skillType == "sword" ? { ...state, F: F + Math.floor((S * perk.value) / 100) } : state;
-      case "distance-percent-extra":
-        return skillType == "distance" ? { ...state, F: F + Math.floor((S * perk.value) / 100) } : state;
+        return { ...state, magicLevel: ML + perk.value };
+      case "axe-percent-extra": {
+        const S = axe == 0 ? skill : axe;
+        return skillType == "axe" ? { ...state, flat: F + Math.floor((S * perk.value) / 100) } : state;
+      }
+      case "club-percent-extra": {
+        const S = club == 0 ? skill : club;
+        return skillType == "club" ? { ...state, flat: F + Math.floor((S * perk.value) / 100) } : state;
+      }
+      case "sword-percent-extra": {
+        const S = sword == 0 ? skill : sword;
+        return skillType == "sword" ? { ...state, flat: F + Math.floor((S * perk.value) / 100) } : state;
+      }
+      case "distance-percent-extra": {
+        const S = distance == 0 ? skill : distance;
+        return skillType == "distance" ? { ...state, flat: F + Math.floor((S * perk.value) / 100) } : state;
+      }
+      case "fist-percent-extra": {
+        const S = fist == 0 ? skill : fist;
+        return skillType == "fist" ? { ...state, flat: F + Math.floor((S * perk.value) / 100) } : state;
+      }
       case "shield-percent-extra":
-        return { ...state, F: F + Math.floor((shielding * perk.value) / 100) };
+        return { ...state, flat: F + Math.floor((shielding * perk.value) / 100) };
       case "fishing-percent-extra":
-        return { ...state, F: F + Math.floor((fishing * perk.value) / 100) };
+        return { ...state, flat: F + Math.floor((fishing * perk.value) / 100) };
       case "magic-level-percent-extra":
-        return { ...state, F: F + Math.floor((ML * perk.value) / 100) };
+        return { ...state, flat: F + Math.floor((ML * perk.value) / 100) };
     }
   }
 
@@ -91,16 +121,37 @@ const derive = (inp: BuildStats) => {
   const n = (v: unknown) => Number((v ?? "").toString().trim()) || 0;
   const L = n(inp.level);
   const B = n(inp.bonus);
-  const S = n(inp.skill);
-  const ML = n(inp.magicLevel);
+  const skill = n(inp.skill);
+  const magicLevel = n(inp.magicLevel);
   const critChance = n(inp.critChance);
   const critDamage = n(inp.critDamage);
   const fatalChance = n(inp.fatalChance);
+  const baseMagicLevel = n(inp.baseMagicLevel);
+  const axe = n(inp.axe);
+  const club = n(inp.club);
+  const sword = n(inp.sword);
+  const fist = n(inp.fist);
+  const distance = n(inp.distance);
   const shielding = n(inp.shielding);
   const fishing = n(inp.fishing);
   const step = Math.floor((Math.sqrt(2 * L + 2025) + 5) / 10);
-  const F = step * 100 - 450 + Math.floor((L + 1000) / step - 50 * step) + B;
-  return { F, ML, S, critChance, critDamage, fatalChance, shielding, fishing };
+  const flat = step * 100 - 450 + Math.floor((L + 1000) / step - 50 * step) + B;
+  return {
+    flat,
+    magicLevel,
+    skill,
+    critChance,
+    critDamage,
+    fatalChance,
+    baseMagicLevel,
+    axe,
+    club,
+    sword,
+    fist,
+    distance,
+    shielding,
+    fishing,
+  };
 };
 
 const assignDefsToPerks = (activePerks: ActivePerk[]) => {
@@ -125,18 +176,18 @@ const computeDamageRanges = (spell: Spell, state: SpellState, aoeAA: boolean): S
   const pNoBonus = (1 - c) * (1 - o);
 
   if (spell.spellType === "auto") {
-    const attackValueWithoutFlat = (Math.floor((6 * state.W) / 5) * (state.S + 4)) / 28;
-    const min = Math.floor(state.F + attackValueWithoutFlat / 2);
-    const avg = Math.floor(state.F + attackValueWithoutFlat);
-    const max = Math.floor(state.F + attackValueWithoutFlat * 2);
+    const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
+    const min = Math.floor(state.flat + attackValueWithoutFlat / 2);
+    const avg = Math.floor(state.flat + attackValueWithoutFlat);
+    const max = Math.floor(state.flat + attackValueWithoutFlat * 2);
 
     const effectiveAvg = aoeAA
       ? avg *
         (pNoBonus + pCrit * (1 + state.critDamage / 100) + pFatal * 1.6 + pCritFatal * (1.6 + state.critDamage / 100))
       : pNoBonus * avg +
-        pCrit * (state.F + attackValueWithoutFlat * 1.75) * (1 + state.critDamage / 100) +
-        pFatal * (state.F + attackValueWithoutFlat * 1.75) * 1.6 +
-        pCritFatal * (state.F + attackValueWithoutFlat * 1.75) * (1.6 + state.critDamage / 100);
+        pCrit * (state.flat + attackValueWithoutFlat * 1.75) * (1 + state.critDamage / 100) +
+        pFatal * (state.flat + attackValueWithoutFlat * 1.75) * 1.6 +
+        pCritFatal * (state.flat + attackValueWithoutFlat * 1.75) * (1.6 + state.critDamage / 100);
 
     return { ...spell, min, avg, max, effectiveAvg };
   } else {
@@ -152,25 +203,46 @@ const computeDamageRanges = (spell: Spell, state: SpellState, aoeAA: boolean): S
 
 export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks: ActivePerk[]) => {
   const perksWithDefs: ActivePerkWithDef[] = assignDefsToPerks(activePerks);
-  const { F, ML, S, critChance, critDamage, fatalChance, shielding, fishing } = derive(inp);
+  const {
+    flat,
+    magicLevel,
+    skill,
+    critChance,
+    critDamage,
+    fatalChance,
+    baseMagicLevel,
+    axe,
+    club,
+    sword,
+    fist,
+    distance,
+    shielding,
+    fishing,
+  } = derive(inp);
 
   const weaponDef = weaponsById[weapon.id];
   const ammoDef = weapon.ammo ? ammoById[weapon.ammo] : null;
 
-  const W = weaponDef.attack + (ammoDef?.attack ?? 0);
+  const weaponAttack = weaponDef.attack + (ammoDef?.attack ?? 0);
   const skillType = weaponDef.skill;
   const aoeAA = ammoDef?.aoe ?? false;
 
   const spellResults = spells.map((spell) => {
     const initial: SpellState = {
-      P: spell.power,
-      F,
-      ML,
-      S,
-      W,
+      basePower: spell.power,
+      flat,
+      magicLevel,
+      skill,
+      weaponAttack,
       critChance,
       critDamage,
       fatalChance,
+      baseMagicLevel,
+      axe,
+      club,
+      sword,
+      fist,
+      distance,
       shielding,
       fishing,
     };
