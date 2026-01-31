@@ -66,6 +66,24 @@
     "bonusType": "crit-chance"
   },
   {
+    "id": "berserk-base",
+    "name": "Berserk (exori) base damage",
+    "scope": "berserk",
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "berserk-crit",
+    "name": "Berserk (exori) critical hit damage",
+    "scope": "berserk",
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "berserk-crit-chance",
+    "name": "Berserk (exori) critical hit chance",
+    "scope": "berserk",
+    "bonusType": "crit-chance"
+  },
+  {
     "id": "groundshaker-base",
     "name": "Groundshaker (exori mas) base damage",
     "scope": "groundshaker",

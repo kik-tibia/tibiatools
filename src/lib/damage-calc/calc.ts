@@ -11,10 +11,11 @@ import type { Ammo, SkillType, Weapon } from "@data/weapons";
  * use the updated power and your skills to calculate base damage
  * add on flat damage from level, wheel, and any extra damage perks
  * multiply by additional damage bonus if applicable (amp kor, ulus)
- * multiply by target's resistance and mitigation
- * if physical damage, subtract the armor block
- * roll for crit and fatal, if successful, multiply by the extra damage bonus including any crit damage perks
- * calculate leech at this point
+ * multiply by target's resistance
+ * if physical damage, subtract the armor block (confirmed this is after res/miti by testing on gazer spectres, and on spike traps)
+ * roll for crit and fatal, if successful, multiply by the extra damage bonus including any crit damage perks (crit rounding is ceil)
+ * multiply by target's mitigation (at least after armor block, could be later but probably not)
+ * (calculate leech at this point)
  * multiply damage by attack prey and talisman
  */
 

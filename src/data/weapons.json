@@ -13,11 +13,30 @@
     ]
   },
   {
+    "id": "broken-macuahuitl",
+    "name": "Broken Macuahuitl",
+    "attack": 1,
+    "skill": "sword",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
     "id": "sanguine-razor",
     "name": "Sanguine Razor",
     "attack": 58,
     "attackEnergy": 50,
     "skill": "sword",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
+    "id": "sanguine-battleaxe",
+    "name": "Sanguine Battleaxe",
+    "attack": 58,
+    "attackDeath": 50,
+    "skill": "axe",
     "vocations": [
       "knight"
     ]
@@ -42,6 +61,16 @@
     ]
   },
   {
+    "id": "soulmaimer",
+    "name": "Soulmaimer",
+    "attack": 57,
+    "attackEnergy": 47,
+    "skill": "club",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
     "id": "sanguine-blade",
     "name": "Sanguine Blade",
     "attack": 54,
@@ -52,10 +81,30 @@
     ]
   },
   {
+    "id": "summerblade",
+    "name": "Summerblade",
+    "attack": 51,
+    "attackFire": 41,
+    "skill": "sword",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
     "id": "eldritch-claymore",
     "name": "Eldritch Claymore",
     "attack": 56,
     "skill": "sword",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
+    "id": "falcon-battleaxe",
+    "name": "Falcon Battleaxe",
+    "attack": 57,
+    "attackEnergy": 47,
+    "skill": "axe",
     "vocations": [
       "knight"
     ]
@@ -124,6 +173,36 @@
     "name": "Rending Inferniarch Bow",
     "attack": 7,
     "ammo": "arrows",
+    "skill": "distance",
+    "vocations": [
+      "paladin"
+    ]
+  },
+  {
+    "id": "naga-crossbow",
+    "name": "Naga Crossbow",
+    "attack": 8,
+    "ammo": "bolts",
+    "skill": "distance",
+    "vocations": [
+      "paladin"
+    ]
+  },
+  {
+    "id": "crossbow-of-destruction",
+    "name": "Crossbow of Destruction",
+    "attack": 6,
+    "ammo": "bolts",
+    "skill": "distance",
+    "vocations": [
+      "paladin"
+    ]
+  },
+  {
+    "id": "rending-inferniarch-arbalest",
+    "name": "Rending Inferniarch Arbalest",
+    "attack": 8,
+    "ammo": "bolts",
     "skill": "distance",
     "vocations": [
       "paladin"
