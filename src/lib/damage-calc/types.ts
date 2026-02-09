@@ -7,8 +7,7 @@ export type ActivePerk = {
 
 export type ActivePerkWithDef = ActivePerk & { def: PerkDef };
 
-export type SpellState = {
-  basePower: number;
+export type CharacterState = {
   flat: number;
   magicLevel: number;
   skill: number;
@@ -25,6 +24,8 @@ export type SpellState = {
   shielding: number;
   fishing: number;
 };
+
+export type SpellState = CharacterState & { basePower: number };
 
 export type RotationSpell = { id: string; targets: number; ratio: number };
 
