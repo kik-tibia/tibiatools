@@ -1,0 +1,179 @@
+[
+  {
+    "name": "Assassin Star",
+    "attack": "65",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {
+    "name": "Enchanted Spear",
+    "attack": "38",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {
+    "name": "Glooth Spear",
+    "attack": "55",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {
+    "name": "Hunting Spear",
+    "attack": "32",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {
+    "name": "Leaf Star",
+    "attack": "48",
+    "attackDeath": "",
+    "attackEarth": "2",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {
+    "name": "Mean Paladin Spear",
+    "attack": "15",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": "without"
+  },
+  {
+    "name": "Royal Spear",
+    "attack": "35",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {
+    "name": "Royal Star",
+    "attack": "64",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "2",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {
+    "name": "Small Stone",
+    "attack": "5",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {
+    "name": "Snowball",
+    "attack": "0",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {
+    "name": "Spear",
+    "attack": "25",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {
+    "name": "Throwing Cake",
+    "attack": "0",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {
+    "name": "Throwing Knife",
+    "attack": "25",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {
+    "name": "Throwing Star",
+    "attack": "30",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {
+    "name": "Throwing Star of Sula",
+    "attack": "250",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {
+    "name": "Viper Star",
+    "attack": "28",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "vocation": ""
+  },
+  {}
+]

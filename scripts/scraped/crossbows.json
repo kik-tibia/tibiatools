@@ -1,0 +1,238 @@
+[
+  {
+    "name": "Amber Crossbow",
+    "attack": "8",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Arbalest",
+    "attack": "2",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Chain Bolter",
+    "attack": "4",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Cobra Crossbow",
+    "attack": "7",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crossbow",
+    "attack": "",
+    "vocation": ""
+  },
+  {
+    "name": "Crossbow of Carving",
+    "attack": "6",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crossbow of Carving (Charged)",
+    "attack": "4",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crossbow of Carving (Heavily Charged)",
+    "attack": "5",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crossbow of Carving (Overcharged)",
+    "attack": "6",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crossbow of Destruction",
+    "attack": "6",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crossbow of Mayhem",
+    "attack": "6",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crossbow of Mayhem (Charged)",
+    "attack": "4",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crossbow of Mayhem (Heavily Charged)",
+    "attack": "5",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crossbow of Mayhem (Overcharged)",
+    "attack": "6",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crossbow of Remedy",
+    "attack": "6",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crossbow of Remedy (Charged)",
+    "attack": "4",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crossbow of Remedy (Heavily Charged)",
+    "attack": "5",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crossbow of Remedy (Overcharged)",
+    "attack": "6",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crude Umbral Crossbow",
+    "attack": "3",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Crystal Crossbow",
+    "attack": "4",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Draining Inferniarch Arbalest",
+    "attack": "8",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Grand Sanguine Crossbow",
+    "attack": "10",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Inferniarch Arbalest",
+    "attack": "8",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Modified Crossbow",
+    "attack": "",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Naga Crossbow",
+    "attack": "8",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Ornate Carving Crossbow",
+    "attack": "",
+    "vocation": ""
+  },
+  {
+    "name": "Ornate Crossbow",
+    "attack": "1",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Ornate Mayhem Crossbow",
+    "attack": "",
+    "vocation": ""
+  },
+  {
+    "name": "Ornate Remedy Crossbow",
+    "attack": "",
+    "vocation": ""
+  },
+  {
+    "name": "Plain Carving Crossbow",
+    "attack": "",
+    "vocation": ""
+  },
+  {
+    "name": "Plain Mayhem Crossbow",
+    "attack": "",
+    "vocation": ""
+  },
+  {
+    "name": "Plain Remedy Crossbow",
+    "attack": "",
+    "vocation": ""
+  },
+  {
+    "name": "Rending Inferniarch Arbalest",
+    "attack": "8",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Rift Crossbow",
+    "attack": "5",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Royal Crossbow",
+    "attack": "5",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Sanguine Crossbow",
+    "attack": "10",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Siphoning Inferniarch Arbalest",
+    "attack": "8",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Soulpiercer",
+    "attack": "9",
+    "vocation": "paladins"
+  },
+  {
+    "name": "The Devileye",
+    "attack": "20",
+    "vocation": "paladins"
+  },
+  {
+    "name": "The Ironworker",
+    "attack": "4",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Thorn Spitter",
+    "attack": "9",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Triple Bolt Crossbow",
+    "attack": "3",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Umbral Crossbow",
+    "attack": "6",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Umbral Master Crossbow",
+    "attack": "9",
+    "vocation": "paladins"
+  },
+  {
+    "name": "Valuable Carving Crossbow",
+    "attack": "",
+    "vocation": ""
+  },
+  {
+    "name": "Valuable Mayhem Crossbow",
+    "attack": "",
+    "vocation": ""
+  },
+  {
+    "name": "Valuable Remedy Crossbow",
+    "attack": "",
+    "vocation": ""
+  },
+  {}
+]
