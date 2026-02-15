@@ -25,8 +25,12 @@
 
   $: vocationA = buildA.stats.vocation;
   $: vocationB = buildB.stats.vocation;
-  $: weaponsForA = weapons.filter((i) => i.vocations.includes(vocationA));
-  $: weaponsForB = weapons.filter((i) => i.vocations.includes(vocationB));
+  $: weaponsForA = weapons
+    .filter((i) => i.vocations.includes(vocationA))
+    .sort((a, b) => a.vocations.length - b.vocations.length);
+  $: weaponsForB = weapons
+    .filter((i) => i.vocations.includes(vocationB))
+    .sort((a, b) => a.vocations.length - b.vocations.length);
   $: spellsForAB = spells.filter((i) => i.vocations.includes(vocationA) || i.vocations.includes(vocationB));
 
   $: weaponA = weaponRegistry.get(buildA.weapon.id as string);

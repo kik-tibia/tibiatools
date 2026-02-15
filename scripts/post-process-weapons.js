@@ -167,7 +167,15 @@ function main() {
     process.exit(1);
   }
 
-  let allWeapons = [];
+  let allWeapons = [
+    {
+      id: "fists",
+      name: "Fists",
+      attack: 7,
+      skill: "fist",
+      vocations: [...ALL_VOCATIONS],
+    },
+  ];
 
   for (const file of files) {
     const filePath = join(scrapedDir, file);

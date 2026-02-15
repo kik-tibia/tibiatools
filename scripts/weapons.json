@@ -1,5 +1,18 @@
 [
   {
+    "id": "fists",
+    "name": "Fists",
+    "attack": 7,
+    "skill": "fist",
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ]
+  },
+  {
     "id": "amber-axe",
     "name": "Amber Axe",
     "attack": 46,
@@ -8306,7 +8319,7 @@
     "id": "amber-rod",
     "name": "Amber Rod",
     "damageType": "ice",
-    "damage": 0,
+    "damage": 106,
     "vocations": [
       "druid"
     ]
@@ -8351,7 +8364,7 @@
     "id": "crypt-jaw",
     "name": "Crypt Jaw",
     "damageType": "physical",
-    "damage": 0,
+    "damage": 110,
     "vocations": [
       "druid"
     ]
@@ -8380,7 +8393,7 @@
     "id": "draining-inferniarch-rod",
     "name": "Draining Inferniarch Rod",
     "damageType": "earth",
-    "damage": 0,
+    "damage": 102,
     "vocations": [
       "druid"
     ]
@@ -8526,7 +8539,7 @@
     "id": "inferniarch-rod",
     "name": "Inferniarch Rod",
     "damageType": "earth",
-    "damage": 0,
+    "damage": 102,
     "vocations": [
       "druid"
     ]
@@ -8799,7 +8812,7 @@
     "id": "rending-inferniarch-rod",
     "name": "Rending Inferniarch Rod",
     "damageType": "earth",
-    "damage": 0,
+    "damage": 102,
     "vocations": [
       "druid"
     ]
@@ -8970,7 +8983,7 @@
     "id": "siphoning-inferniarch-rod",
     "name": "Siphoning Inferniarch Rod",
     "damageType": "earth",
-    "damage": 0,
+    "damage": 102,
     "vocations": [
       "druid"
     ]
