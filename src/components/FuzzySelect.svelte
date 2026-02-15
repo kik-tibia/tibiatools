@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Fzf } from "fzf";
+  import { Fzf, byLengthAsc } from "fzf";
 
   export let selectType: String;
 
@@ -15,7 +15,7 @@
 
   $: available = all.filter((x) => !selectedIds.includes(getId(x)));
 
-  $: fzf = new Fzf(available as any, { selector: (x: any) => getLabel(x) } as any);
+  $: fzf = new Fzf(available as any, { selector: (x: any) => getLabel(x), tiebreakers: [byLengthAsc] } as any);
 
   let results: any[] = [];
   $: results = q ? fzf.find(q).map((r: any) => r.item) : available;
