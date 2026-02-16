@@ -7,6 +7,7 @@
 
   import BuildPanel from "./BuildPanel.svelte";
   import ResultsTable from "./ResultsTable.svelte";
+  import type { SpellDamage } from "@data/spells";
 
   export let initial: CalculatorState;
 
@@ -26,11 +27,11 @@
   $: effectiveDphA = computeDph(resultsA, A.rotation);
   $: effectiveDphB = computeDph(resultsB, B.rotation);
 
-  const toMap = (arr: any[]) => new Map(arr.map((x) => [x.id, x]));
+  const toMap = (arr: SpellDamage[]) => new Map(arr.map((x) => [x.id, x]));
   $: mapA = toMap(resultsA);
   $: mapB = toMap(resultsB);
-  const isAHigher = (id: string) => Number(mapA.get(id)?.effectiveAvg) >= Number(mapB.get(id)?.effectiveAvg);
-  const isBHigher = (id: string) => Number(mapB.get(id)?.effectiveAvg) >= Number(mapA.get(id)?.effectiveAvg);
+  const isAHigher = (id: string) => Number(mapA.get(id)?.effectiveAvg ?? 0) >= Number(mapB.get(id)?.effectiveAvg ?? 0);
+  const isBHigher = (id: string) => Number(mapB.get(id)?.effectiveAvg ?? 0) >= Number(mapA.get(id)?.effectiveAvg ?? 0);
   const epsilon = 1e-9;
   $: isDptAHigher = effectiveDptA >= effectiveDptB - epsilon;
   $: isDptBHigher = effectiveDptB >= effectiveDptA - epsilon;

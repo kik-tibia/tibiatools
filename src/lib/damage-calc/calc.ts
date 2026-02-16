@@ -211,14 +211,16 @@ export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks
   // if not specifying axe skill we need to assume it's 0, not the sword skill
   const aoeAA = ammoDef?.aoe ?? false;
 
-  const spellResults = spells.map((spell) => {
-    const initial: SpellState = { ...state, basePower: spell.power };
-    const final: SpellState = perksWithDefs.reduce(
-      (acc, perk) => applyPerkToSpell(spell, perk, skillType, acc),
-      initial,
-    );
-    return computeDamageRanges(spell, final, aoeAA);
-  });
+  const spellResults = spells
+    .filter((s) => s.vocations.includes(inp.vocation))
+    .map((spell) => {
+      const initial: SpellState = { ...state, basePower: spell.power };
+      const final: SpellState = perksWithDefs.reduce(
+        (acc, perk) => applyPerkToSpell(spell, perk, skillType, acc),
+        initial,
+      );
+      return computeDamageRanges(spell, final, aoeAA);
+    });
   return spellResults;
 };
 
