@@ -9,10 +9,40 @@ body {
 }
 
 header,
-main {
+main,
+footer {
   max-width: 1500px;
   margin: 0 auto;
   padding: 1rem;
+}
+
+footer {
+  margin-top: 3rem;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+footer p {
+  margin: 0.4rem 0;
+}
+
+footer .discord-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  text-decoration: none;
+}
+
+footer .discord-link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+  footer {
+    border-top-color: #444;
+  }
 }
 
 nav a {

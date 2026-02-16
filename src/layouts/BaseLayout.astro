@@ -24,5 +24,18 @@ const { title = "Tibia Tools" } = Astro.props;
     <main>
       <slot />
     </main>
+    <footer>
+      <p>&copy; 2025&ndash;{new Date().getFullYear()} TibiaTools.io</p>
+      <p>
+        <a href="https://www.tibia.com" target="_blank" rel="noopener">Tibia</a> is a registered trademark of
+        <a href="https://www.cipsoft.com" target="_blank" rel="noopener">CipSoft GmbH</a>.
+        All game content and materials are the property of <a href="https://www.cipsoft.com" target="_blank" rel="noopener">CipSoft GmbH</a>.
+      </p>
+      <p>
+        <a href="https://discord.com/users/tom50" target="_blank" rel="noopener" class="discord-link">
+          <img src="/discord.svg" alt="Discord" width="20" height="20" />
+        </a>
+      </p>
+    </footer>
   </body>
 </html>
