@@ -3,6 +3,8 @@
   import { spells } from "@data/spells";
   import { weapons, ammo } from "@data/weapons";
   import FuzzySelect from "./FuzzySelect.svelte";
+  import RemoveButton from "./RemoveButton.svelte";
+  import BuildBadge from "./BuildBadge.svelte";
   import type { Build, BuildStats, Vocation } from "@lib/build-state";
 
   const perkRegistry = new Map(perks.map((p) => [p.id, p]));
@@ -281,12 +283,12 @@
       <th>Build Stats</th>
       <th>
         {#if showSecondBuild}
-          <span class="build-label build-a">Build A</span>
+          <BuildBadge build="a">Build A</BuildBadge>
         {/if}
       </th>
       {#if showSecondBuild}
         <th>
-          <span class="build-label build-b">Build B</span>
+          <BuildBadge build="b">Build B</BuildBadge>
         </th>
       {/if}
     </tr>
@@ -393,7 +395,7 @@
           <div class="selected-item input-with-remove">
             <span class="selected-name selected-name-a">{weaponA.name}</span>
             {#if weaponA.id !== "fists"}
-              <button type="button" class="remove-btn push-right" aria-label="Clear" on:click={clearWeaponA}>×</button>
+              <RemoveButton pushRight on:click={clearWeaponA} />
             {/if}
           </div>
         {/if}
@@ -404,7 +406,7 @@
             <div class="selected-item">
               <span class="selected-name selected-name-b">{weaponB.name}</span>
               {#if weaponB.id !== "fists"}
-                <button type="button" class="remove-btn" aria-label="Clear" on:click={clearWeaponB}>×</button>
+                <RemoveButton on:click={clearWeaponB} />
               {/if}
             </div>
           {/if}
@@ -437,7 +439,7 @@
               {#if selectedAmmo}
                 <div class="selected-item">
                   <span class="selected-name selected-name-a">{selectedAmmo.name}</span>
-                  <button type="button" class="remove-btn" aria-label="Clear" on:click={clearAmmoA}>×</button>
+                  <RemoveButton on:click={clearAmmoA} />
                 </div>
               {/if}
             {/if}
@@ -451,7 +453,7 @@
                 {#if selectedAmmo}
                   <div class="selected-item">
                     <span class="selected-name selected-name-b">{selectedAmmo.name}</span>
-                    <button type="button" class="remove-btn" aria-label="Clear" on:click={clearAmmoB}>×</button>
+                    <RemoveButton on:click={clearAmmoB} />
                   </div>
                 {/if}
               {/if}
@@ -490,7 +492,7 @@
                   class="input-a"
                   value={buildA.perks.find((p) => p.id === id)?.value ?? 0}
                   on:input={(e) => setPerkValueA(id, Number(e.currentTarget.value))} />
-                <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removePerkA(id)}>×</button>
+                <RemoveButton on:click={() => removePerkA(id)} />
               </div>
             {:else}
               <div class="add-placeholder">
@@ -514,9 +516,7 @@
                     class="input-b"
                     value={buildB.perks.find((p) => p.id === id)?.value ?? 0}
                     on:input={(e) => setPerkValueB(id, Number(e.currentTarget.value))} />
-                  <button type="button" class="remove-btn" aria-label="Remove" on:click={() => removePerkB(id)}>
-                    ×
-                  </button>
+                  <RemoveButton on:click={() => removePerkB(id)} />
                 </div>
               {:else}
                 <div class="add-placeholder">
@@ -593,14 +593,7 @@
                     value={buildA.rotation.find((r) => r.id === id)?.ratio ?? 1}
                     on:input={(e) => setRotationValueA(id, "ratio", Number(e.currentTarget.value))} />
                 {/if}
-                <button
-                  type="button"
-                  class="remove-btn"
-                  class:push-right={isAuto}
-                  aria-label="Remove"
-                  on:click={() => removeRotationA(id)}>
-                  ×
-                </button>
+                <RemoveButton pushRight={isAuto} on:click={() => removeRotationA(id)} />
               </div>
             {:else}
               <div class="add-placeholder">
@@ -632,14 +625,7 @@
                       value={buildB.rotation.find((r) => r.id === id)?.ratio ?? 1}
                       on:input={(e) => setRotationValueB(id, "ratio", Number(e.currentTarget.value))} />
                   {/if}
-                  <button
-                    type="button"
-                    class="remove-btn"
-                    class:push-right={isAuto}
-                    aria-label="Remove"
-                    on:click={() => removeRotationB(id)}>
-                    ×
-                  </button>
+                  <RemoveButton pushRight={isAuto} on:click={() => removeRotationB(id)} />
                 </div>
               {:else}
                 <div class="add-placeholder">
@@ -665,7 +651,7 @@
     border-collapse: collapse;
     table-layout: fixed;
     width: 100%;
-    border: 1px solid hsl(0 0% 30%);
+    border: 1px solid var(--border-color);
   }
 
   col.col-build {
@@ -677,47 +663,27 @@
     background: hsl(220 10% 18%);
     text-align: left;
     padding: 0.5rem 0.75rem;
-    border: 1px solid hsl(0 0% 30%);
+    border: 1px solid var(--border-color);
   }
 
   /* All cells get vertical borders */
   tbody td {
     padding: 0.35rem 0.75rem;
-    border-left: 1px solid hsl(0 0% 30%);
-    border-right: 1px solid hsl(0 0% 30%);
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
     vertical-align: middle;
   }
 
   /* Section header rows get top border */
   .section-header td {
-    border-top: 1px solid hsl(0 0% 30%);
+    border-top: 1px solid var(--border-color);
     padding-top: 0.6rem;
     padding-bottom: 0.4rem;
   }
 
   /* Last row of table needs bottom border */
   tbody tr:last-child td {
-    border-bottom: 1px solid hsl(0 0% 30%);
-  }
-
-  /* Build labels */
-  .build-label {
-    display: inline-block;
-    text-align: center;
-    font-weight: 600;
-    font-size: 0.875rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-  }
-
-  .build-label.build-a {
-    background: rgba(100, 180, 255, 0.2);
-    color: hsl(210, 80%, 70%);
-  }
-
-  .build-label.build-b {
-    background: rgba(255, 180, 100, 0.2);
-    color: hsl(30, 80%, 70%);
+    border-bottom: 1px solid var(--border-color);
   }
 
   /* Section headers */
@@ -761,9 +727,9 @@
   input[type="number"] {
     padding: 0.25rem 0.4rem;
     font: inherit;
-    border: 1px solid hsl(0 0% 40%);
+    border: 1px solid var(--input-border);
     border-radius: 0.25rem;
-    background: hsl(220 10% 15%);
+    background: var(--input-bg);
     color: inherit;
     text-align: right;
     -moz-appearance: textfield;
@@ -777,16 +743,16 @@
   }
 
   input.input-a {
-    border-color: hsl(210, 50%, 40%);
+    border-color: var(--build-a-border);
   }
 
   input.input-b {
-    border-color: hsl(30, 50%, 40%);
+    border-color: var(--build-b-border);
   }
 
   input:focus {
     outline: none;
-    box-shadow: 0 0 0 2px hsl(220 90% 65% / 0.3);
+    box-shadow: var(--focus-ring);
   }
 
   .vocation-select {
@@ -794,24 +760,24 @@
     box-sizing: border-box;
     padding: 0.25rem 0.4rem;
     font: inherit;
-    border: 1px solid hsl(0 0% 40%);
+    border: 1px solid var(--input-border);
     border-radius: 0.25rem;
-    background: hsl(220 10% 15%);
+    background: var(--input-bg);
     color: inherit;
     cursor: pointer;
   }
 
   .vocation-select.input-a {
-    border-color: hsl(210, 50%, 40%);
+    border-color: var(--build-a-border);
   }
 
   .vocation-select.input-b {
-    border-color: hsl(30, 50%, 40%);
+    border-color: var(--build-b-border);
   }
 
   .vocation-select:focus {
     outline: none;
-    box-shadow: 0 0 0 2px hsl(220 90% 65% / 0.3);
+    box-shadow: var(--focus-ring);
   }
 
   /* Input with remove button */
@@ -852,28 +818,6 @@
     color: hsl(220 90% 70%);
   }
 
-  /* Remove button */
-  .remove-btn {
-    padding: 0.1rem 0.4rem;
-    font-size: 1rem;
-    line-height: 1;
-    background: transparent;
-    border: 1px solid hsl(0 0% 40%);
-    border-radius: 0.25rem;
-    color: inherit;
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-
-  .remove-btn.push-right {
-    margin-left: auto;
-  }
-
-  .remove-btn:hover {
-    background: hsl(0, 50%, 30%);
-    border-color: hsl(0, 50%, 40%);
-  }
-
   /* Add placeholder and button */
   .add-placeholder {
     display: flex;
@@ -886,7 +830,7 @@
     font-size: 1rem;
     line-height: 1;
     background: transparent;
-    border: 1px dashed hsl(0 0% 40%);
+    border: 1px dashed var(--input-border);
     border-radius: 0.25rem;
     color: inherit;
     cursor: pointer;
@@ -902,7 +846,7 @@
   }
 
   .add-btn.input-a {
-    border-color: hsl(210, 50%, 40%);
+    border-color: var(--build-a-border);
   }
 
   .add-btn.input-a:hover {
@@ -910,7 +854,7 @@
   }
 
   .add-btn.input-b {
-    border-color: hsl(30, 50%, 40%);
+    border-color: var(--build-b-border);
   }
 
   .add-btn.input-b:hover {
@@ -934,9 +878,9 @@
     text-decoration-thickness: 0.1rem;
   }
   .selected-name-a {
-    text-decoration-color: hsl(210, 50%, 40%);
+    text-decoration-color: var(--build-a-border);
   }
   .selected-name-b {
-    text-decoration-color: hsl(30, 50%, 40%);
+    text-decoration-color: var(--build-b-border);
   }
 </style>

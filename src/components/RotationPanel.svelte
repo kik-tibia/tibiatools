@@ -2,9 +2,6 @@
   import { spells } from "@data/spells";
   import FuzzySelect from "./FuzzySelect.svelte";
   import type { RotationSpell } from "@lib/damage-calc";
-  import RotationEditor from "./RotationEditor.svelte";
-
-  const registry = new Map(spells.map((s) => [s.id, s]));
 
   export let rotation: RotationSpell[];
 
@@ -23,7 +20,6 @@
       all={spells.filter((s) => s.id !== "auto-attack")}
       selectedIds={rotation.map((rs) => rs.id)}
       onAdd={addSpell} />
-    <!-- <RotationEditor active={rotation} onActiveChange={(next) => (rotation = next)} {registry} /> -->
   </div>
 </div>
 

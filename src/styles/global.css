@@ -1,5 +1,21 @@
 :root {
   color-scheme: light dark;
+
+  /* Design tokens */
+  --input-bg: hsl(220 10% 15%);
+  --input-border: hsl(0 0% 40%);
+  --border-color: hsl(0 0% 30%);
+  --focus-ring: 0 0 0 2px hsl(220 90% 65% / 0.3);
+
+  --build-a-border: hsl(210, 50%, 40%);
+  --build-b-border: hsl(30, 50%, 40%);
+  --build-a-bg: rgba(100, 180, 255, 0.2);
+  --build-a-text: hsl(210, 80%, 70%);
+  --build-b-bg: rgba(255, 180, 100, 0.2);
+  --build-b-text: hsl(30, 80%, 70%);
+
+  --remove-hover-bg: hsl(0, 50%, 30%);
+  --remove-hover-border: hsl(0, 50%, 40%);
 }
 
 body {
@@ -52,69 +68,6 @@ nav a {
 
 nav a.active {
   text-decoration: underline;
-}
-
-label {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.main-grid .stack {
-  display: grid;
-  gap: 0.5rem;
-  width: 100%;
-  padding-bottom: 0.5rem;
-}
-
-.meta {
-  display: inline-flex;
-  gap: 0.35rem;
-  margin-left: 0.4rem;
-}
-
-/* TODO redo all of this after the css rehaul */
-@media (max-width: 700px) {
-  .main-grid {
-    grid-auto-flow: row;
-    grid-auto-columns: unset;
-    grid-template-rows: unset;
-    grid-template-columns: 1fr;
-  }
-
-  .results thead {
-    display: none;
-  }
-
-  .results,
-  .results tbody,
-  .results tr,
-  .results td {
-    display: block;
-    width: 100%;
-  }
-
-  .results tr {
-    border-bottom: 1px solid #e5e5e5;
-  }
-
-  .results td {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-  }
-
-  .results td.spell {
-    grid-template-columns: 1fr;
-  }
-
-  .results td.num::before {
-    content: attr(data-label);
-    opacity: 0.7;
-    padding-right: 0.75rem;
-    font-weight: 500;
-  }
 }
 
 .field-tip {

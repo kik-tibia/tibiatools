@@ -99,7 +99,7 @@
     width: 100%;
     max-width: 600px;
     border-collapse: collapse;
-    border: 1px solid #555555;
+    border: 1px solid var(--border-color);
     font-variant-numeric: tabular-nums;
     font-size: 0.9rem;
     margin-bottom: 1rem;
@@ -107,7 +107,7 @@
 
   .summary td {
     padding: 0.4rem 0.4rem;
-    border-bottom: 1px solid #555555;
+    border-bottom: 1px solid var(--border-color);
   }
 
   .summary tr:last-child td {
@@ -127,7 +127,7 @@
     max-width: 600px;
     border-collapse: collapse;
     overflow: visible;
-    border: 1px solid #555555;
+    border: 1px solid var(--border-color);
     font-variant-numeric: tabular-nums;
     font-size: 0.9rem;
   }
@@ -135,7 +135,7 @@
   thead th {
     text-align: left;
     padding: 0.6rem 0.75rem;
-    border: 1px solid #555555;
+    border: 1px solid var(--border-color);
     font-weight: 600;
   }
 
@@ -151,7 +151,7 @@
 
   td {
     padding: 0.4rem 0.4rem;
-    border-bottom: 1px solid #555555;
+    border-bottom: 1px solid var(--border-color);
   }
 
   .desc {
@@ -177,5 +177,40 @@
 
   .spell-name {
     font-weight: 600;
+  }
+
+  @media (max-width: 700px) {
+    .results thead {
+      display: none;
+    }
+
+    .results,
+    .results tbody,
+    .results tr,
+    .results td {
+      display: block;
+      width: 100%;
+    }
+
+    .results tr {
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .results td {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+
+    .results td.spell {
+      grid-template-columns: 1fr;
+    }
+
+    .results td.num::before {
+      content: attr(data-label);
+      opacity: 0.7;
+      padding-right: 0.75rem;
+      font-weight: 500;
+    }
   }
 </style>

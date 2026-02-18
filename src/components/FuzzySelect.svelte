@@ -104,15 +104,15 @@
     width: 100%;
     box-sizing: border-box;
     padding: 0.5rem 0rem 0.5rem 0.625rem;
-    border: 1px solid hsl(0 0% 40%);
+    border: 1px solid var(--input-border);
     border-radius: 0.5rem;
     outline: none;
-    background: hsl(220 10% 15%); /* dark input background */
+    background: var(--input-bg); /* dark input background */
     color: hsl(0 0% 95%); /* light text */
   }
   .fuzzy-search:focus {
     border-color: hsl(220 90% 65%);
-    box-shadow: 0 0 0 3px hsl(220 90% 65% / 0.3);
+    box-shadow: var(--focus-ring);
   }
 
   .dropdown {
@@ -126,7 +126,7 @@
     list-style: none;
 
     background: hsl(220 10% 10%);
-    border: 1px solid hsl(0 0% 30%);
+    border: 1px solid var(--border-color);
     color: hsl(0 0% 95%);
     border-radius: 0.5rem;
 
