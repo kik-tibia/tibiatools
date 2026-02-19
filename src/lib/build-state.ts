@@ -23,10 +23,19 @@ export type BuildStats = {
 
 export type Build = { stats: BuildStats; weapon: WeaponBuild; perks: ActivePerk[]; rotation: RotationSpell[] };
 
+export type CollapsedSections = {
+  basicStats: boolean;
+  advancedStats: boolean;
+  weapon: boolean;
+  perks: boolean;
+  rotation: boolean;
+};
+
 export type CalculatorState = {
   A: Build;
   B: Build;
   showSecondBuild: boolean;
+  collapsed: CollapsedSections;
 };
 
 const defaultStats = (): BuildStats => ({
@@ -59,8 +68,17 @@ export const defaultBuild = () => ({
   rotation: [],
 });
 
+export const defaultCollapsed = (): CollapsedSections => ({
+  basicStats: false,
+  advancedStats: true,
+  weapon: false,
+  perks: false,
+  rotation: false,
+});
+
 export const defaultState = (): CalculatorState => ({
   A: defaultBuild(),
   B: defaultBuild(),
   showSecondBuild: false,
+  collapsed: defaultCollapsed(),
 });

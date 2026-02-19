@@ -1,19 +1,22 @@
 <script lang="ts">
   import BuildBadge from "@components/BuildBadge.svelte";
   import BasicStatsSection from "@components/build-panel/BasicStatsSection.svelte";
+  import AdvancedStatsSection from "@components/build-panel/AdvancedStatsSection.svelte";
   import WeaponSection from "@components/build-panel/WeaponSection.svelte";
   import PerksSection from "@components/build-panel/PerksSection.svelte";
   import RotationSection from "@components/build-panel/RotationSection.svelte";
-  import type { Build } from "@lib/build-state";
+  import type { Build, CollapsedSections } from "@lib/build-state";
 
   let {
     buildA = $bindable(),
     buildB = $bindable(),
     showSecondBuild = false,
+    collapsed = $bindable(),
   }: {
     buildA: Build;
     buildB: Build;
     showSecondBuild?: boolean;
+    collapsed: CollapsedSections;
   } = $props();
 </script>
 
@@ -41,10 +44,11 @@
     </tr>
   </thead>
   <tbody>
-    <BasicStatsSection bind:buildA bind:buildB {showSecondBuild} />
-    <WeaponSection bind:buildA bind:buildB {showSecondBuild} />
-    <PerksSection bind:buildA bind:buildB {showSecondBuild} />
-    <RotationSection bind:buildA bind:buildB {showSecondBuild} />
+    <BasicStatsSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.basicStats} />
+    <AdvancedStatsSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.advancedStats} />
+    <WeaponSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.weapon} />
+    <PerksSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.perks} />
+    <RotationSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.rotation} />
   </tbody>
 </table>
 
@@ -198,6 +202,21 @@
 
   .build-table :global(.add-btn.input-b:hover) {
     background: hsl(30, 30%, 25%);
+  }
+
+  .build-table :global(.section-toggle) {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+    padding: 0;
+    text-align: left;
+  }
+
+  .build-table :global(.section-toggle:hover) {
+    color: hsl(220 90% 70%);
   }
 
   .build-table :global(td .fuzzy-select) {

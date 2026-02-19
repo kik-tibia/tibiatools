@@ -3,7 +3,13 @@
 
   import { computeDph, computeDpt, computeResults } from "@lib/damage-calc";
   import { packState, unpackState } from "@lib/url-pack";
-  import { defaultBuild, type Build, type CalculatorState } from "@lib/build-state";
+  import {
+    defaultBuild,
+    defaultCollapsed,
+    type Build,
+    type CalculatorState,
+    type CollapsedSections,
+  } from "@lib/build-state";
 
   import BuildPanel from "@components/build-panel/BuildPanel.svelte";
   import BuildBadge from "@components/BuildBadge.svelte";
@@ -15,9 +21,10 @@
   let A: Build = $state(initial.A);
   let B: Build = $state(initial.B);
   let showSecondBuild: boolean = $state(!!initial.showSecondBuild);
+  let collapsed: CollapsedSections = $state(initial.collapsed ?? defaultCollapsed());
 
   function currentState(): CalculatorState {
-    return { A, B, showSecondBuild };
+    return { A, B, showSecondBuild, collapsed };
   }
 
   let resultsA = $derived(computeResults(A.stats, A.weapon, A.perks));
@@ -69,6 +76,7 @@
       A = st.A;
       B = st.B;
       showSecondBuild = !!st.showSecondBuild;
+      collapsed = st.collapsed ?? defaultCollapsed();
     };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
@@ -78,6 +86,11 @@
     A;
     B;
     showSecondBuild;
+    collapsed.basicStats;
+    collapsed.advancedStats;
+    collapsed.weapon;
+    collapsed.perks;
+    collapsed.rotation;
     scheduleWrite();
   });
 
@@ -113,7 +126,7 @@
 
 <section class="main-grid" class:comparing={showSecondBuild}>
   <div class="panel build-panel">
-    <BuildPanel bind:buildA={A} bind:buildB={B} {showSecondBuild} />
+    <BuildPanel bind:buildA={A} bind:buildB={B} {showSecondBuild} bind:collapsed />
   </div>
 
   <div class="panel results-panel-a">

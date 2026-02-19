@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Build, BuildStats, Vocation } from "@lib/build-state";
+  import type { Build, BuildStats } from "@lib/build-state";
 
   let {
     buildA = $bindable(),
@@ -12,8 +12,6 @@
     showSecondBuild: boolean;
     collapsed: boolean;
   } = $props();
-
-  const vocations: Vocation[] = ["knight", "paladin", "sorcerer", "druid", "monk"];
 
   function setStatA<K extends keyof BuildStats>(key: K, value: BuildStats[K]) {
     buildA = { ...buildA, stats: { ...buildA.stats, [key]: value } };
@@ -30,24 +28,48 @@
   };
 
   const statFields: StatField[] = [
-    { key: "level", label: "Level" },
-    { key: "bonus", label: "Bonus Damage" },
-    { key: "magicLevel", label: "Magic Level" },
-    { key: "skill", label: "Skill" },
-    { key: "critChance", label: "Crit Chance %" },
-    { key: "critDamage", label: "Crit Damage %" },
+    { key: "fatalChance", label: "Fatal Chance %" },
+    { key: "baseMagicLevel", label: "Base Magic Level", advanced: true, tooltip: "Required for Runic Mastery" },
+    {
+      key: "axe",
+      label: "Axe Fighting",
+      tooltip:
+        "Overrides <b>Skill</b> if set. Only needed when using a weapon with a secondary skill proficiency perk.",
+    },
+    {
+      key: "club",
+      label: "Club Fighting",
+      tooltip:
+        "Overrides <b>Skill</b> if set. Only needed when using a weapon with a secondary skill proficiency perk.",
+    },
+    {
+      key: "sword",
+      label: "Sword Fighting",
+      tooltip:
+        "Overrides <b>Skill</b> if set. Only needed when using a weapon with a secondary skill proficiency perk.",
+    },
+    {
+      key: "fist",
+      label: "Fist Fighting",
+      tooltip:
+        "Overrides <b>Skill</b> if set. Only needed when using a weapon with a secondary skill proficiency perk.",
+    },
+    {
+      key: "distance",
+      label: "Distance Fighting",
+      tooltip:
+        "Overrides <b>Skill</b> if set. Only needed when using a weapon with a secondary skill proficiency perk.",
+    },
+    { key: "shielding", label: "Shielding" },
+    { key: "fishing", label: "Fishing" },
   ];
-
-  function capitalize(s: string): string {
-    return s.charAt(0).toUpperCase() + s.slice(1);
-  }
 </script>
 
 <tr class="section-header">
   <td>
     <h4>
       <button class="section-toggle" onclick={() => (collapsed = !collapsed)}>
-        {collapsed ? "▶" : "▼"} Basic Stats
+        {collapsed ? "▶" : "▼"} Advanced Stats
       </button>
     </h4>
   </td>
@@ -56,32 +78,6 @@
 </tr>
 
 {#if !collapsed}
-  <tr class="data-row">
-    <td>Vocation</td>
-    <td>
-      <select
-        class="vocation-select input-a"
-        value={buildA.stats.vocation}
-        onchange={(e) => setStatA("vocation", e.currentTarget.value as Vocation)}>
-        {#each vocations as voc}
-          <option value={voc}>{capitalize(voc)}</option>
-        {/each}
-      </select>
-    </td>
-    {#if showSecondBuild}
-      <td>
-        <select
-          class="vocation-select input-b"
-          value={buildB.stats.vocation}
-          onchange={(e) => setStatB("vocation", e.currentTarget.value as Vocation)}>
-          {#each vocations as voc}
-            <option value={voc}>{capitalize(voc)}</option>
-          {/each}
-        </select>
-      </td>
-    {/if}
-  </tr>
-
   {#each statFields as field}
     <tr class="data-row">
       {#if field.tooltip}
@@ -119,28 +115,4 @@
 {/if}
 
 <style>
-  .vocation-select {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0.25rem 0.4rem;
-    font: inherit;
-    border: 1px solid var(--input-border);
-    border-radius: 0.25rem;
-    background: var(--input-bg);
-    color: inherit;
-    cursor: pointer;
-  }
-
-  .vocation-select.input-a {
-    border-color: var(--build-a-border);
-  }
-
-  .vocation-select.input-b {
-    border-color: var(--build-b-border);
-  }
-
-  .vocation-select:focus {
-    outline: none;
-    box-shadow: var(--focus-ring);
-  }
 </style>

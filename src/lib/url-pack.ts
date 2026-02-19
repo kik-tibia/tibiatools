@@ -1,5 +1,6 @@
 import LZString from "lz-string";
-import type { CalculatorState, Build, BuildStats } from "./build-state";
+import type { CalculatorState, Build, BuildStats, CollapsedSections } from "./build-state";
+import { defaultCollapsed } from "./build-state";
 import type { ActivePerk, RotationSpell, WeaponBuild } from "./damage-calc";
 
 /**
@@ -36,7 +37,7 @@ type CompactWeapon = string | [string, string];
 type CompactPerk = [string, number];
 type CompactRotation = [string, number, number];
 type CompactBuild = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation[]];
-type CompactState = [CompactBuild, CompactBuild, boolean];
+type CompactState = [CompactBuild, CompactBuild, boolean, number];
 
 function compactStats(stats: BuildStats): CompactStats {
   return STATS_KEYS.map((k) => stats[k] ?? null);
@@ -95,8 +96,24 @@ function expandBuild(compact: CompactBuild): Build {
   };
 }
 
+function collapsedToBitmask(c: CollapsedSections): number {
+  return (
+    (c.basicStats ? 1 : 0) | (c.advancedStats ? 2 : 0) | (c.weapon ? 4 : 0) | (c.perks ? 8 : 0) | (c.rotation ? 16 : 0)
+  );
+}
+
+function bitmaskToCollapsed(mask: number): CollapsedSections {
+  return {
+    basicStats: !!(mask & 1),
+    advancedStats: !!(mask & 2),
+    weapon: !!(mask & 4),
+    perks: !!(mask & 8),
+    rotation: !!(mask & 16),
+  };
+}
+
 function compactState(state: CalculatorState): CompactState {
-  return [compactBuild(state.A), compactBuild(state.B), state.showSecondBuild];
+  return [compactBuild(state.A), compactBuild(state.B), state.showSecondBuild, collapsedToBitmask(state.collapsed)];
 }
 
 function expandState(compact: CompactState): CalculatorState {
@@ -104,6 +121,7 @@ function expandState(compact: CompactState): CalculatorState {
     A: expandBuild(compact[0]),
     B: expandBuild(compact[1]),
     showSecondBuild: compact[2],
+    collapsed: bitmaskToCollapsed(compact[3]),
   };
 }
 

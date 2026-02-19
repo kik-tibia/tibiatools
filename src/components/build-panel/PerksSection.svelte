@@ -5,10 +5,11 @@
   import RemoveButton from "@components/RemoveButton.svelte";
   import type { Build } from "@lib/build-state";
 
-  let { buildA = $bindable(), buildB = $bindable(), showSecondBuild }: {
+  let { buildA = $bindable(), buildB = $bindable(), showSecondBuild, collapsed = $bindable(false) }: {
     buildA: Build;
     buildB: Build;
     showSecondBuild: boolean;
+    collapsed: boolean;
   } = $props();
 
   const perkRegistry = new Map(perks.map((p) => [p.id, p]));
@@ -59,11 +60,18 @@
 </script>
 
 <tr class="section-header">
-  <td><h4>Perks</h4></td>
+  <td>
+    <h4>
+      <button class="section-toggle" onclick={() => (collapsed = !collapsed)}>
+        {collapsed ? "▶" : "▼"} Perks
+      </button>
+    </h4>
+  </td>
   <td></td>
   {#if showSecondBuild}<td></td>{/if}
 </tr>
 
+{#if !collapsed}
 <tr class="data-row">
   <td>
     <FuzzySelect selectType="perks" all={perks} selectedIds={allSelectedPerkIds} onAdd={addPerk} />
@@ -128,3 +136,4 @@
     </tr>
   {/if}
 {/each}
+{/if}

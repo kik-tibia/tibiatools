@@ -5,10 +5,11 @@
   import RemoveButton from "@components/RemoveButton.svelte";
   import type { Build } from "@lib/build-state";
 
-  let { buildA = $bindable(), buildB = $bindable(), showSecondBuild }: {
+  let { buildA = $bindable(), buildB = $bindable(), showSecondBuild, collapsed = $bindable(false) }: {
     buildA: Build;
     buildB: Build;
     showSecondBuild: boolean;
+    collapsed: boolean;
   } = $props();
 
   const spellRegistry = new Map(spells.map((s) => [s.id, s]));
@@ -91,11 +92,18 @@
 </script>
 
 <tr class="section-header">
-  <td><h4>Rotation</h4></td>
+  <td>
+    <h4>
+      <button class="section-toggle" onclick={() => (collapsed = !collapsed)}>
+        {collapsed ? "▶" : "▼"} Rotation
+      </button>
+    </h4>
+  </td>
   <td></td>
   {#if showSecondBuild}<td></td>{/if}
 </tr>
 
+{#if !collapsed}
 <tr class="data-row">
   <td>
     <FuzzySelect
@@ -197,6 +205,7 @@
     </tr>
   {/if}
 {/each}
+{/if}
 
 <style>
   .sub-header {

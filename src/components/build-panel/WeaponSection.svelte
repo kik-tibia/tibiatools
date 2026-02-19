@@ -4,10 +4,11 @@
   import RemoveButton from "@components/RemoveButton.svelte";
   import type { Build } from "@lib/build-state";
 
-  let { buildA = $bindable(), buildB = $bindable(), showSecondBuild }: {
+  let { buildA = $bindable(), buildB = $bindable(), showSecondBuild, collapsed = $bindable(false) }: {
     buildA: Build;
     buildB: Build;
     showSecondBuild: boolean;
+    collapsed: boolean;
   } = $props();
 
   const weaponRegistry = new Map(weapons.map((w) => [w.id, w]));
@@ -82,16 +83,27 @@
 </script>
 
 <tr class="section-header">
-  <td><h4>Weapon</h4></td>
   <td>
-    <FuzzySelect selectType="weapons" all={weaponsForA} selectedIds={[]} onAdd={setWeaponA} />
+    <h4>
+      <button class="section-toggle" onclick={() => (collapsed = !collapsed)}>
+        {collapsed ? "▶" : "▼"} Weapon
+      </button>
+    </h4>
+  </td>
+  <td>
+    {#if !collapsed}
+      <FuzzySelect selectType="weapons" all={weaponsForA} selectedIds={[]} onAdd={setWeaponA} />
+    {/if}
   </td>
   {#if showSecondBuild}
     <td>
-      <FuzzySelect selectType="weapons" all={weaponsForB} selectedIds={[]} onAdd={setWeaponB} />
+      {#if !collapsed}
+        <FuzzySelect selectType="weapons" all={weaponsForB} selectedIds={[]} onAdd={setWeaponB} />
+      {/if}
     </td>
   {/if}
 </tr>
+{#if !collapsed}
 <tr class="data-row">
   <td></td>
   <td>
@@ -165,6 +177,7 @@
       </td>
     {/if}
   </tr>
+{/if}
 {/if}
 
 <style>
