@@ -1,9 +1,11 @@
 <script lang="ts">
-  export let build: "a" | "b";
+  import type { Snippet } from "svelte";
+
+  let { build, children }: { build: "a" | "b"; children: Snippet } = $props();
 </script>
 
 <span class="build-badge" class:build-a={build === "a"} class:build-b={build === "b"}>
-  <slot />
+  {@render children()}
 </span>
 
 <style>

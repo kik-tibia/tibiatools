@@ -1,8 +1,8 @@
 <script lang="ts">
-  export let pushRight: boolean = false;
+  let { pushRight = false, onclick }: { pushRight?: boolean; onclick?: (e: MouseEvent) => void } = $props();
 </script>
 
-<button type="button" class="remove-btn" class:push-right={pushRight} aria-label="Remove" on:click>×</button>
+<button type="button" class="remove-btn" class:push-right={pushRight} aria-label="Remove" {onclick}>×</button>
 
 <style>
   .remove-btn {

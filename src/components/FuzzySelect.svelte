@@ -1,24 +1,29 @@
 <script lang="ts">
   import { Fzf, byLengthAsc } from "fzf";
 
-  export let selectType: String;
+  let {
+    selectType,
+    all = [],
+    selectedIds = [],
+    getId = (x: any) => x?.id,
+    getLabel = (x: any) => x?.name ?? "",
+    onAdd,
+  }: {
+    selectType: string;
+    all?: any[];
+    selectedIds?: string[];
+    getId?: (x: any) => string;
+    getLabel?: (x: any) => string;
+    onAdd: (id: string) => void;
+  } = $props();
 
-  export let all: any[] = [];
-  export let selectedIds: string[] = [];
-  export let getId: (x: any) => string = (x: any) => x?.id;
-  export let getLabel: (x: any) => string = (x: any) => x?.name ?? "";
-  export let onAdd: (id: string) => void;
+  let q = $state("");
+  let open = $state(false);
+  let activeIndex = $state(0);
 
-  let q = "";
-  let open = false;
-  let activeIndex = 0;
-
-  $: available = all.filter((x) => !selectedIds.includes(getId(x)));
-
-  $: fzf = new Fzf(available as any, { selector: (x: any) => getLabel(x), tiebreakers: [byLengthAsc] } as any);
-
-  let results: any[] = [];
-  $: results = q ? fzf.find(q).map((r: any) => r.item) : available;
+  let available = $derived(all.filter((x) => !selectedIds.includes(getId(x))));
+  let fzf = $derived(new Fzf(available as any, { selector: (x: any) => getLabel(x), tiebreakers: [byLengthAsc] } as any));
+  let results = $derived(q ? fzf.find(q).map((r: any) => r.item) : available);
 
   function select(item: any) {
     onAdd(getId(item));
@@ -27,7 +32,7 @@
     activeIndex = 0;
   }
 
-  function onKeydown(e: KeyboardEvent) {
+  function handleKeydown(e: KeyboardEvent) {
     if (!open && (e.key.length === 1 || e.key === "ArrowDown")) open = true;
     if (!open) return;
 
@@ -60,9 +65,9 @@
       class="fuzzy-search"
       placeholder="Search {selectType}"
       bind:value={q}
-      on:focus={handleFocus}
-      on:blur={handleBlur}
-      on:keydown={onKeydown}
+      onfocus={handleFocus}
+      onblur={handleBlur}
+      onkeydown={handleKeydown}
       role="combobox"
       aria-controls="{selectType}-listbox"
       aria-expanded={open}
@@ -82,7 +87,7 @@
             role="option"
             aria-selected={i === activeIndex}
             class:selected={i === activeIndex}
-            on:mousedown|preventDefault={() => select(p)}>
+            onmousedown={(e) => { e.preventDefault(); select(p); }}>
             {getLabel(p)}
           </li>
         {/each}
@@ -107,8 +112,8 @@
     border: 1px solid var(--input-border);
     border-radius: 0.5rem;
     outline: none;
-    background: var(--input-bg); /* dark input background */
-    color: hsl(0 0% 95%); /* light text */
+    background: var(--input-bg);
+    color: hsl(0 0% 95%);
   }
   .fuzzy-search:focus {
     border-color: hsl(220 90% 65%);

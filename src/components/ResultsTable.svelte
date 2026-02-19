@@ -2,16 +2,25 @@
   import type { SpellDamage } from "@data/spells";
   import type { Vocation } from "@lib/build-state";
 
-  export let results: SpellDamage[] = [];
-  export let vocation: Vocation;
-  export let effectiveDpt: number;
-  export let effectiveDph: number;
+  let {
+    results = [],
+    vocation,
+    effectiveDpt,
+    effectiveDph,
+    isHigher = () => false,
+    isDptHigher,
+    isDphHigher,
+  }: {
+    results?: SpellDamage[];
+    vocation: Vocation;
+    effectiveDpt: number;
+    effectiveDph: number;
+    isHigher?: (id: string) => boolean;
+    isDptHigher: boolean;
+    isDphHigher: boolean;
+  } = $props();
 
-  export let isHigher: (id: string) => boolean = () => false;
-  export let isDptHigher: boolean;
-  export let isDphHigher: boolean;
-
-  $: vocResults = results.filter((i) => i.vocations.includes(vocation));
+  let vocResults = $derived(results.filter((i) => i.vocations.includes(vocation)));
 </script>
 
 <div>

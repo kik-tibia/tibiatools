@@ -5,41 +5,40 @@
   import { packState, unpackState } from "@lib/url-pack";
   import { defaultBuild, type Build, type CalculatorState } from "@lib/build-state";
 
-  import BuildPanel from "./BuildPanel.svelte";
-  import BuildBadge from "./BuildBadge.svelte";
-  import ResultsTable from "./ResultsTable.svelte";
+  import BuildPanel from "@components/build-panel/BuildPanel.svelte";
+  import BuildBadge from "@components/BuildBadge.svelte";
+  import ResultsTable from "@components/ResultsTable.svelte";
   import type { SpellDamage } from "@data/spells";
 
-  export let initial: CalculatorState;
+  let { initial }: { initial: CalculatorState } = $props();
 
-  let A: Build = initial.A;
-  let B: Build = initial.B;
-
-  let showSecondBuild: boolean = !!initial.showSecondBuild;
+  let A: Build = $state(initial.A);
+  let B: Build = $state(initial.B);
+  let showSecondBuild: boolean = $state(!!initial.showSecondBuild);
 
   function currentState(): CalculatorState {
     return { A, B, showSecondBuild };
   }
 
-  $: resultsA = computeResults(A.stats, A.weapon, A.perks);
-  $: resultsB = computeResults(B.stats, B.weapon, B.perks);
-  $: effectiveDptA = computeDpt(resultsA, A.rotation);
-  $: effectiveDptB = computeDpt(resultsB, B.rotation);
-  $: effectiveDphA = computeDph(resultsA, A.rotation);
-  $: effectiveDphB = computeDph(resultsB, B.rotation);
+  let resultsA = $derived(computeResults(A.stats, A.weapon, A.perks));
+  let resultsB = $derived(computeResults(B.stats, B.weapon, B.perks));
+  let effectiveDptA = $derived(computeDpt(resultsA, A.rotation));
+  let effectiveDptB = $derived(computeDpt(resultsB, B.rotation));
+  let effectiveDphA = $derived(computeDph(resultsA, A.rotation));
+  let effectiveDphB = $derived(computeDph(resultsB, B.rotation));
 
   const toMap = (arr: SpellDamage[]) => new Map(arr.map((x) => [x.id, x]));
-  $: mapA = toMap(resultsA);
-  $: mapB = toMap(resultsB);
+  let mapA = $derived(toMap(resultsA));
+  let mapB = $derived(toMap(resultsB));
   const isAHigher = (id: string) => Number(mapA.get(id)?.effectiveAvg ?? 0) >= Number(mapB.get(id)?.effectiveAvg ?? 0);
   const isBHigher = (id: string) => Number(mapB.get(id)?.effectiveAvg ?? 0) >= Number(mapA.get(id)?.effectiveAvg ?? 0);
   const epsilon = 1e-9;
-  $: isDptAHigher = effectiveDptA >= effectiveDptB - epsilon;
-  $: isDptBHigher = effectiveDptB >= effectiveDptA - epsilon;
-  $: isDphAHigher = effectiveDphA >= effectiveDphB - epsilon;
-  $: isDphBHigher = effectiveDphB >= effectiveDphA - epsilon;
-  $: pctIncreaseA = (effectiveDptA / effectiveDptB - 1) * 100;
-  $: pctIncreaseB = (effectiveDptB / effectiveDptA - 1) * 100;
+  let isDptAHigher = $derived(effectiveDptA >= effectiveDptB - epsilon);
+  let isDptBHigher = $derived(effectiveDptB >= effectiveDptA - epsilon);
+  let isDphAHigher = $derived(effectiveDphA >= effectiveDphB - epsilon);
+  let isDphBHigher = $derived(effectiveDphB >= effectiveDphA - epsilon);
+  let pctIncreaseA = $derived((effectiveDptA / effectiveDptB - 1) * 100);
+  let pctIncreaseB = $derived((effectiveDptB / effectiveDptA - 1) * 100);
 
   function writePackedToUrl() {
     const q = new URLSearchParams(window.location.search);
@@ -75,14 +74,14 @@
     return () => window.removeEventListener("popstate", onPop);
   });
 
-  $: {
+  $effect(() => {
     A;
     B;
     showSecondBuild;
     scheduleWrite();
-  }
+  });
 
-  let copied = false;
+  let copied = $state(false);
   async function copyLink() {
     await navigator.clipboard.writeText(window.location.href);
     copied = true;
@@ -91,10 +90,10 @@
 </script>
 
 <section class="toolbar">
-  <button type="button" on:click={copyLink}>{copied ? "Copied!" : "Share"}</button>
+  <button type="button" onclick={copyLink}>{copied ? "Copied!" : "Share"}</button>
   <button
     type="button"
-    on:click={() => {
+    onclick={() => {
       A = defaultBuild();
       B = defaultBuild();
     }}>
@@ -104,7 +103,7 @@
     type="button"
     class="compare-btn"
     class:active={showSecondBuild}
-    on:click={() => {
+    onclick={() => {
       showSecondBuild = !showSecondBuild;
       scheduleWrite();
     }}>
