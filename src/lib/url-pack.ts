@@ -1,6 +1,5 @@
 import LZString from "lz-string";
-import type { CalculatorState, Build, BuildStats, CollapsedSections } from "./build-state";
-import { defaultCollapsed } from "./build-state";
+import type { CalculatorState, Build, BuildStats, CollapsedSections, Vocation } from "./build-state";
 import type { ActivePerk, RotationSpell, WeaponBuild } from "./damage-calc";
 
 /**
@@ -32,6 +31,9 @@ const STATS_KEYS: (keyof BuildStats)[] = [
   "fishing",
 ];
 
+const VOC_TO_NUM: Record<Vocation, number> = { knight: 0, paladin: 1, sorcerer: 2, druid: 3, monk: 4 };
+const NUM_TO_VOC: Vocation[] = ["knight", "paladin", "sorcerer", "druid", "monk"];
+
 type CompactStats = (string | number | null)[];
 type CompactWeapon = string | [string, string];
 type CompactPerk = [string, number];
@@ -40,13 +42,17 @@ type CompactBuild = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation
 type CompactState = [CompactBuild, CompactBuild, boolean, number];
 
 function compactStats(stats: BuildStats): CompactStats {
-  return STATS_KEYS.map((k) => stats[k] ?? null);
+  return STATS_KEYS.map((k) => {
+    const v = stats[k] ?? null;
+    return k === "vocation" && typeof v === "string" ? VOC_TO_NUM[v as Vocation] : v;
+  });
 }
 
 function expandStats(compact: CompactStats): BuildStats {
   const stats: Partial<BuildStats> = {};
   STATS_KEYS.forEach((k, i) => {
-    (stats as any)[k] = compact[i];
+    (stats as any)[k] =
+      k === "vocation" && typeof compact[i] === "number" ? NUM_TO_VOC[compact[i] as number] : compact[i];
   });
   return stats as BuildStats;
 }
