@@ -5,7 +5,7 @@ import type { ActivePerk, RotationSpell, WeaponBuild } from "./damage-calc";
 /**
  * State = [BuildA, BuildB, showSecondBuild]
  * Build = [Stats, Weapon, Perks, Rotation]
- * Stats = [vocation, level, bonus, ... ]
+ * Stats = [presenceBitmask, ...nonNullValues]
  * Weapon = "id" | ["id", "ammoId"]
  * Perks = [[id, value], ...]
  * Rotation = [[id, targets, ratio], ...]
@@ -42,17 +42,30 @@ type CompactBuild = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation
 type CompactState = [CompactBuild, CompactBuild, boolean, number];
 
 function compactStats(stats: BuildStats): CompactStats {
-  return STATS_KEYS.map((k) => {
-    const v = stats[k] ?? null;
-    return k === "vocation" && typeof v === "string" ? VOC_TO_NUM[v as Vocation] : v;
+  let mask = 0;
+  const values: (string | number)[] = [];
+  STATS_KEYS.forEach((k, i) => {
+    let v: string | number | null = stats[k] ?? null;
+    if (k === "vocation" && typeof v === "string") v = VOC_TO_NUM[v as Vocation];
+    if (v !== null) {
+      mask |= 1 << i;
+      values.push(v);
+    }
   });
+  return [mask, ...values];
 }
 
 function expandStats(compact: CompactStats): BuildStats {
+  const mask = compact[0] as number;
   const stats: Partial<BuildStats> = {};
+  let vi = 1;
   STATS_KEYS.forEach((k, i) => {
-    (stats as any)[k] =
-      k === "vocation" && typeof compact[i] === "number" ? NUM_TO_VOC[compact[i] as number] : compact[i];
+    if (mask & (1 << i)) {
+      const v = compact[vi++];
+      (stats as any)[k] = k === "vocation" && typeof v === "number" ? NUM_TO_VOC[v] : v;
+    } else {
+      (stats as any)[k] = null;
+    }
   });
   return stats as BuildStats;
 }
