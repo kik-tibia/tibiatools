@@ -10,9 +10,9 @@
   } = $props();
 </script>
 
-<span class="field-tip" class:tip-right={right}>
+<span class="field-tip">
   <button type="button" class="tip-trigger">{label}</button>
-  <span role="tooltip" class="tip-content">{@html tip}</span>
+  <span role="tooltip" class="tip-content" class:tip-right={right}>{@html tip}</span>
 </span>
 
 <style>
@@ -21,17 +21,14 @@
     display: inline-block;
   }
 
-  .field-tip .tip-content {
+  .tip-content {
     position: absolute;
     bottom: calc(100% + 4px);
     left: 0;
-    right: auto;
-    font-size: 0.8rem;
-    white-space: normal;
-    display: inline-block;
     width: max-content;
     max-width: 250px;
     padding: 5px 8px;
+    font-size: 0.8rem;
     color: #fff;
     background: #444;
     border: 1px solid #555;
@@ -40,7 +37,7 @@
     visibility: hidden;
   }
 
-  .field-tip.tip-right .tip-content {
+  .tip-right {
     left: auto;
     right: 0;
   }
@@ -56,10 +53,8 @@
   }
 
   .field-tip:hover .tip-content,
-  .field-tip:focus .tip-content,
   .field-tip:focus-within .tip-content {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto;
   }
 </style>
