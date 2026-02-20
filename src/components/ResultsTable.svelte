@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { SpellDamage } from "@data/spells";
   import type { Vocation } from "@lib/build-state";
+  import Tooltip from "./Tooltip.svelte";
 
   let {
     results = [],
@@ -28,29 +29,19 @@
     <tbody>
       <tr class:highlight={isDptHigher}>
         <td class="summary-label">
-          <span class="field-tip tip-right">
-            <button type="button" class="tip-trigger" aria-describedby="tip-dpt">
-              Average effective damage per turn
-            </button>
-            <span id="tip-dpt" role="tooltip" class="tip-content">
-              The average damage you would deal per turn, using the defined rotation, taking into account resistances,
-              armor, mitigation, crits and fatals.
-            </span>
-          </span>
+          <Tooltip
+            label={"Effective damage per turn"}
+            tip={"The average damage you would deal per turn, using the defined rotation, taking into account resistances, armor, mitigation, crits and fatals."}
+            right={true} />
         </td>
         <td class="summary-value">{effectiveDpt.toFixed(1)}</td>
       </tr>
       <tr class:highlight={isDphHigher}>
         <td class="summary-label">
-          <span class="field-tip tip-right">
-            <button type="button" class="tip-trigger" aria-describedby="tip-dph">
-              Average effective damage per hit
-            </button>
-            <span id="tip-dph" role="tooltip" class="tip-content">
-              The average damage you would deal per hit, using the defined rotation, taking into account resistances,
-              armor, mitigation, crits and fatals.
-            </span>
-          </span>
+          <Tooltip
+            label={"Effective damage per hit"}
+            tip={"The average damage you would deal per hit, using the defined rotation, taking into account resistances, armor, mitigation, crits and fatals."}
+            right={true} />
         </td>
         <td class="summary-value">{effectiveDph.toFixed(1)}</td>
       </tr>
@@ -63,20 +54,16 @@
         <tr>
           <th class="desc" rowspan="2">Spell</th>
           <th class="desc">
-            <span class="field-tip tip-right">
-              <button type="button" class="tip-trigger" aria-describedby="tip-effective">Effective</button>
-              <span id="tip-effective" role="tooltip" class="tip-content">
-                The average damage you would deal, taking into account resistances, armor, mitigation, crits and fatals.
-              </span>
-            </span>
+            <Tooltip
+              label={"Effective"}
+              tip={"The average damage you would deal, taking into account resistances, armor, mitigation, crits and fatals."}
+              right={true} />
           </th>
           <th class="desc" colspan="3">
-            <span class="field-tip tip-right">
-              <button type="button" class="tip-trigger" aria-describedby="tip-raw">Raw</button>
-              <span id="tip-raw" role="tooltip" class="tip-content">
-                The damage you would deal to a completely defenseless target, ignoring resistances, crits, etc.
-              </span>
-            </span>
+            <Tooltip
+              label={"Raw"}
+              tip={"The damage you would deal to a completely defenseless target, ignoring resistances, crits, etc."}
+              right={true} />
           </th>
         </tr>
         <tr>

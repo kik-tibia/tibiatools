@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Tooltip from "@components/Tooltip.svelte";
   import SectionCopyButtons from "./SectionCopyButtons.svelte";
   import type { Build, BuildStats } from "@lib/build-state";
 
@@ -105,10 +106,7 @@
     <tr class="data-row">
       {#if field.tooltip}
         <td>
-          <span class="field-tip">
-            <button type="button" class="tip-trigger" aria-describedby="tip-effective">{field.label}</button>
-            <span id="tip-effective" role="tooltip" class="tip-content">{@html field.tooltip}</span>
-          </span>
+          <Tooltip label={field.label} tip={field.tooltip} />
         </td>
       {:else}
         <td>{field.label}</td>
