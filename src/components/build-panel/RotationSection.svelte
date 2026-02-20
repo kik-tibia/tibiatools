@@ -3,6 +3,7 @@
   import { spells } from "@data/spells";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
+  import SectionCopyButtons from "./SectionCopyButtons.svelte";
   import type { Build } from "@lib/build-state";
 
   let { buildA = $bindable(), buildB = $bindable(), showSecondBuild, collapsed = $bindable(false) }: {
@@ -89,6 +90,13 @@
   }
 
   const isAutoAttack = (id: string) => id === "auto-attack";
+
+  function copyAtoB() {
+    buildB = { ...buildB, rotation: buildA.rotation.map((r) => ({ ...r })) };
+  }
+  function copyBtoA() {
+    buildA = { ...buildA, rotation: buildB.rotation.map((r) => ({ ...r })) };
+  }
 </script>
 
 <tr class="section-header">
@@ -99,8 +107,7 @@
       </button>
     </h4>
   </td>
-  <td></td>
-  {#if showSecondBuild}<td></td>{/if}
+  <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} />
 </tr>
 
 {#if !collapsed}

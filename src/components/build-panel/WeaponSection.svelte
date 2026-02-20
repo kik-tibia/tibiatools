@@ -2,6 +2,7 @@
   import { weapons, ammo } from "@data/weapons";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
+  import SectionCopyButtons from "./SectionCopyButtons.svelte";
   import type { Build } from "@lib/build-state";
 
   let { buildA = $bindable(), buildB = $bindable(), showSecondBuild, collapsed = $bindable(false) }: {
@@ -80,6 +81,13 @@
   function clearAmmoB() {
     buildB = { ...buildB, weapon: { ...buildB.weapon, ammo: undefined } };
   }
+
+  function copyAtoB() {
+    buildB = { ...buildB, weapon: { ...buildA.weapon } };
+  }
+  function copyBtoA() {
+    buildA = { ...buildA, weapon: { ...buildB.weapon } };
+  }
 </script>
 
 <tr class="section-header">
@@ -90,20 +98,20 @@
       </button>
     </h4>
   </td>
+  <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} />
+</tr>
+{#if !collapsed}
+<tr class="data-row">
+  <td></td>
   <td>
-    {#if !collapsed}
-      <FuzzySelect selectType="weapons" all={weaponsForA} selectedIds={[]} onAdd={setWeaponA} />
-    {/if}
+    <FuzzySelect selectType="weapons" all={weaponsForA} selectedIds={[]} onAdd={setWeaponA} />
   </td>
   {#if showSecondBuild}
     <td>
-      {#if !collapsed}
-        <FuzzySelect selectType="weapons" all={weaponsForB} selectedIds={[]} onAdd={setWeaponB} />
-      {/if}
+      <FuzzySelect selectType="weapons" all={weaponsForB} selectedIds={[]} onAdd={setWeaponB} />
     </td>
   {/if}
 </tr>
-{#if !collapsed}
 <tr class="data-row">
   <td></td>
   <td>

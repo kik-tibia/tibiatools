@@ -1,4 +1,5 @@
 <script lang="ts">
+  import SectionCopyButtons from "./SectionCopyButtons.svelte";
   import type { Build, BuildStats } from "@lib/build-state";
 
   let {
@@ -63,6 +64,29 @@
     { key: "shielding", label: "Shielding" },
     { key: "fishing", label: "Fishing" },
   ];
+
+  const statKeys = [
+    "fatalChance",
+    "baseMagicLevel",
+    "axe",
+    "club",
+    "sword",
+    "fist",
+    "distance",
+    "shielding",
+    "fishing",
+  ] as const;
+
+  function copyAtoB() {
+    const patch: Partial<BuildStats> = {};
+    for (const k of statKeys) patch[k] = buildA.stats[k] as any;
+    buildB = { ...buildB, stats: { ...buildB.stats, ...patch } };
+  }
+  function copyBtoA() {
+    const patch: Partial<BuildStats> = {};
+    for (const k of statKeys) patch[k] = buildB.stats[k] as any;
+    buildA = { ...buildA, stats: { ...buildA.stats, ...patch } };
+  }
 </script>
 
 <tr class="section-header">
@@ -73,8 +97,7 @@
       </button>
     </h4>
   </td>
-  <td></td>
-  {#if showSecondBuild}<td></td>{/if}
+  <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} />
 </tr>
 
 {#if !collapsed}

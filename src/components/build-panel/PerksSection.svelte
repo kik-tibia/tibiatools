@@ -3,6 +3,7 @@
   import { perks } from "@data/perks";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
+  import SectionCopyButtons from "./SectionCopyButtons.svelte";
   import type { Build } from "@lib/build-state";
 
   let { buildA = $bindable(), buildB = $bindable(), showSecondBuild, collapsed = $bindable(false) }: {
@@ -57,6 +58,13 @@
   function removePerkB(id: string) {
     buildB = { ...buildB, perks: buildB.perks.filter((a) => a.id !== id) };
   }
+
+  function copyAtoB() {
+    buildB = { ...buildB, perks: buildA.perks.map((p) => ({ ...p })) };
+  }
+  function copyBtoA() {
+    buildA = { ...buildA, perks: buildB.perks.map((p) => ({ ...p })) };
+  }
 </script>
 
 <tr class="section-header">
@@ -67,8 +75,7 @@
       </button>
     </h4>
   </td>
-  <td></td>
-  {#if showSecondBuild}<td></td>{/if}
+  <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} />
 </tr>
 
 {#if !collapsed}
