@@ -90,6 +90,23 @@
   }
 </script>
 
+{#snippet inputCell(
+  key: keyof BuildStats,
+  build: Build,
+  buildId: string,
+  setStat: (key: keyof BuildStats, value: BuildStats[keyof BuildStats]) => void,
+)}
+  <td>
+    <input
+      type="number"
+      step="any"
+      inputmode="numeric"
+      class="input-{buildId}"
+      value={build.stats[key]}
+      oninput={(e) => setStat(key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
+  </td>
+{/snippet}
+
 <tr class="section-header">
   <td>
     <h4>
@@ -111,25 +128,9 @@
       {:else}
         <td>{field.label}</td>
       {/if}
-      <td>
-        <input
-          type="number"
-          step="any"
-          inputmode="numeric"
-          class="input-a"
-          value={buildA.stats[field.key]}
-          oninput={(e) => setStatA(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
-      </td>
+      {@render inputCell(field.key, buildA, "a", setStatA)}
       {#if showSecondBuild}
-        <td>
-          <input
-            type="number"
-            step="any"
-            inputmode="numeric"
-            class="input-b"
-            value={buildB.stats[field.key]}
-            oninput={(e) => setStatB(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
-        </td>
+        {@render inputCell(field.key, buildB, "b", setStatB)}
       {/if}
     </tr>
   {/each}

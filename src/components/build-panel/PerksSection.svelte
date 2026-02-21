@@ -6,7 +6,12 @@
   import SectionCopyButtons from "./SectionCopyButtons.svelte";
   import type { Build } from "@lib/build-state";
 
-  let { buildA = $bindable(), buildB = $bindable(), showSecondBuild, collapsed = $bindable(false) }: {
+  let {
+    buildA = $bindable(),
+    buildB = $bindable(),
+    showSecondBuild,
+    collapsed = $bindable(false),
+  }: {
     buildA: Build;
     buildB: Build;
     showSecondBuild: boolean;
@@ -67,6 +72,32 @@
   }
 </script>
 
+{#snippet perkCell(
+  build: Build,
+  buildId: string,
+  perkId: string,
+  setPerkValue: (id: string, value: number) => void,
+  removePerk: (id: string) => void,
+)}
+  <td>
+    {#if build.perks.some((p) => p.id === perkId)}
+      <div class="input-with-remove">
+        <input
+          type="number"
+          step="any"
+          class="input-{buildId}"
+          value={build.perks.find((p) => p.id === perkId)?.value ?? 0}
+          oninput={(e) => setPerkValue(perkId, Number(e.currentTarget.value))} />
+        <RemoveButton onclick={() => removePerk(perkId)} />
+      </div>
+    {:else}
+      <div class="add-placeholder">
+        <button type="button" class="add-btn input-{buildId}" onclick={() => setPerkValue(perkId, 0)}>+</button>
+      </div>
+    {/if}
+  </td>
+{/snippet}
+
 <tr class="section-header">
   <td>
     <h4>
@@ -79,68 +110,24 @@
 </tr>
 
 {#if !collapsed}
-<tr class="data-row">
-  <td>
-    <FuzzySelect selectType="perks" all={perks} selectedIds={allSelectedPerkIds} onAdd={addPerk} />
-  </td>
-  <td></td>
-  {#if showSecondBuild}<td></td>{/if}
-</tr>
+  <tr class="data-row">
+    <td>
+      <FuzzySelect selectType="perks" all={perks} selectedIds={allSelectedPerkIds} onAdd={addPerk} />
+    </td>
+    <td></td>
+    {#if showSecondBuild}<td></td>{/if}
+  </tr>
 
-{#each allSelectedPerkIds as id (id)}
-  {@const def = perkRegistry.get(id)}
-  {#if def}
-    <tr class="data-row">
-      <td class="item-name">{def.name}</td>
-      <td>
-        {#if buildA.perks.some((p) => p.id === id)}
-          <div class="input-with-remove">
-            <input
-              type="number"
-              step="any"
-              class="input-a"
-              value={buildA.perks.find((p) => p.id === id)?.value ?? 0}
-              oninput={(e) => setPerkValueA(id, Number(e.currentTarget.value))} />
-            <RemoveButton onclick={() => removePerkA(id)} />
-          </div>
-        {:else}
-          <div class="add-placeholder">
-            <button
-              type="button"
-              class="add-btn input-a"
-              aria-label="Add to Build A"
-              onclick={() => setPerkValueA(id, 0)}>
-              +
-            </button>
-          </div>
+  {#each allSelectedPerkIds as id (id)}
+    {@const def = perkRegistry.get(id)}
+    {#if def}
+      <tr class="data-row">
+        <td class="item-name">{def.name}</td>
+        {@render perkCell(buildA, "a", id, setPerkValueA, removePerkA)}
+        {#if showSecondBuild}
+          {@render perkCell(buildB, "b", id, setPerkValueB, removePerkB)}
         {/if}
-      </td>
-      {#if showSecondBuild}
-        <td>
-          {#if buildB.perks.some((p) => p.id === id)}
-            <div class="input-with-remove">
-              <input
-                type="number"
-                step="any"
-                class="input-b"
-                value={buildB.perks.find((p) => p.id === id)?.value ?? 0}
-                oninput={(e) => setPerkValueB(id, Number(e.currentTarget.value))} />
-              <RemoveButton onclick={() => removePerkB(id)} />
-            </div>
-          {:else}
-            <div class="add-placeholder">
-              <button
-                type="button"
-                class="add-btn input-b"
-                aria-label="Add to Build B"
-                onclick={() => setPerkValueB(id, 0)}>
-                +
-              </button>
-            </div>
-          {/if}
-        </td>
-      {/if}
-    </tr>
-  {/if}
-{/each}
+      </tr>
+    {/if}
+  {/each}
 {/if}

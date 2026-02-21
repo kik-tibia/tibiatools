@@ -6,7 +6,12 @@
   import SectionCopyButtons from "./SectionCopyButtons.svelte";
   import type { Build } from "@lib/build-state";
 
-  let { buildA = $bindable(), buildB = $bindable(), showSecondBuild, collapsed = $bindable(false) }: {
+  let {
+    buildA = $bindable(),
+    buildB = $bindable(),
+    showSecondBuild,
+    collapsed = $bindable(false),
+  }: {
     buildA: Build;
     buildB: Build;
     showSecondBuild: boolean;
@@ -54,10 +59,7 @@
     } else {
       buildA = {
         ...buildA,
-        rotation: [
-          ...buildA.rotation,
-          { id, targets: field === "targets" ? v : 1, ratio: field === "ratio" ? v : 1 },
-        ],
+        rotation: [...buildA.rotation, { id, targets: field === "targets" ? v : 1, ratio: field === "ratio" ? v : 1 }],
       };
     }
   }
@@ -68,10 +70,7 @@
     } else {
       buildB = {
         ...buildB,
-        rotation: [
-          ...buildB.rotation,
-          { id, targets: field === "targets" ? v : 1, ratio: field === "ratio" ? v : 1 },
-        ],
+        rotation: [...buildB.rotation, { id, targets: field === "targets" ? v : 1, ratio: field === "ratio" ? v : 1 }],
       };
     }
   }
@@ -99,6 +98,42 @@
   }
 </script>
 
+{#snippet rotationCell(
+  build: Build,
+  buildId: string,
+  spellId: string,
+  setRotationValue: (id: string, field: "targets" | "ratio", v: number) => void,
+  addRotation: (id: string) => void,
+  removeRotation: (id: string) => void,
+)}
+  {@const isAuto = isAutoAttack(spellId)}
+  <td>
+    {#if build.rotation.some((r) => r.id === spellId)}
+      <div class="input-with-remove">
+        <input
+          type="number"
+          step="any"
+          class="input-{buildId} small"
+          value={build.rotation.find((r) => r.id === spellId)?.targets ?? 1}
+          oninput={(e) => setRotationValue(spellId, "targets", Number(e.currentTarget.value))} />
+        {#if !isAuto}
+          <input
+            type="number"
+            step="any"
+            class="input-{buildId} small"
+            value={build.rotation.find((r) => r.id === spellId)?.ratio ?? 1}
+            oninput={(e) => setRotationValue(spellId, "ratio", Number(e.currentTarget.value))} />
+        {/if}
+        <RemoveButton pushRight={isAuto} onclick={() => removeRotation(spellId)} />
+      </div>
+    {:else}
+      <div class="add-placeholder">
+        <button type="button" class="add-btn input-{buildId}" onclick={() => addRotation(spellId)}>+</button>
+      </div>
+    {/if}
+  </td>
+{/snippet}
+
 <tr class="section-header">
   <td>
     <h4>
@@ -111,23 +146,14 @@
 </tr>
 
 {#if !collapsed}
-<tr class="data-row">
-  <td>
-    <FuzzySelect
-      selectType="spells"
-      all={spellsForAB}
-      selectedIds={allSelectedRotationIds}
-      onAdd={addSpellToRotation} />
-  </td>
-  <td class="sub-header rotation-label-cell">
-    {#if allSelectedRotationIds.length > 0}
-      <div class="rotation-labels">
-        <span>Targets</span>
-        <span>Ratio</span>
-      </div>
-    {/if}
-  </td>
-  {#if showSecondBuild}
+  <tr class="data-row">
+    <td>
+      <FuzzySelect
+        selectType="spells"
+        all={spellsForAB}
+        selectedIds={allSelectedRotationIds}
+        onAdd={addSpellToRotation} />
+    </td>
     <td class="sub-header rotation-label-cell">
       {#if allSelectedRotationIds.length > 0}
         <div class="rotation-labels">
@@ -136,82 +162,30 @@
         </div>
       {/if}
     </td>
-  {/if}
-</tr>
-
-{#each allSelectedRotationIds as id (id)}
-  {@const def = spellRegistry.get(id)}
-  {@const isAuto = isAutoAttack(id)}
-  {#if def}
-    <tr class="data-row">
-      <td class="item-name">{def.name}</td>
-      <td>
-        {#if buildA.rotation.some((r) => r.id === id)}
-          <div class="input-with-remove">
-            <input
-              type="number"
-              step="any"
-              class="input-a small"
-              value={buildA.rotation.find((r) => r.id === id)?.targets ?? 1}
-              oninput={(e) => setRotationValueA(id, "targets", Number(e.currentTarget.value))} />
-            {#if !isAuto}
-              <input
-                type="number"
-                step="any"
-                class="input-a small"
-                value={buildA.rotation.find((r) => r.id === id)?.ratio ?? 1}
-                oninput={(e) => setRotationValueA(id, "ratio", Number(e.currentTarget.value))} />
-            {/if}
-            <RemoveButton pushRight={isAuto} onclick={() => removeRotationA(id)} />
-          </div>
-        {:else}
-          <div class="add-placeholder">
-            <button
-              type="button"
-              class="add-btn input-a"
-              aria-label="Add to Build A"
-              onclick={() => addRotationA(id)}>
-              +
-            </button>
+    {#if showSecondBuild}
+      <td class="sub-header rotation-label-cell">
+        {#if allSelectedRotationIds.length > 0}
+          <div class="rotation-labels">
+            <span>Targets</span>
+            <span>Ratio</span>
           </div>
         {/if}
       </td>
-      {#if showSecondBuild}
-        <td>
-          {#if buildB.rotation.some((r) => r.id === id)}
-            <div class="input-with-remove">
-              <input
-                type="number"
-                step="any"
-                class="input-b small"
-                value={buildB.rotation.find((r) => r.id === id)?.targets ?? 1}
-                oninput={(e) => setRotationValueB(id, "targets", Number(e.currentTarget.value))} />
-              {#if !isAuto}
-                <input
-                  type="number"
-                  step="any"
-                  class="input-b small"
-                  value={buildB.rotation.find((r) => r.id === id)?.ratio ?? 1}
-                  oninput={(e) => setRotationValueB(id, "ratio", Number(e.currentTarget.value))} />
-              {/if}
-              <RemoveButton pushRight={isAuto} onclick={() => removeRotationB(id)} />
-            </div>
-          {:else}
-            <div class="add-placeholder">
-              <button
-                type="button"
-                class="add-btn input-b"
-                aria-label="Add to Build B"
-                onclick={() => addRotationB(id)}>
-                +
-              </button>
-            </div>
-          {/if}
-        </td>
-      {/if}
-    </tr>
-  {/if}
-{/each}
+    {/if}
+  </tr>
+
+  {#each allSelectedRotationIds as id (id)}
+    {@const def = spellRegistry.get(id)}
+    {#if def}
+      <tr class="data-row">
+        <td class="item-name">{def.name}</td>
+        {@render rotationCell(buildA, "a", id, setRotationValueA, addRotationA, removeRotationA)}
+        {#if showSecondBuild}
+          {@render rotationCell(buildB, "b", id, setRotationValueB, addRotationB, removeRotationB)}
+        {/if}
+      </tr>
+    {/if}
+  {/each}
 {/if}
 
 <style>

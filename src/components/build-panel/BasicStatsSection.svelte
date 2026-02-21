@@ -69,30 +69,46 @@
   <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} />
 </tr>
 
+{#snippet vocCell(
+  build: Build,
+  buildId: string,
+  setStat: (key: keyof BuildStats, value: BuildStats[keyof BuildStats]) => void,
+)}
+  <td>
+    <select
+      class="vocation-select input-{buildId}"
+      value={build.stats.vocation}
+      onchange={(e) => setStat("vocation", e.currentTarget.value as Vocation)}>
+      {#each vocations as voc}
+        <option value={voc}>{capitalize(voc)}</option>
+      {/each}
+    </select>
+  </td>
+{/snippet}
+
+{#snippet inputCell(
+  key: keyof BuildStats,
+  build: Build,
+  buildId: string,
+  setStat: (key: keyof BuildStats, value: BuildStats[keyof BuildStats]) => void,
+)}
+  <td>
+    <input
+      type="number"
+      step="any"
+      inputmode="numeric"
+      class="input-{buildId}"
+      value={build.stats[key]}
+      oninput={(e) => setStat(key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
+  </td>
+{/snippet}
+
 {#if !collapsed}
   <tr class="data-row">
     <td>Vocation</td>
-    <td>
-      <select
-        class="vocation-select input-a"
-        value={buildA.stats.vocation}
-        onchange={(e) => setStatA("vocation", e.currentTarget.value as Vocation)}>
-        {#each vocations as voc}
-          <option value={voc}>{capitalize(voc)}</option>
-        {/each}
-      </select>
-    </td>
+    {@render vocCell(buildA, "a", setStatA)}
     {#if showSecondBuild}
-      <td>
-        <select
-          class="vocation-select input-b"
-          value={buildB.stats.vocation}
-          onchange={(e) => setStatB("vocation", e.currentTarget.value as Vocation)}>
-          {#each vocations as voc}
-            <option value={voc}>{capitalize(voc)}</option>
-          {/each}
-        </select>
-      </td>
+      {@render vocCell(buildB, "b", setStatB)}
     {/if}
   </tr>
 
@@ -105,25 +121,9 @@
       {:else}
         <td>{field.label}</td>
       {/if}
-      <td>
-        <input
-          type="number"
-          step="any"
-          inputmode="numeric"
-          class="input-a"
-          value={buildA.stats[field.key]}
-          oninput={(e) => setStatA(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
-      </td>
+      {@render inputCell(field.key, buildA, "a", setStatA)}
       {#if showSecondBuild}
-        <td>
-          <input
-            type="number"
-            step="any"
-            inputmode="numeric"
-            class="input-b"
-            value={buildB.stats[field.key]}
-            oninput={(e) => setStatB(field.key, e.currentTarget.value === "" ? null : Number(e.currentTarget.value))} />
-        </td>
+        {@render inputCell(field.key, buildB, "b", setStatB)}
       {/if}
     </tr>
   {/each}
