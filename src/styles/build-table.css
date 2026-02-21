@@ -1,0 +1,151 @@
+/* Shared styles for build-table section components */
+
+.build-table td {
+  padding: 0.35rem 0.75rem;
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+/* Section header rows get top border */
+.build-table .section-header td {
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.6rem;
+  padding-bottom: 0.4rem;
+}
+
+/* Last row of table needs bottom border */
+.build-table tbody tr:last-child td {
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Section headers */
+.build-table h4 {
+  margin: 0;
+}
+
+/* Item names (perks, spells) */
+.build-table .item-name {
+  font-size: 0.9rem;
+}
+
+/* Shared input styles */
+.build-table input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.build-table input[type="number"] {
+  padding: 0.25rem 0.4rem;
+  font: inherit;
+  border: 1px solid var(--input-border);
+  border-radius: 0.25rem;
+  background: var(--input-bg);
+  color: inherit;
+  text-align: right;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.build-table input[type="number"]::-webkit-outer-spin-button,
+.build-table input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.build-table input.input-a {
+  border-color: var(--build-a-border);
+}
+
+.build-table input.input-b {
+  border-color: var(--build-b-border);
+}
+
+.build-table input:focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Input with remove button */
+.build-table .input-with-remove {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.build-table .input-with-remove input[type="number"] {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+}
+
+.build-table .input-with-remove input[type="number"].small {
+  flex: 0 0 auto;
+  width: 3.5rem;
+}
+
+.build-table .input-with-remove input[type="number"].small:nth-child(2) {
+  margin-left: auto;
+}
+
+/* Add placeholder and button */
+.build-table .add-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.build-table .add-btn {
+  padding: 0.25rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1;
+  background: transparent;
+  border: 1px dashed var(--input-border);
+  border-radius: 0.25rem;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.7;
+  transition:
+    opacity 0.15s,
+    background-color 0.15s;
+}
+
+.build-table .add-btn:hover {
+  opacity: 1;
+  background: hsl(220 10% 20%);
+}
+
+.build-table .add-btn.input-a {
+  border-color: var(--build-a-border);
+}
+
+.build-table .add-btn.input-a:hover {
+  background: hsl(210, 30%, 25%);
+}
+
+.build-table .add-btn.input-b {
+  border-color: var(--build-b-border);
+}
+
+.build-table .add-btn.input-b:hover {
+  background: hsl(30, 30%, 25%);
+}
+
+.build-table .section-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  padding: 0;
+  text-align: left;
+}
+
+.build-table .section-toggle:hover {
+  color: hsl(220 90% 70%);
+}
+
+.build-table td .fuzzy-select {
+  width: 100%;
+}
