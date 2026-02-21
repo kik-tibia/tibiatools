@@ -244,5 +244,20 @@
       "paladin"
     ],
     "rounding": "floor"
+  },
+  {
+    "id": "terra-strike",
+    "name": "Terra Strike",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "earth",
+    "power": 45,
+    "skillFactor": 25,
+    "buckets": 0,
+    "vocations": [
+      "druid",
+      "sorcerer"
+    ],
+    "rounding": "round"
   }
 ]
