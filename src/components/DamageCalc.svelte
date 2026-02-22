@@ -46,6 +46,7 @@
   let isDphBHigher = $derived(effectiveDphB >= effectiveDphA - epsilon);
   let pctIncreaseA = $derived((effectiveDptA / effectiveDptB - 1) * 100);
   let pctIncreaseB = $derived((effectiveDptB / effectiveDptA - 1) * 100);
+  let showIncrease = $derived(Number.isFinite(pctIncreaseA) && Number.isFinite(pctIncreaseB));
 
   function writePackedToUrl() {
     const q = new URLSearchParams(window.location.search);
@@ -133,9 +134,11 @@
     <h3 class="results-title">
       {#if showSecondBuild}
         <BuildBadge build="a">Build A</BuildBadge>
-        <span class="pct-diff" class:positive={pctIncreaseA > 0} class:negative={pctIncreaseA < 0}>
-          {pctIncreaseA > 0 ? "+" : ""}{pctIncreaseA.toFixed(2)}% per turn
-        </span>
+        {#if showIncrease}
+          <span class="pct-diff" class:positive={pctIncreaseA > 0} class:negative={pctIncreaseA < 0}>
+            {pctIncreaseA > 0 ? "+" : ""}{pctIncreaseA.toFixed(2)}% per turn
+          </span>
+        {/if}
       {:else}
         Results
       {/if}
@@ -154,9 +157,11 @@
     <div class="panel results-panel-b">
       <h3 class="results-title">
         <BuildBadge build="b">Build B</BuildBadge>
-        <span class="pct-diff" class:positive={pctIncreaseB > 0} class:negative={pctIncreaseB < 0}>
-          {pctIncreaseB > 0 ? "+" : ""}{pctIncreaseB.toFixed(2)}% per turn
-        </span>
+        {#if showIncrease}
+          <span class="pct-diff" class:positive={pctIncreaseB > 0} class:negative={pctIncreaseB < 0}>
+            {pctIncreaseB > 0 ? "+" : ""}{pctIncreaseB.toFixed(2)}% per turn
+          </span>
+        {/if}
       </h3>
       <ResultsTable
         results={resultsB}
