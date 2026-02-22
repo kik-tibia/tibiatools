@@ -11,15 +11,53 @@ const { title = "Tibia Tools" } = Astro.props;
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <title>{title}</title>
+    <script is:inline>
+      (function() {
+        var pref = localStorage.getItem("theme");
+        var effective = pref || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+        document.documentElement.setAttribute("data-theme", effective);
+      })();
+    </script>
   </head>
   <body>
     <header>
+      <div>
         <h1>Tibia Tools – {title}</h1>
-      <nav>
-        <a href="/" class={Astro.url.pathname === "/" ? "active" : ""}>Home</a>
-        <a href="/tools/info" class={Astro.url.pathname.startsWith("/tools/info") ? "active" : ""}>Info</a>
-        <a href="/tools/calculator" class={Astro.url.pathname.startsWith("/tools/calculator") ? "active" : ""}>Calculator</a>
-      </nav>
+        <nav>
+          <a href="/" class={Astro.url.pathname === "/" ? "active" : ""}>Home</a>
+          <a href="/tools/info" class={Astro.url.pathname.startsWith("/tools/info") ? "active" : ""}>Info</a>
+          <a href="/tools/calculator" class={Astro.url.pathname.startsWith("/tools/calculator") ? "active" : ""}>Calculator</a>
+        </nav>
+      </div>
+      <select id="theme-select">
+        <option value="">Default</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+      <script is:inline>
+        (function() {
+          var sel = document.getElementById("theme-select");
+          var mq = matchMedia("(prefers-color-scheme: light)");
+          sel.value = localStorage.getItem("theme") || "";
+
+          function apply() {
+            var pref = localStorage.getItem("theme");
+            var effective = pref || (mq.matches ? "light" : "dark");
+            document.documentElement.setAttribute("data-theme", effective);
+          }
+
+          sel.addEventListener("change", function() {
+            if (sel.value) {
+              localStorage.setItem("theme", sel.value);
+            } else {
+              localStorage.removeItem("theme");
+            }
+            apply();
+          });
+
+          mq.addEventListener("change", apply);
+        })();
+      </script>
     </header>
     <main>
       <slot />

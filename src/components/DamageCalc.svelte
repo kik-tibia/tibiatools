@@ -181,7 +181,7 @@
 
   .toolbar button {
     padding: 0.5rem 0.75rem;
-    border: 1px solid #bbb;
+    border: 1px solid var(--input-border);
     border-radius: 0.5rem;
     background: transparent;
     cursor: pointer;
@@ -192,12 +192,12 @@
   }
 
   .toolbar button:hover {
-    background: hsl(220 10% 20%);
+    background: var(--btn-hover-bg);
   }
 
   .compare-btn.active {
-    background: hsl(220 50% 25%);
-    border-color: hsl(220 50% 45%);
+    background: var(--btn-active-bg);
+    border-color: var(--btn-active-border);
   }
 
   .panel {
@@ -222,11 +222,11 @@
   }
 
   .pct-diff.positive {
-    color: hsl(120, 60%, 60%);
+    color: var(--positive-color);
   }
 
   .pct-diff.negative {
-    color: hsl(0, 60%, 65%);
+    color: var(--negative-color);
   }
 
   @media (min-width: 900px) {

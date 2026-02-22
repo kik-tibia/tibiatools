@@ -191,7 +191,7 @@
 <style>
   .sub-header {
     font-size: 0.75rem;
-    color: hsl(0 0% 60%);
+    color: var(--text-muted);
   }
 
   .rotation-label-cell {

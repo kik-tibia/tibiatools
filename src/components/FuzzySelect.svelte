@@ -113,10 +113,10 @@
     border-radius: 0.5rem;
     outline: none;
     background: var(--input-bg);
-    color: hsl(0 0% 95%);
+    color: var(--text-color);
   }
   .fuzzy-search:focus {
-    border-color: hsl(220 90% 65%);
+    border-color: var(--focus-border);
     box-shadow: var(--focus-ring);
   }
 
@@ -130,9 +130,9 @@
     padding: 0;
     list-style: none;
 
-    background: hsl(220 10% 10%);
+    background: var(--dropdown-bg);
     border: 1px solid var(--border-color);
-    color: hsl(0 0% 95%);
+    color: var(--dropdown-text);
     border-radius: 0.5rem;
 
     max-height: 6rem;
@@ -141,10 +141,10 @@
   }
   .dropdown li:hover,
   .dropdown li.selected {
-    background: hsl(220 20% 25%);
+    background: var(--dropdown-hover);
   }
   .dropdown li.empty {
-    color: hsl(0 0% 60%);
+    color: var(--text-muted);
   }
   .chev {
     position: absolute;

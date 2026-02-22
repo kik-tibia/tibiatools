@@ -160,7 +160,7 @@
 
   .range {
     font-size: 0.85rem;
-    color: #777777;
+    color: var(--text-muted);
   }
 
   .spell {
@@ -168,7 +168,7 @@
   }
 
   .highlight {
-    background: rgba(50, 255, 0, 0.12);
+    background: var(--highlight-bg);
   }
 
   .spell-name {
@@ -189,7 +189,7 @@
     }
 
     .results tr {
-      border-bottom: 1px solid #e5e5e5;
+      border-bottom: 1px solid var(--mobile-border);
     }
 
     .results td {

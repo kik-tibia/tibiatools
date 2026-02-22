@@ -1,27 +1,116 @@
 :root {
   color-scheme: light dark;
 
-  /* Design tokens */
+  /* Page */
+  --page-bg: hsl(220 10% 10%);
+  --text-color: hsl(0 0% 93%);
+  --text-muted: hsl(0 0% 55%);
+  --link-color: hsl(220 90% 70%);
+
+  /* Inputs & borders */
   --input-bg: hsl(220 10% 15%);
   --input-border: hsl(0 0% 40%);
   --border-color: hsl(0 0% 30%);
   --focus-ring: 0 0 0 2px hsl(220 90% 65% / 0.3);
+  --focus-border: hsl(220 90% 65%);
+  --footer-border: hsl(0 0% 27%);
 
+  /* Table */
+  --table-header-bg: hsl(220 10% 18%);
+
+  /* Buttons */
+  --btn-hover-bg: hsl(220 10% 20%);
+  --btn-active-bg: hsl(220 50% 25%);
+  --btn-active-border: hsl(220 50% 45%);
+  --section-toggle-hover: hsl(220 90% 70%);
+
+  /* Build A / B */
   --build-a-border: hsl(210, 50%, 40%);
   --build-b-border: hsl(30, 50%, 40%);
   --build-a-bg: rgba(100, 180, 255, 0.2);
-  --build-a-text: hsl(210, 80%, 70%);
   --build-b-bg: rgba(255, 180, 100, 0.2);
+  --build-a-text: hsl(210, 80%, 70%);
   --build-b-text: hsl(30, 80%, 70%);
+  --add-btn-hover-a: hsl(210, 30%, 25%);
+  --add-btn-hover-b: hsl(30, 30%, 25%);
 
+  /* Remove button */
   --remove-hover-bg: hsl(0, 50%, 30%);
   --remove-hover-border: hsl(0, 50%, 40%);
+
+  /* Dropdowns */
+  --dropdown-bg: hsl(220 10% 10%);
+  --dropdown-hover: hsl(220 20% 25%);
+  --dropdown-text: hsl(0 0% 95%);
+
+  /* Tooltips */
+  --tooltip-bg: hsl(0 0% 27%);
+  --tooltip-border: hsl(0 0% 33%);
+  --tooltip-text: hsl(0 0% 100%);
+
+  /* Data / results */
+  --highlight-bg: rgba(50, 255, 0, 0.12);
+  --positive-color: hsl(120, 60%, 60%);
+  --negative-color: hsl(0, 60%, 65%);
+  --mobile-border: hsl(0 0% 30%);
+}
+
+:root[data-theme="light"] {
+  --page-bg: hsl(0 0% 98%);
+  --text-color: hsl(0 0% 13%);
+  --text-muted: hsl(0 0% 45%);
+  --link-color: hsl(220 80% 45%);
+
+  --input-bg: hsl(0 0% 100%);
+  --input-border: hsl(0 0% 72%);
+  --border-color: hsl(0 0% 80%);
+  --focus-ring: 0 0 0 2px hsl(220 90% 55% / 0.25);
+  --focus-border: hsl(220 80% 55%);
+  --footer-border: hsl(0 0% 82%);
+
+  --table-header-bg: hsl(220 10% 95%);
+
+  --btn-hover-bg: hsl(220 10% 92%);
+  --btn-active-bg: hsl(220 50% 90%);
+  --btn-active-border: hsl(220 50% 60%);
+  --section-toggle-hover: hsl(220 80% 45%);
+
+  --build-a-border: hsl(210, 50%, 55%);
+  --build-b-border: hsl(30, 50%, 50%);
+  --build-a-bg: rgba(100, 180, 255, 0.15);
+  --build-b-bg: rgba(255, 180, 100, 0.15);
+  --build-a-text: hsl(210, 80%, 40%);
+  --build-b-text: hsl(30, 80%, 35%);
+  --add-btn-hover-a: hsl(210, 40%, 90%);
+  --add-btn-hover-b: hsl(30, 40%, 90%);
+
+  --remove-hover-bg: hsl(0, 60%, 92%);
+  --remove-hover-border: hsl(0, 50%, 65%);
+
+  --dropdown-bg: hsl(0 0% 100%);
+  --dropdown-hover: hsl(220 30% 93%);
+  --dropdown-text: hsl(0 0% 13%);
+
+  --tooltip-bg: hsl(0 0% 20%);
+  --tooltip-border: hsl(0 0% 30%);
+  --tooltip-text: hsl(0 0% 100%);
+
+  --highlight-bg: rgba(50, 200, 0, 0.1);
+  --positive-color: hsl(120, 60%, 35%);
+  --negative-color: hsl(0, 60%, 45%);
+  --mobile-border: hsl(0 0% 85%);
 }
 
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
   line-height: 1.2;
+  background: var(--page-bg);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--link-color);
 }
 
 header,
@@ -32,9 +121,27 @@ footer {
   padding: 1rem;
 }
 
+header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+#theme-select {
+  padding: 0.25rem 0.4rem;
+  background: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
 footer {
   margin-top: 3rem;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--footer-border);
   text-align: center;
   font-size: 0.8rem;
   opacity: 0.7;
@@ -53,12 +160,6 @@ footer .discord-link {
 
 footer .discord-link:hover {
   text-decoration: underline;
-}
-
-@media (prefers-color-scheme: dark) {
-  footer {
-    border-top-color: #444;
-  }
 }
 
 nav a {

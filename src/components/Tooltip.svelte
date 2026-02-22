@@ -29,9 +29,9 @@
     max-width: 250px;
     padding: 5px 8px;
     font-size: 0.8rem;
-    color: #fff;
-    background: #444;
-    border: 1px solid #555;
+    color: var(--tooltip-text);
+    background: var(--tooltip-bg);
+    border: 1px solid var(--tooltip-border);
     z-index: 1000;
     opacity: 0;
     visibility: hidden;

@@ -67,7 +67,7 @@
 
   /* Header row */
   thead th {
-    background: hsl(220 10% 18%);
+    background: var(--table-header-bg);
     text-align: left;
     padding: 0.5rem 0.75rem;
     border: 1px solid var(--border-color);

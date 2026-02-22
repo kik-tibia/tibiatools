@@ -112,7 +112,7 @@
 
 .build-table .add-btn:hover {
   opacity: 1;
-  background: hsl(220 10% 20%);
+  background: var(--btn-hover-bg);
 }
 
 .build-table .add-btn.input-a {
@@ -120,7 +120,7 @@
 }
 
 .build-table .add-btn.input-a:hover {
-  background: hsl(210, 30%, 25%);
+  background: var(--add-btn-hover-a);
 }
 
 .build-table .add-btn.input-b {
@@ -128,7 +128,7 @@
 }
 
 .build-table .add-btn.input-b:hover {
-  background: hsl(30, 30%, 25%);
+  background: var(--add-btn-hover-b);
 }
 
 .build-table .section-toggle {
@@ -143,7 +143,7 @@
 }
 
 .build-table .section-toggle:hover {
-  color: hsl(220 90% 70%);
+  color: var(--section-toggle-hover);
 }
 
 .build-table td .fuzzy-select {
