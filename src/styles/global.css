@@ -5,6 +5,8 @@
   --page-bg: hsl(220 10% 10%);
   --text-color: hsl(0 0% 93%);
   --text-muted: hsl(0 0% 55%);
+  --icon-filter: invert(0.93);
+  --icon-filter-muted: invert(0.36);
   --link-color: hsl(220 90% 70%);
 
   /* Inputs & borders */
@@ -59,6 +61,8 @@
   --page-bg: hsl(0 0% 98%);
   --text-color: hsl(0 0% 13%);
   --text-muted: hsl(0 0% 45%);
+  --icon-filter: invert(0.06);
+  --icon-filter-muted: invert(0.75);
   --link-color: hsl(220 80% 45%);
 
   --input-bg: hsl(0 0% 100%);
@@ -129,14 +133,27 @@ header {
   gap: 0.5rem;
 }
 
-#theme-select {
-  padding: 0.25rem 0.4rem;
-  background: var(--input-bg);
-  color: var(--text-color);
-  border: 1px solid var(--input-border);
-  border-radius: 4px;
-  font-size: 0.85rem;
+#theme-toggle {
+  display: flex;
+  gap: 0.15rem;
+}
+
+#theme-toggle button {
+  display: flex;
+  padding: 0.3rem;
+  background: none;
+  border: none;
   cursor: pointer;
+  border-radius: 4px;
+}
+
+#theme-toggle button img {
+  filter: var(--icon-filter-muted);
+}
+
+#theme-toggle button:hover img,
+#theme-toggle button.active img {
+  filter: var(--icon-filter);
 }
 
 footer {

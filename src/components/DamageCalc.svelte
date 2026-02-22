@@ -186,9 +186,6 @@
     background: transparent;
     cursor: pointer;
     color: inherit;
-    transition:
-      background-color 0.15s,
-      border-color 0.15s;
   }
 
   .toolbar button:hover {
