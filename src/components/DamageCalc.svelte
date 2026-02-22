@@ -147,8 +147,9 @@
       results={resultsA}
       vocation={A.stats.vocation}
       effectiveDpt={effectiveDptA}
-      isDptHigher={isDptAHigher}
       effectiveDph={effectiveDphA}
+      showHighlighting={showSecondBuild}
+      isDptHigher={isDptAHigher}
       isDphHigher={isDphAHigher}
       isHigher={isAHigher} />
   </div>
@@ -167,8 +168,9 @@
         results={resultsB}
         vocation={B.stats.vocation}
         effectiveDpt={effectiveDptB}
-        isDptHigher={isDptBHigher}
         effectiveDph={effectiveDphB}
+        showHighlighting={true}
+        isDptHigher={isDptBHigher}
         isDphHigher={isDphBHigher}
         isHigher={isBHigher} />
     </div>

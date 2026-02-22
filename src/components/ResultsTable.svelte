@@ -8,17 +8,19 @@
     vocation,
     effectiveDpt,
     effectiveDph,
-    isHigher = () => false,
+    showHighlighting,
     isDptHigher,
     isDphHigher,
+    isHigher = () => false,
   }: {
     results?: SpellDamage[];
     vocation: Vocation;
     effectiveDpt: number;
     effectiveDph: number;
-    isHigher?: (id: string) => boolean;
+    showHighlighting: boolean;
     isDptHigher: boolean;
     isDphHigher: boolean;
+    isHigher?: (id: string) => boolean;
   } = $props();
 
   let vocResults = $derived(results.filter((i) => i.vocations.includes(vocation)));
@@ -27,7 +29,7 @@
 <div>
   <table class="summary">
     <tbody>
-      <tr class:highlight={isDptHigher}>
+      <tr class:highlight={showHighlighting && isDptHigher}>
         <td class="summary-label">
           <Tooltip
             label={"Effective damage per turn"}
@@ -36,7 +38,7 @@
         </td>
         <td class="summary-value">{effectiveDpt.toFixed(1)}</td>
       </tr>
-      <tr class:highlight={isDphHigher}>
+      <tr class:highlight={showHighlighting && isDphHigher}>
         <td class="summary-label">
           <Tooltip
             label={"Effective damage per hit"}
@@ -75,7 +77,7 @@
       </thead>
       <tbody>
         {#each vocResults as r}
-          <tr class:highlight={isHigher(r.id)}>
+          <tr class:highlight={showHighlighting && isHigher(r.id)}>
             <td class="spell">
               <div class="spell-name">{r.name}</div>
             </td>
