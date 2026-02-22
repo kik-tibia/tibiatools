@@ -14,13 +14,13 @@
 
 <td>
   {#if showSecondBuild && !collapsed}
-    <button class="copy-btn" onclick={copyAtoB}>Copy →</button>
+    <button class="copy-btn" onclick={copyBtoA}>Copy from B</button>
   {/if}
 </td>
 {#if showSecondBuild}
   <td>
     {#if !collapsed}
-      <button class="copy-btn" onclick={copyBtoA}>← Copy</button>
+      <button class="copy-btn" onclick={copyAtoB}>Copy from A</button>
     {/if}
   </td>
 {/if}
