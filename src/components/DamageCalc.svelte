@@ -139,8 +139,6 @@
             {pctIncreaseA > 0 ? "+" : ""}{pctIncreaseA.toFixed(2)}% per turn
           </span>
         {/if}
-      {:else}
-        Results
       {/if}
     </h3>
     <ResultsTable
@@ -237,7 +235,7 @@
     .main-grid {
       display: grid;
       gap: 1rem;
-      grid-template-columns: minmax(320px, 1.5fr) minmax(280px, 1fr);
+      grid-template-columns: 450px 420px;
       grid-template-areas: "build resultsA";
     }
 
