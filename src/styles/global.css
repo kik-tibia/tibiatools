@@ -180,6 +180,7 @@ footer p {
 footer .discord-link {
   display: inline-flex;
   align-items: center;
+  filter: var(--icon-filter-muted);
   gap: 0.3rem;
   text-decoration: none;
 }
