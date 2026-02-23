@@ -30,25 +30,32 @@ const { title = "Tibia Tools" } = Astro.props;
         </nav>
       </div>
       <div id="theme-toggle">
-        <button data-theme-value="" aria-label="OS default theme">
-          <img src="/monitor.svg" alt="" width="18" height="18" />
-        </button>
-        <button data-theme-value="light" aria-label="Light theme">
+        <button id="theme-btn" aria-label="Change theme" aria-expanded="false">
           <img src="/sun.svg" alt="" width="18" height="18" />
-        </button>
-        <button data-theme-value="dark" aria-label="Dark theme">
           <img src="/moon.svg" alt="" width="18" height="18" />
         </button>
+        <div id="theme-menu" role="menu">
+          <button data-theme-value="" role="menuitem">
+            <img src="/monitor.svg" alt="" width="16" height="16" /> System
+          </button>
+          <button data-theme-value="light" role="menuitem">
+            <img src="/sun.svg" alt="" width="16" height="16" /> Light
+          </button>
+          <button data-theme-value="dark" role="menuitem">
+            <img src="/moon.svg" alt="" width="16" height="16" /> Dark
+          </button>
+        </div>
       </div>
       <script is:inline>
         (function() {
-          var toggle = document.getElementById("theme-toggle");
-          var buttons = toggle.querySelectorAll("button");
+          var btn = document.getElementById("theme-btn");
+          var btnIcons = btn.querySelectorAll("img");
+          var menu = document.getElementById("theme-menu");
+          var items = menu.querySelectorAll("button");
           var mq = matchMedia("(prefers-color-scheme: light)");
-          var pref = localStorage.getItem("theme") || "";
 
           function applyActive(value) {
-            buttons.forEach(function(b) {
+            items.forEach(function(b) {
               b.classList.toggle("active", b.getAttribute("data-theme-value") === value);
             });
           }
@@ -58,11 +65,28 @@ const { title = "Tibia Tools" } = Astro.props;
             var effective = p || (mq.matches ? "light" : "dark");
             document.documentElement.setAttribute("data-theme", effective);
             applyActive(p);
+            btnIcons[0].style.display = effective === "light" ? "" : "none";
+            btnIcons[1].style.display = effective === "dark" ? "" : "none";
+          }
+
+          function toggle() {
+            var open = menu.classList.toggle("open");
+            btn.setAttribute("aria-expanded", open);
+          }
+
+          function close() {
+            menu.classList.remove("open");
+            btn.setAttribute("aria-expanded", "false");
           }
 
           apply();
 
-          buttons.forEach(function(b) {
+          btn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            toggle();
+          });
+
+          items.forEach(function(b) {
             b.addEventListener("click", function() {
               var v = b.getAttribute("data-theme-value");
               if (v) {
@@ -71,7 +95,14 @@ const { title = "Tibia Tools" } = Astro.props;
                 localStorage.removeItem("theme");
               }
               apply();
+              close();
             });
+          });
+
+          document.addEventListener("click", function(e) {
+            if (!menu.contains(e.target) && e.target !== btn) {
+              close();
+            }
           });
 
           mq.addEventListener("change", apply);
