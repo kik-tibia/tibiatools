@@ -1,0 +1,15 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import DamageCalc from "@components/DamageCalc.svelte";
+import { unpackState } from "@lib/url-pack";
+import { defaultState } from "@lib/build-state";
+const s = Astro.url.searchParams.get('s')
+const initial = unpackState(s) ?? defaultState();
+---
+<BaseLayout title="Damage Calculator">
+  <p>
+  Please read the 
+    <a href="/tools/calculator/faq" style="margin-bottom:2rem;">FAQ</a>.
+  </p>
+    <DamageCalc client:load {initial} />
+</BaseLayout>
