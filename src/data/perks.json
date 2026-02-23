@@ -42,6 +42,12 @@
     "bonusType": "crit-damage"
   },
   {
+    "id": "earth-crit-damage",
+    "name": "Critical % extra damage for earth spells and runes",
+    "scope": "earth",
+    "bonusType": "crit-damage"
+  },
+  {
     "id": "holy-crit-chance",
     "name": "Holy critical hit chance",
     "scope": "holy",
@@ -162,6 +168,12 @@
     "bonusType": "magic-level"
   },
   {
+    "id": "earth-magic-level",
+    "name": "Earth magic level",
+    "scope": "earth",
+    "bonusType": "magic-level"
+  },
+  {
     "id": "holy-magic-level",
     "name": "Holy magic level",
     "scope": "holy",
@@ -244,5 +256,11 @@
     "name": "% fishing as extra damage for auto‑attacks",
     "scope": "auto-attack",
     "bonusType": "fishing-percent-extra"
+  },
+  {
+    "id": "terra-wave-base",
+    "name": "Terra Wave (exevo tera hur) base damage",
+    "scope": "terra-wave",
+    "bonusType": "base-damage"
   }
 ]

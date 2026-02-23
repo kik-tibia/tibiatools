@@ -36,6 +36,24 @@
     "rounding": "floor"
   },
   {
+    "id": "great-fireball",
+    "name": "Great Fireball Rune",
+    "spellType": "rune",
+    "scalesWith": "magic",
+    "element": "fire",
+    "power": 50,
+    "skillFactor": 25,
+    "buckets": 40,
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "rounding": "floor"
+  },
+  {
     "id": "thunderstorm",
     "name": "Thunderstorm Rune",
     "spellType": "rune",
@@ -257,6 +275,20 @@
     "vocations": [
       "druid",
       "sorcerer"
+    ],
+    "rounding": "round"
+  },
+  {
+    "id": "terra-wave",
+    "name": "Terra Wave",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "earth",
+    "power": 120,
+    "skillFactor": 25,
+    "buckets": 0,
+    "vocations": [
+      "druid"
     ],
     "rounding": "round"
   }
