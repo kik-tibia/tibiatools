@@ -2,7 +2,7 @@
   color-scheme: light dark;
 
   /* Page */
-  --page-bg: hsl(220 10% 10%);
+  --page-bg: hsl(220 5% 10%);
   --text-color: hsl(0 0% 93%);
   --text-muted: hsl(0 0% 55%);
   --icon-filter: invert(0.93);
@@ -59,7 +59,7 @@
 
 :root[data-theme="light"] {
   /* Page */
-  --page-bg: hsl(0 0% 97%);
+  --page-bg: hsl(120 8% 97%);
   --text-color: hsl(0 0% 13%);
   --text-muted: hsl(0 0% 45%);
   --icon-filter: invert(0.03);
