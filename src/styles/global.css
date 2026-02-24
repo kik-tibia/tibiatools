@@ -18,7 +18,7 @@
   --footer-border: hsl(0 0% 27%);
 
   /* Table */
-  --table-header-bg: hsl(220 5% 18%);
+  --table-header-bg: hsl(220 5% 14%);
   --table-body-bg: hsl(220 5% 12%);
 
   /* Buttons */
@@ -76,7 +76,7 @@
   --footer-border: hsl(0 0% 82%);
 
   /* Table */
-  --table-header-bg: hsl(220 8% 93%);
+  --table-header-bg: hsl(220 8% 94%);
   --table-body-bg: hsl(220 8% 97%);
 
   /* Buttons */
