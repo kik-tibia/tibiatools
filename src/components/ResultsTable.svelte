@@ -169,7 +169,7 @@
     width: 100%;
   }
 
-  .highlight {
+  .highlight td {
     background: var(--highlight-bg);
   }
 

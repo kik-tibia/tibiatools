@@ -18,7 +18,8 @@
   --footer-border: hsl(0 0% 27%);
 
   /* Table */
-  --table-header-bg: hsl(220 10% 18%);
+  --table-header-bg: hsl(220 5% 18%);
+  --table-body-bg: hsl(220 5% 12%);
 
   /* Buttons */
   --btn-hover-bg: hsl(220 10% 20%);
@@ -59,7 +60,7 @@
 
 :root[data-theme="light"] {
   /* Page */
-  --page-bg: hsl(120 8% 97%);
+  --page-bg: hsl(220 8% 98%);
   --text-color: hsl(0 0% 13%);
   --text-muted: hsl(0 0% 45%);
   --icon-filter: invert(0.03);
@@ -75,7 +76,8 @@
   --footer-border: hsl(0 0% 82%);
 
   /* Table */
-  --table-header-bg: hsl(220 10% 95%);
+  --table-header-bg: hsl(220 8% 93%);
+  --table-body-bg: hsl(220 8% 97%);
 
   /* Buttons */
   --btn-hover-bg: hsl(220 10% 92%);
@@ -140,6 +142,13 @@ header {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem;
+}
+
+thead th {
+  background: var(--table-header-bg);
+}
+tbody td {
+  background: var(--table-body-bg);
 }
 
 #theme-toggle {

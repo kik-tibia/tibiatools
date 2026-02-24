@@ -22,7 +22,9 @@
   let activeIndex = $state(0);
 
   let available = $derived(all.filter((x) => !selectedIds.includes(getId(x))));
-  let fzf = $derived(new Fzf(available as any, { selector: (x: any) => getLabel(x), tiebreakers: [byLengthAsc] } as any));
+  let fzf = $derived(
+    new Fzf(available as any, { selector: (x: any) => getLabel(x), tiebreakers: [byLengthAsc] } as any),
+  );
   let results = $derived(q ? fzf.find(q).map((r: any) => r.item) : available);
 
   function select(item: any) {
@@ -67,27 +69,24 @@
       bind:value={q}
       onfocus={handleFocus}
       onblur={handleBlur}
-      onkeydown={handleKeydown}
-      role="combobox"
-      aria-controls="{selectType}-listbox"
-      aria-expanded={open}
-      aria-autocomplete="list"
-      aria-haspopup="listbox" />
-    <svg class="chev" viewBox="0 0 20 20" aria-hidden="true">
+      onkeydown={handleKeydown} />
+    <svg class="chev" viewBox="0 0 20 20">
       <path d="M5 7l5 6 5-6" />
     </svg>
   </div>
   {#if open}
-    <ul id="{selectType}-listbox" class="dropdown" role="listbox">
+    <ul class="dropdown">
       {#if results.length === 0}
         <li class="empty">No matches</li>
       {:else}
+        <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
         {#each results as p, i}
           <li
-            role="option"
-            aria-selected={i === activeIndex}
             class:selected={i === activeIndex}
-            onmousedown={(e) => { e.preventDefault(); select(p); }}>
+            onmousedown={(e) => {
+              e.preventDefault();
+              select(p);
+            }}>
             {getLabel(p)}
           </li>
         {/each}
