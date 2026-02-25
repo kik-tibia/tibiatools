@@ -3,13 +3,7 @@
 
   import { computeDph, computeDpt, computeResults } from "@lib/damage-calc";
   import { packState, unpackState } from "@lib/url-pack";
-  import {
-    defaultBuild,
-    defaultCollapsed,
-    type Build,
-    type CalculatorState,
-    type CollapsedSections,
-  } from "@lib/build-state";
+  import { defaultCollapsed, type Build, type CalculatorState, type CollapsedSections } from "@lib/build-state";
 
   import BuildPanel from "@components/build-panel/BuildPanel.svelte";
   import BuildBadge from "@components/BuildBadge.svelte";
@@ -105,14 +99,6 @@
 
 <section class="toolbar">
   <button type="button" onclick={copyLink}>{copied ? "Copied!" : "Share"}</button>
-  <button
-    type="button"
-    onclick={() => {
-      A = defaultBuild();
-      B = defaultBuild();
-    }}>
-    Reset
-  </button>
   <button
     type="button"
     class="compare-btn"
