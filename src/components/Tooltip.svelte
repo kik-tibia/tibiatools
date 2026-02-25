@@ -29,6 +29,7 @@
     max-width: 250px;
     padding: 5px 8px;
     font-size: 0.8rem;
+    text-align: start;
     color: var(--tooltip-text);
     background: var(--tooltip-bg);
     border: 1px solid var(--tooltip-border);
