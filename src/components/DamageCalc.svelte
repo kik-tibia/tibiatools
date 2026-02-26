@@ -130,6 +130,7 @@
     <ResultsTable
       results={resultsA}
       vocation={A.stats.vocation}
+      rotation={A.rotation}
       effectiveDpt={effectiveDptA}
       effectiveDph={effectiveDphA}
       showHighlighting={showSecondBuild}
@@ -151,6 +152,7 @@
       <ResultsTable
         results={resultsB}
         vocation={B.stats.vocation}
+        rotation={B.rotation}
         effectiveDpt={effectiveDptB}
         effectiveDph={effectiveDphB}
         showHighlighting={true}

@@ -1,11 +1,13 @@
 <script lang="ts">
-  import type { SpellDamage } from "@data/spells";
+  import { spellOrdering, type SpellDamage } from "@data/spells";
   import type { Vocation } from "@lib/build-state";
   import Tooltip from "./Tooltip.svelte";
+  import type { RotationSpell } from "@lib/damage-calc";
 
   let {
     results = [],
     vocation,
+    rotation,
     effectiveDpt,
     effectiveDph,
     showHighlighting,
@@ -15,6 +17,7 @@
   }: {
     results?: SpellDamage[];
     vocation: Vocation;
+    rotation: RotationSpell[];
     effectiveDpt: number;
     effectiveDph: number;
     showHighlighting: boolean;
@@ -24,6 +27,25 @@
   } = $props();
 
   let vocResults = $derived(results.filter((i) => i.vocations.includes(vocation)));
+  let vocSpellOrdering = $derived(spellOrdering.find((s) => s.vocation == vocation)?.order ?? []);
+  let rotationIds = $derived(rotation.map((r) => r.id));
+  let resultsOrdered = $derived(
+    vocResults.sort((a, b) => {
+      let ai = vocSpellOrdering.indexOf(a.scope);
+      let bi = vocSpellOrdering.indexOf(b.scope);
+
+      // Force spells to the bottom if they aren't included in the ordering
+      if (ai == -1) ai = vocSpellOrdering.length;
+      if (bi == -1) bi = vocSpellOrdering.length;
+
+      if (rotationIds.includes(a.scope)) return -1;
+      if (rotationIds.includes(b.scope)) return 1;
+
+      if (ai > bi) return 1;
+      if (bi > ai) return -1;
+      else return 0;
+    }),
+  );
 </script>
 
 <div>
@@ -76,7 +98,7 @@
         </tr>
       </thead>
       <tbody>
-        {#each vocResults as r}
+        {#each resultsOrdered as r}
           <tr class:highlight={showHighlighting && isHigher(r.id)}>
             <td class="spell">
               <div class="spell-name">{r.name}</div>

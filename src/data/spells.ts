@@ -1,4 +1,5 @@
 import spellsRaw from "@data/spells.json";
+import spellOrderingRaw from "@data/spell-ordering.json";
 
 export type SpellType = "auto" | "spell" | "healing" | "rune";
 export type ScalesWith = "magic" | "melee" | "distance" | "none";
@@ -20,11 +21,10 @@ export type Spell = {
   rounding: Rounding;
 };
 
-export const spells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) => ({
-  ...s,
-  scope: s.scope ?? s.id,
-  additionalDamageMultiplier: s.additionalDamageMultiplier ?? 1,
-}));
+export type SpellOrdering = {
+  vocation: string;
+  order: string[];
+};
 
 export interface SpellDamage extends Spell {
   min: number;
@@ -32,3 +32,11 @@ export interface SpellDamage extends Spell {
   max: number;
   effectiveAvg: number;
 }
+
+export const spells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) => ({
+  ...s,
+  scope: s.scope ?? s.id,
+  additionalDamageMultiplier: s.additionalDamageMultiplier ?? 1,
+}));
+
+export const spellOrdering: SpellOrdering[] = spellOrderingRaw as SpellOrdering[];
