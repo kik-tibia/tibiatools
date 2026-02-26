@@ -14,11 +14,13 @@
 
   let A: Build = $state(initial.A);
   let B: Build = $state(initial.B);
+  let perkOrder: string[] = $state(initial.perkOrder ?? []);
+  let rotationOrder: string[] = $state(initial.rotationOrder ?? []);
   let showSecondBuild: boolean = $state(!!initial.showSecondBuild);
   let collapsed: CollapsedSections = $state(initial.collapsed ?? defaultCollapsed());
 
   function currentState(): CalculatorState {
-    return { A, B, showSecondBuild, collapsed };
+    return { A, B, perkOrder, rotationOrder, showSecondBuild, collapsed };
   }
 
   let resultsA = $derived(computeResults(A.stats, A.weapon, A.perks));
@@ -70,6 +72,8 @@
       if (!st) return;
       A = st.A;
       B = st.B;
+      perkOrder = st.perkOrder ?? [];
+      rotationOrder = st.rotationOrder ?? [];
       showSecondBuild = !!st.showSecondBuild;
       collapsed = st.collapsed ?? defaultCollapsed();
     };
@@ -80,6 +84,8 @@
   $effect(() => {
     A;
     B;
+    perkOrder;
+    rotationOrder;
     showSecondBuild;
     collapsed.basicStats;
     collapsed.advancedStats;
@@ -113,7 +119,7 @@
 
 <section class="main-grid" class:comparing={showSecondBuild}>
   <div class="panel build-panel">
-    <BuildPanel bind:buildA={A} bind:buildB={B} {showSecondBuild} bind:collapsed />
+    <BuildPanel bind:buildA={A} bind:buildB={B} bind:perkOrder bind:rotationOrder {showSecondBuild} bind:collapsed />
   </div>
 
   <div class="panel results-panel-a">

@@ -10,11 +10,13 @@
     buildB = $bindable(),
     showSecondBuild,
     collapsed = $bindable(false),
+    rotationOrder = $bindable(),
   }: {
     buildA: Build;
     buildB: Build;
     showSecondBuild: boolean;
     collapsed: boolean;
+    rotationOrder: string[];
   } = $props();
 
   const spellRegistry = new Map(spells.map((s) => [s.id, s]));
@@ -23,29 +25,14 @@
     spells.filter((i) => i.vocations.includes(buildA.stats.vocation) || i.vocations.includes(buildB.stats.vocation)),
   );
 
-  let allSelectedRotationIds = $derived.by(() => {
-    const seen = new Set<string>();
-    const result: string[] = [];
-    for (const r of buildA.rotation) {
-      if (!seen.has(r.id)) {
-        seen.add(r.id);
-        result.push(r.id);
-      }
-    }
-    for (const r of buildB.rotation) {
-      if (!seen.has(r.id)) {
-        seen.add(r.id);
-        result.push(r.id);
-      }
-    }
-    return result;
-  });
-
   // TODO defense against adding same spell twice
   function addSpellToRotation(id: string) {
     buildA = { ...buildA, rotation: [...buildA.rotation, { id, targets: 1, ratio: 1 }] };
     if (showSecondBuild) {
       buildB = { ...buildB, rotation: [...buildB.rotation, { id, targets: 1, ratio: 1 }] };
+    }
+    if (!rotationOrder.includes(id)) {
+      rotationOrder = [...rotationOrder, id];
     }
   }
 
@@ -80,9 +67,15 @@
   }
   function removeRotationA(id: string) {
     buildA = { ...buildA, rotation: buildA.rotation.filter((a) => a.id !== id) };
+    if (!buildB.rotation.some((r) => r.id === id)) {
+      rotationOrder = rotationOrder.filter((x) => x !== id);
+    }
   }
   function removeRotationB(id: string) {
     buildB = { ...buildB, rotation: buildB.rotation.filter((a) => a.id !== id) };
+    if (!buildA.rotation.some((r) => r.id === id)) {
+      rotationOrder = rotationOrder.filter((x) => x !== id);
+    }
   }
 
   const isAutoAttack = (id: string) => id === "auto-attack";
@@ -145,14 +138,10 @@
 {#if !collapsed}
   <tr class="data-row">
     <td>
-      <FuzzySelect
-        selectType="spells"
-        all={spellsForAB}
-        selectedIds={allSelectedRotationIds}
-        onAdd={addSpellToRotation} />
+      <FuzzySelect selectType="spells" all={spellsForAB} selectedIds={rotationOrder} onAdd={addSpellToRotation} />
     </td>
     <td class="sub-header rotation-label-cell">
-      {#if allSelectedRotationIds.length > 0}
+      {#if rotationOrder.length > 0}
         <div class="rotation-labels">
           <span>Targets</span>
           <span>Ratio</span>
@@ -161,7 +150,7 @@
     </td>
     {#if showSecondBuild}
       <td class="sub-header rotation-label-cell">
-        {#if allSelectedRotationIds.length > 0}
+        {#if rotationOrder.length > 0}
           <div class="rotation-labels">
             <span>Targets</span>
             <span>Ratio</span>
@@ -171,7 +160,7 @@
     {/if}
   </tr>
 
-  {#each allSelectedRotationIds as id (id)}
+  {#each rotationOrder as id (id)}
     {@const def = spellRegistry.get(id)}
     {#if def}
       <tr class="data-row">

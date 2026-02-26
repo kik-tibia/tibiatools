@@ -10,37 +10,24 @@
     buildB = $bindable(),
     showSecondBuild,
     collapsed = $bindable(false),
+    perkOrder = $bindable(),
   }: {
     buildA: Build;
     buildB: Build;
     showSecondBuild: boolean;
     collapsed: boolean;
+    perkOrder: string[];
   } = $props();
 
   const perkRegistry = new Map(perks.map((p) => [p.id, p]));
-
-  let allSelectedPerkIds = $derived.by(() => {
-    const seen = new Set<string>();
-    const result: string[] = [];
-    for (const p of buildA.perks) {
-      if (!seen.has(p.id)) {
-        seen.add(p.id);
-        result.push(p.id);
-      }
-    }
-    for (const p of buildB.perks) {
-      if (!seen.has(p.id)) {
-        seen.add(p.id);
-        result.push(p.id);
-      }
-    }
-    return result;
-  });
 
   function addPerk(id: string) {
     buildA = { ...buildA, perks: [...buildA.perks, { id, value: 0 }] };
     if (showSecondBuild) {
       buildB = { ...buildB, perks: [...buildB.perks, { id, value: 0 }] };
+    }
+    if (!perkOrder.includes(id)) {
+      perkOrder = [...perkOrder, id];
     }
   }
 
@@ -62,9 +49,15 @@
   }
   function removePerkA(id: string) {
     buildA = { ...buildA, perks: buildA.perks.filter((a) => a.id !== id) };
+    if (!buildB.perks.some((p) => p.id === id)) {
+      perkOrder = perkOrder.filter((x) => x !== id);
+    }
   }
   function removePerkB(id: string) {
     buildB = { ...buildB, perks: buildB.perks.filter((a) => a.id !== id) };
+    if (!buildA.perks.some((p) => p.id === id)) {
+      perkOrder = perkOrder.filter((x) => x !== id);
+    }
   }
 
   function copyAtoB() {
@@ -115,13 +108,13 @@
 {#if !collapsed}
   <tr class="data-row">
     <td>
-      <FuzzySelect selectType="perks" all={perks} selectedIds={allSelectedPerkIds} onAdd={addPerk} />
+      <FuzzySelect selectType="perks" all={perks} selectedIds={perkOrder} onAdd={addPerk} />
     </td>
     <td></td>
     {#if showSecondBuild}<td></td>{/if}
   </tr>
 
-  {#each allSelectedPerkIds as id (id)}
+  {#each perkOrder as id (id)}
     {@const def = perkRegistry.get(id)}
     {#if def}
       <tr class="data-row">

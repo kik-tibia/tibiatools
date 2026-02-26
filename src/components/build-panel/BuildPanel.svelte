@@ -11,11 +11,15 @@
   let {
     buildA = $bindable(),
     buildB = $bindable(),
+    perkOrder = $bindable(),
+    rotationOrder = $bindable(),
     showSecondBuild = false,
     collapsed = $bindable(),
   }: {
     buildA: Build;
     buildB: Build;
+    perkOrder: string[];
+    rotationOrder: string[];
     showSecondBuild?: boolean;
     collapsed: CollapsedSections;
   } = $props();
@@ -48,8 +52,8 @@
     <BasicStatsSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.basicStats} />
     <AdvancedStatsSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.advancedStats} />
     <WeaponSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.weapon} />
-    <PerksSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.perks} />
-    <RotationSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.rotation} />
+    <PerksSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.perks} bind:perkOrder />
+    <RotationSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.rotation} bind:rotationOrder />
   </tbody>
 </table>
 
