@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { untrack } from "svelte";
   import { perks } from "@data/perks";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
@@ -20,18 +19,22 @@
 
   const perkRegistry = new Map(perks.map((p) => [p.id, p]));
 
-  let allSelectedPerkIds = $state<string[]>([]);
-
-  $effect(() => {
-    const currentIds = new Set([...buildA.perks.map((p) => p.id), ...buildB.perks.map((p) => p.id)]);
-    const prev = untrack(() => allSelectedPerkIds);
-    let filtered = prev.filter((id) => currentIds.has(id));
-    for (const id of currentIds) {
-      if (!filtered.includes(id)) {
-        filtered.push(id);
+  let allSelectedPerkIds = $derived.by(() => {
+    const seen = new Set<string>();
+    const result: string[] = [];
+    for (const p of buildA.perks) {
+      if (!seen.has(p.id)) {
+        seen.add(p.id);
+        result.push(p.id);
       }
     }
-    allSelectedPerkIds = filtered;
+    for (const p of buildB.perks) {
+      if (!seen.has(p.id)) {
+        seen.add(p.id);
+        result.push(p.id);
+      }
+    }
+    return result;
   });
 
   function addPerk(id: string) {

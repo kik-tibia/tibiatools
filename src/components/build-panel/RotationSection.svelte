@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { untrack } from "svelte";
   import { spells } from "@data/spells";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
@@ -24,24 +23,22 @@
     spells.filter((i) => i.vocations.includes(buildA.stats.vocation) || i.vocations.includes(buildB.stats.vocation)),
   );
 
-  // TODO it's still not ideal - on page refresh, the order can get changed
-  // Rotation helpers - maintain stable order, with auto-attack always first
-  let allSelectedRotationIds = $state<string[]>([]);
-
-  $effect(() => {
-    const currentIds = new Set([...buildA.rotation.map((r) => r.id), ...buildB.rotation.map((r) => r.id)]);
-    const prev = untrack(() => allSelectedRotationIds);
-    let filtered = prev.filter((id) => currentIds.has(id));
-    for (const id of currentIds) {
-      if (!filtered.includes(id)) {
-        filtered.push(id);
+  let allSelectedRotationIds = $derived.by(() => {
+    const seen = new Set<string>();
+    const result: string[] = [];
+    for (const r of buildA.rotation) {
+      if (!seen.has(r.id)) {
+        seen.add(r.id);
+        result.push(r.id);
       }
     }
-    allSelectedRotationIds = filtered.toSorted((a, b) => {
-      if (a === "auto-attack") return -1;
-      if (b === "auto-attack") return 1;
-      return 0;
-    });
+    for (const r of buildB.rotation) {
+      if (!seen.has(r.id)) {
+        seen.add(r.id);
+        result.push(r.id);
+      }
+    }
+    return result;
   });
 
   // TODO defense against adding same spell twice
