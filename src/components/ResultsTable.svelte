@@ -30,7 +30,14 @@
   let vocSpellOrdering = $derived(spellOrdering.find((s) => s.vocation == vocation)?.order ?? []);
   let rotationIds = $derived(rotation.map((r) => r.id));
   let resultsOrdered = $derived(
-    vocResults.sort((a, b) => {
+    vocResults.toSorted((a, b) => {
+      const aInRot = rotationIds.includes(a.scope);
+      const bInRot = rotationIds.includes(b.scope);
+
+      // Rotation spells come first
+      if (aInRot !== bInRot) return aInRot ? -1 : 1;
+
+      // Then list spells as defined by the ordering
       let ai = vocSpellOrdering.indexOf(a.scope);
       let bi = vocSpellOrdering.indexOf(b.scope);
 
@@ -38,12 +45,7 @@
       if (ai == -1) ai = vocSpellOrdering.length;
       if (bi == -1) bi = vocSpellOrdering.length;
 
-      if (rotationIds.includes(a.scope)) return -1;
-      if (rotationIds.includes(b.scope)) return 1;
-
-      if (ai > bi) return 1;
-      if (bi > ai) return -1;
-      else return 0;
+      return ai - bi;
     }),
   );
 </script>
