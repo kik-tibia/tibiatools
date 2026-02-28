@@ -21,18 +21,20 @@
 
   const spellRegistry = new Map(spells.map((s) => [s.id, s]));
 
+  const isAutoAttack = (id: string) => id === "auto-attack";
+
   let spellsForAB = $derived(
     spells.filter((i) => i.vocations.includes(buildA.stats.vocation) || i.vocations.includes(buildB.stats.vocation)),
   );
 
-  // TODO defense against adding same spell twice
   function addSpellToRotation(id: string) {
     buildA = { ...buildA, rotation: [...buildA.rotation, { id, targets: 1, ratio: 1 }] };
     if (showSecondBuild) {
       buildB = { ...buildB, rotation: [...buildB.rotation, { id, targets: 1, ratio: 1 }] };
     }
     if (!rotationOrder.includes(id)) {
-      rotationOrder = [...rotationOrder, id];
+      if (isAutoAttack(id)) rotationOrder = [id, ...rotationOrder];
+      else rotationOrder = [...rotationOrder, id];
     }
   }
 
@@ -77,8 +79,6 @@
       rotationOrder = rotationOrder.filter((x) => x !== id);
     }
   }
-
-  const isAutoAttack = (id: string) => id === "auto-attack";
 
   function copyAtoB() {
     buildB = { ...buildB, rotation: buildA.rotation.map((r) => ({ ...r })) };
