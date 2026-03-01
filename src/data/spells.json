@@ -18,60 +18,6 @@
     "rounding": "round"
   },
   {
-    "id": "avalanche",
-    "name": "Avalanche Rune",
-    "spellType": "rune",
-    "scalesWith": "magic",
-    "element": "ice",
-    "power": 50,
-    "skillFactor": 25,
-    "buckets": 40,
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
-    "rounding": "floor"
-  },
-  {
-    "id": "great-fireball",
-    "name": "Great Fireball Rune",
-    "spellType": "rune",
-    "scalesWith": "magic",
-    "element": "fire",
-    "power": 50,
-    "skillFactor": 25,
-    "buckets": 40,
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
-    "rounding": "floor"
-  },
-  {
-    "id": "thunderstorm",
-    "name": "Thunderstorm Rune",
-    "spellType": "rune",
-    "scalesWith": "magic",
-    "element": "energy",
-    "power": 45,
-    "skillFactor": 25,
-    "buckets": 40,
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
-    "rounding": "floor"
-  },
-  {
     "id": "fierce-berserk",
     "name": "Fierce Berserk",
     "spellType": "spell",
@@ -205,6 +151,34 @@
     "rounding": "round"
   },
   {
+    "id": "brutal-strike",
+    "name": "Brutal Strike",
+    "spellType": "spell",
+    "scalesWith": "melee",
+    "element": "weapon",
+    "power": 39,
+    "skillFactor": 1000,
+    "buckets": 20,
+    "vocations": [
+      "knight"
+    ],
+    "rounding": "round"
+  },
+  {
+    "id": "whirlwind-throw",
+    "name": "Whirlwind Throw",
+    "spellType": "spell",
+    "scalesWith": "melee",
+    "element": "weapon",
+    "power": 32,
+    "skillFactor": 1000,
+    "buckets": 18,
+    "vocations": [
+      "knight"
+    ],
+    "rounding": "round"
+  },
+  {
     "id": "divine-caldera",
     "name": "Divine Caldera",
     "spellType": "spell",
@@ -264,32 +238,257 @@
     "rounding": "floor"
   },
   {
-    "id": "terra-strike",
-    "name": "Terra Strike",
+    "id": "strong-ethereal-spear",
+    "name": "Strong Ethereal Spear",
     "spellType": "spell",
+    "scalesWith": "distance",
+    "element": "physical",
+    "power": 38,
+    "skillFactor": 30.5,
+    "buckets": 15,
+    "vocations": [
+      "paladin"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "ethereal-spear",
+    "name": "Ethereal Spear",
+    "spellType": "spell",
+    "scalesWith": "distance",
+    "element": "physical",
+    "power": 25,
+    "skillFactor": 30.5,
+    "buckets": 10,
+    "vocations": [
+      "paladin"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "divine-missile",
+    "name": "Divine Missile",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "holy",
+    "power": 60,
+    "skillFactor": 25,
+    "buckets": 30,
+    "vocations": [
+      "paladin"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "holy-missile",
+    "name": "Holy Missile",
+    "spellType": "rune",
+    "scalesWith": "magic",
+    "element": "holy",
+    "power": 70,
+    "skillFactor": 25,
+    "buckets": 0,
+    "vocations": [
+      "paladin"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "avalanche",
+    "name": "Avalanche Rune",
+    "spellType": "rune",
+    "scalesWith": "magic",
+    "element": "ice",
+    "power": 50,
+    "skillFactor": 25,
+    "buckets": 40,
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "great-fireball",
+    "name": "Great Fireball Rune",
+    "spellType": "rune",
+    "scalesWith": "magic",
+    "element": "fire",
+    "power": 50,
+    "skillFactor": 25,
+    "buckets": 40,
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "thunderstorm",
+    "name": "Thunderstorm Rune",
+    "spellType": "rune",
+    "scalesWith": "magic",
+    "element": "energy",
+    "power": 45,
+    "skillFactor": 25,
+    "buckets": 40,
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "stone-shower",
+    "name": "Stone Shower Rune",
+    "spellType": "rune",
     "scalesWith": "magic",
     "element": "earth",
     "power": 45,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 40,
     "vocations": [
       "druid",
+      "knight",
+      "monk",
+      "paladin",
       "sorcerer"
     ],
-    "rounding": "round"
+    "rounding": "floor"
   },
   {
-    "id": "terra-wave",
-    "name": "Terra Wave",
-    "spellType": "spell",
+    "id": "sudden-death",
+    "name": "Sudden Death Rune",
+    "spellType": "rune",
     "scalesWith": "magic",
-    "element": "earth",
-    "power": 120,
+    "element": "death",
+    "power": 150,
+    "skillFactor": 25,
+    "buckets": 70,
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "explosion",
+    "name": "Explosion Rune",
+    "spellType": "rune",
+    "scalesWith": "magic",
+    "element": "physical",
+    "power": 60,
+    "skillFactor": 25,
+    "buckets": 40,
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "icicle",
+    "name": "Icicle Rune",
+    "spellType": "rune",
+    "scalesWith": "magic",
+    "element": "ice",
+    "power": 60,
     "skillFactor": 25,
     "buckets": 0,
     "vocations": [
-      "druid"
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
     ],
-    "rounding": "round"
+    "rounding": "floor"
+  },
+  {
+    "id": "fireball",
+    "name": "Fireball Rune",
+    "spellType": "rune",
+    "scalesWith": "magic",
+    "element": "fire",
+    "power": 60,
+    "skillFactor": 25,
+    "buckets": 0,
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "stalagmite",
+    "name": "Stalagmite Rune",
+    "spellType": "rune",
+    "scalesWith": "magic",
+    "element": "earth",
+    "power": 30,
+    "skillFactor": 25,
+    "buckets": 0,
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "heavy-magic-missile",
+    "name": "Heavy Magic Missile Rune",
+    "spellType": "rune",
+    "scalesWith": "magic",
+    "element": "energy",
+    "power": 30,
+    "skillFactor": 25,
+    "buckets": 0,
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": "light-magic-missile",
+    "name": "Light Magic Missile Rune",
+    "spellType": "rune",
+    "scalesWith": "magic",
+    "element": "energy",
+    "power": 15,
+    "skillFactor": 25,
+    "buckets": 0,
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "rounding": "floor"
   }
 ]

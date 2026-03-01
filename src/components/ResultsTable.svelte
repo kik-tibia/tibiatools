@@ -29,6 +29,7 @@
   let vocResults = $derived(results.filter((i) => i.vocations.includes(vocation)));
   let vocSpellOrdering = $derived(spellOrdering.find((s) => s.vocation == vocation)?.order ?? []);
   let rotationIds = $derived(rotation.map((r) => r.id));
+  // TODO it's not correctly ordering exec-throw
   let resultsOrdered = $derived(
     vocResults.toSorted((a, b) => {
       const aInRot = rotationIds.includes(a.scope);

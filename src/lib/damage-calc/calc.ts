@@ -30,9 +30,11 @@ const computeAvg = (spell: Spell, state: SpellState) => {
   const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W } = state;
   const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
   const damage =
-    spell.scalesWith === "magic"
-      ? F + round((P / spell.skillFactor) * ML + P / 4)
-      : F + round((P / spell.skillFactor) * S * W + P / 4);
+    spell.element === "weapon"
+      ? F + round((P / spell.skillFactor) * S * W + P / 4)
+      : spell.scalesWith === "distance"
+        ? F + round((P / spell.skillFactor) * S + P / 4)
+        : F + round((P / spell.skillFactor) * ML + P / 4);
   return Math.ceil(damage * spell.additionalDamageMultiplier);
 };
 
@@ -41,9 +43,11 @@ const computeMinMax = (spell: Spell, minMax: number, state: SpellState) => {
   const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
   const variation = spell.buckets / P / 2;
   const damage =
-    spell.scalesWith === "magic"
-      ? F + round((1 + minMax * variation) * ((P / spell.skillFactor) * ML + P / 4))
-      : F + round((1 + minMax * variation) * ((P / spell.skillFactor) * S * W + P / 4));
+    spell.element === "weapon"
+      ? F + round((1 + minMax * variation) * ((P / spell.skillFactor) * S * W + P / 4))
+      : spell.scalesWith === "distance"
+        ? F + round((1 + minMax * variation) * ((P / spell.skillFactor) * S + P / 4))
+        : F + round((1 + minMax * variation) * ((P / spell.skillFactor) * ML + P / 4));
   return Math.ceil(damage * spell.additionalDamageMultiplier);
 };
 
