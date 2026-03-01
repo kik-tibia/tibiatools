@@ -913,6 +913,7 @@
     "power": 44,
     "skillFactor": 1000,
     "buckets": 0,
+    "spender": true,
     "vocations": [
       "monk"
     ],
