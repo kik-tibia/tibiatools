@@ -50,6 +50,7 @@
     padding: 0;
     color: inherit;
     cursor: help;
+    text-align: start;
     text-decoration: underline dotted;
   }
 

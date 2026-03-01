@@ -126,7 +126,7 @@ const assignDefsToPerks = (activePerks: ActivePerk[]) => {
     .filter((x): x is ActivePerkWithDef => x !== null);
 };
 
-const computeDamageRanges = (spell: Spell, state: SpellState, aoeAA: boolean): SpellDamage => {
+const computeDamageRanges = (spell: Spell, state: SpellState, aoeAA: boolean, vocation: Vocation): SpellDamage => {
   const c = state.critChance / 100;
   const o = state.fatalChance / 100;
   const pCrit = c * (1 - o);
@@ -136,9 +136,10 @@ const computeDamageRanges = (spell: Spell, state: SpellState, aoeAA: boolean): S
 
   if (spell.spellType === "auto") {
     const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
-    const min = Math.floor(state.flat + attackValueWithoutFlat / 2);
-    const avg = Math.floor(state.flat + attackValueWithoutFlat);
-    const max = Math.floor(state.flat + attackValueWithoutFlat * 2);
+    const attackIncrease = vocation == "monk" ? 1.5 : 1;
+    const min = Math.floor(state.flat + (attackValueWithoutFlat * attackIncrease) / 2);
+    const avg = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease);
+    const max = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease * 2);
 
     const effectiveAvg = aoeAA
       ? avg *
@@ -150,6 +151,8 @@ const computeDamageRanges = (spell: Spell, state: SpellState, aoeAA: boolean): S
 
     return { ...spell, min, avg, max, effectiveAvg };
   } else {
+    // TODO implement harmony properly, with a stance system that all vocations will benefit from
+    if (spell.isSpender) state.basePower *= 3.08;
     const avg = computeAvg(spell, state);
     const min = computeMinMax(spell, -1, state);
     const max = computeMinMax(spell, 1, state);
@@ -223,7 +226,7 @@ export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks
         (acc, perk) => applyPerkToSpell(spell, perk, skillType, acc),
         initial,
       );
-      return computeDamageRanges(spell, final, aoeAA);
+      return computeDamageRanges(spell, final, aoeAA, inp.vocation);
     });
   return spellResults;
 };

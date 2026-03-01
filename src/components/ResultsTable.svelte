@@ -104,24 +104,33 @@
         {#each resultsOrdered as r}
           <tr class:highlight={showHighlighting && isHigher(r.id)}>
             <td class="spell">
-              <div class="spell-name">{r.name}</div>
+              <div class="spell-name">
+                {#if r.isSpender}
+                  <Tooltip
+                    label={r.name}
+                    tip="Currently assuming VoH and no other harmony perks (208% bonus)"
+                    right={true} />
+                {:else}
+                  {r.name}
+                {/if}
+              </div>
             </td>
             <td class="num" data-label="Effective Avg">{r.effectiveAvg.toFixed(1)}</td>
-            {#if r.buckets == 0}
-              <td class="num range" data-label="Min">
+            <td class="num range" data-label="Min">
+              {#if r.buckets == 0}
                 <Tooltip label="?" tip="The min and max for <br/> this spell are unknown" right={true} />
-              </td>
-            {:else}
-              <td class="num range" data-label="Min">{r.min}</td>
-            {/if}
+              {:else}
+                {r.min}
+              {/if}
+            </td>
             <td class="num" data-label="Avg">{r.avg}</td>
-            {#if r.buckets == 0}
-              <td class="num range" data-label="Min">
+            <td class="num range" data-label="Min">
+              {#if r.buckets == 0}
                 <Tooltip label="?" tip="The min and max for <br/> this spell are unknown" right={true} />
-              </td>
-            {:else}
-              <td class="num range" data-label="Max">{r.max}</td>
-            {/if}
+              {:else}
+                {r.max}
+              {/if}
+            </td>
           </tr>
         {/each}
       </tbody>

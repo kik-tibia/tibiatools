@@ -826,22 +826,74 @@
     "power": 48,
     "skillFactor": 1000,
     "buckets": 0,
-    "spender": true,
+    "isSpender": true,
     "vocations": [
       "monk"
     ],
     "rounding": "round"
   },
   {
-    "id": "spiritual-outburst",
-    "name": "Spiritual Outburst",
+    "id": "spiritual-outburst-0",
+    "scope": "spiritual-outburst",
+    "name": "Spiritual Outburst (Primary)",
     "spellType": "spell",
     "scalesWith": "fist",
     "element": "weapon",
     "power": 42,
     "skillFactor": 1000,
     "buckets": 0,
-    "spender": true,
+    "isSpender": true,
+    "vocations": [
+      "monk"
+    ],
+    "rounding": "round"
+  },
+  {
+    "id": "spiritual-outburst-1",
+    "scope": "spiritual-outburst",
+    "name": "Spiritual Outburst (Stage 1)",
+    "spellType": "spell",
+    "scalesWith": "fist",
+    "element": "weapon",
+    "power": 42,
+    "skillFactor": 1000,
+    "buckets": 0,
+    "additionalDamageMultiplier": 0.375,
+    "isSpender": true,
+    "vocations": [
+      "monk"
+    ],
+    "rounding": "round"
+  },
+  {
+    "id": "spiritual-outburst-2",
+    "scope": "spiritual-outburst",
+    "name": "Spiritual Outburst (Stage 2)",
+    "spellType": "spell",
+    "scalesWith": "fist",
+    "element": "weapon",
+    "power": 42,
+    "skillFactor": 1000,
+    "buckets": 0,
+    "additionalDamageMultiplier": 0.5,
+    "isSpender": true,
+    "vocations": [
+      "monk"
+    ],
+    "rounding": "round"
+  },
+  {
+    "id": "spiritual-outburst-3",
+    "scope": "spiritual-outburst",
+    "name": "Spiritual Outburst (Stage 3)",
+    "spellType": "spell",
+    "scalesWith": "fist",
+    "element": "weapon",
+    "power": 42,
+    "skillFactor": 1000,
+    "buckets": 0,
+    "additionalDamageMultiplier": 0.625,
+    "isSpender": true,
     "vocations": [
       "monk"
     ],
@@ -884,7 +936,7 @@
     "power": 62,
     "skillFactor": 1000,
     "buckets": 0,
-    "spender": true,
+    "isSpender": true,
     "vocations": [
       "monk"
     ],
@@ -913,7 +965,7 @@
     "power": 44,
     "skillFactor": 1000,
     "buckets": 0,
-    "spender": true,
+    "isSpender": true,
     "vocations": [
       "monk"
     ],

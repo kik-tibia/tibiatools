@@ -17,6 +17,7 @@ export type Spell = {
   skillFactor: number;
   buckets: number;
   additionalDamageMultiplier: number;
+  isSpender: boolean;
   vocations: string[];
   rounding: Rounding;
 };
@@ -37,6 +38,7 @@ export const spells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) => ({
   ...s,
   scope: s.scope ?? s.id,
   additionalDamageMultiplier: s.additionalDamageMultiplier ?? 1,
+  isSpender: s.isSpender ?? false,
 }));
 
 export const spellOrdering: SpellOrdering[] = spellOrderingRaw as SpellOrdering[];
