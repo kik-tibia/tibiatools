@@ -1,5 +1,6 @@
 import weaponsRaw from "@data/weapons.json";
 import ammoRaw from "@data/ammo.json";
+import type { Element } from "@data/spells";
 
 export type AmmoType = "arrows" | "bolts";
 export type SkillType = "axe" | "club" | "sword" | "fist" | "distance";
@@ -7,13 +8,15 @@ export type SkillType = "axe" | "club" | "sword" | "fist" | "distance";
 export type Weapon = {
   id: string;
   name: string;
-  attack: number;
+  attack?: number;
   attackDeath?: number;
   attackEarth?: number;
   attackEnergy?: number;
   attackFire?: number;
   attackIce?: number;
   ammo?: AmmoType;
+  damageType?: Element;
+  damage?: number;
   skill: SkillType;
   vocations: string[];
 };

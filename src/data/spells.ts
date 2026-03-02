@@ -28,9 +28,9 @@ export type SpellOrdering = {
 };
 
 export interface SpellDamage extends Spell {
-  min: number;
+  min?: number;
   avg: number;
-  max: number;
+  max?: number;
   effectiveAvg: number;
 }
 

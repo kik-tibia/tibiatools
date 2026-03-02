@@ -1,7 +1,7 @@
 import { perks } from "@data/perks";
 import { weapons, ammo } from "@data/weapons";
 
-import type { BuildStats } from "@lib/build-state";
+import type { BuildStats, Vocation } from "@lib/build-state";
 import type { PerkDef } from "@data/perks";
 import { spells, type Spell, type SpellDamage } from "src/data/spells";
 import type {
@@ -126,7 +126,7 @@ const assignDefsToPerks = (activePerks: ActivePerk[]) => {
     .filter((x): x is ActivePerkWithDef => x !== null);
 };
 
-const computeDamageRanges = (spell: Spell, state: SpellState, aoeAA: boolean, vocation: Vocation): SpellDamage => {
+const computeDamageRanges = (spell: Spell, state: SpellState, highRollAA: boolean, vocation: Vocation): SpellDamage => {
   const c = state.critChance / 100;
   const o = state.fatalChance / 100;
   const pCrit = c * (1 - o);
@@ -137,25 +137,30 @@ const computeDamageRanges = (spell: Spell, state: SpellState, aoeAA: boolean, vo
   if (spell.spellType === "auto") {
     const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
     const attackIncrease = vocation == "monk" ? 1.5 : 1;
-    const min = Math.floor(state.flat + (attackValueWithoutFlat * attackIncrease) / 2);
-    const avg = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease);
-    const max = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease * 2);
+    let min, avg, max;
+    if (state.weaponDamage) {
+      avg = state.weaponDamage;
+    } else {
+      min = Math.floor(state.flat + (attackValueWithoutFlat * attackIncrease) / 2);
+      avg = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease);
+      max = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease * 2);
+    }
 
-    const effectiveAvg = aoeAA
-      ? avg *
-        (pNoBonus + pCrit * (1 + state.critDamage / 100) + pFatal * 1.6 + pCritFatal * (1.6 + state.critDamage / 100))
-      : pNoBonus * avg +
+    const effectiveAvg = highRollAA
+      ? pNoBonus * avg +
         pCrit * (state.flat + attackValueWithoutFlat * 1.75) * (1 + state.critDamage / 100) +
         pFatal * (state.flat + attackValueWithoutFlat * 1.75) * 1.6 +
-        pCritFatal * (state.flat + attackValueWithoutFlat * 1.75) * (1.6 + state.critDamage / 100);
+        pCritFatal * (state.flat + attackValueWithoutFlat * 1.75) * (1.6 + state.critDamage / 100)
+      : avg *
+        (pNoBonus + pCrit * (1 + state.critDamage / 100) + pFatal * 1.6 + pCritFatal * (1.6 + state.critDamage / 100));
 
     return { ...spell, min, avg, max, effectiveAvg };
   } else {
     // TODO implement harmony properly, with a stance system that all vocations will benefit from
     if (spell.isSpender) state.basePower *= 3.08;
     const avg = computeAvg(spell, state);
-    const min = computeMinMax(spell, -1, state);
-    const max = computeMinMax(spell, 1, state);
+    const min = spell.buckets != 0 ? computeMinMax(spell, -1, state) : undefined;
+    const max = spell.buckets != 0 ? computeMinMax(spell, 1, state) : undefined;
     const effectiveAvg =
       avg *
       (pNoBonus + pCrit * (1 + state.critDamage / 100) + pFatal * 1.6 + pCritFatal * (1.6 + state.critDamage / 100));
@@ -182,12 +187,14 @@ const derive = (inp: BuildStats, weaponDef: Weapon, ammoDef: Ammo | null): Chara
   const fishing = n(inp.fishing);
   const step = Math.floor((Math.sqrt(2 * L + 2025) + 5) / 10);
   const flat = step * 100 - 450 + Math.floor((L + 1000) / step - 50 * step) + B;
-  const weaponAttack = weaponDef.attack + (ammoDef?.attack ?? 0);
+  const weaponAttack = (weaponDef.attack ?? 0) + (ammoDef?.attack ?? 0);
+  const weaponDamage = weaponDef.damage ?? 0;
   return {
     flat,
     magicLevel,
     skill,
     weaponAttack,
+    weaponDamage,
     critChance,
     critDamage,
     fatalChance,
@@ -203,9 +210,6 @@ const derive = (inp: BuildStats, weaponDef: Weapon, ammoDef: Ammo | null): Chara
 };
 
 export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks: ActivePerk[]) => {
-  /*
-   * We want derive to return a CharacterState. This means we need it to return the weapon attack.
-   */
   const perksWithDefs: ActivePerkWithDef[] = assignDefsToPerks(activePerks);
 
   const weaponDef = weaponsById[weapon.id];
@@ -216,7 +220,7 @@ export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks
   const skillType = weaponDef.skill; // TODO removed usages of this, check if the field even needs to exist on the type
   // actually we do still need it, in the case of selecting a sword, then selecting an axe perk
   // if not specifying axe skill we need to assume it's 0, not the sword skill
-  const aoeAA = ammoDef?.aoe ?? false;
+  const highRollAA = !ammoDef?.aoe;
 
   const spellResults = spells
     .filter((s) => s.vocations.includes(inp.vocation))
@@ -226,7 +230,7 @@ export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks
         (acc, perk) => applyPerkToSpell(spell, perk, skillType, acc),
         initial,
       );
-      return computeDamageRanges(spell, final, aoeAA, inp.vocation);
+      return computeDamageRanges(spell, final, highRollAA, inp.vocation);
     });
   return spellResults;
 };

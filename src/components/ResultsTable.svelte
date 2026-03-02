@@ -117,16 +117,16 @@
             </td>
             <td class="num" data-label="Effective Avg">{r.effectiveAvg.toFixed(1)}</td>
             <td class="num range" data-label="Min">
-              {#if r.buckets == 0}
-                <Tooltip label="?" tip="The min and max for <br/> this spell are unknown" right={true} />
+              {#if r.min === undefined}
+                <Tooltip label="?" tip="The min for this <br/> spell is unknown" right={true} />
               {:else}
                 {r.min}
               {/if}
             </td>
             <td class="num" data-label="Avg">{r.avg}</td>
             <td class="num range" data-label="Min">
-              {#if r.buckets == 0}
-                <Tooltip label="?" tip="The min and max for <br/> this spell are unknown" right={true} />
+              {#if r.max === undefined}
+                <Tooltip label="?" tip="The max for this <br/> spell is unknown" right={true} />
               {:else}
                 {r.max}
               {/if}
