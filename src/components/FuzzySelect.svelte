@@ -20,6 +20,12 @@
   let q = $state("");
   let open = $state(false);
   let activeIndex = $state(0);
+  let dropdownEl = $state<HTMLUListElement>();
+
+  async function scrollToActive() {
+    const child = dropdownEl?.children[activeIndex] as HTMLElement | undefined;
+    child?.scrollIntoView({ block: "nearest" });
+  }
 
   let available = $derived(all.filter((x) => !selectedIds.includes(getId(x))));
   let fzf = $derived(
@@ -40,9 +46,11 @@
 
     if (e.key === "ArrowDown") {
       activeIndex = results.length ? (activeIndex + 1) % results.length : 0;
+      scrollToActive();
       e.preventDefault();
     } else if (e.key === "ArrowUp") {
       activeIndex = results.length ? (activeIndex - 1 + results.length) % results.length : 0;
+      scrollToActive();
       e.preventDefault();
     } else if (e.key === "Enter") {
       const item = results[activeIndex];
@@ -57,7 +65,7 @@
   }
 
   function handleBlur() {
-    setTimeout(() => (open = false), 120);
+    open = false;
   }
 </script>
 
@@ -69,13 +77,14 @@
       bind:value={q}
       onfocus={handleFocus}
       onblur={handleBlur}
+      onmousedown={handleFocus}
       onkeydown={handleKeydown} />
     <svg class="chev" viewBox="0 0 20 20">
       <path d="M5 7l5 6 5-6" />
     </svg>
   </div>
   {#if open}
-    <ul class="dropdown">
+    <ul class="dropdown" bind:this={dropdownEl}>
       {#if results.length === 0}
         <li class="empty">No matches</li>
       {:else}
