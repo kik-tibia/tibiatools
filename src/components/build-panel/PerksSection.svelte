@@ -1,5 +1,6 @@
 <script lang="ts">
   import { perks } from "@data/perks";
+  import { spells } from "@data/spells";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
   import SectionCopyButtons from "./SectionCopyButtons.svelte";
@@ -20,6 +21,17 @@
   } = $props();
 
   const perkRegistry = new Map(perks.map((p) => [p.id, p]));
+  const selectablePerks = $derived(
+    perks.filter((p) => {
+      if (p.spell) {
+        const spell = spells.find((s) => s.scope == p.scope);
+        return (
+          spell?.vocations.includes(buildA.stats.vocation) ||
+          (showSecondBuild && spell?.vocations.includes(buildB.stats.vocation))
+        );
+      } else return true;
+    }),
+  );
 
   function addPerk(id: string) {
     buildA = { ...buildA, perks: [...buildA.perks, { id, value: 0 }] };
@@ -108,7 +120,7 @@
 {#if !collapsed}
   <tr class="data-row">
     <td>
-      <FuzzySelect selectType="perks" all={perks} selectedIds={perkOrder} onAdd={addPerk} />
+      <FuzzySelect selectType="perks" all={selectablePerks} selectedIds={perkOrder} onAdd={addPerk} />
     </td>
     <td></td>
     {#if showSecondBuild}<td></td>{/if}

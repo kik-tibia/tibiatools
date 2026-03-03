@@ -57,108 +57,126 @@
     "id": "fierce-berserk-base",
     "name": "Fierce Berserk (exori gran) base damage",
     "scope": "fierce-berserk",
+    "spell": true,
     "bonusType": "base-damage"
   },
   {
     "id": "fierce-berserk-crit",
     "name": "Fierce Berserk (exori gran) critical hit damage",
     "scope": "fierce-berserk",
+    "spell": true,
     "bonusType": "crit-damage"
   },
   {
     "id": "fierce-berserk-crit-chance",
     "name": "Fierce Berserk (exori gran) critical hit chance",
     "scope": "fierce-berserk",
+    "spell": true,
     "bonusType": "crit-chance"
   },
   {
     "id": "berserk-base",
     "name": "Berserk (exori) base damage",
     "scope": "berserk",
+    "spell": true,
     "bonusType": "base-damage"
   },
   {
     "id": "berserk-crit",
     "name": "Berserk (exori) critical hit damage",
     "scope": "berserk",
+    "spell": true,
     "bonusType": "crit-damage"
   },
   {
     "id": "berserk-crit-chance",
     "name": "Berserk (exori) critical hit chance",
     "scope": "berserk",
+    "spell": true,
     "bonusType": "crit-chance"
   },
   {
     "id": "groundshaker-base",
     "name": "Groundshaker (exori mas) base damage",
     "scope": "groundshaker",
+    "spell": true,
     "bonusType": "base-damage"
   },
   {
     "id": "groundshaker-crit",
     "name": "Groundshaker (exori mas) critical hit damage",
     "scope": "groundshaker",
+    "spell": true,
     "bonusType": "crit-damage"
   },
   {
     "id": "groundshaker-crit-chance",
     "name": "Groundshaker (exori mas) critical hit chance",
     "scope": "groundshaker",
+    "spell": true,
     "bonusType": "crit-chance"
   },
   {
     "id": "front-sweep-base",
     "name": "Front Sweep (exori min) base damage",
     "scope": "front-sweep",
+    "spell": true,
     "bonusType": "base-damage"
   },
   {
     "id": "front-sweep-crit",
     "name": "Front Sweep (exori min) critical hit damage",
     "scope": "front-sweep",
+    "spell": true,
     "bonusType": "crit-damage"
   },
   {
     "id": "front-sweep-crit-chance",
     "name": "Front Sweep (exori min) critical hit chance",
     "scope": "front-sweep",
+    "spell": true,
     "bonusType": "crit-chance"
   },
   {
     "id": "exec-throw-base",
     "name": "Executioner's Throw (exori amp kor) base damage",
     "scope": "exec-throw",
+    "spell": true,
     "bonusType": "base-damage"
   },
   {
     "id": "exec-throw-crit",
     "name": "Executioner's Throw (exori amp kor) critical hit damage",
     "scope": "exec-throw",
+    "spell": true,
     "bonusType": "crit-damage"
   },
   {
     "id": "exec-throw-crit-chance",
     "name": "Executioner's Throw (exori amp kor) critical hit chance",
     "scope": "exec-throw",
+    "spell": true,
     "bonusType": "crit-chance"
   },
   {
     "id": "divine-caldera-base",
     "name": "Divine Caldera (exevo mas san) base damage",
     "scope": "divine-caldera",
+    "spell": true,
     "bonusType": "base-damage"
   },
   {
     "id": "divine-caldera-crit",
     "name": "Divine Caldera (exevo mas san) critical hit damage",
     "scope": "divine-caldera",
+    "spell": true,
     "bonusType": "crit-damage"
   },
   {
     "id": "divine-caldera-crit-chance",
     "name": "Divine Caldera (exevo mas san) critical hit chance",
     "scope": "divine-caldera",
+    "spell": true,
     "bonusType": "crit-chance"
   },
   {
@@ -261,6 +279,7 @@
     "id": "terra-wave-base",
     "name": "Terra Wave (exevo tera hur) base damage",
     "scope": "terra-wave",
+    "spell": true,
     "bonusType": "base-damage"
   }
 ]

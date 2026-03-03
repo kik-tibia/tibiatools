@@ -22,10 +22,14 @@ export type PerkDef = {
   id: string;
   name: string;
   scope: PerkScope;
+  spell: boolean;
   bonusType: PerkBonusType;
 };
 
-export const perks: PerkDef[] = perksRaw as PerkDef[];
+export const perks: PerkDef[] = (perksRaw as unknown[] as PerkDef[]).map((p) => ({
+  ...p,
+  spell: p.spell ?? false,
+}));
 
 /*
  * PERK TYPES (with examples):
