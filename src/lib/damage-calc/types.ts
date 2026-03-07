@@ -28,6 +28,6 @@ export type CharacterState = {
 
 export type SpellState = CharacterState & { basePower: number };
 
-export type RotationSpell = { id: string; targets: number; ratio: number };
+export type RotationSpell = { id: string; targets: number; ratio: number; extraSpell: boolean };
 
 export type WeaponBuild = { id: string; ammo?: string };

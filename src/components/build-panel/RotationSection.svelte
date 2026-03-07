@@ -1,5 +1,6 @@
 <script lang="ts">
   import { spells } from "@data/spells";
+  import type { Spell } from "@data/spells";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
   import SectionCopyButtons from "./SectionCopyButtons.svelte";
@@ -23,60 +24,77 @@
 
   const isAutoAttack = (id: string) => id === "auto-attack";
 
-  let spellsForAB = $derived(
-    spells.filter((i) => i.vocations.includes(buildA.stats.vocation) || i.vocations.includes(buildB.stats.vocation)),
+  let selectableSpells = $derived(
+    spells.filter(
+      (s) =>
+        s.isSelectable &&
+        (s.vocations.includes(buildA.stats.vocation) ||
+          (showSecondBuild && s.vocations.includes(buildB.stats.vocation))),
+    ),
   );
 
   function addSpellToRotation(id: string) {
-    buildA = { ...buildA, rotation: [...buildA.rotation, { id, targets: 1, ratio: 1 }] };
+    const spellsToAdd =
+      spellRegistry.get(id)?.spells.map((id, i) => ({ id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
+    buildA = { ...buildA, rotation: [...buildA.rotation, ...spellsToAdd] };
     if (showSecondBuild) {
-      buildB = { ...buildB, rotation: [...buildB.rotation, { id, targets: 1, ratio: 1 }] };
+      buildB = { ...buildB, rotation: [...buildB.rotation, ...spellsToAdd] };
     }
     if (!rotationOrder.includes(id)) {
       if (isAutoAttack(id)) rotationOrder = [id, ...rotationOrder];
-      else rotationOrder = [...rotationOrder, id];
+      else rotationOrder = [...rotationOrder, ...spellsToAdd.map((s) => s.id)];
     }
   }
 
-  function setRotationValueA(id: string, field: "targets" | "ratio", v: number) {
-    const exists = buildA.rotation.some((r) => r.id === id);
-    if (exists) {
-      buildA = { ...buildA, rotation: buildA.rotation.map((r) => (r.id === id ? { ...r, [field]: v } : r)) };
-    } else {
-      buildA = {
-        ...buildA,
-        rotation: [...buildA.rotation, { id, targets: field === "targets" ? v : 1, ratio: field === "ratio" ? v : 1 }],
-      };
-    }
+  function setRatioA(id: string, v: number) {
+    const matchedSpells = spells.filter((s) => s.scope == spellRegistry.get(id)?.scope).map((s) => s.id);
+    buildA = {
+      ...buildA,
+      rotation: buildA.rotation.map((r) => (matchedSpells.includes(r.id) ? { ...r, ratio: v } : r)),
+    };
   }
-  function setRotationValueB(id: string, field: "targets" | "ratio", v: number) {
-    const exists = buildB.rotation.some((r) => r.id === id);
-    if (exists) {
-      buildB = { ...buildB, rotation: buildB.rotation.map((r) => (r.id === id ? { ...r, [field]: v } : r)) };
-    } else {
-      buildB = {
-        ...buildB,
-        rotation: [...buildB.rotation, { id, targets: field === "targets" ? v : 1, ratio: field === "ratio" ? v : 1 }],
-      };
-    }
+
+  function setRatioB(id: string, v: number) {
+    const matchedSpells = spells.filter((s) => s.scope == spellRegistry.get(id)?.scope).map((s) => s.id);
+    buildB = {
+      ...buildB,
+      rotation: buildB.rotation.map((r) => (matchedSpells.includes(r.id) ? { ...r, ratio: v } : r)),
+    };
+  }
+
+  function setTargetsA(id: string, v: number) {
+    buildA = { ...buildA, rotation: buildA.rotation.map((r) => (r.id === id ? { ...r, targets: v } : r)) };
+  }
+
+  function setTargetsB(id: string, v: number) {
+    buildB = { ...buildB, rotation: buildB.rotation.map((r) => (r.id === id ? { ...r, targets: v } : r)) };
   }
 
   function addRotationA(id: string) {
-    buildA = { ...buildA, rotation: [...buildA.rotation, { id, targets: 1, ratio: 1 }] };
+    const spellsToAdd =
+      spellRegistry.get(id)?.spells.map((id, i) => ({ id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
+    buildA = { ...buildA, rotation: [...buildA.rotation, ...spellsToAdd] };
   }
+
   function addRotationB(id: string) {
-    buildB = { ...buildB, rotation: [...buildB.rotation, { id, targets: 1, ratio: 1 }] };
+    const spellsToAdd =
+      spellRegistry.get(id)?.spells.map((id, i) => ({ id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
+    buildB = { ...buildB, rotation: [...buildB.rotation, ...spellsToAdd] };
   }
+
   function removeRotationA(id: string) {
-    buildA = { ...buildA, rotation: buildA.rotation.filter((a) => a.id !== id) };
+    const spellsToRemove = spells.filter((s) => s.scope == spellRegistry.get(id)?.scope).map((s) => s.id);
+    buildA = { ...buildA, rotation: buildA.rotation.filter((a) => !spellsToRemove.includes(a.id)) };
     if (!buildB.rotation.some((r) => r.id === id)) {
-      rotationOrder = rotationOrder.filter((x) => x !== id);
+      rotationOrder = rotationOrder.filter((x) => !spellsToRemove.includes(x));
     }
   }
+
   function removeRotationB(id: string) {
-    buildB = { ...buildB, rotation: buildB.rotation.filter((a) => a.id !== id) };
+    const spellsToRemove = spells.filter((s) => s.scope == spellRegistry.get(id)?.scope).map((s) => s.id);
+    buildB = { ...buildB, rotation: buildB.rotation.filter((a) => !spellsToRemove.includes(a.id)) };
     if (!buildA.rotation.some((r) => r.id === id)) {
-      rotationOrder = rotationOrder.filter((x) => x !== id);
+      rotationOrder = rotationOrder.filter((x) => !spellsToRemove.includes(x));
     }
   }
 
@@ -91,34 +109,37 @@
 {#snippet rotationCell(
   build: Build,
   buildId: string,
-  spellId: string,
-  setRotationValue: (id: string, field: "targets" | "ratio", v: number) => void,
+  spell: Spell,
+  setTargets: (id: string, v: number) => void,
+  setRatio: (id: string, v: number) => void,
   addRotation: (id: string) => void,
   removeRotation: (id: string) => void,
 )}
-  {@const isAuto = isAutoAttack(spellId)}
+  {@const isAuto = isAutoAttack(spell.id)}
   <td>
-    {#if build.rotation.some((r) => r.id === spellId)}
+    {#if build.rotation.some((r) => r.id === spell.id)}
       <div class="input-with-remove">
         <input
           type="number"
           step="any"
           class="input-{buildId} small"
-          value={build.rotation.find((r) => r.id === spellId)?.targets ?? 1}
-          oninput={(e) => setRotationValue(spellId, "targets", Number(e.currentTarget.value))} />
-        {#if !isAuto}
+          value={build.rotation.find((r) => r.id === spell.id)?.targets ?? 1}
+          oninput={(e) => setTargets(spell.id, Number(e.currentTarget.value))} />
+        {#if !isAuto && !spell.isExtra}
           <input
             type="number"
             step="any"
             class="input-{buildId} small"
-            value={build.rotation.find((r) => r.id === spellId)?.ratio ?? 1}
-            oninput={(e) => setRotationValue(spellId, "ratio", Number(e.currentTarget.value))} />
+            value={build.rotation.find((r) => r.id === spell.id)?.ratio ?? 1}
+            oninput={(e) => setRatio(spell.id, Number(e.currentTarget.value))} />
         {/if}
-        <RemoveButton pushRight={isAuto} onclick={() => removeRotation(spellId)} />
+        {#if !spell.isExtra}
+          <RemoveButton pushRight={isAuto} onclick={() => removeRotation(spell.id)} />
+        {/if}
       </div>
     {:else}
       <div class="add-placeholder">
-        <button type="button" class="add-btn input-{buildId}" onclick={() => addRotation(spellId)}>+</button>
+        <button type="button" class="add-btn input-{buildId}" onclick={() => addRotation(spell.id)}>+</button>
       </div>
     {/if}
   </td>
@@ -138,7 +159,7 @@
 {#if !collapsed}
   <tr class="data-row">
     <td>
-      <FuzzySelect selectType="spells" all={spellsForAB} selectedIds={rotationOrder} onAdd={addSpellToRotation} />
+      <FuzzySelect selectType="spells" all={selectableSpells} selectedIds={rotationOrder} onAdd={addSpellToRotation} />
     </td>
     <td class="sub-header rotation-label-cell">
       {#if rotationOrder.length > 0}
@@ -165,9 +186,9 @@
     {#if def}
       <tr class="data-row">
         <td class="item-name">{def.name}</td>
-        {@render rotationCell(buildA, "a", id, setRotationValueA, addRotationA, removeRotationA)}
+        {@render rotationCell(buildA, "a", def, setTargetsA, setRatioA, addRotationA, removeRotationA)}
         {#if showSecondBuild}
-          {@render rotationCell(buildB, "b", id, setRotationValueB, addRotationB, removeRotationB)}
+          {@render rotationCell(buildB, "b", def, setTargetsB, setRatioB, addRotationB, removeRotationB)}
         {/if}
       </tr>
     {/if}

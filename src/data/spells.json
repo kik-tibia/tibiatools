@@ -83,6 +83,8 @@
     "power": 60,
     "skillFactor": 1000,
     "buckets": 10,
+    "isSelectable": false,
+    "isExtra": true,
     "vocations": [
       "knight"
     ],
@@ -99,6 +101,10 @@
     "skillFactor": 1000,
     "buckets": 10,
     "additionalDamageMultiplier": 2,
+    "spells": [
+      "exec-throw-1",
+      "exec-throw-0"
+    ],
     "vocations": [
       "knight"
     ],
@@ -115,6 +121,10 @@
     "skillFactor": 1000,
     "buckets": 10,
     "additionalDamageMultiplier": 2.25,
+    "spells": [
+      "exec-throw-2",
+      "exec-throw-0"
+    ],
     "vocations": [
       "knight"
     ],
@@ -131,6 +141,10 @@
     "skillFactor": 1000,
     "buckets": 10,
     "additionalDamageMultiplier": 2.5,
+    "spells": [
+      "exec-throw-3",
+      "exec-throw-0"
+    ],
     "vocations": [
       "knight"
     ],
@@ -540,6 +554,8 @@
     "power": 115,
     "skillFactor": 25,
     "buckets": 60,
+    "isSelectable": false,
+    "isExtra": true,
     "vocations": [
       "druid"
     ],
@@ -555,6 +571,10 @@
     "skillFactor": 25,
     "buckets": 60,
     "additionalDamageMultiplier": 1.2,
+    "spells": [
+      "ice-burst-1",
+      "ice-burst-0"
+    ],
     "vocations": [
       "druid"
     ],
@@ -570,6 +590,10 @@
     "skillFactor": 25,
     "buckets": 60,
     "additionalDamageMultiplier": 1.4,
+    "spells": [
+      "ice-burst-2",
+      "ice-burst-0"
+    ],
     "vocations": [
       "druid"
     ],
@@ -585,6 +609,10 @@
     "skillFactor": 25,
     "buckets": 60,
     "additionalDamageMultiplier": 1.6,
+    "spells": [
+      "ice-burst-3",
+      "ice-burst-0"
+    ],
     "vocations": [
       "druid"
     ],
@@ -599,6 +627,8 @@
     "power": 115,
     "skillFactor": 25,
     "buckets": 60,
+    "isSelectable": false,
+    "isExtra": true,
     "vocations": [
       "druid"
     ],
@@ -614,6 +644,10 @@
     "skillFactor": 25,
     "buckets": 60,
     "additionalDamageMultiplier": 1.2,
+    "spells": [
+      "terra-burst-1",
+      "terra-burst-0"
+    ],
     "vocations": [
       "druid"
     ],
@@ -629,6 +663,10 @@
     "skillFactor": 25,
     "buckets": 60,
     "additionalDamageMultiplier": 1.4,
+    "spells": [
+      "terra-burst-2",
+      "terra-burst-0"
+    ],
     "vocations": [
       "druid"
     ],
@@ -644,6 +682,10 @@
     "skillFactor": 25,
     "buckets": 60,
     "additionalDamageMultiplier": 1.6,
+    "spells": [
+      "terra-burst-3",
+      "terra-burst-0"
+    ],
     "vocations": [
       "druid"
     ],
@@ -843,6 +885,7 @@
     "skillFactor": 1000,
     "buckets": 0,
     "isSpender": true,
+    "isSelectable": false,
     "vocations": [
       "monk"
     ],
@@ -851,7 +894,7 @@
   {
     "id": "spiritual-outburst-1",
     "scope": "spiritual-outburst",
-    "name": "Spiritual Outburst (Stage 1)",
+    "name": "Spiritual Outburst (Repeat Stage 1)",
     "spellType": "spell",
     "scalesWith": "fist",
     "element": "weapon",
@@ -859,7 +902,12 @@
     "skillFactor": 1000,
     "buckets": 0,
     "additionalDamageMultiplier": 0.375,
+    "spells": [
+      "spiritual-outburst-0",
+      "spiritual-outburst-1"
+    ],
     "isSpender": true,
+    "isExtra": true,
     "vocations": [
       "monk"
     ],
@@ -868,7 +916,7 @@
   {
     "id": "spiritual-outburst-2",
     "scope": "spiritual-outburst",
-    "name": "Spiritual Outburst (Stage 2)",
+    "name": "Spiritual Outburst (Repeat Stage 2)",
     "spellType": "spell",
     "scalesWith": "fist",
     "element": "weapon",
@@ -876,7 +924,12 @@
     "skillFactor": 1000,
     "buckets": 0,
     "additionalDamageMultiplier": 0.5,
+    "spells": [
+      "spiritual-outburst-0",
+      "spiritual-outburst-2"
+    ],
     "isSpender": true,
+    "isExtra": true,
     "vocations": [
       "monk"
     ],
@@ -885,7 +938,7 @@
   {
     "id": "spiritual-outburst-3",
     "scope": "spiritual-outburst",
-    "name": "Spiritual Outburst (Stage 3)",
+    "name": "Spiritual Outburst (Repeat Stage 3)",
     "spellType": "spell",
     "scalesWith": "fist",
     "element": "weapon",
@@ -893,7 +946,12 @@
     "skillFactor": 1000,
     "buckets": 0,
     "additionalDamageMultiplier": 0.625,
+    "spells": [
+      "spiritual-outburst-0",
+      "spiritual-outburst-3"
+    ],
     "isSpender": true,
+    "isExtra": true,
     "vocations": [
       "monk"
     ],

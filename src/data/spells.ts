@@ -17,7 +17,10 @@ export type Spell = {
   skillFactor: number;
   buckets: number;
   additionalDamageMultiplier: number;
+  spells: string[];
   isSpender: boolean;
+  isSelectable: boolean;
+  isExtra: boolean;
   vocations: string[];
   rounding: Rounding;
 };
@@ -38,7 +41,10 @@ export const spells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) => ({
   ...s,
   scope: s.scope ?? s.id,
   additionalDamageMultiplier: s.additionalDamageMultiplier ?? 1,
+  spells: s.spells ?? [s.id],
   isSpender: s.isSpender ?? false,
+  isSelectable: s.isSelectable ?? true,
+  isExtra: s.isExtra ?? false,
 }));
 
 export const spellOrdering: SpellOrdering[] = spellOrderingRaw as SpellOrdering[];

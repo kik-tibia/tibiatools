@@ -239,7 +239,7 @@ export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks
 export const computeDpt = (spellDamages: SpellDamage[], rotation: RotationSpell[]) => {
   const hasAutoAttack = rotation.some((r) => r.id === "auto-attack");
   const spellRotation = rotation.filter((r) => r.id !== "auto-attack");
-  const ratioSum = spellRotation.reduce((sum, r) => sum + r.ratio, 0);
+  const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
 
   const autoAttackDamage = hasAutoAttack
     ? (spellDamages.find((s) => s.id === "auto-attack")?.effectiveAvg ?? 0) *
@@ -259,7 +259,7 @@ export const computeDpt = (spellDamages: SpellDamage[], rotation: RotationSpell[
 // damage per hit
 export const computeDph = (spellDamages: SpellDamage[], rotation: RotationSpell[]) => {
   const spellRotation = rotation.filter((r) => r.id !== "auto-attack");
-  const ratioSum = spellRotation.reduce((sum, r) => sum + r.ratio, 0);
+  const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
   const fullRotation = rotation.map((r) => (r.id === "auto-attack" ? { ...r, ratio: ratioSum || 1 } : r));
   const ratioTargetSum = fullRotation.reduce((sum, r) => sum + r.targets * r.ratio, 0);
 

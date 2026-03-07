@@ -37,7 +37,7 @@ const NUM_TO_VOC: Vocation[] = ["knight", "paladin", "sorcerer", "druid", "monk"
 type CompactStats = (string | number | null)[];
 type CompactWeapon = string | [string, string];
 type CompactPerk = [string, number];
-type CompactRotation = [string, number, number];
+type CompactRotation = [string, number, number, number];
 type CompactBuild = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation[]];
 type CompactState = [CompactBuild, CompactBuild, string[], string[], boolean, number];
 
@@ -90,11 +90,11 @@ function expandPerks(compact: CompactPerk[]): ActivePerk[] {
 }
 
 function compactRotation(rotation: RotationSpell[]): CompactRotation[] {
-  return rotation.map((r) => [r.id, r.targets, r.ratio]);
+  return rotation.map((r) => [r.id, r.targets, r.ratio, +r.extraSpell]);
 }
 
 function expandRotation(compact: CompactRotation[]): RotationSpell[] {
-  return compact.map(([id, targets, ratio]) => ({ id, targets, ratio }));
+  return compact.map(([id, targets, ratio, extraSpell]) => ({ id, targets, ratio, extraSpell: !!extraSpell }));
 }
 
 function compactBuild(build: Build): CompactBuild {
@@ -132,7 +132,14 @@ function bitmaskToCollapsed(mask: number): CollapsedSections {
 }
 
 function compactState(state: CalculatorState): CompactState {
-  return [compactBuild(state.A), compactBuild(state.B), state.perkOrder, state.rotationOrder, state.showSecondBuild, collapsedToBitmask(state.collapsed)];
+  return [
+    compactBuild(state.A),
+    compactBuild(state.B),
+    state.perkOrder,
+    state.rotationOrder,
+    state.showSecondBuild,
+    collapsedToBitmask(state.collapsed),
+  ];
 }
 
 function expandState(compact: CompactState): CalculatorState {
