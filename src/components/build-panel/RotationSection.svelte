@@ -136,6 +136,12 @@
         {#if !spell.isExtra}
           <RemoveButton pushRight={isAuto} onclick={() => removeRotation(spell.id)} />
         {/if}
+        {#if spell.isExtra}
+          <div class="extra-link">
+            <span class="extra-link-tee"></span>
+            <span class="extra-link-tee"></span>
+          </div>
+        {/if}
       </div>
     {:else}
       <div class="add-placeholder">
@@ -215,5 +221,50 @@
   .rotation-labels span {
     flex: 1;
     text-align: center;
+  }
+
+  /* Extra spell connector lines */
+  .extra-link {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    align-self: stretch;
+    position: relative;
+  }
+
+  /* Horizontal line spanning from targets input to the right edge */
+  .extra-link::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -0.375rem; /* extend left to connect with targets input */
+    right: 0.75rem; /* end at center of last tee to form right angle */
+    border-top: 1px solid var(--text-muted);
+    z-index: 0;
+  }
+
+  .extra-link-tee {
+    position: relative;
+  }
+
+  .extra-link-tee:first-child {
+    width: 3.5rem; /* match ratio input width */
+  }
+
+  .extra-link-tee:last-child {
+    width: 1.5rem; /* approximate remove button width */
+  }
+
+  /* Vertical lines going up to connect with the primary spell row */
+  .extra-link-tee::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -1.2rem; /* extend up into primary row */
+    z-index: 0;
+    bottom: 50%;
+    border-left: 1px solid var(--text-muted);
   }
 </style>

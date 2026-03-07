@@ -9,12 +9,14 @@
     padding: 0.1rem 0.4rem;
     font-size: 1rem;
     line-height: 1;
-    background: transparent;
+    background: var(--table-body-bg);
     border: 1px solid var(--input-border);
     border-radius: 0.25rem;
     color: inherit;
     cursor: pointer;
     flex-shrink: 0;
+    position: relative;
+    z-index: 1;
   }
 
   .push-right {

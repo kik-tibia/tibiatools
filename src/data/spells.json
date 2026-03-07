@@ -547,6 +547,7 @@
   },
   {
     "id": "ice-burst-0",
+    "scope": "ice-burst",
     "name": "Ice Burst (No Bonus)",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -563,6 +564,7 @@
   },
   {
     "id": "ice-burst-1",
+    "scope": "ice-burst",
     "name": "Ice Burst (Stage 1)",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -582,6 +584,7 @@
   },
   {
     "id": "ice-burst-2",
+    "scope": "ice-burst",
     "name": "Ice Burst (Stage 2)",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -601,6 +604,7 @@
   },
   {
     "id": "ice-burst-3",
+    "scope": "ice-burst",
     "name": "Ice Burst (Stage 3)",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -620,6 +624,7 @@
   },
   {
     "id": "terra-burst-0",
+    "scope": "terra-burst",
     "name": "Terra Burst (No Bonus)",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -636,6 +641,7 @@
   },
   {
     "id": "terra-burst-1",
+    "scope": "terra-burst",
     "name": "Terra Burst (Stage 1)",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -655,6 +661,7 @@
   },
   {
     "id": "terra-burst-2",
+    "scope": "terra-burst",
     "name": "Terra Burst (Stage 2)",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -674,6 +681,7 @@
   },
   {
     "id": "terra-burst-3",
+    "scope": "terra-burst",
     "name": "Terra Burst (Stage 3)",
     "spellType": "spell",
     "scalesWith": "magic",
