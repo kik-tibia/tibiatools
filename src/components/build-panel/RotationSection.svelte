@@ -56,7 +56,8 @@
   }
 
   function setRatioA(id: string, v: number) {
-    const matchedSpells = spells.filter((s) => s.scope == spellRegistry.get(id)?.scope).map((s) => s.id);
+    const scope = spellRegistry.get(id)?.scope;
+    const matchedSpells = spells.filter((s) => s.scope == scope).map((s) => s.id);
     buildA = {
       ...buildA,
       rotation: buildA.rotation.map((r) => (matchedSpells.includes(r.id) ? { ...r, ratio: v } : r)),
@@ -64,7 +65,8 @@
   }
 
   function setRatioB(id: string, v: number) {
-    const matchedSpells = spells.filter((s) => s.scope == spellRegistry.get(id)?.scope).map((s) => s.id);
+    const scope = spellRegistry.get(id)?.scope;
+    const matchedSpells = spells.filter((s) => s.scope == scope).map((s) => s.id);
     buildB = {
       ...buildB,
       rotation: buildB.rotation.map((r) => (matchedSpells.includes(r.id) ? { ...r, ratio: v } : r)),
@@ -80,23 +82,26 @@
   }
 
   function addRotationA(id: string) {
+    const scope = spellRegistry.get(id)?.scope;
     const spellsToAdd =
       spells
-        .filter((s) => s.scope == spellRegistry.get(id)?.scope)
+        .filter((s) => s.scope == scope)
         .map((spell, i) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
     buildA = { ...buildA, rotation: [...buildA.rotation, ...spellsToAdd] };
   }
 
   function addRotationB(id: string) {
+    const scope = spellRegistry.get(id)?.scope;
     const spellsToAdd =
       spells
-        .filter((s) => s.scope == spellRegistry.get(id)?.scope)
+        .filter((s) => s.scope == scope)
         .map((spell, i) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
     buildB = { ...buildB, rotation: [...buildB.rotation, ...spellsToAdd] };
   }
 
   function removeRotationA(id: string) {
-    const spellsToRemove = spells.filter((s) => s.scope == spellRegistry.get(id)?.scope).map((s) => s.id);
+    const scope = spellRegistry.get(id)?.scope;
+    const spellsToRemove = spells.filter((s) => s.scope == scope).map((s) => s.id);
     buildA = { ...buildA, rotation: buildA.rotation.filter((a) => !spellsToRemove.includes(a.id)) };
     if (!buildB.rotation.some((r) => r.id === id)) {
       rotationOrder = rotationOrder.filter((x) => !spellsToRemove.includes(x));
@@ -104,7 +109,8 @@
   }
 
   function removeRotationB(id: string) {
-    const spellsToRemove = spells.filter((s) => s.scope == spellRegistry.get(id)?.scope).map((s) => s.id);
+    const scope = spellRegistry.get(id)?.scope;
+    const spellsToRemove = spells.filter((s) => s.scope == scope).map((s) => s.id);
     buildB = { ...buildB, rotation: buildB.rotation.filter((a) => !spellsToRemove.includes(a.id)) };
     if (!buildA.rotation.some((r) => r.id === id)) {
       rotationOrder = rotationOrder.filter((x) => !spellsToRemove.includes(x));
