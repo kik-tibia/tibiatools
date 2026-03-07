@@ -34,15 +34,24 @@
   );
 
   function addSpellToRotation(id: string) {
-    const spellsToAdd =
-      spellRegistry.get(id)?.spells.map((id, i) => ({ id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
-    buildA = { ...buildA, rotation: [...buildA.rotation, ...spellsToAdd] };
+    const spellsToAdd = (spellRegistry.get(id)?.spells ?? []).flatMap((s) => spellRegistry.get(s) ?? []);
+    const spellsToAddA = spellsToAdd
+      .filter((s) => s.vocations.includes(buildA.stats.vocation))
+      .map((spell, i) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: i > 0 }));
+    const spellsToAddB = spellsToAdd
+      .filter((s) => s.vocations.includes(buildB.stats.vocation))
+      .map((spell, i) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: i > 0 }));
+
+    buildA = { ...buildA, rotation: [...buildA.rotation, ...spellsToAddA] };
     if (showSecondBuild) {
-      buildB = { ...buildB, rotation: [...buildB.rotation, ...spellsToAdd] };
+      buildB = { ...buildB, rotation: [...buildB.rotation, ...spellsToAddB] };
     }
     if (!rotationOrder.includes(id)) {
       if (isAutoAttack(id)) rotationOrder = [id, ...rotationOrder];
-      else rotationOrder = [...rotationOrder, ...spellsToAdd.map((s) => s.id)];
+      else
+        rotationOrder = [
+          ...new Set([...rotationOrder, ...spellsToAddA.map((s) => s.id), ...spellsToAddB.map((s) => s.id)]),
+        ];
     }
   }
 
@@ -70,6 +79,7 @@
     buildB = { ...buildB, rotation: buildB.rotation.map((r) => (r.id === id ? { ...r, targets: v } : r)) };
   }
 
+  // TODO adding SOB doesn't work
   function addRotationA(id: string) {
     const spellsToAdd =
       spellRegistry.get(id)?.spells.map((id, i) => ({ id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
@@ -143,7 +153,7 @@
           </div>
         {/if}
       </div>
-    {:else}
+    {:else if !spell.isExtra}
       <div class="add-placeholder">
         <button type="button" class="add-btn input-{buildId}" onclick={() => addRotation(spell.id)}>+</button>
       </div>
