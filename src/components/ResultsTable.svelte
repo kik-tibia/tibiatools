@@ -29,11 +29,10 @@
   let vocResults = $derived(results.filter((i) => i.vocations.includes(vocation)));
   let vocSpellOrdering = $derived(spellOrdering.find((s) => s.vocation == vocation)?.order ?? []);
   let rotationIds = $derived(rotation.map((r) => r.id));
-  // TODO it's not correctly ordering exec-throw
   let resultsOrdered = $derived(
     vocResults.toSorted((a, b) => {
-      const aInRot = rotationIds.includes(a.scope);
-      const bInRot = rotationIds.includes(b.scope);
+      const aInRot = rotationIds.includes(a.id);
+      const bInRot = rotationIds.includes(b.id);
 
       // Rotation spells come first
       if (aInRot !== bInRot) return aInRot ? -1 : 1;

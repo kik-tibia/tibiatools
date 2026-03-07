@@ -79,16 +79,19 @@
     buildB = { ...buildB, rotation: buildB.rotation.map((r) => (r.id === id ? { ...r, targets: v } : r)) };
   }
 
-  // TODO adding SOB doesn't work
   function addRotationA(id: string) {
     const spellsToAdd =
-      spellRegistry.get(id)?.spells.map((id, i) => ({ id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
+      spells
+        .filter((s) => s.scope == spellRegistry.get(id)?.scope)
+        .map((spell, i) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
     buildA = { ...buildA, rotation: [...buildA.rotation, ...spellsToAdd] };
   }
 
   function addRotationB(id: string) {
     const spellsToAdd =
-      spellRegistry.get(id)?.spells.map((id, i) => ({ id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
+      spells
+        .filter((s) => s.scope == spellRegistry.get(id)?.scope)
+        .map((spell, i) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
     buildB = { ...buildB, rotation: [...buildB.rotation, ...spellsToAdd] };
   }
 
