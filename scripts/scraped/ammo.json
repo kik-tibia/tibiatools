@@ -10,7 +10,7 @@
       "id": "burst-arrow",
       "name": "Burst Arrow",
       "attack": 27,
-      "aoe": true
+      "aoe": false
     },
     {
       "id": "crystalline-arrow",
@@ -22,7 +22,7 @@
       "id": "diamond-arrow",
       "name": "Diamond Arrow",
       "attack": 37,
-      "aoe": true
+      "aoe": false
     },
     {
       "id": "earth-arrow",
