@@ -6,21 +6,15 @@
     "bonusType": "attack"
   },
   {
-    "id": "crit-chance",
-    "name": "Critical hit chance",
-    "scope": "all",
-    "bonusType": "crit-chance"
-  },
-  {
     "id": "crit-damage",
-    "name": "Critical hit damage",
+    "name": "Critical hit extra damage",
     "scope": "all",
     "bonusType": "crit-damage"
   },
   {
-    "id": "auto-crit-chance",
-    "name": "Critical hit chance for auto‑attacks",
-    "scope": "auto-attack",
+    "id": "crit-chance",
+    "name": "Critical hit chance",
+    "scope": "all",
     "bonusType": "crit-chance"
   },
   {
@@ -30,9 +24,9 @@
     "bonusType": "crit-damage"
   },
   {
-    "id": "runes-crit-chance",
-    "name": "Critical hit chance for runes",
-    "scope": "rune",
+    "id": "auto-crit-chance",
+    "name": "Critical hit chance for auto‑attacks",
+    "scope": "auto-attack",
     "bonusType": "crit-chance"
   },
   {
@@ -42,9 +36,183 @@
     "bonusType": "crit-damage"
   },
   {
+    "id": "runes-crit-chance",
+    "name": "Critical hit chance for runes",
+    "scope": "rune",
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "axe-percent-aa-damage",
+    "name": "% axe fighting as extra damage for auto‑attacks",
+    "scope": "auto-attack",
+    "bonusType": "axe-percent-extra"
+  },
+  {
+    "id": "axe-percent-spell-damage",
+    "name": "% axe fighting as extra damage for spells",
+    "scope": "spell",
+    "bonusType": "axe-percent-extra"
+  },
+  {
+    "id": "club-percent-aa-damage",
+    "name": "% club fighting as extra damage for auto‑attacks",
+    "scope": "auto-attack",
+    "bonusType": "club-percent-extra"
+  },
+  {
+    "id": "club-percent-spell-damage",
+    "name": "% club fighting as extra damage for spells",
+    "scope": "spell",
+    "bonusType": "club-percent-extra"
+  },
+  {
+    "id": "sword-percent-aa-damage",
+    "name": "% sword fighting as extra damage for auto‑attacks",
+    "scope": "auto-attack",
+    "bonusType": "sword-percent-extra"
+  },
+  {
+    "id": "sword-percent-spell-damage",
+    "name": "% sword fighting as extra damage for spells",
+    "scope": "spell",
+    "bonusType": "sword-percent-extra"
+  },
+  {
+    "id": "fist-percent-aa-damage",
+    "name": "% fist fighting as extra damage for auto‑attacks",
+    "scope": "auto-attack",
+    "bonusType": "fist-percent-extra"
+  },
+  {
+    "id": "fist-percent-spell-damage",
+    "name": "% fist fighting as extra damage for spells",
+    "scope": "spell",
+    "bonusType": "fist-percent-extra"
+  },
+  {
+    "id": "distance-percent-aa-damage",
+    "name": "% distance fighting as extra damage for auto‑attacks",
+    "scope": "auto-attack",
+    "bonusType": "distance-percent-extra"
+  },
+  {
+    "id": "distance-percent-spell-damage",
+    "name": "% distance fighting as extra damage for spells",
+    "scope": "spell",
+    "bonusType": "distance-percent-extra"
+  },
+  {
+    "id": "ml-percent-aa-damage",
+    "name": "% magic level as extra damage for auto‑attacks",
+    "scope": "auto-attack",
+    "bonusType": "magic-level-percent-extra"
+  },
+  {
+    "id": "ml-percent-spell-damage",
+    "name": "% magic level as extra damage for spells",
+    "scope": "spell",
+    "bonusType": "magic-level-percent-extra"
+  },
+  {
+    "id": "shield-percent-aa-damage",
+    "name": "% shielding as extra damage for auto-attacks",
+    "scope": "auto-attack",
+    "bonusType": "shield-percent-extra"
+  },
+  {
+    "id": "shield-percent-spell-damage",
+    "name": "% shielding as extra damage for spells",
+    "scope": "spell",
+    "bonusType": "shield-percent-extra"
+  },
+  {
+    "id": "fishing-percent-aa-damage",
+    "name": "% fishing as extra damage for auto‑attacks",
+    "scope": "auto-attack",
+    "bonusType": "fishing-percent-extra"
+  },
+  {
+    "id": "fishing-percent-spell-damage",
+    "name": "% fishing as extra damage for spells",
+    "scope": "spell",
+    "bonusType": "fishing-percent-extra"
+  },
+  {
+    "id": "death-crit-damage",
+    "name": "Critical % extra damage for death spells and runes",
+    "scope": "death",
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "death-crit-chance",
+    "name": "Death critical hit chance",
+    "scope": "death",
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "death-magic-level",
+    "name": "Death magic level",
+    "scope": "death",
+    "bonusType": "magic-level"
+  },
+  {
     "id": "earth-crit-damage",
     "name": "Critical % extra damage for earth spells and runes",
     "scope": "earth",
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "earth-crit-chance",
+    "name": "Earth critical hit chance",
+    "scope": "earth",
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "earth-magic-level",
+    "name": "Earth magic level",
+    "scope": "earth",
+    "bonusType": "magic-level"
+  },
+  {
+    "id": "energy-crit-damage",
+    "name": "Critical % extra damage for energy spells and runes",
+    "scope": "energy",
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "energy-crit-chance",
+    "name": "Energy critical hit chance",
+    "scope": "energy",
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "energy-magic-level",
+    "name": "Energy magic level",
+    "scope": "energy",
+    "bonusType": "magic-level"
+  },
+  {
+    "id": "fire-crit-damage",
+    "name": "Critical % extra damage for fire spells and runes",
+    "scope": "fire",
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "fire-crit-chance",
+    "name": "Fire critical hit chance",
+    "scope": "fire",
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "fire-magic-level",
+    "name": "Fire magic level",
+    "scope": "fire",
+    "bonusType": "magic-level"
+  },
+  {
+    "id": "holy-crit-damage",
+    "name": "Critical % extra damage for holy spells and runes",
+    "scope": "holy",
     "bonusType": "crit-damage"
   },
   {
@@ -52,6 +220,48 @@
     "name": "Holy critical hit chance",
     "scope": "holy",
     "bonusType": "crit-chance"
+  },
+  {
+    "id": "holy-magic-level",
+    "name": "Holy magic level",
+    "scope": "holy",
+    "bonusType": "magic-level"
+  },
+  {
+    "id": "ice-crit-damage",
+    "name": "Critical % extra damage for ice spells and runes",
+    "scope": "ice",
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "ice-crit-chance",
+    "name": "Ice critical hit chance",
+    "scope": "ice",
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "ice-magic-level",
+    "name": "Ice magic level",
+    "scope": "ice",
+    "bonusType": "magic-level"
+  },
+  {
+    "id": "physical-crit-damage",
+    "name": "Critical % extra damage for physical spells and runes",
+    "scope": "physical",
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "physical-crit-chance",
+    "name": "Physical critical hit chance",
+    "scope": "physical",
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "physical-magic-level",
+    "name": "Physical magic level",
+    "scope": "physical",
+    "bonusType": "magic-level"
   },
   {
     "id": "fierce-berserk-base",
@@ -178,102 +388,6 @@
     "scope": "divine-caldera",
     "spell": true,
     "bonusType": "crit-chance"
-  },
-  {
-    "id": "ice-magic-level",
-    "name": "Ice magic level",
-    "scope": "ice",
-    "bonusType": "magic-level"
-  },
-  {
-    "id": "earth-magic-level",
-    "name": "Earth magic level",
-    "scope": "earth",
-    "bonusType": "magic-level"
-  },
-  {
-    "id": "holy-magic-level",
-    "name": "Holy magic level",
-    "scope": "holy",
-    "bonusType": "magic-level"
-  },
-  {
-    "id": "axe-percent-spell-damage",
-    "name": "% axe fighting as extra damage for spells",
-    "scope": "spell",
-    "bonusType": "axe-percent-extra"
-  },
-  {
-    "id": "axe-percent-aa-damage",
-    "name": "% axe fighting as extra damage for auto‑attacks",
-    "scope": "auto-attack",
-    "bonusType": "axe-percent-extra"
-  },
-  {
-    "id": "club-percent-spell-damage",
-    "name": "% club fighting as extra damage for spells",
-    "scope": "spell",
-    "bonusType": "club-percent-extra"
-  },
-  {
-    "id": "club-percent-aa-damage",
-    "name": "% club fighting as extra damage for auto‑attacks",
-    "scope": "auto-attack",
-    "bonusType": "club-percent-extra"
-  },
-  {
-    "id": "sword-percent-spell-damage",
-    "name": "% sword fighting as extra damage for spells",
-    "scope": "spell",
-    "bonusType": "sword-percent-extra"
-  },
-  {
-    "id": "sword-percent-aa-damage",
-    "name": "% sword fighting as extra damage for auto‑attacks",
-    "scope": "auto-attack",
-    "bonusType": "sword-percent-extra"
-  },
-  {
-    "id": "distance-percent-spell-damage",
-    "name": "% distance fighting as extra damage for spells",
-    "scope": "spell",
-    "bonusType": "distance-percent-extra"
-  },
-  {
-    "id": "distance-percent-aa-damage",
-    "name": "% distance fighting as extra damage for auto‑attacks",
-    "scope": "auto-attack",
-    "bonusType": "distance-percent-extra"
-  },
-  {
-    "id": "ml-percent-spell-damage",
-    "name": "% magic level as extra damage for spells",
-    "scope": "spell",
-    "bonusType": "magic-level-percent-extra"
-  },
-  {
-    "id": "ml-percent-aa-damage",
-    "name": "% magic level as extra damage for auto‑attacks",
-    "scope": "auto-attack",
-    "bonusType": "magic-level-percent-extra"
-  },
-  {
-    "id": "shield-percent-spell-damage",
-    "name": "% shielding as extra damage for spells",
-    "scope": "spell",
-    "bonusType": "shield-percent-extra"
-  },
-  {
-    "id": "shield-percent-aa-damage",
-    "name": "% shielding as extra damage for auto-attacks",
-    "scope": "auto-attack",
-    "bonusType": "shield-percent-extra"
-  },
-  {
-    "id": "fishing-percent-aa-damage",
-    "name": "% fishing as extra damage for auto‑attacks",
-    "scope": "auto-attack",
-    "bonusType": "fishing-percent-extra"
   },
   {
     "id": "terra-wave-base",

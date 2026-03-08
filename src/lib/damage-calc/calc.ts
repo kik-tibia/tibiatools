@@ -73,10 +73,10 @@ const applyPerkToSpell = (
     switch (perk.def.bonusType) {
       case "base-damage":
         return { ...state, basePower: P * (1 + perk.value / 100) };
-      case "crit-chance":
-        return { ...state, critChance: state.critChance + perk.value };
       case "crit-damage":
         return { ...state, critDamage: state.critDamage + perk.value };
+      case "crit-chance":
+        return { ...state, critChance: state.critChance + perk.value };
       case "attack":
         return { ...state, weaponAttack: W + perk.value };
       case "magic-level":
