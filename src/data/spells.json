@@ -295,7 +295,7 @@
   },
   {
     "id": "holy-missile",
-    "name": "Holy Missile",
+    "name": "Holy Missile Rune",
     "spellType": "rune",
     "scalesWith": "magic",
     "element": "holy",
@@ -379,6 +379,7 @@
   },
   {
     "id": "great-death-beam-1",
+    "scope": "great-death-beam",
     "name": "Great Death Beam (Stage 1)",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -393,6 +394,7 @@
   },
   {
     "id": "great-death-beam-2",
+    "scope": "great-death-beam",
     "name": "Great Death Beam (Stage 2)",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -407,6 +409,7 @@
   },
   {
     "id": "great-death-beam-3",
+    "scope": "great-death-beam",
     "name": "Great Death Beam (Stage 3)",
     "spellType": "spell",
     "scalesWith": "magic",

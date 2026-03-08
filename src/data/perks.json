@@ -265,135 +265,1115 @@
   },
   {
     "id": "fierce-berserk-base",
-    "name": "Fierce Berserk (exori gran) base damage",
+    "name": "Fierce Berserk base damage",
     "scope": "fierce-berserk",
     "spell": true,
     "bonusType": "base-damage"
   },
   {
     "id": "fierce-berserk-crit",
-    "name": "Fierce Berserk (exori gran) critical hit damage",
+    "name": "Fierce Berserk critical hit damage",
     "scope": "fierce-berserk",
     "spell": true,
     "bonusType": "crit-damage"
   },
   {
     "id": "fierce-berserk-crit-chance",
-    "name": "Fierce Berserk (exori gran) critical hit chance",
+    "name": "Fierce Berserk critical hit chance",
     "scope": "fierce-berserk",
     "spell": true,
     "bonusType": "crit-chance"
   },
   {
     "id": "berserk-base",
-    "name": "Berserk (exori) base damage",
+    "name": "Berserk base damage",
     "scope": "berserk",
     "spell": true,
     "bonusType": "base-damage"
   },
   {
     "id": "berserk-crit",
-    "name": "Berserk (exori) critical hit damage",
+    "name": "Berserk critical hit damage",
     "scope": "berserk",
     "spell": true,
     "bonusType": "crit-damage"
   },
   {
     "id": "berserk-crit-chance",
-    "name": "Berserk (exori) critical hit chance",
+    "name": "Berserk critical hit chance",
     "scope": "berserk",
     "spell": true,
     "bonusType": "crit-chance"
   },
   {
     "id": "groundshaker-base",
-    "name": "Groundshaker (exori mas) base damage",
+    "name": "Groundshaker base damage",
     "scope": "groundshaker",
     "spell": true,
     "bonusType": "base-damage"
   },
   {
     "id": "groundshaker-crit",
-    "name": "Groundshaker (exori mas) critical hit damage",
+    "name": "Groundshaker critical hit damage",
     "scope": "groundshaker",
     "spell": true,
     "bonusType": "crit-damage"
   },
   {
     "id": "groundshaker-crit-chance",
-    "name": "Groundshaker (exori mas) critical hit chance",
+    "name": "Groundshaker critical hit chance",
     "scope": "groundshaker",
     "spell": true,
     "bonusType": "crit-chance"
   },
   {
     "id": "front-sweep-base",
-    "name": "Front Sweep (exori min) base damage",
+    "name": "Front Sweep base damage",
     "scope": "front-sweep",
     "spell": true,
     "bonusType": "base-damage"
   },
   {
     "id": "front-sweep-crit",
-    "name": "Front Sweep (exori min) critical hit damage",
+    "name": "Front Sweep critical hit damage",
     "scope": "front-sweep",
     "spell": true,
     "bonusType": "crit-damage"
   },
   {
     "id": "front-sweep-crit-chance",
-    "name": "Front Sweep (exori min) critical hit chance",
+    "name": "Front Sweep critical hit chance",
     "scope": "front-sweep",
     "spell": true,
     "bonusType": "crit-chance"
   },
   {
     "id": "exec-throw-base",
-    "name": "Executioner's Throw (exori amp kor) base damage",
+    "name": "Executioner's Throw base damage",
     "scope": "exec-throw",
     "spell": true,
     "bonusType": "base-damage"
   },
   {
     "id": "exec-throw-crit",
-    "name": "Executioner's Throw (exori amp kor) critical hit damage",
+    "name": "Executioner's Throw critical hit damage",
     "scope": "exec-throw",
     "spell": true,
     "bonusType": "crit-damage"
   },
   {
     "id": "exec-throw-crit-chance",
-    "name": "Executioner's Throw (exori amp kor) critical hit chance",
+    "name": "Executioner's Throw critical hit chance",
     "scope": "exec-throw",
     "spell": true,
     "bonusType": "crit-chance"
   },
   {
+    "id": "annihilation-base",
+    "name": "Annihilation base damage",
+    "scope": "annihilation",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "annihilation-crit",
+    "name": "Annihilation critical hit damage",
+    "scope": "annihilation",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "annihilation-crit-chance",
+    "name": "Annihilation critical hit chance",
+    "scope": "annihilation",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "brutal-strike-base",
+    "name": "Brutal Strike base damage",
+    "scope": "brutal-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "brutal-strike-crit",
+    "name": "Brutal Strike critical hit damage",
+    "scope": "brutal-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "brutal-strike-crit-chance",
+    "name": "Brutal Strike critical hit chance",
+    "scope": "brutal-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "whirlwind-throw-base",
+    "name": "Whirlwind Throw base damage",
+    "scope": "whirlwind-throw",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "whirlwind-throw-crit",
+    "name": "Whirlwind Throw critical hit damage",
+    "scope": "whirlwind-throw",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "whirlwind-throw-crit-chance",
+    "name": "Whirlwind Throw critical hit chance",
+    "scope": "whirlwind-throw",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
     "id": "divine-caldera-base",
-    "name": "Divine Caldera (exevo mas san) base damage",
+    "name": "Divine Caldera base damage",
     "scope": "divine-caldera",
     "spell": true,
     "bonusType": "base-damage"
   },
   {
     "id": "divine-caldera-crit",
-    "name": "Divine Caldera (exevo mas san) critical hit damage",
+    "name": "Divine Caldera critical hit damage",
     "scope": "divine-caldera",
     "spell": true,
     "bonusType": "crit-damage"
   },
   {
     "id": "divine-caldera-crit-chance",
-    "name": "Divine Caldera (exevo mas san) critical hit chance",
+    "name": "Divine Caldera critical hit chance",
     "scope": "divine-caldera",
     "spell": true,
     "bonusType": "crit-chance"
   },
   {
+    "id": "divine-grenade-base",
+    "name": "Divine Grenade base damage",
+    "scope": "divine-grenade",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "divine-grenade-crit",
+    "name": "Divine Grenade critical hit damage",
+    "scope": "divine-grenade",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "divine-grenade-crit-chance",
+    "name": "Divine Grenade critical hit chance",
+    "scope": "divine-grenade",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "strong-ethereal-spear-base",
+    "name": "Strong Ethereal Spear base damage",
+    "scope": "strong-ethereal-spear",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "strong-ethereal-spear-crit",
+    "name": "Strong Ethereal Spear critical hit damage",
+    "scope": "strong-ethereal-spear",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "strong-ethereal-spear-crit-chance",
+    "name": "Strong Ethereal Spear critical hit chance",
+    "scope": "strong-ethereal-spear",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "ethereal-spear-base",
+    "name": "Ethereal Spear base damage",
+    "scope": "ethereal-spear",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "ethereal-spear-crit",
+    "name": "Ethereal Spear critical hit damage",
+    "scope": "ethereal-spear",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "ethereal-spear-crit-chance",
+    "name": "Ethereal Spear critical hit chance",
+    "scope": "ethereal-spear",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "divine-missile-base",
+    "name": "Divine Missile base damage",
+    "scope": "divine-missile",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "divine-missile-crit",
+    "name": "Divine Missile critical hit damage",
+    "scope": "divine-missile",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "divine-missile-crit-chance",
+    "name": "Divine Missile critical hit chance",
+    "scope": "divine-missile",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "energy-wave-base",
+    "name": "Energy Wave base damage",
+    "scope": "energy-wave",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "energy-wave-crit",
+    "name": "Energy Wave critical hit damage",
+    "scope": "energy-wave",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "energy-wave-crit-chance",
+    "name": "Energy Wave critical hit chance",
+    "scope": "energy-wave",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "great-fire-wave-base",
+    "name": "Great Fire Wave base damage",
+    "scope": "great-fire-wave",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "great-fire-wave-crit",
+    "name": "Great Fire Wave critical hit damage",
+    "scope": "great-fire-wave",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "great-fire-wave-crit-chance",
+    "name": "Great Fire Wave critical hit chance",
+    "scope": "great-fire-wave",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "hells-core-base",
+    "name": "Hell's Core base damage",
+    "scope": "hells-core",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "hells-core-crit",
+    "name": "Hell's Core critical hit damage",
+    "scope": "hells-core",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "hells-core-crit-chance",
+    "name": "Hell's Core critical hit chance",
+    "scope": "hells-core",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "rage-of-the-skies-base",
+    "name": "Rage of the Skies base damage",
+    "scope": "rage-of-the-skies",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "rage-of-the-skies-crit",
+    "name": "Rage of the Skies critical hit damage",
+    "scope": "rage-of-the-skies",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "rage-of-the-skies-crit-chance",
+    "name": "Rage of the Skies critical hit chance",
+    "scope": "rage-of-the-skies",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "great-energy-beam-base",
+    "name": "Great Energy Beam base damage",
+    "scope": "great-energy-beam",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "great-energy-beam-crit",
+    "name": "Great Energy Beam critical hit damage",
+    "scope": "great-energy-beam",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "great-energy-beam-crit-chance",
+    "name": "Great Energy Beam critical hit chance",
+    "scope": "great-energy-beam",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "great-death-beam-base",
+    "name": "Great Death Beam base damage",
+    "scope": "great-death-beam",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "great-death-beam-crit",
+    "name": "Great Death Beam critical hit damage",
+    "scope": "great-death-beam",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "great-death-beam-crit-chance",
+    "name": "Great Death Beam critical hit chance",
+    "scope": "great-death-beam",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "fire-wave-base",
+    "name": "Fire Wave base damage",
+    "scope": "fire-wave",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "fire-wave-crit",
+    "name": "Fire Wave critical hit damage",
+    "scope": "fire-wave",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "fire-wave-crit-chance",
+    "name": "Fire Wave critical hit chance",
+    "scope": "fire-wave",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "strong-flame-strike-base",
+    "name": "Strong Flame Strike base damage",
+    "scope": "strong-flame-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "strong-flame-strike-crit",
+    "name": "Strong Flame Strike critical hit damage",
+    "scope": "strong-flame-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "strong-flame-strike-crit-chance",
+    "name": "Strong Flame Strike critical hit chance",
+    "scope": "strong-flame-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "strong-energy-strike-base",
+    "name": "Strong Energy Strike base damage",
+    "scope": "strong-energy-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "strong-energy-strike-crit",
+    "name": "Strong Energy Strike critical hit damage",
+    "scope": "strong-energy-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "strong-energy-strike-crit-chance",
+    "name": "Strong Energy Strike critical hit chance",
+    "scope": "strong-energy-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "ultimate-flame-strike-base",
+    "name": "Ultimate Flame Strike base damage",
+    "scope": "ultimate-flame-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "ultimate-flame-strike-crit",
+    "name": "Ultimate Flame Strike critical hit damage",
+    "scope": "ultimate-flame-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "ultimate-flame-strike-crit-chance",
+    "name": "Ultimate Flame Strike critical hit chance",
+    "scope": "ultimate-flame-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "ultimate-energy-strike-base",
+    "name": "Ultimate Energy Strike base damage",
+    "scope": "ultimate-energy-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "ultimate-energy-strike-crit",
+    "name": "Ultimate Energy Strike critical hit damage",
+    "scope": "ultimate-energy-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "ultimate-energy-strike-crit-chance",
+    "name": "Ultimate Energy Strike critical hit chance",
+    "scope": "ultimate-energy-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "death-strike-base",
+    "name": "Death Strike base damage",
+    "scope": "death-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "death-strike-crit",
+    "name": "Death Strike critical hit damage",
+    "scope": "death-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "death-strike-crit-chance",
+    "name": "Death Strike critical hit chance",
+    "scope": "death-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "energy-beam-base",
+    "name": "Energy Beam base damage",
+    "scope": "energy-beam",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "energy-beam-crit",
+    "name": "Energy Beam critical hit damage",
+    "scope": "energy-beam",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "energy-beam-crit-chance",
+    "name": "Energy Beam critical hit chance",
+    "scope": "energy-beam",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "lightning-base",
+    "name": "Lightning base damage",
+    "scope": "lightning",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "lightning-crit",
+    "name": "Lightning critical hit damage",
+    "scope": "lightning",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "lightning-crit-chance",
+    "name": "Lightning critical hit chance",
+    "scope": "lightning",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
     "id": "terra-wave-base",
-    "name": "Terra Wave (exevo tera hur) base damage",
+    "name": "Terra Wave base damage",
     "scope": "terra-wave",
     "spell": true,
     "bonusType": "base-damage"
+  },
+  {
+    "id": "terra-wave-crit",
+    "name": "Terra Wave critical hit damage",
+    "scope": "terra-wave",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "terra-wave-crit-chance",
+    "name": "Terra Wave critical hit chance",
+    "scope": "terra-wave",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "ice-burst-base",
+    "name": "Ice Burst base damage",
+    "scope": "ice-burst",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "ice-burst-crit",
+    "name": "Ice Burst critical hit damage",
+    "scope": "ice-burst",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "ice-burst-crit-chance",
+    "name": "Ice Burst critical hit chance",
+    "scope": "ice-burst",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "terra-burst-base",
+    "name": "Terra Burst base damage",
+    "scope": "terra-burst",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "terra-burst-crit",
+    "name": "Terra Burst critical hit damage",
+    "scope": "terra-burst",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "terra-burst-crit-chance",
+    "name": "Terra Burst critical hit chance",
+    "scope": "terra-burst",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "eternal-winter-base",
+    "name": "Eternal Winter base damage",
+    "scope": "eternal-winter",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "eternal-winter-crit",
+    "name": "Eternal Winter critical hit damage",
+    "scope": "eternal-winter",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "eternal-winter-crit-chance",
+    "name": "Eternal Winter critical hit chance",
+    "scope": "eternal-winter",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "wrath-of-nature-base",
+    "name": "Wrath of Nature base damage",
+    "scope": "wrath-of-nature",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "wrath-of-nature-crit",
+    "name": "Wrath of Nature critical hit damage",
+    "scope": "wrath-of-nature",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "wrath-of-nature-crit-chance",
+    "name": "Wrath of Nature critical hit chance",
+    "scope": "wrath-of-nature",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "strong-ice-wave-base",
+    "name": "Strong Ice Wave base damage",
+    "scope": "strong-ice-wave",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "strong-ice-wave-crit",
+    "name": "Strong Ice Wave critical hit damage",
+    "scope": "strong-ice-wave",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "strong-ice-wave-crit-chance",
+    "name": "Strong Ice Wave critical hit chance",
+    "scope": "strong-ice-wave",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "strong-ice-strike-base",
+    "name": "Strong Ice Strike base damage",
+    "scope": "strong-ice-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "strong-ice-strike-crit",
+    "name": "Strong Ice Strike critical hit damage",
+    "scope": "strong-ice-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "strong-ice-strike-crit-chance",
+    "name": "Strong Ice Strike critical hit chance",
+    "scope": "strong-ice-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "strong-terra-strike-base",
+    "name": "Strong Terra Strike base damage",
+    "scope": "strong-terra-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "strong-terra-strike-crit",
+    "name": "Strong Terra Strike critical hit damage",
+    "scope": "strong-terra-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "strong-terra-strike-crit-chance",
+    "name": "Strong Terra Strike critical hit chance",
+    "scope": "strong-terra-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "ultimate-ice-strike-base",
+    "name": "Ultimate Ice Strike base damage",
+    "scope": "ultimate-ice-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "ultimate-ice-strike-crit",
+    "name": "Ultimate Ice Strike critical hit damage",
+    "scope": "ultimate-ice-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "ultimate-ice-strike-crit-chance",
+    "name": "Ultimate Ice Strike critical hit chance",
+    "scope": "ultimate-ice-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "ultimate-terra-strike-base",
+    "name": "Ultimate Terra Strike base damage",
+    "scope": "ultimate-terra-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "ultimate-terra-strike-crit",
+    "name": "Ultimate Terra Strike critical hit damage",
+    "scope": "ultimate-terra-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "ultimate-terra-strike-crit-chance",
+    "name": "Ultimate Terra Strike critical hit chance",
+    "scope": "ultimate-terra-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "physical-strike-base",
+    "name": "Physical Strike base damage",
+    "scope": "physical-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "physical-strike-crit",
+    "name": "Physical Strike critical hit damage",
+    "scope": "physical-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "physical-strike-crit-chance",
+    "name": "Physical Strike critical hit chance",
+    "scope": "physical-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "ice-wave-base",
+    "name": "Ice Wave base damage",
+    "scope": "ice-wave",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "ice-wave-crit",
+    "name": "Ice Wave critical hit damage",
+    "scope": "ice-wave",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "ice-wave-crit-chance",
+    "name": "Ice Wave critical hit chance",
+    "scope": "ice-wave",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "chained-penance-base",
+    "name": "Chained Penance base damage",
+    "scope": "chained-penance",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "chained-penance-crit",
+    "name": "Chained Penance critical hit damage",
+    "scope": "chained-penance",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "chained-penance-crit-chance",
+    "name": "Chained Penance critical hit chance",
+    "scope": "chained-penance",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "greater-flurry-of-blows-base",
+    "name": "Greater Flurry of Blows base damage",
+    "scope": "greater-flurry-of-blows",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "greater-flurry-of-blows-crit",
+    "name": "Greater Flurry of Blows critical hit damage",
+    "scope": "greater-flurry-of-blows",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "greater-flurry-of-blows-crit-chance",
+    "name": "Greater Flurry of Blows critical hit chance",
+    "scope": "greater-flurry-of-blows",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "flurry-of-blows-base",
+    "name": "Flurry of Blows base damage",
+    "scope": "flurry-of-blows",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "flurry-of-blows-crit",
+    "name": "Flurry of Blows critical hit damage",
+    "scope": "flurry-of-blows",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "flurry-of-blows-crit-chance",
+    "name": "Flurry of Blows critical hit chance",
+    "scope": "flurry-of-blows",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "sweeping-takedown-base",
+    "name": "Sweeping Takedown base damage",
+    "scope": "sweeping-takedown",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "sweeping-takedown-crit",
+    "name": "Sweeping Takedown critical hit damage",
+    "scope": "sweeping-takedown",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "sweeping-takedown-crit-chance",
+    "name": "Sweeping Takedown critical hit chance",
+    "scope": "sweeping-takedown",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "spiritual-outburst-base",
+    "name": "Spiritual Outburst base damage",
+    "scope": "spiritual-outburst",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "spiritual-outburst-crit",
+    "name": "Spiritual Outburst critical hit damage",
+    "scope": "spiritual-outburst",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "spiritual-outburst-crit-chance",
+    "name": "Spiritual Outburst critical hit chance",
+    "scope": "spiritual-outburst",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "mystic-repulse-base",
+    "name": "Mystic Repulse base damage",
+    "scope": "mystic-repulse",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "mystic-repulse-crit",
+    "name": "Mystic Repulse critical hit damage",
+    "scope": "mystic-repulse",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "mystic-repulse-crit-chance",
+    "name": "Mystic Repulse critical hit chance",
+    "scope": "mystic-repulse",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "forceful-uppercut-base",
+    "name": "Forceful Uppercut base damage",
+    "scope": "forceful-uppercut",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "forceful-uppercut-crit",
+    "name": "Forceful Uppercut critical hit damage",
+    "scope": "forceful-uppercut",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "forceful-uppercut-crit-chance",
+    "name": "Forceful Uppercut critical hit chance",
+    "scope": "forceful-uppercut",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "devastating-knockout-base",
+    "name": "Devastating Knockout base damage",
+    "scope": "devastating-knockout",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "devastating-knockout-crit",
+    "name": "Devastating Knockout critical hit damage",
+    "scope": "devastating-knockout",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "devastating-knockout-crit-chance",
+    "name": "Devastating Knockout critical hit chance",
+    "scope": "devastating-knockout",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "double-jab-base",
+    "name": "Double Jab base damage",
+    "scope": "double-jab",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "double-jab-crit",
+    "name": "Double Jab critical hit damage",
+    "scope": "double-jab",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "double-jab-crit-chance",
+    "name": "Double Jab critical hit chance",
+    "scope": "double-jab",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "greater-tiger-clash-base",
+    "name": "Greater Tiger Clash base damage",
+    "scope": "greater-tiger-clash",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "greater-tiger-clash-crit",
+    "name": "Greater Tiger Clash critical hit damage",
+    "scope": "greater-tiger-clash",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "greater-tiger-clash-crit-chance",
+    "name": "Greater Tiger Clash critical hit chance",
+    "scope": "greater-tiger-clash",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "flame-strike-base",
+    "name": "Flame Strike base damage",
+    "scope": "flame-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "flame-strike-crit",
+    "name": "Flame Strike critical hit damage",
+    "scope": "flame-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "flame-strike-crit-chance",
+    "name": "Flame Strike critical hit chance",
+    "scope": "flame-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "energy-strike-base",
+    "name": "Energy Strike base damage",
+    "scope": "energy-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "energy-strike-crit",
+    "name": "Energy Strike critical hit damage",
+    "scope": "energy-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "energy-strike-crit-chance",
+    "name": "Energy Strike critical hit chance",
+    "scope": "energy-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "ice-strike-base",
+    "name": "Ice Strike base damage",
+    "scope": "ice-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "ice-strike-crit",
+    "name": "Ice Strike critical hit damage",
+    "scope": "ice-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "ice-strike-crit-chance",
+    "name": "Ice Strike critical hit chance",
+    "scope": "ice-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": "terra-strike-base",
+    "name": "Terra Strike base damage",
+    "scope": "terra-strike",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": "terra-strike-crit",
+    "name": "Terra Strike critical hit damage",
+    "scope": "terra-strike",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": "terra-strike-crit-chance",
+    "name": "Terra Strike critical hit chance",
+    "scope": "terra-strike",
+    "spell": true,
+    "bonusType": "crit-chance"
   }
 ]
