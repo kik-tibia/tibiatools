@@ -17,6 +17,9 @@
   --focus-border: hsl(220 90% 65%);
   --footer-border: hsl(0 0% 27%);
 
+  /* Header */
+  --header-bg: hsl(220 5% 14%);
+
   /* Table */
   --table-header-bg: hsl(220 5% 14%);
   --table-body-bg: hsl(220 5% 12%);
@@ -75,6 +78,9 @@
   --focus-border: hsl(220 80% 55%);
   --footer-border: hsl(0 0% 82%);
 
+  /* Header */
+  --header-bg: hsl(220 8% 94%);
+
   /* Table */
   --table-header-bg: hsl(220 8% 94%);
   --table-body-bg: hsl(220 8% 97%);
@@ -128,12 +134,22 @@ a {
   color: var(--link-color);
 }
 
-header,
 main,
 footer {
   max-width: 1500px;
   margin: 0 auto;
   padding: 1rem;
+}
+
+.header-wrap {
+  background: var(--header-bg);
+}
+
+.header-title {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 header {
@@ -142,6 +158,9 @@ header {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem;
+  max-width: 1532px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 thead th {

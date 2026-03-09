@@ -21,12 +21,11 @@ const { title = "Tibia Tools" } = Astro.props;
     </script>
   </head>
   <body>
-    <header>
-      <div>
-        <h1>Tibia Tools – {title}</h1>
+    <div class="header-wrap"><header>
+      <div class="header-title">
+        <h1>Tibia Tools</h1>
         <nav>
           <a href="/" class={Astro.url.pathname === "/" ? "active" : ""}>Home</a>
-          <a href="/tools/info" class={Astro.url.pathname.startsWith("/tools/info") ? "active" : ""}>Info</a>
           <a href="/tools/calculator" class={Astro.url.pathname.startsWith("/tools/calculator") ? "active" : ""}>Calculator</a>
         </nav>
       </div>
@@ -109,8 +108,9 @@ const { title = "Tibia Tools" } = Astro.props;
           mq.addEventListener("change", apply);
         })();
       </script>
-    </header>
+    </header></div>
     <main>
+      <h2>{title}</h2>
       <slot />
     </main>
     <footer>
