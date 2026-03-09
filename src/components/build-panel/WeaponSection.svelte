@@ -26,15 +26,15 @@
       .sort((a, b) => a.vocations.length - b.vocations.length),
   );
 
-  let weaponA = $derived(weaponRegistry.get(buildA.weapon.id as string));
-  let weaponB = $derived(weaponRegistry.get(buildB.weapon.id as string));
+  let weaponA = $derived(weaponRegistry.get(buildA.weapon.id));
+  let weaponB = $derived(weaponRegistry.get(buildB.weapon.id));
 
   let availableAmmoA = $derived(weaponA?.ammo ? ammo.filter((a) => a.type === weaponA.ammo) : []);
   let availableAmmoB = $derived(weaponB?.ammo ? ammo.filter((a) => a.type === weaponB.ammo) : []);
 
-  function setWeaponA(id: string) {
+  function setWeaponA(id: number) {
     const weapon = weaponRegistry.get(id);
-    const currentAmmo = buildA.weapon.ammo ? ammoRegistry.get(buildA.weapon.ammo as string) : null;
+    const currentAmmo = buildA.weapon.ammo ? ammoRegistry.get(buildA.weapon.ammo) : null;
     const keepAmmo = weapon?.ammo && currentAmmo && currentAmmo.type === weapon.ammo;
     buildA = {
       ...buildA,
@@ -45,9 +45,9 @@
     };
   }
 
-  function setWeaponB(id: string) {
+  function setWeaponB(id: number) {
     const weapon = weaponRegistry.get(id);
-    const currentAmmo = buildB.weapon.ammo ? ammoRegistry.get(buildB.weapon.ammo as string) : null;
+    const currentAmmo = buildB.weapon.ammo ? ammoRegistry.get(buildB.weapon.ammo) : null;
     const keepAmmo = weapon?.ammo && currentAmmo && currentAmmo.type === weapon.ammo;
     buildB = {
       ...buildB,
@@ -58,20 +58,20 @@
     };
   }
 
-  function setAmmoA(id: string) {
+  function setAmmoA(id: number) {
     buildA = { ...buildA, weapon: { ...buildA.weapon, ammo: id } };
   }
 
-  function setAmmoB(id: string) {
+  function setAmmoB(id: number) {
     buildB = { ...buildB, weapon: { ...buildB.weapon, ammo: id } };
   }
 
   function clearWeaponA() {
-    buildA = { ...buildA, weapon: { id: "fists", ammo: undefined } };
+    buildA = { ...buildA, weapon: { id: 1, ammo: undefined } };
   }
 
   function clearWeaponB() {
-    buildB = { ...buildB, weapon: { id: "fists", ammo: undefined } };
+    buildB = { ...buildB, weapon: { id: 1, ammo: undefined } };
   }
 
   function clearAmmoA() {
@@ -118,7 +118,7 @@
     {#if weaponA}
       <div class="selected-item input-with-remove">
         <span class="selected-name selected-name-a">{weaponA.name}</span>
-        {#if weaponA.id !== "fists"}
+        {#if weaponA.id !== 1}
           <RemoveButton pushRight onclick={clearWeaponA} />
         {/if}
       </div>
@@ -129,7 +129,7 @@
       {#if weaponB}
         <div class="selected-item">
           <span class="selected-name selected-name-b">{weaponB.name}</span>
-          {#if weaponB.id !== "fists"}
+          {#if weaponB.id !== 1}
             <RemoveButton onclick={clearWeaponB} />
           {/if}
         </div>
@@ -159,7 +159,7 @@
     <td>
       {#if weaponA?.ammo}
         {#if buildA.weapon.ammo}
-          {@const selectedAmmo = ammoRegistry.get(buildA.weapon.ammo as string)}
+          {@const selectedAmmo = ammoRegistry.get(buildA.weapon.ammo)}
           {#if selectedAmmo}
             <div class="selected-item">
               <span class="selected-name selected-name-a">{selectedAmmo.name}</span>
@@ -173,7 +173,7 @@
       <td>
         {#if weaponB?.ammo}
           {#if buildB.weapon.ammo}
-            {@const selectedAmmo = ammoRegistry.get(buildB.weapon.ammo as string)}
+            {@const selectedAmmo = ammoRegistry.get(buildB.weapon.ammo)}
             {#if selectedAmmo}
               <div class="selected-item">
                 <span class="selected-name selected-name-b">{selectedAmmo.name}</span>

@@ -52,8 +52,8 @@ const computeMinMax = (spell: Spell, minMax: number, state: SpellState) => {
 };
 
 const perkDefsById: Record<string, PerkDef> = Object.fromEntries(perks.map((i) => [i.id, i]));
-const weaponsById: Record<string, Weapon> = Object.fromEntries(weapons.map((i) => [i.id, i]));
-const ammoById: Record<string, Ammo> = Object.fromEntries(ammo.map((i) => [i.id, i]));
+const weaponsById: Record<number, Weapon> = Object.fromEntries(weapons.map((i) => [i.id, i]));
+const ammoById: Record<number, Ammo> = Object.fromEntries(ammo.map((i) => [i.id, i]));
 
 const applyPerkToSpell = (
   spell: Spell,

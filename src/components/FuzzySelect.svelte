@@ -11,10 +11,10 @@
   }: {
     selectType: string;
     all?: any[];
-    selectedIds?: string[];
-    getId?: (x: any) => string;
+    selectedIds?: (string | number)[];
+    getId?: (x: any) => string | number;
     getLabel?: (x: any) => string;
-    onAdd: (id: string) => void;
+    onAdd: (id: any) => void;
   } = $props();
 
   let q = $state("");

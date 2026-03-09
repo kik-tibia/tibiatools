@@ -6,7 +6,7 @@ export type AmmoType = "arrows" | "bolts";
 export type SkillType = "axe" | "club" | "sword" | "fist" | "distance";
 
 export type Weapon = {
-  id: string;
+  id: number;
   name: string;
   attack?: number;
   attackDeath?: number;
@@ -24,7 +24,7 @@ export type Weapon = {
 export const weapons: Weapon[] = weaponsRaw as Weapon[];
 
 type AmmoRaw = {
-  id: string;
+  id: number;
   name: string;
   attack: number;
   aoe: boolean;

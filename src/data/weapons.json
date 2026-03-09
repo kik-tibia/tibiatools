@@ -1,6 +1,6 @@
 [
   {
-    "id": "fists",
+    "id": 1,
     "name": "Fists",
     "attack": 7,
     "skill": "fist",
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "id": "amber-axe",
+    "id": 2,
     "name": "Amber Axe",
     "attack": 46,
     "attackIce": 46,
@@ -23,7 +23,7 @@
     ]
   },
   {
-    "id": "amber-greataxe",
+    "id": 3,
     "name": "Amber Greataxe",
     "attack": 50,
     "attackEarth": 50,
@@ -33,7 +33,7 @@
     ]
   },
   {
-    "id": "angelic-axe",
+    "id": 4,
     "name": "Angelic Axe",
     "attack": 44,
     "skill": "axe",
@@ -42,7 +42,7 @@
     ]
   },
   {
-    "id": "axe",
+    "id": 5,
     "name": "Axe",
     "attack": 12,
     "skill": "axe",
@@ -55,7 +55,7 @@
     ]
   },
   {
-    "id": "axe-of-carving",
+    "id": 6,
     "name": "Axe of Carving",
     "attack": 51,
     "skill": "axe",
@@ -64,7 +64,7 @@
     ]
   },
   {
-    "id": "axe-of-carving-charged",
+    "id": 7,
     "name": "Axe of Carving (Charged)",
     "attack": 50,
     "skill": "axe",
@@ -73,7 +73,7 @@
     ]
   },
   {
-    "id": "axe-of-carving-heavily-charged",
+    "id": 8,
     "name": "Axe of Carving (Heavily Charged)",
     "attack": 51,
     "skill": "axe",
@@ -82,7 +82,7 @@
     ]
   },
   {
-    "id": "axe-of-carving-overcharged",
+    "id": 9,
     "name": "Axe of Carving (Overcharged)",
     "attack": 52,
     "skill": "axe",
@@ -91,7 +91,7 @@
     ]
   },
   {
-    "id": "axe-of-destruction",
+    "id": 10,
     "name": "Axe of Destruction",
     "attack": 51,
     "skill": "axe",
@@ -100,7 +100,7 @@
     ]
   },
   {
-    "id": "axe-of-mayhem",
+    "id": 11,
     "name": "Axe of Mayhem",
     "attack": 51,
     "skill": "axe",
@@ -109,7 +109,7 @@
     ]
   },
   {
-    "id": "axe-of-mayhem-charged",
+    "id": 12,
     "name": "Axe of Mayhem (Charged)",
     "attack": 50,
     "skill": "axe",
@@ -118,7 +118,7 @@
     ]
   },
   {
-    "id": "axe-of-mayhem-heavily-charged",
+    "id": 13,
     "name": "Axe of Mayhem (Heavily Charged)",
     "attack": 51,
     "skill": "axe",
@@ -127,7 +127,7 @@
     ]
   },
   {
-    "id": "axe-of-mayhem-overcharged",
+    "id": 14,
     "name": "Axe of Mayhem (Overcharged)",
     "attack": 52,
     "skill": "axe",
@@ -136,7 +136,7 @@
     ]
   },
   {
-    "id": "axe-of-remedy",
+    "id": 15,
     "name": "Axe of Remedy",
     "attack": 51,
     "skill": "axe",
@@ -145,7 +145,7 @@
     ]
   },
   {
-    "id": "axe-of-remedy-charged",
+    "id": 16,
     "name": "Axe of Remedy (Charged)",
     "attack": 50,
     "skill": "axe",
@@ -154,7 +154,7 @@
     ]
   },
   {
-    "id": "axe-of-remedy-heavily-charged",
+    "id": 17,
     "name": "Axe of Remedy (Heavily Charged)",
     "attack": 51,
     "skill": "axe",
@@ -163,7 +163,7 @@
     ]
   },
   {
-    "id": "axe-of-remedy-overcharged",
+    "id": 18,
     "name": "Axe of Remedy (Overcharged)",
     "attack": 52,
     "skill": "axe",
@@ -172,7 +172,7 @@
     ]
   },
   {
-    "id": "barbarian-axe",
+    "id": 19,
     "name": "Barbarian Axe",
     "attack": 28,
     "skill": "axe",
@@ -185,7 +185,7 @@
     ]
   },
   {
-    "id": "battle-axe",
+    "id": 20,
     "name": "Battle Axe",
     "attack": 25,
     "skill": "axe",
@@ -194,7 +194,7 @@
     ]
   },
   {
-    "id": "beastslayer-axe",
+    "id": 21,
     "name": "Beastslayer Axe",
     "attack": 35,
     "skill": "axe",
@@ -207,7 +207,7 @@
     ]
   },
   {
-    "id": "broken-iks-spear",
+    "id": 22,
     "name": "Broken Iks Spear",
     "attack": 1,
     "skill": "axe",
@@ -220,7 +220,7 @@
     ]
   },
   {
-    "id": "butchers-axe",
+    "id": 23,
     "name": "Butcher's Axe",
     "attack": 41,
     "skill": "axe",
@@ -233,7 +233,7 @@
     ]
   },
   {
-    "id": "chopper-of-carving",
+    "id": 24,
     "name": "Chopper of Carving",
     "attack": 52,
     "skill": "axe",
@@ -242,7 +242,7 @@
     ]
   },
   {
-    "id": "chopper-of-carving-charged",
+    "id": 25,
     "name": "Chopper of Carving (Charged)",
     "attack": 51,
     "skill": "axe",
@@ -251,7 +251,7 @@
     ]
   },
   {
-    "id": "chopper-of-carving-heavily-charged",
+    "id": 26,
     "name": "Chopper of Carving (Heavily Charged)",
     "attack": 52,
     "skill": "axe",
@@ -260,7 +260,7 @@
     ]
   },
   {
-    "id": "chopper-of-carving-overcharged",
+    "id": 27,
     "name": "Chopper of Carving (Overcharged)",
     "attack": 53,
     "skill": "axe",
@@ -269,7 +269,7 @@
     ]
   },
   {
-    "id": "chopper-of-destruction",
+    "id": 28,
     "name": "Chopper of Destruction",
     "attack": 52,
     "skill": "axe",
@@ -278,7 +278,7 @@
     ]
   },
   {
-    "id": "chopper-of-mayhem",
+    "id": 29,
     "name": "Chopper of Mayhem",
     "attack": 52,
     "skill": "axe",
@@ -287,7 +287,7 @@
     ]
   },
   {
-    "id": "chopper-of-mayhem-charged",
+    "id": 30,
     "name": "Chopper of Mayhem (Charged)",
     "attack": 51,
     "skill": "axe",
@@ -296,7 +296,7 @@
     ]
   },
   {
-    "id": "chopper-of-mayhem-heavily-charged",
+    "id": 31,
     "name": "Chopper of Mayhem (Heavily Charged)",
     "attack": 52,
     "skill": "axe",
@@ -305,7 +305,7 @@
     ]
   },
   {
-    "id": "chopper-of-mayhem-overcharged",
+    "id": 32,
     "name": "Chopper of Mayhem (Overcharged)",
     "attack": 53,
     "skill": "axe",
@@ -314,7 +314,7 @@
     ]
   },
   {
-    "id": "chopper-of-remedy",
+    "id": 33,
     "name": "Chopper of Remedy",
     "attack": 52,
     "skill": "axe",
@@ -323,7 +323,7 @@
     ]
   },
   {
-    "id": "chopper-of-remedy-charged",
+    "id": 34,
     "name": "Chopper of Remedy (Charged)",
     "attack": 51,
     "skill": "axe",
@@ -332,7 +332,7 @@
     ]
   },
   {
-    "id": "chopper-of-remedy-heavily-charged",
+    "id": 35,
     "name": "Chopper of Remedy (Heavily Charged)",
     "attack": 52,
     "skill": "axe",
@@ -341,7 +341,7 @@
     ]
   },
   {
-    "id": "chopper-of-remedy-overcharged",
+    "id": 36,
     "name": "Chopper of Remedy (Overcharged)",
     "attack": 53,
     "skill": "axe",
@@ -350,7 +350,7 @@
     ]
   },
   {
-    "id": "cobra-axe",
+    "id": 37,
     "name": "Cobra Axe",
     "attack": 52,
     "attackIce": 44,
@@ -360,7 +360,7 @@
     ]
   },
   {
-    "id": "crude-umbral-axe",
+    "id": 38,
     "name": "Crude Umbral Axe",
     "attack": 49,
     "skill": "axe",
@@ -369,7 +369,7 @@
     ]
   },
   {
-    "id": "crude-umbral-chopper",
+    "id": 39,
     "name": "Crude Umbral Chopper",
     "attack": 51,
     "skill": "axe",
@@ -378,7 +378,7 @@
     ]
   },
   {
-    "id": "crypt-splitter",
+    "id": 40,
     "name": "Crypt Splitter",
     "attack": 58,
     "skill": "axe",
@@ -387,7 +387,7 @@
     ]
   },
   {
-    "id": "crystalline-axe",
+    "id": 41,
     "name": "Crystalline Axe",
     "attack": 51,
     "skill": "axe",
@@ -400,7 +400,7 @@
     ]
   },
   {
-    "id": "daramian-axe",
+    "id": 42,
     "name": "Daramian Axe",
     "attack": 17,
     "skill": "axe",
@@ -413,7 +413,7 @@
     ]
   },
   {
-    "id": "daramian-waraxe",
+    "id": 43,
     "name": "Daramian Waraxe",
     "attack": 39,
     "skill": "axe",
@@ -422,7 +422,7 @@
     ]
   },
   {
-    "id": "deepling-axe",
+    "id": 44,
     "name": "Deepling Axe",
     "attack": 49,
     "skill": "axe",
@@ -435,7 +435,7 @@
     ]
   },
   {
-    "id": "demonwing-axe",
+    "id": 45,
     "name": "Demonwing Axe",
     "attack": 53,
     "skill": "axe",
@@ -444,7 +444,7 @@
     ]
   },
   {
-    "id": "double-axe",
+    "id": 46,
     "name": "Double Axe",
     "attack": 35,
     "skill": "axe",
@@ -453,7 +453,7 @@
     ]
   },
   {
-    "id": "dragon-lance",
+    "id": 47,
     "name": "Dragon Lance",
     "attack": 47,
     "skill": "axe",
@@ -466,7 +466,7 @@
     ]
   },
   {
-    "id": "draining-inferniarch-battleaxe",
+    "id": 48,
     "name": "Draining Inferniarch Battleaxe",
     "attack": 52,
     "attackFire": 44,
@@ -476,7 +476,7 @@
     ]
   },
   {
-    "id": "draining-inferniarch-greataxe",
+    "id": 49,
     "name": "Draining Inferniarch Greataxe",
     "attack": 56,
     "attackFire": 48,
@@ -486,7 +486,7 @@
     ]
   },
   {
-    "id": "drakinata",
+    "id": 50,
     "name": "Drakinata",
     "attack": 47,
     "skill": "axe",
@@ -499,7 +499,7 @@
     ]
   },
   {
-    "id": "dreaded-cleaver",
+    "id": 51,
     "name": "Dreaded Cleaver",
     "attack": 40,
     "skill": "axe",
@@ -512,7 +512,7 @@
     ]
   },
   {
-    "id": "dwarven-axe",
+    "id": 52,
     "name": "Dwarven Axe",
     "attack": 31,
     "skill": "axe",
@@ -525,7 +525,7 @@
     ]
   },
   {
-    "id": "earth-barbarian-axe",
+    "id": 53,
     "name": "Earth Barbarian Axe",
     "attack": 28,
     "attackEarth": 5,
@@ -539,7 +539,7 @@
     ]
   },
   {
-    "id": "earth-barbaric-axe-replica",
+    "id": 54,
     "name": "Earth Barbaric Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -552,7 +552,7 @@
     ]
   },
   {
-    "id": "earth-headchopper",
+    "id": 55,
     "name": "Earth Headchopper",
     "attack": 42,
     "attackEarth": 8,
@@ -562,7 +562,7 @@
     ]
   },
   {
-    "id": "earth-headchopper-replica",
+    "id": 56,
     "name": "Earth Headchopper Replica",
     "attack": 5,
     "skill": "axe",
@@ -575,7 +575,7 @@
     ]
   },
   {
-    "id": "earth-heroic-axe",
+    "id": 57,
     "name": "Earth Heroic Axe",
     "attack": 44,
     "attackEarth": 9,
@@ -589,7 +589,7 @@
     ]
   },
   {
-    "id": "earth-heroic-axe-replica",
+    "id": 58,
     "name": "Earth Heroic Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -602,7 +602,7 @@
     ]
   },
   {
-    "id": "earth-knight-axe",
+    "id": 59,
     "name": "Earth Knight Axe",
     "attack": 33,
     "attackEarth": 6,
@@ -616,7 +616,7 @@
     ]
   },
   {
-    "id": "earth-knight-axe-replica",
+    "id": 60,
     "name": "Earth Knight Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -629,7 +629,7 @@
     ]
   },
   {
-    "id": "earth-war-axe",
+    "id": 61,
     "name": "Earth War Axe",
     "attack": 48,
     "attackEarth": 9,
@@ -639,7 +639,7 @@
     ]
   },
   {
-    "id": "earth-war-axe-replica",
+    "id": 62,
     "name": "Earth War Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -652,7 +652,7 @@
     ]
   },
   {
-    "id": "eldritch-greataxe",
+    "id": 63,
     "name": "Eldritch Greataxe",
     "attack": 56,
     "skill": "axe",
@@ -661,7 +661,7 @@
     ]
   },
   {
-    "id": "energy-axe-replica",
+    "id": 64,
     "name": "Energy Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -674,7 +674,7 @@
     ]
   },
   {
-    "id": "energy-barbarian-axe",
+    "id": 65,
     "name": "Energy Barbarian Axe",
     "attack": 28,
     "attackEnergy": 5,
@@ -688,7 +688,7 @@
     ]
   },
   {
-    "id": "energy-headchopper",
+    "id": 66,
     "name": "Energy Headchopper",
     "attack": 42,
     "attackEnergy": 8,
@@ -698,7 +698,7 @@
     ]
   },
   {
-    "id": "energy-headchopper-replica",
+    "id": 67,
     "name": "Energy Headchopper Replica",
     "attack": 5,
     "skill": "axe",
@@ -711,7 +711,7 @@
     ]
   },
   {
-    "id": "energy-heroic-axe",
+    "id": 68,
     "name": "Energy Heroic Axe",
     "attack": 44,
     "attackEnergy": 9,
@@ -725,7 +725,7 @@
     ]
   },
   {
-    "id": "energy-heroic-axe-replica",
+    "id": 69,
     "name": "Energy Heroic Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -738,7 +738,7 @@
     ]
   },
   {
-    "id": "energy-knight-axe",
+    "id": 70,
     "name": "Energy Knight Axe",
     "attack": 33,
     "attackEnergy": 6,
@@ -752,7 +752,7 @@
     ]
   },
   {
-    "id": "energy-knight-axe-replica",
+    "id": 71,
     "name": "Energy Knight Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -765,7 +765,7 @@
     ]
   },
   {
-    "id": "energy-war-axe",
+    "id": 72,
     "name": "Energy War Axe",
     "attack": 48,
     "attackEnergy": 9,
@@ -775,7 +775,7 @@
     ]
   },
   {
-    "id": "energy-war-axe-replica",
+    "id": 73,
     "name": "Energy War Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -788,7 +788,7 @@
     ]
   },
   {
-    "id": "execowtioner-axe",
+    "id": 74,
     "name": "Execowtioner Axe",
     "attack": 46,
     "skill": "axe",
@@ -801,7 +801,7 @@
     ]
   },
   {
-    "id": "executioner",
+    "id": 75,
     "name": "Executioner",
     "attack": 51,
     "skill": "axe",
@@ -810,7 +810,7 @@
     ]
   },
   {
-    "id": "falcon-battleaxe",
+    "id": 76,
     "name": "Falcon Battleaxe",
     "attack": 57,
     "attackEnergy": 47,
@@ -820,7 +820,7 @@
     ]
   },
   {
-    "id": "farmers-avenger",
+    "id": 77,
     "name": "Farmer's Avenger",
     "attack": 17,
     "skill": "axe",
@@ -833,7 +833,7 @@
     ]
   },
   {
-    "id": "fiery-barbarian-axe",
+    "id": 78,
     "name": "Fiery Barbarian Axe",
     "attack": 28,
     "attackFire": 5,
@@ -847,7 +847,7 @@
     ]
   },
   {
-    "id": "fiery-barbarian-axe-replica",
+    "id": 79,
     "name": "Fiery Barbarian Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -860,7 +860,7 @@
     ]
   },
   {
-    "id": "fiery-headchopper",
+    "id": 80,
     "name": "Fiery Headchopper",
     "attack": 42,
     "attackFire": 8,
@@ -870,7 +870,7 @@
     ]
   },
   {
-    "id": "fiery-headchopper-replica",
+    "id": 81,
     "name": "Fiery Headchopper Replica",
     "attack": 5,
     "skill": "axe",
@@ -883,7 +883,7 @@
     ]
   },
   {
-    "id": "fiery-heroic-axe",
+    "id": 82,
     "name": "Fiery Heroic Axe",
     "attack": 44,
     "attackFire": 9,
@@ -897,7 +897,7 @@
     ]
   },
   {
-    "id": "fiery-heroic-axe-replica",
+    "id": 83,
     "name": "Fiery Heroic Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -910,7 +910,7 @@
     ]
   },
   {
-    "id": "fiery-knight-axe",
+    "id": 84,
     "name": "Fiery Knight Axe",
     "attack": 33,
     "attackFire": 6,
@@ -924,7 +924,7 @@
     ]
   },
   {
-    "id": "fiery-knight-axe-replica",
+    "id": 85,
     "name": "Fiery Knight Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -937,7 +937,7 @@
     ]
   },
   {
-    "id": "fiery-war-axe",
+    "id": 86,
     "name": "Fiery War Axe",
     "attack": 48,
     "attackFire": 9,
@@ -947,7 +947,7 @@
     ]
   },
   {
-    "id": "fiery-war-axe-replica",
+    "id": 87,
     "name": "Fiery War Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -960,7 +960,7 @@
     ]
   },
   {
-    "id": "fire-axe",
+    "id": 88,
     "name": "Fire Axe",
     "attack": 38,
     "attackFire": 11,
@@ -974,7 +974,7 @@
     ]
   },
   {
-    "id": "gilded-eldritch-greataxe",
+    "id": 89,
     "name": "Gilded Eldritch Greataxe",
     "attack": 56,
     "skill": "axe",
@@ -983,7 +983,7 @@
     ]
   },
   {
-    "id": "glooth-axe",
+    "id": 90,
     "name": "Glooth Axe",
     "attack": 65,
     "attackEarth": 26,
@@ -993,7 +993,7 @@
     ]
   },
   {
-    "id": "glorious-axe",
+    "id": 91,
     "name": "Glorious Axe",
     "attack": 40,
     "skill": "axe",
@@ -1002,7 +1002,7 @@
     ]
   },
   {
-    "id": "golden-axe",
+    "id": 92,
     "name": "Golden Axe",
     "attack": 10,
     "skill": "axe",
@@ -1015,7 +1015,7 @@
     ]
   },
   {
-    "id": "golden-sickle",
+    "id": 93,
     "name": "Golden Sickle",
     "attack": 13,
     "skill": "axe",
@@ -1028,7 +1028,7 @@
     ]
   },
   {
-    "id": "grand-sanguine-battleaxe",
+    "id": 94,
     "name": "Grand Sanguine Battleaxe",
     "attack": 58,
     "attackDeath": 50,
@@ -1038,7 +1038,7 @@
     ]
   },
   {
-    "id": "grand-sanguine-hatchet",
+    "id": 95,
     "name": "Grand Sanguine Hatchet",
     "attack": 54,
     "attackFire": 46,
@@ -1048,7 +1048,7 @@
     ]
   },
   {
-    "id": "great-axe",
+    "id": 96,
     "name": "Great Axe",
     "attack": 52,
     "skill": "axe",
@@ -1057,7 +1057,7 @@
     ]
   },
   {
-    "id": "guardian-axe",
+    "id": 97,
     "name": "Guardian Axe",
     "attack": 46,
     "skill": "axe",
@@ -1070,7 +1070,7 @@
     ]
   },
   {
-    "id": "guardian-halberd",
+    "id": 98,
     "name": "Guardian Halberd",
     "attack": 46,
     "skill": "axe",
@@ -1083,7 +1083,7 @@
     ]
   },
   {
-    "id": "halberd",
+    "id": 99,
     "name": "Halberd",
     "attack": 35,
     "skill": "axe",
@@ -1096,7 +1096,7 @@
     ]
   },
   {
-    "id": "hand-axe",
+    "id": 100,
     "name": "Hand Axe",
     "attack": 10,
     "skill": "axe",
@@ -1109,7 +1109,7 @@
     ]
   },
   {
-    "id": "hatchet",
+    "id": 101,
     "name": "Hatchet",
     "attack": 15,
     "skill": "axe",
@@ -1122,7 +1122,7 @@
     ]
   },
   {
-    "id": "headchopper",
+    "id": 102,
     "name": "Headchopper",
     "attack": 42,
     "skill": "axe",
@@ -1131,7 +1131,7 @@
     ]
   },
   {
-    "id": "heavy-trident",
+    "id": 103,
     "name": "Heavy Trident",
     "attack": 35,
     "skill": "axe",
@@ -1144,7 +1144,7 @@
     ]
   },
   {
-    "id": "hellforged-axe",
+    "id": 104,
     "name": "Hellforged Axe",
     "attack": 51,
     "skill": "axe",
@@ -1157,7 +1157,7 @@
     ]
   },
   {
-    "id": "heroic-axe",
+    "id": 105,
     "name": "Heroic Axe",
     "attack": 44,
     "skill": "axe",
@@ -1170,7 +1170,7 @@
     ]
   },
   {
-    "id": "hive-scythe",
+    "id": 106,
     "name": "Hive Scythe",
     "attack": 46,
     "skill": "axe",
@@ -1183,7 +1183,7 @@
     ]
   },
   {
-    "id": "ice-hatchet",
+    "id": 107,
     "name": "Ice Hatchet",
     "attack": 15,
     "attackIce": 11,
@@ -1197,7 +1197,7 @@
     ]
   },
   {
-    "id": "icy-barbarian-axe",
+    "id": 108,
     "name": "Icy Barbarian Axe",
     "attack": 28,
     "attackIce": 5,
@@ -1211,7 +1211,7 @@
     ]
   },
   {
-    "id": "icy-barbarian-axe-replica",
+    "id": 109,
     "name": "Icy Barbarian Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -1224,7 +1224,7 @@
     ]
   },
   {
-    "id": "icy-headchopper",
+    "id": 110,
     "name": "Icy Headchopper",
     "attack": 42,
     "attackIce": 8,
@@ -1234,7 +1234,7 @@
     ]
   },
   {
-    "id": "icy-headchopper-replica",
+    "id": 111,
     "name": "Icy Headchopper Replica",
     "attack": 5,
     "skill": "axe",
@@ -1247,7 +1247,7 @@
     ]
   },
   {
-    "id": "icy-heroic-axe",
+    "id": 112,
     "name": "Icy Heroic Axe",
     "attack": 44,
     "attackIce": 9,
@@ -1261,7 +1261,7 @@
     ]
   },
   {
-    "id": "icy-heroic-axe-replica",
+    "id": 113,
     "name": "Icy Heroic Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -1274,7 +1274,7 @@
     ]
   },
   {
-    "id": "icy-knight-axe",
+    "id": 114,
     "name": "Icy Knight Axe",
     "attack": 33,
     "attackIce": 6,
@@ -1288,7 +1288,7 @@
     ]
   },
   {
-    "id": "icy-knight-axe-replica",
+    "id": 115,
     "name": "Icy Knight Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -1301,7 +1301,7 @@
     ]
   },
   {
-    "id": "icy-war-axe",
+    "id": 116,
     "name": "Icy War Axe",
     "attack": 48,
     "attackIce": 9,
@@ -1311,7 +1311,7 @@
     ]
   },
   {
-    "id": "icy-war-axe-replica",
+    "id": 117,
     "name": "Icy War Axe Replica",
     "attack": 5,
     "skill": "axe",
@@ -1324,7 +1324,7 @@
     ]
   },
   {
-    "id": "impaler",
+    "id": 118,
     "name": "Impaler",
     "attack": 49,
     "skill": "axe",
@@ -1337,7 +1337,7 @@
     ]
   },
   {
-    "id": "inferniarch-battleaxe",
+    "id": 119,
     "name": "Inferniarch Battleaxe",
     "attack": 52,
     "attackFire": 44,
@@ -1347,7 +1347,7 @@
     ]
   },
   {
-    "id": "inferniarch-greataxe",
+    "id": 120,
     "name": "Inferniarch Greataxe",
     "attack": 56,
     "attackFire": 48,
@@ -1357,7 +1357,7 @@
     ]
   },
   {
-    "id": "knight-axe",
+    "id": 121,
     "name": "Knight Axe",
     "attack": 33,
     "skill": "axe",
@@ -1370,7 +1370,7 @@
     ]
   },
   {
-    "id": "lion-axe",
+    "id": 122,
     "name": "Lion Axe",
     "attack": 52,
     "attackEarth": 44,
@@ -1380,7 +1380,7 @@
     ]
   },
   {
-    "id": "mino-lance",
+    "id": 123,
     "name": "Mino Lance",
     "attack": 40,
     "skill": "axe",
@@ -1393,7 +1393,7 @@
     ]
   },
   {
-    "id": "mythril-axe",
+    "id": 124,
     "name": "Mythril Axe",
     "attack": 48,
     "skill": "axe",
@@ -1406,7 +1406,7 @@
     ]
   },
   {
-    "id": "naga-axe",
+    "id": 125,
     "name": "Naga Axe",
     "attack": 52,
     "attackEnergy": 44,
@@ -1416,7 +1416,7 @@
     ]
   },
   {
-    "id": "naginata",
+    "id": 126,
     "name": "Naginata",
     "attack": 39,
     "skill": "axe",
@@ -1429,7 +1429,7 @@
     ]
   },
   {
-    "id": "noble-axe",
+    "id": 127,
     "name": "Noble Axe",
     "attack": 39,
     "skill": "axe",
@@ -1442,7 +1442,7 @@
     ]
   },
   {
-    "id": "obsidian-lance",
+    "id": 128,
     "name": "Obsidian Lance",
     "attack": 34,
     "skill": "axe",
@@ -1455,7 +1455,7 @@
     ]
   },
   {
-    "id": "ogre-choppa",
+    "id": 129,
     "name": "Ogre Choppa",
     "attack": 39,
     "skill": "axe",
@@ -1468,7 +1468,7 @@
     ]
   },
   {
-    "id": "orcish-axe",
+    "id": 130,
     "name": "Orcish Axe",
     "attack": 23,
     "skill": "axe",
@@ -1481,7 +1481,7 @@
     ]
   },
   {
-    "id": "ornamented-axe",
+    "id": 131,
     "name": "Ornamented Axe",
     "attack": 42,
     "skill": "axe",
@@ -1494,7 +1494,7 @@
     ]
   },
   {
-    "id": "ornate-carving-axe",
+    "id": 132,
     "name": "Ornate Carving Axe",
     "attack": 5,
     "skill": "axe",
@@ -1507,7 +1507,7 @@
     ]
   },
   {
-    "id": "ornate-carving-chopper",
+    "id": 133,
     "name": "Ornate Carving Chopper",
     "attack": 5,
     "skill": "axe",
@@ -1520,7 +1520,7 @@
     ]
   },
   {
-    "id": "ornate-mayhem-axe",
+    "id": 134,
     "name": "Ornate Mayhem Axe",
     "attack": 5,
     "skill": "axe",
@@ -1533,7 +1533,7 @@
     ]
   },
   {
-    "id": "ornate-mayhem-chopper",
+    "id": 135,
     "name": "Ornate Mayhem Chopper",
     "attack": 5,
     "skill": "axe",
@@ -1546,7 +1546,7 @@
     ]
   },
   {
-    "id": "ornate-remedy-axe",
+    "id": 136,
     "name": "Ornate Remedy Axe",
     "attack": 5,
     "skill": "axe",
@@ -1559,7 +1559,7 @@
     ]
   },
   {
-    "id": "ornate-remedy-chopper",
+    "id": 137,
     "name": "Ornate Remedy Chopper",
     "attack": 5,
     "skill": "axe",
@@ -1572,7 +1572,7 @@
     ]
   },
   {
-    "id": "phantasmal-axe",
+    "id": 138,
     "name": "Phantasmal Axe",
     "attack": 53,
     "attackFire": 48,
@@ -1582,7 +1582,7 @@
     ]
   },
   {
-    "id": "plague-bite",
+    "id": 139,
     "name": "Plague Bite",
     "attack": 52,
     "attackEarth": 26,
@@ -1596,7 +1596,7 @@
     ]
   },
   {
-    "id": "plain-carving-axe",
+    "id": 140,
     "name": "Plain Carving Axe",
     "attack": 5,
     "skill": "axe",
@@ -1609,7 +1609,7 @@
     ]
   },
   {
-    "id": "plain-carving-chopper",
+    "id": 141,
     "name": "Plain Carving Chopper",
     "attack": 5,
     "skill": "axe",
@@ -1622,7 +1622,7 @@
     ]
   },
   {
-    "id": "plain-mayhem-axe",
+    "id": 142,
     "name": "Plain Mayhem Axe",
     "attack": 5,
     "skill": "axe",
@@ -1635,7 +1635,7 @@
     ]
   },
   {
-    "id": "plain-mayhem-chopper",
+    "id": 143,
     "name": "Plain Mayhem Chopper",
     "attack": 5,
     "skill": "axe",
@@ -1648,7 +1648,7 @@
     ]
   },
   {
-    "id": "plain-remedy-axe",
+    "id": 144,
     "name": "Plain Remedy Axe",
     "attack": 5,
     "skill": "axe",
@@ -1661,7 +1661,7 @@
     ]
   },
   {
-    "id": "plain-remedy-chopper",
+    "id": 145,
     "name": "Plain Remedy Chopper",
     "attack": 5,
     "skill": "axe",
@@ -1674,7 +1674,7 @@
     ]
   },
   {
-    "id": "ravagers-axe",
+    "id": 146,
     "name": "Ravager's Axe",
     "attack": 49,
     "skill": "axe",
@@ -1683,7 +1683,7 @@
     ]
   },
   {
-    "id": "ravenwing",
+    "id": 147,
     "name": "Ravenwing",
     "attack": 45,
     "skill": "axe",
@@ -1696,7 +1696,7 @@
     ]
   },
   {
-    "id": "reapers-axe",
+    "id": 148,
     "name": "Reaper's Axe",
     "attack": 46,
     "skill": "axe",
@@ -1709,7 +1709,7 @@
     ]
   },
   {
-    "id": "rending-inferniarch-battleaxe",
+    "id": 149,
     "name": "Rending Inferniarch Battleaxe",
     "attack": 52,
     "attackFire": 44,
@@ -1719,7 +1719,7 @@
     ]
   },
   {
-    "id": "rending-inferniarch-greataxe",
+    "id": 150,
     "name": "Rending Inferniarch Greataxe",
     "attack": 56,
     "attackFire": 48,
@@ -1729,7 +1729,7 @@
     ]
   },
   {
-    "id": "rift-lance",
+    "id": 151,
     "name": "Rift Lance",
     "attack": 48,
     "skill": "axe",
@@ -1742,7 +1742,7 @@
     ]
   },
   {
-    "id": "ripper-lance",
+    "id": 152,
     "name": "Ripper Lance",
     "attack": 28,
     "skill": "axe",
@@ -1755,7 +1755,7 @@
     ]
   },
   {
-    "id": "royal-axe",
+    "id": 153,
     "name": "Royal Axe",
     "attack": 47,
     "skill": "axe",
@@ -1768,7 +1768,7 @@
     ]
   },
   {
-    "id": "ruthless-axe",
+    "id": 154,
     "name": "Ruthless Axe",
     "attack": 50,
     "skill": "axe",
@@ -1777,7 +1777,7 @@
     ]
   },
   {
-    "id": "sanguine-battleaxe",
+    "id": 155,
     "name": "Sanguine Battleaxe",
     "attack": 58,
     "attackDeath": 50,
@@ -1787,7 +1787,7 @@
     ]
   },
   {
-    "id": "sanguine-hatchet",
+    "id": 156,
     "name": "Sanguine Hatchet",
     "attack": 54,
     "attackFire": 46,
@@ -1797,7 +1797,7 @@
     ]
   },
   {
-    "id": "scythe-of-the-reaper",
+    "id": 157,
     "name": "Scythe of the Reaper",
     "attack": 16,
     "skill": "axe",
@@ -1810,7 +1810,7 @@
     ]
   },
   {
-    "id": "sickle",
+    "id": 158,
     "name": "Sickle",
     "attack": 5,
     "skill": "axe",
@@ -1823,7 +1823,7 @@
     ]
   },
   {
-    "id": "siphoning-inferniarch-battleaxe",
+    "id": 159,
     "name": "Siphoning Inferniarch Battleaxe",
     "attack": 52,
     "attackFire": 44,
@@ -1833,7 +1833,7 @@
     ]
   },
   {
-    "id": "siphoning-inferniarch-greataxe",
+    "id": 160,
     "name": "Siphoning Inferniarch Greataxe",
     "attack": 56,
     "attackFire": 48,
@@ -1843,7 +1843,7 @@
     ]
   },
   {
-    "id": "solar-axe",
+    "id": 161,
     "name": "Solar Axe",
     "attack": 52,
     "skill": "axe",
@@ -1856,7 +1856,7 @@
     ]
   },
   {
-    "id": "soulbiter",
+    "id": 162,
     "name": "Soulbiter",
     "attack": 52,
     "attackDeath": 45,
@@ -1866,7 +1866,7 @@
     ]
   },
   {
-    "id": "souleater-axe",
+    "id": 163,
     "name": "Souleater (Axe)",
     "attack": 57,
     "attackIce": 47,
@@ -1876,7 +1876,7 @@
     ]
   },
   {
-    "id": "steel-axe",
+    "id": 164,
     "name": "Steel Axe",
     "attack": 21,
     "skill": "axe",
@@ -1889,7 +1889,7 @@
     ]
   },
   {
-    "id": "stonecutter-axe",
+    "id": 165,
     "name": "Stonecutter Axe",
     "attack": 50,
     "skill": "axe",
@@ -1902,7 +1902,7 @@
     ]
   },
   {
-    "id": "throwing-axe",
+    "id": 166,
     "name": "Throwing Axe",
     "attack": 51,
     "skill": "axe",
@@ -1911,7 +1911,7 @@
     ]
   },
   {
-    "id": "titan-axe",
+    "id": 167,
     "name": "Titan Axe",
     "attack": 43,
     "skill": "axe",
@@ -1920,7 +1920,7 @@
     ]
   },
   {
-    "id": "twin-axe",
+    "id": 168,
     "name": "Twin Axe",
     "attack": 45,
     "skill": "axe",
@@ -1929,7 +1929,7 @@
     ]
   },
   {
-    "id": "umbral-axe",
+    "id": 169,
     "name": "Umbral Axe",
     "attack": 51,
     "skill": "axe",
@@ -1938,7 +1938,7 @@
     ]
   },
   {
-    "id": "umbral-chopper",
+    "id": 170,
     "name": "Umbral Chopper",
     "attack": 52,
     "skill": "axe",
@@ -1947,7 +1947,7 @@
     ]
   },
   {
-    "id": "umbral-master-axe",
+    "id": 171,
     "name": "Umbral Master Axe",
     "attack": 53,
     "skill": "axe",
@@ -1956,7 +1956,7 @@
     ]
   },
   {
-    "id": "umbral-master-chopper",
+    "id": 172,
     "name": "Umbral Master Chopper",
     "attack": 54,
     "skill": "axe",
@@ -1965,7 +1965,7 @@
     ]
   },
   {
-    "id": "valuable-carving-axe",
+    "id": 173,
     "name": "Valuable Carving Axe",
     "attack": 5,
     "skill": "axe",
@@ -1978,7 +1978,7 @@
     ]
   },
   {
-    "id": "valuable-carving-chopper",
+    "id": 174,
     "name": "Valuable Carving Chopper",
     "attack": 5,
     "skill": "axe",
@@ -1991,7 +1991,7 @@
     ]
   },
   {
-    "id": "valuable-mayhem-axe",
+    "id": 175,
     "name": "Valuable Mayhem Axe",
     "attack": 5,
     "skill": "axe",
@@ -2004,7 +2004,7 @@
     ]
   },
   {
-    "id": "valuable-mayhem-chopper",
+    "id": 176,
     "name": "Valuable Mayhem Chopper",
     "attack": 5,
     "skill": "axe",
@@ -2017,7 +2017,7 @@
     ]
   },
   {
-    "id": "valuable-remedy-axe",
+    "id": 177,
     "name": "Valuable Remedy Axe",
     "attack": 5,
     "skill": "axe",
@@ -2030,7 +2030,7 @@
     ]
   },
   {
-    "id": "valuable-remedy-chopper",
+    "id": 178,
     "name": "Valuable Remedy Chopper",
     "attack": 5,
     "skill": "axe",
@@ -2043,7 +2043,7 @@
     ]
   },
   {
-    "id": "vile-axe",
+    "id": 179,
     "name": "Vile Axe",
     "attack": 43,
     "skill": "axe",
@@ -2056,7 +2056,7 @@
     ]
   },
   {
-    "id": "war-axe",
+    "id": 180,
     "name": "War Axe",
     "attack": 48,
     "skill": "axe",
@@ -2065,7 +2065,7 @@
     ]
   },
   {
-    "id": "warriors-axe",
+    "id": 181,
     "name": "Warrior's Axe",
     "attack": 42,
     "skill": "axe",
@@ -2078,7 +2078,7 @@
     ]
   },
   {
-    "id": "zaoan-halberd",
+    "id": 182,
     "name": "Zaoan Halberd",
     "attack": 37,
     "skill": "axe",
@@ -2091,7 +2091,7 @@
     ]
   },
   {
-    "id": "amber-bow",
+    "id": 183,
     "name": "Amber Bow",
     "attack": 7,
     "skill": "distance",
@@ -2101,7 +2101,7 @@
     ]
   },
   {
-    "id": "bow",
+    "id": 184,
     "name": "Bow",
     "attack": 0,
     "skill": "distance",
@@ -2115,7 +2115,7 @@
     ]
   },
   {
-    "id": "bow-of-carving",
+    "id": 185,
     "name": "Bow of Carving",
     "attack": 6,
     "skill": "distance",
@@ -2125,7 +2125,7 @@
     ]
   },
   {
-    "id": "bow-of-carving-charged",
+    "id": 186,
     "name": "Bow of Carving (Charged)",
     "attack": 4,
     "skill": "distance",
@@ -2135,7 +2135,7 @@
     ]
   },
   {
-    "id": "bow-of-carving-heavily-charged",
+    "id": 187,
     "name": "Bow of Carving (Heavily Charged)",
     "attack": 5,
     "skill": "distance",
@@ -2145,7 +2145,7 @@
     ]
   },
   {
-    "id": "bow-of-carving-overcharged",
+    "id": 188,
     "name": "Bow of Carving (Overcharged)",
     "attack": 6,
     "skill": "distance",
@@ -2155,7 +2155,7 @@
     ]
   },
   {
-    "id": "bow-of-cataclysm",
+    "id": 189,
     "name": "Bow of Cataclysm",
     "attack": 6,
     "skill": "distance",
@@ -2165,7 +2165,7 @@
     ]
   },
   {
-    "id": "bow-of-destruction",
+    "id": 190,
     "name": "Bow of Destruction",
     "attack": 5,
     "skill": "distance",
@@ -2175,7 +2175,7 @@
     ]
   },
   {
-    "id": "bow-of-destruction-test",
+    "id": 191,
     "name": "Bow of Destruction Test",
     "attack": 0,
     "skill": "distance",
@@ -2189,7 +2189,7 @@
     ]
   },
   {
-    "id": "bow-of-mayhem",
+    "id": 192,
     "name": "Bow of Mayhem",
     "attack": 6,
     "skill": "distance",
@@ -2199,7 +2199,7 @@
     ]
   },
   {
-    "id": "bow-of-mayhem-charged",
+    "id": 193,
     "name": "Bow of Mayhem (Charged)",
     "attack": 4,
     "skill": "distance",
@@ -2209,7 +2209,7 @@
     ]
   },
   {
-    "id": "bow-of-mayhem-heavily-charged",
+    "id": 194,
     "name": "Bow of Mayhem (Heavily Charged)",
     "attack": 5,
     "skill": "distance",
@@ -2219,7 +2219,7 @@
     ]
   },
   {
-    "id": "bow-of-mayhem-overcharged",
+    "id": 195,
     "name": "Bow of Mayhem (Overcharged)",
     "attack": 6,
     "skill": "distance",
@@ -2229,7 +2229,7 @@
     ]
   },
   {
-    "id": "bow-of-remedy",
+    "id": 196,
     "name": "Bow of Remedy",
     "attack": 6,
     "skill": "distance",
@@ -2239,7 +2239,7 @@
     ]
   },
   {
-    "id": "bow-of-remedy-charged",
+    "id": 197,
     "name": "Bow of Remedy (Charged)",
     "attack": 4,
     "skill": "distance",
@@ -2249,7 +2249,7 @@
     ]
   },
   {
-    "id": "bow-of-remedy-heavily-charged",
+    "id": 198,
     "name": "Bow of Remedy (Heavily Charged)",
     "attack": 5,
     "skill": "distance",
@@ -2259,7 +2259,7 @@
     ]
   },
   {
-    "id": "bow-of-remedy-overcharged",
+    "id": 199,
     "name": "Bow of Remedy (Overcharged)",
     "attack": 6,
     "skill": "distance",
@@ -2269,7 +2269,7 @@
     ]
   },
   {
-    "id": "composite-hornbow",
+    "id": 200,
     "name": "Composite Hornbow",
     "attack": 2,
     "skill": "distance",
@@ -2279,7 +2279,7 @@
     ]
   },
   {
-    "id": "crude-umbral-bow",
+    "id": 201,
     "name": "Crude Umbral Bow",
     "attack": 2,
     "skill": "distance",
@@ -2289,7 +2289,7 @@
     ]
   },
   {
-    "id": "crypt-spine",
+    "id": 202,
     "name": "Crypt Spine",
     "attack": 8,
     "skill": "distance",
@@ -2299,7 +2299,7 @@
     ]
   },
   {
-    "id": "draining-inferniarch-bow",
+    "id": 203,
     "name": "Draining Inferniarch Bow",
     "attack": 7,
     "skill": "distance",
@@ -2309,7 +2309,7 @@
     ]
   },
   {
-    "id": "eldritch-bow",
+    "id": 204,
     "name": "Eldritch Bow",
     "attack": 6,
     "skill": "distance",
@@ -2319,7 +2319,7 @@
     ]
   },
   {
-    "id": "elethriels-elemental-bow",
+    "id": 205,
     "name": "Elethriel's Elemental Bow",
     "attack": 7,
     "skill": "distance",
@@ -2329,7 +2329,7 @@
     ]
   },
   {
-    "id": "elvish-bow",
+    "id": 206,
     "name": "Elvish Bow",
     "attack": 0,
     "skill": "distance",
@@ -2343,7 +2343,7 @@
     ]
   },
   {
-    "id": "falcon-bow",
+    "id": 207,
     "name": "Falcon Bow",
     "attack": 6,
     "skill": "distance",
@@ -2353,7 +2353,7 @@
     ]
   },
   {
-    "id": "gilded-eldritch-bow",
+    "id": 208,
     "name": "Gilded Eldritch Bow",
     "attack": 6,
     "skill": "distance",
@@ -2363,7 +2363,7 @@
     ]
   },
   {
-    "id": "grand-sanguine-bow",
+    "id": 209,
     "name": "Grand Sanguine Bow",
     "attack": 9,
     "skill": "distance",
@@ -2373,7 +2373,7 @@
     ]
   },
   {
-    "id": "hive-bow",
+    "id": 210,
     "name": "Hive Bow",
     "attack": 2,
     "skill": "distance",
@@ -2383,7 +2383,7 @@
     ]
   },
   {
-    "id": "icicle-bow",
+    "id": 211,
     "name": "Icicle Bow",
     "attack": 1,
     "skill": "distance",
@@ -2397,7 +2397,7 @@
     ]
   },
   {
-    "id": "inferniarch-bow",
+    "id": 212,
     "name": "Inferniarch Bow",
     "attack": 7,
     "skill": "distance",
@@ -2407,7 +2407,7 @@
     ]
   },
   {
-    "id": "jungle-bow",
+    "id": 213,
     "name": "Jungle Bow",
     "attack": 6,
     "skill": "distance",
@@ -2417,7 +2417,7 @@
     ]
   },
   {
-    "id": "lion-longbow",
+    "id": 214,
     "name": "Lion Longbow",
     "attack": 6,
     "skill": "distance",
@@ -2427,7 +2427,7 @@
     ]
   },
   {
-    "id": "living-vine-bow",
+    "id": 215,
     "name": "Living Vine Bow",
     "attack": 5,
     "skill": "distance",
@@ -2437,7 +2437,7 @@
     ]
   },
   {
-    "id": "musicians-bow",
+    "id": 216,
     "name": "Musician's Bow",
     "attack": 0,
     "skill": "distance",
@@ -2451,7 +2451,7 @@
     ]
   },
   {
-    "id": "mycological-bow",
+    "id": 217,
     "name": "Mycological Bow",
     "attack": 4,
     "skill": "distance",
@@ -2461,7 +2461,7 @@
     ]
   },
   {
-    "id": "ornate-carving-bow",
+    "id": 218,
     "name": "Ornate Carving Bow",
     "attack": 0,
     "skill": "distance",
@@ -2475,7 +2475,7 @@
     ]
   },
   {
-    "id": "ornate-mayhem-bow",
+    "id": 219,
     "name": "Ornate Mayhem Bow",
     "attack": 0,
     "skill": "distance",
@@ -2489,7 +2489,7 @@
     ]
   },
   {
-    "id": "ornate-remedy-bow",
+    "id": 220,
     "name": "Ornate Remedy Bow",
     "attack": 0,
     "skill": "distance",
@@ -2503,7 +2503,7 @@
     ]
   },
   {
-    "id": "plain-carving-bow",
+    "id": 221,
     "name": "Plain Carving Bow",
     "attack": 0,
     "skill": "distance",
@@ -2517,7 +2517,7 @@
     ]
   },
   {
-    "id": "plain-mayhem-bow",
+    "id": 222,
     "name": "Plain Mayhem Bow",
     "attack": 0,
     "skill": "distance",
@@ -2531,7 +2531,7 @@
     ]
   },
   {
-    "id": "plain-remedy-bow",
+    "id": 223,
     "name": "Plain Remedy Bow",
     "attack": 0,
     "skill": "distance",
@@ -2545,7 +2545,7 @@
     ]
   },
   {
-    "id": "refined-bow",
+    "id": 224,
     "name": "Refined Bow",
     "attack": 0,
     "skill": "distance",
@@ -2559,7 +2559,7 @@
     ]
   },
   {
-    "id": "rending-inferniarch-bow",
+    "id": 225,
     "name": "Rending Inferniarch Bow",
     "attack": 7,
     "skill": "distance",
@@ -2569,7 +2569,7 @@
     ]
   },
   {
-    "id": "rift-bow",
+    "id": 226,
     "name": "Rift Bow",
     "attack": 5,
     "skill": "distance",
@@ -2579,7 +2579,7 @@
     ]
   },
   {
-    "id": "sanguine-bow",
+    "id": 227,
     "name": "Sanguine Bow",
     "attack": 9,
     "skill": "distance",
@@ -2589,7 +2589,7 @@
     ]
   },
   {
-    "id": "shimmer-bow",
+    "id": 228,
     "name": "Shimmer Bow",
     "attack": 1,
     "skill": "distance",
@@ -2599,7 +2599,7 @@
     ]
   },
   {
-    "id": "silkweaver-bow",
+    "id": 229,
     "name": "Silkweaver Bow",
     "attack": 0,
     "skill": "distance",
@@ -2609,7 +2609,7 @@
     ]
   },
   {
-    "id": "siphoning-inferniarch-bow",
+    "id": 230,
     "name": "Siphoning Inferniarch Bow",
     "attack": 7,
     "skill": "distance",
@@ -2619,7 +2619,7 @@
     ]
   },
   {
-    "id": "soulbleeder",
+    "id": 231,
     "name": "Soulbleeder",
     "attack": 8,
     "skill": "distance",
@@ -2629,7 +2629,7 @@
     ]
   },
   {
-    "id": "umbral-bow",
+    "id": 232,
     "name": "Umbral Bow",
     "attack": 4,
     "skill": "distance",
@@ -2639,7 +2639,7 @@
     ]
   },
   {
-    "id": "umbral-master-bow",
+    "id": 233,
     "name": "Umbral Master Bow",
     "attack": 6,
     "skill": "distance",
@@ -2649,7 +2649,7 @@
     ]
   },
   {
-    "id": "umbral-master-bow-test",
+    "id": 234,
     "name": "Umbral Master Bow Test",
     "attack": 0,
     "skill": "distance",
@@ -2663,7 +2663,7 @@
     ]
   },
   {
-    "id": "valuable-carving-bow",
+    "id": 235,
     "name": "Valuable Carving Bow",
     "attack": 0,
     "skill": "distance",
@@ -2677,7 +2677,7 @@
     ]
   },
   {
-    "id": "valuable-mayhem-bow",
+    "id": 236,
     "name": "Valuable Mayhem Bow",
     "attack": 0,
     "skill": "distance",
@@ -2691,7 +2691,7 @@
     ]
   },
   {
-    "id": "valuable-remedy-bow",
+    "id": 237,
     "name": "Valuable Remedy Bow",
     "attack": 0,
     "skill": "distance",
@@ -2705,7 +2705,7 @@
     ]
   },
   {
-    "id": "warsinger-bow",
+    "id": 238,
     "name": "Warsinger Bow",
     "attack": 3,
     "skill": "distance",
@@ -2715,7 +2715,7 @@
     ]
   },
   {
-    "id": "yols-bow",
+    "id": 239,
     "name": "Yol's Bow",
     "attack": 0,
     "skill": "distance",
@@ -2725,7 +2725,7 @@
     ]
   },
   {
-    "id": "abyss-hammer",
+    "id": 240,
     "name": "Abyss Hammer",
     "attack": 47,
     "skill": "club",
@@ -2734,7 +2734,7 @@
     ]
   },
   {
-    "id": "amber-bludgeon",
+    "id": 241,
     "name": "Amber Bludgeon",
     "attack": 50,
     "attackDeath": 50,
@@ -2744,7 +2744,7 @@
     ]
   },
   {
-    "id": "amber-cudgel",
+    "id": 242,
     "name": "Amber Cudgel",
     "attack": 46,
     "attackFire": 46,
@@ -2754,7 +2754,7 @@
     ]
   },
   {
-    "id": "amber-staff",
+    "id": 243,
     "name": "Amber Staff",
     "attack": 43,
     "skill": "club",
@@ -2767,7 +2767,7 @@
     ]
   },
   {
-    "id": "arcane-staff",
+    "id": 244,
     "name": "Arcane Staff",
     "attack": 50,
     "skill": "club",
@@ -2780,7 +2780,7 @@
     ]
   },
   {
-    "id": "banana-staff",
+    "id": 245,
     "name": "Banana Staff",
     "attack": 25,
     "skill": "club",
@@ -2793,7 +2793,7 @@
     ]
   },
   {
-    "id": "battle-hammer",
+    "id": 246,
     "name": "Battle Hammer",
     "attack": 24,
     "skill": "club",
@@ -2806,7 +2806,7 @@
     ]
   },
   {
-    "id": "blessed-sceptre",
+    "id": 247,
     "name": "Blessed Sceptre",
     "attack": 47,
     "skill": "club",
@@ -2819,7 +2819,7 @@
     ]
   },
   {
-    "id": "bone-club",
+    "id": 248,
     "name": "Bone Club",
     "attack": 12,
     "skill": "club",
@@ -2832,7 +2832,7 @@
     ]
   },
   {
-    "id": "bonebreaker",
+    "id": 249,
     "name": "Bonebreaker",
     "attack": 46,
     "skill": "club",
@@ -2841,7 +2841,7 @@
     ]
   },
   {
-    "id": "brutetamers-staff",
+    "id": 250,
     "name": "Brutetamer's Staff",
     "attack": 35,
     "skill": "club",
@@ -2854,7 +2854,7 @@
     ]
   },
   {
-    "id": "chaos-mace",
+    "id": 251,
     "name": "Chaos Mace",
     "attack": 44,
     "skill": "club",
@@ -2867,7 +2867,7 @@
     ]
   },
   {
-    "id": "clerical-mace",
+    "id": 252,
     "name": "Clerical Mace",
     "attack": 28,
     "skill": "club",
@@ -2880,7 +2880,7 @@
     ]
   },
   {
-    "id": "club",
+    "id": 253,
     "name": "Club",
     "attack": 7,
     "skill": "club",
@@ -2893,7 +2893,7 @@
     ]
   },
   {
-    "id": "club-of-the-fury",
+    "id": 254,
     "name": "Club of the Fury",
     "attack": 16,
     "skill": "club",
@@ -2906,7 +2906,7 @@
     ]
   },
   {
-    "id": "cobra-club",
+    "id": 255,
     "name": "Cobra Club",
     "attack": 52,
     "attackFire": 44,
@@ -2916,7 +2916,7 @@
     ]
   },
   {
-    "id": "cranial-basher",
+    "id": 256,
     "name": "Cranial Basher",
     "attack": 44,
     "skill": "club",
@@ -2929,7 +2929,7 @@
     ]
   },
   {
-    "id": "crowbar",
+    "id": 257,
     "name": "Crowbar",
     "attack": 5,
     "skill": "club",
@@ -2942,7 +2942,7 @@
     ]
   },
   {
-    "id": "crude-umbral-hammer",
+    "id": 258,
     "name": "Crude Umbral Hammer",
     "attack": 51,
     "skill": "club",
@@ -2951,7 +2951,7 @@
     ]
   },
   {
-    "id": "crude-umbral-mace",
+    "id": 259,
     "name": "Crude Umbral Mace",
     "attack": 48,
     "skill": "club",
@@ -2960,7 +2960,7 @@
     ]
   },
   {
-    "id": "crypt-breaker",
+    "id": 260,
     "name": "Crypt Breaker",
     "attack": 58,
     "skill": "club",
@@ -2969,7 +2969,7 @@
     ]
   },
   {
-    "id": "crystal-mace",
+    "id": 261,
     "name": "Crystal Mace",
     "attack": 38,
     "skill": "club",
@@ -2982,7 +2982,7 @@
     ]
   },
   {
-    "id": "daramian-mace",
+    "id": 262,
     "name": "Daramian Mace",
     "attack": 21,
     "skill": "club",
@@ -2995,7 +2995,7 @@
     ]
   },
   {
-    "id": "dark-trinity-mace",
+    "id": 263,
     "name": "Dark Trinity Mace",
     "attack": 51,
     "skill": "club",
@@ -3008,7 +3008,7 @@
     ]
   },
   {
-    "id": "deepling-squelcher",
+    "id": 264,
     "name": "Deepling Squelcher",
     "attack": 42,
     "skill": "club",
@@ -3021,7 +3021,7 @@
     ]
   },
   {
-    "id": "deepling-staff",
+    "id": 265,
     "name": "Deepling Staff",
     "attack": 43,
     "skill": "club",
@@ -3034,7 +3034,7 @@
     ]
   },
   {
-    "id": "demonbone",
+    "id": 266,
     "name": "Demonbone",
     "attack": 48,
     "skill": "club",
@@ -3047,7 +3047,7 @@
     ]
   },
   {
-    "id": "diamond-sceptre",
+    "id": 267,
     "name": "Diamond Sceptre",
     "attack": 34,
     "skill": "club",
@@ -3060,7 +3060,7 @@
     ]
   },
   {
-    "id": "dragon-hammer",
+    "id": 268,
     "name": "Dragon Hammer",
     "attack": 32,
     "skill": "club",
@@ -3073,7 +3073,7 @@
     ]
   },
   {
-    "id": "dragonbone-staff",
+    "id": 269,
     "name": "Dragonbone Staff",
     "attack": 35,
     "skill": "club",
@@ -3086,7 +3086,7 @@
     ]
   },
   {
-    "id": "draining-inferniarch-flail",
+    "id": 270,
     "name": "Draining Inferniarch Flail",
     "attack": 52,
     "attackDeath": 44,
@@ -3096,7 +3096,7 @@
     ]
   },
   {
-    "id": "draining-inferniarch-warhammer",
+    "id": 271,
     "name": "Draining Inferniarch Warhammer",
     "attack": 56,
     "attackIce": 48,
@@ -3106,7 +3106,7 @@
     ]
   },
   {
-    "id": "earth-basher-replica",
+    "id": 272,
     "name": "Earth Basher Replica",
     "attack": 5,
     "skill": "club",
@@ -3119,7 +3119,7 @@
     ]
   },
   {
-    "id": "earth-cleric-mace-replica",
+    "id": 273,
     "name": "Earth Cleric Mace Replica",
     "attack": 5,
     "skill": "club",
@@ -3132,7 +3132,7 @@
     ]
   },
   {
-    "id": "earth-clerical-mace",
+    "id": 274,
     "name": "Earth Clerical Mace",
     "attack": 28,
     "attackEarth": 5,
@@ -3146,7 +3146,7 @@
     ]
   },
   {
-    "id": "earth-cranial-basher",
+    "id": 275,
     "name": "Earth Cranial Basher",
     "attack": 44,
     "attackEarth": 8,
@@ -3160,7 +3160,7 @@
     ]
   },
   {
-    "id": "earth-crystal-mace",
+    "id": 276,
     "name": "Earth Crystal Mace",
     "attack": 38,
     "attackEarth": 7,
@@ -3174,7 +3174,7 @@
     ]
   },
   {
-    "id": "earth-crystal-mace-replica",
+    "id": 277,
     "name": "Earth Crystal Mace Replica",
     "attack": 5,
     "skill": "club",
@@ -3187,7 +3187,7 @@
     ]
   },
   {
-    "id": "earth-orcish-maul",
+    "id": 278,
     "name": "Earth Orcish Maul",
     "attack": 42,
     "attackEarth": 7,
@@ -3201,7 +3201,7 @@
     ]
   },
   {
-    "id": "earth-orcish-maul-replica",
+    "id": 279,
     "name": "Earth Orcish Maul Replica",
     "attack": 5,
     "skill": "club",
@@ -3214,7 +3214,7 @@
     ]
   },
   {
-    "id": "earth-war-hammer",
+    "id": 280,
     "name": "Earth War Hammer",
     "attack": 45,
     "attackEarth": 9,
@@ -3224,7 +3224,7 @@
     ]
   },
   {
-    "id": "earth-war-hammer-replica",
+    "id": 281,
     "name": "Earth War Hammer Replica",
     "attack": 5,
     "skill": "club",
@@ -3237,7 +3237,7 @@
     ]
   },
   {
-    "id": "eldritch-warmace",
+    "id": 282,
     "name": "Eldritch Warmace",
     "attack": 56,
     "attackFire": 50,
@@ -3247,7 +3247,7 @@
     ]
   },
   {
-    "id": "enchanted-staff",
+    "id": 283,
     "name": "Enchanted Staff",
     "attack": 39,
     "skill": "club",
@@ -3260,7 +3260,7 @@
     ]
   },
   {
-    "id": "energized-demonbone",
+    "id": 284,
     "name": "Energized Demonbone",
     "attack": 46,
     "skill": "club",
@@ -3273,7 +3273,7 @@
     ]
   },
   {
-    "id": "energy-basher-replica",
+    "id": 285,
     "name": "Energy Basher Replica",
     "attack": 5,
     "skill": "club",
@@ -3286,7 +3286,7 @@
     ]
   },
   {
-    "id": "energy-cleric-mace-replica",
+    "id": 286,
     "name": "Energy Cleric Mace Replica",
     "attack": 5,
     "skill": "club",
@@ -3299,7 +3299,7 @@
     ]
   },
   {
-    "id": "energy-clerical-mace",
+    "id": 287,
     "name": "Energy Clerical Mace",
     "attack": 28,
     "attackEnergy": 5,
@@ -3313,7 +3313,7 @@
     ]
   },
   {
-    "id": "energy-cranial-basher",
+    "id": 288,
     "name": "Energy Cranial Basher",
     "attack": 44,
     "attackEnergy": 8,
@@ -3327,7 +3327,7 @@
     ]
   },
   {
-    "id": "energy-crystal-mace",
+    "id": 289,
     "name": "Energy Crystal Mace",
     "attack": 38,
     "attackEnergy": 7,
@@ -3341,7 +3341,7 @@
     ]
   },
   {
-    "id": "energy-mace-replica",
+    "id": 290,
     "name": "Energy Mace Replica",
     "attack": 5,
     "skill": "club",
@@ -3354,7 +3354,7 @@
     ]
   },
   {
-    "id": "energy-orcish-maul",
+    "id": 291,
     "name": "Energy Orcish Maul",
     "attack": 42,
     "attackEnergy": 7,
@@ -3368,7 +3368,7 @@
     ]
   },
   {
-    "id": "energy-orcish-maul-replica",
+    "id": 292,
     "name": "Energy Orcish Maul Replica",
     "attack": 5,
     "skill": "club",
@@ -3381,7 +3381,7 @@
     ]
   },
   {
-    "id": "energy-war-hammer",
+    "id": 293,
     "name": "Energy War Hammer",
     "attack": 45,
     "attackEnergy": 9,
@@ -3391,7 +3391,7 @@
     ]
   },
   {
-    "id": "energy-war-hammer-replica",
+    "id": 294,
     "name": "Energy War Hammer Replica",
     "attack": 5,
     "skill": "club",
@@ -3404,7 +3404,7 @@
     ]
   },
   {
-    "id": "falcon-mace",
+    "id": 295,
     "name": "Falcon Mace",
     "attack": 52,
     "attackEnergy": 41,
@@ -3414,7 +3414,7 @@
     ]
   },
   {
-    "id": "ferumbras-staff-blunt",
+    "id": 296,
     "name": "Ferumbras' Staff (Blunt)",
     "attack": 20,
     "skill": "club",
@@ -3427,7 +3427,7 @@
     ]
   },
   {
-    "id": "fiery-basher-replica",
+    "id": 297,
     "name": "Fiery Basher Replica",
     "attack": 5,
     "skill": "club",
@@ -3440,7 +3440,7 @@
     ]
   },
   {
-    "id": "fiery-clerical-mace",
+    "id": 298,
     "name": "Fiery Clerical Mace",
     "attack": 28,
     "attackFire": 5,
@@ -3454,7 +3454,7 @@
     ]
   },
   {
-    "id": "fiery-clerical-mace-replica",
+    "id": 299,
     "name": "Fiery Clerical Mace Replica",
     "attack": 5,
     "skill": "club",
@@ -3467,7 +3467,7 @@
     ]
   },
   {
-    "id": "fiery-cranial-basher",
+    "id": 300,
     "name": "Fiery Cranial Basher",
     "attack": 44,
     "attackFire": 8,
@@ -3481,7 +3481,7 @@
     ]
   },
   {
-    "id": "fiery-crystal-mace",
+    "id": 301,
     "name": "Fiery Crystal Mace",
     "attack": 38,
     "attackFire": 7,
@@ -3495,7 +3495,7 @@
     ]
   },
   {
-    "id": "fiery-crystal-mace-replica",
+    "id": 302,
     "name": "Fiery Crystal Mace Replica",
     "attack": 5,
     "skill": "club",
@@ -3508,7 +3508,7 @@
     ]
   },
   {
-    "id": "fiery-orcish-maul",
+    "id": 303,
     "name": "Fiery Orcish Maul",
     "attack": 42,
     "attackFire": 7,
@@ -3522,7 +3522,7 @@
     ]
   },
   {
-    "id": "fiery-orcish-maul-replica",
+    "id": 304,
     "name": "Fiery Orcish Maul Replica",
     "attack": 5,
     "skill": "club",
@@ -3535,7 +3535,7 @@
     ]
   },
   {
-    "id": "fiery-war-hammer",
+    "id": 305,
     "name": "Fiery War Hammer",
     "attack": 45,
     "attackFire": 9,
@@ -3545,7 +3545,7 @@
     ]
   },
   {
-    "id": "fiery-war-hammer-replica",
+    "id": 306,
     "name": "Fiery War Hammer Replica",
     "attack": 5,
     "skill": "club",
@@ -3558,7 +3558,7 @@
     ]
   },
   {
-    "id": "furry-club",
+    "id": 307,
     "name": "Furry Club",
     "attack": 31,
     "skill": "club",
@@ -3571,7 +3571,7 @@
     ]
   },
   {
-    "id": "giant-smithhammer",
+    "id": 308,
     "name": "Giant Smithhammer",
     "attack": 24,
     "skill": "club",
@@ -3584,7 +3584,7 @@
     ]
   },
   {
-    "id": "gilded-eldritch-warmace",
+    "id": 309,
     "name": "Gilded Eldritch Warmace",
     "attack": 56,
     "attackFire": 50,
@@ -3594,7 +3594,7 @@
     ]
   },
   {
-    "id": "glooth-club",
+    "id": 310,
     "name": "Glooth Club",
     "attack": 65,
     "attackEarth": 26,
@@ -3604,7 +3604,7 @@
     ]
   },
   {
-    "id": "glooth-whip",
+    "id": 311,
     "name": "Glooth Whip",
     "attack": 33,
     "skill": "club",
@@ -3617,7 +3617,7 @@
     ]
   },
   {
-    "id": "gluttons-mace",
+    "id": 312,
     "name": "Glutton's Mace",
     "attack": 16,
     "skill": "club",
@@ -3630,7 +3630,7 @@
     ]
   },
   {
-    "id": "grand-sanguine-bludgeon",
+    "id": 313,
     "name": "Grand Sanguine Bludgeon",
     "attack": 58,
     "attackEarth": 50,
@@ -3640,7 +3640,7 @@
     ]
   },
   {
-    "id": "grand-sanguine-cudgel",
+    "id": 314,
     "name": "Grand Sanguine Cudgel",
     "attack": 54,
     "attackDeath": 46,
@@ -3650,7 +3650,7 @@
     ]
   },
   {
-    "id": "hammer-of-carving",
+    "id": 315,
     "name": "Hammer of Carving",
     "attack": 53,
     "skill": "club",
@@ -3659,7 +3659,7 @@
     ]
   },
   {
-    "id": "hammer-of-carving-charged",
+    "id": 316,
     "name": "Hammer of Carving (Charged)",
     "attack": 51,
     "skill": "club",
@@ -3668,7 +3668,7 @@
     ]
   },
   {
-    "id": "hammer-of-carving-heavily-charged",
+    "id": 317,
     "name": "Hammer of Carving (Heavily Charged)",
     "attack": 53,
     "skill": "club",
@@ -3677,7 +3677,7 @@
     ]
   },
   {
-    "id": "hammer-of-carving-overcharged",
+    "id": 318,
     "name": "Hammer of Carving (Overcharged)",
     "attack": 54,
     "skill": "club",
@@ -3686,7 +3686,7 @@
     ]
   },
   {
-    "id": "hammer-of-destruction",
+    "id": 319,
     "name": "Hammer of Destruction",
     "attack": 53,
     "skill": "club",
@@ -3695,7 +3695,7 @@
     ]
   },
   {
-    "id": "hammer-of-mayhem",
+    "id": 320,
     "name": "Hammer of Mayhem",
     "attack": 53,
     "skill": "club",
@@ -3704,7 +3704,7 @@
     ]
   },
   {
-    "id": "hammer-of-mayhem-charged",
+    "id": 321,
     "name": "Hammer of Mayhem (Charged)",
     "attack": 51,
     "skill": "club",
@@ -3713,7 +3713,7 @@
     ]
   },
   {
-    "id": "hammer-of-mayhem-heavily-charged",
+    "id": 322,
     "name": "Hammer of Mayhem (Heavily Charged)",
     "attack": 53,
     "skill": "club",
@@ -3722,7 +3722,7 @@
     ]
   },
   {
-    "id": "hammer-of-mayhem-overcharged",
+    "id": 323,
     "name": "Hammer of Mayhem (Overcharged)",
     "attack": 54,
     "skill": "club",
@@ -3731,7 +3731,7 @@
     ]
   },
   {
-    "id": "hammer-of-prophecy",
+    "id": 324,
     "name": "Hammer of Prophecy",
     "attack": 52,
     "skill": "club",
@@ -3740,7 +3740,7 @@
     ]
   },
   {
-    "id": "hammer-of-remedy",
+    "id": 325,
     "name": "Hammer of Remedy",
     "attack": 53,
     "skill": "club",
@@ -3749,7 +3749,7 @@
     ]
   },
   {
-    "id": "hammer-of-remedy-charged",
+    "id": 326,
     "name": "Hammer of Remedy (Charged)",
     "attack": 51,
     "skill": "club",
@@ -3758,7 +3758,7 @@
     ]
   },
   {
-    "id": "hammer-of-remedy-heavily-charged",
+    "id": 327,
     "name": "Hammer of Remedy (Heavily Charged)",
     "attack": 53,
     "skill": "club",
@@ -3767,7 +3767,7 @@
     ]
   },
   {
-    "id": "hammer-of-remedy-overcharged",
+    "id": 328,
     "name": "Hammer of Remedy (Overcharged)",
     "attack": 54,
     "skill": "club",
@@ -3776,7 +3776,7 @@
     ]
   },
   {
-    "id": "hammer-of-wrath",
+    "id": 329,
     "name": "Hammer of Wrath",
     "attack": 48,
     "skill": "club",
@@ -3785,7 +3785,7 @@
     ]
   },
   {
-    "id": "heavy-mace",
+    "id": 330,
     "name": "Heavy Mace",
     "attack": 49,
     "skill": "club",
@@ -3794,7 +3794,7 @@
     ]
   },
   {
-    "id": "icy-clerical-mace",
+    "id": 331,
     "name": "Icy Clerical Mace",
     "attack": 28,
     "attackIce": 5,
@@ -3808,7 +3808,7 @@
     ]
   },
   {
-    "id": "icy-clerical-mace-replica",
+    "id": 332,
     "name": "Icy Clerical Mace Replica",
     "attack": 5,
     "skill": "club",
@@ -3821,7 +3821,7 @@
     ]
   },
   {
-    "id": "icy-cranial-basher",
+    "id": 333,
     "name": "Icy Cranial Basher",
     "attack": 44,
     "attackIce": 8,
@@ -3835,7 +3835,7 @@
     ]
   },
   {
-    "id": "icy-cranial-basher-replica",
+    "id": 334,
     "name": "Icy Cranial Basher Replica",
     "attack": 5,
     "skill": "club",
@@ -3848,7 +3848,7 @@
     ]
   },
   {
-    "id": "icy-crystal-mace",
+    "id": 335,
     "name": "Icy Crystal Mace",
     "attack": 38,
     "attackIce": 7,
@@ -3862,7 +3862,7 @@
     ]
   },
   {
-    "id": "icy-crystal-mace-replica",
+    "id": 336,
     "name": "Icy Crystal Mace Replica",
     "attack": 5,
     "skill": "club",
@@ -3875,7 +3875,7 @@
     ]
   },
   {
-    "id": "icy-orcish-maul",
+    "id": 337,
     "name": "Icy Orcish Maul",
     "attack": 42,
     "attackIce": 7,
@@ -3889,7 +3889,7 @@
     ]
   },
   {
-    "id": "icy-orcish-maul-replica",
+    "id": 338,
     "name": "Icy Orcish Maul Replica",
     "attack": 5,
     "skill": "club",
@@ -3902,7 +3902,7 @@
     ]
   },
   {
-    "id": "icy-war-hammer",
+    "id": 339,
     "name": "Icy War Hammer",
     "attack": 45,
     "attackIce": 9,
@@ -3912,7 +3912,7 @@
     ]
   },
   {
-    "id": "icy-war-hammer-replica",
+    "id": 340,
     "name": "Icy War Hammer Replica",
     "attack": 5,
     "skill": "club",
@@ -3925,7 +3925,7 @@
     ]
   },
   {
-    "id": "inferniarch-flail",
+    "id": 341,
     "name": "Inferniarch Flail",
     "attack": 52,
     "attackDeath": 44,
@@ -3935,7 +3935,7 @@
     ]
   },
   {
-    "id": "inferniarch-warhammer",
+    "id": 342,
     "name": "Inferniarch Warhammer",
     "attack": 56,
     "attackIce": 48,
@@ -3945,7 +3945,7 @@
     ]
   },
   {
-    "id": "iron-hammer",
+    "id": 343,
     "name": "Iron Hammer",
     "attack": 18,
     "skill": "club",
@@ -3958,7 +3958,7 @@
     ]
   },
   {
-    "id": "jade-hammer",
+    "id": 344,
     "name": "Jade Hammer",
     "attack": 46,
     "skill": "club",
@@ -3971,7 +3971,7 @@
     ]
   },
   {
-    "id": "jungle-flail",
+    "id": 345,
     "name": "Jungle Flail",
     "attack": 52,
     "skill": "club",
@@ -3980,7 +3980,7 @@
     ]
   },
   {
-    "id": "lich-staff",
+    "id": 346,
     "name": "Lich Staff",
     "attack": 40,
     "skill": "club",
@@ -3993,7 +3993,7 @@
     ]
   },
   {
-    "id": "life-preserver",
+    "id": 347,
     "name": "Life Preserver",
     "attack": 27,
     "skill": "club",
@@ -4006,7 +4006,7 @@
     ]
   },
   {
-    "id": "light-mace",
+    "id": 348,
     "name": "Light Mace",
     "attack": 14,
     "skill": "club",
@@ -4019,7 +4019,7 @@
     ]
   },
   {
-    "id": "lion-hammer",
+    "id": 349,
     "name": "Lion Hammer",
     "attack": 52,
     "attackEarth": 44,
@@ -4029,7 +4029,7 @@
     ]
   },
   {
-    "id": "lunar-staff",
+    "id": 350,
     "name": "Lunar Staff",
     "attack": 40,
     "skill": "club",
@@ -4042,7 +4042,7 @@
     ]
   },
   {
-    "id": "mace",
+    "id": 351,
     "name": "Mace",
     "attack": 16,
     "skill": "club",
@@ -4055,7 +4055,7 @@
     ]
   },
   {
-    "id": "mace-of-carving",
+    "id": 352,
     "name": "Mace of Carving",
     "attack": 50,
     "skill": "club",
@@ -4064,7 +4064,7 @@
     ]
   },
   {
-    "id": "mace-of-carving-charged",
+    "id": 353,
     "name": "Mace of Carving (Charged)",
     "attack": 49,
     "skill": "club",
@@ -4073,7 +4073,7 @@
     ]
   },
   {
-    "id": "mace-of-carving-heavily-charged",
+    "id": 354,
     "name": "Mace of Carving (Heavily Charged)",
     "attack": 50,
     "skill": "club",
@@ -4082,7 +4082,7 @@
     ]
   },
   {
-    "id": "mace-of-carving-overcharged",
+    "id": 355,
     "name": "Mace of Carving (Overcharged)",
     "attack": 51,
     "skill": "club",
@@ -4091,7 +4091,7 @@
     ]
   },
   {
-    "id": "mace-of-destruction",
+    "id": 356,
     "name": "Mace of Destruction",
     "attack": 50,
     "skill": "club",
@@ -4100,7 +4100,7 @@
     ]
   },
   {
-    "id": "mace-of-mayhem",
+    "id": 357,
     "name": "Mace of Mayhem",
     "attack": 50,
     "skill": "club",
@@ -4109,7 +4109,7 @@
     ]
   },
   {
-    "id": "mace-of-mayhem-charged",
+    "id": 358,
     "name": "Mace of Mayhem (Charged)",
     "attack": 49,
     "skill": "club",
@@ -4118,7 +4118,7 @@
     ]
   },
   {
-    "id": "mace-of-mayhem-heavily-charged",
+    "id": 359,
     "name": "Mace of Mayhem (Heavily Charged)",
     "attack": 50,
     "skill": "club",
@@ -4127,7 +4127,7 @@
     ]
   },
   {
-    "id": "mace-of-mayhem-overcharged",
+    "id": 360,
     "name": "Mace of Mayhem (Overcharged)",
     "attack": 51,
     "skill": "club",
@@ -4136,7 +4136,7 @@
     ]
   },
   {
-    "id": "mace-of-remedy",
+    "id": 361,
     "name": "Mace of Remedy",
     "attack": 50,
     "skill": "club",
@@ -4145,7 +4145,7 @@
     ]
   },
   {
-    "id": "mace-of-remedy-charged",
+    "id": 362,
     "name": "Mace of Remedy (Charged)",
     "attack": 49,
     "skill": "club",
@@ -4154,7 +4154,7 @@
     ]
   },
   {
-    "id": "mace-of-remedy-heavily-charged",
+    "id": 363,
     "name": "Mace of Remedy (Heavily Charged)",
     "attack": 50,
     "skill": "club",
@@ -4163,7 +4163,7 @@
     ]
   },
   {
-    "id": "mace-of-remedy-overcharged",
+    "id": 364,
     "name": "Mace of Remedy (Overcharged)",
     "attack": 51,
     "skill": "club",
@@ -4172,7 +4172,7 @@
     ]
   },
   {
-    "id": "maimer",
+    "id": 365,
     "name": "Maimer",
     "attack": 51,
     "skill": "club",
@@ -4185,7 +4185,7 @@
     ]
   },
   {
-    "id": "mallet-handle",
+    "id": 366,
     "name": "Mallet Handle",
     "attack": 24,
     "skill": "club",
@@ -4198,7 +4198,7 @@
     ]
   },
   {
-    "id": "mammoth-whopper",
+    "id": 367,
     "name": "Mammoth Whopper",
     "attack": 30,
     "skill": "club",
@@ -4211,7 +4211,7 @@
     ]
   },
   {
-    "id": "metal-bat",
+    "id": 368,
     "name": "Metal Bat",
     "attack": 44,
     "skill": "club",
@@ -4224,7 +4224,7 @@
     ]
   },
   {
-    "id": "moohtant-cudgel",
+    "id": 369,
     "name": "Moohtant Cudgel",
     "attack": 47,
     "skill": "club",
@@ -4237,7 +4237,7 @@
     ]
   },
   {
-    "id": "morning-star",
+    "id": 370,
     "name": "Morning Star",
     "attack": 25,
     "skill": "club",
@@ -4250,7 +4250,7 @@
     ]
   },
   {
-    "id": "mortal-mace",
+    "id": 371,
     "name": "Mortal Mace",
     "attack": 52,
     "attackDeath": 44,
@@ -4260,7 +4260,7 @@
     ]
   },
   {
-    "id": "mycological-mace",
+    "id": 372,
     "name": "Mycological Mace",
     "attack": 50,
     "skill": "club",
@@ -4273,7 +4273,7 @@
     ]
   },
   {
-    "id": "naga-club",
+    "id": 373,
     "name": "Naga Club",
     "attack": 52,
     "skill": "club",
@@ -4282,7 +4282,7 @@
     ]
   },
   {
-    "id": "northern-star",
+    "id": 374,
     "name": "Northern Star",
     "attack": 42,
     "skill": "club",
@@ -4295,7 +4295,7 @@
     ]
   },
   {
-    "id": "obsidian-truncheon",
+    "id": 375,
     "name": "Obsidian Truncheon",
     "attack": 50,
     "skill": "club",
@@ -4308,7 +4308,7 @@
     ]
   },
   {
-    "id": "ogre-klubba",
+    "id": 376,
     "name": "Ogre Klubba",
     "attack": 45,
     "skill": "club",
@@ -4321,7 +4321,7 @@
     ]
   },
   {
-    "id": "one-hit-wonder",
+    "id": 377,
     "name": "One Hit Wonder",
     "attack": 49,
     "skill": "club",
@@ -4334,7 +4334,7 @@
     ]
   },
   {
-    "id": "onyx-flail",
+    "id": 378,
     "name": "Onyx Flail",
     "attack": 45,
     "skill": "club",
@@ -4347,7 +4347,7 @@
     ]
   },
   {
-    "id": "orcish-maul",
+    "id": 379,
     "name": "Orcish Maul",
     "attack": 42,
     "skill": "club",
@@ -4360,7 +4360,7 @@
     ]
   },
   {
-    "id": "ornate-carving-hammer",
+    "id": 380,
     "name": "Ornate Carving Hammer",
     "attack": 5,
     "skill": "club",
@@ -4373,7 +4373,7 @@
     ]
   },
   {
-    "id": "ornate-carving-mace",
+    "id": 381,
     "name": "Ornate Carving Mace",
     "attack": 5,
     "skill": "club",
@@ -4386,7 +4386,7 @@
     ]
   },
   {
-    "id": "ornate-mace",
+    "id": 382,
     "name": "Ornate Mace",
     "attack": 49,
     "skill": "club",
@@ -4399,7 +4399,7 @@
     ]
   },
   {
-    "id": "ornate-mayhem-hammer",
+    "id": 383,
     "name": "Ornate Mayhem Hammer",
     "attack": 5,
     "skill": "club",
@@ -4412,7 +4412,7 @@
     ]
   },
   {
-    "id": "ornate-mayhem-mace",
+    "id": 384,
     "name": "Ornate Mayhem Mace",
     "attack": 5,
     "skill": "club",
@@ -4425,7 +4425,7 @@
     ]
   },
   {
-    "id": "ornate-remedy-hammer",
+    "id": 385,
     "name": "Ornate Remedy Hammer",
     "attack": 5,
     "skill": "club",
@@ -4438,7 +4438,7 @@
     ]
   },
   {
-    "id": "ornate-remedy-mace",
+    "id": 386,
     "name": "Ornate Remedy Mace",
     "attack": 5,
     "skill": "club",
@@ -4451,7 +4451,7 @@
     ]
   },
   {
-    "id": "plain-carving-hammer",
+    "id": 387,
     "name": "Plain Carving Hammer",
     "attack": 5,
     "skill": "club",
@@ -4464,7 +4464,7 @@
     ]
   },
   {
-    "id": "plain-carving-mace",
+    "id": 388,
     "name": "Plain Carving Mace",
     "attack": 5,
     "skill": "club",
@@ -4477,7 +4477,7 @@
     ]
   },
   {
-    "id": "plain-mayhem-hammer",
+    "id": 389,
     "name": "Plain Mayhem Hammer",
     "attack": 5,
     "skill": "club",
@@ -4490,7 +4490,7 @@
     ]
   },
   {
-    "id": "plain-mayhem-mace",
+    "id": 390,
     "name": "Plain Mayhem Mace",
     "attack": 5,
     "skill": "club",
@@ -4503,7 +4503,7 @@
     ]
   },
   {
-    "id": "plain-remedy-hammer",
+    "id": 391,
     "name": "Plain Remedy Hammer",
     "attack": 5,
     "skill": "club",
@@ -4516,7 +4516,7 @@
     ]
   },
   {
-    "id": "plain-remedy-mace",
+    "id": 392,
     "name": "Plain Remedy Mace",
     "attack": 5,
     "skill": "club",
@@ -4529,7 +4529,7 @@
     ]
   },
   {
-    "id": "queens-sceptre",
+    "id": 393,
     "name": "Queen's Sceptre",
     "attack": 43,
     "skill": "club",
@@ -4542,7 +4542,7 @@
     ]
   },
   {
-    "id": "rending-inferniarch-flail",
+    "id": 394,
     "name": "Rending Inferniarch Flail",
     "attack": 52,
     "attackDeath": 44,
@@ -4552,7 +4552,7 @@
     ]
   },
   {
-    "id": "rending-inferniarch-warhammer",
+    "id": 395,
     "name": "Rending Inferniarch Warhammer",
     "attack": 56,
     "attackIce": 48,
@@ -4562,7 +4562,7 @@
     ]
   },
   {
-    "id": "resizer",
+    "id": 396,
     "name": "Resizer",
     "attack": 57,
     "attackIce": 46,
@@ -4572,7 +4572,7 @@
     ]
   },
   {
-    "id": "rotten-demonbone",
+    "id": 397,
     "name": "Rotten Demonbone",
     "attack": 46,
     "skill": "club",
@@ -4585,7 +4585,7 @@
     ]
   },
   {
-    "id": "sanguine-bludgeon",
+    "id": 398,
     "name": "Sanguine Bludgeon",
     "attack": 58,
     "attackEarth": 50,
@@ -4595,7 +4595,7 @@
     ]
   },
   {
-    "id": "sanguine-cudgel",
+    "id": 399,
     "name": "Sanguine Cudgel",
     "attack": 54,
     "attackDeath": 46,
@@ -4605,7 +4605,7 @@
     ]
   },
   {
-    "id": "sapphire-hammer",
+    "id": 400,
     "name": "Sapphire Hammer",
     "attack": 37,
     "skill": "club",
@@ -4618,7 +4618,7 @@
     ]
   },
   {
-    "id": "scythe",
+    "id": 401,
     "name": "Scythe",
     "attack": 8,
     "skill": "club",
@@ -4631,7 +4631,7 @@
     ]
   },
   {
-    "id": "shadow-sceptre",
+    "id": 402,
     "name": "Shadow Sceptre",
     "attack": 39,
     "skill": "club",
@@ -4644,7 +4644,7 @@
     ]
   },
   {
-    "id": "silver-mace",
+    "id": 403,
     "name": "Silver Mace",
     "attack": 41,
     "skill": "club",
@@ -4657,7 +4657,7 @@
     ]
   },
   {
-    "id": "siphoning-inferniarch-flail",
+    "id": 404,
     "name": "Siphoning Inferniarch Flail",
     "attack": 52,
     "attackDeath": 44,
@@ -4667,7 +4667,7 @@
     ]
   },
   {
-    "id": "siphoning-inferniarch-warhammer",
+    "id": 405,
     "name": "Siphoning Inferniarch Warhammer",
     "attack": 56,
     "attackIce": 48,
@@ -4677,7 +4677,7 @@
     ]
   },
   {
-    "id": "skull-staff",
+    "id": 406,
     "name": "Skull Staff",
     "attack": 36,
     "skill": "club",
@@ -4690,7 +4690,7 @@
     ]
   },
   {
-    "id": "skullcrusher",
+    "id": 407,
     "name": "Skullcrusher",
     "attack": 51,
     "skill": "club",
@@ -4699,7 +4699,7 @@
     ]
   },
   {
-    "id": "snake-gods-sceptre",
+    "id": 408,
     "name": "Snake God's Sceptre",
     "attack": 48,
     "skill": "club",
@@ -4712,7 +4712,7 @@
     ]
   },
   {
-    "id": "soulcrusher",
+    "id": 409,
     "name": "Soulcrusher",
     "attack": 52,
     "attackIce": 46,
@@ -4722,7 +4722,7 @@
     ]
   },
   {
-    "id": "soulmaimer",
+    "id": 410,
     "name": "Soulmaimer",
     "attack": 57,
     "attackEnergy": 47,
@@ -4732,7 +4732,7 @@
     ]
   },
   {
-    "id": "spiked-squelcher",
+    "id": 411,
     "name": "Spiked Squelcher",
     "attack": 41,
     "skill": "club",
@@ -4741,7 +4741,7 @@
     ]
   },
   {
-    "id": "spiky-club",
+    "id": 412,
     "name": "Spiky Club",
     "attack": 31,
     "skill": "club",
@@ -4754,7 +4754,7 @@
     ]
   },
   {
-    "id": "stale-bread-of-ancientness",
+    "id": 413,
     "name": "Stale Bread of Ancientness",
     "attack": 18,
     "skill": "club",
@@ -4767,7 +4767,7 @@
     ]
   },
   {
-    "id": "strange-mallet",
+    "id": 414,
     "name": "Strange Mallet",
     "attack": 18,
     "skill": "club",
@@ -4780,7 +4780,7 @@
     ]
   },
   {
-    "id": "studded-club",
+    "id": 415,
     "name": "Studded Club",
     "attack": 9,
     "skill": "club",
@@ -4793,7 +4793,7 @@
     ]
   },
   {
-    "id": "sulphurous-demonbone",
+    "id": 416,
     "name": "Sulphurous Demonbone",
     "attack": 46,
     "skill": "club",
@@ -4806,7 +4806,7 @@
     ]
   },
   {
-    "id": "swampling-club",
+    "id": 417,
     "name": "Swampling Club",
     "attack": 17,
     "skill": "club",
@@ -4819,7 +4819,7 @@
     ]
   },
   {
-    "id": "taurus-mace",
+    "id": 418,
     "name": "Taurus Mace",
     "attack": 30,
     "skill": "club",
@@ -4832,7 +4832,7 @@
     ]
   },
   {
-    "id": "the-stomper",
+    "id": 419,
     "name": "The Stomper",
     "attack": 51,
     "skill": "club",
@@ -4841,7 +4841,7 @@
     ]
   },
   {
-    "id": "thunder-hammer",
+    "id": 420,
     "name": "Thunder Hammer",
     "attack": 49,
     "skill": "club",
@@ -4854,7 +4854,7 @@
     ]
   },
   {
-    "id": "umbral-hammer",
+    "id": 421,
     "name": "Umbral Hammer",
     "attack": 53,
     "skill": "club",
@@ -4863,7 +4863,7 @@
     ]
   },
   {
-    "id": "umbral-mace",
+    "id": 422,
     "name": "Umbral Mace",
     "attack": 50,
     "skill": "club",
@@ -4872,7 +4872,7 @@
     ]
   },
   {
-    "id": "umbral-master-hammer",
+    "id": 423,
     "name": "Umbral Master Hammer",
     "attack": 55,
     "skill": "club",
@@ -4881,7 +4881,7 @@
     ]
   },
   {
-    "id": "umbral-master-mace",
+    "id": 424,
     "name": "Umbral Master Mace",
     "attack": 52,
     "skill": "club",
@@ -4890,7 +4890,7 @@
     ]
   },
   {
-    "id": "unliving-demonbone",
+    "id": 425,
     "name": "Unliving Demonbone",
     "attack": 46,
     "skill": "club",
@@ -4903,7 +4903,7 @@
     ]
   },
   {
-    "id": "valuable-carving-hammer",
+    "id": 426,
     "name": "Valuable Carving Hammer",
     "attack": 5,
     "skill": "club",
@@ -4916,7 +4916,7 @@
     ]
   },
   {
-    "id": "valuable-carving-mace",
+    "id": 427,
     "name": "Valuable Carving Mace",
     "attack": 5,
     "skill": "club",
@@ -4929,7 +4929,7 @@
     ]
   },
   {
-    "id": "valuable-mayhem-hammer",
+    "id": 428,
     "name": "Valuable Mayhem Hammer",
     "attack": 5,
     "skill": "club",
@@ -4942,7 +4942,7 @@
     ]
   },
   {
-    "id": "valuable-mayhem-mace",
+    "id": 429,
     "name": "Valuable Mayhem Mace",
     "attack": 5,
     "skill": "club",
@@ -4955,7 +4955,7 @@
     ]
   },
   {
-    "id": "valuable-remedy-hammer",
+    "id": 430,
     "name": "Valuable Remedy Hammer",
     "attack": 5,
     "skill": "club",
@@ -4968,7 +4968,7 @@
     ]
   },
   {
-    "id": "valuable-remedy-mace",
+    "id": 431,
     "name": "Valuable Remedy Mace",
     "attack": 5,
     "skill": "club",
@@ -4981,7 +4981,7 @@
     ]
   },
   {
-    "id": "war-hammer",
+    "id": 432,
     "name": "War Hammer",
     "attack": 45,
     "skill": "club",
@@ -4990,7 +4990,7 @@
     ]
   },
   {
-    "id": "zathroth-redeemer",
+    "id": 433,
     "name": "Zathroth' Redeemer",
     "attack": 0,
     "skill": "club",
@@ -5003,7 +5003,7 @@
     ]
   },
   {
-    "id": "amber-crossbow",
+    "id": 434,
     "name": "Amber Crossbow",
     "attack": 8,
     "skill": "distance",
@@ -5013,7 +5013,7 @@
     ]
   },
   {
-    "id": "arbalest",
+    "id": 435,
     "name": "Arbalest",
     "attack": 2,
     "skill": "distance",
@@ -5023,7 +5023,7 @@
     ]
   },
   {
-    "id": "chain-bolter",
+    "id": 436,
     "name": "Chain Bolter",
     "attack": 4,
     "skill": "distance",
@@ -5033,7 +5033,7 @@
     ]
   },
   {
-    "id": "cobra-crossbow",
+    "id": 437,
     "name": "Cobra Crossbow",
     "attack": 7,
     "skill": "distance",
@@ -5043,7 +5043,7 @@
     ]
   },
   {
-    "id": "crossbow",
+    "id": 438,
     "name": "Crossbow",
     "attack": 0,
     "skill": "distance",
@@ -5057,7 +5057,7 @@
     ]
   },
   {
-    "id": "crossbow-of-carving",
+    "id": 439,
     "name": "Crossbow of Carving",
     "attack": 6,
     "skill": "distance",
@@ -5067,7 +5067,7 @@
     ]
   },
   {
-    "id": "crossbow-of-carving-charged",
+    "id": 440,
     "name": "Crossbow of Carving (Charged)",
     "attack": 4,
     "skill": "distance",
@@ -5077,7 +5077,7 @@
     ]
   },
   {
-    "id": "crossbow-of-carving-heavily-charged",
+    "id": 441,
     "name": "Crossbow of Carving (Heavily Charged)",
     "attack": 5,
     "skill": "distance",
@@ -5087,7 +5087,7 @@
     ]
   },
   {
-    "id": "crossbow-of-carving-overcharged",
+    "id": 442,
     "name": "Crossbow of Carving (Overcharged)",
     "attack": 6,
     "skill": "distance",
@@ -5097,7 +5097,7 @@
     ]
   },
   {
-    "id": "crossbow-of-destruction",
+    "id": 443,
     "name": "Crossbow of Destruction",
     "attack": 6,
     "skill": "distance",
@@ -5107,7 +5107,7 @@
     ]
   },
   {
-    "id": "crossbow-of-mayhem",
+    "id": 444,
     "name": "Crossbow of Mayhem",
     "attack": 6,
     "skill": "distance",
@@ -5117,7 +5117,7 @@
     ]
   },
   {
-    "id": "crossbow-of-mayhem-charged",
+    "id": 445,
     "name": "Crossbow of Mayhem (Charged)",
     "attack": 4,
     "skill": "distance",
@@ -5127,7 +5127,7 @@
     ]
   },
   {
-    "id": "crossbow-of-mayhem-heavily-charged",
+    "id": 446,
     "name": "Crossbow of Mayhem (Heavily Charged)",
     "attack": 5,
     "skill": "distance",
@@ -5137,7 +5137,7 @@
     ]
   },
   {
-    "id": "crossbow-of-mayhem-overcharged",
+    "id": 447,
     "name": "Crossbow of Mayhem (Overcharged)",
     "attack": 6,
     "skill": "distance",
@@ -5147,7 +5147,7 @@
     ]
   },
   {
-    "id": "crossbow-of-remedy",
+    "id": 448,
     "name": "Crossbow of Remedy",
     "attack": 6,
     "skill": "distance",
@@ -5157,7 +5157,7 @@
     ]
   },
   {
-    "id": "crossbow-of-remedy-charged",
+    "id": 449,
     "name": "Crossbow of Remedy (Charged)",
     "attack": 4,
     "skill": "distance",
@@ -5167,7 +5167,7 @@
     ]
   },
   {
-    "id": "crossbow-of-remedy-heavily-charged",
+    "id": 450,
     "name": "Crossbow of Remedy (Heavily Charged)",
     "attack": 5,
     "skill": "distance",
@@ -5177,7 +5177,7 @@
     ]
   },
   {
-    "id": "crossbow-of-remedy-overcharged",
+    "id": 451,
     "name": "Crossbow of Remedy (Overcharged)",
     "attack": 6,
     "skill": "distance",
@@ -5187,7 +5187,7 @@
     ]
   },
   {
-    "id": "crude-umbral-crossbow",
+    "id": 452,
     "name": "Crude Umbral Crossbow",
     "attack": 3,
     "skill": "distance",
@@ -5197,7 +5197,7 @@
     ]
   },
   {
-    "id": "crystal-crossbow",
+    "id": 453,
     "name": "Crystal Crossbow",
     "attack": 4,
     "skill": "distance",
@@ -5207,7 +5207,7 @@
     ]
   },
   {
-    "id": "draining-inferniarch-arbalest",
+    "id": 454,
     "name": "Draining Inferniarch Arbalest",
     "attack": 8,
     "skill": "distance",
@@ -5217,7 +5217,7 @@
     ]
   },
   {
-    "id": "grand-sanguine-crossbow",
+    "id": 455,
     "name": "Grand Sanguine Crossbow",
     "attack": 10,
     "skill": "distance",
@@ -5227,7 +5227,7 @@
     ]
   },
   {
-    "id": "inferniarch-arbalest",
+    "id": 456,
     "name": "Inferniarch Arbalest",
     "attack": 8,
     "skill": "distance",
@@ -5237,7 +5237,7 @@
     ]
   },
   {
-    "id": "modified-crossbow",
+    "id": 457,
     "name": "Modified Crossbow",
     "attack": 0,
     "skill": "distance",
@@ -5247,7 +5247,7 @@
     ]
   },
   {
-    "id": "naga-crossbow",
+    "id": 458,
     "name": "Naga Crossbow",
     "attack": 8,
     "skill": "distance",
@@ -5257,7 +5257,7 @@
     ]
   },
   {
-    "id": "ornate-carving-crossbow",
+    "id": 459,
     "name": "Ornate Carving Crossbow",
     "attack": 0,
     "skill": "distance",
@@ -5271,7 +5271,7 @@
     ]
   },
   {
-    "id": "ornate-crossbow",
+    "id": 460,
     "name": "Ornate Crossbow",
     "attack": 1,
     "skill": "distance",
@@ -5281,7 +5281,7 @@
     ]
   },
   {
-    "id": "ornate-mayhem-crossbow",
+    "id": 461,
     "name": "Ornate Mayhem Crossbow",
     "attack": 0,
     "skill": "distance",
@@ -5295,7 +5295,7 @@
     ]
   },
   {
-    "id": "ornate-remedy-crossbow",
+    "id": 462,
     "name": "Ornate Remedy Crossbow",
     "attack": 0,
     "skill": "distance",
@@ -5309,7 +5309,7 @@
     ]
   },
   {
-    "id": "plain-carving-crossbow",
+    "id": 463,
     "name": "Plain Carving Crossbow",
     "attack": 0,
     "skill": "distance",
@@ -5323,7 +5323,7 @@
     ]
   },
   {
-    "id": "plain-mayhem-crossbow",
+    "id": 464,
     "name": "Plain Mayhem Crossbow",
     "attack": 0,
     "skill": "distance",
@@ -5337,7 +5337,7 @@
     ]
   },
   {
-    "id": "plain-remedy-crossbow",
+    "id": 465,
     "name": "Plain Remedy Crossbow",
     "attack": 0,
     "skill": "distance",
@@ -5351,7 +5351,7 @@
     ]
   },
   {
-    "id": "rending-inferniarch-arbalest",
+    "id": 466,
     "name": "Rending Inferniarch Arbalest",
     "attack": 8,
     "skill": "distance",
@@ -5361,7 +5361,7 @@
     ]
   },
   {
-    "id": "rift-crossbow",
+    "id": 467,
     "name": "Rift Crossbow",
     "attack": 5,
     "skill": "distance",
@@ -5371,7 +5371,7 @@
     ]
   },
   {
-    "id": "royal-crossbow",
+    "id": 468,
     "name": "Royal Crossbow",
     "attack": 5,
     "skill": "distance",
@@ -5381,7 +5381,7 @@
     ]
   },
   {
-    "id": "sanguine-crossbow",
+    "id": 469,
     "name": "Sanguine Crossbow",
     "attack": 10,
     "skill": "distance",
@@ -5391,7 +5391,7 @@
     ]
   },
   {
-    "id": "siphoning-inferniarch-arbalest",
+    "id": 470,
     "name": "Siphoning Inferniarch Arbalest",
     "attack": 8,
     "skill": "distance",
@@ -5401,7 +5401,7 @@
     ]
   },
   {
-    "id": "soulpiercer",
+    "id": 471,
     "name": "Soulpiercer",
     "attack": 9,
     "skill": "distance",
@@ -5411,7 +5411,7 @@
     ]
   },
   {
-    "id": "the-devileye",
+    "id": 472,
     "name": "The Devileye",
     "attack": 20,
     "skill": "distance",
@@ -5421,7 +5421,7 @@
     ]
   },
   {
-    "id": "the-ironworker",
+    "id": 473,
     "name": "The Ironworker",
     "attack": 4,
     "skill": "distance",
@@ -5431,7 +5431,7 @@
     ]
   },
   {
-    "id": "thorn-spitter",
+    "id": 474,
     "name": "Thorn Spitter",
     "attack": 9,
     "skill": "distance",
@@ -5441,7 +5441,7 @@
     ]
   },
   {
-    "id": "triple-bolt-crossbow",
+    "id": 475,
     "name": "Triple Bolt Crossbow",
     "attack": 3,
     "skill": "distance",
@@ -5451,7 +5451,7 @@
     ]
   },
   {
-    "id": "umbral-crossbow",
+    "id": 476,
     "name": "Umbral Crossbow",
     "attack": 6,
     "skill": "distance",
@@ -5461,7 +5461,7 @@
     ]
   },
   {
-    "id": "umbral-master-crossbow",
+    "id": 477,
     "name": "Umbral Master Crossbow",
     "attack": 9,
     "skill": "distance",
@@ -5471,7 +5471,7 @@
     ]
   },
   {
-    "id": "valuable-carving-crossbow",
+    "id": 478,
     "name": "Valuable Carving Crossbow",
     "attack": 0,
     "skill": "distance",
@@ -5485,7 +5485,7 @@
     ]
   },
   {
-    "id": "valuable-mayhem-crossbow",
+    "id": 479,
     "name": "Valuable Mayhem Crossbow",
     "attack": 0,
     "skill": "distance",
@@ -5499,7 +5499,7 @@
     ]
   },
   {
-    "id": "valuable-remedy-crossbow",
+    "id": 480,
     "name": "Valuable Remedy Crossbow",
     "attack": 0,
     "skill": "distance",
@@ -5513,7 +5513,7 @@
     ]
   },
   {
-    "id": "amber-kusarigama",
+    "id": 481,
     "name": "Amber Kusarigama",
     "attack": 44,
     "skill": "fist",
@@ -5523,7 +5523,7 @@
     ]
   },
   {
-    "id": "bambus-jo",
+    "id": 482,
     "name": "Bambus Jo",
     "attack": 40,
     "skill": "fist",
@@ -5533,7 +5533,7 @@
     ]
   },
   {
-    "id": "cobra-bo",
+    "id": 483,
     "name": "Cobra Bo",
     "attack": 42,
     "skill": "fist",
@@ -5543,7 +5543,7 @@
     ]
   },
   {
-    "id": "crude-umbral-katar",
+    "id": 484,
     "name": "Crude Umbral Katar",
     "attack": 39,
     "skill": "fist",
@@ -5553,7 +5553,7 @@
     ]
   },
   {
-    "id": "crypt-strike",
+    "id": 485,
     "name": "Crypt Strike",
     "attack": 45,
     "skill": "fist",
@@ -5563,7 +5563,7 @@
     ]
   },
   {
-    "id": "depth-claws",
+    "id": 486,
     "name": "Depth Claws",
     "attack": 40,
     "skill": "fist",
@@ -5573,7 +5573,7 @@
     ]
   },
   {
-    "id": "drachaku",
+    "id": 487,
     "name": "Drachaku",
     "attack": 39,
     "skill": "fist",
@@ -5583,7 +5583,7 @@
     ]
   },
   {
-    "id": "draining-inferniarch-claws",
+    "id": 488,
     "name": "Draining Inferniarch Claws",
     "attack": 43,
     "skill": "fist",
@@ -5593,7 +5593,7 @@
     ]
   },
   {
-    "id": "eldritch-crescent-moon-spade",
+    "id": 489,
     "name": "Eldritch Crescent Moon Spade",
     "attack": 42,
     "skill": "fist",
@@ -5603,7 +5603,7 @@
     ]
   },
   {
-    "id": "falcon-sai",
+    "id": 490,
     "name": "Falcon Sai",
     "attack": 43,
     "skill": "fist",
@@ -5613,7 +5613,7 @@
     ]
   },
   {
-    "id": "fists-of-enlightenment",
+    "id": 491,
     "name": "Fists of Enlightenment",
     "attack": 23,
     "skill": "fist",
@@ -5623,7 +5623,7 @@
     ]
   },
   {
-    "id": "gilded-eldritch-crescent-moon-spade",
+    "id": 492,
     "name": "Gilded Eldritch Crescent Moon Spade",
     "attack": 42,
     "skill": "fist",
@@ -5633,7 +5633,7 @@
     ]
   },
   {
-    "id": "grand-sanguine-claws",
+    "id": 493,
     "name": "Grand Sanguine Claws",
     "attack": 45,
     "skill": "fist",
@@ -5643,7 +5643,7 @@
     ]
   },
   {
-    "id": "inferniarch-claws",
+    "id": 494,
     "name": "Inferniarch Claws",
     "attack": 43,
     "skill": "fist",
@@ -5653,7 +5653,7 @@
     ]
   },
   {
-    "id": "jo-staff",
+    "id": 495,
     "name": "Jo Staff",
     "attack": 17,
     "skill": "fist",
@@ -5663,7 +5663,7 @@
     ]
   },
   {
-    "id": "light-jo-staff",
+    "id": 496,
     "name": "Light Jo Staff",
     "attack": 10,
     "skill": "fist",
@@ -5673,7 +5673,7 @@
     ]
   },
   {
-    "id": "lion-claws",
+    "id": 497,
     "name": "Lion Claws",
     "attack": 43,
     "skill": "fist",
@@ -5683,7 +5683,7 @@
     ]
   },
   {
-    "id": "naga-katar",
+    "id": 498,
     "name": "Naga Katar",
     "attack": 43,
     "skill": "fist",
@@ -5693,7 +5693,7 @@
     ]
   },
   {
-    "id": "nunchaku",
+    "id": 499,
     "name": "Nunchaku",
     "attack": 31,
     "skill": "fist",
@@ -5703,7 +5703,7 @@
     ]
   },
   {
-    "id": "nunchaku-of-destruction",
+    "id": 500,
     "name": "Nunchaku of Destruction",
     "attack": 40,
     "skill": "fist",
@@ -5713,7 +5713,7 @@
     ]
   },
   {
-    "id": "nunchaku-of-enlightenment",
+    "id": 501,
     "name": "Nunchaku of Enlightenment",
     "attack": 33,
     "skill": "fist",
@@ -5723,7 +5723,7 @@
     ]
   },
   {
-    "id": "pair-of-iron-fists",
+    "id": 502,
     "name": "Pair of Iron Fists",
     "attack": 38,
     "skill": "fist",
@@ -5733,7 +5733,7 @@
     ]
   },
   {
-    "id": "pair-of-monk-fists",
+    "id": 503,
     "name": "Pair of Monk Fists",
     "attack": 21,
     "skill": "fist",
@@ -5743,7 +5743,7 @@
     ]
   },
   {
-    "id": "rending-inferniarch-claws",
+    "id": 504,
     "name": "Rending Inferniarch Claws",
     "attack": 45,
     "skill": "fist",
@@ -5753,7 +5753,7 @@
     ]
   },
   {
-    "id": "sai",
+    "id": 505,
     "name": "Sai",
     "attack": 36,
     "skill": "fist",
@@ -5763,7 +5763,7 @@
     ]
   },
   {
-    "id": "sai-of-enlightenment",
+    "id": 506,
     "name": "Sai of Enlightenment",
     "attack": 40,
     "skill": "fist",
@@ -5773,7 +5773,7 @@
     ]
   },
   {
-    "id": "sanguine-claws",
+    "id": 507,
     "name": "Sanguine Claws",
     "attack": 45,
     "skill": "fist",
@@ -5783,7 +5783,7 @@
     ]
   },
   {
-    "id": "simple-jo-staff",
+    "id": 508,
     "name": "Simple Jo Staff",
     "attack": 12,
     "skill": "fist",
@@ -5793,7 +5793,7 @@
     ]
   },
   {
-    "id": "siphoning-inferniarch-claws",
+    "id": 509,
     "name": "Siphoning Inferniarch Claws",
     "attack": 43,
     "skill": "fist",
@@ -5803,7 +5803,7 @@
     ]
   },
   {
-    "id": "soulkamas",
+    "id": 510,
     "name": "Soulkamas",
     "attack": 44,
     "skill": "fist",
@@ -5813,7 +5813,7 @@
     ]
   },
   {
-    "id": "staff",
+    "id": 511,
     "name": "Staff",
     "attack": 22,
     "skill": "fist",
@@ -5823,7 +5823,7 @@
     ]
   },
   {
-    "id": "traditional-sai",
+    "id": 512,
     "name": "Traditional Sai",
     "attack": 27,
     "skill": "fist",
@@ -5833,7 +5833,7 @@
     ]
   },
   {
-    "id": "umbral-katar",
+    "id": 513,
     "name": "Umbral Katar",
     "attack": 40,
     "skill": "fist",
@@ -5843,7 +5843,7 @@
     ]
   },
   {
-    "id": "umbral-master-katar",
+    "id": 514,
     "name": "Umbral Master Katar",
     "attack": 41,
     "skill": "fist",
@@ -5853,7 +5853,7 @@
     ]
   },
   {
-    "id": "amber-sabre",
+    "id": 515,
     "name": "Amber Sabre",
     "attack": 46,
     "attackEnergy": 46,
@@ -5863,7 +5863,7 @@
     ]
   },
   {
-    "id": "amber-slayer",
+    "id": 516,
     "name": "Amber Slayer",
     "attack": 50,
     "attackDeath": 50,
@@ -5873,7 +5873,7 @@
     ]
   },
   {
-    "id": "assassin-dagger",
+    "id": 517,
     "name": "Assassin Dagger",
     "attack": 40,
     "skill": "sword",
@@ -5886,7 +5886,7 @@
     ]
   },
   {
-    "id": "berserker",
+    "id": 518,
     "name": "Berserker",
     "attack": 48,
     "skill": "sword",
@@ -5895,7 +5895,7 @@
     ]
   },
   {
-    "id": "blacksteel-sword",
+    "id": 519,
     "name": "Blacksteel Sword",
     "attack": 42,
     "skill": "sword",
@@ -5904,7 +5904,7 @@
     ]
   },
   {
-    "id": "blade-of-carving",
+    "id": 520,
     "name": "Blade of Carving",
     "attack": 50,
     "skill": "sword",
@@ -5913,7 +5913,7 @@
     ]
   },
   {
-    "id": "blade-of-carving-charged",
+    "id": 521,
     "name": "Blade of Carving (Charged)",
     "attack": 49,
     "skill": "sword",
@@ -5922,7 +5922,7 @@
     ]
   },
   {
-    "id": "blade-of-carving-heavily-charged",
+    "id": 522,
     "name": "Blade of Carving (Heavily Charged)",
     "attack": 50,
     "skill": "sword",
@@ -5931,7 +5931,7 @@
     ]
   },
   {
-    "id": "blade-of-carving-overcharged",
+    "id": 523,
     "name": "Blade of Carving (Overcharged)",
     "attack": 51,
     "skill": "sword",
@@ -5940,7 +5940,7 @@
     ]
   },
   {
-    "id": "blade-of-corruption",
+    "id": 524,
     "name": "Blade of Corruption",
     "attack": 48,
     "skill": "sword",
@@ -5953,7 +5953,7 @@
     ]
   },
   {
-    "id": "blade-of-destruction",
+    "id": 525,
     "name": "Blade of Destruction",
     "attack": 50,
     "skill": "sword",
@@ -5962,7 +5962,7 @@
     ]
   },
   {
-    "id": "blade-of-mayhem",
+    "id": 526,
     "name": "Blade of Mayhem",
     "attack": 50,
     "skill": "sword",
@@ -5971,7 +5971,7 @@
     ]
   },
   {
-    "id": "blade-of-mayhem-charged",
+    "id": 527,
     "name": "Blade of Mayhem (Charged)",
     "attack": 49,
     "skill": "sword",
@@ -5980,7 +5980,7 @@
     ]
   },
   {
-    "id": "blade-of-mayhem-heavily-charged",
+    "id": 528,
     "name": "Blade of Mayhem (Heavily Charged)",
     "attack": 50,
     "skill": "sword",
@@ -5989,7 +5989,7 @@
     ]
   },
   {
-    "id": "blade-of-mayhem-overcharged",
+    "id": 529,
     "name": "Blade of Mayhem (Overcharged)",
     "attack": 51,
     "skill": "sword",
@@ -5998,7 +5998,7 @@
     ]
   },
   {
-    "id": "blade-of-remedy",
+    "id": 530,
     "name": "Blade of Remedy",
     "attack": 50,
     "skill": "sword",
@@ -6007,7 +6007,7 @@
     ]
   },
   {
-    "id": "blade-of-remedy-charged",
+    "id": 531,
     "name": "Blade of Remedy (Charged)",
     "attack": 49,
     "skill": "sword",
@@ -6016,7 +6016,7 @@
     ]
   },
   {
-    "id": "blade-of-remedy-heavily-charged",
+    "id": 532,
     "name": "Blade of Remedy (Heavily Charged)",
     "attack": 50,
     "skill": "sword",
@@ -6025,7 +6025,7 @@
     ]
   },
   {
-    "id": "blade-of-remedy-overcharged",
+    "id": 533,
     "name": "Blade of Remedy (Overcharged)",
     "attack": 51,
     "skill": "sword",
@@ -6034,7 +6034,7 @@
     ]
   },
   {
-    "id": "bloody-edge",
+    "id": 534,
     "name": "Bloody Edge",
     "attack": 43,
     "skill": "sword",
@@ -6047,7 +6047,7 @@
     ]
   },
   {
-    "id": "bone-sword",
+    "id": 535,
     "name": "Bone Sword",
     "attack": 13,
     "skill": "sword",
@@ -6060,7 +6060,7 @@
     ]
   },
   {
-    "id": "bright-sword",
+    "id": 536,
     "name": "Bright Sword",
     "attack": 36,
     "skill": "sword",
@@ -6073,7 +6073,7 @@
     ]
   },
   {
-    "id": "broadsword",
+    "id": 537,
     "name": "Broadsword",
     "attack": 26,
     "skill": "sword",
@@ -6082,7 +6082,7 @@
     ]
   },
   {
-    "id": "broken-macuahuitl",
+    "id": 538,
     "name": "Broken Macuahuitl",
     "attack": 1,
     "skill": "sword",
@@ -6095,7 +6095,7 @@
     ]
   },
   {
-    "id": "carlin-sword",
+    "id": 539,
     "name": "Carlin Sword",
     "attack": 15,
     "skill": "sword",
@@ -6108,7 +6108,7 @@
     ]
   },
   {
-    "id": "cobra-sword",
+    "id": 540,
     "name": "Cobra Sword",
     "attack": 52,
     "skill": "sword",
@@ -6117,7 +6117,7 @@
     ]
   },
   {
-    "id": "combat-knife",
+    "id": 541,
     "name": "Combat Knife",
     "attack": 8,
     "skill": "sword",
@@ -6130,7 +6130,7 @@
     ]
   },
   {
-    "id": "cowtana",
+    "id": 542,
     "name": "Cowtana",
     "attack": 34,
     "skill": "sword",
@@ -6143,7 +6143,7 @@
     ]
   },
   {
-    "id": "crimson-sword",
+    "id": 543,
     "name": "Crimson Sword",
     "attack": 28,
     "skill": "sword",
@@ -6156,7 +6156,7 @@
     ]
   },
   {
-    "id": "crimson-sword-uzgod",
+    "id": 544,
     "name": "Crimson Sword (Uzgod)",
     "attack": 18,
     "skill": "sword",
@@ -6169,7 +6169,7 @@
     ]
   },
   {
-    "id": "crude-umbral-blade",
+    "id": 545,
     "name": "Crude Umbral Blade",
     "attack": 48,
     "skill": "sword",
@@ -6178,7 +6178,7 @@
     ]
   },
   {
-    "id": "crude-umbral-slayer",
+    "id": 546,
     "name": "Crude Umbral Slayer",
     "attack": 51,
     "skill": "sword",
@@ -6187,7 +6187,7 @@
     ]
   },
   {
-    "id": "crypt-slicer",
+    "id": 547,
     "name": "Crypt Slicer",
     "attack": 58,
     "skill": "sword",
@@ -6196,7 +6196,7 @@
     ]
   },
   {
-    "id": "crystal-sword",
+    "id": 548,
     "name": "Crystal Sword",
     "attack": 35,
     "skill": "sword",
@@ -6205,7 +6205,7 @@
     ]
   },
   {
-    "id": "crystalline-sword",
+    "id": 549,
     "name": "Crystalline Sword",
     "attack": 47,
     "skill": "sword",
@@ -6218,7 +6218,7 @@
     ]
   },
   {
-    "id": "dagger",
+    "id": 550,
     "name": "Dagger",
     "attack": 8,
     "skill": "sword",
@@ -6231,7 +6231,7 @@
     ]
   },
   {
-    "id": "demonrage-sword",
+    "id": 551,
     "name": "Demonrage Sword",
     "attack": 47,
     "skill": "sword",
@@ -6240,7 +6240,7 @@
     ]
   },
   {
-    "id": "djinn-blade",
+    "id": 552,
     "name": "Djinn Blade",
     "attack": 38,
     "skill": "sword",
@@ -6253,7 +6253,7 @@
     ]
   },
   {
-    "id": "dragon-slayer",
+    "id": 553,
     "name": "Dragon Slayer",
     "attack": 44,
     "skill": "sword",
@@ -6262,7 +6262,7 @@
     ]
   },
   {
-    "id": "draining-inferniarch-blade",
+    "id": 554,
     "name": "Draining Inferniarch Blade",
     "attack": 52,
     "attackFire": 44,
@@ -6272,7 +6272,7 @@
     ]
   },
   {
-    "id": "draining-inferniarch-slayer",
+    "id": 555,
     "name": "Draining Inferniarch Slayer",
     "attack": 56,
     "attackEnergy": 48,
@@ -6282,7 +6282,7 @@
     ]
   },
   {
-    "id": "earth-blacksteel-replica",
+    "id": 556,
     "name": "Earth Blacksteel Replica",
     "attack": 5,
     "skill": "sword",
@@ -6295,7 +6295,7 @@
     ]
   },
   {
-    "id": "earth-blacksteel-sword",
+    "id": 557,
     "name": "Earth Blacksteel Sword",
     "attack": 42,
     "attackEarth": 7,
@@ -6305,7 +6305,7 @@
     ]
   },
   {
-    "id": "earth-dragon-slayer",
+    "id": 558,
     "name": "Earth Dragon Slayer",
     "attack": 44,
     "attackEarth": 9,
@@ -6315,7 +6315,7 @@
     ]
   },
   {
-    "id": "earth-mystic-blade",
+    "id": 559,
     "name": "Earth Mystic Blade",
     "attack": 44,
     "attackEarth": 8,
@@ -6329,7 +6329,7 @@
     ]
   },
   {
-    "id": "earth-mystic-blade-replica",
+    "id": 560,
     "name": "Earth Mystic Blade Replica",
     "attack": 5,
     "skill": "sword",
@@ -6342,7 +6342,7 @@
     ]
   },
   {
-    "id": "earth-relic-sword",
+    "id": 561,
     "name": "Earth Relic Sword",
     "attack": 42,
     "attackEarth": 8,
@@ -6356,7 +6356,7 @@
     ]
   },
   {
-    "id": "earth-relic-sword-replica",
+    "id": 562,
     "name": "Earth Relic Sword Replica",
     "attack": 5,
     "skill": "sword",
@@ -6369,7 +6369,7 @@
     ]
   },
   {
-    "id": "earth-slayer-replica",
+    "id": 563,
     "name": "Earth Slayer Replica",
     "attack": 5,
     "skill": "sword",
@@ -6382,7 +6382,7 @@
     ]
   },
   {
-    "id": "earth-spike-sword",
+    "id": 564,
     "name": "Earth Spike Sword",
     "attack": 24,
     "attackEarth": 4,
@@ -6396,7 +6396,7 @@
     ]
   },
   {
-    "id": "earth-spike-sword-replica",
+    "id": 565,
     "name": "Earth Spike Sword Replica",
     "attack": 5,
     "skill": "sword",
@@ -6409,7 +6409,7 @@
     ]
   },
   {
-    "id": "eldritch-claymore",
+    "id": 566,
     "name": "Eldritch Claymore",
     "attack": 56,
     "attackFire": 50,
@@ -6419,7 +6419,7 @@
     ]
   },
   {
-    "id": "emerald-sword",
+    "id": 567,
     "name": "Emerald Sword",
     "attack": 49,
     "skill": "sword",
@@ -6432,7 +6432,7 @@
     ]
   },
   {
-    "id": "energy-blacksteel-replica",
+    "id": 568,
     "name": "Energy Blacksteel Replica",
     "attack": 5,
     "skill": "sword",
@@ -6445,7 +6445,7 @@
     ]
   },
   {
-    "id": "energy-blacksteel-sword",
+    "id": 569,
     "name": "Energy Blacksteel Sword",
     "attack": 42,
     "attackEnergy": 7,
@@ -6455,7 +6455,7 @@
     ]
   },
   {
-    "id": "energy-blade-replica",
+    "id": 570,
     "name": "Energy Blade Replica",
     "attack": 5,
     "skill": "sword",
@@ -6468,7 +6468,7 @@
     ]
   },
   {
-    "id": "energy-dragon-slayer",
+    "id": 571,
     "name": "Energy Dragon Slayer",
     "attack": 44,
     "attackEnergy": 9,
@@ -6478,7 +6478,7 @@
     ]
   },
   {
-    "id": "energy-mystic-blade",
+    "id": 572,
     "name": "Energy Mystic Blade",
     "attack": 44,
     "attackEnergy": 8,
@@ -6492,7 +6492,7 @@
     ]
   },
   {
-    "id": "energy-relic-sword",
+    "id": 573,
     "name": "Energy Relic Sword",
     "attack": 42,
     "attackEnergy": 8,
@@ -6506,7 +6506,7 @@
     ]
   },
   {
-    "id": "energy-relic-sword-replica",
+    "id": 574,
     "name": "Energy Relic Sword Replica",
     "attack": 5,
     "skill": "sword",
@@ -6519,7 +6519,7 @@
     ]
   },
   {
-    "id": "energy-slayer-replica",
+    "id": 575,
     "name": "Energy Slayer Replica",
     "attack": 5,
     "skill": "sword",
@@ -6532,7 +6532,7 @@
     ]
   },
   {
-    "id": "energy-spike-sword",
+    "id": 576,
     "name": "Energy Spike Sword",
     "attack": 24,
     "skill": "sword",
@@ -6545,7 +6545,7 @@
     ]
   },
   {
-    "id": "energy-spike-sword-replica",
+    "id": 577,
     "name": "Energy Spike Sword Replica",
     "attack": 5,
     "skill": "sword",
@@ -6558,7 +6558,7 @@
     ]
   },
   {
-    "id": "epee",
+    "id": 578,
     "name": "Epee",
     "attack": 37,
     "skill": "sword",
@@ -6571,7 +6571,7 @@
     ]
   },
   {
-    "id": "falcon-longsword",
+    "id": 579,
     "name": "Falcon Longsword",
     "attack": 56,
     "skill": "sword",
@@ -6580,7 +6580,7 @@
     ]
   },
   {
-    "id": "fiery-blacksteel-sword",
+    "id": 580,
     "name": "Fiery Blacksteel Sword",
     "attack": 42,
     "attackFire": 7,
@@ -6590,7 +6590,7 @@
     ]
   },
   {
-    "id": "fiery-dragon-slayer",
+    "id": 581,
     "name": "Fiery Dragon Slayer",
     "attack": 44,
     "attackFire": 9,
@@ -6600,7 +6600,7 @@
     ]
   },
   {
-    "id": "fiery-dragon-slayer-replica",
+    "id": 582,
     "name": "Fiery Dragon Slayer Replica",
     "attack": 5,
     "skill": "sword",
@@ -6613,7 +6613,7 @@
     ]
   },
   {
-    "id": "fiery-mystic-blade",
+    "id": 583,
     "name": "Fiery Mystic Blade",
     "attack": 44,
     "attackFire": 8,
@@ -6627,7 +6627,7 @@
     ]
   },
   {
-    "id": "fiery-mystic-blade-replica",
+    "id": 584,
     "name": "Fiery Mystic Blade Replica",
     "attack": 5,
     "skill": "sword",
@@ -6640,7 +6640,7 @@
     ]
   },
   {
-    "id": "fiery-relic-sword",
+    "id": 585,
     "name": "Fiery Relic Sword",
     "attack": 42,
     "attackFire": 8,
@@ -6654,7 +6654,7 @@
     ]
   },
   {
-    "id": "fiery-relic-sword-replica",
+    "id": 586,
     "name": "Fiery Relic Sword Replica",
     "attack": 5,
     "skill": "sword",
@@ -6667,7 +6667,7 @@
     ]
   },
   {
-    "id": "fiery-spike-sword",
+    "id": 587,
     "name": "Fiery Spike Sword",
     "attack": 24,
     "attackFire": 4,
@@ -6681,7 +6681,7 @@
     ]
   },
   {
-    "id": "fiery-spike-sword-replica",
+    "id": 588,
     "name": "Fiery Spike Sword Replica",
     "attack": 5,
     "skill": "sword",
@@ -6694,7 +6694,7 @@
     ]
   },
   {
-    "id": "fire-blacksteel-replica",
+    "id": 589,
     "name": "Fire Blacksteel Replica",
     "attack": 5,
     "skill": "sword",
@@ -6707,7 +6707,7 @@
     ]
   },
   {
-    "id": "fire-sword",
+    "id": 590,
     "name": "Fire Sword",
     "attack": 35,
     "attackFire": 11,
@@ -6721,7 +6721,7 @@
     ]
   },
   {
-    "id": "giant-sword",
+    "id": 591,
     "name": "Giant Sword",
     "attack": 46,
     "skill": "sword",
@@ -6730,7 +6730,7 @@
     ]
   },
   {
-    "id": "gilded-eldritch-claymore",
+    "id": 592,
     "name": "Gilded Eldritch Claymore",
     "attack": 56,
     "attackFire": 50,
@@ -6740,7 +6740,7 @@
     ]
   },
   {
-    "id": "glooth-blade",
+    "id": 593,
     "name": "Glooth Blade",
     "attack": 65,
     "attackEarth": 26,
@@ -6750,7 +6750,7 @@
     ]
   },
   {
-    "id": "gnome-sword",
+    "id": 594,
     "name": "Gnome Sword",
     "attack": 51,
     "attackEnergy": 41,
@@ -6760,7 +6760,7 @@
     ]
   },
   {
-    "id": "golden-magic-longsword",
+    "id": 595,
     "name": "Golden Magic Longsword",
     "attack": 0,
     "skill": "sword",
@@ -6773,7 +6773,7 @@
     ]
   },
   {
-    "id": "golden-warlord-sword",
+    "id": 596,
     "name": "Golden Warlord Sword",
     "attack": 0,
     "skill": "sword",
@@ -6786,7 +6786,7 @@
     ]
   },
   {
-    "id": "grand-sanguine-blade",
+    "id": 597,
     "name": "Grand Sanguine Blade",
     "attack": 54,
     "attackFire": 46,
@@ -6796,7 +6796,7 @@
     ]
   },
   {
-    "id": "grand-sanguine-razor",
+    "id": 598,
     "name": "Grand Sanguine Razor",
     "attack": 58,
     "attackEnergy": 50,
@@ -6806,7 +6806,7 @@
     ]
   },
   {
-    "id": "haunted-blade",
+    "id": 599,
     "name": "Haunted Blade",
     "attack": 40,
     "skill": "sword",
@@ -6815,7 +6815,7 @@
     ]
   },
   {
-    "id": "havoc-blade",
+    "id": 600,
     "name": "Havoc Blade",
     "attack": 49,
     "skill": "sword",
@@ -6824,7 +6824,7 @@
     ]
   },
   {
-    "id": "heavy-machete",
+    "id": 601,
     "name": "Heavy Machete",
     "attack": 16,
     "skill": "sword",
@@ -6837,7 +6837,7 @@
     ]
   },
   {
-    "id": "ice-rapier",
+    "id": 602,
     "name": "Ice Rapier",
     "attack": 60,
     "attackIce": 18,
@@ -6851,7 +6851,7 @@
     ]
   },
   {
-    "id": "icy-blacksteel-replica",
+    "id": 603,
     "name": "Icy Blacksteel Replica",
     "attack": 5,
     "skill": "sword",
@@ -6864,7 +6864,7 @@
     ]
   },
   {
-    "id": "icy-blacksteel-sword",
+    "id": 604,
     "name": "Icy Blacksteel Sword",
     "attack": 42,
     "attackIce": 7,
@@ -6874,7 +6874,7 @@
     ]
   },
   {
-    "id": "icy-dragon-slayer",
+    "id": 605,
     "name": "Icy Dragon Slayer",
     "attack": 44,
     "attackIce": 9,
@@ -6884,7 +6884,7 @@
     ]
   },
   {
-    "id": "icy-dragon-slayer-replica",
+    "id": 606,
     "name": "Icy Dragon Slayer Replica",
     "attack": 5,
     "skill": "sword",
@@ -6897,7 +6897,7 @@
     ]
   },
   {
-    "id": "icy-mystic-blade",
+    "id": 607,
     "name": "Icy Mystic Blade",
     "attack": 44,
     "attackIce": 8,
@@ -6911,7 +6911,7 @@
     ]
   },
   {
-    "id": "icy-mystic-blade-replica",
+    "id": 608,
     "name": "Icy Mystic Blade Replica",
     "attack": 5,
     "skill": "sword",
@@ -6924,7 +6924,7 @@
     ]
   },
   {
-    "id": "icy-relic-sword",
+    "id": 609,
     "name": "Icy Relic Sword",
     "attack": 42,
     "attackIce": 8,
@@ -6938,7 +6938,7 @@
     ]
   },
   {
-    "id": "icy-relic-sword-replica",
+    "id": 610,
     "name": "Icy Relic Sword Replica",
     "attack": 5,
     "skill": "sword",
@@ -6951,7 +6951,7 @@
     ]
   },
   {
-    "id": "icy-spike-sword",
+    "id": 611,
     "name": "Icy Spike Sword",
     "attack": 24,
     "attackIce": 4,
@@ -6965,7 +6965,7 @@
     ]
   },
   {
-    "id": "icy-spike-sword-replica",
+    "id": 612,
     "name": "Icy Spike Sword Replica",
     "attack": 5,
     "skill": "sword",
@@ -6978,7 +6978,7 @@
     ]
   },
   {
-    "id": "impaler-of-the-igniter",
+    "id": 613,
     "name": "Impaler of the Igniter",
     "attack": 51,
     "attackFire": 26,
@@ -6992,7 +6992,7 @@
     ]
   },
   {
-    "id": "incredible-mumpiz-slayer",
+    "id": 614,
     "name": "Incredible Mumpiz Slayer",
     "attack": 17,
     "skill": "sword",
@@ -7005,7 +7005,7 @@
     ]
   },
   {
-    "id": "inferniarch-blade",
+    "id": 615,
     "name": "Inferniarch Blade",
     "attack": 52,
     "attackFire": 44,
@@ -7015,7 +7015,7 @@
     ]
   },
   {
-    "id": "inferniarch-slayer",
+    "id": 616,
     "name": "Inferniarch Slayer",
     "attack": 56,
     "attackEnergy": 48,
@@ -7025,7 +7025,7 @@
     ]
   },
   {
-    "id": "ink-sword",
+    "id": 617,
     "name": "Ink Sword",
     "attack": 14,
     "skill": "sword",
@@ -7038,7 +7038,7 @@
     ]
   },
   {
-    "id": "jagged-sword",
+    "id": 618,
     "name": "Jagged Sword",
     "attack": 21,
     "skill": "sword",
@@ -7051,7 +7051,7 @@
     ]
   },
   {
-    "id": "katana",
+    "id": 619,
     "name": "Katana",
     "attack": 16,
     "skill": "sword",
@@ -7064,7 +7064,7 @@
     ]
   },
   {
-    "id": "knife",
+    "id": 620,
     "name": "Knife",
     "attack": 5,
     "skill": "sword",
@@ -7077,7 +7077,7 @@
     ]
   },
   {
-    "id": "light-rapier",
+    "id": 621,
     "name": "Light Rapier",
     "attack": 10,
     "skill": "sword",
@@ -7090,7 +7090,7 @@
     ]
   },
   {
-    "id": "lion-longsword",
+    "id": 622,
     "name": "Lion Longsword",
     "attack": 52,
     "attackEarth": 44,
@@ -7100,7 +7100,7 @@
     ]
   },
   {
-    "id": "longsword",
+    "id": 623,
     "name": "Longsword",
     "attack": 17,
     "skill": "sword",
@@ -7113,7 +7113,7 @@
     ]
   },
   {
-    "id": "machete",
+    "id": 624,
     "name": "Machete",
     "attack": 12,
     "skill": "sword",
@@ -7126,7 +7126,7 @@
     ]
   },
   {
-    "id": "magic-longsword",
+    "id": 625,
     "name": "Magic Longsword",
     "attack": 55,
     "skill": "sword",
@@ -7135,7 +7135,7 @@
     ]
   },
   {
-    "id": "magic-sword",
+    "id": 626,
     "name": "Magic Sword",
     "attack": 48,
     "skill": "sword",
@@ -7148,7 +7148,7 @@
     ]
   },
   {
-    "id": "mean-knight-sword",
+    "id": 627,
     "name": "Mean Knight Sword",
     "attack": 14,
     "skill": "sword",
@@ -7161,7 +7161,7 @@
     ]
   },
   {
-    "id": "mercenary-sword",
+    "id": 628,
     "name": "Mercenary Sword",
     "attack": 43,
     "skill": "sword",
@@ -7170,7 +7170,7 @@
     ]
   },
   {
-    "id": "mystic-blade",
+    "id": 629,
     "name": "Mystic Blade",
     "attack": 44,
     "skill": "sword",
@@ -7183,7 +7183,7 @@
     ]
   },
   {
-    "id": "naga-sword",
+    "id": 630,
     "name": "Naga Sword",
     "attack": 52,
     "attackIce": 44,
@@ -7193,7 +7193,7 @@
     ]
   },
   {
-    "id": "nightmare-blade",
+    "id": 631,
     "name": "Nightmare Blade",
     "attack": 46,
     "skill": "sword",
@@ -7206,7 +7206,7 @@
     ]
   },
   {
-    "id": "ornate-carving-blade",
+    "id": 632,
     "name": "Ornate Carving Blade",
     "attack": 5,
     "skill": "sword",
@@ -7219,7 +7219,7 @@
     ]
   },
   {
-    "id": "ornate-carving-slayer",
+    "id": 633,
     "name": "Ornate Carving Slayer",
     "attack": 5,
     "skill": "sword",
@@ -7232,7 +7232,7 @@
     ]
   },
   {
-    "id": "ornate-mayhem-blade",
+    "id": 634,
     "name": "Ornate Mayhem Blade",
     "attack": 5,
     "skill": "sword",
@@ -7245,7 +7245,7 @@
     ]
   },
   {
-    "id": "ornate-mayhem-slayer",
+    "id": 635,
     "name": "Ornate Mayhem Slayer",
     "attack": 5,
     "skill": "sword",
@@ -7258,7 +7258,7 @@
     ]
   },
   {
-    "id": "ornate-remedy-blade",
+    "id": 636,
     "name": "Ornate Remedy Blade",
     "attack": 5,
     "skill": "sword",
@@ -7271,7 +7271,7 @@
     ]
   },
   {
-    "id": "ornate-remedy-slayer",
+    "id": 637,
     "name": "Ornate Remedy Slayer",
     "attack": 5,
     "skill": "sword",
@@ -7284,7 +7284,7 @@
     ]
   },
   {
-    "id": "pharaoh-sword",
+    "id": 638,
     "name": "Pharaoh Sword",
     "attack": 41,
     "skill": "sword",
@@ -7297,7 +7297,7 @@
     ]
   },
   {
-    "id": "plain-carving-blade",
+    "id": 639,
     "name": "Plain Carving Blade",
     "attack": 5,
     "skill": "sword",
@@ -7310,7 +7310,7 @@
     ]
   },
   {
-    "id": "plain-carving-slayer",
+    "id": 640,
     "name": "Plain Carving Slayer",
     "attack": 5,
     "skill": "sword",
@@ -7323,7 +7323,7 @@
     ]
   },
   {
-    "id": "plain-mayhem-blade",
+    "id": 641,
     "name": "Plain Mayhem Blade",
     "attack": 5,
     "skill": "sword",
@@ -7336,7 +7336,7 @@
     ]
   },
   {
-    "id": "plain-mayhem-slayer",
+    "id": 642,
     "name": "Plain Mayhem Slayer",
     "attack": 5,
     "skill": "sword",
@@ -7349,7 +7349,7 @@
     ]
   },
   {
-    "id": "plain-remedy-blade",
+    "id": 643,
     "name": "Plain Remedy Blade",
     "attack": 5,
     "skill": "sword",
@@ -7362,7 +7362,7 @@
     ]
   },
   {
-    "id": "plain-remedy-slayer",
+    "id": 644,
     "name": "Plain Remedy Slayer",
     "attack": 5,
     "skill": "sword",
@@ -7375,7 +7375,7 @@
     ]
   },
   {
-    "id": "poets-fencing-quill",
+    "id": 645,
     "name": "Poet's Fencing Quill",
     "attack": 10,
     "skill": "sword",
@@ -7388,7 +7388,7 @@
     ]
   },
   {
-    "id": "pointed-rabbitslayer",
+    "id": 646,
     "name": "Pointed Rabbitslayer",
     "attack": 16,
     "skill": "sword",
@@ -7401,7 +7401,7 @@
     ]
   },
   {
-    "id": "poison-dagger",
+    "id": 647,
     "name": "Poison Dagger",
     "attack": 18,
     "attackEarth": 2,
@@ -7415,7 +7415,7 @@
     ]
   },
   {
-    "id": "rapier",
+    "id": 648,
     "name": "Rapier",
     "attack": 10,
     "skill": "sword",
@@ -7428,7 +7428,7 @@
     ]
   },
   {
-    "id": "ratana",
+    "id": 649,
     "name": "Ratana",
     "attack": 27,
     "skill": "sword",
@@ -7441,7 +7441,7 @@
     ]
   },
   {
-    "id": "relic-sword",
+    "id": 650,
     "name": "Relic Sword",
     "attack": 42,
     "skill": "sword",
@@ -7454,7 +7454,7 @@
     ]
   },
   {
-    "id": "rending-inferniarch-blade",
+    "id": 651,
     "name": "Rending Inferniarch Blade",
     "attack": 52,
     "attackFire": 44,
@@ -7464,7 +7464,7 @@
     ]
   },
   {
-    "id": "rending-inferniarch-slayer",
+    "id": 652,
     "name": "Rending Inferniarch Slayer",
     "attack": 56,
     "attackEnergy": 48,
@@ -7474,7 +7474,7 @@
     ]
   },
   {
-    "id": "ritual-bone-knife",
+    "id": 653,
     "name": "Ritual Bone Knife",
     "attack": 5,
     "skill": "sword",
@@ -7487,7 +7487,7 @@
     ]
   },
   {
-    "id": "ron-the-rippers-sabre",
+    "id": 654,
     "name": "Ron the Ripper's Sabre",
     "attack": 12,
     "skill": "sword",
@@ -7500,7 +7500,7 @@
     ]
   },
   {
-    "id": "runed-sword",
+    "id": 655,
     "name": "Runed Sword",
     "attack": 45,
     "skill": "sword",
@@ -7513,7 +7513,7 @@
     ]
   },
   {
-    "id": "sabre",
+    "id": 656,
     "name": "Sabre",
     "attack": 12,
     "skill": "sword",
@@ -7526,7 +7526,7 @@
     ]
   },
   {
-    "id": "sanguine-blade",
+    "id": 657,
     "name": "Sanguine Blade",
     "attack": 54,
     "attackFire": 46,
@@ -7536,7 +7536,7 @@
     ]
   },
   {
-    "id": "sanguine-razor",
+    "id": 658,
     "name": "Sanguine Razor",
     "attack": 58,
     "attackEnergy": 50,
@@ -7546,7 +7546,7 @@
     ]
   },
   {
-    "id": "scimitar",
+    "id": 659,
     "name": "Scimitar",
     "attack": 19,
     "skill": "sword",
@@ -7559,7 +7559,7 @@
     ]
   },
   {
-    "id": "serpent-sword",
+    "id": 660,
     "name": "Serpent Sword",
     "attack": 26,
     "attackEarth": 8,
@@ -7573,7 +7573,7 @@
     ]
   },
   {
-    "id": "shimmer-sword",
+    "id": 661,
     "name": "Shimmer Sword",
     "attack": 42,
     "skill": "sword",
@@ -7586,7 +7586,7 @@
     ]
   },
   {
-    "id": "shiny-blade",
+    "id": 662,
     "name": "Shiny Blade",
     "attack": 49,
     "skill": "sword",
@@ -7599,7 +7599,7 @@
     ]
   },
   {
-    "id": "short-sword",
+    "id": 663,
     "name": "Short Sword",
     "attack": 11,
     "skill": "sword",
@@ -7612,7 +7612,7 @@
     ]
   },
   {
-    "id": "silver-dagger",
+    "id": 664,
     "name": "Silver Dagger",
     "attack": 9,
     "skill": "sword",
@@ -7625,7 +7625,7 @@
     ]
   },
   {
-    "id": "siphoning-inferniarch-blade",
+    "id": 665,
     "name": "Siphoning Inferniarch Blade",
     "attack": 52,
     "attackFire": 44,
@@ -7635,7 +7635,7 @@
     ]
   },
   {
-    "id": "siphoning-inferniarch-slayer",
+    "id": 666,
     "name": "Siphoning Inferniarch Slayer",
     "attack": 56,
     "attackEnergy": 48,
@@ -7645,7 +7645,7 @@
     ]
   },
   {
-    "id": "slayer-of-carving",
+    "id": 667,
     "name": "Slayer of Carving",
     "attack": 52,
     "skill": "sword",
@@ -7654,7 +7654,7 @@
     ]
   },
   {
-    "id": "slayer-of-carving-charged",
+    "id": 668,
     "name": "Slayer of Carving (Charged)",
     "attack": 51,
     "skill": "sword",
@@ -7663,7 +7663,7 @@
     ]
   },
   {
-    "id": "slayer-of-carving-heavily-charged",
+    "id": 669,
     "name": "Slayer of Carving (Heavily Charged)",
     "attack": 52,
     "skill": "sword",
@@ -7672,7 +7672,7 @@
     ]
   },
   {
-    "id": "slayer-of-carving-overcharged",
+    "id": 670,
     "name": "Slayer of Carving (Overcharged)",
     "attack": 53,
     "skill": "sword",
@@ -7681,7 +7681,7 @@
     ]
   },
   {
-    "id": "slayer-of-destruction",
+    "id": 671,
     "name": "Slayer of Destruction",
     "attack": 52,
     "skill": "sword",
@@ -7690,7 +7690,7 @@
     ]
   },
   {
-    "id": "slayer-of-mayhem",
+    "id": 672,
     "name": "Slayer of Mayhem",
     "attack": 52,
     "skill": "sword",
@@ -7699,7 +7699,7 @@
     ]
   },
   {
-    "id": "slayer-of-mayhem-charged",
+    "id": 673,
     "name": "Slayer of Mayhem (Charged)",
     "attack": 51,
     "skill": "sword",
@@ -7708,7 +7708,7 @@
     ]
   },
   {
-    "id": "slayer-of-mayhem-heavily-charged",
+    "id": 674,
     "name": "Slayer of Mayhem (Heavily Charged)",
     "attack": 52,
     "skill": "sword",
@@ -7717,7 +7717,7 @@
     ]
   },
   {
-    "id": "slayer-of-mayhem-overcharged",
+    "id": 675,
     "name": "Slayer of Mayhem (Overcharged)",
     "attack": 53,
     "skill": "sword",
@@ -7726,7 +7726,7 @@
     ]
   },
   {
-    "id": "slayer-of-remedy",
+    "id": 676,
     "name": "Slayer of Remedy",
     "attack": 52,
     "skill": "sword",
@@ -7735,7 +7735,7 @@
     ]
   },
   {
-    "id": "slayer-of-remedy-charged",
+    "id": 677,
     "name": "Slayer of Remedy (Charged)",
     "attack": 51,
     "skill": "sword",
@@ -7744,7 +7744,7 @@
     ]
   },
   {
-    "id": "slayer-of-remedy-heavily-charged",
+    "id": 678,
     "name": "Slayer of Remedy (Heavily Charged)",
     "attack": 52,
     "skill": "sword",
@@ -7753,7 +7753,7 @@
     ]
   },
   {
-    "id": "slayer-of-remedy-overcharged",
+    "id": 679,
     "name": "Slayer of Remedy (Overcharged)",
     "attack": 53,
     "skill": "sword",
@@ -7762,7 +7762,7 @@
     ]
   },
   {
-    "id": "soulcutter",
+    "id": 680,
     "name": "Soulcutter",
     "attack": 52,
     "attackDeath": 45,
@@ -7772,7 +7772,7 @@
     ]
   },
   {
-    "id": "soulshredder",
+    "id": 681,
     "name": "Soulshredder",
     "attack": 57,
     "attackIce": 47,
@@ -7782,7 +7782,7 @@
     ]
   },
   {
-    "id": "spike-sword",
+    "id": 682,
     "name": "Spike Sword",
     "attack": 24,
     "skill": "sword",
@@ -7795,7 +7795,7 @@
     ]
   },
   {
-    "id": "summerblade",
+    "id": 683,
     "name": "Summerblade",
     "attack": 51,
     "attackFire": 41,
@@ -7805,7 +7805,7 @@
     ]
   },
   {
-    "id": "sword",
+    "id": 684,
     "name": "Sword",
     "attack": 14,
     "skill": "sword",
@@ -7818,7 +7818,7 @@
     ]
   },
   {
-    "id": "tagralt-blade",
+    "id": 685,
     "name": "Tagralt Blade",
     "attack": 56,
     "attackEarth": 49,
@@ -7828,7 +7828,7 @@
     ]
   },
   {
-    "id": "templar-scytheblade",
+    "id": 686,
     "name": "Templar Scytheblade",
     "attack": 23,
     "skill": "sword",
@@ -7841,7 +7841,7 @@
     ]
   },
   {
-    "id": "test-weapon-for-knights",
+    "id": 687,
     "name": "Test Weapon for Knights",
     "attack": 0,
     "skill": "sword",
@@ -7854,7 +7854,7 @@
     ]
   },
   {
-    "id": "thaian-sword",
+    "id": 688,
     "name": "Thaian Sword",
     "attack": 45,
     "skill": "sword",
@@ -7863,7 +7863,7 @@
     ]
   },
   {
-    "id": "the-avenger",
+    "id": 689,
     "name": "The Avenger",
     "attack": 50,
     "skill": "sword",
@@ -7872,7 +7872,7 @@
     ]
   },
   {
-    "id": "the-calamity",
+    "id": 690,
     "name": "The Calamity",
     "attack": 51,
     "skill": "sword",
@@ -7881,7 +7881,7 @@
     ]
   },
   {
-    "id": "the-epiphany",
+    "id": 691,
     "name": "The Epiphany",
     "attack": 50,
     "skill": "sword",
@@ -7894,7 +7894,7 @@
     ]
   },
   {
-    "id": "the-justice-seeker",
+    "id": 692,
     "name": "The Justice Seeker",
     "attack": 47,
     "skill": "sword",
@@ -7907,7 +7907,7 @@
     ]
   },
   {
-    "id": "twiceslicer",
+    "id": 693,
     "name": "Twiceslicer",
     "attack": 47,
     "skill": "sword",
@@ -7916,7 +7916,7 @@
     ]
   },
   {
-    "id": "twin-hooks",
+    "id": 694,
     "name": "Twin Hooks",
     "attack": 32,
     "skill": "sword",
@@ -7925,7 +7925,7 @@
     ]
   },
   {
-    "id": "two-handed-sword",
+    "id": 695,
     "name": "Two Handed Sword",
     "attack": 30,
     "skill": "sword",
@@ -7934,7 +7934,7 @@
     ]
   },
   {
-    "id": "umbral-blade",
+    "id": 696,
     "name": "Umbral Blade",
     "attack": 50,
     "skill": "sword",
@@ -7943,7 +7943,7 @@
     ]
   },
   {
-    "id": "umbral-master-slayer",
+    "id": 697,
     "name": "Umbral Master Slayer",
     "attack": 54,
     "skill": "sword",
@@ -7952,7 +7952,7 @@
     ]
   },
   {
-    "id": "umbral-masterblade",
+    "id": 698,
     "name": "Umbral Masterblade",
     "attack": 52,
     "skill": "sword",
@@ -7961,7 +7961,7 @@
     ]
   },
   {
-    "id": "umbral-slayer",
+    "id": 699,
     "name": "Umbral Slayer",
     "attack": 52,
     "skill": "sword",
@@ -7970,7 +7970,7 @@
     ]
   },
   {
-    "id": "valuable-carving-blade",
+    "id": 700,
     "name": "Valuable Carving Blade",
     "attack": 5,
     "skill": "sword",
@@ -7983,7 +7983,7 @@
     ]
   },
   {
-    "id": "valuable-carving-slayer",
+    "id": 701,
     "name": "Valuable Carving Slayer",
     "attack": 5,
     "skill": "sword",
@@ -7996,7 +7996,7 @@
     ]
   },
   {
-    "id": "valuable-mayhem-blade",
+    "id": 702,
     "name": "Valuable Mayhem Blade",
     "attack": 5,
     "skill": "sword",
@@ -8009,7 +8009,7 @@
     ]
   },
   {
-    "id": "valuable-mayhem-slayer",
+    "id": 703,
     "name": "Valuable Mayhem Slayer",
     "attack": 5,
     "skill": "sword",
@@ -8022,7 +8022,7 @@
     ]
   },
   {
-    "id": "valuable-remedy-blade",
+    "id": 704,
     "name": "Valuable Remedy Blade",
     "attack": 5,
     "skill": "sword",
@@ -8035,7 +8035,7 @@
     ]
   },
   {
-    "id": "valuable-remedy-slayer",
+    "id": 705,
     "name": "Valuable Remedy Slayer",
     "attack": 5,
     "skill": "sword",
@@ -8048,7 +8048,7 @@
     ]
   },
   {
-    "id": "warlord-sword",
+    "id": 706,
     "name": "Warlord Sword",
     "attack": 53,
     "skill": "sword",
@@ -8057,7 +8057,7 @@
     ]
   },
   {
-    "id": "winterblade",
+    "id": 707,
     "name": "Winterblade",
     "attack": 50,
     "attackIce": 40,
@@ -8067,7 +8067,7 @@
     ]
   },
   {
-    "id": "wooden-sword",
+    "id": 708,
     "name": "Wooden Sword",
     "attack": 7,
     "skill": "sword",
@@ -8080,7 +8080,7 @@
     ]
   },
   {
-    "id": "wyvern-fang",
+    "id": 709,
     "name": "Wyvern Fang",
     "attack": 32,
     "skill": "sword",
@@ -8093,7 +8093,7 @@
     ]
   },
   {
-    "id": "zaoan-sword",
+    "id": 710,
     "name": "Zaoan Sword",
     "attack": 43,
     "skill": "sword",
@@ -8106,7 +8106,7 @@
     ]
   },
   {
-    "id": "assassin-star",
+    "id": 711,
     "name": "Assassin Star",
     "attack": 65,
     "skill": "distance",
@@ -8119,7 +8119,7 @@
     ]
   },
   {
-    "id": "enchanted-spear",
+    "id": 712,
     "name": "Enchanted Spear",
     "attack": 38,
     "skill": "distance",
@@ -8132,7 +8132,7 @@
     ]
   },
   {
-    "id": "glooth-spear",
+    "id": 713,
     "name": "Glooth Spear",
     "attack": 55,
     "skill": "distance",
@@ -8145,7 +8145,7 @@
     ]
   },
   {
-    "id": "hunting-spear",
+    "id": 714,
     "name": "Hunting Spear",
     "attack": 32,
     "skill": "distance",
@@ -8158,7 +8158,7 @@
     ]
   },
   {
-    "id": "leaf-star",
+    "id": 715,
     "name": "Leaf Star",
     "attack": 50,
     "attackEarth": 2,
@@ -8172,7 +8172,7 @@
     ]
   },
   {
-    "id": "mean-paladin-spear",
+    "id": 716,
     "name": "Mean Paladin Spear",
     "attack": 15,
     "skill": "distance",
@@ -8185,7 +8185,7 @@
     ]
   },
   {
-    "id": "royal-spear",
+    "id": 717,
     "name": "Royal Spear",
     "attack": 35,
     "skill": "distance",
@@ -8198,7 +8198,7 @@
     ]
   },
   {
-    "id": "royal-star",
+    "id": 718,
     "name": "Royal Star",
     "attack": 66,
     "attackFire": 2,
@@ -8212,7 +8212,7 @@
     ]
   },
   {
-    "id": "small-stone",
+    "id": 719,
     "name": "Small Stone",
     "attack": 5,
     "skill": "distance",
@@ -8225,7 +8225,7 @@
     ]
   },
   {
-    "id": "snowball",
+    "id": 720,
     "name": "Snowball",
     "attack": 0,
     "skill": "distance",
@@ -8238,7 +8238,7 @@
     ]
   },
   {
-    "id": "spear",
+    "id": 721,
     "name": "Spear",
     "attack": 25,
     "skill": "distance",
@@ -8251,7 +8251,7 @@
     ]
   },
   {
-    "id": "throwing-cake",
+    "id": 722,
     "name": "Throwing Cake",
     "attack": 0,
     "skill": "distance",
@@ -8264,7 +8264,7 @@
     ]
   },
   {
-    "id": "throwing-knife",
+    "id": 723,
     "name": "Throwing Knife",
     "attack": 25,
     "skill": "distance",
@@ -8277,7 +8277,7 @@
     ]
   },
   {
-    "id": "throwing-star",
+    "id": 724,
     "name": "Throwing Star",
     "attack": 30,
     "skill": "distance",
@@ -8290,7 +8290,7 @@
     ]
   },
   {
-    "id": "throwing-star-of-sula",
+    "id": 725,
     "name": "Throwing Star of Sula",
     "attack": 250,
     "skill": "distance",
@@ -8303,7 +8303,7 @@
     ]
   },
   {
-    "id": "viper-star",
+    "id": 726,
     "name": "Viper Star",
     "attack": 28,
     "skill": "distance",
@@ -8316,7 +8316,7 @@
     ]
   },
   {
-    "id": "amber-rod",
+    "id": 727,
     "name": "Amber Rod",
     "damageType": "ice",
     "damage": 106,
@@ -8325,7 +8325,7 @@
     ]
   },
   {
-    "id": "amber-wand",
+    "id": 728,
     "name": "Amber Wand",
     "damageType": "energy",
     "damage": 0,
@@ -8334,7 +8334,7 @@
     ]
   },
   {
-    "id": "cobra-rod",
+    "id": 729,
     "name": "Cobra Rod",
     "damageType": "earth",
     "damage": 90,
@@ -8343,7 +8343,7 @@
     ]
   },
   {
-    "id": "cobra-wand",
+    "id": 730,
     "name": "Cobra Wand",
     "damageType": "energy",
     "damage": 97,
@@ -8352,7 +8352,7 @@
     ]
   },
   {
-    "id": "crypt-bile",
+    "id": 731,
     "name": "Crypt Bile",
     "damageType": "physical",
     "damage": 0,
@@ -8361,7 +8361,7 @@
     ]
   },
   {
-    "id": "crypt-jaw",
+    "id": 732,
     "name": "Crypt Jaw",
     "damageType": "physical",
     "damage": 110,
@@ -8370,7 +8370,7 @@
     ]
   },
   {
-    "id": "deepling-ceremonial-dagger",
+    "id": 733,
     "name": "Deepling Ceremonial Dagger",
     "damageType": "ice",
     "damage": 92,
@@ -8380,7 +8380,7 @@
     ]
   },
   {
-    "id": "deepling-fork",
+    "id": 734,
     "name": "Deepling Fork",
     "damageType": "ice",
     "damage": 100,
@@ -8390,7 +8390,7 @@
     ]
   },
   {
-    "id": "draining-inferniarch-rod",
+    "id": 735,
     "name": "Draining Inferniarch Rod",
     "damageType": "earth",
     "damage": 102,
@@ -8399,7 +8399,7 @@
     ]
   },
   {
-    "id": "draining-inferniarch-wand",
+    "id": 736,
     "name": "Draining Inferniarch Wand",
     "damageType": "death",
     "damage": 110,
@@ -8408,7 +8408,7 @@
     ]
   },
   {
-    "id": "dream-blossom-staff",
+    "id": 737,
     "name": "Dream Blossom Staff",
     "damageType": "energy",
     "damage": 70,
@@ -8418,7 +8418,7 @@
     ]
   },
   {
-    "id": "eldritch-rod",
+    "id": 738,
     "name": "Eldritch Rod",
     "damageType": "ice",
     "damage": 95,
@@ -8427,7 +8427,7 @@
     ]
   },
   {
-    "id": "eldritch-wand",
+    "id": 739,
     "name": "Eldritch Wand",
     "damageType": "fire",
     "damage": 95,
@@ -8436,7 +8436,7 @@
     ]
   },
   {
-    "id": "energized-limb",
+    "id": 740,
     "name": "Energized Limb",
     "damageType": "fire",
     "damage": 98,
@@ -8446,7 +8446,7 @@
     ]
   },
   {
-    "id": "falcon-rod",
+    "id": 741,
     "name": "Falcon Rod",
     "damageType": "earth",
     "damage": 94,
@@ -8455,7 +8455,7 @@
     ]
   },
   {
-    "id": "falcon-wand",
+    "id": 742,
     "name": "Falcon Wand",
     "damageType": "energy",
     "damage": 94,
@@ -8464,7 +8464,7 @@
     ]
   },
   {
-    "id": "ferumbras-staff-enchanted",
+    "id": 743,
     "name": "Ferumbras' Staff (Enchanted)",
     "damageType": "energy",
     "damage": 95,
@@ -8473,7 +8473,7 @@
     ]
   },
   {
-    "id": "ferumbras-staff-failed",
+    "id": 744,
     "name": "Ferumbras' Staff (Failed)",
     "damageType": "energy",
     "damage": 80,
@@ -8482,7 +8482,7 @@
     ]
   },
   {
-    "id": "gilded-eldritch-rod",
+    "id": 745,
     "name": "Gilded Eldritch Rod",
     "damageType": "ice",
     "damage": 95,
@@ -8491,7 +8491,7 @@
     ]
   },
   {
-    "id": "gilded-eldritch-wand",
+    "id": 746,
     "name": "Gilded Eldritch Wand",
     "damageType": "fire",
     "damage": 95,
@@ -8500,7 +8500,7 @@
     ]
   },
   {
-    "id": "glacial-rod",
+    "id": 747,
     "name": "Glacial Rod",
     "damageType": "ice",
     "damage": 85,
@@ -8509,7 +8509,7 @@
     ]
   },
   {
-    "id": "grand-sanguine-coil",
+    "id": 748,
     "name": "Grand Sanguine Coil",
     "damageType": "energy",
     "damage": 114,
@@ -8518,7 +8518,7 @@
     ]
   },
   {
-    "id": "grand-sanguine-rod",
+    "id": 749,
     "name": "Grand Sanguine Rod",
     "damageType": "earth",
     "damage": 112,
@@ -8527,7 +8527,7 @@
     ]
   },
   {
-    "id": "hailstorm-rod",
+    "id": 750,
     "name": "Hailstorm Rod",
     "damageType": "ice",
     "damage": 65,
@@ -8536,7 +8536,7 @@
     ]
   },
   {
-    "id": "inferniarch-rod",
+    "id": 751,
     "name": "Inferniarch Rod",
     "damageType": "earth",
     "damage": 102,
@@ -8545,7 +8545,7 @@
     ]
   },
   {
-    "id": "inferniarch-wand",
+    "id": 752,
     "name": "Inferniarch Wand",
     "damageType": "death",
     "damage": 107,
@@ -8554,7 +8554,7 @@
     ]
   },
   {
-    "id": "jungle-rod",
+    "id": 753,
     "name": "Jungle Rod",
     "damageType": "ice",
     "damage": 90,
@@ -8563,7 +8563,7 @@
     ]
   },
   {
-    "id": "jungle-wand",
+    "id": 754,
     "name": "Jungle Wand",
     "damageType": "earth",
     "damage": 90,
@@ -8572,7 +8572,7 @@
     ]
   },
   {
-    "id": "lion-rod",
+    "id": 755,
     "name": "Lion Rod",
     "damageType": "ice",
     "damage": 95,
@@ -8581,7 +8581,7 @@
     ]
   },
   {
-    "id": "lion-wand",
+    "id": 756,
     "name": "Lion Wand",
     "damageType": "ice",
     "damage": 99,
@@ -8590,7 +8590,7 @@
     ]
   },
   {
-    "id": "moonlight-rod",
+    "id": 757,
     "name": "Moonlight Rod",
     "damageType": "ice",
     "damage": 19,
@@ -8599,7 +8599,7 @@
     ]
   },
   {
-    "id": "muck-rod",
+    "id": 758,
     "name": "Muck Rod",
     "damageType": "earth",
     "damage": 85,
@@ -8608,7 +8608,7 @@
     ]
   },
   {
-    "id": "naga-rod",
+    "id": 759,
     "name": "Naga Rod",
     "damageType": "ice",
     "damage": 100,
@@ -8617,7 +8617,7 @@
     ]
   },
   {
-    "id": "naga-wand",
+    "id": 760,
     "name": "Naga Wand",
     "damageType": "energy",
     "damage": 105,
@@ -8626,7 +8626,7 @@
     ]
   },
   {
-    "id": "necrotic-rod",
+    "id": 761,
     "name": "Necrotic Rod",
     "damageType": "death",
     "damage": 30,
@@ -8635,7 +8635,7 @@
     ]
   },
   {
-    "id": "northwind-rod",
+    "id": 762,
     "name": "Northwind Rod",
     "damageType": "ice",
     "damage": 30,
@@ -8644,7 +8644,7 @@
     ]
   },
   {
-    "id": "ogre-scepta",
+    "id": 763,
     "name": "Ogre Scepta",
     "damageType": "earth",
     "damage": 65,
@@ -8653,7 +8653,7 @@
     ]
   },
   {
-    "id": "ornate-carving-rod",
+    "id": 764,
     "name": "Ornate Carving Rod",
     "damageType": "ice",
     "damage": 5,
@@ -8666,7 +8666,7 @@
     ]
   },
   {
-    "id": "ornate-carving-wand",
+    "id": 765,
     "name": "Ornate Carving Wand",
     "damageType": "energy",
     "damage": 5,
@@ -8679,7 +8679,7 @@
     ]
   },
   {
-    "id": "ornate-mayhem-rod",
+    "id": 766,
     "name": "Ornate Mayhem Rod",
     "damageType": "ice",
     "damage": 5,
@@ -8692,7 +8692,7 @@
     ]
   },
   {
-    "id": "ornate-mayhem-wand",
+    "id": 767,
     "name": "Ornate Mayhem Wand",
     "damageType": "energy",
     "damage": 5,
@@ -8705,7 +8705,7 @@
     ]
   },
   {
-    "id": "ornate-remedy-rod",
+    "id": 768,
     "name": "Ornate Remedy Rod",
     "damageType": "ice",
     "damage": 5,
@@ -8718,7 +8718,7 @@
     ]
   },
   {
-    "id": "ornate-remedy-wand",
+    "id": 769,
     "name": "Ornate Remedy Wand",
     "damageType": "energy",
     "damage": 5,
@@ -8731,7 +8731,7 @@
     ]
   },
   {
-    "id": "plain-carving-rod",
+    "id": 770,
     "name": "Plain Carving Rod",
     "damageType": "ice",
     "damage": 5,
@@ -8744,7 +8744,7 @@
     ]
   },
   {
-    "id": "plain-carving-wand",
+    "id": 771,
     "name": "Plain Carving Wand",
     "damageType": "energy",
     "damage": 5,
@@ -8757,7 +8757,7 @@
     ]
   },
   {
-    "id": "plain-mayhem-rod",
+    "id": 772,
     "name": "Plain Mayhem Rod",
     "damageType": "ice",
     "damage": 5,
@@ -8770,7 +8770,7 @@
     ]
   },
   {
-    "id": "plain-mayhem-wand",
+    "id": 773,
     "name": "Plain Mayhem Wand",
     "damageType": "energy",
     "damage": 5,
@@ -8783,7 +8783,7 @@
     ]
   },
   {
-    "id": "plain-remedy-rod",
+    "id": 774,
     "name": "Plain Remedy Rod",
     "damageType": "ice",
     "damage": 5,
@@ -8796,7 +8796,7 @@
     ]
   },
   {
-    "id": "plain-remedy-wand",
+    "id": 775,
     "name": "Plain Remedy Wand",
     "damageType": "energy",
     "damage": 5,
@@ -8809,7 +8809,7 @@
     ]
   },
   {
-    "id": "rending-inferniarch-rod",
+    "id": 776,
     "name": "Rending Inferniarch Rod",
     "damageType": "earth",
     "damage": 102,
@@ -8818,7 +8818,7 @@
     ]
   },
   {
-    "id": "rending-inferniarch-wand",
+    "id": 777,
     "name": "Rending Inferniarch Wand",
     "damageType": "death",
     "damage": 110,
@@ -8827,7 +8827,7 @@
     ]
   },
   {
-    "id": "rod-of-carving",
+    "id": 778,
     "name": "Rod of Carving",
     "damageType": "ice",
     "damage": 88,
@@ -8836,7 +8836,7 @@
     ]
   },
   {
-    "id": "rod-of-carving-charged",
+    "id": 779,
     "name": "Rod of Carving (Charged)",
     "damageType": "ice",
     "damage": 88,
@@ -8845,7 +8845,7 @@
     ]
   },
   {
-    "id": "rod-of-carving-heavily-charged",
+    "id": 780,
     "name": "Rod of Carving (Heavily Charged)",
     "damageType": "ice",
     "damage": 88,
@@ -8854,7 +8854,7 @@
     ]
   },
   {
-    "id": "rod-of-carving-overcharged",
+    "id": 781,
     "name": "Rod of Carving (Overcharged)",
     "damageType": "ice",
     "damage": 88,
@@ -8863,7 +8863,7 @@
     ]
   },
   {
-    "id": "rod-of-destruction",
+    "id": 782,
     "name": "Rod of Destruction",
     "damageType": "ice",
     "damage": 95,
@@ -8872,7 +8872,7 @@
     ]
   },
   {
-    "id": "rod-of-mayhem",
+    "id": 783,
     "name": "Rod of Mayhem",
     "damageType": "ice",
     "damage": 88,
@@ -8881,7 +8881,7 @@
     ]
   },
   {
-    "id": "rod-of-mayhem-charged",
+    "id": 784,
     "name": "Rod of Mayhem (Charged)",
     "damageType": "ice",
     "damage": 88,
@@ -8890,7 +8890,7 @@
     ]
   },
   {
-    "id": "rod-of-mayhem-heavily-charged",
+    "id": 785,
     "name": "Rod of Mayhem (Heavily Charged)",
     "damageType": "ice",
     "damage": 88,
@@ -8899,7 +8899,7 @@
     ]
   },
   {
-    "id": "rod-of-mayhem-overcharged",
+    "id": 786,
     "name": "Rod of Mayhem (Overcharged)",
     "damageType": "ice",
     "damage": 103,
@@ -8908,7 +8908,7 @@
     ]
   },
   {
-    "id": "rod-of-remedy",
+    "id": 787,
     "name": "Rod of Remedy",
     "damageType": "ice",
     "damage": 88,
@@ -8917,7 +8917,7 @@
     ]
   },
   {
-    "id": "rod-of-remedy-charged",
+    "id": 788,
     "name": "Rod of Remedy (Charged)",
     "damageType": "ice",
     "damage": 88,
@@ -8926,7 +8926,7 @@
     ]
   },
   {
-    "id": "rod-of-remedy-heavily-charged",
+    "id": 789,
     "name": "Rod of Remedy (Heavily Charged)",
     "damageType": "ice",
     "damage": 88,
@@ -8935,7 +8935,7 @@
     ]
   },
   {
-    "id": "rod-of-remedy-overcharged",
+    "id": 790,
     "name": "Rod of Remedy (Overcharged)",
     "damageType": "ice",
     "damage": 88,
@@ -8944,7 +8944,7 @@
     ]
   },
   {
-    "id": "sanguine-coil",
+    "id": 791,
     "name": "Sanguine Coil",
     "damageType": "fire",
     "damage": 119,
@@ -8953,7 +8953,7 @@
     ]
   },
   {
-    "id": "sanguine-rod",
+    "id": 792,
     "name": "Sanguine Rod",
     "damageType": "earth",
     "damage": 112,
@@ -8962,7 +8962,7 @@
     ]
   },
   {
-    "id": "shimmer-rod",
+    "id": 793,
     "name": "Shimmer Rod",
     "damageType": "ice",
     "damage": 65,
@@ -8971,7 +8971,7 @@
     ]
   },
   {
-    "id": "shimmer-wand",
+    "id": 794,
     "name": "Shimmer Wand",
     "damageType": "energy",
     "damage": 65,
@@ -8980,7 +8980,7 @@
     ]
   },
   {
-    "id": "siphoning-inferniarch-rod",
+    "id": 795,
     "name": "Siphoning Inferniarch Rod",
     "damageType": "earth",
     "damage": 102,
@@ -8989,7 +8989,7 @@
     ]
   },
   {
-    "id": "siphoning-inferniarch-wand",
+    "id": 796,
     "name": "Siphoning Inferniarch Wand",
     "damageType": "death",
     "damage": 110,
@@ -8998,7 +8998,7 @@
     ]
   },
   {
-    "id": "snakebite-rod",
+    "id": 797,
     "name": "Snakebite Rod",
     "damageType": "earth",
     "damage": 13,
@@ -9007,7 +9007,7 @@
     ]
   },
   {
-    "id": "sorcerer-test-weapon-test",
+    "id": 798,
     "name": "Sorcerer Test Weapon Test",
     "damage": 0,
     "vocations": [
@@ -9019,7 +9019,7 @@
     ]
   },
   {
-    "id": "sorcerer-and-druid-staff",
+    "id": 799,
     "name": "Sorcerer and Druid Staff",
     "damageType": "energy",
     "damage": 13,
@@ -9032,7 +9032,7 @@
     ]
   },
   {
-    "id": "soulhexer",
+    "id": 800,
     "name": "Soulhexer",
     "damageType": "ice",
     "damage": 108,
@@ -9041,7 +9041,7 @@
     ]
   },
   {
-    "id": "soultainter",
+    "id": 801,
     "name": "Soultainter",
     "damageType": "death",
     "damage": 110,
@@ -9050,7 +9050,7 @@
     ]
   },
   {
-    "id": "springsprout-rod",
+    "id": 802,
     "name": "Springsprout Rod",
     "damageType": "earth",
     "damage": 65,
@@ -9059,7 +9059,7 @@
     ]
   },
   {
-    "id": "terra-rod",
+    "id": 803,
     "name": "Terra Rod",
     "damageType": "earth",
     "damage": 45,
@@ -9068,7 +9068,7 @@
     ]
   },
   {
-    "id": "the-chiller",
+    "id": 804,
     "name": "The Chiller",
     "damageType": "ice",
     "damage": 6,
@@ -9077,7 +9077,7 @@
     ]
   },
   {
-    "id": "the-scorcher",
+    "id": 805,
     "name": "The Scorcher",
     "damageType": "fire",
     "damage": 6,
@@ -9086,7 +9086,7 @@
     ]
   },
   {
-    "id": "underworld-rod",
+    "id": 806,
     "name": "Underworld Rod",
     "damageType": "death",
     "damage": 65,
@@ -9095,7 +9095,7 @@
     ]
   },
   {
-    "id": "valuable-carving-rod",
+    "id": 807,
     "name": "Valuable Carving Rod",
     "damageType": "ice",
     "damage": 5,
@@ -9108,7 +9108,7 @@
     ]
   },
   {
-    "id": "valuable-carving-wand",
+    "id": 808,
     "name": "Valuable Carving Wand",
     "damageType": "energy",
     "damage": 5,
@@ -9121,7 +9121,7 @@
     ]
   },
   {
-    "id": "valuable-mayhem-rod",
+    "id": 809,
     "name": "Valuable Mayhem Rod",
     "damageType": "ice",
     "damage": 5,
@@ -9134,7 +9134,7 @@
     ]
   },
   {
-    "id": "valuable-mayhem-wand",
+    "id": 810,
     "name": "Valuable Mayhem Wand",
     "damageType": "energy",
     "damage": 5,
@@ -9147,7 +9147,7 @@
     ]
   },
   {
-    "id": "valuable-remedy-rod",
+    "id": 811,
     "name": "Valuable Remedy Rod",
     "damageType": "ice",
     "damage": 5,
@@ -9160,7 +9160,7 @@
     ]
   },
   {
-    "id": "valuable-remedy-wand",
+    "id": 812,
     "name": "Valuable Remedy Wand",
     "damageType": "energy",
     "damage": 5,
@@ -9173,7 +9173,7 @@
     ]
   },
   {
-    "id": "wand-of-carving",
+    "id": 813,
     "name": "Wand of Carving",
     "damageType": "energy",
     "damage": 88,
@@ -9182,7 +9182,7 @@
     ]
   },
   {
-    "id": "wand-of-carving-charged",
+    "id": 814,
     "name": "Wand of Carving (Charged)",
     "damageType": "energy",
     "damage": 88,
@@ -9191,7 +9191,7 @@
     ]
   },
   {
-    "id": "wand-of-carving-heavily-charged",
+    "id": 815,
     "name": "Wand of Carving (Heavily Charged)",
     "damageType": "energy",
     "damage": 88,
@@ -9200,7 +9200,7 @@
     ]
   },
   {
-    "id": "wand-of-carving-overcharged",
+    "id": 816,
     "name": "Wand of Carving (Overcharged)",
     "damageType": "energy",
     "damage": 88,
@@ -9209,7 +9209,7 @@
     ]
   },
   {
-    "id": "wand-of-cosmic-energy",
+    "id": 817,
     "name": "Wand of Cosmic Energy",
     "damageType": "energy",
     "damage": 45,
@@ -9218,7 +9218,7 @@
     ]
   },
   {
-    "id": "wand-of-darkness",
+    "id": 818,
     "name": "Wand of Darkness",
     "damageType": "death",
     "damage": 85,
@@ -9227,7 +9227,7 @@
     ]
   },
   {
-    "id": "wand-of-decay",
+    "id": 819,
     "name": "Wand of Decay",
     "damageType": "death",
     "damage": 30,
@@ -9236,7 +9236,7 @@
     ]
   },
   {
-    "id": "wand-of-defiance",
+    "id": 820,
     "name": "Wand of Defiance",
     "damageType": "energy",
     "damage": 85,
@@ -9245,7 +9245,7 @@
     ]
   },
   {
-    "id": "wand-of-destruction",
+    "id": 821,
     "name": "Wand of Destruction",
     "damageType": "energy",
     "damage": 95,
@@ -9254,7 +9254,7 @@
     ]
   },
   {
-    "id": "wand-of-destruction-test",
+    "id": 822,
     "name": "Wand of Destruction Test",
     "damage": 0,
     "vocations": [
@@ -9266,7 +9266,7 @@
     ]
   },
   {
-    "id": "wand-of-dimensions",
+    "id": 823,
     "name": "Wand of Dimensions",
     "damageType": "energy",
     "damage": 53,
@@ -9275,7 +9275,7 @@
     ]
   },
   {
-    "id": "wand-of-draconia",
+    "id": 824,
     "name": "Wand of Draconia",
     "damageType": "fire",
     "damage": 30,
@@ -9284,7 +9284,7 @@
     ]
   },
   {
-    "id": "wand-of-dragonbreath",
+    "id": 825,
     "name": "Wand of Dragonbreath",
     "damageType": "fire",
     "damage": 19,
@@ -9293,7 +9293,7 @@
     ]
   },
   {
-    "id": "wand-of-everblazing",
+    "id": 826,
     "name": "Wand of Everblazing",
     "damageType": "fire",
     "damage": 85,
@@ -9302,7 +9302,7 @@
     ]
   },
   {
-    "id": "wand-of-inferno",
+    "id": 827,
     "name": "Wand of Inferno",
     "damageType": "fire",
     "damage": 65,
@@ -9311,7 +9311,7 @@
     ]
   },
   {
-    "id": "wand-of-mayhem",
+    "id": 828,
     "name": "Wand of Mayhem",
     "damageType": "energy",
     "damage": 88,
@@ -9320,7 +9320,7 @@
     ]
   },
   {
-    "id": "wand-of-mayhem-charged",
+    "id": 829,
     "name": "Wand of Mayhem (Charged)",
     "damageType": "energy",
     "damage": 88,
@@ -9329,7 +9329,7 @@
     ]
   },
   {
-    "id": "wand-of-mayhem-heavily-charged",
+    "id": 830,
     "name": "Wand of Mayhem (Heavily Charged)",
     "damageType": "energy",
     "damage": 88,
@@ -9338,7 +9338,7 @@
     ]
   },
   {
-    "id": "wand-of-mayhem-overcharged",
+    "id": 831,
     "name": "Wand of Mayhem (Overcharged)",
     "damageType": "energy",
     "damage": 103,
@@ -9347,7 +9347,7 @@
     ]
   },
   {
-    "id": "wand-of-remedy",
+    "id": 832,
     "name": "Wand of Remedy",
     "damageType": "energy",
     "damage": 88,
@@ -9356,7 +9356,7 @@
     ]
   },
   {
-    "id": "wand-of-remedy-charged",
+    "id": 833,
     "name": "Wand of Remedy (Charged)",
     "damageType": "energy",
     "damage": 88,
@@ -9365,7 +9365,7 @@
     ]
   },
   {
-    "id": "wand-of-remedy-heavily-charged",
+    "id": 834,
     "name": "Wand of Remedy (Heavily Charged)",
     "damageType": "energy",
     "damage": 88,
@@ -9374,7 +9374,7 @@
     ]
   },
   {
-    "id": "wand-of-remedy-overcharged",
+    "id": 835,
     "name": "Wand of Remedy (Overcharged)",
     "damageType": "energy",
     "damage": 88,
@@ -9383,7 +9383,7 @@
     ]
   },
   {
-    "id": "wand-of-starstorm",
+    "id": 836,
     "name": "Wand of Starstorm",
     "damageType": "energy",
     "damage": 65,
@@ -9392,7 +9392,7 @@
     ]
   },
   {
-    "id": "wand-of-voodoo",
+    "id": 837,
     "name": "Wand of Voodoo",
     "damageType": "death",
     "damage": 65,
@@ -9401,7 +9401,7 @@
     ]
   },
   {
-    "id": "wand-of-vortex",
+    "id": 838,
     "name": "Wand of Vortex",
     "damageType": "energy",
     "damage": 13,

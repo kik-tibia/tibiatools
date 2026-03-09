@@ -60,7 +60,7 @@ const defaultStats = (): BuildStats => ({
 });
 
 const defaultWeapon = (): WeaponBuild => ({
-  id: "fists",
+  id: 1,
 });
 
 export const defaultBuild = () => ({

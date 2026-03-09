@@ -35,7 +35,7 @@ const VOC_TO_NUM: Record<Vocation, number> = { knight: 0, paladin: 1, sorcerer: 
 const NUM_TO_VOC: Vocation[] = ["knight", "paladin", "sorcerer", "druid", "monk"];
 
 type CompactStats = (string | number | null)[];
-type CompactWeapon = string | [string, string];
+type CompactWeapon = number | [number, number];
 type CompactPerk = [string, number];
 type CompactRotation = [string, number, number, number];
 type CompactBuild = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation[]];
@@ -75,7 +75,7 @@ function compactWeapon(weapon: WeaponBuild): CompactWeapon {
 }
 
 function expandWeapon(compact: CompactWeapon): WeaponBuild {
-  if (typeof compact === "string") {
+  if (typeof compact === "number") {
     return { id: compact };
   }
   return { id: compact[0], ammo: compact[1] };
