@@ -19,7 +19,7 @@ export type PerkBonusType =
   | "all";
 
 export type PerkDef = {
-  id: string;
+  id: number;
   name: string;
   scope: PerkScope;
   spell: boolean;

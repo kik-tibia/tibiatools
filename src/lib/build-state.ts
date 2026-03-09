@@ -34,7 +34,7 @@ export type CollapsedSections = {
 export type CalculatorState = {
   A: Build;
   B: Build;
-  perkOrder: string[];
+  perkOrder: number[];
   rotationOrder: string[];
   showSecondBuild: boolean;
   collapsed: CollapsedSections;

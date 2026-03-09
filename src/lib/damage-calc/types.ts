@@ -1,7 +1,7 @@
 import type { PerkDef } from "src/data/perks";
 
 export type ActivePerk = {
-  id: string;
+  id: number;
   value: number;
 };
 

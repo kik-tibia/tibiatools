@@ -18,7 +18,7 @@
   }: {
     buildA: Build;
     buildB: Build;
-    perkOrder: string[];
+    perkOrder: number[];
     rotationOrder: string[];
     showSecondBuild?: boolean;
     collapsed: CollapsedSections;

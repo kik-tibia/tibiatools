@@ -17,7 +17,7 @@
     buildB: Build;
     showSecondBuild: boolean;
     collapsed: boolean;
-    perkOrder: string[];
+    perkOrder: number[];
   } = $props();
 
   const perkRegistry = new Map(perks.map((p) => [p.id, p]));
@@ -33,7 +33,7 @@
     }),
   );
 
-  function addPerk(id: string) {
+  function addPerk(id: number) {
     buildA = { ...buildA, perks: [...buildA.perks, { id, value: 0 }] };
     if (showSecondBuild) {
       buildB = { ...buildB, perks: [...buildB.perks, { id, value: 0 }] };
@@ -43,7 +43,7 @@
     }
   }
 
-  function setPerkValueA(id: string, v: number) {
+  function setPerkValueA(id: number, v: number) {
     const exists = buildA.perks.some((p) => p.id === id);
     if (exists) {
       buildA = { ...buildA, perks: buildA.perks.map((a) => (a.id === id ? { ...a, value: v } : a)) };
@@ -51,7 +51,7 @@
       buildA = { ...buildA, perks: [...buildA.perks, { id, value: v }] };
     }
   }
-  function setPerkValueB(id: string, v: number) {
+  function setPerkValueB(id: number, v: number) {
     const exists = buildB.perks.some((p) => p.id === id);
     if (exists) {
       buildB = { ...buildB, perks: buildB.perks.map((a) => (a.id === id ? { ...a, value: v } : a)) };
@@ -59,13 +59,13 @@
       buildB = { ...buildB, perks: [...buildB.perks, { id, value: v }] };
     }
   }
-  function removePerkA(id: string) {
+  function removePerkA(id: number) {
     buildA = { ...buildA, perks: buildA.perks.filter((a) => a.id !== id) };
     if (!buildB.perks.some((p) => p.id === id)) {
       perkOrder = perkOrder.filter((x) => x !== id);
     }
   }
-  function removePerkB(id: string) {
+  function removePerkB(id: number) {
     buildB = { ...buildB, perks: buildB.perks.filter((a) => a.id !== id) };
     if (!buildA.perks.some((p) => p.id === id)) {
       perkOrder = perkOrder.filter((x) => x !== id);
@@ -83,9 +83,9 @@
 {#snippet perkCell(
   build: Build,
   buildId: string,
-  perkId: string,
-  setPerkValue: (id: string, value: number) => void,
-  removePerk: (id: string) => void,
+  perkId: number,
+  setPerkValue: (id: number, value: number) => void,
+  removePerk: (id: number) => void,
 )}
   <td>
     {#if build.perks.some((p) => p.id === perkId)}

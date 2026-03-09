@@ -14,7 +14,7 @@
 
   let A: Build = $state(initial.A);
   let B: Build = $state(initial.B);
-  let perkOrder: string[] = $state(initial.perkOrder ?? []);
+  let perkOrder: number[] = $state(initial.perkOrder ?? []);
   let rotationOrder: string[] = $state(initial.rotationOrder ?? []);
   let showSecondBuild: boolean = $state(!!initial.showSecondBuild);
   let collapsed: CollapsedSections = $state(initial.collapsed ?? defaultCollapsed());
