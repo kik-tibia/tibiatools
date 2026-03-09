@@ -31,7 +31,12 @@
 
   const statFields: StatField[] = [
     { key: "fatalChance", label: "Fatal Chance %" },
-    { key: "baseMagicLevel", label: "Base Magic Level", advanced: true, tooltip: "Required for Runic Mastery" },
+    {
+      key: "baseMagicLevel",
+      label: "Base Magic Level",
+      advanced: true,
+      tooltip: "Required for Runic Mastery<br/>(not yet implemented)",
+    },
     {
       key: "axe",
       label: "Axe Fighting",
