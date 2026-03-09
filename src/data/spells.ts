@@ -7,7 +7,7 @@ export type Element = "ice" | "fire" | "earth" | "energy" | "physical" | "holy" 
 export type Rounding = "floor" | "round" | "ceil";
 
 export type Spell = {
-  id: string;
+  id: number;
   scope: string;
   name: string;
   spellType: SpellType;
@@ -17,7 +17,7 @@ export type Spell = {
   skillFactor: number;
   buckets: number;
   additionalDamageMultiplier: number;
-  spells: string[];
+  spells: number[];
   isSpender: boolean;
   isSelectable: boolean;
   isExtra: boolean;
@@ -39,7 +39,7 @@ export interface SpellDamage extends Spell {
 
 export const spells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) => ({
   ...s,
-  scope: s.scope ?? s.id,
+  scope: s.scope,
   additionalDamageMultiplier: s.additionalDamageMultiplier ?? 1,
   spells: s.spells ?? [s.id],
   isSpender: s.isSpender ?? false,

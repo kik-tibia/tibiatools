@@ -19,7 +19,7 @@
     buildA: Build;
     buildB: Build;
     perkOrder: number[];
-    rotationOrder: string[];
+    rotationOrder: number[];
     showSecondBuild?: boolean;
     collapsed: CollapsedSections;
   } = $props();

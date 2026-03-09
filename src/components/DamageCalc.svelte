@@ -15,7 +15,7 @@
   let A: Build = $state(initial.A);
   let B: Build = $state(initial.B);
   let perkOrder: number[] = $state(initial.perkOrder ?? []);
-  let rotationOrder: string[] = $state(initial.rotationOrder ?? []);
+  let rotationOrder: number[] = $state(initial.rotationOrder ?? []);
   let showSecondBuild: boolean = $state(!!initial.showSecondBuild);
   let collapsed: CollapsedSections = $state(initial.collapsed ?? defaultCollapsed());
 
@@ -33,8 +33,8 @@
   const toMap = (arr: SpellDamage[]) => new Map(arr.map((x) => [x.id, x]));
   let mapA = $derived(toMap(resultsA));
   let mapB = $derived(toMap(resultsB));
-  const isAHigher = (id: string) => Number(mapA.get(id)?.effectiveAvg ?? 0) >= Number(mapB.get(id)?.effectiveAvg ?? 0);
-  const isBHigher = (id: string) => Number(mapB.get(id)?.effectiveAvg ?? 0) >= Number(mapA.get(id)?.effectiveAvg ?? 0);
+  const isAHigher = (id: number) => Number(mapA.get(id)?.effectiveAvg ?? 0) >= Number(mapB.get(id)?.effectiveAvg ?? 0);
+  const isBHigher = (id: number) => Number(mapB.get(id)?.effectiveAvg ?? 0) >= Number(mapA.get(id)?.effectiveAvg ?? 0);
   const epsilon = 1e-9;
   let isDptAHigher = $derived(effectiveDptA >= effectiveDptB - epsilon);
   let isDptBHigher = $derived(effectiveDptB >= effectiveDptA - epsilon);

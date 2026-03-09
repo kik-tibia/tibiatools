@@ -37,9 +37,9 @@ const NUM_TO_VOC: Vocation[] = ["knight", "paladin", "sorcerer", "druid", "monk"
 type CompactStats = (string | number | null)[];
 type CompactWeapon = number | [number, number];
 type CompactPerk = [number, number];
-type CompactRotation = [string, number, number, number];
+type CompactRotation = [number, number, number, number];
 type CompactBuild = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation[]];
-type CompactState = [CompactBuild, CompactBuild, number[], string[], boolean, number];
+type CompactState = [CompactBuild, CompactBuild, number[], number[], boolean, number];
 
 function compactStats(stats: BuildStats): CompactStats {
   let mask = 0;

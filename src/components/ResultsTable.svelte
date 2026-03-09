@@ -23,7 +23,7 @@
     showHighlighting: boolean;
     isDptHigher: boolean;
     isDphHigher: boolean;
-    isHigher?: (id: string) => boolean;
+    isHigher?: (id: number) => boolean;
   } = $props();
 
   let vocResults = $derived(results.filter((i) => i.vocations.includes(vocation)));

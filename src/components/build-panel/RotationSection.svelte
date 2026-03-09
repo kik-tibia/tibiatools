@@ -17,12 +17,12 @@
     buildB: Build;
     showSecondBuild: boolean;
     collapsed: boolean;
-    rotationOrder: string[];
+    rotationOrder: number[];
   } = $props();
 
   const spellRegistry = new Map(spells.map((s) => [s.id, s]));
 
-  const isAutoAttack = (id: string) => id === "auto-attack";
+  const isAutoAttack = (id: number) => id === 1;
 
   let selectableSpells = $derived(
     spells.filter(
@@ -33,7 +33,7 @@
     ),
   );
 
-  function addSpellToRotation(id: string) {
+  function addSpellToRotation(id: number) {
     const spellsToAdd = (spellRegistry.get(id)?.spells ?? []).flatMap((s) => spellRegistry.get(s) ?? []);
     const spellsToAddA = spellsToAdd
       .filter((s) => s.vocations.includes(buildA.stats.vocation))
@@ -55,7 +55,7 @@
     }
   }
 
-  function setRatioA(id: string, v: number) {
+  function setRatioA(id: number, v: number) {
     const scope = spellRegistry.get(id)?.scope;
     const matchedSpells = spells.filter((s) => s.scope == scope).map((s) => s.id);
     buildA = {
@@ -64,7 +64,7 @@
     };
   }
 
-  function setRatioB(id: string, v: number) {
+  function setRatioB(id: number, v: number) {
     const scope = spellRegistry.get(id)?.scope;
     const matchedSpells = spells.filter((s) => s.scope == scope).map((s) => s.id);
     buildB = {
@@ -73,15 +73,15 @@
     };
   }
 
-  function setTargetsA(id: string, v: number) {
+  function setTargetsA(id: number, v: number) {
     buildA = { ...buildA, rotation: buildA.rotation.map((r) => (r.id === id ? { ...r, targets: v } : r)) };
   }
 
-  function setTargetsB(id: string, v: number) {
+  function setTargetsB(id: number, v: number) {
     buildB = { ...buildB, rotation: buildB.rotation.map((r) => (r.id === id ? { ...r, targets: v } : r)) };
   }
 
-  function addRotationA(id: string) {
+  function addRotationA(id: number) {
     const scope = spellRegistry.get(id)?.scope;
     const spellsToAdd =
       spells
@@ -90,7 +90,7 @@
     buildA = { ...buildA, rotation: [...buildA.rotation, ...spellsToAdd] };
   }
 
-  function addRotationB(id: string) {
+  function addRotationB(id: number) {
     const scope = spellRegistry.get(id)?.scope;
     const spellsToAdd =
       spells
@@ -99,7 +99,7 @@
     buildB = { ...buildB, rotation: [...buildB.rotation, ...spellsToAdd] };
   }
 
-  function removeRotationA(id: string) {
+  function removeRotationA(id: number) {
     const scope = spellRegistry.get(id)?.scope;
     const spellsToRemove = spells.filter((s) => s.scope == scope).map((s) => s.id);
     buildA = { ...buildA, rotation: buildA.rotation.filter((a) => !spellsToRemove.includes(a.id)) };
@@ -108,7 +108,7 @@
     }
   }
 
-  function removeRotationB(id: string) {
+  function removeRotationB(id: number) {
     const scope = spellRegistry.get(id)?.scope;
     const spellsToRemove = spells.filter((s) => s.scope == scope).map((s) => s.id);
     buildB = { ...buildB, rotation: buildB.rotation.filter((a) => !spellsToRemove.includes(a.id)) };
@@ -129,10 +129,10 @@
   build: Build,
   buildId: string,
   spell: Spell,
-  setTargets: (id: string, v: number) => void,
-  setRatio: (id: string, v: number) => void,
-  addRotation: (id: string) => void,
-  removeRotation: (id: string) => void,
+  setTargets: (id: number, v: number) => void,
+  setRatio: (id: number, v: number) => void,
+  addRotation: (id: number) => void,
+  removeRotation: (id: number) => void,
 )}
   {@const isAuto = isAutoAttack(spell.id)}
   <td>

@@ -3,6 +3,8 @@ import { weapons, ammo } from "@data/weapons";
 
 import type { BuildStats, Vocation } from "@lib/build-state";
 import type { PerkDef } from "@data/perks";
+
+const AUTO_ATTACK_ID = 1;
 import { spells, type Spell, type SpellDamage } from "src/data/spells";
 import type {
   ActivePerk,
@@ -237,13 +239,13 @@ export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks
 
 // damage per turn
 export const computeDpt = (spellDamages: SpellDamage[], rotation: RotationSpell[]) => {
-  const hasAutoAttack = rotation.some((r) => r.id === "auto-attack");
-  const spellRotation = rotation.filter((r) => r.id !== "auto-attack");
+  const hasAutoAttack = rotation.some((r) => r.id === AUTO_ATTACK_ID);
+  const spellRotation = rotation.filter((r) => r.id !== AUTO_ATTACK_ID);
   const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
 
   const autoAttackDamage = hasAutoAttack
-    ? (spellDamages.find((s) => s.id === "auto-attack")?.effectiveAvg ?? 0) *
-      (rotation.find((r) => r.id === "auto-attack")?.targets ?? 1)
+    ? (spellDamages.find((s) => s.id === AUTO_ATTACK_ID)?.effectiveAvg ?? 0) *
+      (rotation.find((r) => r.id === AUTO_ATTACK_ID)?.targets ?? 1)
     : 0;
 
   return (
@@ -258,9 +260,9 @@ export const computeDpt = (spellDamages: SpellDamage[], rotation: RotationSpell[
 
 // damage per hit
 export const computeDph = (spellDamages: SpellDamage[], rotation: RotationSpell[]) => {
-  const spellRotation = rotation.filter((r) => r.id !== "auto-attack");
+  const spellRotation = rotation.filter((r) => r.id !== AUTO_ATTACK_ID);
   const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
-  const fullRotation = rotation.map((r) => (r.id === "auto-attack" ? { ...r, ratio: ratioSum || 1 } : r));
+  const fullRotation = rotation.map((r) => (r.id === AUTO_ATTACK_ID ? { ...r, ratio: ratioSum || 1 } : r));
   const ratioTargetSum = fullRotation.reduce((sum, r) => sum + r.targets * r.ratio, 0);
 
   if (ratioTargetSum === 0) return 0;
