@@ -20,7 +20,7 @@
   let collapsed: CollapsedSections = $state(initial.collapsed ?? defaultCollapsed());
 
   function currentState(): CalculatorState {
-    return { A, B, perkOrder, rotationOrder, showSecondBuild, collapsed };
+    return { version: 1, A, B, perkOrder, rotationOrder, showSecondBuild, collapsed };
   }
 
   let resultsA = $derived(computeResults(A.stats, A.weapon, A.perks));

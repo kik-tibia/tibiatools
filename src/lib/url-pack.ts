@@ -39,7 +39,7 @@ type CompactWeapon = number | [number, number];
 type CompactPerk = [number, number];
 type CompactRotation = [number, number, number, number];
 type CompactBuild = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation[]];
-type CompactState = [CompactBuild, CompactBuild, number[], number[], boolean, number];
+type CompactState = [number, CompactBuild, CompactBuild, number[], number[], number, number];
 
 function compactStats(stats: BuildStats): CompactStats {
   let mask = 0;
@@ -133,23 +133,25 @@ function bitmaskToCollapsed(mask: number): CollapsedSections {
 
 function compactState(state: CalculatorState): CompactState {
   return [
+    state.version,
     compactBuild(state.A),
     compactBuild(state.B),
     state.perkOrder,
     state.rotationOrder,
-    state.showSecondBuild,
+    +state.showSecondBuild,
     collapsedToBitmask(state.collapsed),
   ];
 }
 
 function expandState(compact: CompactState): CalculatorState {
   return {
-    A: expandBuild(compact[0]),
-    B: expandBuild(compact[1]),
-    perkOrder: compact[2],
-    rotationOrder: compact[3],
-    showSecondBuild: compact[4],
-    collapsed: bitmaskToCollapsed(compact[5]),
+    version: compact[0],
+    A: expandBuild(compact[1]),
+    B: expandBuild(compact[2]),
+    perkOrder: compact[3],
+    rotationOrder: compact[4],
+    showSecondBuild: !!compact[5],
+    collapsed: bitmaskToCollapsed(compact[6]),
   };
 }
 

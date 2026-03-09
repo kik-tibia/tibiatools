@@ -32,6 +32,7 @@ export type CollapsedSections = {
 };
 
 export type CalculatorState = {
+  version: number;
   A: Build;
   B: Build;
   perkOrder: number[];
@@ -79,6 +80,7 @@ export const defaultCollapsed = (): CollapsedSections => ({
 });
 
 export const defaultState = (): CalculatorState => ({
+  version: 1,
   A: defaultBuild(),
   B: defaultBuild(),
   perkOrder: [],
