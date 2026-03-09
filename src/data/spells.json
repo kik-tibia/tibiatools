@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "scope": "auto-attack",
     "name": "Auto-attack",
     "spellType": "auto",
     "scalesWith": "melee",
@@ -15,11 +16,11 @@
       "paladin",
       "sorcerer"
     ],
-    "rounding": "round",
-    "scope": "auto-attack"
+    "rounding": "round"
   },
   {
     "id": 2,
+    "scope": "fierce-berserk",
     "name": "Fierce Berserk",
     "spellType": "spell",
     "scalesWith": "melee",
@@ -30,11 +31,11 @@
     "vocations": [
       "knight"
     ],
-    "rounding": "round",
-    "scope": "fierce-berserk"
+    "rounding": "round"
   },
   {
     "id": 3,
+    "scope": "berserk",
     "name": "Berserk",
     "spellType": "spell",
     "scalesWith": "melee",
@@ -45,11 +46,11 @@
     "vocations": [
       "knight"
     ],
-    "rounding": "round",
-    "scope": "berserk"
+    "rounding": "round"
   },
   {
     "id": 4,
+    "scope": "groundshaker",
     "name": "Groundshaker",
     "spellType": "spell",
     "scalesWith": "melee",
@@ -60,11 +61,11 @@
     "vocations": [
       "knight"
     ],
-    "rounding": "round",
-    "scope": "groundshaker"
+    "rounding": "round"
   },
   {
     "id": 5,
+    "scope": "front-sweep",
     "name": "Front Sweep",
     "spellType": "spell",
     "scalesWith": "melee",
@@ -75,8 +76,7 @@
     "vocations": [
       "knight"
     ],
-    "rounding": "round",
-    "scope": "front-sweep"
+    "rounding": "round"
   },
   {
     "id": 6,
@@ -157,6 +157,7 @@
   },
   {
     "id": 10,
+    "scope": "annihilation",
     "name": "Annihilation",
     "spellType": "spell",
     "scalesWith": "melee",
@@ -167,11 +168,11 @@
     "vocations": [
       "knight"
     ],
-    "rounding": "round",
-    "scope": "annihilation"
+    "rounding": "round"
   },
   {
     "id": 11,
+    "scope": "brutal-strike",
     "name": "Brutal Strike",
     "spellType": "spell",
     "scalesWith": "melee",
@@ -182,11 +183,11 @@
     "vocations": [
       "knight"
     ],
-    "rounding": "round",
-    "scope": "brutal-strike"
+    "rounding": "round"
   },
   {
     "id": 12,
+    "scope": "whirlwind-throw",
     "name": "Whirlwind Throw",
     "spellType": "spell",
     "scalesWith": "melee",
@@ -197,11 +198,11 @@
     "vocations": [
       "knight"
     ],
-    "rounding": "round",
-    "scope": "whirlwind-throw"
+    "rounding": "round"
   },
   {
     "id": 13,
+    "scope": "divine-caldera",
     "name": "Divine Caldera",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -212,8 +213,7 @@
     "vocations": [
       "paladin"
     ],
-    "rounding": "round",
-    "scope": "divine-caldera"
+    "rounding": "round"
   },
   {
     "id": 14,
@@ -262,6 +262,7 @@
   },
   {
     "id": 17,
+    "scope": "strong-ethereal-spear",
     "name": "Strong Ethereal Spear",
     "spellType": "spell",
     "scalesWith": "distance",
@@ -272,11 +273,11 @@
     "vocations": [
       "paladin"
     ],
-    "rounding": "floor",
-    "scope": "strong-ethereal-spear"
+    "rounding": "floor"
   },
   {
     "id": 18,
+    "scope": "ethereal-spear",
     "name": "Ethereal Spear",
     "spellType": "spell",
     "scalesWith": "distance",
@@ -287,11 +288,11 @@
     "vocations": [
       "paladin"
     ],
-    "rounding": "floor",
-    "scope": "ethereal-spear"
+    "rounding": "floor"
   },
   {
     "id": 19,
+    "scope": "divine-missile",
     "name": "Divine Missile",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -302,11 +303,11 @@
     "vocations": [
       "paladin"
     ],
-    "rounding": "floor",
-    "scope": "divine-missile"
+    "rounding": "floor"
   },
   {
     "id": 20,
+    "scope": "holy-missile",
     "name": "Holy Missile Rune",
     "spellType": "rune",
     "scalesWith": "magic",
@@ -317,11 +318,11 @@
     "vocations": [
       "paladin"
     ],
-    "rounding": "floor",
-    "scope": "holy-missile"
+    "rounding": "floor"
   },
   {
     "id": 21,
+    "scope": "energy-wave",
     "name": "Energy Wave",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -332,11 +333,11 @@
     "vocations": [
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "energy-wave"
+    "rounding": "floor"
   },
   {
     "id": 22,
+    "scope": "great-fire-wave",
     "name": "Great Fire Wave",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -347,11 +348,11 @@
     "vocations": [
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "great-fire-wave"
+    "rounding": "floor"
   },
   {
     "id": 23,
+    "scope": "hells-core",
     "name": "Hell's Core",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -362,11 +363,11 @@
     "vocations": [
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "hells-core"
+    "rounding": "floor"
   },
   {
     "id": 24,
+    "scope": "rage-of-the-skies",
     "name": "Rage of the Skies",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -377,11 +378,11 @@
     "vocations": [
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "rage-of-the-skies"
+    "rounding": "floor"
   },
   {
     "id": 25,
+    "scope": "great-energy-beam",
     "name": "Great Energy Beam",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -392,8 +393,7 @@
     "vocations": [
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "great-energy-beam"
+    "rounding": "floor"
   },
   {
     "id": 26,
@@ -442,6 +442,7 @@
   },
   {
     "id": 29,
+    "scope": "fire-wave",
     "name": "Fire Wave",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -452,11 +453,11 @@
     "vocations": [
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "fire-wave"
+    "rounding": "floor"
   },
   {
     "id": 30,
+    "scope": "strong-flame-strike",
     "name": "Strong Flame Strike",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -467,11 +468,11 @@
     "vocations": [
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "strong-flame-strike"
+    "rounding": "floor"
   },
   {
     "id": 31,
+    "scope": "strong-energy-strike",
     "name": "Strong Energy Strike",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -482,11 +483,11 @@
     "vocations": [
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "strong-energy-strike"
+    "rounding": "floor"
   },
   {
     "id": 32,
+    "scope": "ultimate-flame-strike",
     "name": "Ultimate Flame Strike",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -497,11 +498,11 @@
     "vocations": [
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "ultimate-flame-strike"
+    "rounding": "floor"
   },
   {
     "id": 33,
+    "scope": "ultimate-energy-strike",
     "name": "Ultimate Energy Strike",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -512,11 +513,11 @@
     "vocations": [
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "ultimate-energy-strike"
+    "rounding": "floor"
   },
   {
     "id": 34,
+    "scope": "death-strike",
     "name": "Death Strike",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -527,11 +528,11 @@
     "vocations": [
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "death-strike"
+    "rounding": "floor"
   },
   {
     "id": 35,
+    "scope": "energy-beam",
     "name": "Energy Beam",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -542,11 +543,11 @@
     "vocations": [
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "energy-beam"
+    "rounding": "floor"
   },
   {
     "id": 36,
+    "scope": "lightning",
     "name": "Lightning",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -557,11 +558,11 @@
     "vocations": [
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "lightning"
+    "rounding": "floor"
   },
   {
     "id": 37,
+    "scope": "terra-wave",
     "name": "Terra Wave",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -572,8 +573,7 @@
     "vocations": [
       "druid"
     ],
-    "rounding": "floor",
-    "scope": "terra-wave"
+    "rounding": "floor"
   },
   {
     "id": 38,
@@ -731,6 +731,7 @@
   },
   {
     "id": 46,
+    "scope": "eternal-winter",
     "name": "Eternal Winter",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -741,11 +742,11 @@
     "vocations": [
       "druid"
     ],
-    "rounding": "floor",
-    "scope": "eternal-winter"
+    "rounding": "floor"
   },
   {
     "id": 47,
+    "scope": "wrath-of-nature",
     "name": "Wrath of Nature",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -756,11 +757,11 @@
     "vocations": [
       "druid"
     ],
-    "rounding": "floor",
-    "scope": "wrath-of-nature"
+    "rounding": "floor"
   },
   {
     "id": 48,
+    "scope": "strong-ice-wave",
     "name": "Strong Ice Wave",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -771,11 +772,11 @@
     "vocations": [
       "druid"
     ],
-    "rounding": "floor",
-    "scope": "strong-ice-wave"
+    "rounding": "floor"
   },
   {
     "id": 49,
+    "scope": "strong-ice-strike",
     "name": "Strong Ice Strike",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -786,11 +787,11 @@
     "vocations": [
       "druid"
     ],
-    "rounding": "floor",
-    "scope": "strong-ice-strike"
+    "rounding": "floor"
   },
   {
     "id": 50,
+    "scope": "strong-terra-strike",
     "name": "Strong Terra Strike",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -801,11 +802,11 @@
     "vocations": [
       "druid"
     ],
-    "rounding": "floor",
-    "scope": "strong-terra-strike"
+    "rounding": "floor"
   },
   {
     "id": 51,
+    "scope": "ultimate-ice-strike",
     "name": "Ultimate Ice Strike",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -816,11 +817,11 @@
     "vocations": [
       "druid"
     ],
-    "rounding": "floor",
-    "scope": "ultimate-ice-strike"
+    "rounding": "floor"
   },
   {
     "id": 52,
+    "scope": "ultimate-terra-strike",
     "name": "Ultimate Terra Strike",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -831,11 +832,11 @@
     "vocations": [
       "druid"
     ],
-    "rounding": "floor",
-    "scope": "ultimate-terra-strike"
+    "rounding": "floor"
   },
   {
     "id": 53,
+    "scope": "physical-strike",
     "name": "Physical Strike",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -846,11 +847,11 @@
     "vocations": [
       "druid"
     ],
-    "rounding": "floor",
-    "scope": "physical-strike"
+    "rounding": "floor"
   },
   {
     "id": 54,
+    "scope": "ice-wave",
     "name": "Ice Wave",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -861,11 +862,11 @@
     "vocations": [
       "druid"
     ],
-    "rounding": "floor",
-    "scope": "ice-wave"
+    "rounding": "floor"
   },
   {
     "id": 55,
+    "scope": "chained-penance",
     "name": "Chained Penance",
     "spellType": "spell",
     "scalesWith": "fist",
@@ -876,11 +877,11 @@
     "vocations": [
       "monk"
     ],
-    "rounding": "round",
-    "scope": "chained-penance"
+    "rounding": "round"
   },
   {
     "id": 56,
+    "scope": "greater-flurry-of-blows",
     "name": "Greater Flurry of Blows",
     "spellType": "spell",
     "scalesWith": "fist",
@@ -891,11 +892,11 @@
     "vocations": [
       "monk"
     ],
-    "rounding": "round",
-    "scope": "greater-flurry-of-blows"
+    "rounding": "round"
   },
   {
     "id": 57,
+    "scope": "flurry-of-blows",
     "name": "Flurry of Blows",
     "spellType": "spell",
     "scalesWith": "fist",
@@ -906,11 +907,11 @@
     "vocations": [
       "monk"
     ],
-    "rounding": "round",
-    "scope": "flurry-of-blows"
+    "rounding": "round"
   },
   {
     "id": 58,
+    "scope": "sweeping-takedown",
     "name": "Sweeping Takedown",
     "spellType": "spell",
     "scalesWith": "fist",
@@ -922,8 +923,7 @@
     "vocations": [
       "monk"
     ],
-    "rounding": "round",
-    "scope": "sweeping-takedown"
+    "rounding": "round"
   },
   {
     "id": 59,
@@ -1010,6 +1010,7 @@
   },
   {
     "id": 63,
+    "scope": "mystic-repulse",
     "name": "Mystic Repulse",
     "spellType": "spell",
     "scalesWith": "fist",
@@ -1020,11 +1021,11 @@
     "vocations": [
       "monk"
     ],
-    "rounding": "round",
-    "scope": "mystic-repulse"
+    "rounding": "round"
   },
   {
     "id": 64,
+    "scope": "forceful-uppercut",
     "name": "Forceful Uppercut",
     "spellType": "spell",
     "scalesWith": "fist",
@@ -1035,11 +1036,11 @@
     "vocations": [
       "monk"
     ],
-    "rounding": "round",
-    "scope": "forceful-uppercut"
+    "rounding": "round"
   },
   {
     "id": 65,
+    "scope": "devastating-knockout",
     "name": "Devastating Knockout",
     "spellType": "spell",
     "scalesWith": "fist",
@@ -1051,11 +1052,11 @@
     "vocations": [
       "monk"
     ],
-    "rounding": "round",
-    "scope": "devastating-knockout"
+    "rounding": "round"
   },
   {
     "id": 66,
+    "scope": "double-jab",
     "name": "Double Jab",
     "spellType": "spell",
     "scalesWith": "fist",
@@ -1066,11 +1067,11 @@
     "vocations": [
       "monk"
     ],
-    "rounding": "round",
-    "scope": "double-jab"
+    "rounding": "round"
   },
   {
     "id": 67,
+    "scope": "greater-tiger-clash",
     "name": "Greater Tiger Clash",
     "spellType": "spell",
     "scalesWith": "fist",
@@ -1082,11 +1083,11 @@
     "vocations": [
       "monk"
     ],
-    "rounding": "round",
-    "scope": "greater-tiger-clash"
+    "rounding": "round"
   },
   {
     "id": 68,
+    "scope": "flame-strike",
     "name": "Flame Strike",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -1098,11 +1099,11 @@
       "sorcerer",
       "druid"
     ],
-    "rounding": "floor",
-    "scope": "flame-strike"
+    "rounding": "floor"
   },
   {
     "id": 69,
+    "scope": "energy-strike",
     "name": "Energy Strike",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -1114,11 +1115,11 @@
       "sorcerer",
       "druid"
     ],
-    "rounding": "floor",
-    "scope": "energy-strike"
+    "rounding": "floor"
   },
   {
     "id": 70,
+    "scope": "ice-strike",
     "name": "Ice Strike",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -1130,11 +1131,11 @@
       "sorcerer",
       "druid"
     ],
-    "rounding": "floor",
-    "scope": "ice-strike"
+    "rounding": "floor"
   },
   {
     "id": 71,
+    "scope": "terra-strike",
     "name": "Terra Strike",
     "spellType": "spell",
     "scalesWith": "magic",
@@ -1146,11 +1147,11 @@
       "sorcerer",
       "druid"
     ],
-    "rounding": "floor",
-    "scope": "terra-strike"
+    "rounding": "floor"
   },
   {
     "id": 72,
+    "scope": "avalanche",
     "name": "Avalanche Rune",
     "spellType": "rune",
     "scalesWith": "magic",
@@ -1165,11 +1166,11 @@
       "paladin",
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "avalanche"
+    "rounding": "floor"
   },
   {
     "id": 73,
+    "scope": "great-fireball",
     "name": "Great Fireball Rune",
     "spellType": "rune",
     "scalesWith": "magic",
@@ -1184,11 +1185,11 @@
       "paladin",
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "great-fireball"
+    "rounding": "floor"
   },
   {
     "id": 74,
+    "scope": "thunderstorm",
     "name": "Thunderstorm Rune",
     "spellType": "rune",
     "scalesWith": "magic",
@@ -1203,11 +1204,11 @@
       "paladin",
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "thunderstorm"
+    "rounding": "floor"
   },
   {
     "id": 75,
+    "scope": "stone-shower",
     "name": "Stone Shower Rune",
     "spellType": "rune",
     "scalesWith": "magic",
@@ -1222,11 +1223,11 @@
       "paladin",
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "stone-shower"
+    "rounding": "floor"
   },
   {
     "id": 76,
+    "scope": "sudden-death",
     "name": "Sudden Death Rune",
     "spellType": "rune",
     "scalesWith": "magic",
@@ -1241,11 +1242,11 @@
       "paladin",
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "sudden-death"
+    "rounding": "floor"
   },
   {
     "id": 77,
+    "scope": "explosion",
     "name": "Explosion Rune",
     "spellType": "rune",
     "scalesWith": "magic",
@@ -1260,11 +1261,11 @@
       "paladin",
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "explosion"
+    "rounding": "floor"
   },
   {
     "id": 78,
+    "scope": "icicle",
     "name": "Icicle Rune",
     "spellType": "rune",
     "scalesWith": "magic",
@@ -1279,11 +1280,11 @@
       "paladin",
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "icicle"
+    "rounding": "floor"
   },
   {
     "id": 79,
+    "scope": "fireball",
     "name": "Fireball Rune",
     "spellType": "rune",
     "scalesWith": "magic",
@@ -1298,11 +1299,11 @@
       "paladin",
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "fireball"
+    "rounding": "floor"
   },
   {
     "id": 80,
+    "scope": "stalagmite",
     "name": "Stalagmite Rune",
     "spellType": "rune",
     "scalesWith": "magic",
@@ -1317,11 +1318,11 @@
       "paladin",
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "stalagmite"
+    "rounding": "floor"
   },
   {
     "id": 81,
+    "scope": "heavy-magic-missile",
     "name": "Heavy Magic Missile Rune",
     "spellType": "rune",
     "scalesWith": "magic",
@@ -1336,11 +1337,11 @@
       "paladin",
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "heavy-magic-missile"
+    "rounding": "floor"
   },
   {
     "id": 82,
+    "scope": "light-magic-missile",
     "name": "Light Magic Missile Rune",
     "spellType": "rune",
     "scalesWith": "magic",
@@ -1355,7 +1356,6 @@
       "paladin",
       "sorcerer"
     ],
-    "rounding": "floor",
-    "scope": "light-magic-missile"
+    "rounding": "floor"
   }
 ]
