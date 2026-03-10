@@ -213,7 +213,7 @@
     "vocations": [
       "paladin"
     ],
-    "rounding": "round"
+    "rounding": "floor"
   },
   {
     "id": 14,
