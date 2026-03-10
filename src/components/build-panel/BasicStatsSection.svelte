@@ -33,7 +33,7 @@
 
   const statFields: StatField[] = [
     { key: "level", label: "Level" },
-    { key: "bonus", label: "Bonus Damage" },
+    { key: "bonus", label: "Wheel Damage", tooltip: "Bonus damage from Wheel of Destiny" },
     { key: "magicLevel", label: "Magic Level" },
     { key: "skill", label: "Skill" },
     { key: "critChance", label: "Crit Chance %" },
