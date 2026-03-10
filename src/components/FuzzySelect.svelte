@@ -132,10 +132,11 @@
     position: absolute;
     top: 100%;
     left: 0;
-    right: 0;
+    width: max-content;
 
     margin-top: 0.25rem;
     padding: 0;
+    scrollbar-gutter: stable;
     list-style: none;
 
     background: var(--dropdown-bg);
@@ -143,9 +144,13 @@
     color: var(--dropdown-text);
     border-radius: 0.5rem;
 
-    max-height: 6rem;
+    max-height: 16rem;
     overflow-y: auto;
     z-index: 10;
+  }
+  .dropdown li {
+    white-space: nowrap;
+    padding-right: 0.25rem;
   }
   .dropdown li:hover,
   .dropdown li.selected {
