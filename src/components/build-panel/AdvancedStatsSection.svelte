@@ -33,7 +33,7 @@
     {
       key: "transcendenceChance",
       label: "Transcendence Chance %",
-      tooltip: "Assumes an average of<br/>3.5 attack rounds per proc",
+      tooltip: "Assumes a 200ms delay between<br/>your auto-attack and spell",
     },
     {
       key: "baseMagicLevel",

@@ -138,10 +138,9 @@ const assignDefsToPerks = (activePerks: ActivePerk[]) => {
  *
  */
 const computeDamageRanges = (spell: Spell, state: SpellState, highRollAA: boolean, vocation: Vocation): SpellDamage => {
-  // The average number of attack rounds you get in transcendence. Assuming 3.5 rounds, but 0.5 less for AAs for when it procs on the spell.
   let nTranscendenceAttacks;
   if (spell.spellType === "auto") nTranscendenceAttacks = 3;
-  else nTranscendenceAttacks = 3.5;
+  else nTranscendenceAttacks = 3.9;
 
   const pT = state.transcendenceChance;
   const pTCrit = (nTranscendenceAttacks * pT) / (nTranscendenceAttacks * pT - pT + 1);
@@ -153,7 +152,7 @@ const computeDamageRanges = (spell: Spell, state: SpellState, highRollAA: boolea
   const pCritFatal = c * o;
   const pNoBonus = (1 - c) * (1 - o);
   // Increase crit damage by the ratio of transcendence crits, which have 15% extra damage
-  const critDamage = state.critDamage + (0.15 * pTCrit) / (pTCrit + (1 - pTCrit) * state.critChance || 1);
+  const critDamage = state.critDamage + (0.15 * pTCrit) / (pTCrit + (1 - pTCrit) * critChance || 1);
 
   if (spell.spellType === "auto") {
     const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
