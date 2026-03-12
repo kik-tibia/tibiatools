@@ -16,6 +16,7 @@ export type CharacterState = {
   critChance: number;
   critDamage: number;
   fatalChance: number;
+  transcendenceChance: number;
   baseMagicLevel: number;
   axe: number;
   club: number;

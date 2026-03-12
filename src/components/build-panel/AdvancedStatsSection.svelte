@@ -25,16 +25,19 @@
   type StatField = {
     key: keyof BuildStats;
     label: string;
-    advanced?: boolean;
     tooltip?: string;
   };
 
   const statFields: StatField[] = [
     { key: "fatalChance", label: "Fatal Chance %" },
     {
+      key: "transcendenceChance",
+      label: "Transcendence Chance %",
+      tooltip: "Assumes an average of<br/>3.5 attack rounds per proc",
+    },
+    {
       key: "baseMagicLevel",
       label: "Base Magic Level",
-      advanced: true,
       tooltip: "Required for Runic Mastery<br/>(not yet implemented)",
     },
     {
@@ -73,6 +76,7 @@
 
   const statKeys = [
     "fatalChance",
+    "transcendenceChance",
     "baseMagicLevel",
     "axe",
     "club",

@@ -128,13 +128,31 @@ const assignDefsToPerks = (activePerks: ActivePerk[]) => {
     .filter((x): x is ActivePerkWithDef => x !== null);
 };
 
+/*
+ * transcendence
+ * we have a probability p that the next 3.5 spells will be crits and that the next 3 AAs will be crits
+ * don't think it can proc while already active
+ * so if it's a 50% rate, we'd end up with 3 crits per 1 non-crit
+ * if it's a 75% rate, we'd end up with 9 crits per 1 non-crit, and so on
+ * so we take the rate, P, and do
+ *
+ */
 const computeDamageRanges = (spell: Spell, state: SpellState, highRollAA: boolean, vocation: Vocation): SpellDamage => {
-  const c = state.critChance / 100;
+  // The average number of attack rounds you get in transcendence. Assuming 3.5 rounds, but 0.5 less for AAs for when it procs on the spell.
+  let nTranscendenceAttacks;
+  if (spell.spellType === "auto") nTranscendenceAttacks = 3;
+  else nTranscendenceAttacks = 3.5;
+
+  const pT = state.transcendenceChance / 100;
+  const pTCrit = (nTranscendenceAttacks * pT) / (nTranscendenceAttacks * pT - pT + 1);
+  const c = 1 - (1 - state.critChance / 100) * (1 - pTCrit);
   const o = state.fatalChance / 100;
   const pCrit = c * (1 - o);
   const pFatal = o * (1 - c);
   const pCritFatal = c * o;
   const pNoBonus = (1 - c) * (1 - o);
+  // Increase crit damage by the ratio of transcendence crits, which have 15% extra damage
+  const critDamage = (state.critDamage + (15 * pTCrit) / (pTCrit + ((1 - pTCrit) * state.critChance) / 100 || 1)) / 100;
 
   if (spell.spellType === "auto") {
     const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
@@ -150,11 +168,10 @@ const computeDamageRanges = (spell: Spell, state: SpellState, highRollAA: boolea
 
     const effectiveAvg = highRollAA
       ? pNoBonus * avg +
-        pCrit * (state.flat + attackValueWithoutFlat * 1.75) * (1 + state.critDamage / 100) +
+        pCrit * (state.flat + attackValueWithoutFlat * 1.75) * (1 + critDamage) +
         pFatal * (state.flat + attackValueWithoutFlat * 1.75) * 1.6 +
-        pCritFatal * (state.flat + attackValueWithoutFlat * 1.75) * (1.6 + state.critDamage / 100)
-      : avg *
-        (pNoBonus + pCrit * (1 + state.critDamage / 100) + pFatal * 1.6 + pCritFatal * (1.6 + state.critDamage / 100));
+        pCritFatal * (state.flat + attackValueWithoutFlat * 1.75) * (1.6 + critDamage)
+      : avg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
 
     return { ...spell, min, avg, max, effectiveAvg };
   } else {
@@ -163,9 +180,7 @@ const computeDamageRanges = (spell: Spell, state: SpellState, highRollAA: boolea
     const avg = computeAvg(spell, state);
     const min = spell.buckets != 0 ? computeMinMax(spell, -1, state) : undefined;
     const max = spell.buckets != 0 ? computeMinMax(spell, 1, state) : undefined;
-    const effectiveAvg =
-      avg *
-      (pNoBonus + pCrit * (1 + state.critDamage / 100) + pFatal * 1.6 + pCritFatal * (1.6 + state.critDamage / 100));
+    const effectiveAvg = avg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
     return { ...spell, min, avg, max, effectiveAvg };
   }
 };
@@ -179,6 +194,7 @@ const derive = (inp: BuildStats, weaponDef: Weapon, ammoDef: Ammo | null): Chara
   const critChance = n(inp.critChance);
   const critDamage = n(inp.critDamage);
   const fatalChance = n(inp.fatalChance);
+  const transcendenceChance = n(inp.transcendenceChance);
   const baseMagicLevel = n(inp.baseMagicLevel);
   const axe = n(inp.axe);
   const club = n(inp.club);
@@ -200,6 +216,7 @@ const derive = (inp: BuildStats, weaponDef: Weapon, ammoDef: Ammo | null): Chara
     critChance,
     critDamage,
     fatalChance,
+    transcendenceChance,
     baseMagicLevel,
     axe,
     club,

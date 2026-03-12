@@ -21,6 +21,7 @@ const STATS_KEYS: (keyof BuildStats)[] = [
   "critChance",
   "critDamage",
   "fatalChance",
+  "transcendenceChance",
   "baseMagicLevel",
   "axe",
   "club",

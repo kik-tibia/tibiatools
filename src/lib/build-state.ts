@@ -11,6 +11,7 @@ export type BuildStats = {
   critChance: number | null;
   critDamage: number | null;
   fatalChance: number | null;
+  transcendenceChance: number | null;
   baseMagicLevel: number | null;
   axe: number | null;
   club: number | null;
@@ -50,6 +51,7 @@ const defaultStats = (): BuildStats => ({
   critChance: 10,
   critDamage: 50,
   fatalChance: null,
+  transcendenceChance: null,
   baseMagicLevel: null,
   axe: null,
   club: null,
