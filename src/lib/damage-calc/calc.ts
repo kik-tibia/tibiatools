@@ -143,16 +143,17 @@ const computeDamageRanges = (spell: Spell, state: SpellState, highRollAA: boolea
   if (spell.spellType === "auto") nTranscendenceAttacks = 3;
   else nTranscendenceAttacks = 3.5;
 
-  const pT = state.transcendenceChance / 100;
+  const pT = state.transcendenceChance;
   const pTCrit = (nTranscendenceAttacks * pT) / (nTranscendenceAttacks * pT - pT + 1);
-  const c = 1 - (1 - state.critChance / 100) * (1 - pTCrit);
-  const o = state.fatalChance / 100;
+  const critChance = Math.min(state.critChance, 1);
+  const c = 1 - (1 - critChance) * (1 - pTCrit);
+  const o = state.fatalChance;
   const pCrit = c * (1 - o);
   const pFatal = o * (1 - c);
   const pCritFatal = c * o;
   const pNoBonus = (1 - c) * (1 - o);
   // Increase crit damage by the ratio of transcendence crits, which have 15% extra damage
-  const critDamage = (state.critDamage + (15 * pTCrit) / (pTCrit + ((1 - pTCrit) * state.critChance) / 100 || 1)) / 100;
+  const critDamage = state.critDamage + (0.15 * pTCrit) / (pTCrit + (1 - pTCrit) * state.critChance || 1);
 
   if (spell.spellType === "auto") {
     const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
@@ -191,10 +192,10 @@ const derive = (inp: BuildStats, weaponDef: Weapon, ammoDef: Ammo | null): Chara
   const B = n(inp.bonus);
   const skill = n(inp.skill);
   const magicLevel = n(inp.magicLevel);
-  const critChance = n(inp.critChance);
-  const critDamage = n(inp.critDamage);
-  const fatalChance = n(inp.fatalChance);
-  const transcendenceChance = n(inp.transcendenceChance);
+  const critChance = n(inp.critChance) / 100;
+  const critDamage = n(inp.critDamage) / 100;
+  const fatalChance = n(inp.fatalChance) / 100;
+  const transcendenceChance = n(inp.transcendenceChance) / 100;
   const baseMagicLevel = n(inp.baseMagicLevel);
   const axe = n(inp.axe);
   const club = n(inp.club);
