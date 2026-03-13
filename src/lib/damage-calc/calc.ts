@@ -76,9 +76,9 @@ const applyPerkToSpell = (
       case "base-damage":
         return { ...state, basePower: P * (1 + perk.value / 100) };
       case "crit-damage":
-        return { ...state, critDamage: state.critDamage + perk.value };
+        return { ...state, critDamage: state.critDamage + perk.value / 100 };
       case "crit-chance":
-        return { ...state, critChance: state.critChance + perk.value };
+        return { ...state, critChance: state.critChance + perk.value / 100 };
       case "attack":
         return { ...state, weaponAttack: W + perk.value };
       case "magic-level":
@@ -128,15 +128,6 @@ const assignDefsToPerks = (activePerks: ActivePerk[]) => {
     .filter((x): x is ActivePerkWithDef => x !== null);
 };
 
-/*
- * transcendence
- * we have a probability p that the next 3.5 spells will be crits and that the next 3 AAs will be crits
- * don't think it can proc while already active
- * so if it's a 50% rate, we'd end up with 3 crits per 1 non-crit
- * if it's a 75% rate, we'd end up with 9 crits per 1 non-crit, and so on
- * so we take the rate, P, and do
- *
- */
 const computeDamageRanges = (spell: Spell, state: SpellState, highRollAA: boolean, vocation: Vocation): SpellDamage => {
   let nTranscendenceAttacks;
   if (spell.spellType === "auto") nTranscendenceAttacks = 3;
