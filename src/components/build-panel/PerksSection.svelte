@@ -87,15 +87,20 @@
   setPerkValue: (id: number, value: number) => void,
   removePerk: (id: number) => void,
 )}
+  {@const binary = perkRegistry.get(perkId)?.bonusType === "runic-mastery"}
   <td>
     {#if build.perks.some((p) => p.id === perkId)}
       <div class="input-with-remove">
-        <input
-          type="number"
-          step="any"
-          class="input-{buildId}"
-          value={build.perks.find((p) => p.id === perkId)?.value ?? 0}
-          oninput={(e) => setPerkValue(perkId, Number(e.currentTarget.value))} />
+        {#if binary}
+          <input type="text" readonly class="input-{buildId} perk-toggle" value="✓" tabindex="-1" />
+        {:else}
+          <input
+            type="number"
+            step="any"
+            class="input-{buildId}"
+            value={build.perks.find((p) => p.id === perkId)?.value ?? 0}
+            oninput={(e) => setPerkValue(perkId, Number(e.currentTarget.value))} />
+        {/if}
         <RemoveButton onclick={() => removePerk(perkId)} />
       </div>
     {:else}

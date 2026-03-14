@@ -81,6 +81,21 @@
   z-index: 1;
 }
 
+.build-table .perk-toggle {
+  flex: 0 0 auto;
+  width: 3rem;
+  margin: 0 auto;
+  padding: 0.25rem 0.4rem;
+  font: inherit;
+  border: 1px solid var(--input-border);
+  border-radius: 0.25rem;
+  background: var(--input-bg);
+  color: inherit;
+  text-align: center;
+  cursor: default;
+  pointer-events: none;
+}
+
 .build-table .input-with-remove input[type="number"].small {
   flex: 0 0 auto;
   width: 3.5rem;
