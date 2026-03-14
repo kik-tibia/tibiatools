@@ -42,6 +42,12 @@
     "bonusType": "crit-chance"
   },
   {
+    "id": 204,
+    "name": "Runic Mastery",
+    "scope": "rune",
+    "bonusType": "runic-mastery"
+  },
+  {
     "id": 8,
     "name": "% axe fighting as extra damage for auto‑attacks",
     "scope": "auto-attack",
@@ -1375,11 +1381,5 @@
     "scope": "terra-strike",
     "spell": true,
     "bonusType": "crit-chance"
-  },
-  {
-    "id": 204,
-    "name": "Runic Mastery",
-    "scope": "rune",
-    "bonusType": "runic-mastery"
   }
 ]
