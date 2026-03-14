@@ -61,6 +61,7 @@ const applyPerkToSpell = (
   spell: Spell,
   perk: ActivePerkWithDef,
   skillType: SkillType,
+  vocation: Vocation,
   state: SpellState,
 ): SpellState => {
   const { basePower: P, flat: F, magicLevel: ML, weaponAttack: W } = state;
@@ -109,6 +110,15 @@ const applyPerkToSpell = (
         return { ...state, flat: F + Math.floor((state.fishing * perk.value) / 100) };
       case "magic-level-percent-extra":
         return { ...state, flat: F + Math.floor((ML * perk.value) / 100) };
+      case "runic-mastery":
+        if (spell.spellType === "rune") {
+          // If you use a rune, you have a 25% chance of increasing your magic level by 10%,
+          // or by 20% if you use a rune your vocation can create, for that specific rune effect.
+          const increaseAmount = spell.runic.includes(vocation) ? 0.2 : 0.1;
+          // Not sure if it's floor
+          const runicIncrease = Math.floor(state.baseMagicLevel * increaseAmount);
+          return { ...state, runicIncrease };
+        } else return state;
     }
   }
 
@@ -171,7 +181,12 @@ const computeDamageRanges = (spell: Spell, state: SpellState, highRollAA: boolea
     const avg = computeAvg(spell, state);
     const min = spell.buckets != 0 ? computeMinMax(spell, -1, state) : undefined;
     const max = spell.buckets != 0 ? computeMinMax(spell, 1, state) : undefined;
-    const effectiveAvg = avg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
+    let effectiveAvg =
+      state.runicIncrease == 0
+        ? avg
+        : computeAvg(spell, { ...state, magicLevel: state.magicLevel + 0.25 * state.runicIncrease });
+    effectiveAvg =
+      effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
     return { ...spell, min, avg, max, effectiveAvg };
   }
 };
@@ -235,9 +250,9 @@ export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks
   const spellResults = spells
     .filter((s) => s.vocations.includes(inp.vocation))
     .map((spell) => {
-      const initial: SpellState = { ...state, basePower: spell.power };
+      const initial: SpellState = { ...state, basePower: spell.power, runicIncrease: 0 };
       const final: SpellState = perksWithDefs.reduce(
-        (acc, perk) => applyPerkToSpell(spell, perk, skillType, acc),
+        (acc, perk) => applyPerkToSpell(spell, perk, skillType, inp.vocation, acc),
         initial,
       );
       return computeDamageRanges(spell, final, highRollAA, inp.vocation);

@@ -27,7 +27,7 @@ export type CharacterState = {
   fishing: number;
 };
 
-export type SpellState = CharacterState & { basePower: number };
+export type SpellState = CharacterState & { basePower: number; runicIncrease: number };
 
 export type RotationSpell = { id: number; targets: number; ratio: number; extraSpell: boolean };
 

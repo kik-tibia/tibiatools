@@ -1375,5 +1375,11 @@
     "scope": "terra-strike",
     "spell": true,
     "bonusType": "crit-chance"
+  },
+  {
+    "id": 204,
+    "name": "Runic Mastery",
+    "scope": "rune",
+    "bonusType": "runic-mastery"
   }
 ]
