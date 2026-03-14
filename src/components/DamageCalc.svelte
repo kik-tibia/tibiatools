@@ -256,8 +256,23 @@
       gap: 1.5rem;
     }
 
+    .build-panel {
+      width: 450px;
+      flex-shrink: 0;
+    }
+
+    .comparing .build-panel {
+      width: 620px;
+    }
+
+    .main-grid.comparing {
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+
     .main-grid.comparing .results-panel-a,
     .main-grid.comparing .results-panel-b {
+      flex: 1 1 0;
       border-top: 1px solid var(--border-color);
       padding-top: 1rem;
     }

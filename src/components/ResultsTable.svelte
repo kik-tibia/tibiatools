@@ -222,7 +222,7 @@
     font-weight: 600;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 899px) {
     .results thead {
       display: none;
     }
@@ -233,6 +233,11 @@
     .results td {
       display: block;
       width: 100%;
+      box-sizing: border-box;
+    }
+
+    .results {
+      overflow: hidden;
     }
 
     .results tr {
@@ -251,6 +256,7 @@
 
     .results td.num::before {
       content: attr(data-label);
+      text-align: left;
       opacity: 0.7;
       padding-right: 0.75rem;
       font-weight: 500;
