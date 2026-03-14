@@ -84,6 +84,7 @@
 .build-table .perk-toggle {
   flex: 0 0 auto;
   width: 3rem;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 0.25rem 0.4rem;
   font: inherit;
@@ -93,7 +94,29 @@
   color: inherit;
   text-align: center;
   cursor: default;
+}
+
+.build-table input.perk-toggle {
   pointer-events: none;
+}
+
+.build-table .perk-toggle .field-tip {
+  display: block;
+}
+
+.build-table .perk-toggle .tip-trigger {
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  color: var(--negative-color);
+}
+
+.build-table .input-a {
+  border-color: var(--build-a-border);
+}
+
+.build-table .input-b {
+  border-color: var(--build-b-border);
 }
 
 .build-table .input-with-remove input[type="number"].small {

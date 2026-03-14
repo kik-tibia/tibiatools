@@ -3,6 +3,7 @@
   import { spells } from "@data/spells";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
+  import Tooltip from "@components/Tooltip.svelte";
   import SectionCopyButtons from "./SectionCopyButtons.svelte";
   import type { Build } from "@lib/build-state";
 
@@ -91,7 +92,11 @@
   <td>
     {#if build.perks.some((p) => p.id === perkId)}
       <div class="input-with-remove">
-        {#if binary}
+        {#if binary && !build.stats.baseMagicLevel}
+          <span class="perk-toggle input-{buildId}">
+            <Tooltip label="×" tip="Requires setting Base Magic Level<br/>in Advanced Stats" />
+          </span>
+        {:else if binary}
           <input type="text" readonly class="input-{buildId} perk-toggle" value="✓" tabindex="-1" />
         {:else}
           <input
