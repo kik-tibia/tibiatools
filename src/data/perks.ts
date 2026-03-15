@@ -2,18 +2,24 @@ import perksRaw from "@data/perks.json";
 
 export type PerkBonusType =
   | "attack"
+  | "axe-fighting"
   | "axe-percent-extra"
   | "base-damage"
+  | "club-fighting"
   | "club-percent-extra"
   | "crit-chance"
   | "crit-damage"
+  | "distance-fighting"
   | "distance-percent-extra"
   | "fishing-percent-extra"
+  | "fist-fighting"
   | "fist-percent-extra"
+  | "magic-level"
   | "magic-level"
   | "magic-level-percent-extra"
   | "runic-mastery"
   | "shield-percent-extra"
+  | "sword-fighting"
   | "sword-percent-extra";
 
 export type PerkDef = {

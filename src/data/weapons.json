@@ -8328,7 +8328,7 @@
     "id": 728,
     "name": "Amber Wand",
     "damageType": "energy",
-    "damage": 0,
+    "damage": 106,
     "vocations": [
       "sorcerer"
     ]
@@ -8355,7 +8355,7 @@
     "id": 731,
     "name": "Crypt Bile",
     "damageType": "physical",
-    "damage": 0,
+    "damage": 110,
     "vocations": [
       "sorcerer"
     ]

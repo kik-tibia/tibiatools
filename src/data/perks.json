@@ -42,8 +42,44 @@
     "bonusType": "crit-chance"
   },
   {
+    "id": 205,
+    "name": "+ axe fighting",
+    "scope": "all",
+    "bonusType": "axe-fighting"
+  },
+  {
+    "id": 206,
+    "name": "+ club fighting",
+    "scope": "all",
+    "bonusType": "club-fighting"
+  },
+  {
+    "id": 207,
+    "name": "+ sword fighting",
+    "scope": "all",
+    "bonusType": "sword-fighting"
+  },
+  {
+    "id": 208,
+    "name": "+ fist fighting",
+    "scope": "all",
+    "bonusType": "fist-fighting"
+  },
+  {
+    "id": 209,
+    "name": "+ distance fighting",
+    "scope": "all",
+    "bonusType": "distance-fighting"
+  },
+  {
+    "id": 210,
+    "name": "+ magic level",
+    "scope": "all",
+    "bonusType": "magic-level"
+  },
+  {
     "id": 204,
-    "name": "Runic Mastery",
+    "name": "Runic mastery",
     "scope": "rune",
     "bonusType": "runic-mastery"
   },
@@ -157,7 +193,7 @@
   },
   {
     "id": 26,
-    "name": "Death magic level",
+    "name": "+ death magic level",
     "scope": "death",
     "bonusType": "magic-level"
   },
@@ -175,7 +211,7 @@
   },
   {
     "id": 29,
-    "name": "Earth magic level",
+    "name": "+ earth magic level",
     "scope": "earth",
     "bonusType": "magic-level"
   },
@@ -193,7 +229,7 @@
   },
   {
     "id": 32,
-    "name": "Energy magic level",
+    "name": "+ energy magic level",
     "scope": "energy",
     "bonusType": "magic-level"
   },
@@ -211,7 +247,7 @@
   },
   {
     "id": 35,
-    "name": "Fire magic level",
+    "name": "+ fire magic level",
     "scope": "fire",
     "bonusType": "magic-level"
   },
@@ -229,7 +265,7 @@
   },
   {
     "id": 38,
-    "name": "Holy magic level",
+    "name": " + holy magic level",
     "scope": "holy",
     "bonusType": "magic-level"
   },
@@ -247,7 +283,7 @@
   },
   {
     "id": 41,
-    "name": "Ice magic level",
+    "name": "+ ice magic level",
     "scope": "ice",
     "bonusType": "magic-level"
   },
@@ -265,7 +301,7 @@
   },
   {
     "id": 44,
-    "name": "Physical magic level",
+    "name": "+ physical magic level",
     "scope": "physical",
     "bonusType": "magic-level"
   },

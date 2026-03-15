@@ -82,26 +82,24 @@ const applyPerkToSpell = (
         return { ...state, critChance: state.critChance + perk.value / 100 };
       case "attack":
         return { ...state, weaponAttack: W + perk.value };
-      case "magic-level":
-        return { ...state, magicLevel: ML + perk.value };
       case "axe-percent-extra": {
-        const S = state.axe == 0 ? state.skill : state.axe;
+        const S = skillType === "axe" ? state.skill : state.axe;
         return { ...state, flat: F + Math.floor((S * perk.value) / 100) };
       }
       case "club-percent-extra": {
-        const S = state.club == 0 ? state.skill : state.club;
+        const S = skillType === "club" ? state.skill : state.club;
         return { ...state, flat: F + Math.floor((S * perk.value) / 100) };
       }
       case "sword-percent-extra": {
-        const S = state.sword == 0 ? state.skill : state.sword;
+        const S = skillType === "sword" ? state.skill : state.sword;
         return { ...state, flat: F + Math.floor((S * perk.value) / 100) };
       }
       case "distance-percent-extra": {
-        const S = state.distance == 0 ? state.skill : state.distance;
+        const S = skillType === "distance" ? state.skill : state.distance;
         return { ...state, flat: F + Math.floor((S * perk.value) / 100) };
       }
       case "fist-percent-extra": {
-        const S = state.fist == 0 ? state.skill : state.fist;
+        const S = skillType === "fist" ? state.skill : state.fist;
         return { ...state, flat: F + Math.floor((S * perk.value) / 100) };
       }
       case "shield-percent-extra":
@@ -112,13 +110,28 @@ const applyPerkToSpell = (
         return { ...state, flat: F + Math.floor((ML * perk.value) / 100) };
       case "runic-mastery":
         if (spell.spellType === "rune") {
-          // If you use a rune, you have a 25% chance of increasing your magic level by 10%,
-          // or by 20% if you use a rune your vocation can create, for that specific rune effect.
           const increaseAmount = spell.runic.includes(vocation) ? 0.2 : 0.1;
           // Not sure if it's floor
           const runicIncrease = Math.floor(state.baseMagicLevel * increaseAmount);
           return { ...state, runicIncrease };
         } else return state;
+      case "axe-fighting":
+        if (skillType === "axe") return { ...state, skill: state.skill + perk.value };
+        else return { ...state, axe: state.axe + perk.value };
+      case "club-fighting":
+        if (skillType === "club") return { ...state, skill: state.skill + perk.value };
+        else return { ...state, club: state.club + perk.value };
+      case "sword-fighting":
+        if (skillType === "sword") return { ...state, skill: state.skill + perk.value };
+        else return { ...state, sword: state.sword + perk.value };
+      case "fist-fighting":
+        if (skillType === "fist") return { ...state, skill: state.skill + perk.value };
+        else return { ...state, fist: state.fist + perk.value };
+      case "distance-fighting":
+        if (skillType === "distance") return { ...state, skill: state.skill + perk.value };
+        else return { ...state, distance: state.distance + perk.value };
+      case "magic-level":
+        return { ...state, magicLevel: ML + perk.value };
     }
   }
 
@@ -167,12 +180,17 @@ const computeDamageRanges = (spell: Spell, state: SpellState, highRollAA: boolea
       max = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease * 2);
     }
 
-    const effectiveAvg = highRollAA
-      ? pNoBonus * avg +
-        pCrit * (state.flat + attackValueWithoutFlat * 1.75) * (1 + critDamage) +
-        pFatal * (state.flat + attackValueWithoutFlat * 1.75) * 1.6 +
-        pCritFatal * (state.flat + attackValueWithoutFlat * 1.75) * (1.6 + critDamage)
-      : avg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
+    let effectiveAvg;
+    if (state.weaponDamage) {
+      effectiveAvg = avg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
+    } else {
+      effectiveAvg = highRollAA
+        ? pNoBonus * avg +
+          pCrit * (state.flat + attackValueWithoutFlat * 1.75) * (1 + critDamage) +
+          pFatal * (state.flat + attackValueWithoutFlat * 1.75) * 1.6 +
+          pCritFatal * (state.flat + attackValueWithoutFlat * 1.75) * (1.6 + critDamage)
+        : avg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
+    }
 
     return { ...spell, min, avg, max, effectiveAvg };
   } else {
