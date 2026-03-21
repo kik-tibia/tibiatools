@@ -57,7 +57,7 @@
         <td class="summary-label">
           <Tooltip
             label={"Effective damage per turn"}
-            tip={"The average damage you would deal per turn, using the defined rotation, taking into account resistances, armor, mitigation, crits and fatals."}
+            tip={"The average damage you would deal per turn, using the defined rotation, taking into account crits and fatals."}
             right={true} />
         </td>
         <td class="summary-value">{effectiveDpt.toFixed(1)}</td>
@@ -66,7 +66,7 @@
         <td class="summary-label">
           <Tooltip
             label={"Effective damage per hit"}
-            tip={"The average damage you would deal per hit, using the defined rotation, taking into account resistances, armor, mitigation, crits and fatals."}
+            tip={"The average damage you would deal per hit, using the defined rotation, taking into account crits and fatals."}
             right={true} />
         </td>
         <td class="summary-value">{effectiveDph.toFixed(1)}</td>
@@ -82,13 +82,13 @@
           <th class="desc">
             <Tooltip
               label={"Effective"}
-              tip={"The average damage you would deal, taking into account resistances, armor, mitigation, crits and fatals."}
+              tip={"The average damage you would deal, taking into account crits and fatals."}
               right={true} />
           </th>
           <th class="desc" colspan="3">
             <Tooltip
               label={"Raw"}
-              tip={"The damage you would deal to a completely defenseless target, ignoring resistances, crits, etc."}
+              tip={"The damage you would deal to a completely defenseless target, ignoring crits and fatals."}
               right={true} />
           </th>
         </tr>

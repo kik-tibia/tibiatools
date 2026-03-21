@@ -139,7 +139,12 @@ main,
 footer {
   max-width: 1500px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0.5rem;
+}
+
+.page-title {
+  text-align: center;
+  padding: 0.5rem 1rem 0;
 }
 
 .header-wrap {

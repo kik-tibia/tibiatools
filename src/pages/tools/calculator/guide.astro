@@ -2,27 +2,149 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 <BaseLayout title="Damage Calculator Guide">
-  <p>
-  This guide is incomplete. In the meantime, you can ask questions on Discord (<a href='https://discord.com/channels/836592213327609957/1480885195711189022'>thread</a> or <a href='https://discord.com/users/tom50'>DM</a>).
-  </p>
-  <p>
-  The main purpose of this tool is to help you make informed decisions when it comes to choosing between different weapons and perks.
-  </p>
-  <h3>Examples</h3>
-  <p>Here are some examples of what this tool can be used for.</p>
-  <ul>
-    <li>Example 1</li>
-    <li>Example 2</li>
-  </ul>
-  <h3>Limitations</h3>
-  <ul>
-    <li>It can't do X</li>
-    <li>It can't do Y</li>
-  </ul>
-  <h3>Additional notes</h3>
-  <ul>
-    <li>♫</li>
-    <li>♪</li>
-  </ul>
+<p>The main purpose of this tool is to help you make informed decisions when it comes to choosing between different weapons and perks. In order to use it correctly I recommend you read this guide in detail, otherwise you will risk arriving at an incorrect conclusion.</p>
 
+<h3>Layout</h3>
+
+<p>The tool is split into two parts: the build stats (your input) and the results tables (calculator's output). There is a <b>Compare builds</b> button you can press that will allow you to enter two different builds and see two results tables, one for each build.</p>
+
+<h4>Build stats</h4>
+
+<p>This is where you enter the stats for the build(s). It is split into 5 sections:</p>
+
+<ul>
+  <li><b>Basic stats:</b> general stats of your character.
+    <ul>
+      <li><b>Skill:</b> this should be your final skill with all buffs and perks. It refers to the skill type of the weapon you have selected. It is not used for mages if you have selected a wand or rod.</li>
+      <li><b>Magic level:</b> as above, it should be your final magic level with all buffs and foods active.</li>
+      <li><b>Crit chance and damage:</b> this should be your crit chance and damage as you can see in the cyclopedia or skills window.</li>
+    </ul>
+  </li>
+  <li><b>Advanced stats:</b> this section contains less frequently used stats.
+    <ul>
+      <li><b>Fatal and transcendence:</b> enter the values shown by the skills window, which include any buffs from tiered boots.</li>
+      <li><b>Base magic level:</b> this is only used to correctly calculate runic mastery.</li>
+      <li><b>Axe/club/sword/fist/distance fighting:</b> these are only needed if you are using a weapon that has a skill-based perk that differs to the weapon's skill type. For example, Deepling Staff (a club weapon) has two perks that scale with your fist fighting, and Deepling Ceremonial Dagger (a wand/rod) has a sword fighting perk. You will need to set these skills in the advanced stats if you want to use these perks.</li>
+    </ul>
+  </li>
+  <li><b>Weapon:</b> this is where you choose your weapon (and ammo if necessary).
+    <ul>
+      <li>It is important to note that the only information that the calculator uses from the weapon is the weapon's attack stat. It does not apply any perks such as +skill or +crit. These you have to set yourself in their respective inputs.</li>
+    </ul>
+  </li>
+  <li><b>Perks:</b> this section is where you set all perks from your weapon, equipment and Wheel of Destiny.
+    <ul>
+      <li>Some perks will add to the values in the basic/advanced stats section. For example, if you have set <b>Skill = 205</b>, that is equivalent to setting <b>Skill = 200</b> and then adding a +5 sword fighting perk (assuming your selected weapon is a sword weapon). This can be useful if you are comparing two builds that differ by a +skill perk, but it is important not to double-count any perks. A list of these perks:
+        <ul>
+          <li>Any +skill perk (axe, sword, club, fist, distance, magic level)</li>
+          <li>Crit chance</li>
+          <li>Crit damage</li>
+        </ul>
+      </li>
+      <li>If you have multiple sources for the same perk, make sure to add up all of the values and input that as your final value. For example, if you are a knight with a 5% Fierce Berserk base damage gem and the 4% Fierce Berserk base damage perk on your sanguine weapon, you should enter 9% for this perk.</li>
+    </ul>
+  </li>
+  <li><b>Rotation:</b> this is where you set your spell rotation.
+    <ul>
+      <li>There are two inputs for each spell: targets and ratio.
+        <ul>
+          <li><b>Targets:</b> this is the average number of targets that the spell hits. For example, Fierce Berserk should probably be somewhere between 6 and 7.</li>
+          <li><b>Ratio:</b> controls how often each spell is cast relative to the others. The calculator divides each spell's ratio by the total of all ratios to determine what fraction of turns it is used. For example, if you set Great Fire Wave to 2, Energy Wave to 1, and Great Fireball Rune to 1, the total is 4, so Great Fire Wave is cast 2/4 (50%) of the time, and the other two are each cast 1/4 (25%). Setting all ratios to 1 means each spell is cast equally often. Only the proportions matter, not the actual numbers. Ratios of 2:1:1 give the same result as 4:2:2 or 10:5:5.</li>
+        </ul>
+      </li>
+      <li>In most cases, you should make sure to include auto-attack in the rotation. Auto-attack does not have an input for ratio because the calculator assumes you cast it every turn.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4>Results</h4>
+
+<p>The results table shows two types of damage. <b>Effective</b> is the average damage you would deal taking into account crits and fatals. <b>Raw</b> is the damage you would deal ignoring these factors.</p>
+
+<p>Above the main results table you will see two summary values. <b>Effective damage per turn</b> is the total average damage you would deal in a single turn using your defined rotation, taking into account crits and fatals. <b>Effective damage per hit</b> is the average damage of a single hit, weighted across your rotation. If you have not defined a rotation, both will show 0.</p>
+
+<p>In comparison mode, a build's row will be coloured green if its effective average is greater than or equal to the other build.</p>
+
+<h3>Examples</h3>
+
+<p>Here are some examples of what this tool can be used for.</p>
+
+<ul>
+  <li><a href="https://tibiatools.io/tools/calculator?s=NoRgNMoEwOxgDGE8VLlVIDMSphlALpgBsArABwTAAsZSIAdGcbSWBa2eCFM69iTxCrUEnHCIeEszBZEk4DnZQqimvjBR2iqjjWsdsqiBGjecRMkzpMOXviKlK1Og34Qa7ThG64PYqbm4uCK0rLyCKzKWgaemtpREHocScBG9CZmnvReYH6CphDgeDgaVCTEJYRAA">Sanguine Razor 5th perk (10% sword vs +1 attack)</a>. You can see that for the +1 attack build, auto-attacks and Fierce Berserk hit higher, but overall the 10% sword fighting as extra damage for spells build does more damage.
+    <ul>
+      <li>Assumed a level 1000 EK with stage 2 Executioner's Throw, stage 2 Groundshaker and a fully upgraded Fierce Berserk gem.</li>
+      <li>We set 11.5% for Fierce Berserk base damage (Razor perk + grade IV gem).</li>
+      <li>We set 8% for Fierce Berserk critical hit damage from Sanguine Legs.</li>
+    </ul>
+  </li>
+  <li><a href="https://tibiatools.io/tools/calculator?s=NoRgNMoEwOxuBmADEsBWeywIyVakBdCEATlQBZjIL4iSA2O6jBAOjWqiVPmpDjtO1UGDjh6oBGAAcssJJhQwvOZJC05EwjojAEUGaVzYU6TKhx10qEHi5I4VPd15R%2BfCN1lcxHXZDg4gr80nJq1Eoq8uqa8CEBtCBMGK7wwd7uJJhiyhrE4O5AA">Bow of Destruction vs Falcon Bow</a>. This comparison suggests that Bow of Destruction is still slightly better than Falcon Bow.
+    <ul>
+      <li>Assumed a level 300 RP with stage 1 Divine Grenade.</li>
+      <li>Falcon Bow has a shielding perk, so we set a shielding skill in the advanced stats for build B.</li>
+      <li>Here we are setting the distance fighting as 130 for both builds in the basic stats section, and using the perks section to specify the +distance perks for each bow. Build A has +1 from the bow's weapon proficiency perk, and build B has +2 from the weapon's innate stats. Alternatively, we could have omitted this perk and instead included the +distance in the basic stats sections of each build (131 for build A and 132 for build B) and reached the same result. It doesn't matter where you include the +distance, only that you don't double-count it.</li>
+      <li>As above, the same is true for the Falcon Bow's critical hit extra damage perks. We could have omitted this and written 57.5 for the crit damage in basic stats instead.</li>
+    </ul>
+  </li>
+  <li><a href="https://tibiatools.io/tools/calculator?s=NoRgNMwEwKw2AGMMFIGxhADniKmkVMA6BGAXTDQHZxIAWAy0fECieAZmPegWszMQnJh3B4e5ZqEyyEzfGh5goSeRBEYQATkTNGA7HqkRgnKFm3xCqKphyZ8uJCDaUY1XZFUD6C8X4Q%2BNSSYo6S0uJyClTKqnoadjoJwAb2xvqOyCr8mCJQ4E4gQipgIoHg8kA">T2 Slayer of Destruction vs Falcon Longsword with life/mana imbuements</a>. We see that despite not having crit imbued, Falcon Longsword performs better overall.
+    <ul>
+      <li>Assumed a level 500 EK with stage 2 Groundshaker.</li>
+      <li>For build B, even though our Falcon Longsword does not have crit imbuements, we still need to set crit chance to 5% and crit damage to 10%, because these are the default crit stats that all characters have.</li>
+      <li>In advanced stats, we have set the fatal chance for build A to 1.05% which represents T2 fatal with no additional boots bonus.</li>
+      <li>It is worth noting here that despite the Falcon Longsword build having higher overall dps, the Slayer of Destruction build probably has higher overall leech due to how much stronger the auto-attacks are.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Limitations</h3>
+
+<ul>
+  <li>Currently, the calculator does not have creatures added to it. This means that there are no perks pertaining to creatures either, such as pierce or armor penetration.</li>
+  <li>The damage per turn result should not be taken too literally. It tells you your expected damage per turn in an artificial scenario, and doesn't necessarily scale with your exp/h.</li>
+  <li>Miss chance for single target distance spells has not been included. This won't be a problem if you are using diamond arrows.</li>
+  <li>Monk isn't properly implemented yet. It's hardcoded to assume you are using VoH with no extra bonuses (no ascetic). Chained penance has no jump bonus yet.</li>
+</ul>
+
+<h3>Additional notes</h3>
+
+<ul>
+  <li>Single target auto-attacks are guaranteed to high roll when they crit or fatal. This feature is correctly taken into account by the calculator.</li>
+  <li>If you have further questions or want to report a bug, you can reach me on Discord (<a href="https://discord.com/channels/836592213327609957/1480885195711189022">thread</a> or <a href="https://discord.com/users/tom50">DM</a>).</li>
+</ul>
 </BaseLayout>
+
+<style>
+  :global(main) {
+    max-width: 800px;
+  }
+
+  p {
+    line-height: 1.6;
+    margin: 0.75em 0;
+  }
+
+  h3 {
+    margin-top: 2em;
+  }
+
+  h4 {
+    margin-top: 1.5em;
+  }
+
+  ul {
+    line-height: 1.6;
+    padding-left: 1.5em;
+  }
+
+  li {
+    margin-bottom: 0.4em;
+  }
+
+  li > ul {
+    margin-top: 0.4em;
+    list-style-type: disc;
+  }
+
+  li > ul > li > ul {
+    list-style-type: circle;
+  }
+</style>
