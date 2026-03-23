@@ -260,9 +260,6 @@ export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks
 
   const state = derive(inp, weaponDef, ammoDef);
 
-  const skillType = weaponDef.skill; // TODO removed usages of this, check if the field even needs to exist on the type
-  // actually we do still need it, in the case of selecting a sword, then selecting an axe perk
-  // if not specifying axe skill we need to assume it's 0, not the sword skill
   const highRollAA = !ammoDef?.aoe;
 
   const spellResults = spells
@@ -270,7 +267,7 @@ export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks
     .map((spell) => {
       const initial: SpellState = { ...state, basePower: spell.power, runicIncrease: 0 };
       const final: SpellState = perksWithDefs.reduce(
-        (acc, perk) => applyPerkToSpell(spell, perk, skillType, inp.vocation, acc),
+        (acc, perk) => applyPerkToSpell(spell, perk, weaponDef.skill, inp.vocation, acc),
         initial,
       );
       return computeDamageRanges(spell, final, highRollAA, inp.vocation);
