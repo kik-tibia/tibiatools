@@ -84,35 +84,34 @@ const applyPerkToSpell = (
         return { ...state, weaponAttack: W + perk.value };
       case "axe-percent-extra": {
         const S = skillType === "axe" ? state.skill : state.axe;
-        return { ...state, flat: F + Math.floor((S * perk.value) / 100) };
+        return { ...state, flat: F + Math.round((S * perk.value) / 100) };
       }
       case "club-percent-extra": {
         const S = skillType === "club" ? state.skill : state.club;
-        return { ...state, flat: F + Math.floor((S * perk.value) / 100) };
+        return { ...state, flat: F + Math.round((S * perk.value) / 100) };
       }
       case "sword-percent-extra": {
         const S = skillType === "sword" ? state.skill : state.sword;
-        return { ...state, flat: F + Math.floor((S * perk.value) / 100) };
+        return { ...state, flat: F + Math.round((S * perk.value) / 100) };
       }
       case "distance-percent-extra": {
         const S = skillType === "distance" ? state.skill : state.distance;
-        return { ...state, flat: F + Math.floor((S * perk.value) / 100) };
+        return { ...state, flat: F + Math.round((S * perk.value) / 100) };
       }
       case "fist-percent-extra": {
         const S = skillType === "fist" ? state.skill : state.fist;
-        return { ...state, flat: F + Math.floor((S * perk.value) / 100) };
+        return { ...state, flat: F + Math.round((S * perk.value) / 100) };
       }
       case "shield-percent-extra":
-        return { ...state, flat: F + Math.floor((state.shielding * perk.value) / 100) };
+        return { ...state, flat: F + Math.round((state.shielding * perk.value) / 100) };
       case "fishing-percent-extra":
-        return { ...state, flat: F + Math.floor((state.fishing * perk.value) / 100) };
+        return { ...state, flat: F + Math.round((state.fishing * perk.value) / 100) };
       case "magic-level-percent-extra":
-        return { ...state, flat: F + Math.floor((ML * perk.value) / 100) };
+        return { ...state, flat: F + Math.round((ML * perk.value) / 100) };
       case "runic-mastery":
         if (spell.spellType === "rune") {
           const increaseAmount = spell.runic.includes(vocation) ? 0.2 : 0.1;
-          // Not sure if it's floor
-          const runicIncrease = Math.floor(state.baseMagicLevel * increaseAmount);
+          const runicIncrease = Math.round(state.baseMagicLevel * increaseAmount);
           return { ...state, runicIncrease };
         } else return state;
       case "axe-fighting":
