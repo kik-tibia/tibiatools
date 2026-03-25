@@ -1,9 +1,11 @@
 import { perks } from "@data/perks";
+import { creatures } from "@data/creatures";
 import { weapons, ammo } from "@data/weapons";
 
 import type { BuildStats, Vocation } from "@lib/build-state";
 import type { PerkDef } from "@data/perks";
 
+console.log(creatures);
 const AUTO_ATTACK_ID = 1;
 import { spells, type Spell, type SpellDamage } from "src/data/spells";
 import type {
