@@ -186,7 +186,7 @@
     <td>
       <FuzzySelect selectType="spells" all={selectableSpells} selectedIds={rotationOrder} onAdd={addSpellToRotation} />
     </td>
-    <td class="sub-header rotation-label-cell">
+    <td class="sub-header">
       {#if rotationOrder.length > 0}
         <div class="rotation-labels">
           <span>Targets</span>
@@ -195,7 +195,7 @@
       {/if}
     </td>
     {#if showSecondBuild}
-      <td class="sub-header rotation-label-cell">
+      <td class="sub-header">
         {#if rotationOrder.length > 0}
           <div class="rotation-labels">
             <span>Targets</span>
@@ -224,9 +224,6 @@
   .sub-header {
     font-size: 0.75rem;
     color: var(--text-muted);
-  }
-
-  .rotation-label-cell {
     padding-bottom: 0;
     vertical-align: bottom;
   }

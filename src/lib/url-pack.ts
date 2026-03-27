@@ -1,6 +1,6 @@
 import LZString from "lz-string";
 import type { CalculatorState, Build, BuildStats, CollapsedSections, Vocation } from "./build-state";
-import type { ActivePerk, RotationSpell, WeaponBuild } from "./damage-calc";
+import type { ActivePerk, RotationSpell, Target, WeaponBuild } from "./damage-calc";
 
 /**
  * State = [BuildA, BuildB, showSecondBuild]
@@ -39,8 +39,11 @@ type CompactStats = (string | number | null)[];
 type CompactWeapon = number | [number, number];
 type CompactPerk = [number, number];
 type CompactRotation = [number, number, number, number];
-type CompactBuild = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation[]];
-type CompactState = [number, CompactBuild, CompactBuild, number[], number[], number, number];
+type CompactTarget = [number, number];
+type CompactBuildV1 = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation[]];
+type CompactBuild = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation[], CompactTarget[]];
+type CompactStateV1 = [number, CompactBuildV1, CompactBuildV1, number[], number[], number, number];
+type CompactState = [number, CompactBuild, CompactBuild, number[], number[], number[], number, number];
 
 function compactStats(stats: BuildStats): CompactStats {
   let mask = 0;
@@ -98,12 +101,21 @@ function expandRotation(compact: CompactRotation[]): RotationSpell[] {
   return compact.map(([id, targets, ratio, extraSpell]) => ({ id, targets, ratio, extraSpell: !!extraSpell }));
 }
 
+function compactTargets(targets: Target[]): CompactTarget[] {
+  return targets.map((t) => [t.id, t.ratio]);
+}
+
+function expandTargets(compact: CompactTarget[]): Target[] {
+  return compact.map(([id, ratio]) => ({ id, ratio }));
+}
+
 function compactBuild(build: Build): CompactBuild {
   return [
     compactStats(build.stats),
     compactWeapon(build.weapon),
     compactPerks(build.perks),
     compactRotation(build.rotation),
+    compactTargets(build.targets),
   ];
 }
 
@@ -113,12 +125,18 @@ function expandBuild(compact: CompactBuild): Build {
     weapon: expandWeapon(compact[1]),
     perks: expandPerks(compact[2]),
     rotation: expandRotation(compact[3]),
+    targets: expandTargets(compact[4] ?? []),
   };
 }
 
 function collapsedToBitmask(c: CollapsedSections): number {
   return (
-    (c.basicStats ? 1 : 0) | (c.advancedStats ? 2 : 0) | (c.weapon ? 4 : 0) | (c.perks ? 8 : 0) | (c.rotation ? 16 : 0)
+    (c.basicStats ? 1 : 0) |
+    (c.advancedStats ? 2 : 0) |
+    (c.weapon ? 4 : 0) |
+    (c.perks ? 8 : 0) |
+    (c.rotation ? 16 : 0) |
+    (c.targets ? 32 : 0)
   );
 }
 
@@ -129,6 +147,7 @@ function bitmaskToCollapsed(mask: number): CollapsedSections {
     weapon: !!(mask & 4),
     perks: !!(mask & 8),
     rotation: !!(mask & 16),
+    targets: !!(mask & 32),
   };
 }
 
@@ -139,20 +158,48 @@ function compactState(state: CalculatorState): CompactState {
     compactBuild(state.B),
     state.perkOrder,
     state.rotationOrder,
+    state.targetOrder,
     +state.showSecondBuild,
     collapsedToBitmask(state.collapsed),
   ];
 }
 
+function expandBuildV1(compact: CompactBuildV1): Build {
+  return {
+    stats: expandStats(compact[0]),
+    weapon: expandWeapon(compact[1]),
+    perks: expandPerks(compact[2]),
+    rotation: expandRotation(compact[3]),
+    targets: [],
+  };
+}
+
+function expandStateV1(compact: CompactStateV1): CalculatorState {
+  return {
+    version: 2,
+    A: expandBuildV1(compact[1]),
+    B: expandBuildV1(compact[2]),
+    perkOrder: compact[3],
+    rotationOrder: compact[4],
+    targetOrder: [],
+    showSecondBuild: !!compact[5],
+    collapsed: bitmaskToCollapsed(compact[6]),
+  };
+}
+
 function expandState(compact: CompactState): CalculatorState {
+  if (compact[0] === 1) {
+    return expandStateV1(compact as unknown as CompactStateV1);
+  }
   return {
     version: compact[0],
     A: expandBuild(compact[1]),
     B: expandBuild(compact[2]),
     perkOrder: compact[3],
     rotationOrder: compact[4],
-    showSecondBuild: !!compact[5],
-    collapsed: bitmaskToCollapsed(compact[6]),
+    targetOrder: compact[5],
+    showSecondBuild: !!compact[6],
+    collapsed: bitmaskToCollapsed(compact[7]),
   };
 }
 

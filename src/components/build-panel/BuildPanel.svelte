@@ -5,6 +5,7 @@
   import WeaponSection from "@components/build-panel/WeaponSection.svelte";
   import PerksSection from "@components/build-panel/PerksSection.svelte";
   import RotationSection from "@components/build-panel/RotationSection.svelte";
+  import TargetsSection from "@components/build-panel/TargetsSection.svelte";
   import type { Build, CollapsedSections } from "@lib/build-state";
   import "@styles/build-table.css";
 
@@ -13,6 +14,7 @@
     buildB = $bindable(),
     perkOrder = $bindable(),
     rotationOrder = $bindable(),
+    targetOrder = $bindable(),
     showSecondBuild = false,
     collapsed = $bindable(),
   }: {
@@ -20,6 +22,7 @@
     buildB: Build;
     perkOrder: number[];
     rotationOrder: number[];
+    targetOrder: number[];
     showSecondBuild?: boolean;
     collapsed: CollapsedSections;
   } = $props();
@@ -54,6 +57,7 @@
     <WeaponSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.weapon} />
     <PerksSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.perks} bind:perkOrder />
     <RotationSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.rotation} bind:rotationOrder />
+    <TargetsSection bind:buildA bind:buildB {showSecondBuild} bind:collapsed={collapsed.targets} bind:targetOrder />
   </tbody>
 </table>
 

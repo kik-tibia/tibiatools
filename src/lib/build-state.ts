@@ -1,4 +1,4 @@
-import type { ActivePerk, RotationSpell, WeaponBuild } from "./damage-calc";
+import type { ActivePerk, RotationSpell, Target, WeaponBuild } from "./damage-calc";
 
 export type Vocation = "knight" | "paladin" | "sorcerer" | "druid" | "monk";
 
@@ -22,7 +22,7 @@ export type BuildStats = {
   fishing: number | null;
 };
 
-export type Build = { stats: BuildStats; weapon: WeaponBuild; perks: ActivePerk[]; rotation: RotationSpell[] };
+export type Build = { stats: BuildStats; weapon: WeaponBuild; perks: ActivePerk[]; rotation: RotationSpell[]; targets: Target[] };
 
 export type CollapsedSections = {
   basicStats: boolean;
@@ -30,6 +30,7 @@ export type CollapsedSections = {
   weapon: boolean;
   perks: boolean;
   rotation: boolean;
+  targets: boolean;
 };
 
 export type CalculatorState = {
@@ -38,6 +39,7 @@ export type CalculatorState = {
   B: Build;
   perkOrder: number[];
   rotationOrder: number[];
+  targetOrder: number[];
   showSecondBuild: boolean;
   collapsed: CollapsedSections;
 };
@@ -71,6 +73,7 @@ export const defaultBuild = () => ({
   weapon: defaultWeapon(),
   perks: [],
   rotation: [],
+  targets: [],
 });
 
 export const defaultCollapsed = (): CollapsedSections => ({
@@ -79,14 +82,16 @@ export const defaultCollapsed = (): CollapsedSections => ({
   weapon: false,
   perks: false,
   rotation: false,
+  targets: false,
 });
 
 export const defaultState = (): CalculatorState => ({
-  version: 1,
+  version: 2,
   A: defaultBuild(),
   B: defaultBuild(),
   perkOrder: [],
   rotationOrder: [],
+  targetOrder: [],
   showSecondBuild: false,
   collapsed: defaultCollapsed(),
 });
