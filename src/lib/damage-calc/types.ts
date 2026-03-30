@@ -1,3 +1,4 @@
+import type { Creature } from "@data/creatures";
 import type { PerkDef } from "src/data/perks";
 
 export type ActivePerk = {
@@ -31,6 +32,8 @@ export type SpellState = CharacterState & { basePower: number; runicIncrease: nu
 
 export type RotationSpell = { id: number; targets: number; ratio: number; extraSpell: boolean };
 
+export type WeaponBuild = { id: number; ammo?: number };
+
 export type Target = { id: number; ratio: number };
 
-export type WeaponBuild = { id: number; ammo?: number };
+export type TargetWithCreature = Target & { creature: Creature };

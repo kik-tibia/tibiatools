@@ -24,8 +24,8 @@
     return { version: 2, A, B, perkOrder, rotationOrder, targetOrder, showSecondBuild, collapsed };
   }
 
-  let resultsA = $derived(computeResults(A.stats, A.weapon, A.perks));
-  let resultsB = $derived(computeResults(B.stats, B.weapon, B.perks));
+  let resultsA = $derived(computeResults(A.stats, A.weapon, A.perks, A.targets));
+  let resultsB = $derived(computeResults(B.stats, B.weapon, B.perks, B.targets));
   let effectiveDptA = $derived(computeDpt(resultsA, A.rotation));
   let effectiveDptB = $derived(computeDpt(resultsB, B.rotation));
   let effectiveDphA = $derived(computeDph(resultsA, A.rotation));
@@ -123,7 +123,14 @@
 
 <section class="main-grid" class:comparing={showSecondBuild}>
   <div class="panel build-panel">
-    <BuildPanel bind:buildA={A} bind:buildB={B} bind:perkOrder bind:rotationOrder bind:targetOrder {showSecondBuild} bind:collapsed />
+    <BuildPanel
+      bind:buildA={A}
+      bind:buildB={B}
+      bind:perkOrder
+      bind:rotationOrder
+      bind:targetOrder
+      {showSecondBuild}
+      bind:collapsed />
   </div>
 
   <div class="panel results-panel-a">

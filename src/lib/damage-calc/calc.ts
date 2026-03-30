@@ -1,22 +1,25 @@
 import { perks } from "@data/perks";
-import { creatures } from "@data/creatures";
+import { creatures, type Creature } from "@data/creatures";
 import { weapons, ammo } from "@data/weapons";
 
 import type { BuildStats, Vocation } from "@lib/build-state";
 import type { PerkDef } from "@data/perks";
 
-console.log(creatures);
-const AUTO_ATTACK_ID = 1;
 import { spells, type Spell, type SpellDamage } from "src/data/spells";
+import { computeDamageRanges } from "./formulas";
 import type {
   ActivePerk,
   ActivePerkWithDef,
   CharacterState,
   RotationSpell,
   SpellState,
+  Target,
+  TargetWithCreature,
   WeaponBuild,
 } from "@lib/damage-calc";
 import type { Ammo, SkillType, Weapon } from "@data/weapons";
+
+const AUTO_ATTACK_ID = 1;
 
 /* calculate power via base power and any perks
  * use the updated power and your skills to calculate base damage
@@ -30,34 +33,10 @@ import type { Ammo, SkillType, Weapon } from "@data/weapons";
  * multiply damage by attack prey and talisman
  */
 
-const computeAvg = (spell: Spell, state: SpellState) => {
-  const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W } = state;
-  const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
-  const damage =
-    spell.element === "weapon"
-      ? F + round((P / spell.skillFactor) * S * W + P / 4)
-      : spell.scalesWith === "distance"
-        ? F + round((P / spell.skillFactor) * S + P / 4)
-        : F + round((P / spell.skillFactor) * ML + P / 4);
-  return Math.ceil(damage * spell.additionalDamageMultiplier);
-};
-
-const computeMinMax = (spell: Spell, minMax: number, state: SpellState) => {
-  const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W } = state;
-  const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
-  const variation = spell.buckets / P / 2;
-  const damage =
-    spell.element === "weapon"
-      ? F + round((1 + minMax * variation) * ((P / spell.skillFactor) * S * W + P / 4))
-      : spell.scalesWith === "distance"
-        ? F + round((1 + minMax * variation) * ((P / spell.skillFactor) * S + P / 4))
-        : F + round((1 + minMax * variation) * ((P / spell.skillFactor) * ML + P / 4));
-  return Math.ceil(damage * spell.additionalDamageMultiplier);
-};
-
 const perkDefsById: Record<number, PerkDef> = Object.fromEntries(perks.map((i) => [i.id, i]));
 const weaponsById: Record<number, Weapon> = Object.fromEntries(weapons.map((i) => [i.id, i]));
 const ammoById: Record<number, Ammo> = Object.fromEntries(ammo.map((i) => [i.id, i]));
+const creaturesById: Record<number, Creature> = Object.fromEntries(creatures.map((i) => [i.id, i]));
 
 const applyPerkToSpell = (
   spell: Spell,
@@ -152,62 +131,17 @@ const assignDefsToPerks = (activePerks: ActivePerk[]) => {
     .filter((x): x is ActivePerkWithDef => x !== null);
 };
 
-const computeDamageRanges = (spell: Spell, state: SpellState, highRollAA: boolean, vocation: Vocation): SpellDamage => {
-  let nTranscendenceAttacks;
-  if (spell.spellType === "auto") nTranscendenceAttacks = 3;
-  else nTranscendenceAttacks = 3.9;
-
-  const pT = state.transcendenceChance;
-  const pTCrit = (nTranscendenceAttacks * pT) / (nTranscendenceAttacks * pT - pT + 1);
-  const critChance = Math.min(state.critChance, 1);
-  const c = 1 - (1 - critChance) * (1 - pTCrit);
-  const o = state.fatalChance;
-  const pCrit = c * (1 - o);
-  const pFatal = o * (1 - c);
-  const pCritFatal = c * o;
-  const pNoBonus = (1 - c) * (1 - o);
-  // Increase crit damage by the ratio of transcendence crits, which have 15% extra damage
-  const critDamage = state.critDamage + (0.15 * pTCrit) / (pTCrit + (1 - pTCrit) * critChance || 1);
-
-  if (spell.spellType === "auto") {
-    const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
-    const attackIncrease = vocation == "monk" ? 1.5 : 1;
-    let min, avg, max;
-    if (state.weaponDamage) {
-      avg = state.weaponDamage;
-    } else {
-      min = Math.floor(state.flat + (attackValueWithoutFlat * attackIncrease) / 2);
-      avg = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease);
-      max = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease * 2);
-    }
-
-    let effectiveAvg;
-    if (state.weaponDamage) {
-      effectiveAvg = avg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
-    } else {
-      effectiveAvg = highRollAA
-        ? pNoBonus * avg +
-          pCrit * (state.flat + attackValueWithoutFlat * 1.75) * (1 + critDamage) +
-          pFatal * (state.flat + attackValueWithoutFlat * 1.75) * 1.6 +
-          pCritFatal * (state.flat + attackValueWithoutFlat * 1.75) * (1.6 + critDamage)
-        : avg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
-    }
-
-    return { ...spell, min, avg, max, effectiveAvg };
-  } else {
-    // TODO implement harmony properly, with a stance system that all vocations will benefit from
-    if (spell.isSpender) state.basePower *= 3.08;
-    const avg = computeAvg(spell, state);
-    const min = spell.buckets != 0 ? computeMinMax(spell, -1, state) : undefined;
-    const max = spell.buckets != 0 ? computeMinMax(spell, 1, state) : undefined;
-    let effectiveAvg =
-      state.runicIncrease == 0
-        ? avg
-        : computeAvg(spell, { ...state, magicLevel: state.magicLevel + 0.25 * state.runicIncrease });
-    effectiveAvg =
-      effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
-    return { ...spell, min, avg, max, effectiveAvg };
-  }
+const assignCreaturesToTargets = (targets: Target[]) => {
+  return targets
+    .map((t) => {
+      const creature = creaturesById[t.id];
+      if (!creature) {
+        console.warn(`Unknown creature id: ${t.id}`);
+        return null;
+      }
+      return { ...t, creature };
+    })
+    .filter((x): x is TargetWithCreature => x !== null);
 };
 
 const derive = (inp: BuildStats, weaponDef: Weapon, ammoDef: Ammo | null): CharacterState => {
@@ -253,8 +187,9 @@ const derive = (inp: BuildStats, weaponDef: Weapon, ammoDef: Ammo | null): Chara
   };
 };
 
-export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks: ActivePerk[]) => {
+export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks: ActivePerk[], targets: Target[]) => {
   const perksWithDefs: ActivePerkWithDef[] = assignDefsToPerks(activePerks);
+  const targetsWithCreatures: TargetWithCreature[] = assignCreaturesToTargets(targets);
 
   const weaponDef = weaponsById[weapon.id];
   const ammoDef = weapon.ammo ? ammoById[weapon.ammo] : null;
@@ -271,7 +206,7 @@ export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks
         (acc, perk) => applyPerkToSpell(spell, perk, weaponDef.skill, inp.vocation, acc),
         initial,
       );
-      return computeDamageRanges(spell, final, highRollAA, inp.vocation);
+      return computeDamageRanges(spell, final, highRollAA, inp.vocation, targetsWithCreatures);
     });
   return spellResults;
 };
