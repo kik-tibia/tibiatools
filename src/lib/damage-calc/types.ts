@@ -1,5 +1,5 @@
 import type { Creature } from "@data/creatures";
-import type { PerkDef } from "src/data/perks";
+import type { PerkDef } from "@data/perks";
 
 export type ActivePerk = {
   id: number;

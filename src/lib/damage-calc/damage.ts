@@ -1,5 +1,5 @@
+import type { Spell, SpellDamage } from "@data/spells";
 import type { Vocation } from "@lib/build-state";
-import type { Spell, SpellDamage } from "src/data/spells";
 import type { SpellState, TargetWithCreature } from "@lib/damage-calc";
 
 export const computeAvg = (spell: Spell, state: SpellState) => {

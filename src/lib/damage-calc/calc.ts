@@ -1,9 +1,8 @@
-import { perks } from "@data/perks";
 import { creatures, type Creature } from "@data/creatures";
-import { weapons, ammo } from "@data/weapons";
-import type { BuildStats, Vocation } from "@lib/build-state";
-import type { PerkDef } from "@data/perks";
+import { perks, type PerkDef } from "@data/perks";
 import { spells, type Spell, type SpellDamage } from "@data/spells";
+import { ammo, weapons, type Ammo, type SkillType, type Weapon } from "@data/weapons";
+import type { BuildStats, Vocation } from "@lib/build-state";
 import type {
   ActivePerk,
   ActivePerkWithDef,
@@ -14,8 +13,6 @@ import type {
   TargetWithCreature,
   WeaponBuild,
 } from "@lib/damage-calc";
-import type { Ammo, SkillType, Weapon } from "@data/weapons";
-
 import { computeDamageRanges } from "./damage.ts";
 
 const AUTO_ATTACK_ID = 1;
@@ -33,6 +30,7 @@ const AUTO_ATTACK_ID = 1;
  */
 
 const perkDefsById: Record<number, PerkDef> = Object.fromEntries(perks.map((i) => [i.id, i]));
+
 const weaponsById: Record<number, Weapon> = Object.fromEntries(weapons.map((i) => [i.id, i]));
 const ammoById: Record<number, Ammo> = Object.fromEntries(ammo.map((i) => [i.id, i]));
 const creaturesById: Record<number, Creature> = Object.fromEntries(creatures.map((i) => [i.id, i]));

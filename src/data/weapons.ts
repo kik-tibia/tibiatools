@@ -1,6 +1,6 @@
-import weaponsRaw from "@data/weapons.json";
 import ammoRaw from "@data/ammo.json";
 import type { Element } from "@data/spells";
+import weaponsRaw from "@data/weapons.json";
 
 export type AmmoType = "arrows" | "bolts";
 export type SkillType = "axe" | "club" | "sword" | "fist" | "distance";

@@ -6,8 +6,15 @@
     "trailingComma": "all",
     "arrowParens": "always",
     "plugins": [
+        "@ianvs/prettier-plugin-sort-imports",
         "prettier-plugin-svelte"
     ],
+    "importOrder": [
+        "<THIRD_PARTY_MODULES>",
+        "^@(.*)$",
+        "^[.]"
+    ],
+    "importOrderTypeScriptVersion": "5.0.0",
     "overrides": [
         {
             "files": "*.svelte",

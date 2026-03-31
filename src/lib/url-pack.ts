@@ -1,5 +1,5 @@
 import LZString from "lz-string";
-import type { CalculatorState, Build, BuildStats, CollapsedSections, Vocation } from "./build-state";
+import type { Build, BuildStats, CalculatorState, CollapsedSections, Vocation } from "./build-state";
 import type { ActivePerk, RotationSpell, Target, WeaponBuild } from "./damage-calc";
 
 /**

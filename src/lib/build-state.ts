@@ -22,7 +22,13 @@ export type BuildStats = {
   fishing: number | null;
 };
 
-export type Build = { stats: BuildStats; weapon: WeaponBuild; perks: ActivePerk[]; rotation: RotationSpell[]; targets: Target[] };
+export type Build = {
+  stats: BuildStats;
+  weapon: WeaponBuild;
+  perks: ActivePerk[];
+  rotation: RotationSpell[];
+  targets: Target[];
+};
 
 export type CollapsedSections = {
   basicStats: boolean;
