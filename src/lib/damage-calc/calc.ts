@@ -1,12 +1,9 @@
 import { perks } from "@data/perks";
 import { creatures, type Creature } from "@data/creatures";
 import { weapons, ammo } from "@data/weapons";
-
 import type { BuildStats, Vocation } from "@lib/build-state";
 import type { PerkDef } from "@data/perks";
-
-import { spells, type Spell, type SpellDamage } from "src/data/spells";
-import { computeDamageRanges } from "./formulas";
+import { spells, type Spell, type SpellDamage } from "@data/spells";
 import type {
   ActivePerk,
   ActivePerkWithDef,
@@ -18,6 +15,8 @@ import type {
   WeaponBuild,
 } from "@lib/damage-calc";
 import type { Ammo, SkillType, Weapon } from "@data/weapons";
+
+import { computeDamageRanges } from "./damage.ts";
 
 const AUTO_ATTACK_ID = 1;
 
