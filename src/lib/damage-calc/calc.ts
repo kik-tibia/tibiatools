@@ -16,6 +16,10 @@ import type {
 import { computeDamageRanges } from "./damage.ts";
 
 const AUTO_ATTACK_ID = 1;
+const perkDefsById: Record<number, PerkDef> = Object.fromEntries(perks.map((i) => [i.id, i]));
+const weaponsById: Record<number, Weapon> = Object.fromEntries(weapons.map((i) => [i.id, i]));
+const ammoById: Record<number, Ammo> = Object.fromEntries(ammo.map((i) => [i.id, i]));
+const creaturesById: Record<number, Creature> = Object.fromEntries(creatures.map((i) => [i.id, i]));
 
 /* calculate power via base power and any perks
  * use the updated power and your skills to calculate base damage
@@ -29,19 +33,81 @@ const AUTO_ATTACK_ID = 1;
  * multiply damage by attack prey and talisman
  */
 
-const perkDefsById: Record<number, PerkDef> = Object.fromEntries(perks.map((i) => [i.id, i]));
+export function computeResults(
+  inp: BuildStats,
+  weapon: WeaponBuild,
+  activePerks: ActivePerk[],
+  targets: Target[],
+): SpellDamage[] {
+  const perksWithDefs: ActivePerkWithDef[] = assignDefsToPerks(activePerks);
+  const targetsWithCreatures: TargetWithCreature[] = assignCreaturesToTargets(targets);
 
-const weaponsById: Record<number, Weapon> = Object.fromEntries(weapons.map((i) => [i.id, i]));
-const ammoById: Record<number, Ammo> = Object.fromEntries(ammo.map((i) => [i.id, i]));
-const creaturesById: Record<number, Creature> = Object.fromEntries(creatures.map((i) => [i.id, i]));
+  const weaponDef = weaponsById[weapon.id];
+  const ammoDef = weapon.ammo ? ammoById[weapon.ammo] : null;
 
-const applyPerkToSpell = (
+  const state = deriveState(inp, weaponDef, ammoDef);
+
+  const highRollAA = !ammoDef?.aoe;
+
+  const spellResults = spells
+    .filter((s) => s.vocations.includes(inp.vocation))
+    .map((spell) => {
+      const initial: SpellState = { ...state, basePower: spell.power, runicIncrease: 0 };
+      const final: SpellState = perksWithDefs.reduce(
+        (acc, perk) => applyPerkToSpell(spell, perk, weaponDef.skill, inp.vocation, acc),
+        initial,
+      );
+      return computeDamageRanges(spell, final, highRollAA, inp.vocation, targetsWithCreatures);
+    });
+  return spellResults;
+}
+
+/** Damage per turn */
+export function computeDpt(spellDamages: SpellDamage[], rotation: RotationSpell[]): number {
+  const hasAutoAttack = rotation.some((r) => r.id === AUTO_ATTACK_ID);
+  const spellRotation = rotation.filter((r) => r.id !== AUTO_ATTACK_ID);
+  const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
+
+  const autoAttackDamage = hasAutoAttack
+    ? (spellDamages.find((s) => s.id === AUTO_ATTACK_ID)?.effectiveAvg ?? 0) *
+      (rotation.find((r) => r.id === AUTO_ATTACK_ID)?.targets ?? 1)
+    : 0;
+
+  return (
+    autoAttackDamage +
+    spellRotation.reduce((damage, r) => {
+      const spellDamage = spellDamages.find((s) => s.id === r.id)?.effectiveAvg ?? 0;
+      const weightedDamage = ratioSum > 0 ? (spellDamage * r.targets * r.ratio) / ratioSum : 0;
+      return damage + weightedDamage;
+    }, 0)
+  );
+}
+
+/** Damage per hit */
+export function computeDph(spellDamages: SpellDamage[], rotation: RotationSpell[]): number {
+  const spellRotation = rotation.filter((r) => r.id !== AUTO_ATTACK_ID);
+  const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
+  const fullRotation = rotation.map((r) => (r.id === AUTO_ATTACK_ID ? { ...r, ratio: ratioSum || 1 } : r));
+  const ratioTargetSum = fullRotation.reduce((sum, r) => sum + r.targets * r.ratio, 0);
+
+  if (ratioTargetSum === 0) return 0;
+
+  return (
+    fullRotation.reduce((damage, r) => {
+      const spellDamage = spellDamages.find((s) => s.id === r.id)?.effectiveAvg ?? 0;
+      const weightedDamage = spellDamage * r.targets * r.ratio;
+      return damage + weightedDamage;
+    }, 0) / ratioTargetSum
+  );
+}
+
+function applyPerkToSpell(
   spell: Spell,
   perk: ActivePerkWithDef,
   skillType: SkillType,
   vocation: Vocation,
   state: SpellState,
-): SpellState => {
+): SpellState {
   const { basePower: P, flat: F, magicLevel: ML, weaponAttack: W } = state;
 
   if (
@@ -113,9 +179,9 @@ const applyPerkToSpell = (
   }
 
   return state;
-};
+}
 
-const assignDefsToPerks = (activePerks: ActivePerk[]) => {
+function assignDefsToPerks(activePerks: ActivePerk[]): ActivePerkWithDef[] {
   return activePerks
     .map((ap) => {
       const def = perkDefsById[ap.id];
@@ -126,9 +192,9 @@ const assignDefsToPerks = (activePerks: ActivePerk[]) => {
       return { ...ap, def };
     })
     .filter((x): x is ActivePerkWithDef => x !== null);
-};
+}
 
-const assignCreaturesToTargets = (targets: Target[]) => {
+function assignCreaturesToTargets(targets: Target[]): TargetWithCreature[] {
   return targets
     .map((t) => {
       const creature = creaturesById[t.id];
@@ -139,9 +205,9 @@ const assignCreaturesToTargets = (targets: Target[]) => {
       return { ...t, creature };
     })
     .filter((x): x is TargetWithCreature => x !== null);
-};
+}
 
-const derive = (inp: BuildStats, weaponDef: Weapon, ammoDef: Ammo | null): CharacterState => {
+function deriveState(inp: BuildStats, weaponDef: Weapon, ammoDef: Ammo | null): CharacterState {
   const n = (v: unknown) => Number((v ?? "").toString().trim()) || 0;
   const L = n(inp.level);
   const B = n(inp.bonus);
@@ -182,67 +248,4 @@ const derive = (inp: BuildStats, weaponDef: Weapon, ammoDef: Ammo | null): Chara
     shielding,
     fishing,
   };
-};
-
-export const computeResults = (inp: BuildStats, weapon: WeaponBuild, activePerks: ActivePerk[], targets: Target[]) => {
-  const perksWithDefs: ActivePerkWithDef[] = assignDefsToPerks(activePerks);
-  const targetsWithCreatures: TargetWithCreature[] = assignCreaturesToTargets(targets);
-
-  const weaponDef = weaponsById[weapon.id];
-  const ammoDef = weapon.ammo ? ammoById[weapon.ammo] : null;
-
-  const state = derive(inp, weaponDef, ammoDef);
-
-  const highRollAA = !ammoDef?.aoe;
-
-  const spellResults = spells
-    .filter((s) => s.vocations.includes(inp.vocation))
-    .map((spell) => {
-      const initial: SpellState = { ...state, basePower: spell.power, runicIncrease: 0 };
-      const final: SpellState = perksWithDefs.reduce(
-        (acc, perk) => applyPerkToSpell(spell, perk, weaponDef.skill, inp.vocation, acc),
-        initial,
-      );
-      return computeDamageRanges(spell, final, highRollAA, inp.vocation, targetsWithCreatures);
-    });
-  return spellResults;
-};
-
-// damage per turn
-export const computeDpt = (spellDamages: SpellDamage[], rotation: RotationSpell[]) => {
-  const hasAutoAttack = rotation.some((r) => r.id === AUTO_ATTACK_ID);
-  const spellRotation = rotation.filter((r) => r.id !== AUTO_ATTACK_ID);
-  const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
-
-  const autoAttackDamage = hasAutoAttack
-    ? (spellDamages.find((s) => s.id === AUTO_ATTACK_ID)?.effectiveAvg ?? 0) *
-      (rotation.find((r) => r.id === AUTO_ATTACK_ID)?.targets ?? 1)
-    : 0;
-
-  return (
-    autoAttackDamage +
-    spellRotation.reduce((damage, r) => {
-      const spellDamage = spellDamages.find((s) => s.id === r.id)?.effectiveAvg ?? 0;
-      const weightedDamage = ratioSum > 0 ? (spellDamage * r.targets * r.ratio) / ratioSum : 0;
-      return damage + weightedDamage;
-    }, 0)
-  );
-};
-
-// damage per hit
-export const computeDph = (spellDamages: SpellDamage[], rotation: RotationSpell[]) => {
-  const spellRotation = rotation.filter((r) => r.id !== AUTO_ATTACK_ID);
-  const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
-  const fullRotation = rotation.map((r) => (r.id === AUTO_ATTACK_ID ? { ...r, ratio: ratioSum || 1 } : r));
-  const ratioTargetSum = fullRotation.reduce((sum, r) => sum + r.targets * r.ratio, 0);
-
-  if (ratioTargetSum === 0) return 0;
-
-  return (
-    fullRotation.reduce((damage, r) => {
-      const spellDamage = spellDamages.find((s) => s.id === r.id)?.effectiveAvg ?? 0;
-      const weightedDamage = spellDamage * r.targets * r.ratio;
-      return damage + weightedDamage;
-    }, 0) / ratioTargetSum
-  );
-};
+}
