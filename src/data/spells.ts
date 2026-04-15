@@ -3,7 +3,8 @@ import spellsRaw from "@data/spells.json";
 
 export type SpellType = "auto" | "spell" | "rune";
 export type ScalesWith = "magic" | "melee" | "fist" | "distance" | "none";
-export type Element = "ice" | "fire" | "earth" | "energy" | "physical" | "holy" | "death" | "weapon";
+export type Element = "ice" | "fire" | "earth" | "energy" | "physical" | "holy" | "death";
+export type SpellElement = Element | "weapon";
 export type Rounding = "floor" | "round" | "ceil";
 
 export type Spell = {
@@ -12,7 +13,7 @@ export type Spell = {
   name: string;
   spellType: SpellType;
   scalesWith: ScalesWith;
-  element: Element;
+  element: SpellElement;
   power: number;
   skillFactor: number;
   buckets: number;

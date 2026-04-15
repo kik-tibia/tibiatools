@@ -26,7 +26,7 @@ const creaturesById: Record<number, Creature> = Object.fromEntries(creatures.map
  * add on flat damage from level, wheel, and any extra damage perks
  * multiply by additional damage bonus if applicable (amp kor, ulus)
  * multiply by target's resistance
- * if physical damage, subtract the armor block (confirmed this is after res/miti by testing on gazer spectres, and on spike traps)
+ * if physical damage, subtract the armor block (confirmed this is after res by testing on gazer spectres, and on spike traps)
  * roll for crit and fatal, if successful, multiply by the extra damage bonus including any crit damage perks (crit rounding is ceil)
  * multiply by target's mitigation
  * (calculate leech at this point)
@@ -57,7 +57,7 @@ export function computeResults(
         (acc, perk) => applyPerkToSpell(spell, perk, weaponDef.skill, inp.vocation, acc),
         initial,
       );
-      return computeDamageRanges(spell, final, highRollAA, inp.vocation, targetsWithCreatures);
+      return computeDamageRanges(spell, final, highRollAA, inp.vocation, weaponDef, targetsWithCreatures);
     });
   return spellResults;
 }

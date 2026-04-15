@@ -1,4 +1,5 @@
-import type { Spell, SpellDamage } from "@data/spells";
+import type { Element, Spell, SpellDamage } from "@data/spells";
+import type { Weapon } from "@data/weapons";
 import type { Vocation } from "@lib/build-state";
 import type { SpellState, TargetWithCreature } from "@lib/damage-calc";
 
@@ -7,6 +8,7 @@ export function computeDamageRanges(
   state: SpellState,
   highRollAA: boolean,
   vocation: Vocation,
+  weapon: Weapon,
   targetsWithCreatures: TargetWithCreature[],
 ): SpellDamage {
   let nTranscendenceAttacks;
@@ -25,28 +27,106 @@ export function computeDamageRanges(
   // Increase crit damage by the ratio of transcendence crits, which have 15% extra damage
   const critDamage = state.critDamage + (0.15 * pTCrit) / (pTCrit + (1 - pTCrit) * critChance || 1);
 
+  const effectiveAvgElements: Record<Element, number> = {
+    death: 0,
+    earth: 0,
+    energy: 0,
+    fire: 0,
+    holy: 0,
+    ice: 0,
+    physical: 0,
+  };
+  const ratioAdjustedHp = targetsWithCreatures.reduce(
+    (total, creture) => total + creture.ratio * creture.creature.hitpoints,
+    0,
+  );
+
   if (spell.spellType === "auto") {
     const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
     const attackIncrease = vocation == "monk" ? 1.5 : 1;
-    let min, avg, max;
+    let min, avg, max, highRollAvg;
     if (state.weaponDamage) {
+      min = undefined;
       avg = state.weaponDamage;
+      max = undefined;
+      highRollAvg = avg;
     } else {
       min = Math.floor(state.flat + (attackValueWithoutFlat * attackIncrease) / 2);
       avg = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease);
       max = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease * 2);
+      highRollAvg = Math.floor(state.flat + attackValueWithoutFlat * 1.75 * attackIncrease);
     }
 
-    let effectiveAvg;
-    if (state.weaponDamage) {
-      effectiveAvg = avg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
+    const effectiveAvgHighRollElements: Record<Element, number> = {
+      death: 0,
+      earth: 0,
+      energy: 0,
+      fire: 0,
+      holy: 0,
+      ice: 0,
+      physical: 0,
+    };
+    let effectiveAvg = avg;
+    let effectiveAvgHighRoll = highRollAvg;
+    let physMin = 0;
+    let physMax = 0;
+
+    if (weapon.damageType) {
+      // wand or rod
+      effectiveAvgElements[weapon.damageType] = weapon.damage ?? 0;
+      physMin = weapon.damageType == "physical" ? (weapon.damage ?? 0) : 0;
+      physMax = physMin;
     } else {
+      // regular weapon
+      if (weapon.attack && weapon.attack > 0) {
+        effectiveAvgElements.death = (effectiveAvg * (weapon.attackDeath ?? 0)) / weapon.attack;
+        effectiveAvgElements.earth = (effectiveAvg * (weapon.attackEarth ?? 0)) / weapon.attack;
+        effectiveAvgElements.energy = (effectiveAvg * (weapon.attackEnergy ?? 0)) / weapon.attack;
+        effectiveAvgElements.fire = (effectiveAvg * (weapon.attackFire ?? 0)) / weapon.attack;
+        effectiveAvgElements.ice = (effectiveAvg * (weapon.attackIce ?? 0)) / weapon.attack;
+
+        effectiveAvgHighRollElements.death = (highRollAvg * (weapon.attackDeath ?? 0)) / weapon.attack;
+        effectiveAvgHighRollElements.earth = (highRollAvg * (weapon.attackEarth ?? 0)) / weapon.attack;
+        effectiveAvgHighRollElements.energy = (highRollAvg * (weapon.attackEnergy ?? 0)) / weapon.attack;
+        effectiveAvgHighRollElements.fire = (highRollAvg * (weapon.attackFire ?? 0)) / weapon.attack;
+        effectiveAvgHighRollElements.ice = (highRollAvg * (weapon.attackIce ?? 0)) / weapon.attack;
+
+        physMin = ((min ?? effectiveAvg) * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
+        physMax = ((max ?? effectiveAvg) * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
+      }
+    }
+
+    const physAvgHighRoll = (highRollAvg * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
+
+    if (ratioAdjustedHp > 0) {
+      effectiveAvg = weightedElementalEffective(
+        effectiveAvgElements,
+        physMin,
+        physMax,
+        targetsWithCreatures,
+        ratioAdjustedHp,
+      );
+      effectiveAvgHighRoll = weightedElementalEffective(
+        effectiveAvgHighRollElements,
+        physAvgHighRoll,
+        physAvgHighRoll,
+        targetsWithCreatures,
+        ratioAdjustedHp,
+      );
+    }
+
+    if (weapon.damageType) {
+      // wand or rod
+      effectiveAvg =
+        effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
+    } else {
+      // regular weapon
       effectiveAvg = highRollAA
-        ? pNoBonus * avg +
-          pCrit * (state.flat + attackValueWithoutFlat * 1.75) * (1 + critDamage) +
-          pFatal * (state.flat + attackValueWithoutFlat * 1.75) * 1.6 +
-          pCritFatal * (state.flat + attackValueWithoutFlat * 1.75) * (1.6 + critDamage)
-        : avg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
+        ? pNoBonus * effectiveAvg +
+          pCrit * effectiveAvgHighRoll * (1 + critDamage) +
+          pFatal * effectiveAvgHighRoll * 1.6 +
+          pCritFatal * effectiveAvgHighRoll * (1.6 + critDamage)
+        : effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
     }
 
     return { ...spell, min, avg, max, effectiveAvg };
@@ -60,6 +140,37 @@ export function computeDamageRanges(
       state.runicIncrease == 0
         ? avg
         : computeAvg(spell, { ...state, magicLevel: state.magicLevel + 0.25 * state.runicIncrease });
+    let physMin = 0;
+    let physMax = 0;
+
+    if (spell.element == "weapon") {
+      if (weapon.attack && weapon.attack > 0) {
+        effectiveAvgElements.death = (effectiveAvg * (weapon.attackDeath ?? 0)) / weapon.attack;
+        effectiveAvgElements.earth = (effectiveAvg * (weapon.attackEarth ?? 0)) / weapon.attack;
+        effectiveAvgElements.energy = (effectiveAvg * (weapon.attackEnergy ?? 0)) / weapon.attack;
+        effectiveAvgElements.fire = (effectiveAvg * (weapon.attackFire ?? 0)) / weapon.attack;
+        effectiveAvgElements.ice = (effectiveAvg * (weapon.attackIce ?? 0)) / weapon.attack;
+        physMin = ((min ?? effectiveAvg) * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
+        physMax = ((max ?? effectiveAvg) * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
+      }
+    } else {
+      effectiveAvgElements[spell.element] = effectiveAvg;
+      if (spell.element == "physical") {
+        physMin = min ?? avg;
+        physMax = max ?? avg;
+      }
+    }
+
+    if (ratioAdjustedHp > 0) {
+      effectiveAvg = weightedElementalEffective(
+        effectiveAvgElements,
+        physMin,
+        physMax,
+        targetsWithCreatures,
+        ratioAdjustedHp,
+      );
+    }
+
     effectiveAvg =
       effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
     return { ...spell, min, avg, max, effectiveAvg };
@@ -89,6 +200,35 @@ function computeMinMax(spell: Spell, minMax: number, state: SpellState): number 
         ? F + round((1 + minMax * variation) * ((P / spell.skillFactor) * S + P / 4))
         : F + round((1 + minMax * variation) * ((P / spell.skillFactor) * ML + P / 4));
   return Math.ceil(damage * spell.additionalDamageMultiplier);
+}
+
+function weightedElementalEffective(
+  elements: Record<Element, number>,
+  physMin: number,
+  physMax: number,
+  targets: TargetWithCreature[],
+  ratioAdjustedHp: number,
+): number {
+  return targets.reduce((total, creature) => {
+    const ratio = (creature.ratio * creature.creature.hitpoints) / ratioAdjustedHp;
+    return (
+      total +
+      ratio *
+        (elements.death * creature.creature.deathDmgMod +
+          elements.earth * creature.creature.earthDmgMod +
+          elements.energy * creature.creature.energyDmgMod +
+          elements.fire * creature.creature.fireDmgMod +
+          elements.holy * creature.creature.holyDmgMod +
+          elements.ice * creature.creature.iceDmgMod +
+          avgDamageVsArmor(
+            physMin * creature.creature.physicalDmgMod,
+            physMax * creature.creature.physicalDmgMod,
+            Math.floor(creature.creature.armor / 2),
+            Math.floor(creature.creature.armor / 2) * 2 - 1,
+          )) *
+        (1 - creature.creature.mitigation / 100)
+    );
+  }, 0);
 }
 
 /**

@@ -14,6 +14,7 @@ export type Weapon = {
   attackEnergy?: number;
   attackFire?: number;
   attackIce?: number;
+  attackPhysical?: number;
   ammo?: AmmoType;
   damageType?: Element;
   damage?: number;
@@ -21,7 +22,18 @@ export type Weapon = {
   vocations: string[];
 };
 
-export const weapons: Weapon[] = weaponsRaw as Weapon[];
+export const weapons: Weapon[] = (weaponsRaw as Weapon[]).map((w) => ({
+  ...w,
+  attackPhysical:
+    w.attack == null
+      ? undefined
+      : w.attack -
+        ((w.attackDeath ?? 0) +
+          (w.attackEarth ?? 0) +
+          (w.attackEnergy ?? 0) +
+          (w.attackFire ?? 0) +
+          (w.attackIce ?? 0)),
+}));
 
 type AmmoRaw = {
   id: number;
