@@ -68,14 +68,12 @@ export function computeDamageRanges(
     };
     let effectiveAvg = avg;
     let effectiveAvgHighRoll = highRollAvg;
-    let physMin = 0;
-    let physMax = 0;
+    let physAvg = 0;
 
     if (weapon.damageType) {
       // wand or rod
       effectiveAvgElements[weapon.damageType] = weapon.damage ?? 0;
-      physMin = weapon.damageType == "physical" ? (weapon.damage ?? 0) : 0;
-      physMax = physMin;
+      physAvg = weapon.damageType == "physical" ? (weapon.damage ?? 0) : 0;
     } else {
       // regular weapon
       if (weapon.attack && weapon.attack > 0) {
@@ -91,8 +89,7 @@ export function computeDamageRanges(
         effectiveAvgHighRollElements.fire = (highRollAvg * (weapon.attackFire ?? 0)) / weapon.attack;
         effectiveAvgHighRollElements.ice = (highRollAvg * (weapon.attackIce ?? 0)) / weapon.attack;
 
-        physMin = ((min ?? effectiveAvg) * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
-        physMax = ((max ?? effectiveAvg) * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
+        physAvg = (avg * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
       }
     }
 
@@ -101,8 +98,10 @@ export function computeDamageRanges(
     if (ratioAdjustedHp > 0) {
       effectiveAvg = weightedElementalEffective(
         effectiveAvgElements,
-        physMin,
-        physMax,
+        physAvg,
+        physAvg,
+        state.armorPenetration,
+        state.physicalPierce,
         targetsWithCreatures,
         ratioAdjustedHp,
       );
@@ -110,6 +109,8 @@ export function computeDamageRanges(
         effectiveAvgHighRollElements,
         physAvgHighRoll,
         physAvgHighRoll,
+        state.armorPenetration,
+        state.physicalPierce,
         targetsWithCreatures,
         ratioAdjustedHp,
       );
@@ -166,6 +167,8 @@ export function computeDamageRanges(
         effectiveAvgElements,
         physMin,
         physMax,
+        state.armorPenetration,
+        state.physicalPierce,
         targetsWithCreatures,
         ratioAdjustedHp,
       );
@@ -206,11 +209,14 @@ function weightedElementalEffective(
   elements: Record<Element, number>,
   physMin: number,
   physMax: number,
+  armorPenetration: number,
+  physicalPierce: number,
   targets: TargetWithCreature[],
   ratioAdjustedHp: number,
 ): number {
   return targets.reduce((total, creature) => {
     const ratio = (creature.ratio * creature.creature.hitpoints) / ratioAdjustedHp;
+    const armor = Math.round(creature.creature.armor * (1 - armorPenetration));
     return (
       total +
       ratio *
@@ -221,14 +227,22 @@ function weightedElementalEffective(
           elements.holy * creature.creature.holyDmgMod +
           elements.ice * creature.creature.iceDmgMod +
           avgDamageVsArmor(
-            physMin * creature.creature.physicalDmgMod,
-            physMax * creature.creature.physicalDmgMod,
-            Math.floor(creature.creature.armor / 2),
-            Math.floor(creature.creature.armor / 2) * 2 - 1,
+            physMin * applyPierce(creature.creature.physicalDmgMod, physicalPierce),
+            physMax * applyPierce(creature.creature.physicalDmgMod, physicalPierce),
+            Math.max(Math.floor(armor / 2), 0),
+            Math.max(Math.floor(armor / 2) * 2 - 1, 0),
           )) *
         (1 - creature.creature.mitigation / 100)
     );
   }, 0);
+}
+
+function applyPierce(resistance: number, pierce: number): number {
+  if (resistance === 0) return 0; // "Sensitivities of 0% can never be increased."
+  const headroom = Math.max(0, 1 - resistance);
+  const fullPierce = Math.min(headroom, pierce);
+  const halfPierce = (pierce - fullPierce) / 2; // "The increase is halved above sensitivities of 100% (rounded up)."
+  return Math.min(resistance + fullPierce + halfPierce, resistance * 2); // "Can double the sensitivity at most."
 }
 
 /**

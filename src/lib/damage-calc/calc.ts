@@ -52,7 +52,13 @@ export function computeResults(
   const spellResults = spells
     .filter((s) => s.vocations.includes(inp.vocation))
     .map((spell) => {
-      const initial: SpellState = { ...state, basePower: spell.power, runicIncrease: 0 };
+      const initial: SpellState = {
+        ...state,
+        basePower: spell.power,
+        runicIncrease: 0,
+        armorPenetration: 0,
+        physicalPierce: 0,
+      };
       const final: SpellState = perksWithDefs.reduce(
         (acc, perk) => applyPerkToSpell(spell, perk, weaponDef.skill, inp.vocation, acc),
         initial,
@@ -175,6 +181,10 @@ function applyPerkToSpell(
         else return { ...state, distance: state.distance + perk.value };
       case "magic-level":
         return { ...state, magicLevel: ML + perk.value };
+      case "armor-penetration":
+        return { ...state, armorPenetration: perk.value / 100 };
+      case "physical-pierce":
+        return { ...state, physicalPierce: perk.value / 100 };
     }
   }
 

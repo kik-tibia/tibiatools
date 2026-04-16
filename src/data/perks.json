@@ -1417,5 +1417,17 @@
     "scope": "terra-strike",
     "spell": true,
     "bonusType": "crit-chance"
+  },
+  {
+    "id": 204,
+    "name": "Armor penetration",
+    "scope": "all",
+    "bonusType": "armor-penetration"
+  },
+  {
+    "id": 205,
+    "name": "Physical pierce",
+    "scope": "all",
+    "bonusType": "physical-pierce"
   }
 ]

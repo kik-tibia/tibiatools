@@ -20,7 +20,9 @@ export type PerkBonusType =
   | "runic-mastery"
   | "shield-percent-extra"
   | "sword-fighting"
-  | "sword-percent-extra";
+  | "sword-percent-extra"
+  | "armor-penetration"
+  | "physical-pierce";
 
 export type PerkDef = {
   id: number;
