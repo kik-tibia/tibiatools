@@ -1419,49 +1419,49 @@
     "bonusType": "crit-chance"
   },
   {
-    "id": 204,
+    "id": 211,
     "name": "Armor penetration",
     "scope": "all",
     "bonusType": "armor-penetration"
   },
   {
-    "id": 205,
+    "id": 212,
     "name": "Death pierce",
     "scope": "all",
     "bonusType": "death-pierce"
   },
   {
-    "id": 206,
+    "id": 213,
     "name": "Earth pierce",
     "scope": "all",
     "bonusType": "earth-pierce"
   },
   {
-    "id": 207,
+    "id": 214,
     "name": "Energy pierce",
     "scope": "all",
     "bonusType": "energy-pierce"
   },
   {
-    "id": 208,
+    "id": 215,
     "name": "Fire pierce",
     "scope": "all",
     "bonusType": "fire-pierce"
   },
   {
-    "id": 209,
+    "id": 216,
     "name": "Holy pierce",
     "scope": "all",
     "bonusType": "holy-pierce"
   },
   {
-    "id": 210,
+    "id": 217,
     "name": "Ice pierce",
     "scope": "all",
     "bonusType": "ice-pierce"
   },
   {
-    "id": 211,
+    "id": 218,
     "name": "Physical pierce",
     "scope": "all",
     "bonusType": "physical-pierce"
