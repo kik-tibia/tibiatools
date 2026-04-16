@@ -15,6 +15,7 @@ export type Weapon = {
   attackFire?: number;
   attackIce?: number;
   attackPhysical?: number;
+  bond?: Element;
   ammo?: AmmoType;
   damageType?: Element;
   damage?: number;

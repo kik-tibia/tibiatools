@@ -146,13 +146,21 @@ export function computeDamageRanges(
 
     if (spell.element == "weapon") {
       if (weapon.attack && weapon.attack > 0) {
-        effectiveAvgElements.death = (effectiveAvg * (weapon.attackDeath ?? 0)) / weapon.attack;
-        effectiveAvgElements.earth = (effectiveAvg * (weapon.attackEarth ?? 0)) / weapon.attack;
-        effectiveAvgElements.energy = (effectiveAvg * (weapon.attackEnergy ?? 0)) / weapon.attack;
-        effectiveAvgElements.fire = (effectiveAvg * (weapon.attackFire ?? 0)) / weapon.attack;
-        effectiveAvgElements.ice = (effectiveAvg * (weapon.attackIce ?? 0)) / weapon.attack;
-        physMin = ((min ?? effectiveAvg) * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
-        physMax = ((max ?? effectiveAvg) * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
+        if (weapon.bond) {
+          effectiveAvgElements[weapon.bond] = effectiveAvg;
+          if (weapon.bond == "physical") {
+            physMin = min ?? effectiveAvg;
+            physMax = max ?? effectiveAvg;
+          }
+        } else {
+          effectiveAvgElements.death = (effectiveAvg * (weapon.attackDeath ?? 0)) / weapon.attack;
+          effectiveAvgElements.earth = (effectiveAvg * (weapon.attackEarth ?? 0)) / weapon.attack;
+          effectiveAvgElements.energy = (effectiveAvg * (weapon.attackEnergy ?? 0)) / weapon.attack;
+          effectiveAvgElements.fire = (effectiveAvg * (weapon.attackFire ?? 0)) / weapon.attack;
+          effectiveAvgElements.ice = (effectiveAvg * (weapon.attackIce ?? 0)) / weapon.attack;
+          physMin = ((min ?? effectiveAvg) * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
+          physMax = ((max ?? effectiveAvg) * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
+        }
       }
     } else {
       effectiveAvgElements[spell.element] = effectiveAvg;
@@ -161,6 +169,7 @@ export function computeDamageRanges(
         physMax = max ?? avg;
       }
     }
+    console.log(effectiveAvgElements);
 
     if (ratioAdjustedHp > 0) {
       effectiveAvg = weightedElementalEffective(
