@@ -53,15 +53,23 @@ import BaseLayout from "@layouts/BaseLayout.astro";
         </ul>
       </li>
       <li>In most cases, you should make sure to include auto-attack in the rotation. Auto-attack does not have an input for ratio because the calculator assumes you cast it every turn.</li>
+      <li>Any spell that has two damage types from the same cast will take up two rows, one for each damage type. For example, with Executioner's Throw, it lets you choose how many targets you hit on average with red hp and how many you hit on green hp. There is only one ratio input box for both, because both rows are linked to the same spell cast.
+    </ul>
+  </li>
+  <li><b>Targets:</b> this is where you can optionally select which creatures you are fighting if you want the tool to include elemental resistances and armor in the calculations.
+    <ul>
+      <li><b>Ratio:</b> this refers to how many of each creature you kill. You can copy the numbers directly from your Hunt Analyser.</li>
+      <li>The calculator takes into account the resistances and mitigation of each creature when calculating the effective damages. Each creature's contribution is weighted by its hitpoints and ratio.</li>
+      <li>Armor is taken into account where relevant, even for elemental weapons that have a physical portion.</li>
     </ul>
   </li>
 </ul>
 
 <h4>Results</h4>
 
-<p>The results table shows two types of damage. <b>Effective</b> is the average damage you would deal taking into account crits and fatals. <b>Raw</b> is the damage you would deal ignoring these factors.</p>
+<p>The results table shows two types of damage. <b>Effective</b> is the average damage you would deal taking into account resistances, mitigation, crits and fatals. <b>Raw</b> is the damage you would deal ignoring these factors.</p>
 
-<p>Above the main results table you will see two summary values. <b>Effective damage per turn</b> is the total average damage you would deal in a single turn using your defined rotation, taking into account crits and fatals. <b>Effective damage per hit</b> is the average damage of a single hit, weighted across your rotation. If you have not defined a rotation, both will show 0.</p>
+<p>Above the main results table you will see two summary values. <b>Effective damage per turn</b> is the total average damage you would deal in a single turn using your defined rotation, taking into account resistances, mitigation, crits and fatals. <b>Effective damage per hit</b> is the average damage of a single hit, weighted across your rotation. If you have not defined a rotation, both will show 0.</p>
 
 <p>In comparison mode, a build's row will be coloured green if its effective average is greater than or equal to the other build.</p>
 
@@ -93,13 +101,20 @@ import BaseLayout from "@layouts/BaseLayout.astro";
       <li>It is worth noting here that despite the Falcon Longsword build having higher overall dps, the Slayer of Destruction build probably has higher overall leech due to how much stronger the auto-attacks are.</li>
     </ul>
   </li>
+  <li><a href="/tools/calculator?s=NoJgNMwIwg7GAGMUGrCJGlQMzKQKwIC6YBALPJOQGxgAcpwBUyIAdAUxuWOYxHIEwsTtyiso5Yk2jJ5JCOBqcwOJIuB46Ieoia94IOpr149mk6r1QZEaAmEYBwGlBuwcTGgQCc%2BGhlZGHhsVEwI7DwYERBSHz1qYQkxQToXFjZU6GiSYPlWTWVVdX0IbXQLAxF0EyYzBjLXRGtkO0gUJwQXNw8vCB9-FED2oT46TJ50CWR%2BuXA8Xj1AiE6wXvW-UlY4oA">Crypt Slicer vs Sanguine Razor at Upper Roshamuul</a>. This shows that Crypt Slicer outperforms Sanguine Razor in this respawn.
+    <ul>
+      <li>Assumed a level 1000 EK with stage 2 Executioner's Throw, stage 2 Groundshaker and a fully upgraded Fierce Berserk gem.</li>
+      <li>Note that the Alpha/Omega perks aren't available in the tool, but they would only benefit Crypt Slicer further.</li>
+    </ul>
+  </li>
 </ul>
 
 <h3>Limitations</h3>
 
 <ul>
-  <li>Currently, the calculator does not have creatures added to it. This means that there are no perks pertaining to creatures either, such as pierce or armor penetration.</li>
   <li>The damage per turn result should not be taken too literally. It tells you your expected damage per turn in an artificial scenario, and doesn't necessarily scale with your exp/h.</li>
+  <li>Alpha Strike and Omega Strike perks haven't been added yet.</li>
+  <li>It is not currently possible to select an elemental damage imbuement on your weapon.</li>
   <li>Miss chance for single target distance spells has not been included. This won't be a problem if you are using diamond arrows.</li>
   <li>Monk isn't properly implemented yet. It's hardcoded to assume you are using VoH with no extra bonuses (no ascetic). Chained penance has no jump bonus yet.</li>
 </ul>
