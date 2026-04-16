@@ -1,13 +1,13 @@
 import type { Element, Spell, SpellDamage } from "@data/spells";
 import type { Weapon } from "@data/weapons";
-import type { Vocation } from "@lib/build-state";
+import type { BuildStats } from "@lib/build-state";
 import type { SpellState, TargetWithCreature } from "@lib/damage-calc";
 
 export function computeDamageRanges(
   spell: Spell,
   state: SpellState,
   highRollAA: boolean,
-  vocation: Vocation,
+  buildStats: BuildStats,
   weapon: Weapon,
   targetsWithCreatures: TargetWithCreature[],
 ): SpellDamage {
@@ -41,9 +41,11 @@ export function computeDamageRanges(
     0,
   );
 
+  weapon = applyElementalAttackImbuement(weapon, buildStats);
+
   if (spell.spellType === "auto") {
     const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
-    const attackIncrease = vocation == "monk" ? 1.5 : 1;
+    const attackIncrease = buildStats.vocation == "monk" ? 1.5 : 1;
     let min, avg, max, highRollAvg;
     if (state.weaponDamage) {
       min = undefined;
@@ -242,11 +244,30 @@ function weightedElementalEffective(
 }
 
 function applyPierce(resistance: number, pierce: number): number {
-  if (resistance === 0) return 0; // "Sensitivities of 0% can never be increased."
+  if (resistance <= 0) return resistance; // "Sensitivities of 0% can never be increased."
   const headroom = Math.max(0, 1 - resistance);
   const fullPierce = Math.min(headroom, pierce);
   const halfPierce = (pierce - fullPierce) / 2; // "The increase is halved above sensitivities of 100% (rounded up)."
   return Math.min(resistance + fullPierce + halfPierce, resistance * 2); // "Can double the sensitivity at most."
+}
+
+function applyElementalAttackImbuement(weapon: Weapon, stats: BuildStats): Weapon {
+  if (!stats.imbuementElement || !stats.imbuementValue) return weapon;
+  const elementalAttack = (weapon.attack ?? 0) * stats.imbuementValue;
+  const attackDeath = stats.imbuementElement == "death" ? elementalAttack : weapon.attackDeath;
+  const attackEarth = stats.imbuementElement == "earth" ? elementalAttack : weapon.attackEarth;
+  const attackEnergy = stats.imbuementElement == "energy" ? elementalAttack : weapon.attackEnergy;
+  const attackFire = stats.imbuementElement == "fire" ? elementalAttack : weapon.attackFire;
+  const attackIce = stats.imbuementElement == "ice" ? elementalAttack : weapon.attackIce;
+  return {
+    ...weapon,
+    attackDeath,
+    attackEarth,
+    attackEnergy,
+    attackFire,
+    attackIce,
+    attackPhysical: (weapon.attackPhysical ?? 0) - elementalAttack,
+  };
 }
 
 /**

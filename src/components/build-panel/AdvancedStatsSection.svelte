@@ -1,7 +1,8 @@
 <script lang="ts">
   import Tooltip from "@components/Tooltip.svelte";
-  import SectionCopyButtons from "./SectionCopyButtons.svelte";
   import type { Build, BuildStats } from "@lib/build-state";
+  import type { ImbuementElement } from "@lib/damage-calc";
+  import SectionCopyButtons from "./SectionCopyButtons.svelte";
 
   let {
     buildA = $bindable(),
@@ -20,6 +21,32 @@
   }
   function setStatB<K extends keyof BuildStats>(key: K, value: BuildStats[K]) {
     buildB = { ...buildB, stats: { ...buildB.stats, [key]: value } };
+  }
+
+  const imbuementElements: ImbuementElement[] = ["death", "earth", "energy", "fire", "ice"];
+  const imbuementTiers: { label: string; value: number }[] = [
+    { label: "T1", value: 0.1 },
+    { label: "T2", value: 0.25 },
+    { label: "T3", value: 0.5 },
+  ];
+  const DEFAULT_IMBUEMENT_VALUE = 0.5;
+
+  function capitalize(s: string): string {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  function setImbuementElement(build: Build, setStat: (k: keyof BuildStats, v: any) => void, raw: string) {
+    const next = raw === "" ? null : (raw as ImbuementElement);
+    setStat("imbuementElement", next);
+    if (next === null) {
+      setStat("imbuementValue", null);
+    } else if (build.stats.imbuementValue === null) {
+      setStat("imbuementValue", DEFAULT_IMBUEMENT_VALUE);
+    }
+  }
+
+  function setImbuementValue(setStat: (k: keyof BuildStats, v: any) => void, raw: string) {
+    setStat("imbuementValue", raw === "" ? null : Number(raw));
   }
 
   type StatField = {
@@ -85,6 +112,8 @@
     "distance",
     "shielding",
     "fishing",
+    "imbuementElement",
+    "imbuementValue",
   ] as const;
 
   function copyAtoB() {
@@ -116,6 +145,36 @@
   </td>
 {/snippet}
 
+{#snippet imbuementCell(
+  build: Build,
+  buildId: string,
+  setStat: (key: keyof BuildStats, value: BuildStats[keyof BuildStats]) => void,
+)}
+  <td>
+    <div class="imbuement-cell">
+      <select
+        class="imbuement-select imbuement-element input-{buildId}"
+        value={build.stats.imbuementElement ?? ""}
+        onchange={(e) => setImbuementElement(build, setStat, e.currentTarget.value)}>
+        <option value="">None</option>
+        {#each imbuementElements as el}
+          <option value={el}>{capitalize(el)}</option>
+        {/each}
+      </select>
+      <select
+        class="imbuement-select imbuement-value input-{buildId}"
+        disabled={build.stats.imbuementElement === null}
+        value={build.stats.imbuementValue ?? ""}
+        onchange={(e) => setImbuementValue(setStat, e.currentTarget.value)}>
+        <option value="" disabled>—</option>
+        {#each imbuementTiers as tier}
+          <option value={tier.value}>{tier.label}</option>
+        {/each}
+      </select>
+    </div>
+  </td>
+{/snippet}
+
 <tr class="section-header">
   <td>
     <h4>
@@ -143,7 +202,61 @@
       {/if}
     </tr>
   {/each}
+
+  <tr class="data-row">
+    <td>
+      <Tooltip
+        label="Elemental Attack Imbuement"
+        tip="Converts a % of the weapon's physical damage to the chosen element.<br/>This should only be used for physical single target weapons." />
+    </td>
+    {@render imbuementCell(buildA, "a", setStatA)}
+    {#if showSecondBuild}
+      {@render imbuementCell(buildB, "b", setStatB)}
+    {/if}
+  </tr>
 {/if}
 
 <style>
+  .imbuement-cell {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .imbuement-select {
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 0.25rem 0.4rem;
+    font: inherit;
+    border: 1px solid var(--input-border);
+    border-radius: 0.25rem;
+    background: var(--input-bg);
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .imbuement-select.input-a {
+    border-color: var(--build-a-border);
+  }
+
+  .imbuement-select.input-b {
+    border-color: var(--build-b-border);
+  }
+
+  .imbuement-select:focus {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+
+  .imbuement-select:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  .imbuement-element {
+    flex: 2 1 0;
+  }
+
+  .imbuement-value {
+    flex: 1 1 0;
+  }
 </style>

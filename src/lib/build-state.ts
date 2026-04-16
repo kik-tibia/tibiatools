@@ -1,4 +1,4 @@
-import type { ActivePerk, RotationSpell, Target, WeaponBuild } from "./damage-calc";
+import type { ActivePerk, ImbuementElement, RotationSpell, Target, WeaponBuild } from "./damage-calc";
 
 export type Vocation = "knight" | "paladin" | "sorcerer" | "druid" | "monk";
 
@@ -20,6 +20,8 @@ export type BuildStats = {
   distance: number | null;
   shielding: number | null;
   fishing: number | null;
+  imbuementElement: ImbuementElement | null;
+  imbuementValue: number | null;
 };
 
 export type Build = {
@@ -68,6 +70,8 @@ const defaultStats = (): BuildStats => ({
   distance: null,
   shielding: null,
   fishing: null,
+  imbuementElement: null,
+  imbuementValue: null,
 });
 
 const defaultWeapon = (): WeaponBuild => ({

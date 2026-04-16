@@ -1,6 +1,8 @@
 import type { Creature } from "@data/creatures";
 import type { PerkDef } from "@data/perks";
 
+export type ImbuementElement = "death" | "earth" | "energy" | "fire" | "ice";
+
 export type ActivePerk = {
   id: number;
   value: number;

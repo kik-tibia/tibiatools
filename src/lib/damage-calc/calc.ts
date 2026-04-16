@@ -34,7 +34,7 @@ const creaturesById: Record<number, Creature> = Object.fromEntries(creatures.map
  */
 
 export function computeResults(
-  inp: BuildStats,
+  buildStats: BuildStats,
   weapon: WeaponBuild,
   activePerks: ActivePerk[],
   targets: Target[],
@@ -45,12 +45,12 @@ export function computeResults(
   const weaponDef = weaponsById[weapon.id];
   const ammoDef = weapon.ammo ? ammoById[weapon.ammo] : null;
 
-  const state = deriveState(inp, weaponDef, ammoDef);
+  const state = deriveState(buildStats, weaponDef, ammoDef);
 
   const highRollAA = !ammoDef?.aoe;
 
   const spellResults = spells
-    .filter((s) => s.vocations.includes(inp.vocation))
+    .filter((s) => s.vocations.includes(buildStats.vocation))
     .map((spell) => {
       const initial: SpellState = {
         ...state,
@@ -66,10 +66,10 @@ export function computeResults(
         physicalPierce: 0,
       };
       const final: SpellState = perksWithDefs.reduce(
-        (acc, perk) => applyPerkToSpell(spell, perk, weaponDef.skill, inp.vocation, acc),
+        (acc, perk) => applyPerkToSpell(spell, perk, weaponDef.skill, buildStats.vocation, acc),
         initial,
       );
-      return computeDamageRanges(spell, final, highRollAA, inp.vocation, weaponDef, targetsWithCreatures);
+      return computeDamageRanges(spell, final, highRollAA, buildStats, weaponDef, targetsWithCreatures);
     });
   return spellResults;
 }
@@ -235,24 +235,24 @@ function assignCreaturesToTargets(targets: Target[]): TargetWithCreature[] {
     .filter((x): x is TargetWithCreature => x !== null);
 }
 
-function deriveState(inp: BuildStats, weaponDef: Weapon, ammoDef: Ammo | null): CharacterState {
+function deriveState(buildStats: BuildStats, weaponDef: Weapon, ammoDef: Ammo | null): CharacterState {
   const n = (v: unknown) => Number((v ?? "").toString().trim()) || 0;
-  const L = n(inp.level);
-  const B = n(inp.bonus);
-  const skill = n(inp.skill);
-  const magicLevel = n(inp.magicLevel);
-  const critChance = n(inp.critChance) / 100;
-  const critDamage = n(inp.critDamage) / 100;
-  const fatalChance = n(inp.fatalChance) / 100;
-  const transcendenceChance = n(inp.transcendenceChance) / 100;
-  const baseMagicLevel = n(inp.baseMagicLevel);
-  const axe = n(inp.axe);
-  const club = n(inp.club);
-  const sword = n(inp.sword);
-  const fist = n(inp.fist);
-  const distance = n(inp.distance);
-  const shielding = n(inp.shielding);
-  const fishing = n(inp.fishing);
+  const L = n(buildStats.level);
+  const B = n(buildStats.bonus);
+  const skill = n(buildStats.skill);
+  const magicLevel = n(buildStats.magicLevel);
+  const critChance = n(buildStats.critChance) / 100;
+  const critDamage = n(buildStats.critDamage) / 100;
+  const fatalChance = n(buildStats.fatalChance) / 100;
+  const transcendenceChance = n(buildStats.transcendenceChance) / 100;
+  const baseMagicLevel = n(buildStats.baseMagicLevel);
+  const axe = n(buildStats.axe);
+  const club = n(buildStats.club);
+  const sword = n(buildStats.sword);
+  const fist = n(buildStats.fist);
+  const distance = n(buildStats.distance);
+  const shielding = n(buildStats.shielding);
+  const fishing = n(buildStats.fishing);
   const step = Math.floor((Math.sqrt(2 * L + 2025) + 5) / 10);
   const flat = step * 100 - 450 + Math.floor((L + 1000) / step - 50 * step) + B;
   const weaponAttack = (weaponDef.attack ?? 0) + (ammoDef?.attack ?? 0);
