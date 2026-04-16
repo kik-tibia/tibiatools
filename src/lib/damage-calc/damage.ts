@@ -167,7 +167,6 @@ export function computeDamageRanges(
         physMax = max ?? avg;
       }
     }
-    console.log(effectiveAvgElements);
 
     if (ratioAdjustedHp > 0) {
       effectiveAvg = weightedElementalEffective(
