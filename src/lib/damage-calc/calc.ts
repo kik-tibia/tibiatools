@@ -57,6 +57,12 @@ export function computeResults(
         basePower: spell.power,
         runicIncrease: 0,
         armorPenetration: 0,
+        deathPierce: 0,
+        earthPierce: 0,
+        energyPierce: 0,
+        firePierce: 0,
+        holyPierce: 0,
+        icePierce: 0,
         physicalPierce: 0,
       };
       const final: SpellState = perksWithDefs.reduce(
@@ -183,6 +189,18 @@ function applyPerkToSpell(
         return { ...state, magicLevel: ML + perk.value };
       case "armor-penetration":
         return { ...state, armorPenetration: perk.value / 100 };
+      case "death-pierce":
+        return { ...state, deathPierce: perk.value / 100 };
+      case "earth-pierce":
+        return { ...state, earthPierce: perk.value / 100 };
+      case "energy-pierce":
+        return { ...state, energyPierce: perk.value / 100 };
+      case "fire-pierce":
+        return { ...state, firePierce: perk.value / 100 };
+      case "holy-pierce":
+        return { ...state, holyPierce: perk.value / 100 };
+      case "ice-pierce":
+        return { ...state, icePierce: perk.value / 100 };
       case "physical-pierce":
         return { ...state, physicalPierce: perk.value / 100 };
     }

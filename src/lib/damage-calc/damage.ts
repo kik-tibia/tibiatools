@@ -100,8 +100,7 @@ export function computeDamageRanges(
         effectiveAvgElements,
         physAvg,
         physAvg,
-        state.armorPenetration,
-        state.physicalPierce,
+        state,
         targetsWithCreatures,
         ratioAdjustedHp,
       );
@@ -109,8 +108,7 @@ export function computeDamageRanges(
         effectiveAvgHighRollElements,
         physAvgHighRoll,
         physAvgHighRoll,
-        state.armorPenetration,
-        state.physicalPierce,
+        state,
         targetsWithCreatures,
         ratioAdjustedHp,
       );
@@ -176,8 +174,7 @@ export function computeDamageRanges(
         effectiveAvgElements,
         physMin,
         physMax,
-        state.armorPenetration,
-        state.physicalPierce,
+        state,
         targetsWithCreatures,
         ratioAdjustedHp,
       );
@@ -218,26 +215,25 @@ function weightedElementalEffective(
   elements: Record<Element, number>,
   physMin: number,
   physMax: number,
-  armorPenetration: number,
-  physicalPierce: number,
+  spellState: SpellState,
   targets: TargetWithCreature[],
   ratioAdjustedHp: number,
 ): number {
   return targets.reduce((total, creature) => {
     const ratio = (creature.ratio * creature.creature.hitpoints) / ratioAdjustedHp;
-    const armor = Math.round(creature.creature.armor * (1 - armorPenetration));
+    const armor = Math.round(creature.creature.armor * (1 - spellState.armorPenetration));
     return (
       total +
       ratio *
-        (elements.death * creature.creature.deathDmgMod +
-          elements.earth * creature.creature.earthDmgMod +
-          elements.energy * creature.creature.energyDmgMod +
-          elements.fire * creature.creature.fireDmgMod +
-          elements.holy * creature.creature.holyDmgMod +
-          elements.ice * creature.creature.iceDmgMod +
+        (elements.death * applyPierce(creature.creature.deathDmgMod, spellState.deathPierce) +
+          elements.earth * applyPierce(creature.creature.earthDmgMod, spellState.earthPierce) +
+          elements.energy * applyPierce(creature.creature.energyDmgMod, spellState.energyPierce) +
+          elements.fire * applyPierce(creature.creature.fireDmgMod, spellState.firePierce) +
+          elements.holy * applyPierce(creature.creature.holyDmgMod, spellState.holyPierce) +
+          elements.ice * applyPierce(creature.creature.iceDmgMod, spellState.icePierce) +
           avgDamageVsArmor(
-            physMin * applyPierce(creature.creature.physicalDmgMod, physicalPierce),
-            physMax * applyPierce(creature.creature.physicalDmgMod, physicalPierce),
+            physMin * applyPierce(creature.creature.physicalDmgMod, spellState.physicalPierce),
+            physMax * applyPierce(creature.creature.physicalDmgMod, spellState.physicalPierce),
             Math.max(Math.floor(armor / 2), 0),
             Math.max(Math.floor(armor / 2) * 2 - 1, 0),
           )) *

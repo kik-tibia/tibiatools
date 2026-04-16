@@ -1426,6 +1426,42 @@
   },
   {
     "id": 205,
+    "name": "Death pierce",
+    "scope": "all",
+    "bonusType": "death-pierce"
+  },
+  {
+    "id": 206,
+    "name": "Earth pierce",
+    "scope": "all",
+    "bonusType": "earth-pierce"
+  },
+  {
+    "id": 207,
+    "name": "Energy pierce",
+    "scope": "all",
+    "bonusType": "energy-pierce"
+  },
+  {
+    "id": 208,
+    "name": "Fire pierce",
+    "scope": "all",
+    "bonusType": "fire-pierce"
+  },
+  {
+    "id": 209,
+    "name": "Holy pierce",
+    "scope": "all",
+    "bonusType": "holy-pierce"
+  },
+  {
+    "id": 210,
+    "name": "Ice pierce",
+    "scope": "all",
+    "bonusType": "ice-pierce"
+  },
+  {
+    "id": 211,
     "name": "Physical pierce",
     "scope": "all",
     "bonusType": "physical-pierce"

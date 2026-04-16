@@ -1,8 +1,8 @@
 <script lang="ts">
   import { spellOrdering, type SpellDamage } from "@data/spells";
   import type { Vocation } from "@lib/build-state";
-  import Tooltip from "./Tooltip.svelte";
   import type { RotationSpell } from "@lib/damage-calc";
+  import Tooltip from "./Tooltip.svelte";
 
   let {
     results = [],
@@ -57,7 +57,7 @@
         <td class="summary-label">
           <Tooltip
             label={"Effective damage per turn"}
-            tip={"The average damage you would deal per turn, using the defined rotation, taking into account crits and fatals."}
+            tip={"The average damage you would deal per turn, using the defined rotation, taking inte account resistances, mitigation, crits and fatals."}
             right={true} />
         </td>
         <td class="summary-value">{effectiveDpt.toFixed(1)}</td>
@@ -66,7 +66,7 @@
         <td class="summary-label">
           <Tooltip
             label={"Effective damage per hit"}
-            tip={"The average damage you would deal per hit, using the defined rotation, taking into account crits and fatals."}
+            tip={"The average damage you would deal per hit, using the defined rotation, taking into account resistances, mitigation, crits and fatals."}
             right={true} />
         </td>
         <td class="summary-value">{effectiveDph.toFixed(1)}</td>
@@ -82,7 +82,7 @@
           <th class="desc">
             <Tooltip
               label={"Effective"}
-              tip={"The average damage you would deal, taking into account crits and fatals."}
+              tip={"The average damage you would deal, taking into account resistances, mitigation, crits and fatals."}
               right={true} />
           </th>
           <th class="desc" colspan="3">

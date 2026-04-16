@@ -22,6 +22,12 @@ export type PerkBonusType =
   | "sword-fighting"
   | "sword-percent-extra"
   | "armor-penetration"
+  | "death-pierce"
+  | "earth-pierce"
+  | "energy-pierce"
+  | "fire-pierce"
+  | "holy-pierce"
+  | "ice-pierce"
   | "physical-pierce";
 
 export type PerkDef = {
