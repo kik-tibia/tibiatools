@@ -28,7 +28,28 @@ export type PerkBonusType =
   | "fire-pierce"
   | "holy-pierce"
   | "ice-pierce"
-  | "physical-pierce";
+  | "physical-pierce"
+  | "damage-amphibic"
+  | "damage-aquatic"
+  | "damage-bird"
+  | "damage-construct"
+  | "damage-demon"
+  | "damage-dragon"
+  | "damage-elemental"
+  | "damage-extra-dimensional"
+  | "damage-fey"
+  | "damage-giant"
+  | "damage-human"
+  | "damage-humanoid"
+  | "damage-inkborn"
+  | "damage-lycanthrope"
+  | "damage-magical"
+  | "damage-mammal"
+  | "damage-plant"
+  | "damage-reptile"
+  | "damage-slime"
+  | "damage-undead"
+  | "damage-vermin";
 
 export type PerkDef = {
   id: number;

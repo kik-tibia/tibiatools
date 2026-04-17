@@ -1465,5 +1465,131 @@
     "name": "Physical pierce",
     "scope": "all",
     "bonusType": "physical-pierce"
+  },
+  {
+    "id": 219,
+    "name": "Damage against Amphibic",
+    "scope": "all",
+    "bonusType": "damage-amphibic"
+  },
+  {
+    "id": 220,
+    "name": "Damage against Aquatic",
+    "scope": "all",
+    "bonusType": "damage-aquatic"
+  },
+  {
+    "id": 221,
+    "name": "Damage against Bird",
+    "scope": "all",
+    "bonusType": "damage-bird"
+  },
+  {
+    "id": 222,
+    "name": "Damage against Construct",
+    "scope": "all",
+    "bonusType": "damage-construct"
+  },
+  {
+    "id": 223,
+    "name": "Damage against Demon",
+    "scope": "all",
+    "bonusType": "damage-demon"
+  },
+  {
+    "id": 224,
+    "name": "Damage against Dragon",
+    "scope": "all",
+    "bonusType": "damage-dragon"
+  },
+  {
+    "id": 225,
+    "name": "Damage against Elemental",
+    "scope": "all",
+    "bonusType": "damage-elemental"
+  },
+  {
+    "id": 226,
+    "name": "Damage against Extra Dimensional",
+    "scope": "all",
+    "bonusType": "damage-extra-dimensional"
+  },
+  {
+    "id": 227,
+    "name": "Damage against Fey",
+    "scope": "all",
+    "bonusType": "damage-fey"
+  },
+  {
+    "id": 228,
+    "name": "Damage against Giant",
+    "scope": "all",
+    "bonusType": "damage-giant"
+  },
+  {
+    "id": 229,
+    "name": "Damage against Human",
+    "scope": "all",
+    "bonusType": "damage-human"
+  },
+  {
+    "id": 230,
+    "name": "Damage against Humanoid",
+    "scope": "all",
+    "bonusType": "damage-humanoid"
+  },
+  {
+    "id": 231,
+    "name": "Damage against Inkborn",
+    "scope": "all",
+    "bonusType": "damage-inkborn"
+  },
+  {
+    "id": 232,
+    "name": "Damage against Lycanthrope",
+    "scope": "all",
+    "bonusType": "damage-lycanthrope"
+  },
+  {
+    "id": 233,
+    "name": "Damage against Magical",
+    "scope": "all",
+    "bonusType": "damage-magical"
+  },
+  {
+    "id": 234,
+    "name": "Damage against Mammal",
+    "scope": "all",
+    "bonusType": "damage-mammal"
+  },
+  {
+    "id": 235,
+    "name": "Damage against Plant",
+    "scope": "all",
+    "bonusType": "damage-plant"
+  },
+  {
+    "id": 236,
+    "name": "Damage against Reptile",
+    "scope": "all",
+    "bonusType": "damage-reptile"
+  },
+  {
+    "id": 237,
+    "name": "Damage against Slime",
+    "scope": "all",
+    "bonusType": "damage-slime"
+  },
+  {
+    "id": 238,
+    "name": "Damage against Undead",
+    "scope": "all",
+    "bonusType": "damage-undead"
+  },
+  {
+    "id": 239,
+    "name": "Damage against Vermin",
+    "scope": "all",
+    "bonusType": "damage-vermin"
   }
 ]

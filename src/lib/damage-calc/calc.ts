@@ -62,6 +62,27 @@ export function computeResults(
         holyPierce: 0,
         icePierce: 0,
         physicalPierce: 0,
+        damageAmphibic: 0,
+        damageAquatic: 0,
+        damageBird: 0,
+        damageConstruct: 0,
+        damageDemon: 0,
+        damageDragon: 0,
+        damageElemental: 0,
+        damageExtraDimensional: 0,
+        damageFey: 0,
+        damageGiant: 0,
+        damageHuman: 0,
+        damageHumanoid: 0,
+        damageInkborn: 0,
+        damageLycanthrope: 0,
+        damageMagical: 0,
+        damageMammal: 0,
+        damagePlant: 0,
+        damageReptile: 0,
+        damageSlime: 0,
+        damageUndead: 0,
+        damageVermin: 0,
       };
       const final: SpellState = perksWithDefs.reduce(
         (acc, perk) => applyPerkToSpell(spell, perk, weaponDef.skill, buildStats.vocation, acc),
@@ -201,6 +222,48 @@ function applyPerkToSpell(
         return { ...state, icePierce: perk.value / 100 };
       case "physical-pierce":
         return { ...state, physicalPierce: perk.value / 100 };
+      case "damage-amphibic":
+        return { ...state, damageAmphibic: perk.value / 100 };
+      case "damage-aquatic":
+        return { ...state, damageAquatic: perk.value / 100 };
+      case "damage-bird":
+        return { ...state, damageBird: perk.value / 100 };
+      case "damage-construct":
+        return { ...state, damageConstruct: perk.value / 100 };
+      case "damage-demon":
+        return { ...state, damageDemon: perk.value / 100 };
+      case "damage-dragon":
+        return { ...state, damageDragon: perk.value / 100 };
+      case "damage-elemental":
+        return { ...state, damageElemental: perk.value / 100 };
+      case "damage-extra-dimensional":
+        return { ...state, damageExtraDimensional: perk.value / 100 };
+      case "damage-fey":
+        return { ...state, damageFey: perk.value / 100 };
+      case "damage-giant":
+        return { ...state, damageGiant: perk.value / 100 };
+      case "damage-human":
+        return { ...state, damageHuman: perk.value / 100 };
+      case "damage-humanoid":
+        return { ...state, damageHumanoid: perk.value / 100 };
+      case "damage-inkborn":
+        return { ...state, damageInkborn: perk.value / 100 };
+      case "damage-lycanthrope":
+        return { ...state, damageLycanthrope: perk.value / 100 };
+      case "damage-magical":
+        return { ...state, damageMagical: perk.value / 100 };
+      case "damage-mammal":
+        return { ...state, damageMammal: perk.value / 100 };
+      case "damage-plant":
+        return { ...state, damagePlant: perk.value / 100 };
+      case "damage-reptile":
+        return { ...state, damageReptile: perk.value / 100 };
+      case "damage-slime":
+        return { ...state, damageSlime: perk.value / 100 };
+      case "damage-undead":
+        return { ...state, damageUndead: perk.value / 100 };
+      case "damage-vermin":
+        return { ...state, damageVermin: perk.value / 100 };
     }
   }
 

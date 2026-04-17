@@ -41,6 +41,27 @@ export type SpellState = CharacterState & {
   holyPierce: number;
   icePierce: number;
   physicalPierce: number;
+  damageAmphibic: number;
+  damageAquatic: number;
+  damageBird: number;
+  damageConstruct: number;
+  damageDemon: number;
+  damageDragon: number;
+  damageElemental: number;
+  damageExtraDimensional: number;
+  damageFey: number;
+  damageGiant: number;
+  damageHuman: number;
+  damageHumanoid: number;
+  damageInkborn: number;
+  damageLycanthrope: number;
+  damageMagical: number;
+  damageMammal: number;
+  damagePlant: number;
+  damageReptile: number;
+  damageSlime: number;
+  damageUndead: number;
+  damageVermin: number;
 };
 
 export type RotationSpell = { id: number; targets: number; ratio: number; extraSpell: boolean };
