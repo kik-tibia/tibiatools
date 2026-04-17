@@ -1,6 +1,6 @@
 import LZString from "lz-string";
 import type { Build, BuildStats, CalculatorState, CollapsedSections, Vocation } from "./build-state";
-import type { ActivePerk, RotationSpell, Target, WeaponBuild } from "./damage-calc";
+import type { ActivePerk, ImbuementElement, RotationSpell, Target, WeaponBuild } from "./damage-calc";
 
 /**
  * State = [BuildA, BuildB, showSecondBuild]
@@ -37,6 +37,12 @@ const STATS_KEYS: (keyof BuildStats)[] = [
 const VOC_TO_NUM: Record<Vocation, number> = { knight: 0, paladin: 1, sorcerer: 2, druid: 3, monk: 4 };
 const NUM_TO_VOC: Vocation[] = ["knight", "paladin", "sorcerer", "druid", "monk"];
 
+const ELEM_TO_NUM: Record<ImbuementElement, number> = { death: 0, earth: 1, energy: 2, fire: 3, ice: 4 };
+const NUM_TO_ELEM: ImbuementElement[] = ["death", "earth", "energy", "fire", "ice"];
+
+const IMBUE_VAL_TO_TIER: Record<number, number> = { 0.1: 1, 0.25: 2, 0.5: 3 };
+const TIER_TO_IMBUE_VAL: Record<number, number> = { 1: 0.1, 2: 0.25, 3: 0.5 };
+
 type CompactStats = (string | number | null)[];
 type CompactWeapon = number | [number, number];
 type CompactPerk = [number, number];
@@ -53,6 +59,8 @@ function compactStats(stats: BuildStats): CompactStats {
   STATS_KEYS.forEach((k, i) => {
     let v: string | number | null = stats[k] ?? null;
     if (k === "vocation" && typeof v === "string") v = VOC_TO_NUM[v as Vocation];
+    if (k === "imbuementElement" && typeof v === "string") v = ELEM_TO_NUM[v as ImbuementElement];
+    if (k === "imbuementValue" && typeof v === "number") v = IMBUE_VAL_TO_TIER[v];
     if (v !== null) {
       mask |= 1 << i;
       values.push(v);
@@ -68,7 +76,14 @@ function expandStats(compact: CompactStats): BuildStats {
   STATS_KEYS.forEach((k, i) => {
     if (mask & (1 << i)) {
       const v = compact[vi++];
-      (stats as any)[k] = k === "vocation" && typeof v === "number" ? NUM_TO_VOC[v] : v;
+      (stats as any)[k] =
+        k === "vocation" && typeof v === "number"
+          ? NUM_TO_VOC[v]
+          : k === "imbuementElement" && typeof v === "number"
+            ? NUM_TO_ELEM[v]
+            : k === "imbuementValue" && typeof v === "number"
+              ? TIER_TO_IMBUE_VAL[v]
+              : v;
     } else {
       (stats as any)[k] = null;
     }

@@ -252,7 +252,7 @@ function applyPierce(resistance: number, pierce: number): number {
 }
 
 function applyElementalAttackImbuement(weapon: Weapon, stats: BuildStats): Weapon {
-  if (!stats.imbuementElement || !stats.imbuementValue) return weapon;
+  if (!stats.imbuementElement || stats.imbuementValue == null) return weapon;
   const elementalAttack = (weapon.attack ?? 0) * stats.imbuementValue;
   const attackDeath = stats.imbuementElement == "death" ? elementalAttack : weapon.attackDeath;
   const attackEarth = stats.imbuementElement == "earth" ? elementalAttack : weapon.attackEarth;
