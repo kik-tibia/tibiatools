@@ -1,7 +1,10 @@
 <script lang="ts">
+  import ClipboardPasteRow from "@components/build-panel/ClipboardPasteRow.svelte";
+  import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import Tooltip from "@components/Tooltip.svelte";
-  import SectionCopyButtons from "./SectionCopyButtons.svelte";
   import type { Build, BuildStats, Vocation } from "@lib/build-state";
+  import { packSection, SECTION_TAG } from "@lib/section-clipboard";
+  import { compactStats, expandStats } from "@lib/url-pack";
 
   let {
     buildA = $bindable(),
@@ -53,6 +56,26 @@
     buildA = { ...buildA, stats: { ...buildA.stats, ...patch } };
   }
 
+  let pasteTarget: "a" | "b" | null = $state(null);
+
+  function onCopyA(): string {
+    return packSection(SECTION_TAG.basicStats, compactStats(buildA.stats));
+  }
+  function onCopyB(): string {
+    return packSection(SECTION_TAG.basicStats, compactStats(buildB.stats));
+  }
+  function handlePaste(data: unknown) {
+    const full = expandStats(data as any);
+    const patch: Partial<BuildStats> = {};
+    for (const k of statKeys) (patch as any)[k] = full[k];
+    if (pasteTarget === "a") {
+      buildA = { ...buildA, stats: { ...buildA.stats, ...patch } };
+    } else {
+      buildB = { ...buildB, stats: { ...buildB.stats, ...patch } };
+    }
+    pasteTarget = null;
+  }
+
   function capitalize(s: string): string {
     return s.charAt(0).toUpperCase() + s.slice(1);
   }
@@ -66,8 +89,11 @@
       </button>
     </h4>
   </td>
-  <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} />
+  <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} {onCopyA} {onCopyB} bind:pasteTarget />
 </tr>
+{#if pasteTarget && !collapsed}
+  <ClipboardPasteRow sectionTag={SECTION_TAG.basicStats} {pasteTarget} {showSecondBuild} onPaste={handlePaste} />
+{/if}
 
 {#snippet vocCell(
   build: Build,

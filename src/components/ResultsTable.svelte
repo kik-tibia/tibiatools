@@ -1,8 +1,8 @@
 <script lang="ts">
+  import Tooltip from "@components/Tooltip.svelte";
   import { spellOrdering, type SpellDamage } from "@data/spells";
   import type { Vocation } from "@lib/build-state";
   import type { RotationSpell } from "@lib/damage-calc";
-  import Tooltip from "./Tooltip.svelte";
 
   let {
     results = [],

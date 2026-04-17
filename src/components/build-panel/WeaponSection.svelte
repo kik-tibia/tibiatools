@@ -1,11 +1,19 @@
 <script lang="ts">
-  import { weapons, ammo } from "@data/weapons";
+  import ClipboardPasteRow from "@components/build-panel/ClipboardPasteRow.svelte";
+  import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
-  import SectionCopyButtons from "./SectionCopyButtons.svelte";
+  import { ammo, weapons } from "@data/weapons";
   import type { Build } from "@lib/build-state";
+  import { packSection, SECTION_TAG } from "@lib/section-clipboard";
+  import { compactWeapon, expandWeapon } from "@lib/url-pack";
 
-  let { buildA = $bindable(), buildB = $bindable(), showSecondBuild, collapsed = $bindable(false) }: {
+  let {
+    buildA = $bindable(),
+    buildB = $bindable(),
+    showSecondBuild,
+    collapsed = $bindable(false),
+  }: {
     buildA: Build;
     buildB: Build;
     showSecondBuild: boolean;
@@ -88,6 +96,24 @@
   function copyBtoA() {
     buildA = { ...buildA, weapon: { ...buildB.weapon } };
   }
+
+  let pasteTarget: "a" | "b" | null = $state(null);
+
+  function onCopyA(): string {
+    return packSection(SECTION_TAG.weapon, compactWeapon(buildA.weapon));
+  }
+  function onCopyB(): string {
+    return packSection(SECTION_TAG.weapon, compactWeapon(buildB.weapon));
+  }
+  function handlePaste(data: unknown) {
+    const weapon = expandWeapon(data as any);
+    if (pasteTarget === "a") {
+      buildA = { ...buildA, weapon };
+    } else {
+      buildB = { ...buildB, weapon };
+    }
+    pasteTarget = null;
+  }
 </script>
 
 <tr class="section-header">
@@ -98,94 +124,97 @@
       </button>
     </h4>
   </td>
-  <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} />
+  <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} {onCopyA} {onCopyB} bind:pasteTarget />
 </tr>
+{#if pasteTarget && !collapsed}
+  <ClipboardPasteRow sectionTag={SECTION_TAG.weapon} {pasteTarget} {showSecondBuild} onPaste={handlePaste} />
+{/if}
 {#if !collapsed}
-<tr class="data-row">
-  <td></td>
-  <td>
-    <FuzzySelect selectType="weapons" all={weaponsForA} selectedIds={[]} onAdd={setWeaponA} />
-  </td>
-  {#if showSecondBuild}
-    <td>
-      <FuzzySelect selectType="weapons" all={weaponsForB} selectedIds={[]} onAdd={setWeaponB} />
-    </td>
-  {/if}
-</tr>
-<tr class="data-row">
-  <td></td>
-  <td>
-    {#if weaponA}
-      <div class="selected-item input-with-remove">
-        <span class="selected-name selected-name-a">{weaponA.name}</span>
-        {#if weaponA.id !== 1}
-          <RemoveButton pushRight onclick={clearWeaponA} />
-        {/if}
-      </div>
-    {/if}
-  </td>
-  {#if showSecondBuild}
-    <td>
-      {#if weaponB}
-        <div class="selected-item">
-          <span class="selected-name selected-name-b">{weaponB.name}</span>
-          {#if weaponB.id !== 1}
-            <RemoveButton onclick={clearWeaponB} />
-          {/if}
-        </div>
-      {/if}
-    </td>
-  {/if}
-</tr>
-
-{#if weaponA?.ammo || (showSecondBuild && weaponB?.ammo)}
   <tr class="data-row">
     <td></td>
     <td>
-      {#if weaponA?.ammo}
-        <FuzzySelect selectType="ammo" all={availableAmmoA} selectedIds={[]} onAdd={setAmmoA} />
-      {/if}
+      <FuzzySelect selectType="weapons" all={weaponsForA} selectedIds={[]} onAdd={setWeaponA} />
     </td>
     {#if showSecondBuild}
       <td>
-        {#if weaponB?.ammo}
-          <FuzzySelect selectType="ammo" all={availableAmmoB} selectedIds={[]} onAdd={setAmmoB} />
-        {/if}
+        <FuzzySelect selectType="weapons" all={weaponsForB} selectedIds={[]} onAdd={setWeaponB} />
       </td>
     {/if}
   </tr>
   <tr class="data-row">
     <td></td>
     <td>
-      {#if weaponA?.ammo}
-        {#if buildA.weapon.ammo}
-          {@const selectedAmmo = ammoRegistry.get(buildA.weapon.ammo)}
-          {#if selectedAmmo}
-            <div class="selected-item">
-              <span class="selected-name selected-name-a">{selectedAmmo.name}</span>
-              <RemoveButton onclick={clearAmmoA} />
-            </div>
+      {#if weaponA}
+        <div class="selected-item input-with-remove">
+          <span class="selected-name selected-name-a">{weaponA.name}</span>
+          {#if weaponA.id !== 1}
+            <RemoveButton pushRight onclick={clearWeaponA} />
           {/if}
-        {/if}
+        </div>
       {/if}
     </td>
     {#if showSecondBuild}
       <td>
-        {#if weaponB?.ammo}
-          {#if buildB.weapon.ammo}
-            {@const selectedAmmo = ammoRegistry.get(buildB.weapon.ammo)}
+        {#if weaponB}
+          <div class="selected-item">
+            <span class="selected-name selected-name-b">{weaponB.name}</span>
+            {#if weaponB.id !== 1}
+              <RemoveButton onclick={clearWeaponB} />
+            {/if}
+          </div>
+        {/if}
+      </td>
+    {/if}
+  </tr>
+
+  {#if weaponA?.ammo || (showSecondBuild && weaponB?.ammo)}
+    <tr class="data-row">
+      <td></td>
+      <td>
+        {#if weaponA?.ammo}
+          <FuzzySelect selectType="ammo" all={availableAmmoA} selectedIds={[]} onAdd={setAmmoA} />
+        {/if}
+      </td>
+      {#if showSecondBuild}
+        <td>
+          {#if weaponB?.ammo}
+            <FuzzySelect selectType="ammo" all={availableAmmoB} selectedIds={[]} onAdd={setAmmoB} />
+          {/if}
+        </td>
+      {/if}
+    </tr>
+    <tr class="data-row">
+      <td></td>
+      <td>
+        {#if weaponA?.ammo}
+          {#if buildA.weapon.ammo}
+            {@const selectedAmmo = ammoRegistry.get(buildA.weapon.ammo)}
             {#if selectedAmmo}
               <div class="selected-item">
-                <span class="selected-name selected-name-b">{selectedAmmo.name}</span>
-                <RemoveButton onclick={clearAmmoB} />
+                <span class="selected-name selected-name-a">{selectedAmmo.name}</span>
+                <RemoveButton onclick={clearAmmoA} />
               </div>
             {/if}
           {/if}
         {/if}
       </td>
-    {/if}
-  </tr>
-{/if}
+      {#if showSecondBuild}
+        <td>
+          {#if weaponB?.ammo}
+            {#if buildB.weapon.ammo}
+              {@const selectedAmmo = ammoRegistry.get(buildB.weapon.ammo)}
+              {#if selectedAmmo}
+                <div class="selected-item">
+                  <span class="selected-name selected-name-b">{selectedAmmo.name}</span>
+                  <RemoveButton onclick={clearAmmoB} />
+                </div>
+              {/if}
+            {/if}
+          {/if}
+        </td>
+      {/if}
+    </tr>
+  {/if}
 {/if}
 
 <style>

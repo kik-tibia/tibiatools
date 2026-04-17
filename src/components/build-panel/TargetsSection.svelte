@@ -1,9 +1,12 @@
 <script lang="ts">
-  import { creatures } from "@data/creatures";
+  import ClipboardPasteRow from "@components/build-panel/ClipboardPasteRow.svelte";
+  import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
-  import SectionCopyButtons from "./SectionCopyButtons.svelte";
+  import { creatures } from "@data/creatures";
   import type { Build } from "@lib/build-state";
+  import { packSection, SECTION_TAG } from "@lib/section-clipboard";
+  import { compactTargets, expandTargets } from "@lib/url-pack";
 
   let {
     buildA = $bindable(),
@@ -61,11 +64,41 @@
     }
   }
 
+  function syncOrder() {
+    const allIds = new Set([...buildA.targets.map((t) => t.id), ...buildB.targets.map((t) => t.id)]);
+    const kept = targetOrder.filter((id) => allIds.has(id));
+    const added = [...allIds].filter((id) => !kept.includes(id));
+    targetOrder = [...kept, ...added];
+  }
   function copyAtoB() {
     buildB = { ...buildB, targets: buildA.targets.map((t) => ({ ...t })) };
+    syncOrder();
   }
   function copyBtoA() {
     buildA = { ...buildA, targets: buildB.targets.map((t) => ({ ...t })) };
+    syncOrder();
+  }
+
+  let pasteTarget: "a" | "b" | null = $state(null);
+
+  function orderedTargets(build: Build) {
+    return targetOrder.flatMap((id) => build.targets.filter((t) => t.id === id));
+  }
+  function onCopyA(): string {
+    return packSection(SECTION_TAG.targets, compactTargets(orderedTargets(buildA)));
+  }
+  function onCopyB(): string {
+    return packSection(SECTION_TAG.targets, compactTargets(orderedTargets(buildB)));
+  }
+  function handlePaste(data: unknown) {
+    const pasted = expandTargets(data as any);
+    if (pasteTarget === "a") {
+      buildA = { ...buildA, targets: pasted };
+    } else {
+      buildB = { ...buildB, targets: pasted };
+    }
+    syncOrder();
+    pasteTarget = null;
   }
 </script>
 
@@ -103,8 +136,11 @@
       </button>
     </h4>
   </td>
-  <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} />
+  <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} {onCopyA} {onCopyB} bind:pasteTarget />
 </tr>
+{#if pasteTarget && !collapsed}
+  <ClipboardPasteRow sectionTag={SECTION_TAG.targets} {pasteTarget} {showSecondBuild} onPaste={handlePaste} />
+{/if}
 
 {#if !collapsed}
   <tr class="data-row">

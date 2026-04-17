@@ -1,10 +1,12 @@
 <script lang="ts">
-  import { spells } from "@data/spells";
-  import type { Spell } from "@data/spells";
+  import ClipboardPasteRow from "@components/build-panel/ClipboardPasteRow.svelte";
+  import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
-  import SectionCopyButtons from "./SectionCopyButtons.svelte";
+  import { spells, type Spell } from "@data/spells";
   import type { Build } from "@lib/build-state";
+  import { packSection, SECTION_TAG } from "@lib/section-clipboard";
+  import { compactRotation, expandRotation } from "@lib/url-pack";
 
   let {
     buildA = $bindable(),
@@ -117,11 +119,41 @@
     }
   }
 
+  function syncOrder() {
+    const allIds = new Set([...buildA.rotation.map((r) => r.id), ...buildB.rotation.map((r) => r.id)]);
+    const kept = rotationOrder.filter((id) => allIds.has(id));
+    const added = [...allIds].filter((id) => !kept.includes(id));
+    rotationOrder = [...kept, ...added];
+  }
   function copyAtoB() {
     buildB = { ...buildB, rotation: buildA.rotation.map((r) => ({ ...r })) };
+    syncOrder();
   }
   function copyBtoA() {
     buildA = { ...buildA, rotation: buildB.rotation.map((r) => ({ ...r })) };
+    syncOrder();
+  }
+
+  let pasteTarget: "a" | "b" | null = $state(null);
+
+  function orderedRotation(build: Build) {
+    return rotationOrder.flatMap((id) => build.rotation.filter((r) => r.id === id));
+  }
+  function onCopyA(): string {
+    return packSection(SECTION_TAG.rotation, compactRotation(orderedRotation(buildA)));
+  }
+  function onCopyB(): string {
+    return packSection(SECTION_TAG.rotation, compactRotation(orderedRotation(buildB)));
+  }
+  function handlePaste(data: unknown) {
+    const pasted = expandRotation(data as any);
+    if (pasteTarget === "a") {
+      buildA = { ...buildA, rotation: pasted };
+    } else {
+      buildB = { ...buildB, rotation: pasted };
+    }
+    syncOrder();
+    pasteTarget = null;
   }
 </script>
 
@@ -178,8 +210,11 @@
       </button>
     </h4>
   </td>
-  <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} />
+  <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} {onCopyA} {onCopyB} bind:pasteTarget />
 </tr>
+{#if pasteTarget && !collapsed}
+  <ClipboardPasteRow sectionTag={SECTION_TAG.rotation} {pasteTarget} {showSecondBuild} onPaste={handlePaste} />
+{/if}
 
 {#if !collapsed}
   <tr class="data-row">

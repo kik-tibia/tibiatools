@@ -1,8 +1,11 @@
 <script lang="ts">
+  import ClipboardPasteRow from "@components/build-panel/ClipboardPasteRow.svelte";
+  import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import Tooltip from "@components/Tooltip.svelte";
   import type { Build, BuildStats } from "@lib/build-state";
   import type { ImbuementElement } from "@lib/damage-calc";
-  import SectionCopyButtons from "./SectionCopyButtons.svelte";
+  import { packSection, SECTION_TAG } from "@lib/section-clipboard";
+  import { compactStats, expandStats } from "@lib/url-pack";
 
   let {
     buildA = $bindable(),
@@ -126,6 +129,26 @@
     for (const k of statKeys) patch[k] = buildB.stats[k] as any;
     buildA = { ...buildA, stats: { ...buildA.stats, ...patch } };
   }
+
+  let pasteTarget: "a" | "b" | null = $state(null);
+
+  function onCopyA(): string {
+    return packSection(SECTION_TAG.advancedStats, compactStats(buildA.stats));
+  }
+  function onCopyB(): string {
+    return packSection(SECTION_TAG.advancedStats, compactStats(buildB.stats));
+  }
+  function handlePaste(data: unknown) {
+    const full = expandStats(data as any);
+    const patch: Partial<BuildStats> = {};
+    for (const k of statKeys) (patch as any)[k] = full[k];
+    if (pasteTarget === "a") {
+      buildA = { ...buildA, stats: { ...buildA.stats, ...patch } };
+    } else {
+      buildB = { ...buildB, stats: { ...buildB.stats, ...patch } };
+    }
+    pasteTarget = null;
+  }
 </script>
 
 {#snippet inputCell(
@@ -183,8 +206,11 @@
       </button>
     </h4>
   </td>
-  <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} />
+  <SectionCopyButtons {showSecondBuild} {collapsed} {copyAtoB} {copyBtoA} {onCopyA} {onCopyB} bind:pasteTarget />
 </tr>
+{#if pasteTarget && !collapsed}
+  <ClipboardPasteRow sectionTag={SECTION_TAG.advancedStats} {pasteTarget} {showSecondBuild} onPaste={handlePaste} />
+{/if}
 
 {#if !collapsed}
   {#each statFields as field}

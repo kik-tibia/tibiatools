@@ -53,7 +53,7 @@ type CompactBuild = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation
 type CompactStateV1 = [number, CompactBuildV1, CompactBuildV1, number[], number[], number, number];
 type CompactState = [number, CompactBuild, CompactBuild, number[], number[], number[], number, number];
 
-function compactStats(stats: BuildStats): CompactStats {
+export function compactStats(stats: BuildStats): CompactStats {
   let mask = 0;
   const values: (string | number)[] = [];
   STATS_KEYS.forEach((k, i) => {
@@ -69,7 +69,7 @@ function compactStats(stats: BuildStats): CompactStats {
   return [mask, ...values];
 }
 
-function expandStats(compact: CompactStats): BuildStats {
+export function expandStats(compact: CompactStats): BuildStats {
   const mask = compact[0] as number;
   const stats: Partial<BuildStats> = {};
   let vi = 1;
@@ -91,38 +91,38 @@ function expandStats(compact: CompactStats): BuildStats {
   return stats as BuildStats;
 }
 
-function compactWeapon(weapon: WeaponBuild): CompactWeapon {
+export function compactWeapon(weapon: WeaponBuild): CompactWeapon {
   return weapon.ammo ? [weapon.id, weapon.ammo] : weapon.id;
 }
 
-function expandWeapon(compact: CompactWeapon): WeaponBuild {
+export function expandWeapon(compact: CompactWeapon): WeaponBuild {
   if (typeof compact === "number") {
     return { id: compact };
   }
   return { id: compact[0], ammo: compact[1] };
 }
 
-function compactPerks(perks: ActivePerk[]): CompactPerk[] {
+export function compactPerks(perks: ActivePerk[]): CompactPerk[] {
   return perks.map((p) => [p.id, p.value]);
 }
 
-function expandPerks(compact: CompactPerk[]): ActivePerk[] {
+export function expandPerks(compact: CompactPerk[]): ActivePerk[] {
   return compact.map(([id, value]) => ({ id, value }));
 }
 
-function compactRotation(rotation: RotationSpell[]): CompactRotation[] {
+export function compactRotation(rotation: RotationSpell[]): CompactRotation[] {
   return rotation.map((r) => [r.id, r.targets, r.ratio, +r.extraSpell]);
 }
 
-function expandRotation(compact: CompactRotation[]): RotationSpell[] {
+export function expandRotation(compact: CompactRotation[]): RotationSpell[] {
   return compact.map(([id, targets, ratio, extraSpell]) => ({ id, targets, ratio, extraSpell: !!extraSpell }));
 }
 
-function compactTargets(targets: Target[]): CompactTarget[] {
+export function compactTargets(targets: Target[]): CompactTarget[] {
   return targets.map((t) => [t.id, t.ratio]);
 }
 
-function expandTargets(compact: CompactTarget[]): Target[] {
+export function expandTargets(compact: CompactTarget[]): Target[] {
   return compact.map(([id, ratio]) => ({ id, ratio }));
 }
 
