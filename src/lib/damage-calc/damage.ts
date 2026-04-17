@@ -6,11 +6,13 @@ import type { SpellState, TargetWithCreature } from "@lib/damage-calc";
 export function computeDamageRanges(
   spell: Spell,
   state: SpellState,
-  highRollAA: boolean,
+  aoeAA: boolean,
   buildStats: BuildStats,
   weapon: Weapon,
   targetsWithCreatures: TargetWithCreature[],
 ): SpellDamage {
+  const highRollAA = !aoeAA;
+
   let nTranscendenceAttacks;
   if (spell.spellType === "auto") nTranscendenceAttacks = 3;
   else nTranscendenceAttacks = 3.9;
@@ -41,7 +43,7 @@ export function computeDamageRanges(
     0,
   );
 
-  weapon = applyElementalAttackImbuement(weapon, buildStats);
+  weapon = applyElementalAttackImbuement(weapon, aoeAA, buildStats);
 
   if (spell.spellType === "auto") {
     const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
@@ -251,8 +253,10 @@ function applyPierce(resistance: number, pierce: number): number {
   return Math.min(resistance + fullPierce + halfPierce, resistance * 2); // "Can double the sensitivity at most."
 }
 
-function applyElementalAttackImbuement(weapon: Weapon, stats: BuildStats): Weapon {
+function applyElementalAttackImbuement(weapon: Weapon, aoeAA: boolean, stats: BuildStats): Weapon {
   if (!stats.imbuementElement || stats.imbuementValue == null) return weapon;
+  if (weapon.attack != weapon.attackPhysical) return weapon; // Disallow elemental imbuements on elemental weapons
+  if (aoeAA) return weapon; // Disallow elemental imbuements for AOE AAs such as diamond arrows
   const elementalAttack = (weapon.attack ?? 0) * stats.imbuementValue;
   const attackDeath = stats.imbuementElement == "death" ? elementalAttack : weapon.attackDeath;
   const attackEarth = stats.imbuementElement == "earth" ? elementalAttack : weapon.attackEarth;

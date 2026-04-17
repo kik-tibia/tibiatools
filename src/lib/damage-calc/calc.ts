@@ -47,8 +47,6 @@ export function computeResults(
 
   const state = deriveState(buildStats, weaponDef, ammoDef);
 
-  const highRollAA = !ammoDef?.aoe;
-
   const spellResults = spells
     .filter((s) => s.vocations.includes(buildStats.vocation))
     .map((spell) => {
@@ -69,7 +67,7 @@ export function computeResults(
         (acc, perk) => applyPerkToSpell(spell, perk, weaponDef.skill, buildStats.vocation, acc),
         initial,
       );
-      return computeDamageRanges(spell, final, highRollAA, buildStats, weaponDef, targetsWithCreatures);
+      return computeDamageRanges(spell, final, !!ammoDef?.aoe, buildStats, weaponDef, targetsWithCreatures);
     });
   return spellResults;
 }
