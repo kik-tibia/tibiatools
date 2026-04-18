@@ -248,6 +248,15 @@ function weightedElementalEffective(
   }, 0);
 }
 
+/** The best single-variable model that predicts Fist Fighting for the regular mon files with R² = 0.8348
+ *  Not currently used.
+ * */
+function estimatedAverageBlock(creature: Creature): number {
+  const defend = creature.mitigation * 38;
+  const fistFighting = 10.5 + 1.25 * defend;
+  return (defend * (fistFighting * 5 + 50)) / 200;
+}
+
 function bestiaryExtraDamage(creature: Creature, spellState: SpellState): number {
   if (creature.bestiaryClass == "Amphibic") return spellState.damageAmphibic;
   if (creature.bestiaryClass == "Aquatic") return spellState.damageAquatic;
