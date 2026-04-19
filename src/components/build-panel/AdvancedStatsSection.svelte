@@ -68,7 +68,7 @@
     {
       key: "baseMagicLevel",
       label: "Base Magic Level",
-      tooltip: "Required for Runic Mastery<br/>(not yet implemented)",
+      tooltip: "Required for Runic Mastery",
     },
     {
       key: "axe",
