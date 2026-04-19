@@ -208,3 +208,67 @@ nav a {
 nav a.active {
   text-decoration: underline;
 }
+
+/* Shared generic table style. Opt in by adding class="data-table".
+   Component overrides (max-width, colspan header tweaks, etc.) live
+   alongside the component. */
+table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border-color);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.9rem;
+}
+
+.data-table thead th {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border-color);
+  font-weight: 600;
+}
+
+.data-table td {
+  padding: 0.4rem 0.4rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.data-table .num {
+  text-align: right;
+}
+
+@media (max-width: 899px) {
+  .data-table thead {
+    display: none;
+  }
+
+  .data-table,
+  .data-table tbody,
+  .data-table tr,
+  .data-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .data-table {
+    overflow: hidden;
+  }
+
+  .data-table tr {
+    border-bottom: 1px solid var(--mobile-border);
+  }
+
+  .data-table td {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .data-table td.num::before {
+    content: attr(data-label);
+    text-align: left;
+    opacity: 0.7;
+    padding-right: 0.75rem;
+    font-weight: 500;
+  }
+}

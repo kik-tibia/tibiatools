@@ -75,7 +75,7 @@
   </table>
 
   <div>
-    <table class="results">
+    <table class="data-table">
       <thead>
         <tr>
           <th class="desc" rowspan="2">Spell</th>
@@ -166,20 +166,9 @@
     font-weight: 600;
   }
 
-  table.results {
+  table.data-table {
     max-width: 600px;
-    border-collapse: collapse;
     overflow: visible;
-    border: 1px solid var(--border-color);
-    font-variant-numeric: tabular-nums;
-    font-size: 0.9rem;
-  }
-
-  thead th {
-    text-align: left;
-    padding: 0.6rem 0.75rem;
-    border: 1px solid var(--border-color);
-    font-weight: 600;
   }
 
   thead tr:nth-child(2) th:nth-child(2),
@@ -192,17 +181,8 @@
     border-left: none;
   }
 
-  td {
-    padding: 0.4rem 0.4rem;
-    border-bottom: 1px solid var(--border-color);
-  }
-
   .desc {
     text-align: center;
-  }
-
-  .num {
-    text-align: right;
   }
 
   .range {
@@ -223,43 +203,8 @@
   }
 
   @media (max-width: 899px) {
-    .results thead {
-      display: none;
-    }
-
-    .results,
-    .results tbody,
-    .results tr,
-    .results td {
-      display: block;
-      width: 100%;
-      box-sizing: border-box;
-    }
-
-    .results {
-      overflow: hidden;
-    }
-
-    .results tr {
-      border-bottom: 1px solid var(--mobile-border);
-    }
-
-    .results td {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-    }
-
-    .results td.spell {
+    .data-table td.spell {
       grid-template-columns: 1fr;
-    }
-
-    .results td.num::before {
-      content: attr(data-label);
-      text-align: left;
-      opacity: 0.7;
-      padding-right: 0.75rem;
-      font-weight: 500;
     }
   }
 </style>

@@ -27,6 +27,7 @@ const { title = "Tibia Tools" } = Astro.props;
         <nav>
           <a href="/" class={Astro.url.pathname === "/" ? "active" : ""}>Home</a>
           <a href="/tools/calculator" class={Astro.url.pathname.startsWith("/tools/calculator") ? "active" : ""}>Damage Calculator</a>
+          <a href="/tools/forge" class={Astro.url.pathname.startsWith("/tools/forge") ? "active" : ""}>Forge Calculator</a>
         </nav>
       </div>
       <div id="theme-toggle">

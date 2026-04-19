@@ -46,7 +46,7 @@
   .tip-trigger {
     background: none;
     border: 0;
-    font-size: 1rem;
+    font: inherit;
     padding: 0;
     color: inherit;
     cursor: help;
