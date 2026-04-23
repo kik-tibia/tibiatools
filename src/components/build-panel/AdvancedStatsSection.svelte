@@ -174,9 +174,9 @@
   setStat: (key: keyof BuildStats, value: BuildStats[keyof BuildStats]) => void,
 )}
   <td>
-    <div class="imbuement-cell">
+    <div class="tiered-select-cell">
       <select
-        class="imbuement-select imbuement-element input-{buildId}"
+        class="tiered-select tiered-select-type input-{buildId}"
         value={build.stats.imbuementElement ?? ""}
         onchange={(e) => setImbuementElement(build, setStat, e.currentTarget.value)}>
         <option value="">None</option>
@@ -185,7 +185,7 @@
         {/each}
       </select>
       <select
-        class="imbuement-select imbuement-value input-{buildId}"
+        class="tiered-select tiered-select-tier input-{buildId}"
         disabled={build.stats.imbuementElement === null}
         value={build.stats.imbuementValue ?? ""}
         onchange={(e) => setImbuementValue(setStat, e.currentTarget.value)}>
@@ -241,48 +241,3 @@
     {/if}
   </tr>
 {/if}
-
-<style>
-  .imbuement-cell {
-    display: flex;
-    gap: 0.25rem;
-  }
-
-  .imbuement-select {
-    min-width: 0;
-    box-sizing: border-box;
-    padding: 0.25rem 0.4rem;
-    font: inherit;
-    border: 1px solid var(--input-border);
-    border-radius: 0.25rem;
-    background: var(--input-bg);
-    color: inherit;
-    cursor: pointer;
-  }
-
-  .imbuement-select.input-a {
-    border-color: var(--build-a-border);
-  }
-
-  .imbuement-select.input-b {
-    border-color: var(--build-b-border);
-  }
-
-  .imbuement-select:focus {
-    outline: none;
-    box-shadow: var(--focus-ring);
-  }
-
-  .imbuement-select:disabled {
-    cursor: not-allowed;
-    opacity: 0.55;
-  }
-
-  .imbuement-element {
-    flex: 2 1 0;
-  }
-
-  .imbuement-value {
-    flex: 1 1 0;
-  }
-</style>

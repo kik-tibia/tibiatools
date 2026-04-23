@@ -1,11 +1,11 @@
 <script lang="ts">
-  import BuildBadge from "@components/BuildBadge.svelte";
-  import BasicStatsSection from "@components/build-panel/BasicStatsSection.svelte";
   import AdvancedStatsSection from "@components/build-panel/AdvancedStatsSection.svelte";
-  import WeaponSection from "@components/build-panel/WeaponSection.svelte";
+  import BasicStatsSection from "@components/build-panel/BasicStatsSection.svelte";
   import PerksSection from "@components/build-panel/PerksSection.svelte";
   import RotationSection from "@components/build-panel/RotationSection.svelte";
   import TargetsSection from "@components/build-panel/TargetsSection.svelte";
+  import WeaponSection from "@components/build-panel/WeaponSection.svelte";
+  import BuildBadge from "@components/BuildBadge.svelte";
   import type { Build, CollapsedSections } from "@lib/build-state";
   import "@styles/build-table.css";
 
