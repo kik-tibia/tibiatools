@@ -68,6 +68,6 @@ export type RotationSpell = { id: number; targets: number; ratio: number; extraS
 
 export type WeaponBuild = { id: number; ammo?: number };
 
-export type Target = { id: number; ratio: number };
+export type Target = { id: number; ratio: number; charmId?: number; charmTier?: number };
 
 export type TargetWithCreature = Target & { creature: Creature };

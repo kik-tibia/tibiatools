@@ -3,8 +3,10 @@
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
+  import { charms } from "@data/charms";
   import { creatures } from "@data/creatures";
   import type { Build } from "@lib/build-state";
+  import type { Target } from "@lib/damage-calc";
   import { packSection, SECTION_TAG } from "@lib/section-clipboard";
   import { compactTargets, expandTargets } from "@lib/url-pack";
 
@@ -23,6 +25,9 @@
   } = $props();
 
   const creatureRegistry = new Map(creatures.map((c) => [c.id, c]));
+
+  const charmTiers: number[] = [1, 2, 3];
+  const DEFAULT_CHARM_TIER = 2;
 
   function addTarget(id: number) {
     buildA = { ...buildA, targets: [...buildA.targets, { id, ratio: 1 }] };
@@ -49,6 +54,47 @@
     } else {
       buildB = { ...buildB, targets: [...buildB.targets, { id, ratio }] };
     }
+  }
+
+  function setTargetCharmA(id: number, charmId: number | null, charmTier: number | null) {
+    buildA = {
+      ...buildA,
+      targets: buildA.targets.map((t) =>
+        t.id === id ? { ...t, charmId: charmId ?? undefined, charmTier: charmTier ?? undefined } : t,
+      ),
+    };
+  }
+  function setTargetCharmB(id: number, charmId: number | null, charmTier: number | null) {
+    buildB = {
+      ...buildB,
+      targets: buildB.targets.map((t) =>
+        t.id === id ? { ...t, charmId: charmId ?? undefined, charmTier: charmTier ?? undefined } : t,
+      ),
+    };
+  }
+
+  function setCharmIdFor(
+    target: Target | undefined,
+    setCharm: (id: number, charmId: number | null, charmTier: number | null) => void,
+    targetId: number,
+    raw: string,
+  ) {
+    const next = raw === "" ? null : Number(raw);
+    if (next === null) {
+      setCharm(targetId, null, null);
+    } else {
+      setCharm(targetId, next, target?.charmTier ?? DEFAULT_CHARM_TIER);
+    }
+  }
+
+  function setCharmTierFor(
+    target: Target | undefined,
+    setCharm: (id: number, charmId: number | null, charmTier: number | null) => void,
+    raw: string,
+  ) {
+    if (target?.charmId == null) return;
+    const tier = raw === "" ? null : Number(raw);
+    setCharm(target.id, target.charmId, tier);
   }
 
   function removeTargetA(id: number) {
@@ -102,7 +148,7 @@
   }
 </script>
 
-{#snippet targetCell(
+{#snippet ratioCell(
   build: Build,
   buildId: string,
   targetId: number,
@@ -123,6 +169,40 @@
     {:else}
       <div class="add-placeholder">
         <button type="button" class="add-btn input-{buildId}" onclick={() => setRatio(targetId, 1)}>+</button>
+      </div>
+    {/if}
+  </td>
+{/snippet}
+
+{#snippet charmCell(
+  build: Build,
+  buildId: string,
+  targetId: number,
+  setCharm: (id: number, charmId: number | null, charmTier: number | null) => void,
+)}
+  <td>
+    {#if build.targets.some((t) => t.id === targetId)}
+      {@const target = build.targets.find((t) => t.id === targetId)}
+      <div class="tiered-select-cell">
+        <select
+          class="tiered-select tiered-select-type input-{buildId}"
+          value={target?.charmId ?? ""}
+          onchange={(e) => setCharmIdFor(target, setCharm, targetId, e.currentTarget.value)}>
+          <option value="">None</option>
+          {#each charms as charm}
+            <option value={charm.id}>{charm.displayName}</option>
+          {/each}
+        </select>
+        <select
+          class="tiered-select tiered-select-tier input-{buildId}"
+          disabled={target?.charmId == null}
+          value={target?.charmTier ?? ""}
+          onchange={(e) => setCharmTierFor(target, setCharm, e.currentTarget.value)}>
+          <option value="" disabled>—</option>
+          {#each charmTiers as tier}
+            <option value={tier}>T{tier}</option>
+          {/each}
+        </select>
       </div>
     {/if}
   </td>
@@ -151,7 +231,7 @@
     <td class="sub-header">
       {#if targetOrder.length > 0}
         <div class="ratio-label">
-          <span>Ratio</span>
+          <span>Ratio and Charm</span>
         </div>
       {/if}
     </td>
@@ -159,7 +239,7 @@
       <td class="sub-header">
         {#if targetOrder.length > 0}
           <div class="ratio-label">
-            <span>Ratio</span>
+            <span>Ratio and Charm</span>
           </div>
         {/if}
       </td>
@@ -170,10 +250,16 @@
     {@const def = creatureRegistry.get(id)}
     {#if def}
       <tr class="data-row">
-        <td class="item-name">{def.name}</td>
-        {@render targetCell(buildA, "a", id, setTargetRatioA, removeTargetA)}
+        <td class="item-name" rowspan="2">{def.name}</td>
+        {@render ratioCell(buildA, "a", id, setTargetRatioA, removeTargetA)}
         {#if showSecondBuild}
-          {@render targetCell(buildB, "b", id, setTargetRatioB, removeTargetB)}
+          {@render ratioCell(buildB, "b", id, setTargetRatioB, removeTargetB)}
+        {/if}
+      </tr>
+      <tr class="data-row">
+        {@render charmCell(buildA, "a", id, setTargetCharmA)}
+        {#if showSecondBuild}
+          {@render charmCell(buildB, "b", id, setTargetCharmB)}
         {/if}
       </tr>
     {/if}

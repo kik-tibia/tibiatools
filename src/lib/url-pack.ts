@@ -47,7 +47,7 @@ type CompactStats = (string | number | null)[];
 type CompactWeapon = number | [number, number];
 type CompactPerk = [number, number];
 type CompactRotation = [number, number, number, number];
-type CompactTarget = [number, number];
+type CompactTarget = [number, number] | [number, number, number, number];
 type CompactBuildV1 = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation[]];
 type CompactBuild = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation[], CompactTarget[]];
 type CompactStateV1 = [number, CompactBuildV1, CompactBuildV1, number[], number[], number, number];
@@ -119,11 +119,15 @@ export function expandRotation(compact: CompactRotation[]): RotationSpell[] {
 }
 
 export function compactTargets(targets: Target[]): CompactTarget[] {
-  return targets.map((t) => [t.id, t.ratio]);
+  return targets.map((t) =>
+    t.charmId != null && t.charmTier != null ? [t.id, t.ratio, t.charmId, t.charmTier] : [t.id, t.ratio],
+  );
 }
 
 export function expandTargets(compact: CompactTarget[]): Target[] {
-  return compact.map(([id, ratio]) => ({ id, ratio }));
+  return compact.map((c) =>
+    c.length === 4 ? { id: c[0], ratio: c[1], charmId: c[2], charmTier: c[3] } : { id: c[0], ratio: c[1] },
+  );
 }
 
 function compactBuild(build: Build): CompactBuild {
