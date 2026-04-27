@@ -1,6 +1,10 @@
-import type { ActivePerk, ImbuementElement, RotationSpell, Target, WeaponBuild } from "./damage-calc";
-
 export type Vocation = "knight" | "paladin" | "sorcerer" | "druid" | "monk";
+export type ImbuementElement = "death" | "earth" | "energy" | "fire" | "ice";
+
+export type WeaponChoiceRef = { id: number; ammoId?: number };
+export type PerkChoiceRef = { id: number; value: number };
+export type SpellChoiceRef = { id: number; targets: number; ratio: number; extraSpell: boolean };
+export type CreatureChoiceRef = { id: number; ratio: number };
 
 export type BuildStats = {
   vocation: Vocation;
@@ -26,10 +30,10 @@ export type BuildStats = {
 
 export type Build = {
   stats: BuildStats;
-  weapon: WeaponBuild;
-  perks: ActivePerk[];
-  rotation: RotationSpell[];
-  targets: Target[];
+  weapon: WeaponChoiceRef;
+  perks: PerkChoiceRef[];
+  rotation: SpellChoiceRef[];
+  targets: CreatureChoiceRef[];
 };
 
 export type CollapsedSections = {
@@ -74,7 +78,7 @@ const defaultStats = (): BuildStats => ({
   imbuementValue: null,
 });
 
-const defaultWeapon = (): WeaponBuild => ({
+const defaultWeapon = (): WeaponChoiceRef => ({
   id: 1,
 });
 

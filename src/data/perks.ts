@@ -51,7 +51,7 @@ export type PerkBonusType =
   | "damage-undead"
   | "damage-vermin";
 
-export type PerkDef = {
+export type Perk = {
   id: number;
   name: string;
   scope: string;
@@ -59,7 +59,7 @@ export type PerkDef = {
   bonusType: PerkBonusType;
 };
 
-export const perks: PerkDef[] = (perksRaw as unknown[] as PerkDef[]).map((p) => ({
+export const allPerks: Perk[] = (perksRaw as unknown[] as Perk[]).map((p) => ({
   ...p,
   spell: p.spell ?? false,
 }));

@@ -1,14 +1,13 @@
 import type { Creature } from "@data/creatures";
-import type { PerkDef } from "@data/perks";
+import type { Perk } from "@data/perks";
+import type { SpellDamage } from "@data/spells";
+import type { Ammo, Weapon } from "@data/weapons";
+import type { CreatureChoiceRef, PerkChoiceRef, SpellChoiceRef, WeaponChoiceRef } from "@lib/build-state";
 
-export type ImbuementElement = "death" | "earth" | "energy" | "fire" | "ice";
-
-export type ActivePerk = {
-  id: number;
-  value: number;
-};
-
-export type ActivePerkWithDef = ActivePerk & { def: PerkDef };
+export type WeaponChoice = WeaponChoiceRef & { weapon: Weapon; ammo?: Ammo };
+export type PerkChoice = PerkChoiceRef & { perk: Perk };
+export type SpellDamageChoice = SpellChoiceRef & { spellDamage: SpellDamage };
+export type CreatureChoice = CreatureChoiceRef & { creature: Creature };
 
 export type CharacterState = {
   flat: number;
@@ -63,11 +62,3 @@ export type SpellState = CharacterState & {
   damageUndead: number;
   damageVermin: number;
 };
-
-export type RotationSpell = { id: number; targets: number; ratio: number; extraSpell: boolean };
-
-export type WeaponBuild = { id: number; ammo?: number };
-
-export type Target = { id: number; ratio: number };
-
-export type TargetWithCreature = Target & { creature: Creature };

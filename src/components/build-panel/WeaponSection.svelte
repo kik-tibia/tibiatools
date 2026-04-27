@@ -3,7 +3,7 @@
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
-  import { ammo, weapons } from "@data/weapons";
+  import { allAmmo, allWeapons } from "@data/weapons";
   import type { Build } from "@lib/build-state";
   import { packSection, SECTION_TAG } from "@lib/section-clipboard";
   import { compactWeapon, expandWeapon } from "@lib/url-pack";
@@ -20,16 +20,16 @@
     collapsed: boolean;
   } = $props();
 
-  const weaponRegistry = new Map(weapons.map((w) => [w.id, w]));
-  const ammoRegistry = new Map(ammo.map((a) => [a.id, a]));
+  const weaponRegistry = new Map(allWeapons.map((w) => [w.id, w]));
+  const ammoRegistry = new Map(allAmmo.map((a) => [a.id, a]));
 
   let weaponsForA = $derived(
-    weapons
+    allWeapons
       .filter((i) => i.vocations.includes(buildA.stats.vocation))
       .sort((a, b) => a.vocations.length - b.vocations.length),
   );
   let weaponsForB = $derived(
-    weapons
+    allWeapons
       .filter((i) => i.vocations.includes(buildB.stats.vocation))
       .sort((a, b) => a.vocations.length - b.vocations.length),
   );
@@ -37,57 +37,57 @@
   let weaponA = $derived(weaponRegistry.get(buildA.weapon.id));
   let weaponB = $derived(weaponRegistry.get(buildB.weapon.id));
 
-  let availableAmmoA = $derived(weaponA?.ammo ? ammo.filter((a) => a.type === weaponA.ammo) : []);
-  let availableAmmoB = $derived(weaponB?.ammo ? ammo.filter((a) => a.type === weaponB.ammo) : []);
+  let availableAmmoA = $derived(weaponA?.ammo ? allAmmo.filter((a) => a.type === weaponA.ammo) : []);
+  let availableAmmoB = $derived(weaponB?.ammo ? allAmmo.filter((a) => a.type === weaponB.ammo) : []);
 
   function setWeaponA(id: number) {
     const weapon = weaponRegistry.get(id);
-    const currentAmmo = buildA.weapon.ammo ? ammoRegistry.get(buildA.weapon.ammo) : null;
+    const currentAmmo = buildA.weapon.ammoId ? ammoRegistry.get(buildA.weapon.ammoId) : null;
     const keepAmmo = weapon?.ammo && currentAmmo && currentAmmo.type === weapon.ammo;
     buildA = {
       ...buildA,
       weapon: {
         id,
-        ammo: keepAmmo ? buildA.weapon.ammo : undefined,
+        ammoId: keepAmmo ? buildA.weapon.ammoId : undefined,
       },
     };
   }
 
   function setWeaponB(id: number) {
     const weapon = weaponRegistry.get(id);
-    const currentAmmo = buildB.weapon.ammo ? ammoRegistry.get(buildB.weapon.ammo) : null;
+    const currentAmmo = buildB.weapon.ammoId ? ammoRegistry.get(buildB.weapon.ammoId) : null;
     const keepAmmo = weapon?.ammo && currentAmmo && currentAmmo.type === weapon.ammo;
     buildB = {
       ...buildB,
       weapon: {
         id,
-        ammo: keepAmmo ? buildB.weapon.ammo : undefined,
+        ammoId: keepAmmo ? buildB.weapon.ammoId : undefined,
       },
     };
   }
 
   function setAmmoA(id: number) {
-    buildA = { ...buildA, weapon: { ...buildA.weapon, ammo: id } };
+    buildA = { ...buildA, weapon: { ...buildA.weapon, ammoId: id } };
   }
 
   function setAmmoB(id: number) {
-    buildB = { ...buildB, weapon: { ...buildB.weapon, ammo: id } };
+    buildB = { ...buildB, weapon: { ...buildB.weapon, ammoId: id } };
   }
 
   function clearWeaponA() {
-    buildA = { ...buildA, weapon: { id: 1, ammo: undefined } };
+    buildA = { ...buildA, weapon: { id: 1, ammoId: undefined } };
   }
 
   function clearWeaponB() {
-    buildB = { ...buildB, weapon: { id: 1, ammo: undefined } };
+    buildB = { ...buildB, weapon: { id: 1, ammoId: undefined } };
   }
 
   function clearAmmoA() {
-    buildA = { ...buildA, weapon: { ...buildA.weapon, ammo: undefined } };
+    buildA = { ...buildA, weapon: { ...buildA.weapon, ammoId: undefined } };
   }
 
   function clearAmmoB() {
-    buildB = { ...buildB, weapon: { ...buildB.weapon, ammo: undefined } };
+    buildB = { ...buildB, weapon: { ...buildB.weapon, ammoId: undefined } };
   }
 
   function copyAtoB() {
@@ -187,8 +187,8 @@
       <td></td>
       <td>
         {#if weaponA?.ammo}
-          {#if buildA.weapon.ammo}
-            {@const selectedAmmo = ammoRegistry.get(buildA.weapon.ammo)}
+          {#if buildA.weapon.ammoId}
+            {@const selectedAmmo = ammoRegistry.get(buildA.weapon.ammoId)}
             {#if selectedAmmo}
               <div class="selected-item">
                 <span class="selected-name selected-name-a">{selectedAmmo.name}</span>
@@ -201,8 +201,8 @@
       {#if showSecondBuild}
         <td>
           {#if weaponB?.ammo}
-            {#if buildB.weapon.ammo}
-              {@const selectedAmmo = ammoRegistry.get(buildB.weapon.ammo)}
+            {#if buildB.weapon.ammoId}
+              {@const selectedAmmo = ammoRegistry.get(buildB.weapon.ammoId)}
               {#if selectedAmmo}
                 <div class="selected-item">
                   <span class="selected-name selected-name-b">{selectedAmmo.name}</span>

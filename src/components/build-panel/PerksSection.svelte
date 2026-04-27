@@ -4,8 +4,8 @@
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
   import Tooltip from "@components/Tooltip.svelte";
-  import { perks } from "@data/perks";
-  import { spells } from "@data/spells";
+  import { allPerks } from "@data/perks";
+  import { allSpells } from "@data/spells";
   import type { Build } from "@lib/build-state";
   import { packSection, SECTION_TAG } from "@lib/section-clipboard";
   import { compactPerks, expandPerks } from "@lib/url-pack";
@@ -24,11 +24,11 @@
     perkOrder: number[];
   } = $props();
 
-  const perkRegistry = new Map(perks.map((p) => [p.id, p]));
+  const perkRegistry = new Map(allPerks.map((p) => [p.id, p]));
   const selectablePerks = $derived(
-    perks.filter((p) => {
+    allPerks.filter((p) => {
       if (p.spell) {
-        const spell = spells.find((s) => s.scope == p.scope);
+        const spell = allSpells.find((s) => s.scope == p.scope);
         return (
           spell?.vocations.includes(buildA.stats.vocation) ||
           (showSecondBuild && spell?.vocations.includes(buildB.stats.vocation))

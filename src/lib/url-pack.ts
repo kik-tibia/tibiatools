@@ -1,6 +1,16 @@
 import LZString from "lz-string";
-import type { Build, BuildStats, CalculatorState, CollapsedSections, Vocation } from "./build-state";
-import type { ActivePerk, ImbuementElement, RotationSpell, Target, WeaponBuild } from "./damage-calc";
+import type {
+  Build,
+  BuildStats,
+  CalculatorState,
+  CollapsedSections,
+  CreatureChoiceRef,
+  ImbuementElement,
+  PerkChoiceRef,
+  SpellChoiceRef,
+  Vocation,
+  WeaponChoiceRef,
+} from "./build-state";
 
 /**
  * State = [BuildA, BuildB, showSecondBuild]
@@ -91,38 +101,38 @@ export function expandStats(compact: CompactStats): BuildStats {
   return stats as BuildStats;
 }
 
-export function compactWeapon(weapon: WeaponBuild): CompactWeapon {
-  return weapon.ammo ? [weapon.id, weapon.ammo] : weapon.id;
+export function compactWeapon(weapon: WeaponChoiceRef): CompactWeapon {
+  return weapon.ammoId ? [weapon.id, weapon.ammoId] : weapon.id;
 }
 
-export function expandWeapon(compact: CompactWeapon): WeaponBuild {
+export function expandWeapon(compact: CompactWeapon): WeaponChoiceRef {
   if (typeof compact === "number") {
     return { id: compact };
   }
-  return { id: compact[0], ammo: compact[1] };
+  return { id: compact[0], ammoId: compact[1] };
 }
 
-export function compactPerks(perks: ActivePerk[]): CompactPerk[] {
+export function compactPerks(perks: PerkChoiceRef[]): CompactPerk[] {
   return perks.map((p) => [p.id, p.value]);
 }
 
-export function expandPerks(compact: CompactPerk[]): ActivePerk[] {
+export function expandPerks(compact: CompactPerk[]): PerkChoiceRef[] {
   return compact.map(([id, value]) => ({ id, value }));
 }
 
-export function compactRotation(rotation: RotationSpell[]): CompactRotation[] {
+export function compactRotation(rotation: SpellChoiceRef[]): CompactRotation[] {
   return rotation.map((r) => [r.id, r.targets, r.ratio, +r.extraSpell]);
 }
 
-export function expandRotation(compact: CompactRotation[]): RotationSpell[] {
+export function expandRotation(compact: CompactRotation[]): SpellChoiceRef[] {
   return compact.map(([id, targets, ratio, extraSpell]) => ({ id, targets, ratio, extraSpell: !!extraSpell }));
 }
 
-export function compactTargets(targets: Target[]): CompactTarget[] {
+export function compactTargets(targets: CreatureChoiceRef[]): CompactTarget[] {
   return targets.map((t) => [t.id, t.ratio]);
 }
 
-export function expandTargets(compact: CompactTarget[]): Target[] {
+export function expandTargets(compact: CompactTarget[]): CreatureChoiceRef[] {
   return compact.map(([id, ratio]) => ({ id, ratio }));
 }
 

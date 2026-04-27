@@ -3,7 +3,7 @@
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
-  import { creatures } from "@data/creatures";
+  import { allCreatures } from "@data/creatures";
   import type { Build } from "@lib/build-state";
   import { packSection, SECTION_TAG } from "@lib/section-clipboard";
   import { compactTargets, expandTargets } from "@lib/url-pack";
@@ -22,7 +22,7 @@
     targetOrder: number[];
   } = $props();
 
-  const creatureRegistry = new Map(creatures.map((c) => [c.id, c]));
+  const creatureRegistry = new Map(allCreatures.map((c) => [c.id, c]));
 
   function addTarget(id: number) {
     buildA = { ...buildA, targets: [...buildA.targets, { id, ratio: 1 }] };
@@ -145,7 +145,7 @@
 {#if !collapsed}
   <tr class="data-row">
     <td>
-      <FuzzySelect selectType="targets" all={creatures} selectedIds={targetOrder} onAdd={addTarget} />
+      <FuzzySelect selectType="targets" all={allCreatures} selectedIds={targetOrder} onAdd={addTarget} />
     </td>
 
     <td class="sub-header">

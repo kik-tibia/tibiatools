@@ -2,8 +2,7 @@
   import ClipboardPasteRow from "@components/build-panel/ClipboardPasteRow.svelte";
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import Tooltip from "@components/Tooltip.svelte";
-  import type { Build, BuildStats } from "@lib/build-state";
-  import type { ImbuementElement } from "@lib/damage-calc";
+  import type { Build, BuildStats, ImbuementElement } from "@lib/build-state";
   import { packSection, SECTION_TAG } from "@lib/section-clipboard";
   import { compactStats, expandStats } from "@lib/url-pack";
 

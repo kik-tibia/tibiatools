@@ -39,7 +39,7 @@ export interface SpellDamage extends Spell {
   effectiveAvg: number;
 }
 
-export const spells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) => ({
+export const allSpells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) => ({
   ...s,
   scope: s.scope,
   additionalDamageMultiplier: s.additionalDamageMultiplier ?? 1,
