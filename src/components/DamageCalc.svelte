@@ -1,14 +1,18 @@
 <script lang="ts">
   import { onMount } from "svelte";
-
-  import { computeDph, computeDpt, computeResults } from "@lib/damage-calc";
-  import { packState, unpackState } from "@lib/url-pack";
-  import { defaultCollapsed, type Build, type CalculatorState, type CollapsedSections } from "@lib/build-state";
-
   import BuildPanel from "@components/build-panel/BuildPanel.svelte";
   import BuildBadge from "@components/BuildBadge.svelte";
   import ResultsTable from "@components/ResultsTable.svelte";
   import type { SpellDamage } from "@data/spells";
+  import { defaultCollapsed, type Build, type CalculatorState, type CollapsedSections } from "@lib/build-state";
+  import { computeDph, computeDpt, computeResults } from "@lib/damage-calc";
+  import {
+    resolveCreatures,
+    resolvePerks,
+    resolveSpellDamages,
+    resolveWeapon,
+  } from "@lib/damage-calc/build-state-resolver";
+  import { packState, unpackState } from "@lib/url-pack";
 
   let { initial }: { initial: CalculatorState } = $props();
 
@@ -24,12 +28,20 @@
     return { version: 2, A, B, perkOrder, rotationOrder, targetOrder, showSecondBuild, collapsed };
   }
 
-  let resultsA = $derived(computeResults(A.stats, A.weapon, A.perks, A.targets));
-  let resultsB = $derived(computeResults(B.stats, B.weapon, B.perks, B.targets));
-  let effectiveDptA = $derived(computeDpt(resultsA, A.rotation));
-  let effectiveDptB = $derived(computeDpt(resultsB, B.rotation));
-  let effectiveDphA = $derived(computeDph(resultsA, A.rotation));
-  let effectiveDphB = $derived(computeDph(resultsB, B.rotation));
+  let weaponChoiceA = $derived(resolveWeapon(A.weapon));
+  let weaponChoiceB = $derived(resolveWeapon(B.weapon));
+  let perkChoicesA = $derived(resolvePerks(A.perks));
+  let perkChoicesB = $derived(resolvePerks(B.perks));
+  let targetChoicesA = $derived(resolveCreatures(A.targets));
+  let targetChoicesB = $derived(resolveCreatures(B.targets));
+  let resultsA = $derived(computeResults(A.stats, weaponChoiceA, perkChoicesA, targetChoicesA));
+  let resultsB = $derived(computeResults(B.stats, weaponChoiceB, perkChoicesB, targetChoicesB));
+  let spellDamageChoicesA = $derived(resolveSpellDamages(A.rotation, resultsA));
+  let spellDamageChoicesB = $derived(resolveSpellDamages(B.rotation, resultsB));
+  let effectiveDptA = $derived(computeDpt(spellDamageChoicesA));
+  let effectiveDptB = $derived(computeDpt(spellDamageChoicesB));
+  let effectiveDphA = $derived(computeDph(spellDamageChoicesA));
+  let effectiveDphB = $derived(computeDph(spellDamageChoicesB));
 
   const toMap = (arr: SpellDamage[]) => new Map(arr.map((x) => [x.id, x]));
   let mapA = $derived(toMap(resultsA));

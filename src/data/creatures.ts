@@ -21,4 +21,4 @@ export type Creature = {
   healMod: number;
 };
 
-export const creatures: Creature[] = creaturesRaw as Creature[];
+export const allCreatures: Creature[] = creaturesRaw as Creature[];

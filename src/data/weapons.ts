@@ -23,7 +23,7 @@ export type Weapon = {
   vocations: string[];
 };
 
-export const weapons: Weapon[] = (weaponsRaw as Weapon[]).map((w) => ({
+export const allWeapons: Weapon[] = (weaponsRaw as Weapon[]).map((w) => ({
   ...w,
   attackPhysical:
     w.attack == null
@@ -54,7 +54,7 @@ export type Ammo = AmmoRaw & {
 
 const ammoData = ammoRaw as AmmoData;
 
-export const ammo: Ammo[] = [
+export const allAmmo: Ammo[] = [
   ...ammoData.arrows.map((a) => ({ ...a, type: "arrows" as const })),
   ...ammoData.bolts.map((a) => ({ ...a, type: "bolts" as const })),
 ];

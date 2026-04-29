@@ -4,9 +4,8 @@
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
   import { charms } from "@data/charms";
-  import { creatures } from "@data/creatures";
-  import type { Build } from "@lib/build-state";
-  import type { Target } from "@lib/damage-calc";
+  import { allCreatures } from "@data/creatures";
+  import type { Build, CreatureChoiceRef } from "@lib/build-state";
   import { packSection, SECTION_TAG } from "@lib/section-clipboard";
   import { compactTargets, expandTargets } from "@lib/url-pack";
 
@@ -24,7 +23,7 @@
     targetOrder: number[];
   } = $props();
 
-  const creatureRegistry = new Map(creatures.map((c) => [c.id, c]));
+  const creatureRegistry = new Map(allCreatures.map((c) => [c.id, c]));
 
   const charmTiers: number[] = [1, 2, 3];
   const DEFAULT_CHARM_TIER = 2;
@@ -74,7 +73,7 @@
   }
 
   function setCharmIdFor(
-    target: Target | undefined,
+    target: CreatureChoiceRef | undefined,
     setCharm: (id: number, charmId: number | null, charmTier: number | null) => void,
     targetId: number,
     raw: string,
@@ -88,7 +87,7 @@
   }
 
   function setCharmTierFor(
-    target: Target | undefined,
+    target: CreatureChoiceRef | undefined,
     setCharm: (id: number, charmId: number | null, charmTier: number | null) => void,
     raw: string,
   ) {
@@ -225,7 +224,7 @@
 {#if !collapsed}
   <tr class="data-row">
     <td>
-      <FuzzySelect selectType="targets" all={creatures} selectedIds={targetOrder} onAdd={addTarget} />
+      <FuzzySelect selectType="targets" all={allCreatures} selectedIds={targetOrder} onAdd={addTarget} />
     </td>
 
     <td class="sub-header">

@@ -3,7 +3,7 @@
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
-  import { spells, type Spell } from "@data/spells";
+  import { allSpells, type Spell } from "@data/spells";
   import type { Build } from "@lib/build-state";
   import { packSection, SECTION_TAG } from "@lib/section-clipboard";
   import { compactRotation, expandRotation } from "@lib/url-pack";
@@ -22,12 +22,12 @@
     rotationOrder: number[];
   } = $props();
 
-  const spellRegistry = new Map(spells.map((s) => [s.id, s]));
+  const spellRegistry = new Map(allSpells.map((s) => [s.id, s]));
 
   const isAutoAttack = (id: number) => id === 1;
 
   let selectableSpells = $derived(
-    spells.filter(
+    allSpells.filter(
       (s) =>
         s.isSelectable &&
         (s.vocations.includes(buildA.stats.vocation) ||
@@ -59,7 +59,7 @@
 
   function setRatioA(id: number, v: number) {
     const scope = spellRegistry.get(id)?.scope;
-    const matchedSpells = spells.filter((s) => s.scope == scope).map((s) => s.id);
+    const matchedSpells = allSpells.filter((s) => s.scope == scope).map((s) => s.id);
     buildA = {
       ...buildA,
       rotation: buildA.rotation.map((r) => (matchedSpells.includes(r.id) ? { ...r, ratio: v } : r)),
@@ -68,7 +68,7 @@
 
   function setRatioB(id: number, v: number) {
     const scope = spellRegistry.get(id)?.scope;
-    const matchedSpells = spells.filter((s) => s.scope == scope).map((s) => s.id);
+    const matchedSpells = allSpells.filter((s) => s.scope == scope).map((s) => s.id);
     buildB = {
       ...buildB,
       rotation: buildB.rotation.map((r) => (matchedSpells.includes(r.id) ? { ...r, ratio: v } : r)),
@@ -86,7 +86,7 @@
   function addRotationA(id: number) {
     const scope = spellRegistry.get(id)?.scope;
     const spellsToAdd =
-      spells
+      allSpells
         .filter((s) => s.scope == scope)
         .map((spell, i) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
     buildA = { ...buildA, rotation: [...buildA.rotation, ...spellsToAdd] };
@@ -95,7 +95,7 @@
   function addRotationB(id: number) {
     const scope = spellRegistry.get(id)?.scope;
     const spellsToAdd =
-      spells
+      allSpells
         .filter((s) => s.scope == scope)
         .map((spell, i) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
     buildB = { ...buildB, rotation: [...buildB.rotation, ...spellsToAdd] };
@@ -103,7 +103,7 @@
 
   function removeRotationA(id: number) {
     const scope = spellRegistry.get(id)?.scope;
-    const spellsToRemove = spells.filter((s) => s.scope == scope).map((s) => s.id);
+    const spellsToRemove = allSpells.filter((s) => s.scope == scope).map((s) => s.id);
     buildA = { ...buildA, rotation: buildA.rotation.filter((a) => !spellsToRemove.includes(a.id)) };
     if (!buildB.rotation.some((r) => r.id === id)) {
       rotationOrder = rotationOrder.filter((x) => !spellsToRemove.includes(x));
@@ -112,7 +112,7 @@
 
   function removeRotationB(id: number) {
     const scope = spellRegistry.get(id)?.scope;
-    const spellsToRemove = spells.filter((s) => s.scope == scope).map((s) => s.id);
+    const spellsToRemove = allSpells.filter((s) => s.scope == scope).map((s) => s.id);
     buildB = { ...buildB, rotation: buildB.rotation.filter((a) => !spellsToRemove.includes(a.id)) };
     if (!buildA.rotation.some((r) => r.id === id)) {
       rotationOrder = rotationOrder.filter((x) => !spellsToRemove.includes(x));

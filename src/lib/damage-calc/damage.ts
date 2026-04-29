@@ -2,7 +2,7 @@ import type { Creature } from "@data/creatures";
 import type { Element, Spell, SpellDamage } from "@data/spells";
 import type { Weapon } from "@data/weapons";
 import type { BuildStats } from "@lib/build-state";
-import type { SpellState, TargetWithCreature } from "@lib/damage-calc";
+import type { CreatureChoice, SpellState } from "@lib/damage-calc";
 
 export function computeDamageRanges(
   spell: Spell,
@@ -10,7 +10,7 @@ export function computeDamageRanges(
   aoeAA: boolean,
   buildStats: BuildStats,
   weapon: Weapon,
-  targetsWithCreatures: TargetWithCreature[],
+  creatureChoices: CreatureChoice[],
 ): SpellDamage {
   const highRollAA = !aoeAA;
 
@@ -39,8 +39,8 @@ export function computeDamageRanges(
     ice: 0,
     physical: 0,
   };
-  const ratioAdjustedHp = targetsWithCreatures.reduce(
-    (total, creture) => total + creture.ratio * creture.creature.hitpoints,
+  const ratioAdjustedHp = creatureChoices.reduce(
+    (total, cretureChoice) => total + cretureChoice.ratio * cretureChoice.creature.hitpoints,
     0,
   );
 
@@ -106,7 +106,7 @@ export function computeDamageRanges(
         physAvg,
         physAvg,
         state,
-        targetsWithCreatures,
+        creatureChoices,
         ratioAdjustedHp,
       );
       effectiveAvgHighRoll = weightedElementalEffective(
@@ -114,7 +114,7 @@ export function computeDamageRanges(
         physAvgHighRoll,
         physAvgHighRoll,
         state,
-        targetsWithCreatures,
+        creatureChoices,
         ratioAdjustedHp,
       );
     }
@@ -179,7 +179,7 @@ export function computeDamageRanges(
         physMin,
         physMax,
         state,
-        targetsWithCreatures,
+        creatureChoices,
         ratioAdjustedHp,
       );
     }
@@ -220,29 +220,29 @@ function weightedElementalEffective(
   physMin: number,
   physMax: number,
   spellState: SpellState,
-  targets: TargetWithCreature[],
+  creatureChoices: CreatureChoice[],
   ratioAdjustedHp: number,
 ): number {
-  return targets.reduce((total, creature) => {
-    const ratio = (creature.ratio * creature.creature.hitpoints) / ratioAdjustedHp;
-    const armor = Math.round(creature.creature.armor * (1 - spellState.armorPenetration));
-    const extraDamage = 1 + bestiaryExtraDamage(creature.creature, spellState);
+  return creatureChoices.reduce((total, creatureChoice) => {
+    const ratio = (creatureChoice.ratio * creatureChoice.creature.hitpoints) / ratioAdjustedHp;
+    const armor = Math.round(creatureChoice.creature.armor * (1 - spellState.armorPenetration));
+    const extraDamage = 1 + bestiaryExtraDamage(creatureChoice.creature, spellState);
     return (
       total +
       ratio *
-        (elements.death * applyPierce(creature.creature.deathDmgMod, spellState.deathPierce) +
-          elements.earth * applyPierce(creature.creature.earthDmgMod, spellState.earthPierce) +
-          elements.energy * applyPierce(creature.creature.energyDmgMod, spellState.energyPierce) +
-          elements.fire * applyPierce(creature.creature.fireDmgMod, spellState.firePierce) +
-          elements.holy * applyPierce(creature.creature.holyDmgMod, spellState.holyPierce) +
-          elements.ice * applyPierce(creature.creature.iceDmgMod, spellState.icePierce) +
+        (elements.death * applyPierce(creatureChoice.creature.deathDmgMod, spellState.deathPierce) +
+          elements.earth * applyPierce(creatureChoice.creature.earthDmgMod, spellState.earthPierce) +
+          elements.energy * applyPierce(creatureChoice.creature.energyDmgMod, spellState.energyPierce) +
+          elements.fire * applyPierce(creatureChoice.creature.fireDmgMod, spellState.firePierce) +
+          elements.holy * applyPierce(creatureChoice.creature.holyDmgMod, spellState.holyPierce) +
+          elements.ice * applyPierce(creatureChoice.creature.iceDmgMod, spellState.icePierce) +
           avgDamageVsArmor(
-            physMin * applyPierce(creature.creature.physicalDmgMod, spellState.physicalPierce),
-            physMax * applyPierce(creature.creature.physicalDmgMod, spellState.physicalPierce),
+            physMin * applyPierce(creatureChoice.creature.physicalDmgMod, spellState.physicalPierce),
+            physMax * applyPierce(creatureChoice.creature.physicalDmgMod, spellState.physicalPierce),
             Math.max(Math.floor(armor / 2), 0),
             Math.max(Math.floor(armor / 2) * 2 - 1, 0),
           )) *
-        (1 - creature.creature.mitigation / 100) *
+        (1 - creatureChoice.creature.mitigation / 100) *
         extraDamage
     );
   }, 0);
