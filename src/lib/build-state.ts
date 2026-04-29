@@ -82,7 +82,7 @@ const defaultWeapon = (): WeaponChoiceRef => ({
   id: 1,
 });
 
-export const defaultBuild = () => ({
+export const defaultBuild = (): Build => ({
   stats: defaultStats(),
   weapon: defaultWeapon(),
   perks: [],
