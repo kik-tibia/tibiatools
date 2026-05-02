@@ -1,17 +1,42 @@
 import type { Creature } from "@data/creatures";
-import type { Element, Spell, SpellDamage } from "@data/spells";
+import type { Element, Spell, SpellDamage, SpellDamageEffective, SpellDamageRaw } from "@data/spells";
 import type { Weapon } from "@data/weapons";
 import type { BuildStats } from "@lib/build-state";
 import type { CreatureChoice, SpellState } from "@lib/damage-calc";
 
-export function computeDamageRanges(
+export function computeRaw(spell: Spell, state: SpellState, buildStats: BuildStats): SpellDamageRaw {
+  if (spell.spellType === "auto") {
+    const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
+    const attackIncrease = buildStats.vocation == "monk" ? 1.5 : 1;
+    let min, avg, max;
+    if (state.weaponDamage) {
+      min = undefined;
+      avg = state.weaponDamage;
+      max = undefined;
+    } else {
+      min = Math.floor(state.flat + (attackValueWithoutFlat * attackIncrease) / 2);
+      avg = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease);
+      max = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease * 2);
+    }
+    return { ...spell, min, avg, max };
+  } else {
+    // TODO implement harmony properly, with a stance system that all vocations will benefit from
+    if (spell.isSpender) state.basePower *= 3.08;
+    const avg = computeAvg(spell, state);
+    const min = spell.buckets != 0 ? computeMinMax(spell, -1, state) : undefined;
+    const max = spell.buckets != 0 ? computeMinMax(spell, 1, state) : undefined;
+    return { min, avg, max };
+  }
+}
+
+export function computeEffective(
   spell: Spell,
   state: SpellState,
   aoeAA: boolean,
   buildStats: BuildStats,
   weapon: Weapon,
-  creatureChoices: CreatureChoice[],
-): SpellDamage {
+  creatureChoice?: CreatureChoice,
+): SpellDamageEffective {
   const highRollAA = !aoeAA;
 
   let nTranscendenceAttacks;
@@ -30,6 +55,9 @@ export function computeDamageRanges(
   // Increase crit damage by the ratio of transcendence crits, which have 15% extra damage
   const critDamage = state.critDamage + (0.15 * pTCrit) / (pTCrit + (1 - pTCrit) * critChance || 1);
 
+  const elementalCharmDmg = 0;
+  const critCharmDmg = 0;
+
   const effectiveAvgElements: Record<Element, number> = {
     death: 0,
     earth: 0,
@@ -39,10 +67,6 @@ export function computeDamageRanges(
     ice: 0,
     physical: 0,
   };
-  const ratioAdjustedHp = creatureChoices.reduce(
-    (total, cretureChoice) => total + cretureChoice.ratio * cretureChoice.creature.hitpoints,
-    0,
-  );
 
   weapon = applyElementalAttackImbuement(weapon, aoeAA, buildStats);
 
@@ -100,22 +124,14 @@ export function computeDamageRanges(
 
     const physAvgHighRoll = (highRollAvg * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
 
-    if (ratioAdjustedHp > 0) {
-      effectiveAvg = weightedElementalEffective(
-        effectiveAvgElements,
-        physAvg,
-        physAvg,
-        state,
-        creatureChoices,
-        ratioAdjustedHp,
-      );
-      effectiveAvgHighRoll = weightedElementalEffective(
+    if (creatureChoice) {
+      effectiveAvg = elementalEffective(effectiveAvgElements, physAvg, physAvg, state, creatureChoice);
+      effectiveAvgHighRoll = elementalEffective(
         effectiveAvgHighRollElements,
         physAvgHighRoll,
         physAvgHighRoll,
         state,
-        creatureChoices,
-        ratioAdjustedHp,
+        creatureChoice,
       );
     }
 
@@ -133,7 +149,7 @@ export function computeDamageRanges(
         : effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
     }
 
-    return { ...spell, min, avg, max, effectiveAvg };
+    return { effectiveAvg, elementalCharmDmg, critCharmDmg };
   } else {
     // TODO implement harmony properly, with a stance system that all vocations will benefit from
     if (spell.isSpender) state.basePower *= 3.08;
@@ -173,24 +189,17 @@ export function computeDamageRanges(
       }
     }
 
-    if (ratioAdjustedHp > 0) {
-      effectiveAvg = weightedElementalEffective(
-        effectiveAvgElements,
-        physMin,
-        physMax,
-        state,
-        creatureChoices,
-        ratioAdjustedHp,
-      );
+    if (creatureChoice) {
+      effectiveAvg = elementalEffective(effectiveAvgElements, physMin, physMax, state, creatureChoice);
     }
 
     effectiveAvg =
       effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
-    return { ...spell, min, avg, max, effectiveAvg };
+    return { effectiveAvg, elementalCharmDmg, critCharmDmg };
   }
 }
 
-function computeAvg(spell: Spell, state: SpellState): number {
+export function computeAvg(spell: Spell, state: SpellState): number {
   const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W } = state;
   const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
   const damage =
@@ -215,37 +224,31 @@ function computeMinMax(spell: Spell, minMax: number, state: SpellState): number 
   return Math.ceil(damage * spell.additionalDamageMultiplier);
 }
 
-function weightedElementalEffective(
+function elementalEffective(
   elements: Record<Element, number>,
   physMin: number,
   physMax: number,
   spellState: SpellState,
-  creatureChoices: CreatureChoice[],
-  ratioAdjustedHp: number,
+  creatureChoice: CreatureChoice,
 ): number {
-  return creatureChoices.reduce((total, creatureChoice) => {
-    const ratio = (creatureChoice.ratio * creatureChoice.creature.hitpoints) / ratioAdjustedHp;
-    const armor = Math.round(creatureChoice.creature.armor * (1 - spellState.armorPenetration));
-    const extraDamage = 1 + bestiaryExtraDamage(creatureChoice.creature, spellState);
-    return (
-      total +
-      ratio *
-        (elements.death * applyPierce(creatureChoice.creature.deathDmgMod, spellState.deathPierce) +
-          elements.earth * applyPierce(creatureChoice.creature.earthDmgMod, spellState.earthPierce) +
-          elements.energy * applyPierce(creatureChoice.creature.energyDmgMod, spellState.energyPierce) +
-          elements.fire * applyPierce(creatureChoice.creature.fireDmgMod, spellState.firePierce) +
-          elements.holy * applyPierce(creatureChoice.creature.holyDmgMod, spellState.holyPierce) +
-          elements.ice * applyPierce(creatureChoice.creature.iceDmgMod, spellState.icePierce) +
-          avgDamageVsArmor(
-            physMin * applyPierce(creatureChoice.creature.physicalDmgMod, spellState.physicalPierce),
-            physMax * applyPierce(creatureChoice.creature.physicalDmgMod, spellState.physicalPierce),
-            Math.max(Math.floor(armor / 2), 0),
-            Math.max(Math.floor(armor / 2) * 2 - 1, 0),
-          )) *
-        (1 - creatureChoice.creature.mitigation / 100) *
-        extraDamage
-    );
-  }, 0);
+  const armor = Math.round(creatureChoice.creature.armor * (1 - spellState.armorPenetration));
+  const extraDamage = 1 + bestiaryExtraDamage(creatureChoice.creature, spellState);
+  return (
+    (elements.death * applyPierce(creatureChoice.creature.deathDmgMod, spellState.deathPierce) +
+      elements.earth * applyPierce(creatureChoice.creature.earthDmgMod, spellState.earthPierce) +
+      elements.energy * applyPierce(creatureChoice.creature.energyDmgMod, spellState.energyPierce) +
+      elements.fire * applyPierce(creatureChoice.creature.fireDmgMod, spellState.firePierce) +
+      elements.holy * applyPierce(creatureChoice.creature.holyDmgMod, spellState.holyPierce) +
+      elements.ice * applyPierce(creatureChoice.creature.iceDmgMod, spellState.icePierce) +
+      avgDamageVsArmor(
+        physMin * applyPierce(creatureChoice.creature.physicalDmgMod, spellState.physicalPierce),
+        physMax * applyPierce(creatureChoice.creature.physicalDmgMod, spellState.physicalPierce),
+        Math.max(Math.floor(armor / 2), 0),
+        Math.max(Math.floor(armor / 2) * 2 - 1, 0),
+      )) *
+    (1 - creatureChoice.creature.mitigation / 100) *
+    extraDamage
+  );
 }
 
 /** The best single-variable model that predicts Fist Fighting for the regular mon files with R² = 0.8348

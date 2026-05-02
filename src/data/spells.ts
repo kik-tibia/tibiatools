@@ -32,12 +32,19 @@ export type SpellOrdering = {
   order: string[];
 };
 
-export interface SpellDamage extends Spell {
+export type SpellDamageRaw = {
   min?: number;
   avg: number;
   max?: number;
+};
+
+export type SpellDamageEffective = {
   effectiveAvg: number;
-}
+  elementalCharmDmg: number; // not included in effectiveAvg
+  critCharmDmg: number; // is included in effectiveAvg
+};
+
+export type SpellDamage = Spell & SpellDamageRaw & SpellDamageEffective;
 
 export const allSpells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) => ({
   ...s,

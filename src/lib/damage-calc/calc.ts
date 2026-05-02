@@ -1,4 +1,4 @@
-import { allSpells, type Spell, type SpellDamage } from "@data/spells";
+import { allSpells, type Spell, type SpellDamage, type SpellDamageEffective, type SpellDamageRaw } from "@data/spells";
 import { type SkillType } from "@data/weapons";
 import type { BuildStats, Vocation } from "@lib/build-state";
 import type {
@@ -9,7 +9,7 @@ import type {
   SpellState,
   WeaponChoice,
 } from "@lib/damage-calc";
-import { computeDamageRanges } from "./damage.ts";
+import { computeEffective, computeRaw } from "./damage.ts";
 
 const AUTO_ATTACK_ID = 1;
 
@@ -74,14 +74,43 @@ export function computeResults(
         (acc, perkChoice) => applyPerkToSpell(spell, perkChoice, weaponChoice.weapon.skill, buildStats.vocation, acc),
         initial,
       );
-      return computeDamageRanges(
-        spell,
-        final,
-        !!weaponChoice.ammo?.aoe,
-        buildStats,
-        weaponChoice.weapon,
-        creatureChoices,
+
+      const raw: SpellDamageRaw = computeRaw(spell, final, buildStats);
+
+      let effective: SpellDamageEffective;
+      const ratioAdjustedHp = creatureChoices.reduce(
+        (total, cretureChoice) => total + cretureChoice.ratio * cretureChoice.creature.hitpoints,
+        0,
       );
+      if (ratioAdjustedHp > 0) {
+        effective = creatureChoices.reduce(
+          (acc, creatureChoice) => {
+            const creatureEffective = computeEffective(
+              spell,
+              final,
+              !!weaponChoice.ammo?.aoe,
+              buildStats,
+              weaponChoice.weapon,
+              creatureChoice,
+            );
+            const multiplier = (creatureChoice.ratio * creatureChoice.creature.hitpoints) / ratioAdjustedHp;
+            const nextEffectiveDmg = acc.effectiveAvg + creatureEffective.effectiveAvg * multiplier;
+            const nextElementalCharmDmg = acc.elementalCharmDmg + creatureEffective.effectiveAvg * multiplier;
+            const nextCritCharmDmg = acc.critCharmDmg + creatureEffective.effectiveAvg * multiplier;
+            return {
+              effectiveAvg: nextEffectiveDmg,
+              elementalCharmDmg: nextElementalCharmDmg,
+              critCharmDmg: nextCritCharmDmg,
+            };
+          },
+          {
+            effectiveAvg: 0,
+            elementalCharmDmg: 0,
+            critCharmDmg: 0,
+          },
+        );
+      } else effective = computeEffective(spell, final, !!weaponChoice.ammo?.aoe, buildStats, weaponChoice.weapon);
+      return { ...spell, ...raw, ...effective };
     });
   return spellResults;
 }
