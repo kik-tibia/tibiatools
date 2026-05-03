@@ -55,8 +55,8 @@
   let isDptBHigher = $derived(effectiveDptB >= effectiveDptA - epsilon);
   let isDphAHigher = $derived(effectiveDphA >= effectiveDphB - epsilon);
   let isDphBHigher = $derived(effectiveDphB >= effectiveDphA - epsilon);
-  let isdamageFromCharmsAHigher = $derived(damageFromCharmsA >= damageFromCharmsB - epsilon);
-  let isdamageFromCharmsBHigher = $derived(damageFromCharmsB >= damageFromCharmsA - epsilon);
+  let isDamageFromCharmsAHigher = $derived(damageFromCharmsA >= damageFromCharmsB - epsilon);
+  let isDamageFromCharmsBHigher = $derived(damageFromCharmsB >= damageFromCharmsA - epsilon);
   let pctIncreaseA = $derived((effectiveDptA / effectiveDptB - 1) * 100);
   let pctIncreaseB = $derived((effectiveDptB / effectiveDptA - 1) * 100);
   let showIncrease = $derived(Number.isFinite(pctIncreaseA) && Number.isFinite(pctIncreaseB));
@@ -170,7 +170,7 @@
       showHighlighting={showSecondBuild}
       isDptHigher={isDptAHigher}
       isDphHigher={isDphAHigher}
-      isDamageFromCharmsHigher={isdamageFromCharmsAHigher}
+      isDamageFromCharmsHigher={isDamageFromCharmsAHigher}
       isHigher={isAHigher} />
   </div>
 
@@ -194,7 +194,7 @@
         showHighlighting={true}
         isDptHigher={isDptBHigher}
         isDphHigher={isDphBHigher}
-        isDamageFromCharmsHigher={isdamageFromCharmsBHigher}
+        isDamageFromCharmsHigher={isDamageFromCharmsBHigher}
         isHigher={isBHigher} />
     </div>
   {/if}

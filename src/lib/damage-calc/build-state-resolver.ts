@@ -35,10 +35,10 @@ export function resolveSpellDamages(
   spellChoiceRefs: SpellChoiceRef[],
   spellDamages: SpellDamage[],
 ): SpellDamageChoice[] {
-  const SpellDamagesById: Record<number, SpellDamage> = Object.fromEntries(spellDamages.map((i) => [i.id, i]));
+  const spellDamagesById: Record<number, SpellDamage> = Object.fromEntries(spellDamages.map((i) => [i.id, i]));
   return spellChoiceRefs
     .map((s) => {
-      const spellDamage = SpellDamagesById[s.id];
+      const spellDamage = spellDamagesById[s.id];
       if (!spellDamage) {
         console.warn(`Unknown spell id: ${s.id}`);
         return null;

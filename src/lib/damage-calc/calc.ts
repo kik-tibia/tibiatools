@@ -79,7 +79,7 @@ export function computeResults(
 
       let effective: SpellDamageEffective;
       const ratioAdjustedHp = creatureChoices.reduce(
-        (total, cretureChoice) => total + cretureChoice.ratio * cretureChoice.creature.hitpoints,
+        (total, creatureChoice) => total + creatureChoice.ratio * creatureChoice.creature.hitpoints,
         0,
       );
       if (ratioAdjustedHp > 0) {

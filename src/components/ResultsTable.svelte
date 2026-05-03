@@ -60,7 +60,7 @@
         <td class="summary-label">
           <Tooltip
             label={"Effective damage per turn"}
-            tip={"The average damage you would deal per turn, using the defined rotation, taking inte account resistances, mitigation, crits and fatals. Includes all charms."}
+            tip={"The average damage you would deal per turn, using the defined rotation, taking into account resistances, mitigation, crits and fatals. Includes all charms."}
             right={true} />
         </td>
         <td class="summary-value">{effectiveDpt.toFixed(1)}</td>
