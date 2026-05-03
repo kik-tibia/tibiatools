@@ -3,6 +3,7 @@
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
+  import Tooltip from "@components/Tooltip.svelte";
   import { allCharms } from "@data/charms";
   import { allCreatures } from "@data/creatures";
   import type { Build, CreatureChoiceRef } from "@lib/build-state";
@@ -24,6 +25,7 @@
   } = $props();
 
   const creatureRegistry = new Map(allCreatures.map((c) => [c.id, c]));
+  const charmRegistry = new Map(allCharms.map((c) => [c.id, c]));
 
   const charmTiers: number[] = [1, 2, 3];
   const DEFAULT_CHARM_TIER = 2;
@@ -182,6 +184,13 @@
   <td>
     {#if build.targets.some((t) => t.id === targetId)}
       {@const target = build.targets.find((t) => t.id === targetId)}
+      {@const selectedCharm = target?.charmId != null ? charmRegistry.get(target.charmId) : undefined}
+      {@const missingStat =
+        selectedCharm?.effect === "overpower" && !build.stats.hitPoints
+          ? "Hit Points"
+          : selectedCharm?.effect === "overflux" && !build.stats.manaPoints
+            ? "Mana Points"
+            : null}
       <div class="tiered-select-cell">
         <select
           class="tiered-select tiered-select-type input-{buildId}"
@@ -192,16 +201,22 @@
             <option value={charm.id}>{charm.displayName}</option>
           {/each}
         </select>
-        <select
-          class="tiered-select tiered-select-tier input-{buildId}"
-          disabled={target?.charmId == null}
-          value={target?.charmTier ?? ""}
-          onchange={(e) => setCharmTierFor(target, setCharm, e.currentTarget.value)}>
-          <option value="" disabled>—</option>
-          {#each charmTiers as tier}
-            <option value={tier}>T{tier}</option>
-          {/each}
-        </select>
+        {#if missingStat}
+          <span class="tiered-select tiered-select-tier tiered-select-warn input-{buildId}">
+            <Tooltip label="×" tip="Requires setting {missingStat}<br/>in Advanced Stats" />
+          </span>
+        {:else}
+          <select
+            class="tiered-select tiered-select-tier input-{buildId}"
+            disabled={target?.charmId == null}
+            value={target?.charmTier ?? ""}
+            onchange={(e) => setCharmTierFor(target, setCharm, e.currentTarget.value)}>
+            <option value="" disabled>—</option>
+            {#each charmTiers as tier}
+              <option value={tier}>T{tier}</option>
+            {/each}
+          </select>
+        {/if}
       </div>
     {/if}
   </td>

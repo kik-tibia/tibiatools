@@ -237,3 +237,14 @@
   text-align: center;
   flex: 1 1 0;
 }
+
+.build-table .tiered-select-warn .field-tip {
+  display: block;
+}
+
+.build-table .tiered-select-warn .tip-trigger {
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  color: var(--negative-color);
+}

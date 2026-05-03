@@ -65,13 +65,13 @@
       tooltip: "Assumes a 200ms delay between<br/>your auto-attack and spell",
     },
     {
-      key: "hitpoints",
-      label: "Hitpoints",
+      key: "hitPoints",
+      label: "Hit Points",
       tooltip: "Required for Overpower",
     },
     {
-      key: "manapoints",
-      label: "Manapoints",
+      key: "manaPoints",
+      label: "Mana Points",
       tooltip: "Required for Overflux",
     },
     {

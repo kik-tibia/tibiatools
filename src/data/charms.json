@@ -28,7 +28,6 @@
   {
     "id": 6,
     "name": "Divine Wrath",
-    "displayName": "Divine",
     "effect": "elemental",
     "element": "holy"
   },

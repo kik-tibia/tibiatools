@@ -257,10 +257,10 @@ export function computeEffective(
       }
       elementalCharmDmg = elementalChance * cap * resistance * (1 - creatureChoice.creature.mitigation / 100);
     } else if (creatureChoice.charm.effect == "overpower") {
-      const cap = Math.min((buildStats.hitpoints ?? 0) * 0.05, creatureChoice.creature.hitpoints * 0.08);
+      const cap = Math.min((buildStats.hitPoints ?? 0) * 0.05, creatureChoice.creature.hitpoints * 0.08);
       elementalCharmDmg = elementalChance * cap;
     } else if (creatureChoice.charm.effect == "overflux") {
-      const cap = Math.min((buildStats.manapoints ?? 0) * 0.025, creatureChoice.creature.hitpoints * 0.08);
+      const cap = Math.min((buildStats.manaPoints ?? 0) * 0.025, creatureChoice.creature.hitpoints * 0.08);
       elementalCharmDmg = elementalChance * cap;
     }
   }

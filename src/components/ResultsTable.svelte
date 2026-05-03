@@ -60,7 +60,7 @@
         <td class="summary-label">
           <Tooltip
             label={"Effective damage per turn"}
-            tip={"The average damage you would deal per turn, using the defined rotation, taking inte account resistances, mitigation, crits and fatals."}
+            tip={"The average damage you would deal per turn, using the defined rotation, taking inte account resistances, mitigation, crits and fatals. Includes all charms."}
             right={true} />
         </td>
         <td class="summary-value">{effectiveDpt.toFixed(1)}</td>
@@ -69,14 +69,14 @@
         <td class="summary-label">
           <Tooltip
             label={"Effective damage per hit"}
-            tip={"The average damage you would deal per hit, using the defined rotation, taking into account resistances, mitigation, crits and fatals."}
+            tip={"The average damage you would deal per hit, using the defined rotation, taking into account resistances, mitigation, crits and fatals. Includes crit charms but not elemental charms."}
             right={true} />
         </td>
         <td class="summary-value">{effectiveDph.toFixed(1)}</td>
       </tr>
       <tr class:highlight={showHighlighting && isDamageFromCharmsHigher}>
         <td class="summary-label">
-          <Tooltip label={"Damage from charms"} tip={"Average damage from charms per turn"} right={true} />
+          <Tooltip label={"Damage from charms"} tip={"Average damage from charms per turn."} right={true} />
         </td>
         <td class="summary-value">{damageFromCharms.toFixed(1)}</td>
       </tr>
@@ -91,7 +91,7 @@
           <th class="desc">
             <Tooltip
               label={"Effective"}
-              tip={"The average damage you would deal, taking into account resistances, mitigation, crits and fatals."}
+              tip={"The average damage you would deal, taking into account resistances, mitigation, crits and fatals. Includes crit charms."}
               right={true} />
           </th>
           <th class="desc" colspan="3">
