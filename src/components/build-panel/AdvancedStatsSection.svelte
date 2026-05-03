@@ -65,6 +65,16 @@
       tooltip: "Assumes a 200ms delay between<br/>your auto-attack and spell",
     },
     {
+      key: "hitpoints",
+      label: "Hitpoints",
+      tooltip: "Required for Overpower",
+    },
+    {
+      key: "manapoints",
+      label: "Manapoints",
+      tooltip: "Required for Overflux",
+    },
+    {
       key: "baseMagicLevel",
       label: "Base Magic Level",
       tooltip: "Required for Runic Mastery",

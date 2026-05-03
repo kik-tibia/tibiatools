@@ -210,6 +210,18 @@ export function computeEffective(
   }
 
   if (creatureChoice?.charm && creatureChoice.charmTier) {
+    let elementalChance = 0;
+    switch (creatureChoice.charmTier) {
+      case 1:
+        elementalChance = 0.05;
+        break;
+      case 2:
+        elementalChance = 0.1;
+        break;
+      case 3:
+        elementalChance = 0.11;
+        break;
+    }
     if (creatureChoice.charm.effect == "low-blow" || creatureChoice.charm.effect == "savage-blow") {
       const effectiveWithoutCharm = computeEffective(spell, state, aoeAA, buildStats, weapon, {
         ...creatureChoice,
@@ -219,18 +231,6 @@ export function computeEffective(
       critCharmDmg = effectiveAvg - effectiveWithoutCharm.effectiveAvg;
     } else if (creatureChoice.charm.element) {
       const cap = Math.min((buildStats.level ?? 0) * 2, creatureChoice.creature.hitpoints * 0.05);
-      let chance = 0;
-      switch (creatureChoice.charmTier) {
-        case 1:
-          chance = 0.05;
-          break;
-        case 2:
-          chance = 0.1;
-          break;
-        case 3:
-          chance = 0.11;
-          break;
-      }
       let resistance;
       switch (creatureChoice.charm.element) {
         case "ice":
@@ -255,7 +255,13 @@ export function computeEffective(
           resistance = creatureChoice.creature.deathDmgMod;
           break;
       }
-      elementalCharmDmg = chance * cap * resistance * (1 - creatureChoice.creature.mitigation / 100);
+      elementalCharmDmg = elementalChance * cap * resistance * (1 - creatureChoice.creature.mitigation / 100);
+    } else if (creatureChoice.charm.effect == "overpower") {
+      const cap = Math.min((buildStats.hitpoints ?? 0) * 0.05, creatureChoice.creature.hitpoints * 0.08);
+      elementalCharmDmg = elementalChance * cap;
+    } else if (creatureChoice.charm.effect == "overflux") {
+      const cap = Math.min((buildStats.manapoints ?? 0) * 0.025, creatureChoice.creature.hitpoints * 0.08);
+      elementalCharmDmg = elementalChance * cap;
     }
   }
 

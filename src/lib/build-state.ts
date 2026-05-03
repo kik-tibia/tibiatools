@@ -16,6 +16,8 @@ export type BuildStats = {
   critDamage: number | null;
   fatalChance: number | null;
   transcendenceChance: number | null;
+  hitpoints: number | null;
+  manapoints: number | null;
   baseMagicLevel: number | null;
   axe: number | null;
   club: number | null;

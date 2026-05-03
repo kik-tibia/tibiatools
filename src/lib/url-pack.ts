@@ -42,6 +42,8 @@ const STATS_KEYS: (keyof BuildStats)[] = [
   "fishing",
   "imbuementElement",
   "imbuementValue",
+  "hitpoints",
+  "manapoints",
 ];
 
 const VOC_TO_NUM: Record<Vocation, number> = { knight: 0, paladin: 1, sorcerer: 2, druid: 3, monk: 4 };
