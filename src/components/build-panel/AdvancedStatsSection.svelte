@@ -116,6 +116,8 @@
   const statKeys = [
     "fatalChance",
     "transcendenceChance",
+    "hitPoints",
+    "manaPoints",
     "baseMagicLevel",
     "axe",
     "club",
