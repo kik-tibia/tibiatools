@@ -20,8 +20,6 @@ export function computeRaw(spell: Spell, state: SpellState, buildStats: BuildSta
     }
     return { ...spell, min, avg, max };
   } else {
-    // TODO implement harmony properly, with a stance system that all vocations will benefit from
-    if (spell.isSpender) state.basePower *= 3.08;
     const avg = computeAvg(spell, state);
     const min = spell.buckets != 0 ? computeMinMax(spell, -1, state) : undefined;
     const max = spell.buckets != 0 ? computeMinMax(spell, 1, state) : undefined;
@@ -163,8 +161,6 @@ export function computeEffective(
         : effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
     }
   } else {
-    // TODO implement harmony properly, with a stance system that all vocations will benefit from
-    if (spell.isSpender) state.basePower *= 3.08;
     const avg = computeAvg(spell, state);
     const min = spell.buckets != 0 ? computeMinMax(spell, -1, state) : undefined;
     const max = spell.buckets != 0 ? computeMinMax(spell, 1, state) : undefined;

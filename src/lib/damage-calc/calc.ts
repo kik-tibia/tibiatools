@@ -70,10 +70,12 @@ export function computeResults(
         damageUndead: 0,
         damageVermin: 0,
       };
-      const final: SpellState = perkChoices.reduce(
+      const withPerks: SpellState = perkChoices.reduce(
         (acc, perkChoice) => applyPerkToSpell(spell, perkChoice, weaponChoice.weapon.skill, buildStats.vocation, acc),
         initial,
       );
+      // TODO implement harmony properly, with a stance system that all vocations will benefit from
+      const final: SpellState = spell.isSpender ? { ...withPerks, basePower: withPerks.basePower * 3.08 } : withPerks;
 
       const raw: SpellDamageRaw = computeRaw(spell, final, buildStats);
 

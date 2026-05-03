@@ -60,7 +60,7 @@ export function resolveCreatures(creatureChoiceRefs: CreatureChoiceRef[]): Creat
       if (t.charmId) {
         charm = charmsById[t.charmId];
         if (!charm) {
-          console.warn(`Unknown charm id: ${t.id}`);
+          console.warn(`Unknown charm id: ${t.charmId}`);
           return null;
         }
       }
