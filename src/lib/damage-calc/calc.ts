@@ -95,18 +95,18 @@ export function computeResults(
             );
             const multiplier = (creatureChoice.ratio * creatureChoice.creature.hitpoints) / ratioAdjustedHp;
             const nextEffectiveDmg = acc.effectiveAvg + creatureEffective.effectiveAvg * multiplier;
-            const nextElementalCharmDmg = acc.elementalCharmDmg + creatureEffective.effectiveAvg * multiplier;
-            const nextCritCharmDmg = acc.critCharmDmg + creatureEffective.effectiveAvg * multiplier;
+            const nextCritCharmDmg = acc.critCharmDmg + creatureEffective.critCharmDmg * multiplier;
+            const nextElementalCharmDmg = acc.elementalCharmDmg + creatureEffective.elementalCharmDmg * multiplier;
             return {
               effectiveAvg: nextEffectiveDmg,
-              elementalCharmDmg: nextElementalCharmDmg,
               critCharmDmg: nextCritCharmDmg,
+              elementalCharmDmg: nextElementalCharmDmg,
             };
           },
           {
             effectiveAvg: 0,
-            elementalCharmDmg: 0,
             critCharmDmg: 0,
+            elementalCharmDmg: 0,
           },
         );
       } else effective = computeEffective(spell, final, !!weaponChoice.ammo?.aoe, buildStats, weaponChoice.weapon);
@@ -121,12 +121,17 @@ export function computeDpt(spellDamageChoices: SpellDamageChoice[]): number {
   const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
 
   const autoAttack = spellDamageChoices.find((s) => s.id === AUTO_ATTACK_ID);
-  const autoAttackDamage = autoAttack ? autoAttack.spellDamage.effectiveAvg * autoAttack.targets : 0;
+  const autoAttackDamage = autoAttack
+    ? (autoAttack.spellDamage.effectiveAvg + autoAttack.spellDamage.elementalCharmDmg) * autoAttack.targets
+    : 0;
 
   return (
     autoAttackDamage +
     spellRotation.reduce((damage, s) => {
-      const weightedDamage = ratioSum > 0 ? (s.spellDamage.effectiveAvg * s.targets * s.ratio) / ratioSum : 0;
+      const weightedDamage =
+        ratioSum > 0
+          ? ((s.spellDamage.effectiveAvg + s.spellDamage.elementalCharmDmg) * s.targets * s.ratio) / ratioSum
+          : 0;
       return damage + weightedDamage;
     }, 0)
   );
@@ -146,6 +151,27 @@ export function computeDph(spellDamageChoices: SpellDamageChoice[]): number {
       const weightedDamage = s.spellDamage.effectiveAvg * s.targets * s.ratio;
       return damage + weightedDamage;
     }, 0) / ratioTargetSum
+  );
+}
+
+export function computeDamageFromCharms(spellDamageChoices: SpellDamageChoice[]): number {
+  const spellRotation = spellDamageChoices.filter((s) => s.id !== AUTO_ATTACK_ID);
+  const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
+
+  const autoAttack = spellDamageChoices.find((s) => s.id === AUTO_ATTACK_ID);
+  const autoAttackDamage = autoAttack
+    ? (autoAttack.spellDamage.critCharmDmg + autoAttack.spellDamage.elementalCharmDmg) * autoAttack.targets
+    : 0;
+
+  return (
+    autoAttackDamage +
+    spellRotation.reduce((damage, s) => {
+      const weightedDamage =
+        ratioSum > 0
+          ? ((s.spellDamage.critCharmDmg + s.spellDamage.elementalCharmDmg) * s.targets * s.ratio) / ratioSum
+          : 0;
+      return damage + weightedDamage;
+    }, 0)
   );
 }
 

@@ -1,3 +1,4 @@
+import { allCharms, type Charm } from "@data/charms";
 import { allCreatures, type Creature } from "@data/creatures";
 import { allPerks, type Perk } from "@data/perks";
 import type { SpellDamage } from "@data/spells";
@@ -9,6 +10,7 @@ const weaponsById: Record<number, Weapon> = Object.fromEntries(allWeapons.map((i
 const ammoById: Record<number, Ammo> = Object.fromEntries(allAmmo.map((i) => [i.id, i]));
 const perkDefsById: Record<number, Perk> = Object.fromEntries(allPerks.map((i) => [i.id, i]));
 const creaturesById: Record<number, Creature> = Object.fromEntries(allCreatures.map((i) => [i.id, i]));
+const charmsById: Record<number, Charm> = Object.fromEntries(allCharms.map((i) => [i.id, i]));
 
 export function resolveWeapon(weaponChoiceRef: WeaponChoiceRef): WeaponChoice {
   const weapon = weaponsById[weaponChoiceRef.id];
@@ -54,7 +56,15 @@ export function resolveCreatures(creatureChoiceRefs: CreatureChoiceRef[]): Creat
         console.warn(`Unknown creature id: ${t.id}`);
         return null;
       }
-      return { ...t, creature };
+      let charm;
+      if (t.charmId) {
+        charm = charmsById[t.charmId];
+        if (!charm) {
+          console.warn(`Unknown charm id: ${t.id}`);
+          return null;
+        }
+      }
+      return { ...t, creature, ...(charm && { charm }) };
     })
     .filter((x): x is CreatureChoice => x !== null);
 }

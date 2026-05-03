@@ -1,8 +1,7 @@
 <script lang="ts">
   import Tooltip from "@components/Tooltip.svelte";
   import { spellOrdering, type SpellDamage } from "@data/spells";
-  import type { Vocation } from "@lib/build-state";
-  import type { RotationSpell } from "@lib/damage-calc";
+  import type { SpellChoiceRef, Vocation } from "@lib/build-state";
 
   let {
     results = [],
@@ -10,19 +9,23 @@
     rotation,
     effectiveDpt,
     effectiveDph,
+    damageFromCharms,
     showHighlighting,
     isDptHigher,
     isDphHigher,
+    isDamageFromCharmsHigher,
     isHigher = () => false,
   }: {
     results?: SpellDamage[];
     vocation: Vocation;
-    rotation: RotationSpell[];
+    rotation: SpellChoiceRef[];
     effectiveDpt: number;
     effectiveDph: number;
+    damageFromCharms: number;
     showHighlighting: boolean;
     isDptHigher: boolean;
     isDphHigher: boolean;
+    isDamageFromCharmsHigher: boolean;
     isHigher?: (id: number) => boolean;
   } = $props();
 
@@ -70,6 +73,12 @@
             right={true} />
         </td>
         <td class="summary-value">{effectiveDph.toFixed(1)}</td>
+      </tr>
+      <tr class:highlight={showHighlighting && isDamageFromCharmsHigher}>
+        <td class="summary-label">
+          <Tooltip label={"Damage from charms"} tip={"Average damage from charms per turn"} right={true} />
+        </td>
+        <td class="summary-value">{damageFromCharms.toFixed(1)}</td>
       </tr>
     </tbody>
   </table>

@@ -5,7 +5,7 @@
   import ResultsTable from "@components/ResultsTable.svelte";
   import type { SpellDamage } from "@data/spells";
   import { defaultCollapsed, type Build, type CalculatorState, type CollapsedSections } from "@lib/build-state";
-  import { computeDph, computeDpt, computeResults } from "@lib/damage-calc";
+  import { computeDamageFromCharms, computeDph, computeDpt, computeResults } from "@lib/damage-calc";
   import {
     resolveCreatures,
     resolvePerks,
@@ -42,6 +42,8 @@
   let effectiveDptB = $derived(computeDpt(spellDamageChoicesB));
   let effectiveDphA = $derived(computeDph(spellDamageChoicesA));
   let effectiveDphB = $derived(computeDph(spellDamageChoicesB));
+  let damageFromCharmsA = $derived(computeDamageFromCharms(spellDamageChoicesA));
+  let damageFromCharmsB = $derived(computeDamageFromCharms(spellDamageChoicesB));
 
   const toMap = (arr: SpellDamage[]) => new Map(arr.map((x) => [x.id, x]));
   let mapA = $derived(toMap(resultsA));
@@ -53,6 +55,8 @@
   let isDptBHigher = $derived(effectiveDptB >= effectiveDptA - epsilon);
   let isDphAHigher = $derived(effectiveDphA >= effectiveDphB - epsilon);
   let isDphBHigher = $derived(effectiveDphB >= effectiveDphA - epsilon);
+  let isdamageFromCharmsAHigher = $derived(damageFromCharmsA >= damageFromCharmsB - epsilon);
+  let isdamageFromCharmsBHigher = $derived(damageFromCharmsB >= damageFromCharmsA - epsilon);
   let pctIncreaseA = $derived((effectiveDptA / effectiveDptB - 1) * 100);
   let pctIncreaseB = $derived((effectiveDptB / effectiveDptA - 1) * 100);
   let showIncrease = $derived(Number.isFinite(pctIncreaseA) && Number.isFinite(pctIncreaseB));
@@ -162,9 +166,11 @@
       rotation={A.rotation}
       effectiveDpt={effectiveDptA}
       effectiveDph={effectiveDphA}
+      damageFromCharms={damageFromCharmsA}
       showHighlighting={showSecondBuild}
       isDptHigher={isDptAHigher}
       isDphHigher={isDphAHigher}
+      isDamageFromCharmsHigher={isdamageFromCharmsAHigher}
       isHigher={isAHigher} />
   </div>
 
@@ -184,9 +190,11 @@
         rotation={B.rotation}
         effectiveDpt={effectiveDptB}
         effectiveDph={effectiveDphB}
+        damageFromCharms={damageFromCharmsB}
         showHighlighting={true}
         isDptHigher={isDptBHigher}
         isDphHigher={isDphBHigher}
+        isDamageFromCharmsHigher={isdamageFromCharmsBHigher}
         isHigher={isBHigher} />
     </div>
   {/if}

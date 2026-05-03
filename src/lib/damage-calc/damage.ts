@@ -1,5 +1,5 @@
 import type { Creature } from "@data/creatures";
-import type { Element, Spell, SpellDamage, SpellDamageEffective, SpellDamageRaw } from "@data/spells";
+import type { Element, Spell, SpellDamageEffective, SpellDamageRaw } from "@data/spells";
 import type { Weapon } from "@data/weapons";
 import type { BuildStats } from "@lib/build-state";
 import type { CreatureChoice, SpellState } from "@lib/damage-calc";
@@ -37,15 +37,32 @@ export function computeEffective(
   weapon: Weapon,
   creatureChoice?: CreatureChoice,
 ): SpellDamageEffective {
+  let effectiveAvg = 0;
+  let elementalCharmDmg = 0;
+  let critCharmDmg = 0;
+
   const highRollAA = !aoeAA;
 
   let nTranscendenceAttacks;
   if (spell.spellType === "auto") nTranscendenceAttacks = 3;
   else nTranscendenceAttacks = 3.9;
 
+  let charmCritChance = 0;
+  let charmCritDamage = 0;
+  if (creatureChoice?.charm && creatureChoice.charmTier) {
+    if (creatureChoice.charm.effect == "low-blow") {
+      if (creatureChoice.charmTier == 1) charmCritChance = 0.04;
+      else if (creatureChoice.charmTier == 2) charmCritChance = 0.08;
+      else charmCritChance = 0.09;
+    } else if (creatureChoice.charm.effect == "savage-blow") {
+      if (creatureChoice.charmTier == 1) charmCritDamage = 0.2;
+      else if (creatureChoice.charmTier == 2) charmCritDamage = 0.4;
+      else charmCritDamage = 0.44;
+    }
+  }
   const pT = state.transcendenceChance;
   const pTCrit = (nTranscendenceAttacks * pT) / (nTranscendenceAttacks * pT - pT + 1);
-  const critChance = Math.min(state.critChance, 1);
+  const critChance = Math.min(state.critChance + charmCritChance, 1);
   const c = 1 - (1 - critChance) * (1 - pTCrit);
   const o = state.fatalChance;
   const pCrit = c * (1 - o);
@@ -53,10 +70,7 @@ export function computeEffective(
   const pCritFatal = c * o;
   const pNoBonus = (1 - c) * (1 - o);
   // Increase crit damage by the ratio of transcendence crits, which have 15% extra damage
-  const critDamage = state.critDamage + (0.15 * pTCrit) / (pTCrit + (1 - pTCrit) * critChance || 1);
-
-  const elementalCharmDmg = 0;
-  const critCharmDmg = 0;
+  const critDamage = state.critDamage + charmCritDamage + (0.15 * pTCrit) / (pTCrit + (1 - pTCrit) * critChance || 1);
 
   const effectiveAvgElements: Record<Element, number> = {
     death: 0,
@@ -95,7 +109,7 @@ export function computeEffective(
       ice: 0,
       physical: 0,
     };
-    let effectiveAvg = avg;
+    effectiveAvg = avg;
     let effectiveAvgHighRoll = highRollAvg;
     let physAvg = 0;
 
@@ -148,15 +162,13 @@ export function computeEffective(
           pCritFatal * effectiveAvgHighRoll * (1.6 + critDamage)
         : effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
     }
-
-    return { effectiveAvg, elementalCharmDmg, critCharmDmg };
   } else {
     // TODO implement harmony properly, with a stance system that all vocations will benefit from
     if (spell.isSpender) state.basePower *= 3.08;
     const avg = computeAvg(spell, state);
     const min = spell.buckets != 0 ? computeMinMax(spell, -1, state) : undefined;
     const max = spell.buckets != 0 ? computeMinMax(spell, 1, state) : undefined;
-    let effectiveAvg =
+    effectiveAvg =
       state.runicIncrease == 0
         ? avg
         : computeAvg(spell, { ...state, magicLevel: state.magicLevel + 0.25 * state.runicIncrease });
@@ -195,8 +207,59 @@ export function computeEffective(
 
     effectiveAvg =
       effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
-    return { effectiveAvg, elementalCharmDmg, critCharmDmg };
   }
+
+  if (creatureChoice?.charm && creatureChoice.charmTier) {
+    if (creatureChoice.charm.effect == "low-blow" || creatureChoice.charm.effect == "savage-blow") {
+      const effectiveWithoutCharm = computeEffective(spell, state, aoeAA, buildStats, weapon, {
+        ...creatureChoice,
+        charm: undefined,
+        charmTier: undefined,
+      });
+      critCharmDmg = effectiveAvg - effectiveWithoutCharm.effectiveAvg;
+    } else if (creatureChoice.charm.element) {
+      const cap = Math.min((buildStats.level ?? 0) * 2, creatureChoice.creature.hitpoints * 0.05);
+      let chance = 0;
+      switch (creatureChoice.charmTier) {
+        case 1:
+          chance = 0.05;
+          break;
+        case 2:
+          chance = 0.1;
+          break;
+        case 3:
+          chance = 0.11;
+          break;
+      }
+      let resistance;
+      switch (creatureChoice.charm.element) {
+        case "ice":
+          resistance = creatureChoice.creature.iceDmgMod;
+          break;
+        case "fire":
+          resistance = creatureChoice.creature.fireDmgMod;
+          break;
+        case "earth":
+          resistance = creatureChoice.creature.earthDmgMod;
+          break;
+        case "energy":
+          resistance = creatureChoice.creature.energyDmgMod;
+          break;
+        case "physical":
+          resistance = creatureChoice.creature.physicalDmgMod;
+          break;
+        case "holy":
+          resistance = creatureChoice.creature.holyDmgMod;
+          break;
+        case "death":
+          resistance = creatureChoice.creature.deathDmgMod;
+          break;
+      }
+      elementalCharmDmg = chance * cap * resistance * (1 - creatureChoice.creature.mitigation / 100);
+    }
+  }
+
+  return { effectiveAvg, critCharmDmg, elementalCharmDmg };
 }
 
 export function computeAvg(spell: Spell, state: SpellState): number {

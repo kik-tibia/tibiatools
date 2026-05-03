@@ -11,7 +11,7 @@ export type Charm = {
   element?: Element;
 };
 
-export const charms: Charm[] = (charmsRaw as unknown[] as Charm[]).map((c) => ({
+export const allCharms: Charm[] = (charmsRaw as unknown[] as Charm[]).map((c) => ({
   ...c,
   displayName: c.displayName ?? c.name,
 }));

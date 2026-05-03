@@ -3,7 +3,7 @@
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
-  import { charms } from "@data/charms";
+  import { allCharms } from "@data/charms";
   import { allCreatures } from "@data/creatures";
   import type { Build, CreatureChoiceRef } from "@lib/build-state";
   import { packSection, SECTION_TAG } from "@lib/section-clipboard";
@@ -188,7 +188,7 @@
           value={target?.charmId ?? ""}
           onchange={(e) => setCharmIdFor(target, setCharm, targetId, e.currentTarget.value)}>
           <option value="">None</option>
-          {#each charms as charm}
+          {#each allCharms as charm}
             <option value={charm.id}>{charm.displayName}</option>
           {/each}
         </select>
