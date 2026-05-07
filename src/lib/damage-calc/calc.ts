@@ -5,6 +5,7 @@ import type {
   CharacterState,
   CreatureChoice,
   PerkChoice,
+  SpellChoice,
   SpellDamageChoice,
   SpellState,
   WeaponChoice,
@@ -29,6 +30,7 @@ export function computeResults(
   buildStats: BuildStats,
   weaponChoice: WeaponChoice,
   perkChoices: PerkChoice[],
+  spellChoices: SpellChoice[],
   creatureChoices: CreatureChoice[],
 ): SpellDamage[] {
   const characterState = deriveCharacterState(buildStats, weaponChoice);
@@ -90,9 +92,9 @@ export function computeResults(
             const creatureEffective = computeEffective(
               spell,
               final,
-              !!weaponChoice.ammo?.aoe,
               buildStats,
-              weaponChoice.weapon,
+              weaponChoice,
+              spellChoices,
               creatureChoice,
             );
             const multiplier = (creatureChoice.ratio * creatureChoice.creature.hitpoints) / ratioAdjustedHp;
@@ -111,7 +113,7 @@ export function computeResults(
             elementalCharmDmg: 0,
           },
         );
-      } else effective = computeEffective(spell, final, !!weaponChoice.ammo?.aoe, buildStats, weaponChoice.weapon);
+      } else effective = computeEffective(spell, final, buildStats, weaponChoice, spellChoices);
       return { ...spell, ...raw, ...effective };
     });
   return spellResults;

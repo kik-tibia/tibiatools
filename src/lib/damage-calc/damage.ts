@@ -2,7 +2,7 @@ import type { Creature } from "@data/creatures";
 import type { Element, Spell, SpellDamageEffective, SpellDamageRaw } from "@data/spells";
 import type { Weapon } from "@data/weapons";
 import type { BuildStats } from "@lib/build-state";
-import type { CreatureChoice, SpellState } from "@lib/damage-calc";
+import type { CreatureChoice, SpellChoice, SpellState, WeaponChoice } from "@lib/damage-calc";
 
 export function computeRaw(spell: Spell, state: SpellState, buildStats: BuildStats): SpellDamageRaw {
   if (spell.spellType === "auto") {
@@ -30,11 +30,13 @@ export function computeRaw(spell: Spell, state: SpellState, buildStats: BuildSta
 export function computeEffective(
   spell: Spell,
   state: SpellState,
-  aoeAA: boolean,
   buildStats: BuildStats,
-  weapon: Weapon,
+  weaponChoice: WeaponChoice,
+  spellChoices: SpellChoice[],
   creatureChoice?: CreatureChoice,
 ): SpellDamageEffective {
+  const aoeAA = !!weaponChoice.ammo?.aoe;
+  let weapon = weaponChoice.weapon;
   let effectiveAvg = 0;
   let elementalCharmDmg = 0;
   let critCharmDmg = 0;
@@ -171,6 +173,15 @@ export function computeEffective(
     let physMin = 0;
     let physMax = 0;
 
+    if (spell.scope == "chained-penance") {
+      const chainedPenance = spellChoices.find((s) => s.spell.scope == "chained-penance");
+      if (chainedPenance) {
+        const decay = 0.95;
+        const targets = Math.max(chainedPenance.targets, 1);
+        effectiveAvg = (effectiveAvg * (1 - Math.pow(decay, targets))) / (1 - decay) / targets;
+      }
+    }
+
     if (spell.element == "weapon") {
       if (weapon.attack && weapon.attack > 0) {
         if (weapon.bond) {
@@ -219,7 +230,7 @@ export function computeEffective(
         break;
     }
     if (creatureChoice.charm.effect == "low-blow" || creatureChoice.charm.effect == "savage-blow") {
-      const effectiveWithoutCharm = computeEffective(spell, state, aoeAA, buildStats, weapon, {
+      const effectiveWithoutCharm = computeEffective(spell, state, buildStats, weaponChoice, spellChoices, {
         ...creatureChoice,
         charm: undefined,
         charmTier: undefined,

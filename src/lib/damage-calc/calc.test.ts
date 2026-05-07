@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { defaultBuild, type BuildStats } from "@lib/build-state";
-import { resolveCreatures, resolvePerks, resolveSpellDamages, resolveWeapon } from "./build-state-resolver.ts";
+import {
+  resolveCreatures,
+  resolvePerks,
+  resolveSpellDamages,
+  resolveSpells,
+  resolveWeapon,
+} from "./build-state-resolver.ts";
 import { computeDph, computeDpt, computeResults } from "./calc.ts";
 
 // `toBeCloseTo` numDigits
@@ -10,8 +16,9 @@ describe("default build", () => {
   const base = defaultBuild();
   const weapon = resolveWeapon(base.weapon);
   const perks = resolvePerks(base.perks);
+  const rotation = resolveSpells(base.rotation);
   const targets = resolveCreatures(base.targets);
-  const results = computeResults(base.stats, weapon, perks, targets);
+  const results = computeResults(base.stats, weapon, perks, rotation, targets);
   const spellDamageChoices = resolveSpellDamages(base.rotation, results);
   const dpt = computeDpt(spellDamageChoices);
   const dph = computeDph(spellDamageChoices);
@@ -80,7 +87,7 @@ describe("Knight build with everything", () => {
     { id: 618, ratio: 173 },
     { id: 659, ratio: 106 },
   ]);
-  const results = computeResults(stats, weapon, perks, targets);
+  const results = computeResults(stats, weapon, perks, rotation, targets);
   const spellDamageChoices = resolveSpellDamages(rotation, results);
   const dpt = computeDpt(spellDamageChoices);
   const dph = computeDph(spellDamageChoices);

@@ -1,12 +1,13 @@
 import type { Charm } from "@data/charms";
 import type { Creature } from "@data/creatures";
 import type { Perk } from "@data/perks";
-import type { SpellDamage } from "@data/spells";
+import type { Spell, SpellDamage } from "@data/spells";
 import type { Ammo, Weapon } from "@data/weapons";
 import type { CreatureChoiceRef, PerkChoiceRef, SpellChoiceRef, WeaponChoiceRef } from "@lib/build-state";
 
 export type WeaponChoice = WeaponChoiceRef & { weapon: Weapon; ammo?: Ammo };
 export type PerkChoice = PerkChoiceRef & { perk: Perk };
+export type SpellChoice = SpellChoiceRef & { spell: Spell };
 export type SpellDamageChoice = SpellChoiceRef & { spellDamage: SpellDamage };
 export type CreatureChoice = CreatureChoiceRef & { creature: Creature; charm?: Charm };
 

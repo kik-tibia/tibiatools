@@ -1,14 +1,15 @@
 import { allCharms, type Charm } from "@data/charms";
 import { allCreatures, type Creature } from "@data/creatures";
 import { allPerks, type Perk } from "@data/perks";
-import type { SpellDamage } from "@data/spells";
+import { allSpells, type Spell, type SpellDamage } from "@data/spells";
 import { allAmmo, allWeapons, type Ammo, type Weapon } from "@data/weapons";
 import type { CreatureChoiceRef, PerkChoiceRef, SpellChoiceRef, WeaponChoiceRef } from "@lib/build-state";
-import type { CreatureChoice, PerkChoice, SpellDamageChoice, WeaponChoice } from "./types";
+import type { CreatureChoice, PerkChoice, SpellChoice, SpellDamageChoice, WeaponChoice } from "./types";
 
 const weaponsById: Record<number, Weapon> = Object.fromEntries(allWeapons.map((i) => [i.id, i]));
 const ammoById: Record<number, Ammo> = Object.fromEntries(allAmmo.map((i) => [i.id, i]));
 const perkDefsById: Record<number, Perk> = Object.fromEntries(allPerks.map((i) => [i.id, i]));
+const spellDefsById: Record<number, Spell> = Object.fromEntries(allSpells.map((i) => [i.id, i]));
 const creaturesById: Record<number, Creature> = Object.fromEntries(allCreatures.map((i) => [i.id, i]));
 const charmsById: Record<number, Charm> = Object.fromEntries(allCharms.map((i) => [i.id, i]));
 
@@ -29,6 +30,19 @@ export function resolvePerks(perkChoiceRefs: PerkChoiceRef[]): PerkChoice[] {
       return { ...p, perk };
     })
     .filter((x): x is PerkChoice => x !== null);
+}
+
+export function resolveSpells(spellChoiceRefs: SpellChoiceRef[]): SpellChoice[] {
+  return spellChoiceRefs
+    .map((s) => {
+      const spell = spellDefsById[s.id];
+      if (!spell) {
+        console.warn(`Unknown spell id: ${s.id}`);
+        return null;
+      }
+      return { ...s, spell };
+    })
+    .filter((x): x is SpellChoice => x !== null);
 }
 
 export function resolveSpellDamages(
