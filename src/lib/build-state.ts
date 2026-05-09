@@ -8,6 +8,7 @@ export type CreatureChoiceRef = { id: number; ratio: number; charmId?: number; c
 
 export type BuildStats = {
   vocation: Vocation;
+  stanceIds: number[];
   level: number | null;
   bonus: number | null;
   skill: number | null;
@@ -60,6 +61,7 @@ export type CalculatorState = {
 
 const defaultStats = (): BuildStats => ({
   vocation: "knight",
+  stanceIds: [],
   level: 8,
   bonus: 0,
   skill: 10,

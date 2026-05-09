@@ -74,14 +74,14 @@ describe("Knight build with everything", () => {
     { id: 51, value: 12.5 },
     { id: 13, value: 10 },
   ]);
-  const rotation = [
+  const rotation = resolveSpells([
     { id: 1, targets: 1, ratio: 1, extraSpell: false },
     { id: 2, targets: 6.5, ratio: 30, extraSpell: false },
     { id: 3, targets: 6, ratio: 28, extraSpell: false },
     { id: 4, targets: 7, ratio: 26, extraSpell: false },
     { id: 8, targets: 3, ratio: 8, extraSpell: false },
     { id: 6, targets: 0.5, ratio: 8, extraSpell: true },
-  ];
+  ]);
   const targets = resolveCreatures([
     { id: 105, ratio: 208 },
     { id: 618, ratio: 173 },

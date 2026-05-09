@@ -2,6 +2,7 @@
   import ClipboardPasteRow from "@components/build-panel/ClipboardPasteRow.svelte";
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import Tooltip from "@components/Tooltip.svelte";
+  import { allStances, type Stance, type StanceGroup } from "@data/stances";
   import type { Build, BuildStats, Vocation } from "@lib/build-state";
   import { packSection, SECTION_TAG } from "@lib/section-clipboard";
   import { compactStats, expandStats } from "@lib/url-pack";
@@ -27,6 +28,38 @@
     buildB = { ...buildB, stats: { ...buildB.stats, [key]: value } };
   }
 
+  function setVocationA(voc: Vocation) {
+    buildA = { ...buildA, stats: { ...buildA.stats, vocation: voc, stanceIds: [] } };
+  }
+  function setVocationB(voc: Vocation) {
+    buildB = { ...buildB, stats: { ...buildB.stats, vocation: voc, stanceIds: [] } };
+  }
+
+  const stanceById: Record<number, Stance> = Object.fromEntries(allStances.map((s) => [s.id, s]));
+
+  function stancesFor(vocation: Vocation, group: StanceGroup | null): Stance[] {
+    return allStances.filter((s) => s.vocation === vocation && (group === null || s.group === group));
+  }
+
+  function selectedStanceIdFor(stanceIds: number[], group: StanceGroup | null): number | null {
+    for (const id of stanceIds) {
+      const stance = stanceById[id];
+      if (!stance) continue;
+      if (group === null || stance.group === group) return id;
+    }
+    return null;
+  }
+
+  function replaceStanceForGroup(stanceIds: number[], group: StanceGroup | null, newId: number | null): number[] {
+    const others = stanceIds.filter((id) => {
+      const stance = stanceById[id];
+      if (!stance) return false;
+      if (group === null) return false;
+      return stance.group !== group;
+    });
+    return newId == null ? others : [...others, newId];
+  }
+
   type StatField = {
     key: keyof BuildStats;
     label: string;
@@ -43,7 +76,16 @@
     { key: "critDamage", label: "Crit Damage %" },
   ];
 
-  const statKeys = ["vocation", "level", "bonus", "magicLevel", "skill", "critChance", "critDamage"] as const;
+  const statKeys = [
+    "vocation",
+    "stanceIds",
+    "level",
+    "bonus",
+    "magicLevel",
+    "skill",
+    "critChance",
+    "critDamage",
+  ] as const;
 
   function copyAtoB() {
     const patch: Partial<BuildStats> = {};
@@ -95,20 +137,52 @@
   <ClipboardPasteRow sectionTag={SECTION_TAG.basicStats} {pasteTarget} {showSecondBuild} onPaste={handlePaste} />
 {/if}
 
-{#snippet vocCell(
-  build: Build,
-  buildId: string,
-  setStat: (key: keyof BuildStats, value: BuildStats[keyof BuildStats]) => void,
-)}
+{#snippet vocCell(build: Build, buildId: string, setVocation: (voc: Vocation) => void)}
   <td>
     <select
       class="vocation-select input-{buildId}"
       value={build.stats.vocation}
-      onchange={(e) => setStat("vocation", e.currentTarget.value as Vocation)}>
+      onchange={(e) => setVocation(e.currentTarget.value as Vocation)}>
       {#each vocations as voc}
         <option value={voc}>{capitalize(voc)}</option>
       {/each}
     </select>
+  </td>
+{/snippet}
+
+{#snippet stanceDropdown(
+  build: Build,
+  buildId: string,
+  group: StanceGroup | null,
+  setStat: (key: keyof BuildStats, value: BuildStats[keyof BuildStats]) => void,
+)}
+  <select
+    class="vocation-select input-{buildId}"
+    value={selectedStanceIdFor(build.stats.stanceIds, group) ?? ""}
+    onchange={(e) => {
+      const raw = e.currentTarget.value;
+      const newId = raw === "" ? null : Number(raw);
+      setStat("stanceIds", replaceStanceForGroup(build.stats.stanceIds, group, newId));
+    }}>
+    <option value="">None</option>
+    {#each stancesFor(build.stats.vocation, group) as s}
+      <option value={s.id}>{s.name}</option>
+    {/each}
+  </select>
+{/snippet}
+
+{#snippet stanceCell(
+  build: Build,
+  buildId: string,
+  position: 0 | 1,
+  setStat: (key: keyof BuildStats, value: BuildStats[keyof BuildStats]) => void,
+)}
+  <td>
+    {#if build.stats.vocation === "sorcerer"}
+      {@render stanceDropdown(build, buildId, position === 0 ? "elemental" : "curse", setStat)}
+    {:else if position === 0}
+      {@render stanceDropdown(build, buildId, null, setStat)}
+    {/if}
   </td>
 {/snippet}
 
@@ -132,11 +206,28 @@
 {#if !collapsed}
   <tr class="data-row">
     <td>Vocation</td>
-    {@render vocCell(buildA, "a", setStatA)}
+    {@render vocCell(buildA, "a", setVocationA)}
     {#if showSecondBuild}
-      {@render vocCell(buildB, "b", setStatB)}
+      {@render vocCell(buildB, "b", setVocationB)}
     {/if}
   </tr>
+
+  <tr class="data-row">
+    <td>Stance</td>
+    {@render stanceCell(buildA, "a", 0, setStatA)}
+    {#if showSecondBuild}
+      {@render stanceCell(buildB, "b", 0, setStatB)}
+    {/if}
+  </tr>
+  {#if buildA.stats.vocation === "sorcerer" || (showSecondBuild && buildB.stats.vocation === "sorcerer")}
+    <tr class="data-row">
+      <td></td>
+      {@render stanceCell(buildA, "a", 1, setStatA)}
+      {#if showSecondBuild}
+        {@render stanceCell(buildB, "b", 1, setStatB)}
+      {/if}
+    </tr>
+  {/if}
 
   {#each statFields as field}
     <tr class="data-row">

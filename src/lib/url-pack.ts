@@ -44,6 +44,7 @@ const STATS_KEYS: (keyof BuildStats)[] = [
   "imbuementValue",
   "hitPoints",
   "manaPoints",
+  "stanceIds",
 ];
 
 const VOC_TO_NUM: Record<Vocation, number> = { knight: 0, paladin: 1, sorcerer: 2, druid: 3, monk: 4 };
@@ -55,7 +56,7 @@ const NUM_TO_ELEM: ImbuementElement[] = ["death", "earth", "energy", "fire", "ic
 const IMBUE_VAL_TO_TIER: Record<number, number> = { 0.1: 1, 0.25: 2, 0.5: 3 };
 const TIER_TO_IMBUE_VAL: Record<number, number> = { 1: 0.1, 2: 0.25, 3: 0.5 };
 
-type CompactStats = (string | number | null)[];
+type CompactStats = (number | number[] | null)[];
 type CompactWeapon = number | [number, number];
 type CompactPerk = [number, number];
 type CompactRotation = [number, number, number, number];
@@ -67,13 +68,18 @@ type CompactState = [number, CompactBuild, CompactBuild, number[], number[], num
 
 export function compactStats(stats: BuildStats): CompactStats {
   let mask = 0;
-  const values: (string | number)[] = [];
+  const values: (number | number[])[] = [];
   STATS_KEYS.forEach((k, i) => {
-    let v: string | number | null = stats[k] ?? null;
+    let v: string | number | number[] | null;
+    if (k === "stanceIds") {
+      v = stats.stanceIds.length > 0 ? stats.stanceIds : null;
+    } else {
+      v = stats[k] ?? null;
+    }
     if (k === "vocation" && typeof v === "string") v = VOC_TO_NUM[v as Vocation];
     if (k === "imbuementElement" && typeof v === "string") v = ELEM_TO_NUM[v as ImbuementElement];
     if (k === "imbuementValue" && typeof v === "number") v = IMBUE_VAL_TO_TIER[v];
-    if (v !== null) {
+    if (v !== null && typeof v !== "string") {
       mask |= 1 << i;
       values.push(v);
     }
@@ -97,7 +103,7 @@ export function expandStats(compact: CompactStats): BuildStats {
               ? TIER_TO_IMBUE_VAL[v]
               : v;
     } else {
-      (stats as any)[k] = null;
+      (stats as any)[k] = k === "stanceIds" ? [] : null;
     }
   });
   return stats as BuildStats;

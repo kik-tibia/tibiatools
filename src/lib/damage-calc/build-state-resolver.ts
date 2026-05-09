@@ -2,6 +2,7 @@ import { allCharms, type Charm } from "@data/charms";
 import { allCreatures, type Creature } from "@data/creatures";
 import { allPerks, type Perk } from "@data/perks";
 import { allSpells, type Spell, type SpellDamage } from "@data/spells";
+import { allStances, type Stance } from "@data/stances";
 import { allAmmo, allWeapons, type Ammo, type Weapon } from "@data/weapons";
 import type { CreatureChoiceRef, PerkChoiceRef, SpellChoiceRef, WeaponChoiceRef } from "@lib/build-state";
 import type { CreatureChoice, PerkChoice, SpellChoice, SpellDamageChoice, WeaponChoice } from "./types";
@@ -12,6 +13,20 @@ const perkDefsById: Record<number, Perk> = Object.fromEntries(allPerks.map((i) =
 const spellDefsById: Record<number, Spell> = Object.fromEntries(allSpells.map((i) => [i.id, i]));
 const creaturesById: Record<number, Creature> = Object.fromEntries(allCreatures.map((i) => [i.id, i]));
 const charmsById: Record<number, Charm> = Object.fromEntries(allCharms.map((i) => [i.id, i]));
+const stancesById: Record<number, Stance> = Object.fromEntries(allStances.map((i) => [i.id, i]));
+
+export function resolveStances(stanceIds: number[]): Stance[] {
+  return stanceIds
+    .map((id) => {
+      const stance = stancesById[id];
+      if (!stance) {
+        console.warn(`Unknown stance id: ${id}`);
+        return null;
+      }
+      return stance;
+    })
+    .filter((s): s is Stance => s !== null);
+}
 
 export function resolveWeapon(weaponChoiceRef: WeaponChoiceRef): WeaponChoice {
   const weapon = weaponsById[weaponChoiceRef.id];

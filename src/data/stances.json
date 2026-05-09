@@ -1,0 +1,91 @@
+[
+  {
+    "id": 1,
+    "name": "Blood Rage",
+    "effect": "blood-rage",
+    "vocation": "knight"
+  },
+  {
+    "id": 2,
+    "name": "Protector",
+    "effect": "protector",
+    "vocation": "knight"
+  },
+  {
+    "id": 3,
+    "name": "Sharpshooter",
+    "effect": "sharpshooter",
+    "vocation": "paladin"
+  },
+  {
+    "id": 4,
+    "name": "Divine Defiance",
+    "effect": "divine-defiance",
+    "vocation": "paladin"
+  },
+  {
+    "id": 5,
+    "name": "Master of Flames",
+    "effect": "master-of-flames",
+    "vocation": "sorcerer",
+    "group": "elemental"
+  },
+  {
+    "id": 6,
+    "name": "Master of Thunder",
+    "effect": "master-of-thunder",
+    "vocation": "sorcerer",
+    "group": "elemental"
+  },
+  {
+    "id": 7,
+    "name": "Master of Decay",
+    "effect": "master-of-decay",
+    "vocation": "sorcerer",
+    "group": "elemental"
+  },
+  {
+    "id": 8,
+    "name": "Expose Weakness",
+    "effect": "expose-weakness",
+    "vocation": "sorcerer",
+    "group": "curse"
+  },
+  {
+    "id": 9,
+    "name": "Sap Strength",
+    "effect": "sap-strength",
+    "vocation": "sorcerer",
+    "group": "curse"
+  },
+  {
+    "id": 10,
+    "name": "Elemental Synthesis",
+    "effect": "elemental-synthesis",
+    "vocation": "druid"
+  },
+  {
+    "id": 11,
+    "name": "Shared Conservation",
+    "effect": "shared-conservation",
+    "vocation": "druid"
+  },
+  {
+    "id": 12,
+    "name": "Virtue of Justice",
+    "effect": "virtue-of-justice",
+    "vocation": "monk"
+  },
+  {
+    "id": 13,
+    "name": "Virtue of Harmony",
+    "effect": "virtue-of-harmony",
+    "vocation": "monk"
+  },
+  {
+    "id": 14,
+    "name": "Virtue of Sustain",
+    "effect": "virtue-of-sustain",
+    "vocation": "monk"
+  }
+]
