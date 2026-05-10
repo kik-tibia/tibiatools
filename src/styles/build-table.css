@@ -1,4 +1,19 @@
 /* Shared styles for build-table section components */
+.build-table {
+  font-size: 0.9rem;
+}
+
+.build-table select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: none;
+}
+
+.build-table select:-ms-expand {
+  display: none;
+}
 
 .build-table td {
   padding: 0.35rem 0.75rem;
@@ -61,9 +76,14 @@
   border-color: var(--build-b-border);
 }
 
-.build-table input:focus {
+.build-table input.input-a:focus {
   outline: none;
-  box-shadow: var(--focus-ring);
+  box-shadow: var(--build-a-focus-ring);
+}
+
+.build-table input.input-b:focus {
+  outline: none;
+  box-shadow: var(--build-b-focus-ring);
 }
 
 /* Input with remove button */
@@ -200,15 +220,6 @@
   border-radius: 0.25rem;
   background: var(--input-bg);
   color: inherit;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: none;
-}
-
-.build-table .tiered-select::-ms-expand {
-  display: none;
 }
 
 .build-table .tiered-select.input-a {
@@ -219,9 +230,14 @@
   border-color: var(--build-b-border);
 }
 
-.build-table .tiered-select:focus {
+.build-table .tiered-select.input-a:focus {
   outline: none;
-  box-shadow: var(--focus-ring);
+  box-shadow: var(--build-a-focus-ring);
+}
+
+.build-table .tiered-select.input-b:focus {
+  outline: none;
+  box-shadow: var(--build-b-focus-ring);
 }
 
 .build-table .tiered-select:disabled {

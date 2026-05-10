@@ -13,9 +13,9 @@
   --input-bg: hsl(220 10% 15%);
   --input-border: hsl(0 0% 40%);
   --border-color: hsl(0 0% 30%);
+  --footer-border: hsl(0 0% 27%);
   --focus-ring: 0 0 0 2px hsl(220 90% 65% / 0.3);
   --focus-border: hsl(220 90% 65%);
-  --footer-border: hsl(0 0% 27%);
 
   /* Header */
   --header-bg: hsl(220 5% 14%);
@@ -37,6 +37,10 @@
   --build-b-bg: rgba(255, 180, 100, 0.2);
   --build-a-text: hsl(210, 80%, 70%);
   --build-b-text: hsl(30, 80%, 70%);
+  --build-a-focus-ring: 0 0 0 2px hsl(220 90% 65% / 0.3);
+  --build-a-focus-border: hsl(220 90% 65%);
+  --build-b-focus-ring: 0 0 0 2px hsl(40 90% 65% / 0.3);
+  --build-b-focus-border: hsl(40 90% 65%);
   --add-btn-hover-a: hsl(210, 30%, 25%);
   --add-btn-hover-b: hsl(30, 30%, 25%);
 
@@ -98,6 +102,10 @@
   --build-b-bg: rgba(255, 180, 100, 0.15);
   --build-a-text: hsl(210, 80%, 40%);
   --build-b-text: hsl(30, 80%, 35%);
+  --build-a-focus-ring: 0 0 0 2px hsl(220 90% 55% / 0.25);
+  --build-a-focus-border: hsl(220 80% 55%);
+  --build-b-focus-ring: 0 0 0 2px hsl(40 90% 55% / 0.25);
+  --build-b-focus-border: hsl(40 80% 55%);
   --add-btn-hover-a: hsl(210, 40%, 90%);
   --add-btn-hover-b: hsl(30, 40%, 90%);
 

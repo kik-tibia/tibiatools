@@ -3,6 +3,7 @@
 
   let {
     selectType,
+    build,
     all = [],
     selectedIds = [],
     getId = (x: any) => x?.id,
@@ -10,6 +11,7 @@
     onAdd,
   }: {
     selectType: string;
+    build?: "a" | "b";
     all?: any[];
     selectedIds?: (string | number)[];
     getId?: (x: any) => string | number;
@@ -73,6 +75,8 @@
   <div class="combo">
     <input
       class="fuzzy-search"
+      class:input-a={build === "a"}
+      class:input-b={build === "b"}
       placeholder="Search {selectType}"
       bind:value={q}
       onfocus={handleFocus}
@@ -126,6 +130,14 @@
   .fuzzy-search:focus {
     border-color: var(--focus-border);
     box-shadow: var(--focus-ring);
+  }
+  .fuzzy-search.input-a:focus {
+    border-color: var(--build-a-focus-border);
+    box-shadow: var(--build-a-focus-ring);
+  }
+  .fuzzy-search.input-b:focus {
+    border-color: var(--build-b-focus-border);
+    box-shadow: var(--build-b-focus-ring);
   }
 
   .dropdown {

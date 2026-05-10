@@ -133,11 +133,11 @@
   <tr class="data-row">
     <td></td>
     <td>
-      <FuzzySelect selectType="weapons" all={weaponsForA} selectedIds={[]} onAdd={setWeaponA} />
+      <FuzzySelect selectType="weapons" build="a" all={weaponsForA} selectedIds={[]} onAdd={setWeaponA} />
     </td>
     {#if showSecondBuild}
       <td>
-        <FuzzySelect selectType="weapons" all={weaponsForB} selectedIds={[]} onAdd={setWeaponB} />
+        <FuzzySelect selectType="weapons" build="b" all={weaponsForB} selectedIds={[]} onAdd={setWeaponB} />
       </td>
     {/if}
   </tr>
@@ -172,13 +172,13 @@
       <td></td>
       <td>
         {#if weaponA?.ammo}
-          <FuzzySelect selectType="ammo" all={availableAmmoA} selectedIds={[]} onAdd={setAmmoA} />
+          <FuzzySelect selectType="ammo" build="a" all={availableAmmoA} selectedIds={[]} onAdd={setAmmoA} />
         {/if}
       </td>
       {#if showSecondBuild}
         <td>
           {#if weaponB?.ammo}
-            <FuzzySelect selectType="ammo" all={availableAmmoB} selectedIds={[]} onAdd={setAmmoB} />
+            <FuzzySelect selectType="ammo" build="b" all={availableAmmoB} selectedIds={[]} onAdd={setAmmoB} />
           {/if}
         </td>
       {/if}
