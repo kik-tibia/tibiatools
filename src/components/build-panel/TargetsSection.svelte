@@ -193,21 +193,21 @@
             : null}
       <div class="tiered-select-cell">
         <select
-          class="tiered-select tiered-select-type input-{buildId}"
+          class="tiered-select-type input-{buildId}"
           value={target?.charmId ?? ""}
           onchange={(e) => setCharmIdFor(target, setCharm, targetId, e.currentTarget.value)}>
-          <option value="">None</option>
+          <option value="">No charm</option>
           {#each allCharms as charm}
             <option value={charm.id}>{charm.displayName}</option>
           {/each}
         </select>
         {#if missingStat}
-          <span class="tiered-select tiered-select-tier tiered-select-warn input-{buildId}">
+          <span class="tiered-select-tier tiered-select-warn input-{buildId}">
             <Tooltip label="×" tip="Requires setting {missingStat}<br/>in Advanced Stats" />
           </span>
         {:else}
           <select
-            class="tiered-select tiered-select-tier input-{buildId}"
+            class="tiered-select-tier input-{buildId}"
             disabled={target?.charmId == null}
             value={target?.charmTier ?? ""}
             onchange={(e) => setCharmTierFor(target, setCharm, e.currentTarget.value)}>

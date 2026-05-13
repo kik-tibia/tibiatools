@@ -173,19 +173,21 @@
         <input
           type="number"
           step="any"
-          class="input-{buildId} small"
+          class="input-{buildId}"
           value={build.rotation.find((r) => r.id === spell.id)?.targets ?? 1}
           oninput={(e) => setTargets(spell.id, Number(e.currentTarget.value))} />
         {#if !isAuto && !spell.isExtra}
           <input
             type="number"
             step="any"
-            class="input-{buildId} small"
+            class="input-{buildId}"
             value={build.rotation.find((r) => r.id === spell.id)?.ratio ?? 1}
             oninput={(e) => setRatio(spell.id, Number(e.currentTarget.value))} />
+        {:else if isAuto}
+          <span class="phantom-input"></span>
         {/if}
         {#if !spell.isExtra}
-          <RemoveButton pushRight={isAuto} onclick={() => removeRotation(spell.id)} />
+          <RemoveButton onclick={() => removeRotation(spell.id)} />
         {/if}
         {#if spell.isExtra}
           <div class="extra-link">
@@ -274,6 +276,15 @@
     text-align: center;
   }
 
+  /* Reserves ratio-input space in auto-attack rows so layout matches other rows */
+  .phantom-input {
+    flex: 1 1 0;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 0.25rem 0.4rem;
+    border: 1px solid transparent;
+  }
+
   /* Extra spell connector lines */
   .extra-link {
     flex: 1 1 0;
@@ -305,7 +316,7 @@
   }
 
   .extra-link-tee:last-child {
-    width: 1.5rem; /* approximate remove button width */
+    width: 1.8rem; /* approximate remove button width */
   }
 
   /* Vertical lines going up to connect with the primary spell row */

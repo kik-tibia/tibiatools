@@ -187,16 +187,16 @@
   <td>
     <div class="tiered-select-cell">
       <select
-        class="tiered-select tiered-select-type input-{buildId}"
+        class="tiered-select-type input-{buildId}"
         value={build.stats.imbuementElement ?? ""}
         onchange={(e) => setImbuementElement(build, setStat, e.currentTarget.value)}>
-        <option value="">None</option>
+        <option value="">No imbuement</option>
         {#each imbuementElements as el}
           <option value={el}>{capitalize(el)}</option>
         {/each}
       </select>
       <select
-        class="tiered-select tiered-select-tier input-{buildId}"
+        class="tiered-select-tier input-{buildId}"
         disabled={build.stats.imbuementElement === null}
         value={build.stats.imbuementValue ?? ""}
         onchange={(e) => setImbuementValue(setStat, e.currentTarget.value)}>

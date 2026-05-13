@@ -1,8 +1,8 @@
 <script lang="ts">
-  let { pushRight = false, onclick }: { pushRight?: boolean; onclick?: (e: MouseEvent) => void } = $props();
+  let { onclick }: { onclick?: (e: MouseEvent) => void } = $props();
 </script>
 
-<button type="button" class="remove-btn" class:push-right={pushRight} aria-label="Remove" {onclick}>×</button>
+<button type="button" class="remove-btn" aria-label="Remove" {onclick}>×</button>
 
 <style>
   .remove-btn {
@@ -17,10 +17,6 @@
     flex-shrink: 0;
     position: relative;
     z-index: 1;
-  }
-
-  .push-right {
-    margin-left: auto;
   }
 
   .remove-btn:hover {

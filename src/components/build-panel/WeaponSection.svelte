@@ -148,7 +148,7 @@
         <div class="selected-item input-with-remove">
           <span class="selected-name selected-name-a">{weaponA.name}</span>
           {#if weaponA.id !== 1}
-            <RemoveButton pushRight onclick={clearWeaponA} />
+            <RemoveButton onclick={clearWeaponA} />
           {/if}
         </div>
       {/if}

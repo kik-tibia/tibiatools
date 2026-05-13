@@ -3,20 +3,37 @@
   font-size: 0.9rem;
 }
 
+/* Shared dropdown base — selects and the warn-state placeholder span */
+.build-table select,
+.build-table .tiered-select-warn {
+  box-sizing: border-box;
+  min-width: 0;
+  padding: 0.2rem 0.4rem;
+  font: inherit;
+  border: 1px solid var(--input-border);
+  border-radius: 0.25rem;
+  background-color: var(--input-bg);
+  color: inherit;
+}
+
 .build-table select {
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: none;
 }
 
 .build-table select:-ms-expand {
   display: none;
 }
 
+.build-table select:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
 .build-table td {
-  padding: 0.35rem 0.75rem;
+  padding: 0.35rem 0.4rem;
   border-left: 1px solid var(--border-color);
   border-right: 1px solid var(--border-color);
   vertical-align: middle;
@@ -68,24 +85,6 @@
   margin: 0;
 }
 
-.build-table input.input-a {
-  border-color: var(--build-a-border);
-}
-
-.build-table input.input-b {
-  border-color: var(--build-b-border);
-}
-
-.build-table input.input-a:focus {
-  outline: none;
-  box-shadow: var(--build-a-focus-ring);
-}
-
-.build-table input.input-b:focus {
-  outline: none;
-  box-shadow: var(--build-b-focus-ring);
-}
-
 /* Input with remove button */
 .build-table .input-with-remove {
   display: flex;
@@ -131,21 +130,24 @@
   color: var(--negative-color);
 }
 
-.build-table .input-a {
+.build-table .input-a,
+.build-table input.input-a {
   border-color: var(--build-a-border);
 }
 
-.build-table .input-b {
+.build-table .input-b,
+.build-table input.input-b {
   border-color: var(--build-b-border);
 }
 
-.build-table .input-with-remove input[type="number"].small {
-  flex: 0 0 auto;
-  width: 3.5rem;
+.build-table .input-a:focus {
+  outline: none;
+  box-shadow: var(--build-a-focus-ring);
 }
 
-.build-table .input-with-remove input[type="number"].small:nth-child(2) {
-  margin-left: auto;
+.build-table .input-b:focus {
+  outline: none;
+  box-shadow: var(--build-b-focus-ring);
 }
 
 /* Add placeholder and button */
@@ -207,46 +209,16 @@
   width: 100%;
 }
 
+.build-table select {
+  width: 100%;
+}
+
 .build-table .tiered-select-cell {
   display: flex;
 }
 
-.build-table .tiered-select {
-  min-width: 0;
-  box-sizing: border-box;
-  padding: 0.25rem 0.4rem;
-  font: inherit;
-  border: 1px solid var(--input-border);
-  border-radius: 0.25rem;
-  background: var(--input-bg);
-  color: inherit;
-}
-
-.build-table .tiered-select.input-a {
-  border-color: var(--build-a-border);
-}
-
-.build-table .tiered-select.input-b {
-  border-color: var(--build-b-border);
-}
-
-.build-table .tiered-select.input-a:focus {
-  outline: none;
-  box-shadow: var(--build-a-focus-ring);
-}
-
-.build-table .tiered-select.input-b:focus {
-  outline: none;
-  box-shadow: var(--build-b-focus-ring);
-}
-
-.build-table .tiered-select:disabled {
-  cursor: not-allowed;
-  opacity: 0.55;
-}
-
-.build-table .tiered-select-type {
-  flex: 5 1 0;
+.build-table .tiered-select-cell .tiered-select-type {
+  flex: 6 1 0;
 }
 
 .build-table .tiered-select-tier {

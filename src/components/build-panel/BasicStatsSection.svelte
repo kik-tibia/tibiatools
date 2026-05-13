@@ -140,7 +140,7 @@
 {#snippet vocCell(build: Build, buildId: string, setVocation: (voc: Vocation) => void)}
   <td>
     <select
-      class="vocation-select input-{buildId}"
+      class="input-{buildId}"
       value={build.stats.vocation}
       onchange={(e) => setVocation(e.currentTarget.value as Vocation)}>
       {#each vocations as voc}
@@ -157,14 +157,14 @@
   setStat: (key: keyof BuildStats, value: BuildStats[keyof BuildStats]) => void,
 )}
   <select
-    class="vocation-select input-{buildId}"
+    class="input-{buildId}"
     value={selectedStanceIdFor(build.stats.stanceIds, group) ?? ""}
     onchange={(e) => {
       const raw = e.currentTarget.value;
       const newId = raw === "" ? null : Number(raw);
       setStat("stanceIds", replaceStanceForGroup(build.stats.stanceIds, group, newId));
     }}>
-    <option value="">None</option>
+    <option value="">No stance</option>
     {#each stancesFor(build.stats.vocation, group) as s}
       <option value={s.id}>{s.name}</option>
     {/each}
@@ -245,30 +245,3 @@
     </tr>
   {/each}
 {/if}
-
-<style>
-  .vocation-select {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0.25rem 0.4rem;
-    font: inherit;
-    border: 1px solid var(--input-border);
-    border-radius: 0.25rem;
-    background: var(--input-bg);
-    color: inherit;
-    cursor: pointer;
-  }
-
-  .vocation-select.input-a {
-    border-color: var(--build-a-border);
-  }
-
-  .vocation-select.input-b {
-    border-color: var(--build-b-border);
-  }
-
-  .vocation-select:focus {
-    outline: none;
-    box-shadow: var(--focus-ring);
-  }
-</style>
