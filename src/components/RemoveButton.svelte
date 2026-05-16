@@ -6,6 +6,8 @@
 
 <style>
   .remove-btn {
+    width: var(--remove-btn-width, auto);
+    box-sizing: border-box;
     padding: 0.1rem 0.4rem;
     font-size: 1rem;
     line-height: 1;

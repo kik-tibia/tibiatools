@@ -176,24 +176,20 @@
           class="input-{buildId}"
           value={build.rotation.find((r) => r.id === spell.id)?.targets ?? 1}
           oninput={(e) => setTargets(spell.id, Number(e.currentTarget.value))} />
-        {#if !isAuto && !spell.isExtra}
+        {#if spell.isExtra}
+          <span class="corner-ratio" aria-hidden="true"></span>
+          <span class="corner-remove" aria-hidden="true"></span>
+        {:else if isAuto}
+          <span class="phantom-input" aria-hidden="true"></span>
+          <RemoveButton onclick={() => removeRotation(spell.id)} />
+        {:else}
           <input
             type="number"
             step="any"
             class="input-{buildId}"
             value={build.rotation.find((r) => r.id === spell.id)?.ratio ?? 1}
             oninput={(e) => setRatio(spell.id, Number(e.currentTarget.value))} />
-        {:else if isAuto}
-          <span class="phantom-input"></span>
-        {/if}
-        {#if !spell.isExtra}
           <RemoveButton onclick={() => removeRotation(spell.id)} />
-        {/if}
-        {#if spell.isExtra}
-          <div class="extra-link">
-            <span class="extra-link-tee"></span>
-            <span class="extra-link-tee"></span>
-          </div>
         {/if}
       </div>
     {:else if !spell.isExtra}
@@ -265,68 +261,45 @@
     vertical-align: bottom;
   }
 
-  .rotation-labels {
-    display: flex;
-    gap: 0.25rem;
-    padding-right: 1.65rem; /* account for remove button width */
+  /* Fixed col 3 lets the extra-row connectors below position against known
+     geometry. :global(.build-table) outweighs the global flex rule on
+     .input-with-remove; the column-gap is needed by .rotation-labels (the
+     global rule doesn't apply to it). */
+  :global(.build-table) .input-with-remove,
+  :global(.build-table) .rotation-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr var(--remove-btn-width);
+    column-gap: 0.25rem;
+    position: relative;
   }
 
   .rotation-labels span {
-    flex: 1;
     text-align: center;
   }
 
-  /* Reserves ratio-input space in auto-attack rows so layout matches other rows */
-  .phantom-input {
-    flex: 1 1 0;
-    min-width: 0;
-    box-sizing: border-box;
-    padding: 0.25rem 0.4rem;
-    border: 1px solid transparent;
-  }
-
-  /* Extra spell connector lines */
-  .extra-link {
-    flex: 1 1 0;
-    min-width: 0;
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.25rem;
-    align-self: stretch;
-    position: relative;
-  }
-
-  /* Horizontal line spanning from targets input to the right edge */
-  .extra-link::before {
-    content: "";
+  /* Connector to parent row, drawn as two overlapping boxes with only
+     right + bottom borders. One-box corners avoid the subpixel gap that
+     adjacent-line rendering can leave. Both start at grid_left; col 1's
+     input (z-index: 1) covers the overlap so the visible bar begins past
+     the input. */
+  .corner-ratio,
+  .corner-remove {
     position: absolute;
-    top: 50%;
-    left: -0.375rem; /* extend left to connect with targets input */
-    right: 0.75rem; /* end at center of last tee to form right angle */
-    border-top: 1px solid var(--text-muted);
-    z-index: 0;
-  }
-
-  .extra-link-tee {
-    position: relative;
-  }
-
-  .extra-link-tee:first-child {
-    width: 3.5rem; /* match ratio input width */
-  }
-
-  .extra-link-tee:last-child {
-    width: 1.8rem; /* approximate remove button width */
-  }
-
-  /* Vertical lines going up to connect with the primary spell row */
-  .extra-link-tee::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: -1.2rem; /* extend up into primary row */
-    z-index: 0;
+    left: 0;
+    top: -1.2rem;
     bottom: 50%;
-    border-left: 1px solid var(--text-muted);
+    border-right: 1px solid var(--text-muted);
+    border-bottom: 1px solid var(--text-muted);
+    pointer-events: none;
+  }
+
+  /* Right edge at col 2 center; assumes col_1 = col_2 = 1fr. */
+  .corner-ratio {
+    right: calc(25% + 0.125rem + 0.75 * var(--remove-btn-width));
+  }
+
+  /* Right edge at col 3 center. */
+  .corner-remove {
+    right: calc(var(--remove-btn-width) / 2);
   }
 </style>

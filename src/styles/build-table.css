@@ -1,6 +1,7 @@
 /* Shared styles for build-table section components */
 .build-table {
   font-size: 0.9rem;
+  --remove-btn-width: 1.5rem;
 }
 
 /* Shared dropdown base — selects and the warn-state placeholder span */
