@@ -365,7 +365,7 @@ function applyPierce(resistance: number, pierce: number): number {
   if (resistance <= 0) return resistance; // "Sensitivities of 0% can never be increased."
   const headroom = Math.max(0, 1 - resistance);
   const fullPierce = Math.min(headroom, pierce);
-  const halfPierce = (pierce - fullPierce) / 2; // "The increase is halved above sensitivities of 100% (rounded up)."
+  const halfPierce = Math.ceil(Math.round((pierce - fullPierce) * 100) / 2) / 100; // "The increase is halved above sensitivities of 100% (rounded up)."
   return Math.min(resistance + fullPierce + halfPierce, resistance * 2); // "Can double the sensitivity at most."
 }
 
