@@ -49,7 +49,8 @@ export type PerkBonusType =
   | "damage-reptile"
   | "damage-slime"
   | "damage-undead"
-  | "damage-vermin";
+  | "damage-vermin"
+  | "base-harmony-bonus";
 
 export type Perk = {
   id: number;

@@ -5,6 +5,7 @@ import {
   resolvePerks,
   resolveSpellDamages,
   resolveSpells,
+  resolveStances,
   resolveWeapon,
 } from "./build-state-resolver.ts";
 import { computeDph, computeDpt, computeResults } from "./calc.ts";
@@ -14,11 +15,12 @@ const d = 1;
 
 describe("default build", () => {
   const base = defaultBuild();
+  const stances = resolveStances(base.stats.stanceIds);
   const weapon = resolveWeapon(base.weapon);
   const perks = resolvePerks(base.perks);
   const rotation = resolveSpells(base.rotation);
   const targets = resolveCreatures(base.targets);
-  const results = computeResults(base.stats, weapon, perks, rotation, targets);
+  const results = computeResults(base.stats, stances, weapon, perks, rotation, targets);
   const spellDamageChoices = resolveSpellDamages(base.rotation, results);
   const dpt = computeDpt(spellDamageChoices);
   const dph = computeDph(spellDamageChoices);
@@ -67,6 +69,7 @@ describe("Knight build with everything", () => {
     critChance: 12,
     critDamage: 72,
   };
+  const stances = resolveStances(stats.stanceIds);
   const weapon = resolveWeapon({ id: 658 });
   const perks = resolvePerks([
     { id: 45, value: 11.5 },
@@ -87,7 +90,7 @@ describe("Knight build with everything", () => {
     { id: 618, ratio: 173 },
     { id: 659, ratio: 106 },
   ]);
-  const results = computeResults(stats, weapon, perks, rotation, targets);
+  const results = computeResults(stats, stances, weapon, perks, rotation, targets);
   const spellDamageChoices = resolveSpellDamages(rotation, results);
   const dpt = computeDpt(spellDamageChoices);
   const dph = computeDph(spellDamageChoices);

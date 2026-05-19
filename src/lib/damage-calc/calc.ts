@@ -1,4 +1,5 @@
 import { allSpells, type Spell, type SpellDamage, type SpellDamageEffective, type SpellDamageRaw } from "@data/spells";
+import type { Stance } from "@data/stances.ts";
 import { type SkillType } from "@data/weapons";
 import type { BuildStats, Vocation } from "@lib/build-state";
 import type {
@@ -28,6 +29,7 @@ const AUTO_ATTACK_ID = 1;
 
 export function computeResults(
   buildStats: BuildStats,
+  stances: Stance[],
   weaponChoice: WeaponChoice,
   perkChoices: PerkChoice[],
   spellChoices: SpellChoice[],
@@ -42,6 +44,7 @@ export function computeResults(
         ...characterState,
         basePower: spell.power,
         runicIncrease: 0,
+        baseHarmonyBonus: 0,
         armorPenetration: 0,
         deathPierce: 0,
         earthPierce: 0,
@@ -72,14 +75,19 @@ export function computeResults(
         damageUndead: 0,
         damageVermin: 0,
       };
-      const withPerks: SpellState = perkChoices.reduce(
+      let spellState: SpellState = perkChoices.reduce(
         (acc, perkChoice) => applyPerkToSpell(spell, perkChoice, weaponChoice.weapon.skill, buildStats.vocation, acc),
         initial,
       );
-      // TODO implement harmony properly, with a stance system that all vocations will benefit from
-      const final: SpellState = spell.isSpender ? { ...withPerks, basePower: withPerks.basePower * 3.08 } : withPerks;
 
-      const raw: SpellDamageRaw = computeRaw(spell, final, buildStats);
+      if (spell.isSpender) {
+        const harmonyBase =
+          spellState.baseHarmonyBonus + (stances.some((s) => s.effect == "virtue-of-harmony") ? 13 : 7);
+        const spenderHarmonyBonus = (16 * harmonyBase + 100) / 100;
+        spellState = { ...spellState, basePower: spellState.basePower * spenderHarmonyBonus };
+      }
+
+      const raw: SpellDamageRaw = computeRaw(spell, spellState, buildStats);
 
       let effective: SpellDamageEffective;
       const ratioAdjustedHp = creatureChoices.reduce(
@@ -91,7 +99,7 @@ export function computeResults(
           (acc, creatureChoice) => {
             const creatureEffective = computeEffective(
               spell,
-              final,
+              spellState,
               buildStats,
               weaponChoice,
               spellChoices,
@@ -113,7 +121,7 @@ export function computeResults(
             elementalCharmDmg: 0,
           },
         );
-      } else effective = computeEffective(spell, final, buildStats, weaponChoice, spellChoices);
+      } else effective = computeEffective(spell, spellState, buildStats, weaponChoice, spellChoices);
       return { ...spell, ...raw, ...effective };
     });
   return spellResults;
@@ -253,6 +261,8 @@ function applyPerkToSpell(
         else return { ...state, distance: state.distance + perkChoice.value };
       case "magic-level":
         return { ...state, magicLevel: ML + perkChoice.value };
+      case "base-harmony-bonus":
+        return { ...state, baseHarmonyBonus: perkChoice.value };
       case "armor-penetration":
         return { ...state, armorPenetration: perkChoice.value / 100 };
       case "death-pierce":

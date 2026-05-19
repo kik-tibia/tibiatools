@@ -113,14 +113,7 @@
           <tr class:highlight={showHighlighting && isHigher(r.id)}>
             <td class="spell">
               <div class="spell-name">
-                {#if r.isSpender}
-                  <Tooltip
-                    label={r.name}
-                    tip="Currently assuming VoH and no other harmony perks (208% bonus)"
-                    right={true} />
-                {:else}
-                  {r.name}
-                {/if}
+                {r.name}
               </div>
             </td>
             <td class="num" data-label="Effective Avg">{r.effectiveAvg.toFixed(1)}</td>

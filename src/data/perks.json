@@ -1591,5 +1591,11 @@
     "name": "Damage against Vermin",
     "scope": "all",
     "bonusType": "damage-vermin"
+  },
+  {
+    "id": 240,
+    "name": "Ascetic",
+    "scope": "spell",
+    "bonusType": "base-harmony-bonus"
   }
 ]

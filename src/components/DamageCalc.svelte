@@ -11,6 +11,7 @@
     resolvePerks,
     resolveSpellDamages,
     resolveSpells,
+    resolveStances,
     resolveWeapon,
   } from "@lib/damage-calc/build-state-resolver";
   import { packState, unpackState } from "@lib/url-pack";
@@ -29,6 +30,8 @@
     return { version: 2, A, B, perkOrder, rotationOrder, targetOrder, showSecondBuild, collapsed };
   }
 
+  let stancesA = $derived(resolveStances(A.stats.stanceIds));
+  let stancesB = $derived(resolveStances(B.stats.stanceIds));
   let weaponChoiceA = $derived(resolveWeapon(A.weapon));
   let weaponChoiceB = $derived(resolveWeapon(B.weapon));
   let perkChoicesA = $derived(resolvePerks(A.perks));
@@ -37,8 +40,12 @@
   let spellChoicesB = $derived(resolveSpells(B.rotation));
   let targetChoicesA = $derived(resolveCreatures(A.targets));
   let targetChoicesB = $derived(resolveCreatures(B.targets));
-  let resultsA = $derived(computeResults(A.stats, weaponChoiceA, perkChoicesA, spellChoicesA, targetChoicesA));
-  let resultsB = $derived(computeResults(B.stats, weaponChoiceB, perkChoicesB, spellChoicesB, targetChoicesB));
+  let resultsA = $derived(
+    computeResults(A.stats, stancesA, weaponChoiceA, perkChoicesA, spellChoicesA, targetChoicesA),
+  );
+  let resultsB = $derived(
+    computeResults(B.stats, stancesB, weaponChoiceB, perkChoicesB, spellChoicesB, targetChoicesB),
+  );
   let spellDamageChoicesA = $derived(resolveSpellDamages(A.rotation, resultsA));
   let spellDamageChoicesB = $derived(resolveSpellDamages(B.rotation, resultsB));
   let effectiveDptA = $derived(computeDpt(spellDamageChoicesA));
