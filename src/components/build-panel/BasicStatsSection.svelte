@@ -178,10 +178,10 @@
   setStat: (key: keyof BuildStats, value: BuildStats[keyof BuildStats]) => void,
 )}
   <td>
-    {#if build.stats.vocation === "sorcerer"}
-      {@render stanceDropdown(build, buildId, position === 0 ? "elemental" : "curse", setStat)}
-    {:else if position === 0}
+    {#if build.stats.vocation === "monk"}
       {@render stanceDropdown(build, buildId, null, setStat)}
+    {:else}
+      <span class="no-stance">—</span>
     {/if}
   </td>
 {/snippet}
@@ -213,21 +213,14 @@
   </tr>
 
   <tr class="data-row">
-    <td>Stance</td>
-    {@render stanceCell(buildA, "a", 0, setStatA)}
-    {#if showSecondBuild}
-      {@render stanceCell(buildB, "b", 0, setStatB)}
+    {#if buildA.stats.vocation === "monk" || (showSecondBuild && buildB.stats.vocation === "monk")}
+      <td>Stance</td>
+      {@render stanceCell(buildA, "a", 0, setStatA)}
+      {#if showSecondBuild}
+        {@render stanceCell(buildB, "b", 0, setStatB)}
+      {/if}
     {/if}
   </tr>
-  {#if buildA.stats.vocation === "sorcerer" || (showSecondBuild && buildB.stats.vocation === "sorcerer")}
-    <tr class="data-row">
-      <td></td>
-      {@render stanceCell(buildA, "a", 1, setStatA)}
-      {#if showSecondBuild}
-        {@render stanceCell(buildB, "b", 1, setStatB)}
-      {/if}
-    </tr>
-  {/if}
 
   {#each statFields as field}
     <tr class="data-row">
@@ -245,3 +238,10 @@
     </tr>
   {/each}
 {/if}
+
+<style>
+  .no-stance {
+    display: block;
+    text-align: center;
+  }
+</style>
