@@ -35,18 +35,6 @@ export function computeEffective(
   spellChoices: SpellChoice[],
   creatureChoice?: CreatureChoice,
 ): SpellDamageEffective {
-  const aoeAA = !!weaponChoice.ammo?.aoe;
-  let weapon = weaponChoice.weapon;
-  let effectiveAvg = 0;
-  let elementalCharmDmg = 0;
-  let critCharmDmg = 0;
-
-  const highRollAA = !aoeAA;
-
-  let nTranscendenceAttacks;
-  if (spell.spellType === "auto") nTranscendenceAttacks = 3;
-  else nTranscendenceAttacks = 3.9;
-
   let charmCritChance = 0;
   let charmCritDamage = 0;
   if (creatureChoice?.charm && creatureChoice.charmTier) {
@@ -60,6 +48,10 @@ export function computeEffective(
       else charmCritDamage = 0.44;
     }
   }
+
+  let nTranscendenceAttacks;
+  if (spell.spellType === "auto") nTranscendenceAttacks = 3;
+  else nTranscendenceAttacks = 3.9;
   const pT = state.transcendenceChance;
   const pTCrit = (nTranscendenceAttacks * pT) / (nTranscendenceAttacks * pT - pT + 1);
   const critChance = Math.min(state.critChance + charmCritChance, 1);
@@ -72,149 +64,37 @@ export function computeEffective(
   // Increase crit damage by the ratio of transcendence crits, which have 15% extra damage
   const critDamage = state.critDamage + charmCritDamage + (0.15 * pTCrit) / (pTCrit + (1 - pTCrit) * critChance || 1);
 
-  const effectiveAvgElements: Record<Element, number> = {
-    death: 0,
-    earth: 0,
-    energy: 0,
-    fire: 0,
-    holy: 0,
-    ice: 0,
-    physical: 0,
-  };
-
-  weapon = applyElementalAttackImbuement(weapon, aoeAA, buildStats);
-
+  let effectiveAvg = 0;
   if (spell.spellType === "auto") {
-    const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
-    const attackIncrease = buildStats.vocation == "monk" ? 1.5 : 1;
-    let min, avg, max, highRollAvg;
-    if (state.weaponDamage) {
-      min = undefined;
-      avg = state.weaponDamage;
-      max = undefined;
-      highRollAvg = avg;
-    } else {
-      min = Math.floor(state.flat + (attackValueWithoutFlat * attackIncrease) / 2);
-      avg = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease);
-      max = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease * 2);
-      highRollAvg = Math.floor(state.flat + attackValueWithoutFlat * 1.75 * attackIncrease);
-    }
-
-    const effectiveAvgHighRollElements: Record<Element, number> = {
-      death: 0,
-      earth: 0,
-      energy: 0,
-      fire: 0,
-      holy: 0,
-      ice: 0,
-      physical: 0,
-    };
-    effectiveAvg = avg;
-    let effectiveAvgHighRoll = highRollAvg;
-    let physAvg = 0;
-
-    if (weapon.damageType) {
-      // wand or rod
-      effectiveAvgElements[weapon.damageType] = weapon.damage ?? 0;
-      physAvg = weapon.damageType == "physical" ? (weapon.damage ?? 0) : 0;
-    } else {
-      // regular weapon
-      if (weapon.attack && weapon.attack > 0) {
-        effectiveAvgElements.death = (effectiveAvg * (weapon.attackDeath ?? 0)) / weapon.attack;
-        effectiveAvgElements.earth = (effectiveAvg * (weapon.attackEarth ?? 0)) / weapon.attack;
-        effectiveAvgElements.energy = (effectiveAvg * (weapon.attackEnergy ?? 0)) / weapon.attack;
-        effectiveAvgElements.fire = (effectiveAvg * (weapon.attackFire ?? 0)) / weapon.attack;
-        effectiveAvgElements.ice = (effectiveAvg * (weapon.attackIce ?? 0)) / weapon.attack;
-
-        effectiveAvgHighRollElements.death = (highRollAvg * (weapon.attackDeath ?? 0)) / weapon.attack;
-        effectiveAvgHighRollElements.earth = (highRollAvg * (weapon.attackEarth ?? 0)) / weapon.attack;
-        effectiveAvgHighRollElements.energy = (highRollAvg * (weapon.attackEnergy ?? 0)) / weapon.attack;
-        effectiveAvgHighRollElements.fire = (highRollAvg * (weapon.attackFire ?? 0)) / weapon.attack;
-        effectiveAvgHighRollElements.ice = (highRollAvg * (weapon.attackIce ?? 0)) / weapon.attack;
-
-        physAvg = (avg * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
-      }
-    }
-
-    const physAvgHighRoll = (highRollAvg * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
-
-    if (creatureChoice) {
-      effectiveAvg = elementalEffective(effectiveAvgElements, physAvg, physAvg, state, creatureChoice);
-      effectiveAvgHighRoll = elementalEffective(
-        effectiveAvgHighRollElements,
-        physAvgHighRoll,
-        physAvgHighRoll,
-        state,
-        creatureChoice,
-      );
-    }
-
-    if (weapon.damageType) {
-      // wand or rod
-      effectiveAvg =
-        effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
-    } else {
-      // regular weapon
-      effectiveAvg = highRollAA
-        ? pNoBonus * effectiveAvg +
-          pCrit * effectiveAvgHighRoll * (1 + critDamage) +
-          pFatal * effectiveAvgHighRoll * 1.6 +
-          pCritFatal * effectiveAvgHighRoll * (1.6 + critDamage)
-        : effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
-    }
+    effectiveAvg = computeEffectiveAuto(
+      state,
+      buildStats,
+      pCrit,
+      pFatal,
+      pCritFatal,
+      pNoBonus,
+      critDamage,
+      weaponChoice,
+      creatureChoice,
+    );
   } else {
-    const avg = computeAvg(spell, state);
-    const min = spell.buckets != 0 ? computeMinMax(spell, -1, state) : undefined;
-    const max = spell.buckets != 0 ? computeMinMax(spell, 1, state) : undefined;
-    effectiveAvg =
-      state.runicIncrease == 0
-        ? avg
-        : computeAvg(spell, { ...state, magicLevel: state.magicLevel + 0.25 * state.runicIncrease });
-    let physMin = 0;
-    let physMax = 0;
-
-    if (spell.scope == "chained-penance") {
-      const chainedPenance = spellChoices.find((s) => s.spell.scope == "chained-penance");
-      if (chainedPenance) {
-        const decay = 0.95;
-        const targets = Math.max(chainedPenance.targets, 1);
-        effectiveAvg = (effectiveAvg * (1 - Math.pow(decay, targets))) / (1 - decay) / targets;
-      }
-    }
-
-    if (spell.element == "weapon") {
-      if (weapon.attack && weapon.attack > 0) {
-        if (weapon.bond) {
-          effectiveAvgElements[weapon.bond] = effectiveAvg;
-          if (weapon.bond == "physical") {
-            physMin = min ?? effectiveAvg;
-            physMax = max ?? effectiveAvg;
-          }
-        } else {
-          effectiveAvgElements.death = (effectiveAvg * (weapon.attackDeath ?? 0)) / weapon.attack;
-          effectiveAvgElements.earth = (effectiveAvg * (weapon.attackEarth ?? 0)) / weapon.attack;
-          effectiveAvgElements.energy = (effectiveAvg * (weapon.attackEnergy ?? 0)) / weapon.attack;
-          effectiveAvgElements.fire = (effectiveAvg * (weapon.attackFire ?? 0)) / weapon.attack;
-          effectiveAvgElements.ice = (effectiveAvg * (weapon.attackIce ?? 0)) / weapon.attack;
-          physMin = ((min ?? effectiveAvg) * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
-          physMax = ((max ?? effectiveAvg) * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
-        }
-      }
-    } else {
-      effectiveAvgElements[spell.element] = effectiveAvg;
-      if (spell.element == "physical") {
-        physMin = min ?? avg;
-        physMax = max ?? avg;
-      }
-    }
-
-    if (creatureChoice) {
-      effectiveAvg = elementalEffective(effectiveAvgElements, physMin, physMax, state, creatureChoice);
-    }
-
-    effectiveAvg =
-      effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
+    effectiveAvg = computeEffectiveSpell(
+      spell,
+      buildStats,
+      state,
+      pCrit,
+      pFatal,
+      pCritFatal,
+      pNoBonus,
+      critDamage,
+      weaponChoice,
+      spellChoices,
+      creatureChoice,
+    );
   }
+
+  let elementalCharmDmg = 0;
+  let critCharmDmg = 0;
 
   if (creatureChoice?.charm && creatureChoice.charmTier) {
     let elementalChance = 0;
@@ -273,6 +153,179 @@ export function computeEffective(
   }
 
   return { effectiveAvg, critCharmDmg, elementalCharmDmg };
+}
+
+function computeEffectiveAuto(
+  state: SpellState,
+  buildStats: BuildStats,
+  pCrit: number,
+  pFatal: number,
+  pCritFatal: number,
+  pNoBonus: number,
+  critDamage: number,
+  weaponChoice: WeaponChoice,
+  creatureChoice?: CreatureChoice,
+): number {
+  const aoeAA = !!weaponChoice.ammo?.aoe;
+  let weapon = weaponChoice.weapon;
+  weapon = applyElementalAttackImbuement(weapon, aoeAA, buildStats);
+  let effectiveAvg = 0;
+
+  const effectiveAvgElements = initElements();
+
+  const highRollAA = !aoeAA;
+  const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
+  const attackIncrease = buildStats.vocation == "monk" ? 1.5 : 1;
+  let min, avg, max, highRollAvg;
+  if (state.weaponDamage) {
+    min = undefined;
+    avg = state.weaponDamage;
+    max = undefined;
+    highRollAvg = avg;
+  } else {
+    min = Math.floor(state.flat + (attackValueWithoutFlat * attackIncrease) / 2);
+    avg = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease);
+    max = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease * 2);
+    highRollAvg = Math.floor(state.flat + attackValueWithoutFlat * 1.75 * attackIncrease);
+  }
+
+  const effectiveAvgHighRollElements = initElements();
+  effectiveAvg = avg;
+  let effectiveAvgHighRoll = highRollAvg;
+  let physAvg = 0;
+
+  if (weapon.damageType) {
+    // wand or rod
+    effectiveAvgElements[weapon.damageType] = weapon.damage ?? 0;
+    physAvg = weapon.damageType == "physical" ? (weapon.damage ?? 0) : 0;
+  } else {
+    // regular weapon
+    if (weapon.attack && weapon.attack > 0) {
+      effectiveAvgElements.death = (effectiveAvg * (weapon.attackDeath ?? 0)) / weapon.attack;
+      effectiveAvgElements.earth = (effectiveAvg * (weapon.attackEarth ?? 0)) / weapon.attack;
+      effectiveAvgElements.energy = (effectiveAvg * (weapon.attackEnergy ?? 0)) / weapon.attack;
+      effectiveAvgElements.fire = (effectiveAvg * (weapon.attackFire ?? 0)) / weapon.attack;
+      effectiveAvgElements.ice = (effectiveAvg * (weapon.attackIce ?? 0)) / weapon.attack;
+
+      effectiveAvgHighRollElements.death = (highRollAvg * (weapon.attackDeath ?? 0)) / weapon.attack;
+      effectiveAvgHighRollElements.earth = (highRollAvg * (weapon.attackEarth ?? 0)) / weapon.attack;
+      effectiveAvgHighRollElements.energy = (highRollAvg * (weapon.attackEnergy ?? 0)) / weapon.attack;
+      effectiveAvgHighRollElements.fire = (highRollAvg * (weapon.attackFire ?? 0)) / weapon.attack;
+      effectiveAvgHighRollElements.ice = (highRollAvg * (weapon.attackIce ?? 0)) / weapon.attack;
+
+      physAvg = (avg * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
+    }
+  }
+
+  const physAvgHighRoll = (highRollAvg * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
+
+  if (creatureChoice) {
+    effectiveAvg = elementalEffective(effectiveAvgElements, physAvg, physAvg, state, creatureChoice);
+    effectiveAvgHighRoll = elementalEffective(
+      effectiveAvgHighRollElements,
+      physAvgHighRoll,
+      physAvgHighRoll,
+      state,
+      creatureChoice,
+    );
+  }
+
+  if (weapon.damageType) {
+    // wand or rod, doesn't get high roll crits
+    effectiveAvg =
+      effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
+  } else {
+    // regular weapon
+    effectiveAvg = highRollAA
+      ? pNoBonus * effectiveAvg +
+        pCrit * effectiveAvgHighRoll * (1 + critDamage) +
+        pFatal * effectiveAvgHighRoll * 1.6 +
+        pCritFatal * effectiveAvgHighRoll * (1.6 + critDamage)
+      : effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
+  }
+
+  return effectiveAvg;
+}
+
+function computeEffectiveSpell(
+  spell: Spell,
+  buildStats: BuildStats,
+  state: SpellState,
+  pCrit: number,
+  pFatal: number,
+  pCritFatal: number,
+  pNoBonus: number,
+  critDamage: number,
+  weaponChoice: WeaponChoice,
+  spellChoices: SpellChoice[],
+  creatureChoice?: CreatureChoice,
+): number {
+  let weapon = weaponChoice.weapon;
+  weapon = applyElementalAttackImbuement(weapon, false, buildStats);
+  const avg = computeAvg(spell, state);
+  const min = spell.buckets != 0 ? computeMinMax(spell, -1, state) : undefined;
+  const max = spell.buckets != 0 ? computeMinMax(spell, 1, state) : undefined;
+  let effectiveAvg =
+    state.runicIncrease == 0
+      ? avg
+      : computeAvg(spell, { ...state, magicLevel: state.magicLevel + 0.25 * state.runicIncrease });
+  let effectiveAvgElements = initElements();
+  let physMin = 0;
+  let physMax = 0;
+
+  if (spell.scope == "chained-penance") {
+    const chainedPenance = spellChoices.find((s) => s.spell.scope == "chained-penance");
+    if (chainedPenance) {
+      const decay = 0.95;
+      const targets = Math.max(chainedPenance.targets, 1);
+      effectiveAvg = (effectiveAvg * (1 - Math.pow(decay, targets))) / (1 - decay) / targets;
+    }
+  }
+
+  if (spell.element == "weapon") {
+    if (weapon.attack && weapon.attack > 0) {
+      if (weapon.bond) {
+        effectiveAvgElements[weapon.bond] = effectiveAvg;
+        if (weapon.bond == "physical") {
+          physMin = min ?? effectiveAvg;
+          physMax = max ?? effectiveAvg;
+        }
+      } else {
+        effectiveAvgElements.death = (effectiveAvg * (weapon.attackDeath ?? 0)) / weapon.attack;
+        effectiveAvgElements.earth = (effectiveAvg * (weapon.attackEarth ?? 0)) / weapon.attack;
+        effectiveAvgElements.energy = (effectiveAvg * (weapon.attackEnergy ?? 0)) / weapon.attack;
+        effectiveAvgElements.fire = (effectiveAvg * (weapon.attackFire ?? 0)) / weapon.attack;
+        effectiveAvgElements.ice = (effectiveAvg * (weapon.attackIce ?? 0)) / weapon.attack;
+        physMin = ((min ?? effectiveAvg) * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
+        physMax = ((max ?? effectiveAvg) * (weapon.attackPhysical ?? 0)) / (weapon.attack ?? 0);
+      }
+    }
+  } else {
+    effectiveAvgElements[spell.element] = effectiveAvg;
+    if (spell.element == "physical") {
+      physMin = min ?? avg;
+      physMax = max ?? avg;
+    }
+  }
+
+  if (creatureChoice) {
+    effectiveAvg = elementalEffective(effectiveAvgElements, physMin, physMax, state, creatureChoice);
+  }
+
+  effectiveAvg = effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
+  return effectiveAvg;
+}
+
+function initElements(): Record<Element, number> {
+  return {
+    death: 0,
+    earth: 0,
+    energy: 0,
+    fire: 0,
+    holy: 0,
+    ice: 0,
+    physical: 0,
+  };
 }
 
 export function computeAvg(spell: Spell, state: SpellState): number {
