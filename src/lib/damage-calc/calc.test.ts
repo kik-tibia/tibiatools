@@ -8,7 +8,7 @@ import {
   resolveStances,
   resolveWeapon,
 } from "./build-state-resolver.ts";
-import { computeDph, computeDpt, computeResults } from "./calc.ts";
+import { computeDamageFromCharms, computeDph, computeDpt, computeResults } from "./calc.ts";
 
 // `toBeCloseTo` numDigits
 const d = 1;
@@ -86,7 +86,7 @@ describe("Knight build with everything", () => {
     { id: 6, targets: 0.5, ratio: 8, extraSpell: true },
   ]);
   const targets = resolveCreatures([
-    { id: 105, ratio: 208 },
+    { id: 105, ratio: 208, charmId: 5, charmTier: 2 },
     { id: 618, ratio: 173 },
     { id: 659, ratio: 106 },
   ]);
@@ -94,6 +94,7 @@ describe("Knight build with everything", () => {
   const spellDamageChoices = resolveSpellDamages(rotation, results);
   const dpt = computeDpt(spellDamageChoices);
   const dph = computeDph(spellDamageChoices);
+  const dmgFromCharms = computeDamageFromCharms(spellDamageChoices);
 
   describe("computeResults", () => {
     it.each([
@@ -117,12 +118,17 @@ describe("Knight build with everything", () => {
   });
   describe("computeDpt", () => {
     it("returns correct result", () => {
-      expect(dpt).toBeCloseTo(6876.8, d);
+      expect(dpt).toBeCloseTo(6918.2, d);
     });
   });
   describe("computeDph", () => {
     it("returns correct result", () => {
       expect(dph).toBeCloseTo(951.4, d);
+    });
+  });
+  describe("computeDamageFromCharms", () => {
+    it("returns correct result", () => {
+      expect(dmgFromCharms).toBeCloseTo(41.4, d);
     });
   });
 });
