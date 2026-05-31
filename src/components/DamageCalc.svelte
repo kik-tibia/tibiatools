@@ -58,8 +58,10 @@
   const toMap = (arr: SpellDamage[]) => new Map(arr.map((x) => [x.id, x]));
   let mapA = $derived(toMap(resultsA));
   let mapB = $derived(toMap(resultsB));
-  const isAHigher = (id: number) => Number(mapA.get(id)?.effectiveAvg ?? 0) >= Number(mapB.get(id)?.effectiveAvg ?? 0);
-  const isBHigher = (id: number) => Number(mapB.get(id)?.effectiveAvg ?? 0) >= Number(mapA.get(id)?.effectiveAvg ?? 0);
+  const isAHigher = (id: number) =>
+    Number(mapA.get(id)?.effective.avg ?? 0) >= Number(mapB.get(id)?.effective.avg ?? 0);
+  const isBHigher = (id: number) =>
+    Number(mapB.get(id)?.effective.avg ?? 0) >= Number(mapA.get(id)?.effective.avg ?? 0);
   const epsilon = 1e-9;
   let isDptAHigher = $derived(effectiveDptA >= effectiveDptB - epsilon);
   let isDptBHigher = $derived(effectiveDptB >= effectiveDptA - epsilon);

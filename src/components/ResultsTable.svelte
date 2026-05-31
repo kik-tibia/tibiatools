@@ -116,20 +116,20 @@
                 {r.name}
               </div>
             </td>
-            <td class="num" data-label="Effective Avg">{r.effectiveAvg.toFixed(1)}</td>
+            <td class="num" data-label="Effective Avg">{r.effective.avg.toFixed(1)}</td>
             <td class="num range" data-label="Min">
-              {#if r.min === undefined}
+              {#if r.raw?.min === undefined}
                 <Tooltip label="?" tip="The min for this <br/> spell is unknown" right={true} />
               {:else}
-                {r.min}
+                {r.raw.min}
               {/if}
             </td>
-            <td class="num" data-label="Avg">{r.avg}</td>
+            <td class="num" data-label="Avg">{r.raw!.avg}</td>
             <td class="num range" data-label="Min">
-              {#if r.max === undefined}
+              {#if r.raw?.max === undefined}
                 <Tooltip label="?" tip="The max for this <br/> spell is unknown" right={true} />
               {:else}
-                {r.max}
+                {r.raw.max}
               {/if}
             </td>
           </tr>

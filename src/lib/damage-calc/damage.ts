@@ -1,11 +1,11 @@
 import type { Creature } from "@data/creatures";
-import type { Element, Spell, SpellDamageEffective, SpellDamageRaw } from "@data/spells";
+import type { DamageRange, Element, Spell, SpellDamageBreakdown, SpellDamageEffective } from "@data/spells";
 import type { Weapon } from "@data/weapons";
 import type { BuildStats } from "@lib/build-state";
 import type { CreatureChoice, SpellChoice, SpellState, WeaponChoice } from "@lib/damage-calc";
 
-export function computeRaw(spell: Spell, state: SpellState, buildStats: BuildStats): SpellDamageRaw {
-  if (spell.spellType === "auto") {
+export function computeRaw(state: SpellState, buildStats: BuildStats): DamageRange {
+  if (state.spell.spellType === "auto") {
     const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
     const attackIncrease = buildStats.vocation == "monk" ? 1.5 : 1;
     let min, avg, max;
@@ -18,23 +18,22 @@ export function computeRaw(spell: Spell, state: SpellState, buildStats: BuildSta
       avg = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease);
       max = Math.floor(state.flat + attackValueWithoutFlat * attackIncrease * 2);
     }
-    return { ...spell, min, avg, max };
+    return { ...state.spell, min, avg, max };
   } else {
-    const avg = computeAvg(spell, state);
-    const min = spell.buckets != 0 ? computeMinMax(spell, -1, state) : undefined;
-    const max = spell.buckets != 0 ? computeMinMax(spell, 1, state) : undefined;
+    const avg = computeAvg(state.spell, state);
+    const min = state.spell.buckets != 0 ? computeMinMax(state.spell, -1, state) : undefined;
+    const max = state.spell.buckets != 0 ? computeMinMax(state.spell, 1, state) : undefined;
     return { min, avg, max };
   }
 }
 
-export function computeEffective(
-  spell: Spell,
+export function computeDamageBreakdown(
   state: SpellState,
   buildStats: BuildStats,
   weaponChoice: WeaponChoice,
   spellChoices: SpellChoice[],
   creatureChoice?: CreatureChoice,
-): SpellDamageEffective {
+): SpellDamageBreakdown {
   let charmCritChance = 0;
   let charmCritDamage = 0;
   if (creatureChoice?.charm && creatureChoice.charmTier) {
@@ -50,7 +49,7 @@ export function computeEffective(
   }
 
   let nTranscendenceAttacks;
-  if (spell.spellType === "auto") nTranscendenceAttacks = 3;
+  if (state.spell.spellType === "auto") nTranscendenceAttacks = 3;
   else nTranscendenceAttacks = 3.9;
   const pT = state.transcendenceChance;
   const pTCrit = (nTranscendenceAttacks * pT) / (nTranscendenceAttacks * pT - pT + 1);
@@ -65,7 +64,7 @@ export function computeEffective(
   const critDamage = state.critDamage + charmCritDamage + (0.15 * pTCrit) / (pTCrit + (1 - pTCrit) * critChance || 1);
 
   let effectiveAvg = 0;
-  if (spell.spellType === "auto") {
+  if (state.spell.spellType === "auto") {
     effectiveAvg = computeEffectiveAuto(
       state,
       buildStats,
@@ -79,7 +78,7 @@ export function computeEffective(
     );
   } else {
     effectiveAvg = computeEffectiveSpell(
-      spell,
+      state.spell,
       buildStats,
       state,
       pCrit,
@@ -110,12 +109,12 @@ export function computeEffective(
         break;
     }
     if (creatureChoice.charm.effect == "low-blow" || creatureChoice.charm.effect == "savage-blow") {
-      const effectiveWithoutCharm = computeEffective(spell, state, buildStats, weaponChoice, spellChoices, {
+      const breakdownWithoutCharm = computeDamageBreakdown(state, buildStats, weaponChoice, spellChoices, {
         ...creatureChoice,
         charm: undefined,
         charmTier: undefined,
       });
-      critCharmDmg = effectiveAvg - effectiveWithoutCharm.effectiveAvg;
+      critCharmDmg = effectiveAvg - breakdownWithoutCharm.effective.avg;
     } else if (creatureChoice.charm.element) {
       const cap = Math.min((buildStats.level ?? 0) * 2, creatureChoice.creature.hitpoints * 0.05);
       let resistance;
@@ -152,7 +151,10 @@ export function computeEffective(
     }
   }
 
-  return { effectiveAvg, critCharmDmg, elementalCharmDmg };
+  const raw = { min: 0, avg: 0, max: 0 };
+  const crit = { min: 0, avg: 0, max: 0 };
+  const effective = { avg: effectiveAvg, critCharmDmg, elementalCharmDmg };
+  return { raw, crit, effective };
 }
 
 function computeEffectiveAuto(

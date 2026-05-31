@@ -32,19 +32,25 @@ export type SpellOrdering = {
   order: string[];
 };
 
-export type SpellDamageRaw = {
+export type DamageRange = {
   min?: number;
   avg: number;
   max?: number;
 };
 
 export type SpellDamageEffective = {
-  effectiveAvg: number;
+  avg: number;
   elementalCharmDmg: number; // not included in effectiveAvg
   critCharmDmg: number; // is included in effectiveAvg
 };
 
-export type SpellDamage = Spell & SpellDamageRaw & SpellDamageEffective;
+export type SpellDamageBreakdown = {
+  raw?: DamageRange;
+  crit?: DamageRange;
+  effective: SpellDamageEffective;
+};
+
+export type SpellDamage = Spell & SpellDamageBreakdown;
 
 export const allSpells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) => ({
   ...s,

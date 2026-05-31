@@ -32,6 +32,7 @@ export type CharacterState = {
 };
 
 export type SpellState = CharacterState & {
+  spell: Spell;
   basePower: number;
   runicIncrease: number;
   baseHarmonyBonus: number;

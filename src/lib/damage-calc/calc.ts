@@ -1,4 +1,5 @@
-import { allSpells, type Spell, type SpellDamage, type SpellDamageEffective, type SpellDamageRaw } from "@data/spells";
+import { createSolutionBuilder } from "typescript";
+import { allSpells, type DamageRange, type Spell, type SpellDamage, type SpellDamageEffective } from "@data/spells";
 import type { Stance } from "@data/stances.ts";
 import { type SkillType } from "@data/weapons";
 import type { BuildStats, Vocation } from "@lib/build-state";
@@ -11,7 +12,7 @@ import type {
   SpellState,
   WeaponChoice,
 } from "@lib/damage-calc";
-import { computeEffective, computeRaw } from "./damage.ts";
+import { computeDamageBreakdown, computeRaw } from "./damage.ts";
 
 const AUTO_ATTACK_ID = 1;
 
@@ -37,11 +38,12 @@ export function computeResults(
 ): SpellDamage[] {
   const characterState = deriveCharacterState(buildStats, weaponChoice);
 
-  const spellResults = allSpells
+  const spellStates = allSpells
     .filter((s) => s.vocations.includes(buildStats.vocation))
     .map((spell) => {
       const initial: SpellState = {
         ...characterState,
+        spell,
         basePower: spell.power,
         runicIncrease: 0,
         baseHarmonyBonus: 0,
@@ -86,45 +88,48 @@ export function computeResults(
         const spenderHarmonyBonus = (16 * harmonyBase + 100) / 100;
         spellState = { ...spellState, basePower: spellState.basePower * spenderHarmonyBonus };
       }
-
-      const raw: SpellDamageRaw = computeRaw(spell, spellState, buildStats);
-
-      let effective: SpellDamageEffective;
-      const ratioAdjustedHp = creatureChoices.reduce(
-        (total, creatureChoice) => total + creatureChoice.ratio * creatureChoice.creature.hitpoints,
-        0,
-      );
-      if (ratioAdjustedHp > 0) {
-        effective = creatureChoices.reduce(
-          (acc, creatureChoice) => {
-            const creatureEffective = computeEffective(
-              spell,
-              spellState,
-              buildStats,
-              weaponChoice,
-              spellChoices,
-              creatureChoice,
-            );
-            const multiplier = (creatureChoice.ratio * creatureChoice.creature.hitpoints) / ratioAdjustedHp;
-            const nextEffectiveDmg = acc.effectiveAvg + creatureEffective.effectiveAvg * multiplier;
-            const nextCritCharmDmg = acc.critCharmDmg + creatureEffective.critCharmDmg * multiplier;
-            const nextElementalCharmDmg = acc.elementalCharmDmg + creatureEffective.elementalCharmDmg * multiplier;
-            return {
-              effectiveAvg: nextEffectiveDmg,
-              critCharmDmg: nextCritCharmDmg,
-              elementalCharmDmg: nextElementalCharmDmg,
-            };
-          },
-          {
-            effectiveAvg: 0,
-            critCharmDmg: 0,
-            elementalCharmDmg: 0,
-          },
-        );
-      } else effective = computeEffective(spell, spellState, buildStats, weaponChoice, spellChoices);
-      return { ...spell, ...raw, ...effective };
+      return spellState;
     });
-  return spellResults;
+
+  const ratioAdjustedHp = creatureChoices.reduce(
+    (total, creatureChoice) => total + creatureChoice.ratio * creatureChoice.creature.hitpoints,
+    0,
+  );
+
+  let results: SpellDamage[] = [];
+
+  if (ratioAdjustedHp > 0) {
+    // for each creature, weight its spell damages by that creature's share of total HP and accumulate
+    results = creatureChoices.reduce((acc: SpellDamage[], creatureChoice) => {
+      const multiplier = (creatureChoice.ratio * creatureChoice.creature.hitpoints) / ratioAdjustedHp;
+
+      // calculate all of the spell damages to this creature
+      const spellDamages: SpellDamage[] = spellStates.map((spellState) => {
+        const breakdown = computeDamageBreakdown(spellState, buildStats, weaponChoice, spellChoices, creatureChoice);
+        const raw = computeRaw(spellState, buildStats);
+        return { ...spellState.spell, ...breakdown, raw };
+      });
+      // TODO: apply alpha/omega here
+
+      // The first creature contributes raw and its weighted effective
+      if (acc.length == 0) {
+        return spellDamages.map((sd) => ({ ...sd, effective: weighEffective(sd.effective, multiplier) }));
+      }
+      // every later creature only adds its weighted effective on top
+      return acc.map((accSd, i) => ({
+        ...accSd,
+        effective: addEffective(accSd.effective, weighEffective(spellDamages[i].effective, multiplier)),
+      }));
+    }, []);
+  } else {
+    results = spellStates.map((spellState) => {
+      const breakdown = computeDamageBreakdown(spellState, buildStats, weaponChoice, spellChoices);
+      const raw = computeRaw(spellState, buildStats);
+      return { ...spellState.spell, ...breakdown, raw };
+    });
+  }
+
+  return results;
 }
 
 /** Damage per turn */
@@ -134,7 +139,7 @@ export function computeDpt(spellDamageChoices: SpellDamageChoice[]): number {
 
   const autoAttack = spellDamageChoices.find((s) => s.id === AUTO_ATTACK_ID);
   const autoAttackDamage = autoAttack
-    ? (autoAttack.spellDamage.effectiveAvg + autoAttack.spellDamage.elementalCharmDmg) * autoAttack.targets
+    ? (autoAttack.spellDamage.effective.avg + autoAttack.spellDamage.effective.elementalCharmDmg) * autoAttack.targets
     : 0;
 
   return (
@@ -142,7 +147,7 @@ export function computeDpt(spellDamageChoices: SpellDamageChoice[]): number {
     spellRotation.reduce((damage, s) => {
       const weightedDamage =
         ratioSum > 0
-          ? ((s.spellDamage.effectiveAvg + s.spellDamage.elementalCharmDmg) * s.targets * s.ratio) / ratioSum
+          ? ((s.spellDamage.effective.avg + s.spellDamage.effective.elementalCharmDmg) * s.targets * s.ratio) / ratioSum
           : 0;
       return damage + weightedDamage;
     }, 0)
@@ -160,7 +165,7 @@ export function computeDph(spellDamageChoices: SpellDamageChoice[]): number {
 
   return (
     fullRotation.reduce((damage, s) => {
-      const weightedDamage = s.spellDamage.effectiveAvg * s.targets * s.ratio;
+      const weightedDamage = s.spellDamage.effective.avg * s.targets * s.ratio;
       return damage + weightedDamage;
     }, 0) / ratioTargetSum
   );
@@ -172,7 +177,8 @@ export function computeDamageFromCharms(spellDamageChoices: SpellDamageChoice[])
 
   const autoAttack = spellDamageChoices.find((s) => s.id === AUTO_ATTACK_ID);
   const autoAttackDamage = autoAttack
-    ? (autoAttack.spellDamage.critCharmDmg + autoAttack.spellDamage.elementalCharmDmg) * autoAttack.targets
+    ? (autoAttack.spellDamage.effective.critCharmDmg + autoAttack.spellDamage.effective.elementalCharmDmg) *
+      autoAttack.targets
     : 0;
 
   return (
@@ -180,11 +186,28 @@ export function computeDamageFromCharms(spellDamageChoices: SpellDamageChoice[])
     spellRotation.reduce((damage, s) => {
       const weightedDamage =
         ratioSum > 0
-          ? ((s.spellDamage.critCharmDmg + s.spellDamage.elementalCharmDmg) * s.targets * s.ratio) / ratioSum
+          ? ((s.spellDamage.effective.critCharmDmg + s.spellDamage.effective.elementalCharmDmg) * s.targets * s.ratio) /
+            ratioSum
           : 0;
       return damage + weightedDamage;
     }, 0)
   );
+}
+
+function weighEffective(e: SpellDamageEffective, multiplier: number): SpellDamageEffective {
+  return {
+    avg: e.avg * multiplier,
+    critCharmDmg: e.critCharmDmg * multiplier,
+    elementalCharmDmg: e.elementalCharmDmg * multiplier,
+  };
+}
+
+function addEffective(a: SpellDamageEffective, b: SpellDamageEffective): SpellDamageEffective {
+  return {
+    avg: a.avg + b.avg,
+    critCharmDmg: a.critCharmDmg + b.critCharmDmg,
+    elementalCharmDmg: a.elementalCharmDmg + b.elementalCharmDmg,
+  };
 }
 
 function applyPerkToSpell(

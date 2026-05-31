@@ -37,12 +37,12 @@ describe("default build", () => {
     ])("returns expected values for $name", ({ name, effective, min, avg, max }) => {
       const result = results.find((r) => r.name === name);
       expect(result, `no spell named ${name}`).toBeDefined();
-      expect(result!.effectiveAvg).toBeCloseTo(effective, d);
-      if (min === undefined) expect(result!.min).toBeUndefined();
-      else expect(result!.min).toBeCloseTo(min, d);
-      expect(result!.avg).toBeCloseTo(avg, d);
-      if (max === undefined) expect(result!.max).toBeUndefined();
-      else expect(result!.max).toBeCloseTo(max, d);
+      expect(result!.effective.avg).toBeCloseTo(effective, d);
+      if (min === undefined) expect(result!.raw!.min).toBeUndefined();
+      else expect(result!.raw!.min).toBeCloseTo(min, d);
+      expect(result!.raw!.avg).toBeCloseTo(avg, d);
+      if (max === undefined) expect(result!.raw!.max).toBeUndefined();
+      else expect(result!.raw!.max).toBeCloseTo(max, d);
     });
   });
   describe("computeDpt", () => {
@@ -108,12 +108,12 @@ describe("Knight build with everything", () => {
     ])("returns expected values for $name", ({ name, effective, min, avg, max }) => {
       const result = results.find((r) => r.name === name);
       expect(result, `no spell named ${name}`).toBeDefined();
-      expect(result!.effectiveAvg).toBeCloseTo(effective, d);
-      if (min === undefined) expect(result!.min).toBeUndefined();
-      else expect(result!.min).toBeCloseTo(min, d);
-      expect(result!.avg).toBeCloseTo(avg, d);
-      if (max === undefined) expect(result!.max).toBeUndefined();
-      else expect(result!.max).toBeCloseTo(max, d);
+      expect(result!.effective.avg).toBeCloseTo(effective, d);
+      if (min === undefined) expect(result!.raw!.min).toBeUndefined();
+      else expect(result!.raw!.min).toBeCloseTo(min, d);
+      expect(result!.raw!.avg).toBeCloseTo(avg, d);
+      if (max === undefined) expect(result!.raw!.max).toBeUndefined();
+      else expect(result!.raw!.max).toBeCloseTo(max, d);
     });
   });
   describe("computeDpt", () => {
