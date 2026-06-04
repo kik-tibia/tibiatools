@@ -38,6 +38,13 @@ export type DamageRange = {
   max?: number;
 };
 
+export type BreakdownDamageRange = {
+  min: number;
+  avg: number;
+  max: number;
+  probability: number;
+};
+
 export type SpellDamageEffective = {
   avg: number;
   elementalCharmDmg: number; // not included in effectiveAvg
@@ -45,12 +52,19 @@ export type SpellDamageEffective = {
 };
 
 export type SpellDamageBreakdown = {
-  raw?: DamageRange;
-  crit?: DamageRange;
+  noBonus: BreakdownDamageRange;
+  crit: BreakdownDamageRange;
+  fatal: BreakdownDamageRange;
+  critFatal: BreakdownDamageRange;
   effective: SpellDamageEffective;
 };
 
-export type SpellDamage = Spell & SpellDamageBreakdown;
+export type SpellDamageResults = {
+  raw: DamageRange;
+  breakdown: SpellDamageBreakdown;
+};
+
+export type SpellDamage = Spell & SpellDamageResults;
 
 export const allSpells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) => ({
   ...s,

@@ -116,7 +116,7 @@
                 {r.name}
               </div>
             </td>
-            <td class="num" data-label="Effective Avg">{r.effective.avg.toFixed(1)}</td>
+            <td class="num" data-label="Effective Avg">{r.breakdown.effective.avg.toFixed(1)}</td>
             <td class="num range" data-label="Min">
               {#if r.raw?.min === undefined}
                 <Tooltip label="?" tip="The min for this <br/> spell is unknown" right={true} />

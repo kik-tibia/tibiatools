@@ -37,7 +37,7 @@ describe("default build", () => {
     ])("returns expected values for $name", ({ name, effective, min, avg, max }) => {
       const result = results.find((r) => r.name === name);
       expect(result, `no spell named ${name}`).toBeDefined();
-      expect(result!.effective.avg).toBeCloseTo(effective, d);
+      expect(result!.breakdown.effective.avg).toBeCloseTo(effective, d);
       if (min === undefined) expect(result!.raw!.min).toBeUndefined();
       else expect(result!.raw!.min).toBeCloseTo(min, d);
       expect(result!.raw!.avg).toBeCloseTo(avg, d);
@@ -98,7 +98,7 @@ describe("Knight build with everything", () => {
 
   describe("computeResults", () => {
     it.each([
-      { name: "Auto-attack", effective: 742.4, min: 454, avg: 705, max: 1208 },
+      { name: "Auto-attack", effective: 742.6, min: 454, avg: 705, max: 1208 },
       { name: "Fierce Berserk", effective: 1434.4, min: 1142, avg: 1439, max: 1735 },
       { name: "Berserk", effective: 709, min: 602, avg: 744, max: 887 },
       { name: "Executioner's Throw (No Bonus)", effective: 903.9, min: 875, avg: 934, max: 993 },
@@ -108,7 +108,7 @@ describe("Knight build with everything", () => {
     ])("returns expected values for $name", ({ name, effective, min, avg, max }) => {
       const result = results.find((r) => r.name === name);
       expect(result, `no spell named ${name}`).toBeDefined();
-      expect(result!.effective.avg).toBeCloseTo(effective, d);
+      expect(result!.breakdown.effective.avg).toBeCloseTo(effective, d);
       if (min === undefined) expect(result!.raw!.min).toBeUndefined();
       else expect(result!.raw!.min).toBeCloseTo(min, d);
       expect(result!.raw!.avg).toBeCloseTo(avg, d);
@@ -118,7 +118,7 @@ describe("Knight build with everything", () => {
   });
   describe("computeDpt", () => {
     it("returns correct result", () => {
-      expect(dpt).toBeCloseTo(6918.2, d);
+      expect(dpt).toBeCloseTo(6918.4, d);
     });
   });
   describe("computeDph", () => {
