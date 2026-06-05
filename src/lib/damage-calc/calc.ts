@@ -12,6 +12,7 @@ import type {
   WeaponChoice,
 } from "@lib/damage-calc";
 import { computeDamageBreakdown, computeRaw } from "./damage.ts";
+import { hpBonusMultiplier, type DamageMixtureComponent, type HpBasedDmgBracket } from "./hp-bonus.ts";
 
 const AUTO_ATTACK_ID = 1;
 
@@ -101,18 +102,23 @@ export function computeResults(
   // Right now, just the first creature that populates the final result sets the atoms, and then they are ignored everywhere else
   let results: SpellDamage[] = [];
 
+  // Brackets for alpha/omega strike
+  const hpBasedDmgBrackets = buildHpBasedDmgBrackets(perkChoices);
+
   if (ratioAdjustedHp > 0) {
     // for each creature, weight its spell damages by that creature's share of total HP and accumulate
     results = creatureChoices.reduce((acc: SpellDamage[], creatureChoice) => {
       const multiplier = (creatureChoice.ratio * creatureChoice.creature.hitpoints) / ratioAdjustedHp;
 
       // calculate all of the spell damages to this creature
-      const spellDamages: SpellDamage[] = spellStates.map((spellState) => {
+      let spellDamages: SpellDamage[] = spellStates.map((spellState) => {
         const breakdown = computeDamageBreakdown(spellState, buildStats, weaponChoice, spellChoices, creatureChoice);
         const raw = computeRaw(spellState, buildStats);
         return { ...spellState.spell, raw, breakdown };
       });
-      // TODO: apply alpha/omega here
+
+      // Apply alpha/omega strike
+      spellDamages = applyHpBasedDmgBonuses(spellDamages, spellChoices, creatureChoice, hpBasedDmgBrackets);
 
       // The first creature contributes raw and its weighted effective
       if (acc.length == 0) {
@@ -142,6 +148,73 @@ export function computeResults(
   }
 
   return results;
+}
+
+function buildHpBasedDmgBrackets(perkChoices: PerkChoice[]): HpBasedDmgBracket[] {
+  const brackets: HpBasedDmgBracket[] = [];
+  const alpha = perkChoices.find((p) => p.perk.bonusType === "alpha-strike");
+  if (alpha && alpha.value > 0) brackets.push({ from: 0, to: 0.05, bonus: alpha.value / 100 });
+  const omega = perkChoices.find((p) => p.perk.bonusType === "omega-strike");
+  if (omega && omega.value > 0) brackets.push({ from: 0.7, to: 1, bonus: omega.value / 100 });
+  return brackets;
+}
+
+// Scale every spell's effective damage by the multiplier for all HP-based damage perks against this creature
+function applyHpBasedDmgBonuses(
+  spellDamages: SpellDamage[],
+  spellChoices: SpellChoice[],
+  creatureChoice: CreatureChoice,
+  brackets: HpBasedDmgBracket[],
+): SpellDamage[] {
+  if (brackets.length === 0) return spellDamages;
+
+  const spellDamageById = new Map(spellDamages.map((sd) => [sd.id, sd]));
+  const mixture = buildDamageMixture(spellChoices, spellDamageById);
+  const multiplier = hpBonusMultiplier(mixture, creatureChoice.creature.hitpoints, brackets);
+
+  // Apply multiplier to every spell in the rotation
+  const rotationIds = new Set(spellChoices.map((s) => s.id));
+  return spellDamages.map((sd) =>
+    rotationIds.has(sd.id)
+      ? {
+          ...sd,
+          breakdown: {
+            ...sd.breakdown,
+            effective: {
+              ...sd.breakdown.effective,
+              avg: sd.breakdown.effective.avg * multiplier,
+              critCharmDmg: sd.breakdown.effective.critCharmDmg * multiplier,
+            },
+          },
+        }
+      : sd,
+  );
+}
+
+function buildDamageMixture(
+  spellChoices: SpellChoice[],
+  spellDamageById: Map<number, SpellDamage>,
+): DamageMixtureComponent[] {
+  const spellRotation = spellChoices.filter((s) => s.id !== AUTO_ATTACK_ID);
+  const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
+  const fullRotation = spellChoices.map((s) => (s.id === AUTO_ATTACK_ID ? { ...s, ratio: ratioSum || 1 } : s));
+  const ratioTargetSum = fullRotation.reduce((sum, s) => sum + s.targets * s.ratio, 0);
+
+  const mixture: DamageMixtureComponent[] = [];
+  for (const spellChoice of fullRotation) {
+    const spellDamage = spellDamageById.get(spellChoice.id);
+    if (!spellDamage) continue;
+
+    const weight: number = ratioTargetSum > 0 ? (spellChoice.ratio / ratioTargetSum) * spellChoice.targets : 0;
+    if (weight <= 0) continue;
+
+    const { noBonus, crit, fatal, critFatal } = spellDamage.breakdown;
+    for (const atom of [noBonus, crit, fatal, critFatal]) {
+      if (atom.probability <= 0) continue;
+      mixture.push({ weight: weight * atom.probability, lo: atom.min, hi: atom.max });
+    }
+  }
+  return mixture;
 }
 
 /** Damage per turn */

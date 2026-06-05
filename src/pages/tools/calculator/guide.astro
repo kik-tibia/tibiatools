@@ -102,10 +102,9 @@ import BaseLayout from "@layouts/BaseLayout.astro";
       <li>It is worth noting here that despite the Falcon Longsword build having higher overall dps, the Slayer of Destruction build probably has higher overall leech due to how much stronger the auto-attacks are.</li>
     </ul>
   </li>
-  <li><a href="/tools/calculator?s=NoJgNMwIwg7GAGMUGrCJGlQMzKQKwIC6YBALPJOQGxgAcpwBUyIAdAU%2BQWLJ0xBRWOEIKj1k5JqyjEm0ZEpIRwNTmBxIVwPHRCSd5Pujo7JeQ0zMbJchSl4ZGEGhOSwc1ggE58NeQc4RHw0DHQ0XDY%2BMTAaAklqXmEBCFoGJhY2VOg8FHkIRVlEQTiNLRKIPXQrNJMQMyYLBkrgG147AshHCJc29yhPbz8UAK6eMHSsoVYhOzyZdE1JloCIHrdJeJ9SWeIgA">Crypt Slicer vs Sanguine Razor at Upper Roshamuul</a>. This shows that Crypt Slicer outperforms Sanguine Razor in this respawn.
+  <li><a href="/tools/calculator?s=NoJgNMwIwg7GAGMUGufEaoGZlIKwIC6Y%2BALPJGQGxgAcJw%2BUyIAdPo2fmLB4yCgtsIAVDrIyjFlAFkZxRtGQriEcNQ5hsSNcFy0QEvWV5gQtPRNzHGlrRNlKUPTAwjVx6bHfwBOPGoiYIhoOEQ8LAwsXBheUTBqfAkqHiF%2BCBp6RmZWDOhYxVCZVQFErR1ERgNzW0yzCyqIa3om4HseRxDIF3MEd3avKFgfD39A4K4eLNzBFkFHWPN5aXNtMFMJIIhezy3-EnmiIA">Crypt Slicer vs Sanguine Razor at Upper Roshamuul</a>. This shows that Crypt Slicer outperforms Sanguine Razor in this respawn.
     <ul>
       <li>Assumed a level 1000 EK with stage 2 Executioner's Throw, stage 2 Groundshaker and a fully upgraded Fierce Berserk gem.</li>
-      <li>Note that the Alpha/Omega perks aren't available in the tool, but they would only benefit Crypt Slicer further.</li>
     </ul>
   </li>
 </ul>
@@ -115,7 +114,6 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 <ul>
   <li>The damage per turn result should not be taken too literally. It tells you your expected damage per turn in an artificial scenario, and doesn't necessarily scale with your exp/h.</li>
   <li>Creatures defend against melee auto-attacks just like players do. Little is known about the formula for it, and it probably depends on hidden variables unique to each creature. For that reason, this block is not factored into the calculation for the effective damage for auto-attacks, so the real damage could be significantly lower if you are fighting a creature with a high defense.</li>
-  <li>Alpha Strike and Omega Strike perks haven't been added yet.</li>
   <li>Miss chance for single target distance spells has not been included. This won't be a problem if you are using diamond arrows.</li>
   <li>Monk isn't properly implemented yet. It's hardcoded to assume you are using VoH with no extra bonuses (no ascetic).</li>
 </ul>
@@ -123,6 +121,11 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 <h3>Additional notes</h3>
 
 <ul>
+  <li><b>Alpha Strike and Omega Strike</b>: For each creature you select, the calculator works out how many of your hits in your spell rotation, on average, land in those HP windows, based on the creature's hitpoints and your damages.
+    <ul>
+      <li>Because this relies on your rotation to know how quickly the target's HP drops, the bonus is only applied to the spells in your rotation. If you don't define a rotation, the perks will show any effect.</li>
+    </ul>
+  </li>
   <li>Single target auto-attacks are guaranteed to high roll when they crit or fatal. This feature is correctly taken into account by the calculator.</li>
   <li>If you have further questions or want to report a bug, you can reach me on Discord (<a href="https://discord.com/channels/836592213327609957/1480885195711189022">thread</a> or <a href="https://discord.com/users/tom50">DM</a>).</li>
 </ul>
