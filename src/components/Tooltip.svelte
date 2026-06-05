@@ -1,17 +1,23 @@
 <script lang="ts">
+  import type { Snippet } from "svelte";
+
   let {
     label,
     tip,
     right = false,
+    children,
   }: {
-    label: string;
+    label?: string;
     tip: string;
     right?: boolean;
+    children?: Snippet;
   } = $props();
 </script>
 
 <span class="field-tip">
-  <button type="button" class="tip-trigger">{label}</button>
+  <button type="button" class="tip-trigger">
+    {#if children}{@render children()}{:else}{label}{/if}
+  </button>
   <span role="tooltip" class="tip-content" class:tip-right={right}>{@html tip}</span>
 </span>
 

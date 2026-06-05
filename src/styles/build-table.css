@@ -120,6 +120,14 @@
   pointer-events: none;
 }
 
+.build-table .perk-toggle img {
+  vertical-align: middle;
+}
+
+.build-table .perk-toggle .perk-check {
+  filter: var(--icon-filter);
+}
+
 .build-table .perk-toggle .field-tip {
   display: block;
 }

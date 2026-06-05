@@ -127,10 +127,22 @@
       <div class="input-with-remove">
         {#if binary && !build.stats.baseMagicLevel}
           <span class="perk-toggle input-{buildId}">
-            <Tooltip label="×" tip="Requires setting Base Magic Level<br/>in Advanced Stats" />
+            <Tooltip tip="Requires setting Base Magic Level<br/>in Advanced Stats">Error</Tooltip>
           </span>
         {:else if binary}
-          <input type="text" readonly class="input-{buildId} perk-toggle" value="✓" tabindex="-1" />
+          <span class="perk-toggle input-{buildId}">
+            <img class="perk-check" src="/check.svg" alt="" width="12" height="12" />
+          </span>
+        {:else if (perkRegistry.get(perkId)?.bonusType === "alpha-strike" || perkRegistry.get(perkId)?.bonusType === "omega-strike") && (build.rotation.length == 0 || build.targets.length == 0)}
+          <span class="perk-toggle input-{buildId}">
+            <Tooltip tip="Requires setting Rotation and Targets">Error</Tooltip>
+          </span>
+          <input
+            type="number"
+            step="any"
+            class="input-{buildId}"
+            value={build.perks.find((p) => p.id === perkId)?.value ?? 0}
+            oninput={(e) => setPerkValue(perkId, Number(e.currentTarget.value))} />
         {:else}
           <input
             type="number"
