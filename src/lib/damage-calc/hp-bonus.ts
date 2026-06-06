@@ -9,10 +9,10 @@ export type HpBasedDmgBracket = {
   bonus: number;
 };
 
-// Optimisation for high HP targets: we limit the number of buckets in U (which is defined further down)
+// Optimisation for high HP targets: we cap how many buckets the sweep arrays below use
 const maxBuckets = 4096;
 
-//Average damage multiplier for HP based damage perks against a single target
+// Average damage multiplier for HP based damage perks against a single target
 export function hpBonusMultiplier(
   mixture: DamageMixtureComponent[],
   hp: number,
@@ -35,47 +35,62 @@ export function hpBonusMultiplier(
     });
   if (normalisedMixture.length == 0) return 1;
 
-  // U[T] is the expected number of hits needed to push the cumulative damage strictly above T.
-  // So for example, U[100] = expected number of hits to deal more than 100 cumulative damage, including the hit that breaks through.
-  // P is just a computational helper. P[t] = U[0] + U[1] + ... + U[t−1]. It makes things a lot faster to compute when dealing with a damage range.
-  const U = new Float64Array(nBuckets);
-  const P = new Float64Array(nBuckets + 1);
-  for (let T = 0; T < nBuckets; T++) {
-    let expectedHits = 1; // Populates U[T]. Initialised to 1, because we need to include the hit that breks through.
-    for (const { weight, lo, hi } of normalisedMixture) {
-      // windowTop and windowBottom tell us the prior cumulative damage levels this hit could have come from to reach T
-      const windowTop = T - lo; // Minimum damage roll index
-      const windowBottom = T - hi; // Maximum damage roll index
-      // As P holds prefix sums of U, these two lookups give the window sum in O(1), rather than summing U[windowBottom..windowTop] one by one.
-      const pTop = windowTop < 0 ? 0 : P[windowTop + 1];
-      const pBottom = windowBottom <= 0 ? 0 : P[windowBottom];
-      const windowSum = pTop - pBottom;
-      const damageRangeWidth = hi - lo + 1;
-      // We need to divide by the damage width to turn it back into an average, because we summed over the same range in P
-      // windowSum is a sum of damageRangeWidth entries of U.
-      // So we need to divide by damageRangeWidth to average them, since the hit is equally likely to roll any value in [lo, hi].
-      expectedHits += (weight / damageRangeWidth) * windowSum;
+  const bonusMultiplierAt = (lostHp: number): number => {
+    const frac = lostHp / nBuckets;
+    let boost = 1;
+    for (const { from, to, bonus } of brackets) {
+      // TODO: Once the combat mastery perk is updated, we need to check if this is additive or multiplicative.
+      if (frac >= from && frac < to) boost *= 1 + bonus;
     }
-    U[T] = expectedHits;
-    P[T + 1] = P[T] + expectedHits;
-  }
-
-  const expectedHitsToKill = U[nBuckets - 1];
-  if (expectedHitsToKill <= 0) return 1;
-
-  // E.g. hitsBelow(0.05) = how many hits landed while the target is still above 95%.
-  const hitsBelow = (frac: number): number => {
-    if (frac <= 0) return 0;
-    if (frac >= 1) return expectedHitsToKill;
-    const thresholdIndex = Math.min(Math.ceil(frac * nBuckets) - 1, nBuckets - 1);
-    if (thresholdIndex < 0) return 0;
-    return U[thresholdIndex];
+    return boost;
   };
 
+  // Probability of ever being on this HP (range [0..1], hpProbability[0] = full HP = 1)
+  const hpProbability = new Float64Array(nBuckets);
+  // `pendingArrivals` is a difference array we fill as we go: each hit posts the probability it lands on
+  // the buckets ahead of it, and `arrivals` reads that back as a running sum. The posting uses a cool
+  // add-then-subtract trick (explained at the posting site below where we do `+= / -= density`)
+  // so each hit costs O(1) no matter how wide its damage range is.
+  const pendingArrivals = new Float64Array(nBuckets);
+  let arrivals = 0;
+  let expectedHitsToKill = 0; // running sum of hpProbability over every bucket
+
+  for (let lostHp = 0; lostHp < nBuckets; lostHp++) {
+    arrivals += pendingArrivals[lostHp];
+    // The fight always starts at full HP (bucket 0), so that bucket gets one guaranteed hit. Every other
+    // bucket's probability is just whatever earlier hits landed on it (the `arrivals` running sum).
+    const reachProbability = (lostHp === 0 ? 1 : 0) + arrivals;
+    hpProbability[lostHp] = reachProbability;
+    expectedHitsToKill += reachProbability;
+
+    const boost = bonusMultiplierAt(lostHp);
+    for (const { weight, lo, hi } of normalisedMixture) {
+      const loScaled = Math.max(1, Math.round(lo * boost)); // keep at least 1 so a hit always advances
+      const hiScaled = Math.max(loScaled, Math.round(hi * boost));
+      const landFrom = lostHp + loScaled;
+      if (landFrom >= nBuckets) continue; // this hit (and any higher roll) overkills, so it doesn't seed any arrival bucket
+      const damageRangeWidth = hiScaled - loScaled + 1;
+      // This hit lands the target uniformly somewhere in [landFrom, landTo] (every roll equally likely),
+      // so each of those buckets should gain an equal share of this bucket's probability: `density`.
+      const density = (reachProbability * weight) / damageRangeWidth;
+      // Rather than add `density` to every bucket in that run, we mark only its two edges and let the
+      // left-to-right sweep do the filling. `arrivals` is the running total of every mark we've passed.
+      // The +density at landFrom switches on this hit's contribution, and the matching -density one step
+      // past landTo switches it back off. So every bucket inside the run picks up `density` and every
+      // bucket outside it nets to zero.
+      pendingArrivals[landFrom] += density;
+      const landToExclusive = lostHp + hiScaled + 1;
+      if (landToExclusive < nBuckets) pendingArrivals[landToExclusive] -= density;
+    }
+  }
+
+  if (expectedHitsToKill <= 0) return 1;
+
+  // The multiplier is the average factor each hit is scaled by over the whole kill. A hit from bucket
+  // `lostHp` is scaled by bonusMultiplierAt(lostHp)
   let bonusWeightedHits = 0;
-  for (const { from: fromFrac, to: toFrac, bonus } of brackets) {
-    if (bonus == 0) continue;
-    bonusWeightedHits += bonus * (hitsBelow(toFrac) - hitsBelow(fromFrac));
+  for (let lostHp = 0; lostHp < nBuckets; lostHp++) {
+    bonusWeightedHits += hpProbability[lostHp] * (bonusMultiplierAt(lostHp) - 1);
   }
 
   return 1 + bonusWeightedHits / expectedHitsToKill;
