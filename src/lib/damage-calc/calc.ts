@@ -11,7 +11,7 @@ import type {
   SpellState,
   WeaponChoice,
 } from "@lib/damage-calc";
-import { computeDamageBreakdown, computeRaw } from "./damage.ts";
+import { calculateElementalCharmDmg, computeDamageBreakdown, computeRaw } from "./damage.ts";
 import { hpBonusMultiplier, type DamageMixtureComponent, type HpBasedDmgBracket } from "./hp-bonus.ts";
 
 const AUTO_ATTACK_ID = 1;
@@ -118,7 +118,7 @@ export function computeResults(
       });
 
       // Apply alpha/omega strike
-      spellDamages = applyHpBasedDmgBonuses(spellDamages, spellChoices, creatureChoice, hpBasedDmgBrackets);
+      spellDamages = applyHpBasedDmgBonuses(spellDamages, spellChoices, creatureChoice, buildStats, hpBasedDmgBrackets);
 
       // The first creature contributes raw and its weighted effective
       if (acc.length == 0) {
@@ -164,12 +164,13 @@ function applyHpBasedDmgBonuses(
   spellDamages: SpellDamage[],
   spellChoices: SpellChoice[],
   creatureChoice: CreatureChoice,
+  buildStats: BuildStats,
   brackets: HpBasedDmgBracket[],
 ): SpellDamage[] {
   if (brackets.length === 0) return spellDamages;
 
   const spellDamageById = new Map(spellDamages.map((sd) => [sd.id, sd]));
-  const mixture = buildDamageMixture(spellChoices, spellDamageById);
+  const mixture = buildDamageMixture(spellChoices, creatureChoice, buildStats, spellDamageById);
   const multiplier = hpBonusMultiplier(mixture, creatureChoice.creature.hitpoints, brackets);
 
   // Apply multiplier to every spell in the rotation
@@ -181,9 +182,9 @@ function applyHpBasedDmgBonuses(
           breakdown: {
             ...sd.breakdown,
             effective: {
-              ...sd.breakdown.effective,
-              avg: sd.breakdown.effective.avg * multiplier,
-              critCharmDmg: sd.breakdown.effective.critCharmDmg * multiplier,
+              elementalCharmDmg: sd.breakdown.effective.elementalCharmDmg * multiplier.charm,
+              avg: sd.breakdown.effective.avg * multiplier.spell,
+              critCharmDmg: sd.breakdown.effective.critCharmDmg * multiplier.spell,
             },
           },
         }
@@ -193,6 +194,8 @@ function applyHpBasedDmgBonuses(
 
 function buildDamageMixture(
   spellChoices: SpellChoice[],
+  creatureChoice: CreatureChoice,
+  buildStats: BuildStats,
   spellDamageById: Map<number, SpellDamage>,
 ): DamageMixtureComponent[] {
   const spellRotation = spellChoices.filter((s) => s.id !== AUTO_ATTACK_ID);
@@ -201,6 +204,24 @@ function buildDamageMixture(
   const ratioTargetSum = fullRotation.reduce((sum, s) => sum + s.targets * s.ratio, 0);
 
   const mixture: DamageMixtureComponent[] = [];
+
+  const charmDamage = calculateElementalCharmDmg(creatureChoice, buildStats);
+  if (creatureChoice.charm && creatureChoice.charmTier && charmDamage > 0) {
+    let charmChance = 0;
+    switch (creatureChoice.charmTier) {
+      case 1:
+        charmChance = 0.05;
+        break;
+      case 2:
+        charmChance = 0.1;
+        break;
+      case 3:
+        charmChance = 0.11;
+        break;
+    }
+    mixture.push({ weight: charmChance, lo: charmDamage, hi: charmDamage, isCharm: true });
+  }
+
   for (const spellChoice of fullRotation) {
     const spellDamage = spellDamageById.get(spellChoice.id);
     if (!spellDamage) continue;
@@ -211,7 +232,7 @@ function buildDamageMixture(
     const { noBonus, crit, fatal, critFatal } = spellDamage.breakdown;
     for (const atom of [noBonus, crit, fatal, critFatal]) {
       if (atom.probability <= 0) continue;
-      mixture.push({ weight: weight * atom.probability, lo: atom.min, hi: atom.max });
+      mixture.push({ weight: weight * atom.probability, lo: atom.min, hi: atom.max, isCharm: false });
     }
   }
   return mixture;

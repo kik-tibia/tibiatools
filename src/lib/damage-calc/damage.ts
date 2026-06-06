@@ -117,44 +117,50 @@ export function computeDamageBreakdown(
         charmTier: undefined,
       });
       critCharmDmg = breakdown.effective.avg - breakdownWithoutCharm.effective.avg;
-    } else if (creatureChoice.charm.element) {
-      const cap = Math.min((buildStats.level ?? 0) * 2, creatureChoice.creature.hitpoints * 0.05);
-      let resistance;
-      switch (creatureChoice.charm.element) {
-        case "ice":
-          resistance = creatureChoice.creature.iceDmgMod;
-          break;
-        case "fire":
-          resistance = creatureChoice.creature.fireDmgMod;
-          break;
-        case "earth":
-          resistance = creatureChoice.creature.earthDmgMod;
-          break;
-        case "energy":
-          resistance = creatureChoice.creature.energyDmgMod;
-          break;
-        case "physical":
-          resistance = creatureChoice.creature.physicalDmgMod;
-          break;
-        case "holy":
-          resistance = creatureChoice.creature.holyDmgMod;
-          break;
-        case "death":
-          resistance = creatureChoice.creature.deathDmgMod;
-          break;
-      }
-      elementalCharmDmg = elementalChance * cap * resistance * (1 - creatureChoice.creature.mitigation / 100);
-    } else if (creatureChoice.charm.effect == "overpower") {
-      const cap = Math.min((buildStats.hitPoints ?? 0) * 0.05, creatureChoice.creature.hitpoints * 0.08);
-      elementalCharmDmg = elementalChance * cap;
-    } else if (creatureChoice.charm.effect == "overflux") {
-      const cap = Math.min((buildStats.manaPoints ?? 0) * 0.025, creatureChoice.creature.hitpoints * 0.08);
-      elementalCharmDmg = elementalChance * cap;
+    } else {
+      elementalCharmDmg = elementalChance * calculateElementalCharmDmg(creatureChoice, buildStats);
     }
   }
 
   const effective = { ...breakdown.effective, critCharmDmg, elementalCharmDmg };
   return { ...breakdown, effective };
+}
+
+// Calculates the full charm damage, ignoring the chance
+export function calculateElementalCharmDmg(creatureChoice: CreatureChoice, buildStats: BuildStats): number {
+  if (!creatureChoice.charm) return 0;
+  if (creatureChoice.charm.element) {
+    const cap = Math.min((buildStats.level ?? 0) * 2, creatureChoice.creature.hitpoints * 0.05);
+    let resistance;
+    switch (creatureChoice.charm.element) {
+      case "ice":
+        resistance = creatureChoice.creature.iceDmgMod;
+        break;
+      case "fire":
+        resistance = creatureChoice.creature.fireDmgMod;
+        break;
+      case "earth":
+        resistance = creatureChoice.creature.earthDmgMod;
+        break;
+      case "energy":
+        resistance = creatureChoice.creature.energyDmgMod;
+        break;
+      case "physical":
+        resistance = creatureChoice.creature.physicalDmgMod;
+        break;
+      case "holy":
+        resistance = creatureChoice.creature.holyDmgMod;
+        break;
+      case "death":
+        resistance = creatureChoice.creature.deathDmgMod;
+        break;
+    }
+    return cap * resistance * (1 - creatureChoice.creature.mitigation / 100);
+  } else if (creatureChoice.charm.effect == "overpower") {
+    return Math.min((buildStats.hitPoints ?? 0) * 0.05, creatureChoice.creature.hitpoints * 0.08);
+  } else if (creatureChoice.charm.effect == "overflux") {
+    return Math.min((buildStats.manaPoints ?? 0) * 0.025, creatureChoice.creature.hitpoints * 0.08);
+  } else return 0;
 }
 
 function computeEffectiveAuto(
@@ -380,7 +386,7 @@ function updateElementsFromWeapon(elements: Record<Element, number>, damage: num
   }
 }
 
-export function computeAvg(spell: Spell, state: SpellState): number {
+function computeAvg(spell: Spell, state: SpellState): number {
   const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W } = state;
   const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
   const damage =

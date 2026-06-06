@@ -1,5 +1,5 @@
 // There will be one of these for every spell and crit state
-export type DamageMixtureComponent = { weight: number; lo: number; hi: number };
+export type DamageMixtureComponent = { weight: number; lo: number; hi: number; isCharm: boolean };
 
 // From and to range from 0 (full hp) to 1 (dead).
 // E.g. for alpha strike it would be { from: 0, to: 0.05, bonus: 0.1 }
@@ -12,17 +12,19 @@ export type HpBasedDmgBracket = {
 // Optimisation for high HP targets: we cap how many buckets the sweep arrays below use
 const maxBuckets = 4096;
 
-// Average damage multiplier for HP based damage perks against a single target
+// Average damage multiplier for HP based damage perks against a single target. Spells and charms share
+// one kill trajectory but are credited separately (see the per-bucket split below), so we return one
+// multiplier for each: apply `spell` to spell damage and `charm` to elemental charm damage.
 export function hpBonusMultiplier(
   mixture: DamageMixtureComponent[],
   hp: number,
   brackets: HpBasedDmgBracket[],
-): number {
-  if (hp <= 0 || mixture.length == 0 || brackets.every((b) => b.bonus == 0)) return 1;
+): { spell: number; charm: number } {
+  if (hp <= 0 || mixture.length == 0 || brackets.every((b) => b.bonus == 0)) return { spell: 1, charm: 1 };
 
   let totalWeight = 0;
   for (const m of mixture) totalWeight += m.weight;
-  if (totalWeight <= 0) return 1;
+  if (totalWeight <= 0) return { spell: 1, charm: 1 };
 
   const bucketSize = Math.ceil(hp / maxBuckets);
   const nBuckets = Math.round(hp / bucketSize);
@@ -31,9 +33,15 @@ export function hpBonusMultiplier(
     .map((m) => {
       const lo = Math.max(1, Math.round(m.lo / bucketSize)); // Always do at least 1 dmg to not break the recurrence
       const hi = Math.max(lo, Math.round(m.hi / bucketSize));
-      return { weight: m.weight / totalWeight, lo, hi };
+      return { weight: m.weight / totalWeight, lo, hi, isCharm: m.isCharm };
     });
-  if (normalisedMixture.length == 0) return 1;
+  if (normalisedMixture.length == 0) return { spell: 1, charm: 1 };
+
+  // A charm only fires after a spell, so it can never be the opening hit. `spellWeight` lets us both
+  // renormalise that opening hit to spells only and split the spell vs charm multipliers at the end.
+  let charmWeight = 0;
+  for (const m of normalisedMixture) if (m.isCharm) charmWeight += m.weight;
+  const spellWeight = 1 - charmWeight; // normalisedMixture weights sum to 1
 
   const bonusMultiplierAt = (lostHp: number): number => {
     const frac = lostHp / nBuckets;
@@ -53,7 +61,6 @@ export function hpBonusMultiplier(
   // so each hit costs O(1) no matter how wide its damage range is.
   const pendingArrivals = new Float64Array(nBuckets);
   let arrivals = 0;
-  let expectedHitsToKill = 0; // running sum of hpProbability over every bucket
 
   for (let lostHp = 0; lostHp < nBuckets; lostHp++) {
     arrivals += pendingArrivals[lostHp];
@@ -61,10 +68,13 @@ export function hpBonusMultiplier(
     // bucket's probability is just whatever earlier hits landed on it (the `arrivals` running sum).
     const reachProbability = (lostHp === 0 ? 1 : 0) + arrivals;
     hpProbability[lostHp] = reachProbability;
-    expectedHitsToKill += reachProbability;
 
     const boost = bonusMultiplierAt(lostHp);
-    for (const { weight, lo, hi } of normalisedMixture) {
+    for (const { weight, lo, hi, isCharm } of normalisedMixture) {
+      // At the opening hit (bucket 0) charms can't fire, so we drop them and renormalise the spell
+      // weights (÷ spellWeight) so that guaranteed first hit still carries the full unit of probability.
+      const w = lostHp === 0 ? (isCharm ? 0 : weight / spellWeight) : weight;
+      if (w <= 0) continue;
       const loScaled = Math.max(1, Math.round(lo * boost)); // keep at least 1 so a hit always advances
       const hiScaled = Math.max(loScaled, Math.round(hi * boost));
       const landFrom = lostHp + loScaled;
@@ -72,7 +82,7 @@ export function hpBonusMultiplier(
       const damageRangeWidth = hiScaled - loScaled + 1;
       // This hit lands the target uniformly somewhere in [landFrom, landTo] (every roll equally likely),
       // so each of those buckets should gain an equal share of this bucket's probability: `density`.
-      const density = (reachProbability * weight) / damageRangeWidth;
+      const density = (reachProbability * w) / damageRangeWidth;
       // Rather than add `density` to every bucket in that run, we mark only its two edges and let the
       // left-to-right sweep do the filling. `arrivals` is the running total of every mark we've passed.
       // The +density at landFrom switches on this hit's contribution, and the matching -density one step
@@ -84,14 +94,26 @@ export function hpBonusMultiplier(
     }
   }
 
-  if (expectedHitsToKill <= 0) return 1;
-
-  // The multiplier is the average factor each hit is scaled by over the whole kill. A hit from bucket
-  // `lostHp` is scaled by bonusMultiplierAt(lostHp)
-  let bonusWeightedHits = 0;
+  // Each multiplier is the average factor its hits are scaled by over the whole kill. Spells and charms
+  // share the trajectory above but are credited separately: the opening hit (bucket 0) is always a spell,
+  // and every later bucket's hits split into spells vs charms by their share of the mixture weight.
+  let spellBonusHits = 0;
+  let spellHits = 0;
+  let charmBonusHits = 0;
+  let charmHits = 0;
   for (let lostHp = 0; lostHp < nBuckets; lostHp++) {
-    bonusWeightedHits += hpProbability[lostHp] * (bonusMultiplierAt(lostHp) - 1);
+    const bonus = bonusMultiplierAt(lostHp) - 1;
+    const reachProbability = hpProbability[lostHp];
+    const spellShare = lostHp === 0 ? 1 : spellWeight;
+    const charmShare = lostHp === 0 ? 0 : charmWeight;
+    spellHits += reachProbability * spellShare;
+    spellBonusHits += reachProbability * spellShare * bonus;
+    charmHits += reachProbability * charmShare;
+    charmBonusHits += reachProbability * charmShare * bonus;
   }
 
-  return 1 + bonusWeightedHits / expectedHitsToKill;
+  return {
+    spell: spellHits > 0 ? 1 + spellBonusHits / spellHits : 1,
+    charm: charmHits > 0 ? 1 + charmBonusHits / charmHits : 1,
+  };
 }
