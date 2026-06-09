@@ -1,0 +1,142 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+<BaseLayout title="Damage Calculator Changelog">
+  <div class="changelog-entry">
+    <h4>2026-06-06</h4>
+    <ul>
+      <li>
+        Alpha Strike and Omega Strike now affect charms.
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-entry">
+    <h4>2026-06-05</h4>
+    <ul>
+      <li>
+        Added Alpha Strike and Omega Strike perks.
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-entry">
+    <h4>2026-05-19</h4>
+    <ul>
+      <li>
+        Added stances for monk and the Ascetic perk. Only VoH has any effect on the calculations, the other stances currently do nothing.
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-entry">
+    <h4>2026-05-07</h4>
+    <ul>
+      <li>
+        Added jump damage decay to Chained Penance. Only applies if you set the number of targets for this spell in the rotation section. This only influences the Effective damage column, the Raw damage shows damage to the initial target.
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-entry">
+    <h4>2026-05-03</h4>
+    <ul>
+      <li>
+        Added charms. This includes major charms only, and is limited to all elemental charms, overpower, overflux, low blow and savage blow. It does not include parry or carnage.
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-entry">
+    <h4>2026-04-17</h4>
+    <ul>
+      <li>
+        Added perks for + damage against bestiary type.
+      </li>
+      <li>
+        Added copy/paste buttons for individual sections.
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-entry">
+    <h4>2026-04-16</h4>
+    <ul>
+      <li>
+        Added targets (creatures). If you have selected some targets, the Effective damage column now calculates based off their resistances, armor and mitigation.
+      </li>
+      <li>
+        Added elemental pierce perks. These only have an effect if you have selected some targets.
+      </li>
+      <li>
+        Added elemental attack imbuements. These function correctly when used alongside the elemental pierce perks of crypt weapons.
+      </li>
+      <li>
+        Added armor penetration perk.
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-entry">
+    <h4>2026-03-15</h4>
+    <ul>
+      <li>
+        Added dedicated perks for +skill.
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-entry">
+    <h4>2026-03-14</h4>
+    <ul>
+      <li>
+        Added runic mastery perk. Requires setting Base Magic Level in advanced stats.
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-entry">
+    <h4>2026-03-12</h4>
+    <ul>
+      <li>
+        Added transcendence.
+      </li>
+    </ul>
+  </div>
+  <div class="changelog-entry">
+    <h4>2026-03-10</h4>
+    <ul>
+      <li>
+        Initial release.
+      </li>
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  :global(main) {
+    max-width: 800px;
+  }
+
+  p {
+    line-height: 1.6;
+    margin: 0.75em 0;
+  }
+
+  h3 {
+    margin-top: 2em;
+  }
+
+  h4 {
+    margin-top: 1.5em;
+  }
+
+  ul {
+    line-height: 1.6;
+    padding-left: 1.5em;
+  }
+
+  li {
+    margin-bottom: 0.4em;
+  }
+
+  li > ul {
+    margin-top: 0.4em;
+    list-style-type: disc;
+  }
+
+  li > ul > li > ul {
+    list-style-type: circle;
+  }
+</style>
