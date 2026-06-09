@@ -5,19 +5,25 @@
     label,
     tip,
     right = false,
+    wrap = false,
     children,
   }: {
     label?: string;
     tip: string;
     right?: boolean;
+    wrap?: boolean;
     children?: Snippet;
   } = $props();
 </script>
 
-<span class="field-tip">
-  <button type="button" class="tip-trigger">
-    {#if children}{@render children()}{:else}{label}{/if}
-  </button>
+<span class="field-tip" class:wrapping={wrap}>
+  {#if wrap}
+    <span class="tip-wrap">{@render children?.()}</span>
+  {:else}
+    <button type="button" class="tip-trigger">
+      {#if children}{@render children()}{:else}{label}{/if}
+    </button>
+  {/if}
   <span role="tooltip" class="tip-content" class:tip-right={right}>{@html tip}</span>
 </span>
 
@@ -25,6 +31,12 @@
   .field-tip {
     position: relative;
     display: inline-block;
+  }
+
+  /* When wrapping interactive content (e.g. a select), let it fill the cell */
+  .field-tip.wrapping,
+  .tip-wrap {
+    display: block;
   }
 
   .tip-content {
@@ -61,7 +73,7 @@
   }
 
   .field-tip:hover .tip-content,
-  .field-tip:focus-within .tip-content {
+  .field-tip:not(.wrapping):focus-within .tip-content {
     opacity: 1;
     visibility: visible;
   }

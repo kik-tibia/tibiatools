@@ -207,7 +207,7 @@
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "holy",
-    "power": 140,
+    "power": 160,
     "skillFactor": 25,
     "buckets": 40,
     "vocations": [
@@ -268,7 +268,7 @@
     "scalesWith": "distance",
     "element": "physical",
     "power": 38,
-    "skillFactor": 30.5,
+    "skillFactor": 30.30303,
     "buckets": 15,
     "vocations": [
       "paladin"
@@ -283,7 +283,7 @@
     "scalesWith": "distance",
     "element": "physical",
     "power": 25,
-    "skillFactor": 30.5,
+    "skillFactor": 30.30303,
     "buckets": 10,
     "vocations": [
       "paladin"
@@ -1395,6 +1395,36 @@
     "runic": [
       "sorcerer",
       "druid"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": 83,
+    "scope": "ethereal-barrage",
+    "name": "Ethereal Barrage",
+    "spellType": "spell",
+    "scalesWith": "distance",
+    "element": "physical",
+    "power": 40,
+    "skillFactor": 17.85,
+    "buckets": 6,
+    "vocations": [
+      "paladin"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": 84,
+    "scope": "divine-barrage",
+    "name": "Divine Barrage",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "holy",
+    "power": 140,
+    "skillFactor": 25,
+    "buckets": 20,
+    "vocations": [
+      "paladin"
     ],
     "rounding": "floor"
   }

@@ -175,7 +175,6 @@ function computeEffectiveAuto(
   creatureChoice?: CreatureChoice,
 ): SpellDamageBreakdown {
   const aoeAA = !!weaponChoice.ammo?.aoe;
-  const highRollAA = !aoeAA; // TODO: check if can just use one const for these two
   let weapon = weaponChoice.weapon;
   weapon = applyElementalAttackImbuement(weapon, aoeAA, buildStats);
 
@@ -243,12 +242,12 @@ function computeEffectiveAuto(
       effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
   } else {
     // regular weapon
-    effectiveAvg = highRollAA
-      ? pNoBonus * effectiveAvg +
+    effectiveAvg = aoeAA
+      ? effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage))
+      : pNoBonus * effectiveAvg +
         pCrit * hrEffectiveAvg * (1 + critDamage) +
         pFatal * hrEffectiveAvg * 1.6 +
-        pCritFatal * hrEffectiveAvg * (1.6 + critDamage)
-      : effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
+        pCritFatal * hrEffectiveAvg * (1.6 + critDamage);
   }
 
   const breakdown: SpellDamageBreakdown = {

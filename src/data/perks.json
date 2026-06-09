@@ -1609,5 +1609,47 @@
     "name": "Omega Strike",
     "scope": "all",
     "bonusType": "omega-strike"
+  },
+  {
+    "id": 243,
+    "name": "Ethereal Barrage base damage",
+    "scope": "ethereal-barrage",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": 244,
+    "name": "Ethereal Barrage critical hit damage",
+    "scope": "ethereal-barrage",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": 245,
+    "name": "Ethereal Barrage critical hit chance",
+    "scope": "ethereal-barrage",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": 246,
+    "name": "Divine Barrage base damage",
+    "scope": "divine-barrage",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": 247,
+    "name": "Divine Barrage critical hit damage",
+    "scope": "divine-barrage",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": 248,
+    "name": "Divine Barrage critical hit chance",
+    "scope": "divine-barrage",
+    "spell": true,
+    "bonusType": "crit-chance"
   }
 ]

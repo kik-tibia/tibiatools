@@ -179,7 +179,9 @@
 )}
   <td>
     {#if build.stats.vocation === "monk"}
-      {@render stanceDropdown(build, buildId, null, setStat)}
+      <Tooltip tip="Only VoH has any affect. If you choose VoJ, you still need to input your final fist skill." wrap>
+        {@render stanceDropdown(build, buildId, null, setStat)}
+      </Tooltip>
     {:else}
       <span class="no-stance">—</span>
     {/if}
