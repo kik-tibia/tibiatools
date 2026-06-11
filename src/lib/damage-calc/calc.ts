@@ -89,9 +89,9 @@ export function computeResults(
 
       // The first creature contributes raw and its weighted effective
       if (acc.length == 0) {
-        return spellDamages.map((sd) => ({
-          ...sd,
-          effective: weighEffective(sd.breakdown.effective, multiplier),
+        return spellDamages.map(({ breakdown, ...rest }) => ({
+          ...rest,
+          effective: weighEffective(breakdown.effective, multiplier),
         }));
       }
       // every later creature only adds its weighted effective on top
