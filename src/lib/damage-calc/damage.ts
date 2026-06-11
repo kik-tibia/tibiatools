@@ -1,5 +1,5 @@
 import type { Creature } from "@data/creatures";
-import type { DamageRange, Element, Spell, SpellDamageBreakdown, SpellDamageEffective } from "@data/spells";
+import type { DamageBreakdown, DamageRange, Element, Spell } from "@data/spells";
 import type { Weapon } from "@data/weapons";
 import type { BuildStats } from "@lib/build-state";
 import type { CreatureChoice, SpellChoice, SpellState, WeaponChoice } from "@lib/damage-calc";
@@ -35,7 +35,7 @@ export function computeDamageBreakdown(
   weaponChoice: WeaponChoice,
   spellChoices: SpellChoice[],
   creatureChoice?: CreatureChoice,
-): SpellDamageBreakdown {
+): DamageBreakdown {
   let charmCritChance = 0;
   let charmCritDamage = 0;
   if (creatureChoice?.charm && creatureChoice.charmTier) {
@@ -173,7 +173,7 @@ function computeEffectiveAuto(
   critDamage: number,
   weaponChoice: WeaponChoice,
   creatureChoice?: CreatureChoice,
-): SpellDamageBreakdown {
+): DamageBreakdown {
   const aoeAA = !!weaponChoice.ammo?.aoe;
   let weapon = weaponChoice.weapon;
   weapon = applyElementalAttackImbuement(weapon, aoeAA, buildStats);
@@ -250,7 +250,7 @@ function computeEffectiveAuto(
         pCritFatal * hrEffectiveAvg * (1.6 + critDamage);
   }
 
-  const breakdown: SpellDamageBreakdown = {
+  const breakdown: DamageBreakdown = {
     noBonus: { min, avg, max, probability: pNoBonus },
     crit: {
       min: hrMin * (1 + critDamage),
@@ -282,7 +282,7 @@ function computeEffectiveSpell(
   weaponChoice: WeaponChoice,
   spellChoices: SpellChoice[],
   creatureChoice?: CreatureChoice,
-): SpellDamageBreakdown {
+): DamageBreakdown {
   let weapon = weaponChoice.weapon;
   weapon = applyElementalAttackImbuement(weapon, false, buildStats);
 
@@ -344,7 +344,7 @@ function computeEffectiveSpell(
 
   effectiveAvg = effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
 
-  const breakdown: SpellDamageBreakdown = {
+  const breakdown: DamageBreakdown = {
     noBonus: { min, avg, max, probability: pNoBonus },
     crit: { min: min * (1 + critDamage), avg: avg * (1 + critDamage), max: max * (1 + critDamage), probability: pCrit },
     fatal: { min: min * 1.6, avg: avg * 1.6, max: max * 1.6, probability: pFatal },

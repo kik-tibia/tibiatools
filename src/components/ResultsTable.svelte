@@ -1,6 +1,6 @@
 <script lang="ts">
   import Tooltip from "@components/Tooltip.svelte";
-  import { spellOrdering, type SpellDamage } from "@data/spells";
+  import { spellOrdering, type SpellRawEffective } from "@data/spells";
   import type { SpellChoiceRef, Vocation } from "@lib/build-state";
 
   let {
@@ -16,7 +16,7 @@
     isDamageFromCharmsHigher,
     isHigher = () => false,
   }: {
-    results?: SpellDamage[];
+    results?: SpellRawEffective[];
     vocation: Vocation;
     rotation: SpellChoiceRef[];
     effectiveDpt: number;
@@ -91,7 +91,7 @@
           <th class="desc">
             <Tooltip
               label={"Effective"}
-              tip={"The average damage you would deal, taking into account resistances, mitigation, crits and fatals. Includes crit charms."}
+              tip={"The average damage you would deal, taking into account resistances, armor, mitigation, crits and fatals. Includes crit charms."}
               right={true} />
           </th>
           <th class="desc" colspan="3">
@@ -116,7 +116,7 @@
                 {r.name}
               </div>
             </td>
-            <td class="num" data-label="Effective Avg">{r.breakdown.effective.avg.toFixed(1)}</td>
+            <td class="num" data-label="Effective Avg">{r.effective.avg.toFixed(1)}</td>
             <td class="num range" data-label="Min">
               {#if r.raw?.min === undefined}
                 <Tooltip label="?" tip="The min for this <br/> spell is unknown" right={true} />

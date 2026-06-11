@@ -37,7 +37,7 @@ describe("default build", () => {
     ])("returns expected values for $name", ({ name, effective, min, avg, max }) => {
       const result = results.find((r) => r.name === name);
       expect(result, `no spell named ${name}`).toBeDefined();
-      expect(result!.breakdown.effective.avg).toBeCloseTo(effective, d);
+      expect(result!.effective.avg).toBeCloseTo(effective, d);
       if (min === undefined) expect(result!.raw!.min).toBeUndefined();
       else expect(result!.raw!.min).toBeCloseTo(min, d);
       expect(result!.raw!.avg).toBeCloseTo(avg, d);
@@ -108,7 +108,7 @@ describe("Knight build with everything", () => {
     ])("returns expected values for $name", ({ name, effective, min, avg, max }) => {
       const result = results.find((r) => r.name === name);
       expect(result, `no spell named ${name}`).toBeDefined();
-      expect(result!.breakdown.effective.avg).toBeCloseTo(effective, d);
+      expect(result!.effective.avg).toBeCloseTo(effective, d);
       if (min === undefined) expect(result!.raw!.min).toBeUndefined();
       else expect(result!.raw!.min).toBeCloseTo(min, d);
       expect(result!.raw!.avg).toBeCloseTo(avg, d);

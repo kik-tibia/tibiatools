@@ -1,7 +1,7 @@
 import { allCharms, type Charm } from "@data/charms";
 import { allCreatures, type Creature } from "@data/creatures";
 import { allPerks, type Perk } from "@data/perks";
-import { allSpells, type Spell, type SpellDamage } from "@data/spells";
+import { allSpells, type Spell, type SpellRawEffective } from "@data/spells";
 import { allStances, type Stance } from "@data/stances";
 import { allAmmo, allWeapons, type Ammo, type Weapon } from "@data/weapons";
 import type { CreatureChoiceRef, PerkChoiceRef, SpellChoiceRef, WeaponChoiceRef } from "@lib/build-state";
@@ -62,9 +62,9 @@ export function resolveSpells(spellChoiceRefs: SpellChoiceRef[]): SpellChoice[] 
 
 export function resolveSpellDamages(
   spellChoiceRefs: SpellChoiceRef[],
-  spellDamages: SpellDamage[],
+  spellDamages: SpellRawEffective[],
 ): SpellDamageChoice[] {
-  const spellDamagesById: Record<number, SpellDamage> = Object.fromEntries(spellDamages.map((i) => [i.id, i]));
+  const spellDamagesById: Record<number, SpellRawEffective> = Object.fromEntries(spellDamages.map((i) => [i.id, i]));
   return spellChoiceRefs
     .map((s) => {
       const spellDamage = spellDamagesById[s.id];
