@@ -177,20 +177,26 @@ export function calculateElementalCharmDmg(creatureChoice: CreatureChoice, build
 
 // Adds all of the ammo's attack values onto the weapon, for simplicity
 function mergeAmmoIntoWeapon(weaponChoice: WeaponChoice): WeaponChoice {
+  const { weapon, ammo } = weaponChoice;
+  if (!ammo) return weaponChoice;
+  const attack = (weapon.attack ?? 0) + ammo.attack;
+  const scale = ammo.attack > 0 ? attack / ammo.attack : 0;
   return {
     ...weaponChoice,
     weapon: {
-      ...weaponChoice.weapon,
-      attack: (weaponChoice.weapon.attack ?? 0) + (weaponChoice.ammo?.attack ?? 0),
-      attackDeath: (weaponChoice.weapon.attackDeath ?? 0) + (weaponChoice.ammo?.attackDeath ?? 0),
-      attackEarth: (weaponChoice.weapon.attackEarth ?? 0) + (weaponChoice.ammo?.attackEarth ?? 0),
-      attackEnergy: (weaponChoice.weapon.attackEnergy ?? 0) + (weaponChoice.ammo?.attackEnergy ?? 0),
-      attackFire: (weaponChoice.weapon.attackFire ?? 0) + (weaponChoice.ammo?.attackFire ?? 0),
-      attackIce: (weaponChoice.weapon.attackIce ?? 0) + (weaponChoice.ammo?.attackIce ?? 0),
-      attackPhysical: (weaponChoice.weapon.attackPhysical ?? 0) + (weaponChoice.ammo?.attackPhysical ?? 0),
+      ...weapon,
+      attack,
+      ...(ammo.attack > 0 && {
+        attackDeath: (ammo.attackDeath ?? 0) * scale,
+        attackEarth: (ammo.attackEarth ?? 0) * scale,
+        attackEnergy: (ammo.attackEnergy ?? 0) * scale,
+        attackFire: (ammo.attackFire ?? 0) * scale,
+        attackIce: (ammo.attackIce ?? 0) * scale,
+        attackPhysical: ammo.attackPhysical * scale,
+      }),
     },
-    ammo: weaponChoice.ammo && {
-      ...weaponChoice.ammo,
+    ammo: {
+      ...ammo,
       attack: 0,
       attackDeath: 0,
       attackEarth: 0,
