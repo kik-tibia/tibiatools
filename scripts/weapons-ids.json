@@ -1,0 +1,3354 @@
+[
+  {
+    "id": 1,
+    "name": "Fists"
+  },
+  {
+    "id": 2,
+    "name": "Amber Axe"
+  },
+  {
+    "id": 3,
+    "name": "Amber Greataxe"
+  },
+  {
+    "id": 4,
+    "name": "Angelic Axe"
+  },
+  {
+    "id": 5,
+    "name": "Axe"
+  },
+  {
+    "id": 6,
+    "name": "Axe of Carving"
+  },
+  {
+    "id": 7,
+    "name": "Axe of Carving (Charged)"
+  },
+  {
+    "id": 8,
+    "name": "Axe of Carving (Heavily Charged)"
+  },
+  {
+    "id": 9,
+    "name": "Axe of Carving (Overcharged)"
+  },
+  {
+    "id": 10,
+    "name": "Axe of Destruction"
+  },
+  {
+    "id": 11,
+    "name": "Axe of Mayhem"
+  },
+  {
+    "id": 12,
+    "name": "Axe of Mayhem (Charged)"
+  },
+  {
+    "id": 13,
+    "name": "Axe of Mayhem (Heavily Charged)"
+  },
+  {
+    "id": 14,
+    "name": "Axe of Mayhem (Overcharged)"
+  },
+  {
+    "id": 15,
+    "name": "Axe of Remedy"
+  },
+  {
+    "id": 16,
+    "name": "Axe of Remedy (Charged)"
+  },
+  {
+    "id": 17,
+    "name": "Axe of Remedy (Heavily Charged)"
+  },
+  {
+    "id": 18,
+    "name": "Axe of Remedy (Overcharged)"
+  },
+  {
+    "id": 19,
+    "name": "Barbarian Axe"
+  },
+  {
+    "id": 20,
+    "name": "Battle Axe"
+  },
+  {
+    "id": 21,
+    "name": "Beastslayer Axe"
+  },
+  {
+    "id": 22,
+    "name": "Broken Iks Spear"
+  },
+  {
+    "id": 23,
+    "name": "Butcher's Axe"
+  },
+  {
+    "id": 24,
+    "name": "Chopper of Carving"
+  },
+  {
+    "id": 25,
+    "name": "Chopper of Carving (Charged)"
+  },
+  {
+    "id": 26,
+    "name": "Chopper of Carving (Heavily Charged)"
+  },
+  {
+    "id": 27,
+    "name": "Chopper of Carving (Overcharged)"
+  },
+  {
+    "id": 28,
+    "name": "Chopper of Destruction"
+  },
+  {
+    "id": 29,
+    "name": "Chopper of Mayhem"
+  },
+  {
+    "id": 30,
+    "name": "Chopper of Mayhem (Charged)"
+  },
+  {
+    "id": 31,
+    "name": "Chopper of Mayhem (Heavily Charged)"
+  },
+  {
+    "id": 32,
+    "name": "Chopper of Mayhem (Overcharged)"
+  },
+  {
+    "id": 33,
+    "name": "Chopper of Remedy"
+  },
+  {
+    "id": 34,
+    "name": "Chopper of Remedy (Charged)"
+  },
+  {
+    "id": 35,
+    "name": "Chopper of Remedy (Heavily Charged)"
+  },
+  {
+    "id": 36,
+    "name": "Chopper of Remedy (Overcharged)"
+  },
+  {
+    "id": 37,
+    "name": "Cobra Axe"
+  },
+  {
+    "id": 38,
+    "name": "Crude Umbral Axe"
+  },
+  {
+    "id": 39,
+    "name": "Crude Umbral Chopper"
+  },
+  {
+    "id": 40,
+    "name": "Crypt Splitter"
+  },
+  {
+    "id": 41,
+    "name": "Crystalline Axe"
+  },
+  {
+    "id": 42,
+    "name": "Daramian Axe"
+  },
+  {
+    "id": 43,
+    "name": "Daramian Waraxe"
+  },
+  {
+    "id": 44,
+    "name": "Deepling Axe"
+  },
+  {
+    "id": 45,
+    "name": "Demonwing Axe"
+  },
+  {
+    "id": 46,
+    "name": "Double Axe"
+  },
+  {
+    "id": 47,
+    "name": "Dragon Lance"
+  },
+  {
+    "id": 48,
+    "name": "Draining Inferniarch Battleaxe"
+  },
+  {
+    "id": 49,
+    "name": "Draining Inferniarch Greataxe"
+  },
+  {
+    "id": 50,
+    "name": "Drakinata"
+  },
+  {
+    "id": 51,
+    "name": "Dreaded Cleaver"
+  },
+  {
+    "id": 52,
+    "name": "Dwarven Axe"
+  },
+  {
+    "id": 53,
+    "name": "Earth Barbarian Axe"
+  },
+  {
+    "id": 54,
+    "name": "Earth Barbaric Axe Replica"
+  },
+  {
+    "id": 55,
+    "name": "Earth Headchopper"
+  },
+  {
+    "id": 56,
+    "name": "Earth Headchopper Replica"
+  },
+  {
+    "id": 57,
+    "name": "Earth Heroic Axe"
+  },
+  {
+    "id": 58,
+    "name": "Earth Heroic Axe Replica"
+  },
+  {
+    "id": 59,
+    "name": "Earth Knight Axe"
+  },
+  {
+    "id": 60,
+    "name": "Earth Knight Axe Replica"
+  },
+  {
+    "id": 61,
+    "name": "Earth War Axe"
+  },
+  {
+    "id": 62,
+    "name": "Earth War Axe Replica"
+  },
+  {
+    "id": 63,
+    "name": "Eldritch Greataxe"
+  },
+  {
+    "id": 64,
+    "name": "Energy Axe Replica"
+  },
+  {
+    "id": 65,
+    "name": "Energy Barbarian Axe"
+  },
+  {
+    "id": 66,
+    "name": "Energy Headchopper"
+  },
+  {
+    "id": 67,
+    "name": "Energy Headchopper Replica"
+  },
+  {
+    "id": 68,
+    "name": "Energy Heroic Axe"
+  },
+  {
+    "id": 69,
+    "name": "Energy Heroic Axe Replica"
+  },
+  {
+    "id": 70,
+    "name": "Energy Knight Axe"
+  },
+  {
+    "id": 71,
+    "name": "Energy Knight Axe Replica"
+  },
+  {
+    "id": 72,
+    "name": "Energy War Axe"
+  },
+  {
+    "id": 73,
+    "name": "Energy War Axe Replica"
+  },
+  {
+    "id": 74,
+    "name": "Execowtioner Axe"
+  },
+  {
+    "id": 75,
+    "name": "Executioner"
+  },
+  {
+    "id": 76,
+    "name": "Falcon Battleaxe"
+  },
+  {
+    "id": 77,
+    "name": "Farmer's Avenger"
+  },
+  {
+    "id": 78,
+    "name": "Fiery Barbarian Axe"
+  },
+  {
+    "id": 79,
+    "name": "Fiery Barbarian Axe Replica"
+  },
+  {
+    "id": 80,
+    "name": "Fiery Headchopper"
+  },
+  {
+    "id": 81,
+    "name": "Fiery Headchopper Replica"
+  },
+  {
+    "id": 82,
+    "name": "Fiery Heroic Axe"
+  },
+  {
+    "id": 83,
+    "name": "Fiery Heroic Axe Replica"
+  },
+  {
+    "id": 84,
+    "name": "Fiery Knight Axe"
+  },
+  {
+    "id": 85,
+    "name": "Fiery Knight Axe Replica"
+  },
+  {
+    "id": 86,
+    "name": "Fiery War Axe"
+  },
+  {
+    "id": 87,
+    "name": "Fiery War Axe Replica"
+  },
+  {
+    "id": 88,
+    "name": "Fire Axe"
+  },
+  {
+    "id": 89,
+    "name": "Gilded Eldritch Greataxe"
+  },
+  {
+    "id": 90,
+    "name": "Glooth Axe"
+  },
+  {
+    "id": 91,
+    "name": "Glorious Axe"
+  },
+  {
+    "id": 92,
+    "name": "Golden Axe"
+  },
+  {
+    "id": 93,
+    "name": "Golden Sickle"
+  },
+  {
+    "id": 94,
+    "name": "Grand Sanguine Battleaxe"
+  },
+  {
+    "id": 95,
+    "name": "Grand Sanguine Hatchet"
+  },
+  {
+    "id": 96,
+    "name": "Great Axe"
+  },
+  {
+    "id": 97,
+    "name": "Guardian Axe"
+  },
+  {
+    "id": 98,
+    "name": "Guardian Halberd"
+  },
+  {
+    "id": 99,
+    "name": "Halberd"
+  },
+  {
+    "id": 100,
+    "name": "Hand Axe"
+  },
+  {
+    "id": 101,
+    "name": "Hatchet"
+  },
+  {
+    "id": 102,
+    "name": "Headchopper"
+  },
+  {
+    "id": 103,
+    "name": "Heavy Trident"
+  },
+  {
+    "id": 104,
+    "name": "Hellforged Axe"
+  },
+  {
+    "id": 105,
+    "name": "Heroic Axe"
+  },
+  {
+    "id": 106,
+    "name": "Hive Scythe"
+  },
+  {
+    "id": 107,
+    "name": "Ice Hatchet"
+  },
+  {
+    "id": 108,
+    "name": "Icy Barbarian Axe"
+  },
+  {
+    "id": 109,
+    "name": "Icy Barbarian Axe Replica"
+  },
+  {
+    "id": 110,
+    "name": "Icy Headchopper"
+  },
+  {
+    "id": 111,
+    "name": "Icy Headchopper Replica"
+  },
+  {
+    "id": 112,
+    "name": "Icy Heroic Axe"
+  },
+  {
+    "id": 113,
+    "name": "Icy Heroic Axe Replica"
+  },
+  {
+    "id": 114,
+    "name": "Icy Knight Axe"
+  },
+  {
+    "id": 115,
+    "name": "Icy Knight Axe Replica"
+  },
+  {
+    "id": 116,
+    "name": "Icy War Axe"
+  },
+  {
+    "id": 117,
+    "name": "Icy War Axe Replica"
+  },
+  {
+    "id": 118,
+    "name": "Impaler"
+  },
+  {
+    "id": 119,
+    "name": "Inferniarch Battleaxe"
+  },
+  {
+    "id": 120,
+    "name": "Inferniarch Greataxe"
+  },
+  {
+    "id": 121,
+    "name": "Knight Axe"
+  },
+  {
+    "id": 122,
+    "name": "Lion Axe"
+  },
+  {
+    "id": 123,
+    "name": "Mino Lance"
+  },
+  {
+    "id": 124,
+    "name": "Mythril Axe"
+  },
+  {
+    "id": 125,
+    "name": "Naga Axe"
+  },
+  {
+    "id": 126,
+    "name": "Naginata"
+  },
+  {
+    "id": 127,
+    "name": "Noble Axe"
+  },
+  {
+    "id": 128,
+    "name": "Obsidian Lance"
+  },
+  {
+    "id": 129,
+    "name": "Ogre Choppa"
+  },
+  {
+    "id": 130,
+    "name": "Orcish Axe"
+  },
+  {
+    "id": 131,
+    "name": "Ornamented Axe"
+  },
+  {
+    "id": 132,
+    "name": "Ornate Carving Axe"
+  },
+  {
+    "id": 133,
+    "name": "Ornate Carving Chopper"
+  },
+  {
+    "id": 134,
+    "name": "Ornate Mayhem Axe"
+  },
+  {
+    "id": 135,
+    "name": "Ornate Mayhem Chopper"
+  },
+  {
+    "id": 136,
+    "name": "Ornate Remedy Axe"
+  },
+  {
+    "id": 137,
+    "name": "Ornate Remedy Chopper"
+  },
+  {
+    "id": 138,
+    "name": "Phantasmal Axe"
+  },
+  {
+    "id": 139,
+    "name": "Plague Bite"
+  },
+  {
+    "id": 140,
+    "name": "Plain Carving Axe"
+  },
+  {
+    "id": 141,
+    "name": "Plain Carving Chopper"
+  },
+  {
+    "id": 142,
+    "name": "Plain Mayhem Axe"
+  },
+  {
+    "id": 143,
+    "name": "Plain Mayhem Chopper"
+  },
+  {
+    "id": 144,
+    "name": "Plain Remedy Axe"
+  },
+  {
+    "id": 145,
+    "name": "Plain Remedy Chopper"
+  },
+  {
+    "id": 146,
+    "name": "Ravager's Axe"
+  },
+  {
+    "id": 147,
+    "name": "Ravenwing"
+  },
+  {
+    "id": 148,
+    "name": "Reaper's Axe"
+  },
+  {
+    "id": 149,
+    "name": "Rending Inferniarch Battleaxe"
+  },
+  {
+    "id": 150,
+    "name": "Rending Inferniarch Greataxe"
+  },
+  {
+    "id": 151,
+    "name": "Rift Lance"
+  },
+  {
+    "id": 152,
+    "name": "Ripper Lance"
+  },
+  {
+    "id": 153,
+    "name": "Royal Axe"
+  },
+  {
+    "id": 154,
+    "name": "Ruthless Axe"
+  },
+  {
+    "id": 155,
+    "name": "Sanguine Battleaxe"
+  },
+  {
+    "id": 156,
+    "name": "Sanguine Hatchet"
+  },
+  {
+    "id": 157,
+    "name": "Scythe of the Reaper"
+  },
+  {
+    "id": 158,
+    "name": "Sickle"
+  },
+  {
+    "id": 159,
+    "name": "Siphoning Inferniarch Battleaxe"
+  },
+  {
+    "id": 160,
+    "name": "Siphoning Inferniarch Greataxe"
+  },
+  {
+    "id": 161,
+    "name": "Solar Axe"
+  },
+  {
+    "id": 162,
+    "name": "Soulbiter"
+  },
+  {
+    "id": 163,
+    "name": "Souleater (Axe)"
+  },
+  {
+    "id": 164,
+    "name": "Steel Axe"
+  },
+  {
+    "id": 165,
+    "name": "Stonecutter Axe"
+  },
+  {
+    "id": 166,
+    "name": "Throwing Axe"
+  },
+  {
+    "id": 167,
+    "name": "Titan Axe"
+  },
+  {
+    "id": 168,
+    "name": "Twin Axe"
+  },
+  {
+    "id": 169,
+    "name": "Umbral Axe"
+  },
+  {
+    "id": 170,
+    "name": "Umbral Chopper"
+  },
+  {
+    "id": 171,
+    "name": "Umbral Master Axe"
+  },
+  {
+    "id": 172,
+    "name": "Umbral Master Chopper"
+  },
+  {
+    "id": 173,
+    "name": "Valuable Carving Axe"
+  },
+  {
+    "id": 174,
+    "name": "Valuable Carving Chopper"
+  },
+  {
+    "id": 175,
+    "name": "Valuable Mayhem Axe"
+  },
+  {
+    "id": 176,
+    "name": "Valuable Mayhem Chopper"
+  },
+  {
+    "id": 177,
+    "name": "Valuable Remedy Axe"
+  },
+  {
+    "id": 178,
+    "name": "Valuable Remedy Chopper"
+  },
+  {
+    "id": 179,
+    "name": "Vile Axe"
+  },
+  {
+    "id": 180,
+    "name": "War Axe"
+  },
+  {
+    "id": 181,
+    "name": "Warrior's Axe"
+  },
+  {
+    "id": 182,
+    "name": "Zaoan Halberd"
+  },
+  {
+    "id": 183,
+    "name": "Amber Bow"
+  },
+  {
+    "id": 184,
+    "name": "Bow"
+  },
+  {
+    "id": 185,
+    "name": "Bow of Carving"
+  },
+  {
+    "id": 186,
+    "name": "Bow of Carving (Charged)"
+  },
+  {
+    "id": 187,
+    "name": "Bow of Carving (Heavily Charged)"
+  },
+  {
+    "id": 188,
+    "name": "Bow of Carving (Overcharged)"
+  },
+  {
+    "id": 189,
+    "name": "Bow of Cataclysm"
+  },
+  {
+    "id": 190,
+    "name": "Bow of Destruction"
+  },
+  {
+    "id": 191,
+    "name": "Bow of Destruction Test"
+  },
+  {
+    "id": 192,
+    "name": "Bow of Mayhem"
+  },
+  {
+    "id": 193,
+    "name": "Bow of Mayhem (Charged)"
+  },
+  {
+    "id": 194,
+    "name": "Bow of Mayhem (Heavily Charged)"
+  },
+  {
+    "id": 195,
+    "name": "Bow of Mayhem (Overcharged)"
+  },
+  {
+    "id": 196,
+    "name": "Bow of Remedy"
+  },
+  {
+    "id": 197,
+    "name": "Bow of Remedy (Charged)"
+  },
+  {
+    "id": 198,
+    "name": "Bow of Remedy (Heavily Charged)"
+  },
+  {
+    "id": 199,
+    "name": "Bow of Remedy (Overcharged)"
+  },
+  {
+    "id": 200,
+    "name": "Composite Hornbow"
+  },
+  {
+    "id": 201,
+    "name": "Crude Umbral Bow"
+  },
+  {
+    "id": 202,
+    "name": "Crypt Spine"
+  },
+  {
+    "id": 203,
+    "name": "Draining Inferniarch Bow"
+  },
+  {
+    "id": 204,
+    "name": "Eldritch Bow"
+  },
+  {
+    "id": 205,
+    "name": "Elethriel's Elemental Bow"
+  },
+  {
+    "id": 206,
+    "name": "Elvish Bow"
+  },
+  {
+    "id": 207,
+    "name": "Falcon Bow"
+  },
+  {
+    "id": 208,
+    "name": "Gilded Eldritch Bow"
+  },
+  {
+    "id": 209,
+    "name": "Grand Sanguine Bow"
+  },
+  {
+    "id": 210,
+    "name": "Hive Bow"
+  },
+  {
+    "id": 211,
+    "name": "Icicle Bow"
+  },
+  {
+    "id": 212,
+    "name": "Inferniarch Bow"
+  },
+  {
+    "id": 213,
+    "name": "Jungle Bow"
+  },
+  {
+    "id": 214,
+    "name": "Lion Longbow"
+  },
+  {
+    "id": 215,
+    "name": "Living Vine Bow"
+  },
+  {
+    "id": 216,
+    "name": "Musician's Bow"
+  },
+  {
+    "id": 217,
+    "name": "Mycological Bow"
+  },
+  {
+    "id": 218,
+    "name": "Ornate Carving Bow"
+  },
+  {
+    "id": 219,
+    "name": "Ornate Mayhem Bow"
+  },
+  {
+    "id": 220,
+    "name": "Ornate Remedy Bow"
+  },
+  {
+    "id": 221,
+    "name": "Plain Carving Bow"
+  },
+  {
+    "id": 222,
+    "name": "Plain Mayhem Bow"
+  },
+  {
+    "id": 223,
+    "name": "Plain Remedy Bow"
+  },
+  {
+    "id": 224,
+    "name": "Refined Bow"
+  },
+  {
+    "id": 225,
+    "name": "Rending Inferniarch Bow"
+  },
+  {
+    "id": 226,
+    "name": "Rift Bow"
+  },
+  {
+    "id": 227,
+    "name": "Sanguine Bow"
+  },
+  {
+    "id": 228,
+    "name": "Shimmer Bow"
+  },
+  {
+    "id": 229,
+    "name": "Silkweaver Bow"
+  },
+  {
+    "id": 230,
+    "name": "Siphoning Inferniarch Bow"
+  },
+  {
+    "id": 231,
+    "name": "Soulbleeder"
+  },
+  {
+    "id": 232,
+    "name": "Umbral Bow"
+  },
+  {
+    "id": 233,
+    "name": "Umbral Master Bow"
+  },
+  {
+    "id": 234,
+    "name": "Umbral Master Bow Test"
+  },
+  {
+    "id": 235,
+    "name": "Valuable Carving Bow"
+  },
+  {
+    "id": 236,
+    "name": "Valuable Mayhem Bow"
+  },
+  {
+    "id": 237,
+    "name": "Valuable Remedy Bow"
+  },
+  {
+    "id": 238,
+    "name": "Warsinger Bow"
+  },
+  {
+    "id": 239,
+    "name": "Yol's Bow"
+  },
+  {
+    "id": 240,
+    "name": "Abyss Hammer"
+  },
+  {
+    "id": 241,
+    "name": "Amber Bludgeon"
+  },
+  {
+    "id": 242,
+    "name": "Amber Cudgel"
+  },
+  {
+    "id": 243,
+    "name": "Amber Staff"
+  },
+  {
+    "id": 244,
+    "name": "Arcane Staff"
+  },
+  {
+    "id": 245,
+    "name": "Banana Staff"
+  },
+  {
+    "id": 246,
+    "name": "Battle Hammer"
+  },
+  {
+    "id": 247,
+    "name": "Blessed Sceptre"
+  },
+  {
+    "id": 248,
+    "name": "Bone Club"
+  },
+  {
+    "id": 249,
+    "name": "Bonebreaker"
+  },
+  {
+    "id": 250,
+    "name": "Brutetamer's Staff"
+  },
+  {
+    "id": 251,
+    "name": "Chaos Mace"
+  },
+  {
+    "id": 252,
+    "name": "Clerical Mace"
+  },
+  {
+    "id": 253,
+    "name": "Club"
+  },
+  {
+    "id": 254,
+    "name": "Club of the Fury"
+  },
+  {
+    "id": 255,
+    "name": "Cobra Club"
+  },
+  {
+    "id": 256,
+    "name": "Cranial Basher"
+  },
+  {
+    "id": 257,
+    "name": "Crowbar"
+  },
+  {
+    "id": 258,
+    "name": "Crude Umbral Hammer"
+  },
+  {
+    "id": 259,
+    "name": "Crude Umbral Mace"
+  },
+  {
+    "id": 260,
+    "name": "Crypt Breaker"
+  },
+  {
+    "id": 261,
+    "name": "Crystal Mace"
+  },
+  {
+    "id": 262,
+    "name": "Daramian Mace"
+  },
+  {
+    "id": 263,
+    "name": "Dark Trinity Mace"
+  },
+  {
+    "id": 264,
+    "name": "Deepling Squelcher"
+  },
+  {
+    "id": 265,
+    "name": "Deepling Staff"
+  },
+  {
+    "id": 266,
+    "name": "Demonbone"
+  },
+  {
+    "id": 267,
+    "name": "Diamond Sceptre"
+  },
+  {
+    "id": 268,
+    "name": "Dragon Hammer"
+  },
+  {
+    "id": 269,
+    "name": "Dragonbone Staff"
+  },
+  {
+    "id": 270,
+    "name": "Draining Inferniarch Flail"
+  },
+  {
+    "id": 271,
+    "name": "Draining Inferniarch Warhammer"
+  },
+  {
+    "id": 272,
+    "name": "Earth Basher Replica"
+  },
+  {
+    "id": 273,
+    "name": "Earth Cleric Mace Replica"
+  },
+  {
+    "id": 274,
+    "name": "Earth Clerical Mace"
+  },
+  {
+    "id": 275,
+    "name": "Earth Cranial Basher"
+  },
+  {
+    "id": 276,
+    "name": "Earth Crystal Mace"
+  },
+  {
+    "id": 277,
+    "name": "Earth Crystal Mace Replica"
+  },
+  {
+    "id": 278,
+    "name": "Earth Orcish Maul"
+  },
+  {
+    "id": 279,
+    "name": "Earth Orcish Maul Replica"
+  },
+  {
+    "id": 280,
+    "name": "Earth War Hammer"
+  },
+  {
+    "id": 281,
+    "name": "Earth War Hammer Replica"
+  },
+  {
+    "id": 282,
+    "name": "Eldritch Warmace"
+  },
+  {
+    "id": 283,
+    "name": "Enchanted Staff"
+  },
+  {
+    "id": 284,
+    "name": "Energized Demonbone"
+  },
+  {
+    "id": 285,
+    "name": "Energy Basher Replica"
+  },
+  {
+    "id": 286,
+    "name": "Energy Cleric Mace Replica"
+  },
+  {
+    "id": 287,
+    "name": "Energy Clerical Mace"
+  },
+  {
+    "id": 288,
+    "name": "Energy Cranial Basher"
+  },
+  {
+    "id": 289,
+    "name": "Energy Crystal Mace"
+  },
+  {
+    "id": 290,
+    "name": "Energy Mace Replica"
+  },
+  {
+    "id": 291,
+    "name": "Energy Orcish Maul"
+  },
+  {
+    "id": 292,
+    "name": "Energy Orcish Maul Replica"
+  },
+  {
+    "id": 293,
+    "name": "Energy War Hammer"
+  },
+  {
+    "id": 294,
+    "name": "Energy War Hammer Replica"
+  },
+  {
+    "id": 295,
+    "name": "Falcon Mace"
+  },
+  {
+    "id": 296,
+    "name": "Ferumbras' Staff (Blunt)"
+  },
+  {
+    "id": 297,
+    "name": "Fiery Basher Replica"
+  },
+  {
+    "id": 298,
+    "name": "Fiery Clerical Mace"
+  },
+  {
+    "id": 299,
+    "name": "Fiery Clerical Mace Replica"
+  },
+  {
+    "id": 300,
+    "name": "Fiery Cranial Basher"
+  },
+  {
+    "id": 301,
+    "name": "Fiery Crystal Mace"
+  },
+  {
+    "id": 302,
+    "name": "Fiery Crystal Mace Replica"
+  },
+  {
+    "id": 303,
+    "name": "Fiery Orcish Maul"
+  },
+  {
+    "id": 304,
+    "name": "Fiery Orcish Maul Replica"
+  },
+  {
+    "id": 305,
+    "name": "Fiery War Hammer"
+  },
+  {
+    "id": 306,
+    "name": "Fiery War Hammer Replica"
+  },
+  {
+    "id": 307,
+    "name": "Furry Club"
+  },
+  {
+    "id": 308,
+    "name": "Giant Smithhammer"
+  },
+  {
+    "id": 309,
+    "name": "Gilded Eldritch Warmace"
+  },
+  {
+    "id": 310,
+    "name": "Glooth Club"
+  },
+  {
+    "id": 311,
+    "name": "Glooth Whip"
+  },
+  {
+    "id": 312,
+    "name": "Glutton's Mace"
+  },
+  {
+    "id": 313,
+    "name": "Grand Sanguine Bludgeon"
+  },
+  {
+    "id": 314,
+    "name": "Grand Sanguine Cudgel"
+  },
+  {
+    "id": 315,
+    "name": "Hammer of Carving"
+  },
+  {
+    "id": 316,
+    "name": "Hammer of Carving (Charged)"
+  },
+  {
+    "id": 317,
+    "name": "Hammer of Carving (Heavily Charged)"
+  },
+  {
+    "id": 318,
+    "name": "Hammer of Carving (Overcharged)"
+  },
+  {
+    "id": 319,
+    "name": "Hammer of Destruction"
+  },
+  {
+    "id": 320,
+    "name": "Hammer of Mayhem"
+  },
+  {
+    "id": 321,
+    "name": "Hammer of Mayhem (Charged)"
+  },
+  {
+    "id": 322,
+    "name": "Hammer of Mayhem (Heavily Charged)"
+  },
+  {
+    "id": 323,
+    "name": "Hammer of Mayhem (Overcharged)"
+  },
+  {
+    "id": 324,
+    "name": "Hammer of Prophecy"
+  },
+  {
+    "id": 325,
+    "name": "Hammer of Remedy"
+  },
+  {
+    "id": 326,
+    "name": "Hammer of Remedy (Charged)"
+  },
+  {
+    "id": 327,
+    "name": "Hammer of Remedy (Heavily Charged)"
+  },
+  {
+    "id": 328,
+    "name": "Hammer of Remedy (Overcharged)"
+  },
+  {
+    "id": 329,
+    "name": "Hammer of Wrath"
+  },
+  {
+    "id": 330,
+    "name": "Heavy Mace"
+  },
+  {
+    "id": 331,
+    "name": "Icy Clerical Mace"
+  },
+  {
+    "id": 332,
+    "name": "Icy Clerical Mace Replica"
+  },
+  {
+    "id": 333,
+    "name": "Icy Cranial Basher"
+  },
+  {
+    "id": 334,
+    "name": "Icy Cranial Basher Replica"
+  },
+  {
+    "id": 335,
+    "name": "Icy Crystal Mace"
+  },
+  {
+    "id": 336,
+    "name": "Icy Crystal Mace Replica"
+  },
+  {
+    "id": 337,
+    "name": "Icy Orcish Maul"
+  },
+  {
+    "id": 338,
+    "name": "Icy Orcish Maul Replica"
+  },
+  {
+    "id": 339,
+    "name": "Icy War Hammer"
+  },
+  {
+    "id": 340,
+    "name": "Icy War Hammer Replica"
+  },
+  {
+    "id": 341,
+    "name": "Inferniarch Flail"
+  },
+  {
+    "id": 342,
+    "name": "Inferniarch Warhammer"
+  },
+  {
+    "id": 343,
+    "name": "Iron Hammer"
+  },
+  {
+    "id": 344,
+    "name": "Jade Hammer"
+  },
+  {
+    "id": 345,
+    "name": "Jungle Flail"
+  },
+  {
+    "id": 346,
+    "name": "Lich Staff"
+  },
+  {
+    "id": 347,
+    "name": "Life Preserver"
+  },
+  {
+    "id": 348,
+    "name": "Light Mace"
+  },
+  {
+    "id": 349,
+    "name": "Lion Hammer"
+  },
+  {
+    "id": 350,
+    "name": "Lunar Staff"
+  },
+  {
+    "id": 351,
+    "name": "Mace"
+  },
+  {
+    "id": 352,
+    "name": "Mace of Carving"
+  },
+  {
+    "id": 353,
+    "name": "Mace of Carving (Charged)"
+  },
+  {
+    "id": 354,
+    "name": "Mace of Carving (Heavily Charged)"
+  },
+  {
+    "id": 355,
+    "name": "Mace of Carving (Overcharged)"
+  },
+  {
+    "id": 356,
+    "name": "Mace of Destruction"
+  },
+  {
+    "id": 357,
+    "name": "Mace of Mayhem"
+  },
+  {
+    "id": 358,
+    "name": "Mace of Mayhem (Charged)"
+  },
+  {
+    "id": 359,
+    "name": "Mace of Mayhem (Heavily Charged)"
+  },
+  {
+    "id": 360,
+    "name": "Mace of Mayhem (Overcharged)"
+  },
+  {
+    "id": 361,
+    "name": "Mace of Remedy"
+  },
+  {
+    "id": 362,
+    "name": "Mace of Remedy (Charged)"
+  },
+  {
+    "id": 363,
+    "name": "Mace of Remedy (Heavily Charged)"
+  },
+  {
+    "id": 364,
+    "name": "Mace of Remedy (Overcharged)"
+  },
+  {
+    "id": 365,
+    "name": "Maimer"
+  },
+  {
+    "id": 366,
+    "name": "Mallet Handle"
+  },
+  {
+    "id": 367,
+    "name": "Mammoth Whopper"
+  },
+  {
+    "id": 368,
+    "name": "Metal Bat"
+  },
+  {
+    "id": 369,
+    "name": "Moohtant Cudgel"
+  },
+  {
+    "id": 370,
+    "name": "Morning Star"
+  },
+  {
+    "id": 371,
+    "name": "Mortal Mace"
+  },
+  {
+    "id": 372,
+    "name": "Mycological Mace"
+  },
+  {
+    "id": 373,
+    "name": "Naga Club"
+  },
+  {
+    "id": 374,
+    "name": "Northern Star"
+  },
+  {
+    "id": 375,
+    "name": "Obsidian Truncheon"
+  },
+  {
+    "id": 376,
+    "name": "Ogre Klubba"
+  },
+  {
+    "id": 377,
+    "name": "One Hit Wonder"
+  },
+  {
+    "id": 378,
+    "name": "Onyx Flail"
+  },
+  {
+    "id": 379,
+    "name": "Orcish Maul"
+  },
+  {
+    "id": 380,
+    "name": "Ornate Carving Hammer"
+  },
+  {
+    "id": 381,
+    "name": "Ornate Carving Mace"
+  },
+  {
+    "id": 382,
+    "name": "Ornate Mace"
+  },
+  {
+    "id": 383,
+    "name": "Ornate Mayhem Hammer"
+  },
+  {
+    "id": 384,
+    "name": "Ornate Mayhem Mace"
+  },
+  {
+    "id": 385,
+    "name": "Ornate Remedy Hammer"
+  },
+  {
+    "id": 386,
+    "name": "Ornate Remedy Mace"
+  },
+  {
+    "id": 387,
+    "name": "Plain Carving Hammer"
+  },
+  {
+    "id": 388,
+    "name": "Plain Carving Mace"
+  },
+  {
+    "id": 389,
+    "name": "Plain Mayhem Hammer"
+  },
+  {
+    "id": 390,
+    "name": "Plain Mayhem Mace"
+  },
+  {
+    "id": 391,
+    "name": "Plain Remedy Hammer"
+  },
+  {
+    "id": 392,
+    "name": "Plain Remedy Mace"
+  },
+  {
+    "id": 393,
+    "name": "Queen's Sceptre"
+  },
+  {
+    "id": 394,
+    "name": "Rending Inferniarch Flail"
+  },
+  {
+    "id": 395,
+    "name": "Rending Inferniarch Warhammer"
+  },
+  {
+    "id": 396,
+    "name": "Resizer"
+  },
+  {
+    "id": 397,
+    "name": "Rotten Demonbone"
+  },
+  {
+    "id": 398,
+    "name": "Sanguine Bludgeon"
+  },
+  {
+    "id": 399,
+    "name": "Sanguine Cudgel"
+  },
+  {
+    "id": 400,
+    "name": "Sapphire Hammer"
+  },
+  {
+    "id": 401,
+    "name": "Scythe"
+  },
+  {
+    "id": 402,
+    "name": "Shadow Sceptre"
+  },
+  {
+    "id": 403,
+    "name": "Silver Mace"
+  },
+  {
+    "id": 404,
+    "name": "Siphoning Inferniarch Flail"
+  },
+  {
+    "id": 405,
+    "name": "Siphoning Inferniarch Warhammer"
+  },
+  {
+    "id": 406,
+    "name": "Skull Staff"
+  },
+  {
+    "id": 407,
+    "name": "Skullcrusher"
+  },
+  {
+    "id": 408,
+    "name": "Snake God's Sceptre"
+  },
+  {
+    "id": 409,
+    "name": "Soulcrusher"
+  },
+  {
+    "id": 410,
+    "name": "Soulmaimer"
+  },
+  {
+    "id": 411,
+    "name": "Spiked Squelcher"
+  },
+  {
+    "id": 412,
+    "name": "Spiky Club"
+  },
+  {
+    "id": 413,
+    "name": "Stale Bread of Ancientness"
+  },
+  {
+    "id": 414,
+    "name": "Strange Mallet"
+  },
+  {
+    "id": 415,
+    "name": "Studded Club"
+  },
+  {
+    "id": 416,
+    "name": "Sulphurous Demonbone"
+  },
+  {
+    "id": 417,
+    "name": "Swampling Club"
+  },
+  {
+    "id": 418,
+    "name": "Taurus Mace"
+  },
+  {
+    "id": 419,
+    "name": "The Stomper"
+  },
+  {
+    "id": 420,
+    "name": "Thunder Hammer"
+  },
+  {
+    "id": 421,
+    "name": "Umbral Hammer"
+  },
+  {
+    "id": 422,
+    "name": "Umbral Mace"
+  },
+  {
+    "id": 423,
+    "name": "Umbral Master Hammer"
+  },
+  {
+    "id": 424,
+    "name": "Umbral Master Mace"
+  },
+  {
+    "id": 425,
+    "name": "Unliving Demonbone"
+  },
+  {
+    "id": 426,
+    "name": "Valuable Carving Hammer"
+  },
+  {
+    "id": 427,
+    "name": "Valuable Carving Mace"
+  },
+  {
+    "id": 428,
+    "name": "Valuable Mayhem Hammer"
+  },
+  {
+    "id": 429,
+    "name": "Valuable Mayhem Mace"
+  },
+  {
+    "id": 430,
+    "name": "Valuable Remedy Hammer"
+  },
+  {
+    "id": 431,
+    "name": "Valuable Remedy Mace"
+  },
+  {
+    "id": 432,
+    "name": "War Hammer"
+  },
+  {
+    "id": 433,
+    "name": "Zathroth' Redeemer"
+  },
+  {
+    "id": 434,
+    "name": "Amber Crossbow"
+  },
+  {
+    "id": 435,
+    "name": "Arbalest"
+  },
+  {
+    "id": 436,
+    "name": "Chain Bolter"
+  },
+  {
+    "id": 437,
+    "name": "Cobra Crossbow"
+  },
+  {
+    "id": 438,
+    "name": "Crossbow"
+  },
+  {
+    "id": 439,
+    "name": "Crossbow of Carving"
+  },
+  {
+    "id": 440,
+    "name": "Crossbow of Carving (Charged)"
+  },
+  {
+    "id": 441,
+    "name": "Crossbow of Carving (Heavily Charged)"
+  },
+  {
+    "id": 442,
+    "name": "Crossbow of Carving (Overcharged)"
+  },
+  {
+    "id": 443,
+    "name": "Crossbow of Destruction"
+  },
+  {
+    "id": 444,
+    "name": "Crossbow of Mayhem"
+  },
+  {
+    "id": 445,
+    "name": "Crossbow of Mayhem (Charged)"
+  },
+  {
+    "id": 446,
+    "name": "Crossbow of Mayhem (Heavily Charged)"
+  },
+  {
+    "id": 447,
+    "name": "Crossbow of Mayhem (Overcharged)"
+  },
+  {
+    "id": 448,
+    "name": "Crossbow of Remedy"
+  },
+  {
+    "id": 449,
+    "name": "Crossbow of Remedy (Charged)"
+  },
+  {
+    "id": 450,
+    "name": "Crossbow of Remedy (Heavily Charged)"
+  },
+  {
+    "id": 451,
+    "name": "Crossbow of Remedy (Overcharged)"
+  },
+  {
+    "id": 452,
+    "name": "Crude Umbral Crossbow"
+  },
+  {
+    "id": 453,
+    "name": "Crystal Crossbow"
+  },
+  {
+    "id": 454,
+    "name": "Draining Inferniarch Arbalest"
+  },
+  {
+    "id": 455,
+    "name": "Grand Sanguine Crossbow"
+  },
+  {
+    "id": 456,
+    "name": "Inferniarch Arbalest"
+  },
+  {
+    "id": 457,
+    "name": "Modified Crossbow"
+  },
+  {
+    "id": 458,
+    "name": "Naga Crossbow"
+  },
+  {
+    "id": 459,
+    "name": "Ornate Carving Crossbow"
+  },
+  {
+    "id": 460,
+    "name": "Ornate Crossbow"
+  },
+  {
+    "id": 461,
+    "name": "Ornate Mayhem Crossbow"
+  },
+  {
+    "id": 462,
+    "name": "Ornate Remedy Crossbow"
+  },
+  {
+    "id": 463,
+    "name": "Plain Carving Crossbow"
+  },
+  {
+    "id": 464,
+    "name": "Plain Mayhem Crossbow"
+  },
+  {
+    "id": 465,
+    "name": "Plain Remedy Crossbow"
+  },
+  {
+    "id": 466,
+    "name": "Rending Inferniarch Arbalest"
+  },
+  {
+    "id": 467,
+    "name": "Rift Crossbow"
+  },
+  {
+    "id": 468,
+    "name": "Royal Crossbow"
+  },
+  {
+    "id": 469,
+    "name": "Sanguine Crossbow"
+  },
+  {
+    "id": 470,
+    "name": "Siphoning Inferniarch Arbalest"
+  },
+  {
+    "id": 471,
+    "name": "Soulpiercer"
+  },
+  {
+    "id": 472,
+    "name": "The Devileye"
+  },
+  {
+    "id": 473,
+    "name": "The Ironworker"
+  },
+  {
+    "id": 474,
+    "name": "Thorn Spitter"
+  },
+  {
+    "id": 475,
+    "name": "Triple Bolt Crossbow"
+  },
+  {
+    "id": 476,
+    "name": "Umbral Crossbow"
+  },
+  {
+    "id": 477,
+    "name": "Umbral Master Crossbow"
+  },
+  {
+    "id": 478,
+    "name": "Valuable Carving Crossbow"
+  },
+  {
+    "id": 479,
+    "name": "Valuable Mayhem Crossbow"
+  },
+  {
+    "id": 480,
+    "name": "Valuable Remedy Crossbow"
+  },
+  {
+    "id": 481,
+    "name": "Amber Kusarigama"
+  },
+  {
+    "id": 482,
+    "name": "Bambus Jo"
+  },
+  {
+    "id": 483,
+    "name": "Cobra Bo"
+  },
+  {
+    "id": 484,
+    "name": "Crude Umbral Katar"
+  },
+  {
+    "id": 485,
+    "name": "Crypt Strike"
+  },
+  {
+    "id": 486,
+    "name": "Depth Claws"
+  },
+  {
+    "id": 487,
+    "name": "Drachaku"
+  },
+  {
+    "id": 488,
+    "name": "Draining Inferniarch Claws"
+  },
+  {
+    "id": 489,
+    "name": "Eldritch Crescent Moon Spade"
+  },
+  {
+    "id": 490,
+    "name": "Falcon Sai"
+  },
+  {
+    "id": 491,
+    "name": "Fists of Enlightenment"
+  },
+  {
+    "id": 492,
+    "name": "Gilded Eldritch Crescent Moon Spade"
+  },
+  {
+    "id": 493,
+    "name": "Grand Sanguine Claws"
+  },
+  {
+    "id": 494,
+    "name": "Inferniarch Claws"
+  },
+  {
+    "id": 495,
+    "name": "Jo Staff"
+  },
+  {
+    "id": 496,
+    "name": "Light Jo Staff"
+  },
+  {
+    "id": 497,
+    "name": "Lion Claws"
+  },
+  {
+    "id": 498,
+    "name": "Naga Katar"
+  },
+  {
+    "id": 499,
+    "name": "Nunchaku"
+  },
+  {
+    "id": 500,
+    "name": "Nunchaku of Destruction"
+  },
+  {
+    "id": 501,
+    "name": "Nunchaku of Enlightenment"
+  },
+  {
+    "id": 502,
+    "name": "Pair of Iron Fists"
+  },
+  {
+    "id": 503,
+    "name": "Pair of Monk Fists"
+  },
+  {
+    "id": 504,
+    "name": "Rending Inferniarch Claws"
+  },
+  {
+    "id": 505,
+    "name": "Sai"
+  },
+  {
+    "id": 506,
+    "name": "Sai of Enlightenment"
+  },
+  {
+    "id": 507,
+    "name": "Sanguine Claws"
+  },
+  {
+    "id": 508,
+    "name": "Simple Jo Staff"
+  },
+  {
+    "id": 509,
+    "name": "Siphoning Inferniarch Claws"
+  },
+  {
+    "id": 510,
+    "name": "Soulkamas"
+  },
+  {
+    "id": 511,
+    "name": "Staff"
+  },
+  {
+    "id": 512,
+    "name": "Traditional Sai"
+  },
+  {
+    "id": 513,
+    "name": "Umbral Katar"
+  },
+  {
+    "id": 514,
+    "name": "Umbral Master Katar"
+  },
+  {
+    "id": 515,
+    "name": "Amber Sabre"
+  },
+  {
+    "id": 516,
+    "name": "Amber Slayer"
+  },
+  {
+    "id": 517,
+    "name": "Assassin Dagger"
+  },
+  {
+    "id": 518,
+    "name": "Berserker"
+  },
+  {
+    "id": 519,
+    "name": "Blacksteel Sword"
+  },
+  {
+    "id": 520,
+    "name": "Blade of Carving"
+  },
+  {
+    "id": 521,
+    "name": "Blade of Carving (Charged)"
+  },
+  {
+    "id": 522,
+    "name": "Blade of Carving (Heavily Charged)"
+  },
+  {
+    "id": 523,
+    "name": "Blade of Carving (Overcharged)"
+  },
+  {
+    "id": 524,
+    "name": "Blade of Corruption"
+  },
+  {
+    "id": 525,
+    "name": "Blade of Destruction"
+  },
+  {
+    "id": 526,
+    "name": "Blade of Mayhem"
+  },
+  {
+    "id": 527,
+    "name": "Blade of Mayhem (Charged)"
+  },
+  {
+    "id": 528,
+    "name": "Blade of Mayhem (Heavily Charged)"
+  },
+  {
+    "id": 529,
+    "name": "Blade of Mayhem (Overcharged)"
+  },
+  {
+    "id": 530,
+    "name": "Blade of Remedy"
+  },
+  {
+    "id": 531,
+    "name": "Blade of Remedy (Charged)"
+  },
+  {
+    "id": 532,
+    "name": "Blade of Remedy (Heavily Charged)"
+  },
+  {
+    "id": 533,
+    "name": "Blade of Remedy (Overcharged)"
+  },
+  {
+    "id": 534,
+    "name": "Bloody Edge"
+  },
+  {
+    "id": 535,
+    "name": "Bone Sword"
+  },
+  {
+    "id": 536,
+    "name": "Bright Sword"
+  },
+  {
+    "id": 537,
+    "name": "Broadsword"
+  },
+  {
+    "id": 538,
+    "name": "Broken Macuahuitl"
+  },
+  {
+    "id": 539,
+    "name": "Carlin Sword"
+  },
+  {
+    "id": 540,
+    "name": "Cobra Sword"
+  },
+  {
+    "id": 541,
+    "name": "Combat Knife"
+  },
+  {
+    "id": 542,
+    "name": "Cowtana"
+  },
+  {
+    "id": 543,
+    "name": "Crimson Sword"
+  },
+  {
+    "id": 544,
+    "name": "Crimson Sword (Uzgod)"
+  },
+  {
+    "id": 545,
+    "name": "Crude Umbral Blade"
+  },
+  {
+    "id": 546,
+    "name": "Crude Umbral Slayer"
+  },
+  {
+    "id": 547,
+    "name": "Crypt Slicer"
+  },
+  {
+    "id": 548,
+    "name": "Crystal Sword"
+  },
+  {
+    "id": 549,
+    "name": "Crystalline Sword"
+  },
+  {
+    "id": 550,
+    "name": "Dagger"
+  },
+  {
+    "id": 551,
+    "name": "Demonrage Sword"
+  },
+  {
+    "id": 552,
+    "name": "Djinn Blade"
+  },
+  {
+    "id": 553,
+    "name": "Dragon Slayer"
+  },
+  {
+    "id": 554,
+    "name": "Draining Inferniarch Blade"
+  },
+  {
+    "id": 555,
+    "name": "Draining Inferniarch Slayer"
+  },
+  {
+    "id": 556,
+    "name": "Earth Blacksteel Replica"
+  },
+  {
+    "id": 557,
+    "name": "Earth Blacksteel Sword"
+  },
+  {
+    "id": 558,
+    "name": "Earth Dragon Slayer"
+  },
+  {
+    "id": 559,
+    "name": "Earth Mystic Blade"
+  },
+  {
+    "id": 560,
+    "name": "Earth Mystic Blade Replica"
+  },
+  {
+    "id": 561,
+    "name": "Earth Relic Sword"
+  },
+  {
+    "id": 562,
+    "name": "Earth Relic Sword Replica"
+  },
+  {
+    "id": 563,
+    "name": "Earth Slayer Replica"
+  },
+  {
+    "id": 564,
+    "name": "Earth Spike Sword"
+  },
+  {
+    "id": 565,
+    "name": "Earth Spike Sword Replica"
+  },
+  {
+    "id": 566,
+    "name": "Eldritch Claymore"
+  },
+  {
+    "id": 567,
+    "name": "Emerald Sword"
+  },
+  {
+    "id": 568,
+    "name": "Energy Blacksteel Replica"
+  },
+  {
+    "id": 569,
+    "name": "Energy Blacksteel Sword"
+  },
+  {
+    "id": 570,
+    "name": "Energy Blade Replica"
+  },
+  {
+    "id": 571,
+    "name": "Energy Dragon Slayer"
+  },
+  {
+    "id": 572,
+    "name": "Energy Mystic Blade"
+  },
+  {
+    "id": 573,
+    "name": "Energy Relic Sword"
+  },
+  {
+    "id": 574,
+    "name": "Energy Relic Sword Replica"
+  },
+  {
+    "id": 575,
+    "name": "Energy Slayer Replica"
+  },
+  {
+    "id": 576,
+    "name": "Energy Spike Sword"
+  },
+  {
+    "id": 577,
+    "name": "Energy Spike Sword Replica"
+  },
+  {
+    "id": 578,
+    "name": "Epee"
+  },
+  {
+    "id": 579,
+    "name": "Falcon Longsword"
+  },
+  {
+    "id": 580,
+    "name": "Fiery Blacksteel Sword"
+  },
+  {
+    "id": 581,
+    "name": "Fiery Dragon Slayer"
+  },
+  {
+    "id": 582,
+    "name": "Fiery Dragon Slayer Replica"
+  },
+  {
+    "id": 583,
+    "name": "Fiery Mystic Blade"
+  },
+  {
+    "id": 584,
+    "name": "Fiery Mystic Blade Replica"
+  },
+  {
+    "id": 585,
+    "name": "Fiery Relic Sword"
+  },
+  {
+    "id": 586,
+    "name": "Fiery Relic Sword Replica"
+  },
+  {
+    "id": 587,
+    "name": "Fiery Spike Sword"
+  },
+  {
+    "id": 588,
+    "name": "Fiery Spike Sword Replica"
+  },
+  {
+    "id": 589,
+    "name": "Fire Blacksteel Replica"
+  },
+  {
+    "id": 590,
+    "name": "Fire Sword"
+  },
+  {
+    "id": 591,
+    "name": "Giant Sword"
+  },
+  {
+    "id": 592,
+    "name": "Gilded Eldritch Claymore"
+  },
+  {
+    "id": 593,
+    "name": "Glooth Blade"
+  },
+  {
+    "id": 594,
+    "name": "Gnome Sword"
+  },
+  {
+    "id": 595,
+    "name": "Golden Magic Longsword"
+  },
+  {
+    "id": 596,
+    "name": "Golden Warlord Sword"
+  },
+  {
+    "id": 597,
+    "name": "Grand Sanguine Blade"
+  },
+  {
+    "id": 598,
+    "name": "Grand Sanguine Razor"
+  },
+  {
+    "id": 599,
+    "name": "Haunted Blade"
+  },
+  {
+    "id": 600,
+    "name": "Havoc Blade"
+  },
+  {
+    "id": 601,
+    "name": "Heavy Machete"
+  },
+  {
+    "id": 602,
+    "name": "Ice Rapier"
+  },
+  {
+    "id": 603,
+    "name": "Icy Blacksteel Replica"
+  },
+  {
+    "id": 604,
+    "name": "Icy Blacksteel Sword"
+  },
+  {
+    "id": 605,
+    "name": "Icy Dragon Slayer"
+  },
+  {
+    "id": 606,
+    "name": "Icy Dragon Slayer Replica"
+  },
+  {
+    "id": 607,
+    "name": "Icy Mystic Blade"
+  },
+  {
+    "id": 608,
+    "name": "Icy Mystic Blade Replica"
+  },
+  {
+    "id": 609,
+    "name": "Icy Relic Sword"
+  },
+  {
+    "id": 610,
+    "name": "Icy Relic Sword Replica"
+  },
+  {
+    "id": 611,
+    "name": "Icy Spike Sword"
+  },
+  {
+    "id": 612,
+    "name": "Icy Spike Sword Replica"
+  },
+  {
+    "id": 613,
+    "name": "Impaler of the Igniter"
+  },
+  {
+    "id": 614,
+    "name": "Incredible Mumpiz Slayer"
+  },
+  {
+    "id": 615,
+    "name": "Inferniarch Blade"
+  },
+  {
+    "id": 616,
+    "name": "Inferniarch Slayer"
+  },
+  {
+    "id": 617,
+    "name": "Ink Sword"
+  },
+  {
+    "id": 618,
+    "name": "Jagged Sword"
+  },
+  {
+    "id": 619,
+    "name": "Katana"
+  },
+  {
+    "id": 620,
+    "name": "Knife"
+  },
+  {
+    "id": 621,
+    "name": "Light Rapier"
+  },
+  {
+    "id": 622,
+    "name": "Lion Longsword"
+  },
+  {
+    "id": 623,
+    "name": "Longsword"
+  },
+  {
+    "id": 624,
+    "name": "Machete"
+  },
+  {
+    "id": 625,
+    "name": "Magic Longsword"
+  },
+  {
+    "id": 626,
+    "name": "Magic Sword"
+  },
+  {
+    "id": 627,
+    "name": "Mean Knight Sword"
+  },
+  {
+    "id": 628,
+    "name": "Mercenary Sword"
+  },
+  {
+    "id": 629,
+    "name": "Mystic Blade"
+  },
+  {
+    "id": 630,
+    "name": "Naga Sword"
+  },
+  {
+    "id": 631,
+    "name": "Nightmare Blade"
+  },
+  {
+    "id": 632,
+    "name": "Ornate Carving Blade"
+  },
+  {
+    "id": 633,
+    "name": "Ornate Carving Slayer"
+  },
+  {
+    "id": 634,
+    "name": "Ornate Mayhem Blade"
+  },
+  {
+    "id": 635,
+    "name": "Ornate Mayhem Slayer"
+  },
+  {
+    "id": 636,
+    "name": "Ornate Remedy Blade"
+  },
+  {
+    "id": 637,
+    "name": "Ornate Remedy Slayer"
+  },
+  {
+    "id": 638,
+    "name": "Pharaoh Sword"
+  },
+  {
+    "id": 639,
+    "name": "Plain Carving Blade"
+  },
+  {
+    "id": 640,
+    "name": "Plain Carving Slayer"
+  },
+  {
+    "id": 641,
+    "name": "Plain Mayhem Blade"
+  },
+  {
+    "id": 642,
+    "name": "Plain Mayhem Slayer"
+  },
+  {
+    "id": 643,
+    "name": "Plain Remedy Blade"
+  },
+  {
+    "id": 644,
+    "name": "Plain Remedy Slayer"
+  },
+  {
+    "id": 645,
+    "name": "Poet's Fencing Quill"
+  },
+  {
+    "id": 646,
+    "name": "Pointed Rabbitslayer"
+  },
+  {
+    "id": 647,
+    "name": "Poison Dagger"
+  },
+  {
+    "id": 648,
+    "name": "Rapier"
+  },
+  {
+    "id": 649,
+    "name": "Ratana"
+  },
+  {
+    "id": 650,
+    "name": "Relic Sword"
+  },
+  {
+    "id": 651,
+    "name": "Rending Inferniarch Blade"
+  },
+  {
+    "id": 652,
+    "name": "Rending Inferniarch Slayer"
+  },
+  {
+    "id": 653,
+    "name": "Ritual Bone Knife"
+  },
+  {
+    "id": 654,
+    "name": "Ron the Ripper's Sabre"
+  },
+  {
+    "id": 655,
+    "name": "Runed Sword"
+  },
+  {
+    "id": 656,
+    "name": "Sabre"
+  },
+  {
+    "id": 657,
+    "name": "Sanguine Blade"
+  },
+  {
+    "id": 658,
+    "name": "Sanguine Razor"
+  },
+  {
+    "id": 659,
+    "name": "Scimitar"
+  },
+  {
+    "id": 660,
+    "name": "Serpent Sword"
+  },
+  {
+    "id": 661,
+    "name": "Shimmer Sword"
+  },
+  {
+    "id": 662,
+    "name": "Shiny Blade"
+  },
+  {
+    "id": 663,
+    "name": "Short Sword"
+  },
+  {
+    "id": 664,
+    "name": "Silver Dagger"
+  },
+  {
+    "id": 665,
+    "name": "Siphoning Inferniarch Blade"
+  },
+  {
+    "id": 666,
+    "name": "Siphoning Inferniarch Slayer"
+  },
+  {
+    "id": 667,
+    "name": "Slayer of Carving"
+  },
+  {
+    "id": 668,
+    "name": "Slayer of Carving (Charged)"
+  },
+  {
+    "id": 669,
+    "name": "Slayer of Carving (Heavily Charged)"
+  },
+  {
+    "id": 670,
+    "name": "Slayer of Carving (Overcharged)"
+  },
+  {
+    "id": 671,
+    "name": "Slayer of Destruction"
+  },
+  {
+    "id": 672,
+    "name": "Slayer of Mayhem"
+  },
+  {
+    "id": 673,
+    "name": "Slayer of Mayhem (Charged)"
+  },
+  {
+    "id": 674,
+    "name": "Slayer of Mayhem (Heavily Charged)"
+  },
+  {
+    "id": 675,
+    "name": "Slayer of Mayhem (Overcharged)"
+  },
+  {
+    "id": 676,
+    "name": "Slayer of Remedy"
+  },
+  {
+    "id": 677,
+    "name": "Slayer of Remedy (Charged)"
+  },
+  {
+    "id": 678,
+    "name": "Slayer of Remedy (Heavily Charged)"
+  },
+  {
+    "id": 679,
+    "name": "Slayer of Remedy (Overcharged)"
+  },
+  {
+    "id": 680,
+    "name": "Soulcutter"
+  },
+  {
+    "id": 681,
+    "name": "Soulshredder"
+  },
+  {
+    "id": 682,
+    "name": "Spike Sword"
+  },
+  {
+    "id": 683,
+    "name": "Summerblade"
+  },
+  {
+    "id": 684,
+    "name": "Sword"
+  },
+  {
+    "id": 685,
+    "name": "Tagralt Blade"
+  },
+  {
+    "id": 686,
+    "name": "Templar Scytheblade"
+  },
+  {
+    "id": 687,
+    "name": "Test Weapon for Knights"
+  },
+  {
+    "id": 688,
+    "name": "Thaian Sword"
+  },
+  {
+    "id": 689,
+    "name": "The Avenger"
+  },
+  {
+    "id": 690,
+    "name": "The Calamity"
+  },
+  {
+    "id": 691,
+    "name": "The Epiphany"
+  },
+  {
+    "id": 692,
+    "name": "The Justice Seeker"
+  },
+  {
+    "id": 693,
+    "name": "Twiceslicer"
+  },
+  {
+    "id": 694,
+    "name": "Twin Hooks"
+  },
+  {
+    "id": 695,
+    "name": "Two Handed Sword"
+  },
+  {
+    "id": 696,
+    "name": "Umbral Blade"
+  },
+  {
+    "id": 697,
+    "name": "Umbral Master Slayer"
+  },
+  {
+    "id": 698,
+    "name": "Umbral Masterblade"
+  },
+  {
+    "id": 699,
+    "name": "Umbral Slayer"
+  },
+  {
+    "id": 700,
+    "name": "Valuable Carving Blade"
+  },
+  {
+    "id": 701,
+    "name": "Valuable Carving Slayer"
+  },
+  {
+    "id": 702,
+    "name": "Valuable Mayhem Blade"
+  },
+  {
+    "id": 703,
+    "name": "Valuable Mayhem Slayer"
+  },
+  {
+    "id": 704,
+    "name": "Valuable Remedy Blade"
+  },
+  {
+    "id": 705,
+    "name": "Valuable Remedy Slayer"
+  },
+  {
+    "id": 706,
+    "name": "Warlord Sword"
+  },
+  {
+    "id": 707,
+    "name": "Winterblade"
+  },
+  {
+    "id": 708,
+    "name": "Wooden Sword"
+  },
+  {
+    "id": 709,
+    "name": "Wyvern Fang"
+  },
+  {
+    "id": 710,
+    "name": "Zaoan Sword"
+  },
+  {
+    "id": 711,
+    "name": "Assassin Star"
+  },
+  {
+    "id": 712,
+    "name": "Enchanted Spear"
+  },
+  {
+    "id": 713,
+    "name": "Glooth Spear"
+  },
+  {
+    "id": 714,
+    "name": "Hunting Spear"
+  },
+  {
+    "id": 715,
+    "name": "Leaf Star"
+  },
+  {
+    "id": 716,
+    "name": "Mean Paladin Spear"
+  },
+  {
+    "id": 717,
+    "name": "Royal Spear"
+  },
+  {
+    "id": 718,
+    "name": "Royal Star"
+  },
+  {
+    "id": 719,
+    "name": "Small Stone"
+  },
+  {
+    "id": 720,
+    "name": "Snowball"
+  },
+  {
+    "id": 721,
+    "name": "Spear"
+  },
+  {
+    "id": 722,
+    "name": "Throwing Cake"
+  },
+  {
+    "id": 723,
+    "name": "Throwing Knife"
+  },
+  {
+    "id": 724,
+    "name": "Throwing Star"
+  },
+  {
+    "id": 725,
+    "name": "Throwing Star of Sula"
+  },
+  {
+    "id": 726,
+    "name": "Viper Star"
+  },
+  {
+    "id": 727,
+    "name": "Amber Rod"
+  },
+  {
+    "id": 728,
+    "name": "Amber Wand"
+  },
+  {
+    "id": 729,
+    "name": "Cobra Rod"
+  },
+  {
+    "id": 730,
+    "name": "Cobra Wand"
+  },
+  {
+    "id": 731,
+    "name": "Crypt Bile"
+  },
+  {
+    "id": 732,
+    "name": "Crypt Jaw"
+  },
+  {
+    "id": 733,
+    "name": "Deepling Ceremonial Dagger"
+  },
+  {
+    "id": 734,
+    "name": "Deepling Fork"
+  },
+  {
+    "id": 735,
+    "name": "Draining Inferniarch Rod"
+  },
+  {
+    "id": 736,
+    "name": "Draining Inferniarch Wand"
+  },
+  {
+    "id": 737,
+    "name": "Dream Blossom Staff"
+  },
+  {
+    "id": 738,
+    "name": "Eldritch Rod"
+  },
+  {
+    "id": 739,
+    "name": "Eldritch Wand"
+  },
+  {
+    "id": 740,
+    "name": "Energized Limb"
+  },
+  {
+    "id": 741,
+    "name": "Falcon Rod"
+  },
+  {
+    "id": 742,
+    "name": "Falcon Wand"
+  },
+  {
+    "id": 743,
+    "name": "Ferumbras' Staff (Enchanted)"
+  },
+  {
+    "id": 744,
+    "name": "Ferumbras' Staff (Failed)"
+  },
+  {
+    "id": 745,
+    "name": "Gilded Eldritch Rod"
+  },
+  {
+    "id": 746,
+    "name": "Gilded Eldritch Wand"
+  },
+  {
+    "id": 747,
+    "name": "Glacial Rod"
+  },
+  {
+    "id": 748,
+    "name": "Grand Sanguine Coil"
+  },
+  {
+    "id": 749,
+    "name": "Grand Sanguine Rod"
+  },
+  {
+    "id": 750,
+    "name": "Hailstorm Rod"
+  },
+  {
+    "id": 751,
+    "name": "Inferniarch Rod"
+  },
+  {
+    "id": 752,
+    "name": "Inferniarch Wand"
+  },
+  {
+    "id": 753,
+    "name": "Jungle Rod"
+  },
+  {
+    "id": 754,
+    "name": "Jungle Wand"
+  },
+  {
+    "id": 755,
+    "name": "Lion Rod"
+  },
+  {
+    "id": 756,
+    "name": "Lion Wand"
+  },
+  {
+    "id": 757,
+    "name": "Moonlight Rod"
+  },
+  {
+    "id": 758,
+    "name": "Muck Rod"
+  },
+  {
+    "id": 759,
+    "name": "Naga Rod"
+  },
+  {
+    "id": 760,
+    "name": "Naga Wand"
+  },
+  {
+    "id": 761,
+    "name": "Necrotic Rod"
+  },
+  {
+    "id": 762,
+    "name": "Northwind Rod"
+  },
+  {
+    "id": 763,
+    "name": "Ogre Scepta"
+  },
+  {
+    "id": 764,
+    "name": "Ornate Carving Rod"
+  },
+  {
+    "id": 765,
+    "name": "Ornate Carving Wand"
+  },
+  {
+    "id": 766,
+    "name": "Ornate Mayhem Rod"
+  },
+  {
+    "id": 767,
+    "name": "Ornate Mayhem Wand"
+  },
+  {
+    "id": 768,
+    "name": "Ornate Remedy Rod"
+  },
+  {
+    "id": 769,
+    "name": "Ornate Remedy Wand"
+  },
+  {
+    "id": 770,
+    "name": "Plain Carving Rod"
+  },
+  {
+    "id": 771,
+    "name": "Plain Carving Wand"
+  },
+  {
+    "id": 772,
+    "name": "Plain Mayhem Rod"
+  },
+  {
+    "id": 773,
+    "name": "Plain Mayhem Wand"
+  },
+  {
+    "id": 774,
+    "name": "Plain Remedy Rod"
+  },
+  {
+    "id": 775,
+    "name": "Plain Remedy Wand"
+  },
+  {
+    "id": 776,
+    "name": "Rending Inferniarch Rod"
+  },
+  {
+    "id": 777,
+    "name": "Rending Inferniarch Wand"
+  },
+  {
+    "id": 778,
+    "name": "Rod of Carving"
+  },
+  {
+    "id": 779,
+    "name": "Rod of Carving (Charged)"
+  },
+  {
+    "id": 780,
+    "name": "Rod of Carving (Heavily Charged)"
+  },
+  {
+    "id": 781,
+    "name": "Rod of Carving (Overcharged)"
+  },
+  {
+    "id": 782,
+    "name": "Rod of Destruction"
+  },
+  {
+    "id": 783,
+    "name": "Rod of Mayhem"
+  },
+  {
+    "id": 784,
+    "name": "Rod of Mayhem (Charged)"
+  },
+  {
+    "id": 785,
+    "name": "Rod of Mayhem (Heavily Charged)"
+  },
+  {
+    "id": 786,
+    "name": "Rod of Mayhem (Overcharged)"
+  },
+  {
+    "id": 787,
+    "name": "Rod of Remedy"
+  },
+  {
+    "id": 788,
+    "name": "Rod of Remedy (Charged)"
+  },
+  {
+    "id": 789,
+    "name": "Rod of Remedy (Heavily Charged)"
+  },
+  {
+    "id": 790,
+    "name": "Rod of Remedy (Overcharged)"
+  },
+  {
+    "id": 791,
+    "name": "Sanguine Coil"
+  },
+  {
+    "id": 792,
+    "name": "Sanguine Rod"
+  },
+  {
+    "id": 793,
+    "name": "Shimmer Rod"
+  },
+  {
+    "id": 794,
+    "name": "Shimmer Wand"
+  },
+  {
+    "id": 795,
+    "name": "Siphoning Inferniarch Rod"
+  },
+  {
+    "id": 796,
+    "name": "Siphoning Inferniarch Wand"
+  },
+  {
+    "id": 797,
+    "name": "Snakebite Rod"
+  },
+  {
+    "id": 798,
+    "name": "Sorcerer Test Weapon Test"
+  },
+  {
+    "id": 799,
+    "name": "Sorcerer and Druid Staff"
+  },
+  {
+    "id": 800,
+    "name": "Soulhexer"
+  },
+  {
+    "id": 801,
+    "name": "Soultainter"
+  },
+  {
+    "id": 802,
+    "name": "Springsprout Rod"
+  },
+  {
+    "id": 803,
+    "name": "Terra Rod"
+  },
+  {
+    "id": 804,
+    "name": "The Chiller"
+  },
+  {
+    "id": 805,
+    "name": "The Scorcher"
+  },
+  {
+    "id": 806,
+    "name": "Underworld Rod"
+  },
+  {
+    "id": 807,
+    "name": "Valuable Carving Rod"
+  },
+  {
+    "id": 808,
+    "name": "Valuable Carving Wand"
+  },
+  {
+    "id": 809,
+    "name": "Valuable Mayhem Rod"
+  },
+  {
+    "id": 810,
+    "name": "Valuable Mayhem Wand"
+  },
+  {
+    "id": 811,
+    "name": "Valuable Remedy Rod"
+  },
+  {
+    "id": 812,
+    "name": "Valuable Remedy Wand"
+  },
+  {
+    "id": 813,
+    "name": "Wand of Carving"
+  },
+  {
+    "id": 814,
+    "name": "Wand of Carving (Charged)"
+  },
+  {
+    "id": 815,
+    "name": "Wand of Carving (Heavily Charged)"
+  },
+  {
+    "id": 816,
+    "name": "Wand of Carving (Overcharged)"
+  },
+  {
+    "id": 817,
+    "name": "Wand of Cosmic Energy"
+  },
+  {
+    "id": 818,
+    "name": "Wand of Darkness"
+  },
+  {
+    "id": 819,
+    "name": "Wand of Decay"
+  },
+  {
+    "id": 820,
+    "name": "Wand of Defiance"
+  },
+  {
+    "id": 821,
+    "name": "Wand of Destruction"
+  },
+  {
+    "id": 822,
+    "name": "Wand of Destruction Test"
+  },
+  {
+    "id": 823,
+    "name": "Wand of Dimensions"
+  },
+  {
+    "id": 824,
+    "name": "Wand of Draconia"
+  },
+  {
+    "id": 825,
+    "name": "Wand of Dragonbreath"
+  },
+  {
+    "id": 826,
+    "name": "Wand of Everblazing"
+  },
+  {
+    "id": 827,
+    "name": "Wand of Inferno"
+  },
+  {
+    "id": 828,
+    "name": "Wand of Mayhem"
+  },
+  {
+    "id": 829,
+    "name": "Wand of Mayhem (Charged)"
+  },
+  {
+    "id": 830,
+    "name": "Wand of Mayhem (Heavily Charged)"
+  },
+  {
+    "id": 831,
+    "name": "Wand of Mayhem (Overcharged)"
+  },
+  {
+    "id": 832,
+    "name": "Wand of Remedy"
+  },
+  {
+    "id": 833,
+    "name": "Wand of Remedy (Charged)"
+  },
+  {
+    "id": 834,
+    "name": "Wand of Remedy (Heavily Charged)"
+  },
+  {
+    "id": 835,
+    "name": "Wand of Remedy (Overcharged)"
+  },
+  {
+    "id": 836,
+    "name": "Wand of Starstorm"
+  },
+  {
+    "id": 837,
+    "name": "Wand of Voodoo"
+  },
+  {
+    "id": 838,
+    "name": "Wand of Vortex"
+  }
+]

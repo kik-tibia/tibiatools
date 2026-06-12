@@ -18,6 +18,8 @@
     "attack": 46,
     "attackIce": 46,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -28,6 +30,7 @@
     "attack": 50,
     "attackEarth": 50,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -37,6 +40,7 @@
     "name": "Angelic Axe",
     "attack": 44,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -46,6 +50,7 @@
     "name": "Axe",
     "attack": 12,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -59,6 +64,7 @@
     "name": "Axe of Carving",
     "attack": 51,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -68,6 +74,7 @@
     "name": "Axe of Carving (Charged)",
     "attack": 50,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -77,6 +84,7 @@
     "name": "Axe of Carving (Heavily Charged)",
     "attack": 51,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -86,6 +94,7 @@
     "name": "Axe of Carving (Overcharged)",
     "attack": 52,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -95,6 +104,7 @@
     "name": "Axe of Destruction",
     "attack": 51,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -104,6 +114,7 @@
     "name": "Axe of Mayhem",
     "attack": 51,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -113,6 +124,7 @@
     "name": "Axe of Mayhem (Charged)",
     "attack": 50,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -122,6 +134,7 @@
     "name": "Axe of Mayhem (Heavily Charged)",
     "attack": 51,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -131,6 +144,7 @@
     "name": "Axe of Mayhem (Overcharged)",
     "attack": 52,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -140,6 +154,7 @@
     "name": "Axe of Remedy",
     "attack": 51,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -149,6 +164,7 @@
     "name": "Axe of Remedy (Charged)",
     "attack": 50,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -158,6 +174,7 @@
     "name": "Axe of Remedy (Heavily Charged)",
     "attack": 51,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -167,6 +184,7 @@
     "name": "Axe of Remedy (Overcharged)",
     "attack": 52,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -176,6 +194,8 @@
     "name": "Barbarian Axe",
     "attack": 28,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -189,6 +209,7 @@
     "name": "Battle Axe",
     "attack": 25,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -198,6 +219,8 @@
     "name": "Beastslayer Axe",
     "attack": 35,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -211,6 +234,7 @@
     "name": "Broken Iks Spear",
     "attack": 1,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -224,6 +248,8 @@
     "name": "Butcher's Axe",
     "attack": 41,
     "skill": "axe",
+    "defenseMod": -2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -237,6 +263,7 @@
     "name": "Chopper of Carving",
     "attack": 52,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -246,6 +273,7 @@
     "name": "Chopper of Carving (Charged)",
     "attack": 51,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -255,6 +283,7 @@
     "name": "Chopper of Carving (Heavily Charged)",
     "attack": 52,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -264,6 +293,7 @@
     "name": "Chopper of Carving (Overcharged)",
     "attack": 53,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -273,6 +303,7 @@
     "name": "Chopper of Destruction",
     "attack": 52,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -282,6 +313,7 @@
     "name": "Chopper of Mayhem",
     "attack": 52,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -291,6 +323,7 @@
     "name": "Chopper of Mayhem (Charged)",
     "attack": 51,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -300,6 +333,7 @@
     "name": "Chopper of Mayhem (Heavily Charged)",
     "attack": 52,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -309,6 +343,7 @@
     "name": "Chopper of Mayhem (Overcharged)",
     "attack": 53,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -318,6 +353,7 @@
     "name": "Chopper of Remedy",
     "attack": 52,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -327,6 +363,7 @@
     "name": "Chopper of Remedy (Charged)",
     "attack": 51,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -336,6 +373,7 @@
     "name": "Chopper of Remedy (Heavily Charged)",
     "attack": 52,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -345,6 +383,7 @@
     "name": "Chopper of Remedy (Overcharged)",
     "attack": 53,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -355,6 +394,8 @@
     "attack": 52,
     "attackIce": 44,
     "skill": "axe",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -364,6 +405,8 @@
     "name": "Crude Umbral Axe",
     "attack": 49,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -373,6 +416,7 @@
     "name": "Crude Umbral Chopper",
     "attack": 51,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -382,6 +426,7 @@
     "name": "Crypt Splitter",
     "attack": 58,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -391,6 +436,8 @@
     "name": "Crystalline Axe",
     "attack": 51,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -404,6 +451,7 @@
     "name": "Daramian Axe",
     "attack": 17,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -417,6 +465,7 @@
     "name": "Daramian Waraxe",
     "attack": 39,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -426,6 +475,7 @@
     "name": "Deepling Axe",
     "attack": 49,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -439,6 +489,7 @@
     "name": "Demonwing Axe",
     "attack": 53,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -448,6 +499,7 @@
     "name": "Double Axe",
     "attack": 35,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -457,6 +509,7 @@
     "name": "Dragon Lance",
     "attack": 47,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -471,6 +524,8 @@
     "attack": 52,
     "attackFire": 44,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -481,6 +536,8 @@
     "attack": 56,
     "attackFire": 48,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -490,6 +547,7 @@
     "name": "Drakinata",
     "attack": 47,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -503,6 +561,8 @@
     "name": "Dreaded Cleaver",
     "attack": 40,
     "skill": "axe",
+    "defenseMod": -3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -516,6 +576,8 @@
     "name": "Dwarven Axe",
     "attack": 31,
     "skill": "axe",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -530,6 +592,8 @@
     "attack": 28,
     "attackEarth": 5,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -543,6 +607,7 @@
     "name": "Earth Barbaric Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -557,6 +622,7 @@
     "attack": 42,
     "attackEarth": 8,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -566,6 +632,7 @@
     "name": "Earth Headchopper Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -580,6 +647,8 @@
     "attack": 44,
     "attackEarth": 9,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -593,6 +662,7 @@
     "name": "Earth Heroic Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -607,6 +677,8 @@
     "attack": 33,
     "attackEarth": 6,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -620,6 +692,7 @@
     "name": "Earth Knight Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -634,6 +707,7 @@
     "attack": 48,
     "attackEarth": 9,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -643,6 +717,7 @@
     "name": "Earth War Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -656,6 +731,7 @@
     "name": "Eldritch Greataxe",
     "attack": 56,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -665,6 +741,7 @@
     "name": "Energy Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -679,6 +756,8 @@
     "attack": 28,
     "attackEnergy": 5,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -693,6 +772,7 @@
     "attack": 42,
     "attackEnergy": 8,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -702,6 +782,7 @@
     "name": "Energy Headchopper Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -716,6 +797,8 @@
     "attack": 44,
     "attackEnergy": 9,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -729,6 +812,7 @@
     "name": "Energy Heroic Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -743,6 +827,8 @@
     "attack": 33,
     "attackEnergy": 6,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -756,6 +842,7 @@
     "name": "Energy Knight Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -770,6 +857,7 @@
     "attack": 48,
     "attackEnergy": 9,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -779,6 +867,7 @@
     "name": "Energy War Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -792,6 +881,7 @@
     "name": "Execowtioner Axe",
     "attack": 46,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -805,6 +895,7 @@
     "name": "Executioner",
     "attack": 51,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -815,6 +906,7 @@
     "attack": 57,
     "attackEnergy": 47,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -824,6 +916,7 @@
     "name": "Farmer's Avenger",
     "attack": 17,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -838,6 +931,8 @@
     "attack": 28,
     "attackFire": 5,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -851,6 +946,7 @@
     "name": "Fiery Barbarian Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -865,6 +961,7 @@
     "attack": 42,
     "attackFire": 8,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -874,6 +971,7 @@
     "name": "Fiery Headchopper Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -888,6 +986,8 @@
     "attack": 44,
     "attackFire": 9,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -901,6 +1001,7 @@
     "name": "Fiery Heroic Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -915,6 +1016,8 @@
     "attack": 33,
     "attackFire": 6,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -928,6 +1031,7 @@
     "name": "Fiery Knight Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -942,6 +1046,7 @@
     "attack": 48,
     "attackFire": 9,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -951,6 +1056,7 @@
     "name": "Fiery War Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -965,6 +1071,8 @@
     "attack": 38,
     "attackFire": 11,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -978,6 +1086,7 @@
     "name": "Gilded Eldritch Greataxe",
     "attack": 56,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -988,6 +1097,7 @@
     "attack": 65,
     "attackEarth": 26,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -997,6 +1107,7 @@
     "name": "Glorious Axe",
     "attack": 40,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1006,6 +1117,7 @@
     "name": "Golden Axe",
     "attack": 10,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1019,6 +1131,7 @@
     "name": "Golden Sickle",
     "attack": 13,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1033,6 +1146,7 @@
     "attack": 58,
     "attackDeath": 50,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1043,6 +1157,8 @@
     "attack": 54,
     "attackFire": 46,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -1052,6 +1168,7 @@
     "name": "Great Axe",
     "attack": 52,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1061,6 +1178,7 @@
     "name": "Guardian Axe",
     "attack": 46,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1074,6 +1192,7 @@
     "name": "Guardian Halberd",
     "attack": 46,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1087,6 +1206,7 @@
     "name": "Halberd",
     "attack": 35,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1100,6 +1220,7 @@
     "name": "Hand Axe",
     "attack": 10,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1113,6 +1234,7 @@
     "name": "Hatchet",
     "attack": 15,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1126,6 +1248,7 @@
     "name": "Headchopper",
     "attack": 42,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1135,6 +1258,7 @@
     "name": "Heavy Trident",
     "attack": 35,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1148,6 +1272,8 @@
     "name": "Hellforged Axe",
     "attack": 51,
     "skill": "axe",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1161,6 +1287,8 @@
     "name": "Heroic Axe",
     "attack": 44,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1174,6 +1302,7 @@
     "name": "Hive Scythe",
     "attack": 46,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1188,6 +1317,7 @@
     "attack": 15,
     "attackIce": 11,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1202,6 +1332,8 @@
     "attack": 28,
     "attackIce": 5,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1215,6 +1347,7 @@
     "name": "Icy Barbarian Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1229,6 +1362,7 @@
     "attack": 42,
     "attackIce": 8,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1238,6 +1372,7 @@
     "name": "Icy Headchopper Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1252,6 +1387,8 @@
     "attack": 44,
     "attackIce": 9,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1265,6 +1402,7 @@
     "name": "Icy Heroic Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1279,6 +1417,8 @@
     "attack": 33,
     "attackIce": 6,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1292,6 +1432,7 @@
     "name": "Icy Knight Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1306,6 +1447,7 @@
     "attack": 48,
     "attackIce": 9,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1315,6 +1457,7 @@
     "name": "Icy War Axe Replica",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1328,6 +1471,8 @@
     "name": "Impaler",
     "attack": 49,
     "skill": "axe",
+    "defenseMod": -2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1342,6 +1487,8 @@
     "attack": 52,
     "attackFire": 44,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -1352,6 +1499,8 @@
     "attack": 56,
     "attackFire": 48,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1361,6 +1510,8 @@
     "name": "Knight Axe",
     "attack": 33,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1375,6 +1526,8 @@
     "attack": 52,
     "attackEarth": 44,
     "skill": "axe",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -1384,6 +1537,7 @@
     "name": "Mino Lance",
     "attack": 40,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1397,6 +1551,8 @@
     "name": "Mythril Axe",
     "attack": 48,
     "skill": "axe",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1411,6 +1567,8 @@
     "attack": 52,
     "attackEnergy": 44,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -1420,6 +1578,7 @@
     "name": "Naginata",
     "attack": 39,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1433,6 +1592,7 @@
     "name": "Noble Axe",
     "attack": 39,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1446,6 +1606,7 @@
     "name": "Obsidian Lance",
     "attack": 34,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1459,6 +1620,7 @@
     "name": "Ogre Choppa",
     "attack": 39,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1472,6 +1634,7 @@
     "name": "Orcish Axe",
     "attack": 23,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1485,6 +1648,8 @@
     "name": "Ornamented Axe",
     "attack": 42,
     "skill": "axe",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1498,6 +1663,7 @@
     "name": "Ornate Carving Axe",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1511,6 +1677,7 @@
     "name": "Ornate Carving Chopper",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1524,6 +1691,7 @@
     "name": "Ornate Mayhem Axe",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1537,6 +1705,7 @@
     "name": "Ornate Mayhem Chopper",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1550,6 +1719,7 @@
     "name": "Ornate Remedy Axe",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1563,6 +1733,7 @@
     "name": "Ornate Remedy Chopper",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1577,6 +1748,7 @@
     "attack": 53,
     "attackFire": 48,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1587,6 +1759,8 @@
     "attack": 52,
     "attackEarth": 26,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1600,6 +1774,7 @@
     "name": "Plain Carving Axe",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1613,6 +1788,7 @@
     "name": "Plain Carving Chopper",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1626,6 +1802,7 @@
     "name": "Plain Mayhem Axe",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1639,6 +1816,7 @@
     "name": "Plain Mayhem Chopper",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1652,6 +1830,7 @@
     "name": "Plain Remedy Axe",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1665,6 +1844,7 @@
     "name": "Plain Remedy Chopper",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1678,6 +1858,7 @@
     "name": "Ravager's Axe",
     "attack": 49,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1687,6 +1868,8 @@
     "name": "Ravenwing",
     "attack": 45,
     "skill": "axe",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1700,6 +1883,8 @@
     "name": "Reaper's Axe",
     "attack": 46,
     "skill": "axe",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1714,6 +1899,8 @@
     "attack": 52,
     "attackFire": 44,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -1724,6 +1911,8 @@
     "attack": 56,
     "attackFire": 48,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1733,6 +1922,7 @@
     "name": "Rift Lance",
     "attack": 48,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1746,6 +1936,7 @@
     "name": "Ripper Lance",
     "attack": 28,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1759,6 +1950,8 @@
     "name": "Royal Axe",
     "attack": 47,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1772,6 +1965,7 @@
     "name": "Ruthless Axe",
     "attack": 50,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1782,6 +1976,7 @@
     "attack": 58,
     "attackDeath": 50,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1792,6 +1987,8 @@
     "attack": 54,
     "attackFire": 46,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -1801,6 +1998,7 @@
     "name": "Scythe of the Reaper",
     "attack": 16,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1814,6 +2012,7 @@
     "name": "Sickle",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1828,6 +2027,8 @@
     "attack": 52,
     "attackFire": 44,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -1838,6 +2039,8 @@
     "attack": 56,
     "attackFire": 48,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1847,6 +2050,8 @@
     "name": "Solar Axe",
     "attack": 52,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1861,6 +2066,8 @@
     "attack": 52,
     "attackDeath": 45,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -1871,6 +2078,7 @@
     "attack": 57,
     "attackIce": 47,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1880,6 +2088,7 @@
     "name": "Steel Axe",
     "attack": 21,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1893,6 +2102,8 @@
     "name": "Stonecutter Axe",
     "attack": 50,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1906,6 +2117,8 @@
     "name": "Throwing Axe",
     "attack": 51,
     "skill": "axe",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -1915,6 +2128,7 @@
     "name": "Titan Axe",
     "attack": 43,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1924,6 +2138,7 @@
     "name": "Twin Axe",
     "attack": 45,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1933,6 +2148,8 @@
     "name": "Umbral Axe",
     "attack": 51,
     "skill": "axe",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -1942,6 +2159,7 @@
     "name": "Umbral Chopper",
     "attack": 52,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1951,6 +2169,8 @@
     "name": "Umbral Master Axe",
     "attack": 53,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -1960,6 +2180,7 @@
     "name": "Umbral Master Chopper",
     "attack": 54,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -1969,6 +2190,7 @@
     "name": "Valuable Carving Axe",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -1982,6 +2204,7 @@
     "name": "Valuable Carving Chopper",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -1995,6 +2218,7 @@
     "name": "Valuable Mayhem Axe",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2008,6 +2232,7 @@
     "name": "Valuable Mayhem Chopper",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -2021,6 +2246,7 @@
     "name": "Valuable Remedy Axe",
     "attack": 5,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2034,6 +2260,7 @@
     "name": "Valuable Remedy Chopper",
     "attack": 5,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -2047,6 +2274,8 @@
     "name": "Vile Axe",
     "attack": 43,
     "skill": "axe",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2060,6 +2289,7 @@
     "name": "War Axe",
     "attack": 48,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -2069,6 +2299,7 @@
     "name": "Warrior's Axe",
     "attack": 42,
     "skill": "axe",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2082,6 +2313,7 @@
     "name": "Zaoan Halberd",
     "attack": 37,
     "skill": "axe",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -2399,7 +2631,7 @@
   {
     "id": 212,
     "name": "Inferniarch Bow",
-    "attack": 7,
+    "attack": 6,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2729,6 +2961,7 @@
     "name": "Abyss Hammer",
     "attack": 47,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -2739,6 +2972,7 @@
     "attack": 50,
     "attackDeath": 50,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -2749,6 +2983,8 @@
     "attack": 46,
     "attackFire": 46,
     "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -2758,6 +2994,7 @@
     "name": "Amber Staff",
     "attack": 43,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -2771,6 +3008,7 @@
     "name": "Arcane Staff",
     "attack": 50,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -2784,6 +3022,8 @@
     "name": "Banana Staff",
     "attack": 25,
     "skill": "club",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2797,6 +3037,7 @@
     "name": "Battle Hammer",
     "attack": 24,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2810,6 +3051,8 @@
     "name": "Blessed Sceptre",
     "attack": 47,
     "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2823,6 +3066,7 @@
     "name": "Bone Club",
     "attack": 12,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2836,6 +3080,7 @@
     "name": "Bonebreaker",
     "attack": 46,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -2845,6 +3090,7 @@
     "name": "Brutetamer's Staff",
     "attack": 35,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -2858,6 +3104,7 @@
     "name": "Chaos Mace",
     "attack": 44,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -2871,6 +3118,8 @@
     "name": "Clerical Mace",
     "attack": 28,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2884,6 +3133,7 @@
     "name": "Club",
     "attack": 7,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2897,6 +3147,7 @@
     "name": "Club of the Fury",
     "attack": 16,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2911,6 +3162,8 @@
     "attack": 52,
     "attackFire": 44,
     "skill": "club",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -2920,6 +3173,8 @@
     "name": "Cranial Basher",
     "attack": 44,
     "skill": "club",
+    "defenseMod": -2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2933,6 +3188,7 @@
     "name": "Crowbar",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2946,6 +3202,7 @@
     "name": "Crude Umbral Hammer",
     "attack": 51,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -2955,6 +3212,8 @@
     "name": "Crude Umbral Mace",
     "attack": 48,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -2964,6 +3223,7 @@
     "name": "Crypt Breaker",
     "attack": 58,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -2973,6 +3233,8 @@
     "name": "Crystal Mace",
     "attack": 38,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2986,6 +3248,7 @@
     "name": "Daramian Mace",
     "attack": 21,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -2999,6 +3262,8 @@
     "name": "Dark Trinity Mace",
     "attack": 51,
     "skill": "club",
+    "defenseMod": -1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3012,6 +3277,7 @@
     "name": "Deepling Squelcher",
     "attack": 42,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3025,6 +3291,7 @@
     "name": "Deepling Staff",
     "attack": 43,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -3038,6 +3305,8 @@
     "name": "Demonbone",
     "attack": 48,
     "skill": "club",
+    "defenseMod": -2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3051,6 +3320,7 @@
     "name": "Diamond Sceptre",
     "attack": 34,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3064,6 +3334,7 @@
     "name": "Dragon Hammer",
     "attack": 32,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3077,6 +3348,7 @@
     "name": "Dragonbone Staff",
     "attack": 35,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3091,6 +3363,8 @@
     "attack": 52,
     "attackDeath": 44,
     "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -3101,6 +3375,8 @@
     "attack": 56,
     "attackIce": 48,
     "skill": "club",
+    "defenseMod": 4,
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3110,6 +3386,7 @@
     "name": "Earth Basher Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3123,6 +3400,7 @@
     "name": "Earth Cleric Mace Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3137,6 +3415,8 @@
     "attack": 28,
     "attackEarth": 5,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3151,6 +3431,8 @@
     "attack": 44,
     "attackEarth": 8,
     "skill": "club",
+    "defenseMod": -2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3165,6 +3447,8 @@
     "attack": 38,
     "attackEarth": 7,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3178,6 +3462,7 @@
     "name": "Earth Crystal Mace Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3192,6 +3477,7 @@
     "attack": 42,
     "attackEarth": 7,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -3205,6 +3491,7 @@
     "name": "Earth Orcish Maul Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -3219,6 +3506,7 @@
     "attack": 45,
     "attackEarth": 9,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3228,6 +3516,7 @@
     "name": "Earth War Hammer Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -3242,6 +3531,7 @@
     "attack": 56,
     "attackFire": 50,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3251,6 +3541,7 @@
     "name": "Enchanted Staff",
     "attack": 39,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -3264,6 +3555,8 @@
     "name": "Energized Demonbone",
     "attack": 46,
     "skill": "club",
+    "defenseMod": -1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3277,6 +3570,7 @@
     "name": "Energy Basher Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3290,6 +3584,7 @@
     "name": "Energy Cleric Mace Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3304,6 +3599,8 @@
     "attack": 28,
     "attackEnergy": 5,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3318,6 +3615,8 @@
     "attack": 44,
     "attackEnergy": 8,
     "skill": "club",
+    "defenseMod": -2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3332,6 +3631,8 @@
     "attack": 38,
     "attackEnergy": 7,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3345,6 +3646,7 @@
     "name": "Energy Mace Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3359,6 +3661,7 @@
     "attack": 42,
     "attackEnergy": 7,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -3372,6 +3675,7 @@
     "name": "Energy Orcish Maul Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3386,6 +3690,7 @@
     "attack": 45,
     "attackEnergy": 9,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3395,6 +3700,7 @@
     "name": "Energy War Hammer Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -3409,6 +3715,8 @@
     "attack": 52,
     "attackEnergy": 41,
     "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -3418,6 +3726,7 @@
     "name": "Ferumbras' Staff (Blunt)",
     "attack": 20,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3431,6 +3740,7 @@
     "name": "Fiery Basher Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3445,6 +3755,8 @@
     "attack": 28,
     "attackFire": 5,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3458,6 +3770,7 @@
     "name": "Fiery Clerical Mace Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3472,6 +3785,8 @@
     "attack": 44,
     "attackFire": 8,
     "skill": "club",
+    "defenseMod": -2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3486,6 +3801,8 @@
     "attack": 38,
     "attackFire": 7,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3499,6 +3816,7 @@
     "name": "Fiery Crystal Mace Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3513,6 +3831,7 @@
     "attack": 42,
     "attackFire": 7,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -3526,6 +3845,7 @@
     "name": "Fiery Orcish Maul Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -3540,6 +3860,7 @@
     "attack": 45,
     "attackFire": 9,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3549,6 +3870,7 @@
     "name": "Fiery War Hammer Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -3562,6 +3884,8 @@
     "name": "Furry Club",
     "attack": 31,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3575,6 +3899,7 @@
     "name": "Giant Smithhammer",
     "attack": 24,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3589,6 +3914,7 @@
     "attack": 56,
     "attackFire": 50,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3599,6 +3925,7 @@
     "attack": 65,
     "attackEarth": 26,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3608,6 +3935,7 @@
     "name": "Glooth Whip",
     "attack": 33,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3621,6 +3949,7 @@
     "name": "Glutton's Mace",
     "attack": 16,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3635,6 +3964,7 @@
     "attack": 58,
     "attackEarth": 50,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3645,6 +3975,8 @@
     "attack": 54,
     "attackDeath": 46,
     "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -3654,6 +3986,7 @@
     "name": "Hammer of Carving",
     "attack": 53,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3663,6 +3996,7 @@
     "name": "Hammer of Carving (Charged)",
     "attack": 51,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3672,6 +4006,7 @@
     "name": "Hammer of Carving (Heavily Charged)",
     "attack": 53,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3681,6 +4016,7 @@
     "name": "Hammer of Carving (Overcharged)",
     "attack": 54,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3690,6 +4026,7 @@
     "name": "Hammer of Destruction",
     "attack": 53,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3699,6 +4036,7 @@
     "name": "Hammer of Mayhem",
     "attack": 53,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3708,6 +4046,7 @@
     "name": "Hammer of Mayhem (Charged)",
     "attack": 51,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3717,6 +4056,7 @@
     "name": "Hammer of Mayhem (Heavily Charged)",
     "attack": 53,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3726,6 +4066,7 @@
     "name": "Hammer of Mayhem (Overcharged)",
     "attack": 54,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3735,6 +4076,7 @@
     "name": "Hammer of Prophecy",
     "attack": 52,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3744,6 +4086,7 @@
     "name": "Hammer of Remedy",
     "attack": 53,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3753,6 +4096,7 @@
     "name": "Hammer of Remedy (Charged)",
     "attack": 51,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3762,6 +4106,7 @@
     "name": "Hammer of Remedy (Heavily Charged)",
     "attack": 53,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3771,6 +4116,7 @@
     "name": "Hammer of Remedy (Overcharged)",
     "attack": 54,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3780,6 +4126,7 @@
     "name": "Hammer of Wrath",
     "attack": 48,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3789,6 +4136,7 @@
     "name": "Heavy Mace",
     "attack": 49,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3799,6 +4147,8 @@
     "attack": 28,
     "attackIce": 5,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3812,6 +4162,7 @@
     "name": "Icy Clerical Mace Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3826,6 +4177,8 @@
     "attack": 44,
     "attackIce": 8,
     "skill": "club",
+    "defenseMod": -2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3839,6 +4192,7 @@
     "name": "Icy Cranial Basher Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3853,6 +4207,8 @@
     "attack": 38,
     "attackIce": 7,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3866,6 +4222,7 @@
     "name": "Icy Crystal Mace Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3880,6 +4237,7 @@
     "attack": 42,
     "attackIce": 7,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -3893,6 +4251,7 @@
     "name": "Icy Orcish Maul Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -3907,6 +4266,7 @@
     "attack": 45,
     "attackIce": 9,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3916,6 +4276,7 @@
     "name": "Icy War Hammer Replica",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -3930,6 +4291,8 @@
     "attack": 52,
     "attackDeath": 44,
     "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -3940,6 +4303,8 @@
     "attack": 56,
     "attackIce": 48,
     "skill": "club",
+    "defenseMod": 4,
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3949,6 +4314,7 @@
     "name": "Iron Hammer",
     "attack": 18,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3962,6 +4328,8 @@
     "name": "Jade Hammer",
     "attack": 46,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3975,6 +4343,7 @@
     "name": "Jungle Flail",
     "attack": 52,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -3984,6 +4353,8 @@
     "name": "Lich Staff",
     "attack": 40,
     "skill": "club",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -3997,6 +4368,8 @@
     "name": "Life Preserver",
     "attack": 27,
     "skill": "club",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4010,6 +4383,7 @@
     "name": "Light Mace",
     "attack": 14,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4024,6 +4398,8 @@
     "attack": 52,
     "attackEarth": 44,
     "skill": "club",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4033,6 +4409,7 @@
     "name": "Lunar Staff",
     "attack": 40,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4046,6 +4423,7 @@
     "name": "Mace",
     "attack": 16,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4059,6 +4437,7 @@
     "name": "Mace of Carving",
     "attack": 50,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4068,6 +4447,7 @@
     "name": "Mace of Carving (Charged)",
     "attack": 49,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4077,6 +4457,7 @@
     "name": "Mace of Carving (Heavily Charged)",
     "attack": 50,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4086,6 +4467,7 @@
     "name": "Mace of Carving (Overcharged)",
     "attack": 51,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4095,6 +4477,7 @@
     "name": "Mace of Destruction",
     "attack": 50,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4104,6 +4487,7 @@
     "name": "Mace of Mayhem",
     "attack": 50,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4113,6 +4497,7 @@
     "name": "Mace of Mayhem (Charged)",
     "attack": 49,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4122,6 +4507,7 @@
     "name": "Mace of Mayhem (Heavily Charged)",
     "attack": 50,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4131,6 +4517,7 @@
     "name": "Mace of Mayhem (Overcharged)",
     "attack": 51,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4140,6 +4527,7 @@
     "name": "Mace of Remedy",
     "attack": 50,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4149,6 +4537,7 @@
     "name": "Mace of Remedy (Charged)",
     "attack": 49,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4158,6 +4547,7 @@
     "name": "Mace of Remedy (Heavily Charged)",
     "attack": 50,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4167,6 +4557,7 @@
     "name": "Mace of Remedy (Overcharged)",
     "attack": 51,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4176,6 +4567,7 @@
     "name": "Maimer",
     "attack": 51,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4189,6 +4581,7 @@
     "name": "Mallet Handle",
     "attack": 24,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4202,6 +4595,7 @@
     "name": "Mammoth Whopper",
     "attack": 30,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4215,6 +4609,7 @@
     "name": "Metal Bat",
     "attack": 44,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4228,6 +4623,7 @@
     "name": "Moohtant Cudgel",
     "attack": 47,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4241,6 +4637,7 @@
     "name": "Morning Star",
     "attack": 25,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4255,6 +4652,8 @@
     "attack": 52,
     "attackDeath": 44,
     "skill": "club",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4264,6 +4663,8 @@
     "name": "Mycological Mace",
     "attack": 50,
     "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4277,6 +4678,8 @@
     "name": "Naga Club",
     "attack": 52,
     "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4286,6 +4689,8 @@
     "name": "Northern Star",
     "attack": 42,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4299,6 +4704,8 @@
     "name": "Obsidian Truncheon",
     "attack": 50,
     "skill": "club",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4312,6 +4719,7 @@
     "name": "Ogre Klubba",
     "attack": 45,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4325,6 +4733,7 @@
     "name": "One Hit Wonder",
     "attack": 49,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4338,6 +4747,7 @@
     "name": "Onyx Flail",
     "attack": 45,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4351,6 +4761,7 @@
     "name": "Orcish Maul",
     "attack": 42,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4364,6 +4775,7 @@
     "name": "Ornate Carving Hammer",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4377,6 +4789,7 @@
     "name": "Ornate Carving Mace",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4390,6 +4803,7 @@
     "name": "Ornate Mace",
     "attack": 49,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4403,6 +4817,7 @@
     "name": "Ornate Mayhem Hammer",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4416,6 +4831,7 @@
     "name": "Ornate Mayhem Mace",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4429,6 +4845,7 @@
     "name": "Ornate Remedy Hammer",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4442,6 +4859,7 @@
     "name": "Ornate Remedy Mace",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4455,6 +4873,7 @@
     "name": "Plain Carving Hammer",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4468,6 +4887,7 @@
     "name": "Plain Carving Mace",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4481,6 +4901,7 @@
     "name": "Plain Mayhem Hammer",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4494,6 +4915,7 @@
     "name": "Plain Mayhem Mace",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4507,6 +4929,7 @@
     "name": "Plain Remedy Hammer",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4520,6 +4943,7 @@
     "name": "Plain Remedy Mace",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4533,6 +4957,7 @@
     "name": "Queen's Sceptre",
     "attack": 43,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4547,6 +4972,8 @@
     "attack": 52,
     "attackDeath": 44,
     "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4557,6 +4984,8 @@
     "attack": 56,
     "attackIce": 48,
     "skill": "club",
+    "defenseMod": 4,
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -4567,6 +4996,7 @@
     "attack": 57,
     "attackIce": 46,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -4576,6 +5006,8 @@
     "name": "Rotten Demonbone",
     "attack": 46,
     "skill": "club",
+    "defenseMod": -1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4590,6 +5022,7 @@
     "attack": 58,
     "attackEarth": 50,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -4600,6 +5033,8 @@
     "attack": 54,
     "attackDeath": 46,
     "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4609,6 +5044,7 @@
     "name": "Sapphire Hammer",
     "attack": 37,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4622,6 +5058,7 @@
     "name": "Scythe",
     "attack": 8,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4635,6 +5072,7 @@
     "name": "Shadow Sceptre",
     "attack": 39,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4648,6 +5086,8 @@
     "name": "Silver Mace",
     "attack": 41,
     "skill": "club",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4662,6 +5102,8 @@
     "attack": 52,
     "attackDeath": 44,
     "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4672,6 +5114,8 @@
     "attack": 56,
     "attackIce": 48,
     "skill": "club",
+    "defenseMod": 4,
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -4681,6 +5125,8 @@
     "name": "Skull Staff",
     "attack": 36,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4694,6 +5140,7 @@
     "name": "Skullcrusher",
     "attack": 51,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -4703,6 +5150,8 @@
     "name": "Snake God's Sceptre",
     "attack": 48,
     "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4717,6 +5166,8 @@
     "attack": 52,
     "attackIce": 46,
     "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4727,6 +5178,7 @@
     "attack": 57,
     "attackEnergy": 47,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -4736,6 +5188,7 @@
     "name": "Spiked Squelcher",
     "attack": 41,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -4745,6 +5198,7 @@
     "name": "Spiky Club",
     "attack": 31,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4758,6 +5212,7 @@
     "name": "Stale Bread of Ancientness",
     "attack": 18,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4771,6 +5226,7 @@
     "name": "Strange Mallet",
     "attack": 18,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4784,6 +5240,7 @@
     "name": "Studded Club",
     "attack": 9,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4797,6 +5254,8 @@
     "name": "Sulphurous Demonbone",
     "attack": 46,
     "skill": "club",
+    "defenseMod": -1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4810,6 +5269,7 @@
     "name": "Swampling Club",
     "attack": 17,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4823,6 +5283,7 @@
     "name": "Taurus Mace",
     "attack": 30,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4836,6 +5297,7 @@
     "name": "The Stomper",
     "attack": 51,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -4845,6 +5307,8 @@
     "name": "Thunder Hammer",
     "attack": 49,
     "skill": "club",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4858,6 +5322,7 @@
     "name": "Umbral Hammer",
     "attack": 53,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -4867,6 +5332,8 @@
     "name": "Umbral Mace",
     "attack": 50,
     "skill": "club",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4876,6 +5343,7 @@
     "name": "Umbral Master Hammer",
     "attack": 55,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -4885,6 +5353,8 @@
     "name": "Umbral Master Mace",
     "attack": 52,
     "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -4894,6 +5364,8 @@
     "name": "Unliving Demonbone",
     "attack": 46,
     "skill": "club",
+    "defenseMod": -1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4907,6 +5379,7 @@
     "name": "Valuable Carving Hammer",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4920,6 +5393,7 @@
     "name": "Valuable Carving Mace",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4933,6 +5407,7 @@
     "name": "Valuable Mayhem Hammer",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4946,6 +5421,7 @@
     "name": "Valuable Mayhem Mace",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4959,6 +5435,7 @@
     "name": "Valuable Remedy Hammer",
     "attack": 5,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -4972,6 +5449,7 @@
     "name": "Valuable Remedy Mace",
     "attack": 5,
     "skill": "club",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -4985,6 +5463,7 @@
     "name": "War Hammer",
     "attack": 45,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -4994,6 +5473,7 @@
     "name": "Zathroth' Redeemer",
     "attack": 0,
     "skill": "club",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -5229,7 +5709,7 @@
   {
     "id": 456,
     "name": "Inferniarch Arbalest",
-    "attack": 8,
+    "attack": 7,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5858,6 +6338,8 @@
     "attack": 46,
     "attackEnergy": 46,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -5868,6 +6350,7 @@
     "attack": 50,
     "attackDeath": 50,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -5877,6 +6360,8 @@
     "name": "Assassin Dagger",
     "attack": 40,
     "skill": "sword",
+    "defenseMod": -2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -5890,6 +6375,7 @@
     "name": "Berserker",
     "attack": 48,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -5899,6 +6385,7 @@
     "name": "Blacksteel Sword",
     "attack": 42,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -5908,6 +6395,7 @@
     "name": "Blade of Carving",
     "attack": 50,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -5917,6 +6405,7 @@
     "name": "Blade of Carving (Charged)",
     "attack": 49,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -5926,6 +6415,7 @@
     "name": "Blade of Carving (Heavily Charged)",
     "attack": 50,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -5935,6 +6425,7 @@
     "name": "Blade of Carving (Overcharged)",
     "attack": 51,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -5944,6 +6435,8 @@
     "name": "Blade of Corruption",
     "attack": 48,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -5957,6 +6450,7 @@
     "name": "Blade of Destruction",
     "attack": 50,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -5966,6 +6460,7 @@
     "name": "Blade of Mayhem",
     "attack": 50,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -5975,6 +6470,7 @@
     "name": "Blade of Mayhem (Charged)",
     "attack": 49,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -5984,6 +6480,7 @@
     "name": "Blade of Mayhem (Heavily Charged)",
     "attack": 50,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -5993,6 +6490,7 @@
     "name": "Blade of Mayhem (Overcharged)",
     "attack": 51,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -6002,6 +6500,7 @@
     "name": "Blade of Remedy",
     "attack": 50,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -6011,6 +6510,7 @@
     "name": "Blade of Remedy (Charged)",
     "attack": 49,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -6020,6 +6520,7 @@
     "name": "Blade of Remedy (Heavily Charged)",
     "attack": 50,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -6029,6 +6530,7 @@
     "name": "Blade of Remedy (Overcharged)",
     "attack": 51,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -6038,6 +6540,8 @@
     "name": "Bloody Edge",
     "attack": 43,
     "skill": "sword",
+    "defenseMod": -3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6051,6 +6555,7 @@
     "name": "Bone Sword",
     "attack": 13,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6064,6 +6569,8 @@
     "name": "Bright Sword",
     "attack": 36,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6077,6 +6584,7 @@
     "name": "Broadsword",
     "attack": 26,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6086,6 +6594,7 @@
     "name": "Broken Macuahuitl",
     "attack": 1,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6099,6 +6608,8 @@
     "name": "Carlin Sword",
     "attack": 15,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6112,6 +6623,8 @@
     "name": "Cobra Sword",
     "attack": 52,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -6121,6 +6634,7 @@
     "name": "Combat Knife",
     "attack": 8,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6134,6 +6648,8 @@
     "name": "Cowtana",
     "attack": 34,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6147,6 +6663,8 @@
     "name": "Crimson Sword",
     "attack": 28,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6160,6 +6678,7 @@
     "name": "Crimson Sword (Uzgod)",
     "attack": 18,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6173,6 +6692,8 @@
     "name": "Crude Umbral Blade",
     "attack": 48,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -6182,6 +6703,7 @@
     "name": "Crude Umbral Slayer",
     "attack": 51,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6191,6 +6713,7 @@
     "name": "Crypt Slicer",
     "attack": 58,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6200,6 +6723,7 @@
     "name": "Crystal Sword",
     "attack": 35,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6209,6 +6733,8 @@
     "name": "Crystalline Sword",
     "attack": 47,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6222,6 +6748,7 @@
     "name": "Dagger",
     "attack": 8,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6235,6 +6762,7 @@
     "name": "Demonrage Sword",
     "attack": 47,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6244,6 +6772,8 @@
     "name": "Djinn Blade",
     "attack": 38,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6257,6 +6787,7 @@
     "name": "Dragon Slayer",
     "attack": 44,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6267,6 +6798,8 @@
     "attack": 52,
     "attackFire": 44,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -6277,6 +6810,8 @@
     "attack": 56,
     "attackEnergy": 48,
     "skill": "sword",
+    "defenseMod": 4,
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6286,6 +6821,7 @@
     "name": "Earth Blacksteel Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -6300,6 +6836,7 @@
     "attack": 42,
     "attackEarth": 7,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6310,6 +6847,7 @@
     "attack": 44,
     "attackEarth": 9,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6320,6 +6858,8 @@
     "attack": 44,
     "attackEarth": 8,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6333,6 +6873,7 @@
     "name": "Earth Mystic Blade Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6347,6 +6888,8 @@
     "attack": 42,
     "attackEarth": 8,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6360,6 +6903,7 @@
     "name": "Earth Relic Sword Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6373,6 +6917,7 @@
     "name": "Earth Slayer Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -6387,6 +6932,8 @@
     "attack": 24,
     "attackEarth": 4,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6400,6 +6947,7 @@
     "name": "Earth Spike Sword Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6414,6 +6962,7 @@
     "attack": 56,
     "attackFire": 50,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6423,6 +6972,8 @@
     "name": "Emerald Sword",
     "attack": 49,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6436,6 +6987,7 @@
     "name": "Energy Blacksteel Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -6450,6 +7002,7 @@
     "attack": 42,
     "attackEnergy": 7,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6459,6 +7012,7 @@
     "name": "Energy Blade Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6473,6 +7027,7 @@
     "attack": 44,
     "attackEnergy": 9,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6483,6 +7038,8 @@
     "attack": 44,
     "attackEnergy": 8,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6497,6 +7054,8 @@
     "attack": 42,
     "attackEnergy": 8,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6510,6 +7069,7 @@
     "name": "Energy Relic Sword Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6523,6 +7083,7 @@
     "name": "Energy Slayer Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -6536,6 +7097,8 @@
     "name": "Energy Spike Sword",
     "attack": 24,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6549,6 +7112,7 @@
     "name": "Energy Spike Sword Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6562,6 +7126,7 @@
     "name": "Epee",
     "attack": 37,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6575,6 +7140,7 @@
     "name": "Falcon Longsword",
     "attack": 56,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6585,6 +7151,7 @@
     "attack": 42,
     "attackFire": 7,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6595,6 +7162,7 @@
     "attack": 44,
     "attackFire": 9,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6604,6 +7172,7 @@
     "name": "Fiery Dragon Slayer Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -6618,6 +7187,8 @@
     "attack": 44,
     "attackFire": 8,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6631,6 +7202,7 @@
     "name": "Fiery Mystic Blade Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6645,6 +7217,8 @@
     "attack": 42,
     "attackFire": 8,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6658,6 +7232,7 @@
     "name": "Fiery Relic Sword Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6672,6 +7247,8 @@
     "attack": 24,
     "attackFire": 4,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6685,6 +7262,7 @@
     "name": "Fiery Spike Sword Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6698,6 +7276,7 @@
     "name": "Fire Blacksteel Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -6712,6 +7291,8 @@
     "attack": 35,
     "attackFire": 11,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6725,6 +7306,7 @@
     "name": "Giant Sword",
     "attack": 46,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6735,6 +7317,7 @@
     "attack": 56,
     "attackFire": 50,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6745,6 +7328,7 @@
     "attack": 65,
     "attackEarth": 26,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6755,6 +7339,8 @@
     "attack": 51,
     "attackEnergy": 41,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -6764,6 +7350,7 @@
     "name": "Golden Magic Longsword",
     "attack": 0,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6791,6 +7378,8 @@
     "attack": 54,
     "attackFire": 46,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -6801,6 +7390,7 @@
     "attack": 58,
     "attackEnergy": 50,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6810,6 +7400,7 @@
     "name": "Haunted Blade",
     "attack": 40,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6819,6 +7410,7 @@
     "name": "Havoc Blade",
     "attack": 49,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6828,6 +7420,7 @@
     "name": "Heavy Machete",
     "attack": 16,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6842,6 +7435,7 @@
     "attack": 60,
     "attackIce": 18,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6855,6 +7449,7 @@
     "name": "Icy Blacksteel Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -6869,6 +7464,7 @@
     "attack": 42,
     "attackIce": 7,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6879,6 +7475,7 @@
     "attack": 44,
     "attackIce": 9,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -6888,6 +7485,7 @@
     "name": "Icy Dragon Slayer Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -6902,6 +7500,8 @@
     "attack": 44,
     "attackIce": 8,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6915,6 +7515,7 @@
     "name": "Icy Mystic Blade Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6929,6 +7530,8 @@
     "attack": 42,
     "attackIce": 8,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6942,6 +7545,7 @@
     "name": "Icy Relic Sword Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6956,6 +7560,8 @@
     "attack": 24,
     "attackIce": 4,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6969,6 +7575,7 @@
     "name": "Icy Spike Sword Replica",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6983,6 +7590,8 @@
     "attack": 51,
     "attackFire": 26,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -6996,6 +7605,7 @@
     "name": "Incredible Mumpiz Slayer",
     "attack": 17,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7010,6 +7620,8 @@
     "attack": 52,
     "attackFire": 44,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -7020,6 +7632,8 @@
     "attack": 56,
     "attackEnergy": 48,
     "skill": "sword",
+    "defenseMod": 4,
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7029,6 +7643,7 @@
     "name": "Ink Sword",
     "attack": 14,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7042,6 +7657,8 @@
     "name": "Jagged Sword",
     "attack": 21,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7055,6 +7672,8 @@
     "name": "Katana",
     "attack": 16,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7068,6 +7687,7 @@
     "name": "Knife",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7081,6 +7701,8 @@
     "name": "Light Rapier",
     "attack": 10,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7095,6 +7717,8 @@
     "attack": 52,
     "attackEarth": 44,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -7104,6 +7728,7 @@
     "name": "Longsword",
     "attack": 17,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7117,6 +7742,7 @@
     "name": "Machete",
     "attack": 12,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7130,6 +7756,7 @@
     "name": "Magic Longsword",
     "attack": 55,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7139,6 +7766,8 @@
     "name": "Magic Sword",
     "attack": 48,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7152,6 +7781,7 @@
     "name": "Mean Knight Sword",
     "attack": 14,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7165,6 +7795,7 @@
     "name": "Mercenary Sword",
     "attack": 43,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7174,6 +7805,8 @@
     "name": "Mystic Blade",
     "attack": 44,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7188,6 +7821,8 @@
     "attack": 52,
     "attackIce": 44,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -7197,6 +7832,8 @@
     "name": "Nightmare Blade",
     "attack": 46,
     "skill": "sword",
+    "defenseMod": -3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7210,6 +7847,7 @@
     "name": "Ornate Carving Blade",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7223,6 +7861,7 @@
     "name": "Ornate Carving Slayer",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -7236,6 +7875,7 @@
     "name": "Ornate Mayhem Blade",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7249,6 +7889,7 @@
     "name": "Ornate Mayhem Slayer",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -7262,6 +7903,7 @@
     "name": "Ornate Remedy Blade",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7275,6 +7917,7 @@
     "name": "Ornate Remedy Slayer",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -7288,6 +7931,8 @@
     "name": "Pharaoh Sword",
     "attack": 41,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7301,6 +7946,7 @@
     "name": "Plain Carving Blade",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7314,6 +7960,7 @@
     "name": "Plain Carving Slayer",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -7327,6 +7974,7 @@
     "name": "Plain Mayhem Blade",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7340,6 +7988,7 @@
     "name": "Plain Mayhem Slayer",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -7353,6 +8002,7 @@
     "name": "Plain Remedy Blade",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7366,6 +8016,7 @@
     "name": "Plain Remedy Slayer",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -7379,6 +8030,7 @@
     "name": "Poet's Fencing Quill",
     "attack": 10,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7392,6 +8044,7 @@
     "name": "Pointed Rabbitslayer",
     "attack": 16,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7406,6 +8059,7 @@
     "attack": 18,
     "attackEarth": 2,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7419,6 +8073,8 @@
     "name": "Rapier",
     "attack": 10,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7432,6 +8088,8 @@
     "name": "Ratana",
     "attack": 27,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7445,6 +8103,8 @@
     "name": "Relic Sword",
     "attack": 42,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7459,6 +8119,8 @@
     "attack": 52,
     "attackFire": 44,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -7469,6 +8131,8 @@
     "attack": 56,
     "attackEnergy": 48,
     "skill": "sword",
+    "defenseMod": 4,
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7478,6 +8142,7 @@
     "name": "Ritual Bone Knife",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7491,6 +8156,7 @@
     "name": "Ron the Ripper's Sabre",
     "attack": 12,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7504,6 +8170,8 @@
     "name": "Runed Sword",
     "attack": 45,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7517,6 +8185,8 @@
     "name": "Sabre",
     "attack": 12,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7531,6 +8201,8 @@
     "attack": 54,
     "attackFire": 46,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -7541,6 +8213,7 @@
     "attack": 58,
     "attackEnergy": 50,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7550,6 +8223,8 @@
     "name": "Scimitar",
     "attack": 19,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7564,6 +8239,8 @@
     "attack": 26,
     "attackEarth": 8,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7577,6 +8254,7 @@
     "name": "Shimmer Sword",
     "attack": 42,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7590,6 +8268,8 @@
     "name": "Shiny Blade",
     "attack": 49,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7603,6 +8283,7 @@
     "name": "Short Sword",
     "attack": 11,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7616,6 +8297,7 @@
     "name": "Silver Dagger",
     "attack": 9,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7630,6 +8312,8 @@
     "attack": 52,
     "attackFire": 44,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -7640,6 +8324,8 @@
     "attack": 56,
     "attackEnergy": 48,
     "skill": "sword",
+    "defenseMod": 4,
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7649,6 +8335,7 @@
     "name": "Slayer of Carving",
     "attack": 52,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7658,6 +8345,7 @@
     "name": "Slayer of Carving (Charged)",
     "attack": 51,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7667,6 +8355,7 @@
     "name": "Slayer of Carving (Heavily Charged)",
     "attack": 52,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7676,6 +8365,7 @@
     "name": "Slayer of Carving (Overcharged)",
     "attack": 53,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7685,6 +8375,7 @@
     "name": "Slayer of Destruction",
     "attack": 52,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7694,6 +8385,7 @@
     "name": "Slayer of Mayhem",
     "attack": 52,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7703,6 +8395,7 @@
     "name": "Slayer of Mayhem (Charged)",
     "attack": 51,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7712,6 +8405,7 @@
     "name": "Slayer of Mayhem (Heavily Charged)",
     "attack": 52,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7721,6 +8415,7 @@
     "name": "Slayer of Mayhem (Overcharged)",
     "attack": 53,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7730,6 +8425,7 @@
     "name": "Slayer of Remedy",
     "attack": 52,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7739,6 +8435,7 @@
     "name": "Slayer of Remedy (Charged)",
     "attack": 51,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7748,6 +8445,7 @@
     "name": "Slayer of Remedy (Heavily Charged)",
     "attack": 52,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7757,6 +8455,7 @@
     "name": "Slayer of Remedy (Overcharged)",
     "attack": 53,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7767,6 +8466,8 @@
     "attack": 52,
     "attackDeath": 45,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -7777,6 +8478,7 @@
     "attack": 57,
     "attackIce": 47,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7786,6 +8488,8 @@
     "name": "Spike Sword",
     "attack": 24,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7800,6 +8504,8 @@
     "attack": 51,
     "attackFire": 41,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -7809,6 +8515,8 @@
     "name": "Sword",
     "attack": 14,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7823,6 +8531,7 @@
     "attack": 56,
     "attackEarth": 49,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7832,6 +8541,8 @@
     "name": "Templar Scytheblade",
     "attack": 23,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7845,6 +8556,7 @@
     "name": "Test Weapon for Knights",
     "attack": 0,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7858,6 +8570,7 @@
     "name": "Thaian Sword",
     "attack": 45,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7867,6 +8580,7 @@
     "name": "The Avenger",
     "attack": 50,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7876,6 +8590,7 @@
     "name": "The Calamity",
     "attack": 51,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7885,6 +8600,8 @@
     "name": "The Epiphany",
     "attack": 50,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7898,6 +8615,8 @@
     "name": "The Justice Seeker",
     "attack": 47,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7911,6 +8630,7 @@
     "name": "Twiceslicer",
     "attack": 47,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7920,6 +8640,7 @@
     "name": "Twin Hooks",
     "attack": 32,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7929,6 +8650,7 @@
     "name": "Two Handed Sword",
     "attack": 30,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7938,6 +8660,8 @@
     "name": "Umbral Blade",
     "attack": 50,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -7947,6 +8671,7 @@
     "name": "Umbral Master Slayer",
     "attack": 54,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7956,6 +8681,8 @@
     "name": "Umbral Masterblade",
     "attack": 52,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -7965,6 +8692,7 @@
     "name": "Umbral Slayer",
     "attack": 52,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -7974,6 +8702,7 @@
     "name": "Valuable Carving Blade",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -7987,6 +8716,7 @@
     "name": "Valuable Carving Slayer",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -8000,6 +8730,7 @@
     "name": "Valuable Mayhem Blade",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -8013,6 +8744,7 @@
     "name": "Valuable Mayhem Slayer",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -8026,6 +8758,7 @@
     "name": "Valuable Remedy Blade",
     "attack": 5,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -8039,6 +8772,7 @@
     "name": "Valuable Remedy Slayer",
     "attack": 5,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "druid",
       "knight",
@@ -8052,6 +8786,7 @@
     "name": "Warlord Sword",
     "attack": 53,
     "skill": "sword",
+    "hands": "two",
     "vocations": [
       "knight"
     ]
@@ -8062,6 +8797,8 @@
     "attack": 50,
     "attackIce": 40,
     "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
     "vocations": [
       "knight"
     ]
@@ -8071,6 +8808,7 @@
     "name": "Wooden Sword",
     "attack": 7,
     "skill": "sword",
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -8084,6 +8822,8 @@
     "name": "Wyvern Fang",
     "attack": 32,
     "skill": "sword",
+    "defenseMod": 1,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -8097,6 +8837,8 @@
     "name": "Zaoan Sword",
     "attack": 43,
     "skill": "sword",
+    "defenseMod": 2,
+    "hands": "one",
     "vocations": [
       "druid",
       "knight",
@@ -8511,7 +9253,7 @@
   {
     "id": 748,
     "name": "Grand Sanguine Coil",
-    "damageType": "energy",
+    "damageType": "fire",
     "damage": 114,
     "vocations": [
       "sorcerer"

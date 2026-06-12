@@ -8,6 +8,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -19,6 +21,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -30,6 +34,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": " -2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -41,6 +47,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -52,6 +60,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -63,6 +73,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -74,6 +86,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -85,6 +99,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -96,6 +112,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -107,6 +125,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -118,6 +138,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -129,6 +151,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -140,6 +164,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -151,6 +177,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -162,6 +190,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -173,6 +203,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -184,6 +216,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -195,6 +229,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -206,6 +242,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -217,6 +255,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": " -3",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -228,6 +268,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -239,6 +281,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": "None"
   },
   {
@@ -250,6 +294,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -261,6 +307,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -272,6 +320,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -283,6 +333,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -294,6 +346,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -305,6 +359,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -316,6 +372,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -327,6 +385,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -338,6 +398,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -349,6 +411,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -360,6 +424,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -371,6 +437,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -382,6 +450,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -393,6 +463,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -404,6 +476,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -415,6 +489,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -426,6 +502,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -437,6 +515,8 @@
     "attackFire": "44",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -448,6 +528,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+4",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -459,6 +541,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -470,6 +554,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -481,6 +567,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -492,6 +580,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -503,6 +593,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -514,6 +606,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -525,6 +619,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -536,6 +632,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -547,6 +645,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -558,6 +658,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -569,6 +671,8 @@
     "attackFire": "50",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -580,6 +684,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -591,6 +697,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -602,6 +710,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -613,6 +723,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -624,6 +736,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -635,6 +749,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -646,6 +762,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -657,6 +775,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -668,6 +788,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -679,6 +801,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -690,6 +814,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -701,6 +827,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -712,6 +840,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -723,6 +853,8 @@
     "attackFire": "7",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -734,6 +866,8 @@
     "attackFire": "9",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -745,6 +879,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -756,6 +892,8 @@
     "attackFire": "8",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -767,6 +905,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -778,6 +918,8 @@
     "attackFire": "8",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -789,6 +931,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -800,6 +944,8 @@
     "attackFire": "4",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -811,6 +957,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -822,6 +970,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -833,6 +983,8 @@
     "attackFire": "11",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -844,6 +996,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -855,6 +1009,8 @@
     "attackFire": "50",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -866,6 +1022,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -877,6 +1035,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -888,6 +1048,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -899,6 +1061,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "",
     "vocation": ""
   },
   {
@@ -910,6 +1074,8 @@
     "attackFire": "46",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -921,6 +1087,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -932,6 +1100,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -943,6 +1113,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -954,6 +1126,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -965,6 +1139,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "18",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -976,6 +1152,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -987,6 +1165,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "7",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -998,6 +1178,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "9",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1009,6 +1191,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -1020,6 +1204,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "8",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1031,6 +1217,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1042,6 +1230,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "8",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1053,6 +1243,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1064,6 +1256,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "4",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1075,6 +1269,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1086,6 +1282,8 @@
     "attackFire": "26",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1097,6 +1295,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1108,6 +1308,8 @@
     "attackFire": "44",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -1119,6 +1321,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+4",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1130,6 +1334,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1141,6 +1347,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1152,6 +1360,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1163,6 +1373,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1174,6 +1386,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1185,6 +1399,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -1196,6 +1412,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1207,6 +1425,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1218,6 +1438,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1229,6 +1451,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1240,6 +1464,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": "without"
   },
   {
@@ -1251,6 +1477,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1262,6 +1490,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1273,6 +1503,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "44",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -1284,6 +1516,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": " -3",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1295,6 +1529,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1306,6 +1542,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -1317,6 +1555,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1328,6 +1568,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -1339,6 +1581,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1350,6 +1594,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -1361,6 +1607,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1372,6 +1620,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1383,6 +1633,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -1394,6 +1646,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1405,6 +1659,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -1416,6 +1672,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1427,6 +1685,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -1438,6 +1698,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1449,6 +1711,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1460,6 +1724,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1471,6 +1737,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1482,6 +1750,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1493,6 +1763,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1504,6 +1776,8 @@
     "attackFire": "44",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -1515,6 +1789,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+4",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1526,6 +1802,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1537,6 +1815,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1548,6 +1828,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1559,6 +1841,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1570,6 +1854,8 @@
     "attackFire": "46",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -1581,6 +1867,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1592,6 +1880,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1603,6 +1893,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1614,6 +1906,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1625,6 +1919,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1636,6 +1932,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1647,6 +1945,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1658,6 +1958,8 @@
     "attackFire": "44",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -1669,6 +1971,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+4",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1680,6 +1984,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1691,6 +1997,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1702,6 +2010,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1713,6 +2023,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1724,6 +2036,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1735,6 +2049,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1746,6 +2062,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1757,6 +2075,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1768,6 +2088,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1779,6 +2101,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1790,6 +2114,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1801,6 +2127,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1812,6 +2140,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1823,6 +2153,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -1834,6 +2166,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "47",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1845,6 +2179,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1856,6 +2192,8 @@
     "attackFire": "41",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -1867,6 +2205,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1878,6 +2218,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1889,6 +2231,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1900,6 +2244,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1911,6 +2257,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1922,6 +2270,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1933,6 +2283,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1944,6 +2296,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -1955,6 +2309,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": "None"
   },
   {
@@ -1966,6 +2322,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1977,6 +2335,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1988,6 +2348,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -1999,6 +2361,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -2010,6 +2374,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -2021,6 +2387,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -2032,6 +2400,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -2043,6 +2413,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -2054,6 +2426,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -2065,6 +2439,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -2076,6 +2452,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -2087,6 +2465,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -2098,6 +2478,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": ""
   },
   {
@@ -2109,6 +2491,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
     "vocation": "knights"
   },
   {
@@ -2120,6 +2504,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "40",
+    "defenseMod": "+3",
+    "hands": "One",
     "vocation": "knights"
   },
   {
@@ -2131,6 +2517,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -2142,6 +2530,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+1",
+    "hands": "One",
     "vocation": ""
   },
   {
@@ -2153,6 +2543,8 @@
     "attackFire": "",
     "attackHoly": "",
     "attackIce": "",
+    "defenseMod": "+2",
+    "hands": "One",
     "vocation": ""
   },
   {}

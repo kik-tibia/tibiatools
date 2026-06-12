@@ -43,6 +43,8 @@ export function computeResults(
   creatureChoices: CreatureChoice[],
 ): SpellRawEffective[] {
   const characterState = deriveCharacterState(buildStats, weaponChoice);
+  console.log(weaponChoice.weapon.hands);
+  console.log(weaponChoice.weapon.defenseMod);
 
   const spellStates = allSpells
     .filter((s) => s.vocations.includes(buildStats.vocation))

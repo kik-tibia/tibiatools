@@ -1406,7 +1406,7 @@
     "scalesWith": "distance",
     "element": "physical",
     "power": 40,
-    "skillFactor": 17.85,
+    "skillFactor": 17.8571,
     "buckets": 6,
     "vocations": [
       "paladin"

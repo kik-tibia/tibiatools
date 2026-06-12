@@ -26,13 +26,13 @@
   {
     "name": "Crypt Bile",
     "damageType": "Physical",
-    "damageRange": "",
+    "damageRange": "110",
     "vocation": "sorcerers"
   },
   {
     "name": "Crypt Jaw",
     "damageType": "Physical",
-    "damageRange": "110",
+    "damageRange": "110 (85-135)",
     "vocation": "druids"
   },
   {
@@ -127,7 +127,7 @@
   },
   {
     "name": "Grand Sanguine Coil",
-    "damageType": "Energy",
+    "damageType": "Fire",
     "damageRange": "103-125",
     "vocation": "sorcerers"
   },

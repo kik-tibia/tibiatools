@@ -4,6 +4,7 @@ import weaponsRaw from "@data/weapons.json";
 
 export type AmmoType = "arrows" | "bolts";
 export type SkillType = "axe" | "club" | "sword" | "fist" | "distance";
+export type Hands = "one" | "two";
 
 export type Weapon = {
   id: number;
@@ -20,6 +21,8 @@ export type Weapon = {
   damageType?: Element;
   damage?: number;
   skill: SkillType;
+  defenseMod: number;
+  hands?: Hands;
   vocations: string[];
 };
 
@@ -34,6 +37,7 @@ export const allWeapons: Weapon[] = (weaponsRaw as Weapon[]).map((w) => ({
           (w.attackEnergy ?? 0) +
           (w.attackFire ?? 0) +
           (w.attackIce ?? 0)),
+  defenseMod: w.defenseMod ?? 0,
 }));
 
 type AmmoRaw = {

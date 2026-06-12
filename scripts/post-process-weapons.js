@@ -4,6 +4,9 @@
  * Post-processes scraped weapon JSON files from scripts/scraped/
  * and combines them into scripts/weapons.json.
  *
+ * Stable integer ids are assigned by name from scripts/weapons-ids.json.
+ * New weapons must be added there (otherwise their id is left undefined).
+ *
  * Usage:
  *   node post-process-weapons.js
  */
@@ -15,6 +18,7 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const scrapedDir = join(__dirname, "scraped");
 const outPath = join(__dirname, "weapons.json");
+const idsPath = join(__dirname, "weapons-ids.json");
 
 const ALL_VOCATIONS = ["druid", "knight", "monk", "paladin", "sorcerer"];
 
@@ -86,14 +90,7 @@ function parseVocations(raw) {
   return vocations;
 }
 
-function toKebabId(name) {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .replace(/\s+/g, "-");
-}
-
-function processWeapon(weapon, skill, ammo) {
+function processWeapon(weapon, skill, ammo, idsByName) {
   const { vocation, ...rest } = weapon;
 
   // Remove fields with empty string values
@@ -110,6 +107,16 @@ function processWeapon(weapon, skill, ammo) {
   // Lowercase bond field if present
   if (rest.bond) {
     rest.bond = rest.bond.toLowerCase();
+  }
+
+  // Lowercase hands field if present
+  if (rest.hands) {
+    rest.hands = rest.hands.toLowerCase();
+  }
+
+  // Convert defenseMod to a number if present
+  if (rest.defenseMod) {
+    rest.defenseMod = parseInt(rest.defenseMod);
   }
 
   // For wands/rods, convert damageRange to damage and remove attack
@@ -146,9 +153,14 @@ function processWeapon(weapon, skill, ammo) {
     }
   }
 
+  const id = idsByName.get(weapon.name);
+  if (id == null) {
+    console.error(`Warning: no id found for "${weapon.name}" (add it to weapons-ids.json)`);
+  }
+
   const hasAttack = !("damageRange" in weapon);
   return {
-    id: toKebabId(weapon.name),
+    id,
     name,
     ...(hasAttack && { attack: totalAttack }),
     ...elementalFields,
@@ -167,9 +179,12 @@ function main() {
     process.exit(1);
   }
 
+  const idEntries = JSON.parse(readFileSync(idsPath, "utf-8"));
+  const idsByName = new Map(idEntries.map((e) => [e.name, e.id]));
+
   let allWeapons = [
     {
-      id: "fists",
+      id: idsByName.get("Fists"),
       name: "Fists",
       attack: 7,
       skill: "fist",
@@ -178,6 +193,13 @@ function main() {
   ];
 
   for (const file of files) {
+    const baseName = file.replace(".json", "");
+    if (!(baseName in FILE_TO_SKILL)) {
+      console.error(`  Skipping ${file} (not a weapon file)`);
+      continue;
+    }
+    const skill = FILE_TO_SKILL[baseName];
+
     const filePath = join(scrapedDir, file);
     console.error(`Processing ${file}...`);
 
@@ -188,15 +210,8 @@ function main() {
       (w) => w && Object.keys(w).length > 0
     );
 
-    const baseName = file.replace(".json", "");
-    if (!(baseName in FILE_TO_SKILL)) {
-      console.error(`  Warning: no skill mapping for ${file}, skipping`);
-      continue;
-    }
-    const skill = FILE_TO_SKILL[baseName];
-
     const ammo = FILE_TO_AMMO[baseName];
-    const processed = filtered.map((w) => processWeapon(w, skill, ammo));
+    const processed = filtered.map((w) => processWeapon(w, skill, ammo, idsByName));
     console.error(`  ${processed.length} weapons`);
     allWeapons = allWeapons.concat(processed);
   }
