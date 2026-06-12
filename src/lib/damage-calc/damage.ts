@@ -64,6 +64,8 @@ export function computeDamageBreakdown(
   // Increase crit damage by the ratio of transcendence crits, which have 15% extra damage
   const critDamage = state.critDamage + charmCritDamage + (0.15 * pTCrit) / (pTCrit + (1 - pTCrit) * critChance || 1);
 
+  let mergedWeaponChoice = mergeAmmoIntoWeapon(weaponChoice);
+
   let breakdown;
   if (state.spell.spellType === "auto") {
     breakdown = computeEffectiveAuto(
@@ -74,7 +76,7 @@ export function computeDamageBreakdown(
       pCritFatal,
       pNoBonus,
       critDamage,
-      weaponChoice,
+      mergedWeaponChoice,
       creatureChoice,
     );
   } else {
@@ -87,7 +89,7 @@ export function computeDamageBreakdown(
       pCritFatal,
       pNoBonus,
       critDamage,
-      weaponChoice,
+      mergedWeaponChoice,
       spellChoices,
       creatureChoice,
     );
@@ -110,7 +112,7 @@ export function computeDamageBreakdown(
         break;
     }
     if (creatureChoice.charm.effect == "low-blow" || creatureChoice.charm.effect == "savage-blow") {
-      const breakdownWithoutCharm = computeDamageBreakdown(state, buildStats, weaponChoice, spellChoices, {
+      const breakdownWithoutCharm = computeDamageBreakdown(state, buildStats, mergedWeaponChoice, spellChoices, {
         ...creatureChoice,
         charm: undefined,
         charmTier: undefined,
@@ -171,6 +173,33 @@ export function calculateElementalCharmDmg(creatureChoice: CreatureChoice, build
   } else if (creatureChoice.charm.effect == "overflux") {
     return Math.min((buildStats.manaPoints ?? 0) * 0.025, creatureChoice.creature.hitpoints * 0.08);
   } else return 0;
+}
+
+// Adds all of the ammo's attack values onto the weapon, for simplicity
+function mergeAmmoIntoWeapon(weaponChoice: WeaponChoice): WeaponChoice {
+  return {
+    ...weaponChoice,
+    weapon: {
+      ...weaponChoice.weapon,
+      attack: (weaponChoice.weapon.attack ?? 0) + (weaponChoice.ammo?.attack ?? 0),
+      attackDeath: (weaponChoice.weapon.attackDeath ?? 0) + (weaponChoice.ammo?.attackDeath ?? 0),
+      attackEarth: (weaponChoice.weapon.attackEarth ?? 0) + (weaponChoice.ammo?.attackEarth ?? 0),
+      attackEnergy: (weaponChoice.weapon.attackEnergy ?? 0) + (weaponChoice.ammo?.attackEnergy ?? 0),
+      attackFire: (weaponChoice.weapon.attackFire ?? 0) + (weaponChoice.ammo?.attackFire ?? 0),
+      attackIce: (weaponChoice.weapon.attackIce ?? 0) + (weaponChoice.ammo?.attackIce ?? 0),
+      attackPhysical: (weaponChoice.weapon.attackPhysical ?? 0) + (weaponChoice.ammo?.attackPhysical ?? 0),
+    },
+    ammo: weaponChoice.ammo && {
+      ...weaponChoice.ammo,
+      attack: 0,
+      attackDeath: 0,
+      attackEarth: 0,
+      attackEnergy: 0,
+      attackFire: 0,
+      attackIce: 0,
+      attackPhysical: 0,
+    },
+  };
 }
 
 function computeEffectiveAuto(

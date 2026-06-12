@@ -40,6 +40,11 @@ type AmmoRaw = {
   id: number;
   name: string;
   attack: number;
+  attackDeath?: number;
+  attackEarth?: number;
+  attackEnergy?: number;
+  attackFire?: number;
+  attackIce?: number;
   aoe: boolean;
 };
 
@@ -49,12 +54,21 @@ type AmmoData = {
 };
 
 export type Ammo = AmmoRaw & {
+  attackPhysical: number;
   type: AmmoType;
 };
 
 const ammoData = ammoRaw as AmmoData;
 
+const resolveAmmo = (a: AmmoRaw, type: AmmoType): Ammo => ({
+  ...a,
+  type,
+  attackPhysical:
+    a.attack -
+    ((a.attackDeath ?? 0) + (a.attackEarth ?? 0) + (a.attackEnergy ?? 0) + (a.attackFire ?? 0) + (a.attackIce ?? 0)),
+});
+
 export const allAmmo: Ammo[] = [
-  ...ammoData.arrows.map((a) => ({ ...a, type: "arrows" as const })),
-  ...ammoData.bolts.map((a) => ({ ...a, type: "bolts" as const })),
+  ...ammoData.arrows.map((a) => resolveAmmo(a, "arrows")),
+  ...ammoData.bolts.map((a) => resolveAmmo(a, "bolts")),
 ];

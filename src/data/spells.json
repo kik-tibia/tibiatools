@@ -70,7 +70,7 @@
     "spellType": "spell",
     "scalesWith": "melee",
     "element": "weapon",
-    "power": 72,
+    "power": 80,
     "skillFactor": 1000,
     "buckets": 40,
     "vocations": [
@@ -465,7 +465,7 @@
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "fire",
-    "power": 90,
+    "power": 125,
     "skillFactor": 25,
     "buckets": 0,
     "vocations": [
@@ -480,7 +480,7 @@
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "energy",
-    "power": 90,
+    "power": 125,
     "skillFactor": 25,
     "buckets": 0,
     "vocations": [
@@ -495,7 +495,7 @@
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "fire",
-    "power": 150,
+    "power": 210,
     "skillFactor": 25,
     "buckets": 0,
     "vocations": [
@@ -510,7 +510,7 @@
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "energy",
-    "power": 150,
+    "power": 210,
     "skillFactor": 25,
     "buckets": 0,
     "vocations": [
@@ -555,7 +555,7 @@
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "energy",
-    "power": 70,
+    "power": 110,
     "skillFactor": 25,
     "buckets": 0,
     "vocations": [
@@ -754,7 +754,7 @@
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "earth",
-    "power": 150,
+    "power": 175,
     "skillFactor": 25,
     "buckets": 0,
     "vocations": [
@@ -784,7 +784,7 @@
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "ice",
-    "power": 90,
+    "power": 115,
     "skillFactor": 25,
     "buckets": 0,
     "vocations": [
@@ -799,7 +799,7 @@
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "earth",
-    "power": 90,
+    "power": 115,
     "skillFactor": 25,
     "buckets": 0,
     "vocations": [
@@ -814,7 +814,7 @@
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "ice",
-    "power": 150,
+    "power": 195,
     "skillFactor": 25,
     "buckets": 0,
     "vocations": [
@@ -829,7 +829,7 @@
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "earth",
-    "power": 150,
+    "power": 195,
     "skillFactor": 25,
     "buckets": 0,
     "vocations": [
@@ -1018,7 +1018,7 @@
     "spellType": "spell",
     "scalesWith": "fist",
     "element": "weapon",
-    "power": 72,
+    "power": 85,
     "skillFactor": 1000,
     "buckets": 0,
     "vocations": [
@@ -1203,7 +1203,7 @@
     "spellType": "rune",
     "scalesWith": "magic",
     "element": "energy",
-    "power": 45,
+    "power": 50,
     "skillFactor": 25,
     "buckets": 40,
     "vocations": [
@@ -1225,7 +1225,7 @@
     "spellType": "rune",
     "scalesWith": "magic",
     "element": "earth",
-    "power": 45,
+    "power": 50,
     "skillFactor": 25,
     "buckets": 40,
     "vocations": [

@@ -27,25 +27,29 @@
     {
       "id": 5,
       "name": "Earth Arrow",
-      "attack": 14,
+      "attack": 28,
+      "attackEarth": 14,
       "aoe": false
     },
     {
       "id": 6,
       "name": "Envenomed Arrow",
-      "attack": 27,
+      "attack": 54,
+      "attackEarth": 27,
       "aoe": false
     },
     {
       "id": 7,
       "name": "Flaming Arrow",
-      "attack": 14,
+      "attack": 28,
+      "attackFire": 14,
       "aoe": false
     },
     {
       "id": 8,
       "name": "Flash Arrow",
-      "attack": 14,
+      "attack": 28,
+      "attackEnergy": 14,
       "aoe": false
     },
     {
@@ -63,7 +67,8 @@
     {
       "id": 11,
       "name": "Shiver Arrow",
-      "attack": 14,
+      "attack": 28,
+      "attackIce": 14,
       "aoe": false
     },
     {
@@ -83,6 +88,40 @@
       "name": "Tarsal Arrow",
       "attack": 33,
       "aoe": false
+    },
+    {
+      "id": 23,
+      "name": "Shatterstorm Arrow",
+      "attack": 27,
+      "aoe": true
+    },
+    {
+      "id": 24,
+      "name": "Firestorm Arrow",
+      "attack": 21,
+      "attackFire": 21,
+      "aoe": true
+    },
+    {
+      "id": 25,
+      "name": "Terrastorm Arrow",
+      "attack": 21,
+      "attackEarth": 21,
+      "aoe": true
+    },
+    {
+      "id": 26,
+      "name": "Froststorm Arrow",
+      "attack": 21,
+      "attackIce": 21,
+      "aoe": true
+    },
+    {
+      "id": 27,
+      "name": "Thunderstorm Arrow",
+      "attack": 21,
+      "attackEnergy": 21,
+      "aoe": true
     }
   ],
   "bolts": [
