@@ -28,7 +28,6 @@ export function computeRaw(state: SpellState, buildStats: BuildStats): DamageRan
 }
 
 // For a single spell+creature combo.
-// The only reason we need spellChoices here is to find the number of targets for chained penance.
 export function computeDamageBreakdown(
   state: SpellState,
   buildStats: BuildStats,
@@ -122,7 +121,18 @@ export function computeDamageBreakdown(
     }
   }
 
-  const effective = { ...breakdown.effective, critCharmDmg, elementalCharmDmg };
+  let effectiveAvg = breakdown.effective.avg;
+
+  // AOE auto-attacks only proc charms on the primary target
+  if (state.spell.spellType == "auto") {
+    const autoAttack = spellChoices.find((s) => s.spell.spellType == "auto");
+    const targets = Math.max(autoAttack?.targets ?? 1, 1);
+    effectiveAvg -= critCharmDmg * (1 - 1 / targets);
+    critCharmDmg /= targets;
+    elementalCharmDmg /= targets;
+  }
+
+  const effective = { avg: effectiveAvg, critCharmDmg, elementalCharmDmg };
   return { ...breakdown, effective };
 }
 

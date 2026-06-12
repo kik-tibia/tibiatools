@@ -131,4 +131,50 @@ describe("Knight build with everything", () => {
       expect(dmgFromCharms).toBeCloseTo(41.4, d);
     });
   });
+
+  describe("AOE auto-attack", () => {
+    const aoeRotation = resolveSpells([
+      { id: 1, targets: 4, ratio: 1, extraSpell: false },
+      { id: 2, targets: 6.5, ratio: 30, extraSpell: false },
+      { id: 3, targets: 6, ratio: 28, extraSpell: false },
+      { id: 4, targets: 7, ratio: 26, extraSpell: false },
+      { id: 8, targets: 3, ratio: 8, extraSpell: false },
+      { id: 6, targets: 0.5, ratio: 8, extraSpell: true },
+    ]);
+    const aoeResults = computeResults(stats, stances, weapon, perks, aoeRotation, targets);
+    const aoeSpellDamageChoices = resolveSpellDamages(aoeRotation, aoeResults);
+
+    it("only triggers charms on the main target", () => {
+      expect(computeDamageFromCharms(aoeSpellDamageChoices)).toBeCloseTo(dmgFromCharms, d);
+      const autoAttackAvg = aoeSpellDamageChoices.find((s) => s.id === 1)!.spellDamage.effective.avg;
+      expect(computeDpt(aoeSpellDamageChoices)).toBeCloseTo(dpt + 3 * autoAttackAvg, d);
+    });
+
+    it("only applies low blow to the main target", () => {
+      const lowBlowTargets = resolveCreatures([
+        { id: 105, ratio: 208, charmId: 1, charmTier: 2 },
+        { id: 618, ratio: 173 },
+        { id: 659, ratio: 106 },
+      ]);
+      const baseChoices = resolveSpellDamages(
+        rotation,
+        computeResults(stats, stances, weapon, perks, rotation, lowBlowTargets),
+      );
+      const aoeChoices = resolveSpellDamages(
+        aoeRotation,
+        computeResults(stats, stances, weapon, perks, aoeRotation, lowBlowTargets),
+      );
+
+      expect(computeDamageFromCharms(aoeChoices)).toBeCloseTo(computeDamageFromCharms(baseChoices), d);
+      const effective = aoeChoices.find((s) => s.id === 1)!.spellDamage.effective;
+      const baseEffective = baseChoices.find((s) => s.id === 1)!.spellDamage.effective;
+      expect(effective.critCharmDmg).toBeGreaterThan(0);
+      expect(effective.critCharmDmg).toBeCloseTo(baseEffective.critCharmDmg / 4, d);
+      expect(effective.avg).toBeCloseTo(baseEffective.avg - 3 * effective.critCharmDmg, d);
+      expect(computeDpt(aoeChoices)).toBeCloseTo(
+        computeDpt(baseChoices) + 3 * (effective.avg - effective.critCharmDmg),
+        d,
+      );
+    });
+  });
 });
