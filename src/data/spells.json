@@ -267,9 +267,9 @@
     "spellType": "spell",
     "scalesWith": "distance",
     "element": "physical",
-    "power": 38,
-    "skillFactor": 30.5,
-    "buckets": 15,
+    "power": 25,
+    "skillFactor": 19.23077,
+    "buckets": 10,
     "vocations": [
       "paladin"
     ],
@@ -283,7 +283,7 @@
     "scalesWith": "distance",
     "element": "physical",
     "power": 25,
-    "skillFactor": 30.5,
+    "skillFactor": 30.30303,
     "buckets": 10,
     "vocations": [
       "paladin"
