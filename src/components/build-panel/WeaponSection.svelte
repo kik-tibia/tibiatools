@@ -145,7 +145,7 @@
     <td></td>
     <td>
       {#if weaponA}
-        <div class="selected-item input-with-remove">
+        <div class="selected-item">
           <span class="selected-name selected-name-a">{weaponA.name}</span>
           {#if weaponA.id !== 1}
             <RemoveButton onclick={clearWeaponA} />
