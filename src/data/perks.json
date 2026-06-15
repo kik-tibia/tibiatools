@@ -1764,5 +1764,12 @@
     "scope": "death",
     "bonusType": "crit-damage",
     "visible": false
+  },
+  {
+    "id": 265,
+    "name": "Lord of Destruction",
+    "scope": "all",
+    "revelation": true,
+    "bonusType": "lord-of-destruction"
   }
 ]

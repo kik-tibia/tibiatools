@@ -46,7 +46,7 @@ export function computeResults(
 ): SpellRawEffective[] {
   const characterState = deriveCharacterState(buildStats, weaponChoice);
 
-  const effectivePerks = [...perkChoices, ...stancePerks(stances)];
+  const effectivePerks = [...perkChoices, ...stancePerks(stances, perkChoices)];
 
   const spellStates = allSpells
     .filter((s) => s.vocations.includes(buildStats.vocation))
@@ -131,13 +131,13 @@ export function computeResults(
   return results;
 }
 
-function stancePerks(stances: Stance[]): PerkChoice[] {
-  const perks: PerkChoice[] = [];
+function stancePerks(stances: Stance[], currentPerks: PerkChoice[]): PerkChoice[] {
+  const extraPerks: PerkChoice[] = [];
 
   function pushPerk(value: number, predicate: (p: Perk) => boolean) {
     const perk = allPerks.find(predicate);
     if (perk) {
-      perks.push({ id: perk.id, value, perk });
+      extraPerks.push({ id: perk.id, value, perk });
     }
   }
 
@@ -153,17 +153,25 @@ function stancePerks(stances: Stance[]): PerkChoice[] {
     ];
     piercePerks.forEach((bonusType) => pushPerk(8, (p) => p.bonusType == bonusType));
   }
+
+  const lodPerkStage = currentPerks.find((p) => p.perk.bonusType == "lord-of-destruction")?.value ?? 0;
   if (stances.some((s) => s.effect == "master-of-flames")) {
-    pushPerk(4, (p) => p.scope == "fire" && p.bonusType == "base-damage");
+    const lodBonuses = [0, 2, 3, 4];
+    const value = 4 + (lodBonuses[lodPerkStage] ?? 0);
+    pushPerk(value, (p) => p.scope == "fire" && p.bonusType == "base-damage");
   }
   if (stances.some((s) => s.effect == "master-of-thunder")) {
-    pushPerk(4, (p) => p.scope == "energy" && p.bonusType == "crit-chance");
+    const lodBonuses = [0, 2, 3, 4];
+    const value = 4 + (lodBonuses[lodPerkStage] ?? 0);
+    pushPerk(value, (p) => p.scope == "energy" && p.bonusType == "crit-chance");
   }
   if (stances.some((s) => s.effect == "master-of-decay")) {
-    pushPerk(30, (p) => p.scope == "death" && p.bonusType == "crit-damage");
+    const lodBonuses = [0, 15, 22.5, 30];
+    const value = 30 + (lodBonuses[lodPerkStage] ?? 0);
+    pushPerk(value, (p) => p.scope == "death" && p.bonusType == "crit-damage");
   }
 
-  return perks;
+  return extraPerks;
 }
 
 function initialSpellState(characterState: CharacterState, spell: Spell): SpellState {
