@@ -178,12 +178,10 @@
   setStat: (key: keyof BuildStats, value: BuildStats[keyof BuildStats]) => void,
 )}
   <td>
-    {#if build.stats.vocation === "monk"}
-      <Tooltip tip="Only VoH has any affect. If you choose VoJ, you still need to input your final fist skill." wrap>
-        {@render stanceDropdown(build, buildId, null, setStat)}
-      </Tooltip>
-    {:else}
-      <span class="no-stance">—</span>
+    {#if build.stats.vocation === "sorcerer"}
+      {@render stanceDropdown(build, buildId, position === 0 ? "elemental" : "curse", setStat)}
+    {:else if position === 0}
+      {@render stanceDropdown(build, buildId, null, setStat)}
     {/if}
   </td>
 {/snippet}
@@ -215,14 +213,21 @@
   </tr>
 
   <tr class="data-row">
-    {#if buildA.stats.vocation === "monk" || (showSecondBuild && buildB.stats.vocation === "monk")}
-      <td>Stance</td>
-      {@render stanceCell(buildA, "a", 0, setStatA)}
-      {#if showSecondBuild}
-        {@render stanceCell(buildB, "b", 0, setStatB)}
-      {/if}
+    <td>Stance</td>
+    {@render stanceCell(buildA, "a", 0, setStatA)}
+    {#if showSecondBuild}
+      {@render stanceCell(buildB, "b", 0, setStatB)}
     {/if}
   </tr>
+  {#if buildA.stats.vocation === "sorcerer" || (showSecondBuild && buildB.stats.vocation === "sorcerer")}
+    <tr class="data-row">
+      <td></td>
+      {@render stanceCell(buildA, "a", 1, setStatA)}
+      {#if showSecondBuild}
+        {@render stanceCell(buildB, "b", 1, setStatB)}
+      {/if}
+    </tr>
+  {/if}
 
   {#each statFields as field}
     <tr class="data-row">
@@ -240,10 +245,3 @@
     </tr>
   {/each}
 {/if}
-
-<style>
-  .no-stance {
-    display: block;
-    text-align: center;
-  }
-</style>
