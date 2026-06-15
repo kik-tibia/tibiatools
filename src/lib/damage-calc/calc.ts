@@ -118,7 +118,7 @@ export function computeResults(
       });
 
       // Apply alpha/omega strike
-      spellDamages = applyHpBasedDmgBonuses(spellDamages, spellChoices, creatureChoice, buildStats, hpBasedDmgBrackets);
+      spellDamages = applyHpBasedDmgBonuses(spellDamages, spellChoices, buildStats, hpBasedDmgBrackets, creatureChoice);
 
       // The first creature contributes raw and its weighted effective
       if (acc.length == 0) {
@@ -145,6 +145,7 @@ export function computeResults(
       const raw = computeRaw(spellState, buildStats);
       return { ...spellState.spell, raw, breakdown };
     });
+    results = applyHpBasedDmgBonuses(results, spellChoices, buildStats, hpBasedDmgBrackets);
   }
 
   return results;
@@ -163,33 +164,33 @@ function buildHpBasedDmgBrackets(perkChoices: PerkChoice[]): HpBasedDmgBracket[]
 function applyHpBasedDmgBonuses(
   spellDamages: SpellDamage[],
   spellChoices: SpellChoice[],
-  creatureChoice: CreatureChoice,
   buildStats: BuildStats,
   brackets: HpBasedDmgBracket[],
+  creatureChoice?: CreatureChoice,
 ): SpellDamage[] {
   if (brackets.length === 0) return spellDamages;
 
   const spellDamageById = new Map(spellDamages.map((sd) => [sd.id, sd]));
-  const mixture = buildDamageMixture(spellChoices, creatureChoice, buildStats, spellDamageById);
-  const multiplier = hpBonusMultiplier(mixture, creatureChoice.creature.hitpoints, brackets);
+  let mixture: DamageMixtureComponent[] = [];
+  if (creatureChoice) {
+    mixture = buildDamageMixture(spellChoices, creatureChoice, buildStats, spellDamageById);
+  }
+  const creatureHp = creatureChoice?.creature.hitpoints ?? 0;
+  const multiplier = hpBonusMultiplier(mixture, creatureHp, brackets);
+  console.log(multiplier);
 
-  // Apply multiplier to every spell in the rotation
-  const rotationIds = new Set(spellChoices.map((s) => s.id));
-  return spellDamages.map((sd) =>
-    rotationIds.has(sd.id)
-      ? {
-          ...sd,
-          breakdown: {
-            ...sd.breakdown,
-            effective: {
-              elementalCharmDmg: sd.breakdown.effective.elementalCharmDmg * multiplier.charm,
-              avg: sd.breakdown.effective.avg * multiplier.spell,
-              critCharmDmg: sd.breakdown.effective.critCharmDmg * multiplier.spell,
-            },
-          },
-        }
-      : sd,
-  );
+  // Apply multiplier to every spell
+  return spellDamages.map((sd) => ({
+    ...sd,
+    breakdown: {
+      ...sd.breakdown,
+      effective: {
+        elementalCharmDmg: sd.breakdown.effective.elementalCharmDmg * multiplier.charm,
+        avg: sd.breakdown.effective.avg * multiplier.spell,
+        critCharmDmg: sd.breakdown.effective.critCharmDmg * multiplier.spell,
+      },
+    },
+  }));
 }
 
 function buildDamageMixture(

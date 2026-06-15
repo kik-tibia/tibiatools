@@ -63,7 +63,31 @@ describe("hpBonusMultiplier", () => {
       { weight: 0.5, lo: 8, hi: 8, isCharm: false },
     ];
     expect(hpBonusMultiplier(mixture, 20, [{ from: 0, to: 0.05, bonus: 0 }])).toEqual({ spell: 1, charm: 1 });
-    expect(hpBonusMultiplier([], 20, [{ from: 0, to: 0.05, bonus: 0.1 }])).toEqual({ spell: 1, charm: 1 });
+    expect(hpBonusMultiplier([], 20, [{ from: 0, to: 0.05, bonus: 0 }])).toEqual({ spell: 1, charm: 1 });
     expect(hpBonusMultiplier(mixture, 0, [{ from: 0, to: 0.05, bonus: 0.1 }])).toEqual({ spell: 1, charm: 1 });
+  });
+
+  it("with no rotation, falls back to the average bonus over a uniformly random HP", () => {
+    const brackets: HpBasedDmgBracket[] = [
+      { from: 0, to: 0.05, bonus: 0.1 },
+      { from: 0.7, to: 1, bonus: 0.025 },
+    ];
+    // 0.65 of the HP range gets no bonus, 0.05 gets +10%, 0.3 gets +2.5%.
+    const expected = 0.65 + 0.05 * 1.1 + 0.3 * 1.025;
+    const mult = hpBonusMultiplier([], 100, brackets);
+    expect(mult.spell).toBeCloseTo(expected, 9);
+    expect(mult.charm).toBeCloseTo(expected, 9);
+  });
+
+  it("overlapping brackets compound multiplicatively in the no-rotation fallback too", () => {
+    // On [0.6, 1) both brackets are active, so that slice is scaled by 1.2 * 1.5.
+    const brackets: HpBasedDmgBracket[] = [
+      { from: 0.3, to: 1, bonus: 0.2 },
+      { from: 0.6, to: 1, bonus: 0.5 },
+    ];
+    // [0,0.3): 1, [0.3,0.6): 1.2, [0.6,1): 1.2*1.5=1.8
+    const expected = 0.3 * 1 + 0.3 * 1.2 + 0.4 * 1.8;
+    const mult = hpBonusMultiplier([], 60, brackets);
+    expect(mult.spell).toBeCloseTo(expected, 9);
   });
 });
