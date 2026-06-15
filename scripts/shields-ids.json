@@ -1,0 +1,474 @@
+[
+  {
+    "id": 1,
+    "name": "Adamant Shield"
+  },
+  {
+    "id": 2,
+    "name": "Alchemist's Notepad"
+  },
+  {
+    "id": 3,
+    "name": "Amazon Shield"
+  },
+  {
+    "id": 4,
+    "name": "Ancient Shield"
+  },
+  {
+    "id": 5,
+    "name": "Arboreal Tome"
+  },
+  {
+    "id": 6,
+    "name": "Arcanomancer Folio"
+  },
+  {
+    "id": 7,
+    "name": "Battle Shield"
+  },
+  {
+    "id": 8,
+    "name": "Biscuit Barrier"
+  },
+  {
+    "id": 9,
+    "name": "Black Shield"
+  },
+  {
+    "id": 10,
+    "name": "Blessed Shield"
+  },
+  {
+    "id": 11,
+    "name": "Bone Shield"
+  },
+  {
+    "id": 12,
+    "name": "Bonelord Shield"
+  },
+  {
+    "id": 13,
+    "name": "Book of Lies"
+  },
+  {
+    "id": 14,
+    "name": "Brain in a Jar"
+  },
+  {
+    "id": 15,
+    "name": "Brass Shield"
+  },
+  {
+    "id": 16,
+    "name": "Broken Wooden Shield"
+  },
+  {
+    "id": 17,
+    "name": "Carapace Shield"
+  },
+  {
+    "id": 18,
+    "name": "Castle Shield"
+  },
+  {
+    "id": 19,
+    "name": "Cocoa Grimoire"
+  },
+  {
+    "id": 20,
+    "name": "Copper Shield"
+  },
+  {
+    "id": 21,
+    "name": "Creamy Grimoire"
+  },
+  {
+    "id": 22,
+    "name": "Crown Shield"
+  },
+  {
+    "id": 23,
+    "name": "Crude Umbral Spellbook"
+  },
+  {
+    "id": 24,
+    "name": "Dark Shield"
+  },
+  {
+    "id": 25,
+    "name": "Death Gaze"
+  },
+  {
+    "id": 26,
+    "name": "Demon Shield"
+  },
+  {
+    "id": 27,
+    "name": "Depth Scutum"
+  },
+  {
+    "id": 28,
+    "name": "Dragon Shield"
+  },
+  {
+    "id": 29,
+    "name": "Dwarven Shield"
+  },
+  {
+    "id": 30,
+    "name": "Eagle Shield"
+  },
+  {
+    "id": 31,
+    "name": "Ectoplasmic Shield"
+  },
+  {
+    "id": 32,
+    "name": "Eerie Song Book"
+  },
+  {
+    "id": 33,
+    "name": "Eldritch Folio"
+  },
+  {
+    "id": 34,
+    "name": "Eldritch Shield"
+  },
+  {
+    "id": 35,
+    "name": "Eldritch Tome"
+  },
+  {
+    "id": 36,
+    "name": "Falcon Escutcheon"
+  },
+  {
+    "id": 37,
+    "name": "Falcon Shield"
+  },
+  {
+    "id": 38,
+    "name": "Fiery Rainbow Shield"
+  },
+  {
+    "id": 39,
+    "name": "Gnome Shield"
+  },
+  {
+    "id": 40,
+    "name": "Golden Blessed Shield"
+  },
+  {
+    "id": 41,
+    "name": "Gourd"
+  },
+  {
+    "id": 42,
+    "name": "Great Shield"
+  },
+  {
+    "id": 43,
+    "name": "Griffin Shield"
+  },
+  {
+    "id": 44,
+    "name": "Guardian Shield"
+  },
+  {
+    "id": 45,
+    "name": "Haunted Mirror Piece"
+  },
+  {
+    "id": 46,
+    "name": "Icy Rainbow Shield"
+  },
+  {
+    "id": 47,
+    "name": "Journal Shield"
+  },
+  {
+    "id": 48,
+    "name": "Lion Shield"
+  },
+  {
+    "id": 49,
+    "name": "Lion Spellbook"
+  },
+  {
+    "id": 50,
+    "name": "Mastermind Shield"
+  },
+  {
+    "id": 51,
+    "name": "Mathmaster Shield"
+  },
+  {
+    "id": 52,
+    "name": "Mathmaster Shield (Replica)"
+  },
+  {
+    "id": 53,
+    "name": "Meat Shield"
+  },
+  {
+    "id": 54,
+    "name": "Medusa Shield"
+  },
+  {
+    "id": 55,
+    "name": "Mino Shield"
+  },
+  {
+    "id": 56,
+    "name": "Morshabaal's Mask"
+  },
+  {
+    "id": 57,
+    "name": "Necromancer Shield"
+  },
+  {
+    "id": 58,
+    "name": "Nightmare Shield"
+  },
+  {
+    "id": 59,
+    "name": "Norse Shield"
+  },
+  {
+    "id": 60,
+    "name": "Ornamented Shield"
+  },
+  {
+    "id": 61,
+    "name": "Ornate Shield"
+  },
+  {
+    "id": 62,
+    "name": "Painted Gourd Rattle"
+  },
+  {
+    "id": 63,
+    "name": "Phoenix Shield"
+  },
+  {
+    "id": 64,
+    "name": "Plate Shield"
+  },
+  {
+    "id": 65,
+    "name": "Prismatic Shield"
+  },
+  {
+    "id": 66,
+    "name": "Rainbow Shield"
+  },
+  {
+    "id": 67,
+    "name": "Rattling Gourd"
+  },
+  {
+    "id": 68,
+    "name": "Refined Stag Shield"
+  },
+  {
+    "id": 69,
+    "name": "Rift Shield"
+  },
+  {
+    "id": 70,
+    "name": "Rose Shield"
+  },
+  {
+    "id": 71,
+    "name": "Runic Ice Shield"
+  },
+  {
+    "id": 72,
+    "name": "Salamander Shield"
+  },
+  {
+    "id": 73,
+    "name": "Scarab Shield"
+  },
+  {
+    "id": 74,
+    "name": "Sentinel Shield"
+  },
+  {
+    "id": 75,
+    "name": "Shield of Care"
+  },
+  {
+    "id": 76,
+    "name": "Shield of Corruption"
+  },
+  {
+    "id": 77,
+    "name": "Shield of Destiny"
+  },
+  {
+    "id": 78,
+    "name": "Shield of Destiny (Activated)"
+  },
+  {
+    "id": 79,
+    "name": "Shield of Endless Search"
+  },
+  {
+    "id": 80,
+    "name": "Shield of Honour"
+  },
+  {
+    "id": 81,
+    "name": "Shield of the White Knight"
+  },
+  {
+    "id": 82,
+    "name": "Shoulder Plate"
+  },
+  {
+    "id": 83,
+    "name": "Silver Chimes"
+  },
+  {
+    "id": 84,
+    "name": "Snake God's Wristguard"
+  },
+  {
+    "id": 85,
+    "name": "Soulbastion"
+  },
+  {
+    "id": 86,
+    "name": "Sparking Rainbow Shield"
+  },
+  {
+    "id": 87,
+    "name": "Spellbook"
+  },
+  {
+    "id": 88,
+    "name": "Spellbook of Ancient Arcana"
+  },
+  {
+    "id": 89,
+    "name": "Spellbook of Dark Mysteries"
+  },
+  {
+    "id": 90,
+    "name": "Spellbook of Enlightenment"
+  },
+  {
+    "id": 91,
+    "name": "Spellbook of Lost Souls"
+  },
+  {
+    "id": 92,
+    "name": "Spellbook of Mind Control"
+  },
+  {
+    "id": 93,
+    "name": "Spellbook of Vigilance"
+  },
+  {
+    "id": 94,
+    "name": "Spellbook of Warding"
+  },
+  {
+    "id": 95,
+    "name": "Spellbook of the Novice"
+  },
+  {
+    "id": 96,
+    "name": "Spellscroll of Prophecies"
+  },
+  {
+    "id": 97,
+    "name": "Spike Shield"
+  },
+  {
+    "id": 98,
+    "name": "Spirit Guide"
+  },
+  {
+    "id": 99,
+    "name": "Stag Scrolls"
+  },
+  {
+    "id": 100,
+    "name": "Stag Shield"
+  },
+  {
+    "id": 101,
+    "name": "Stag Spellbook"
+  },
+  {
+    "id": 102,
+    "name": "Steel Shield"
+  },
+  {
+    "id": 103,
+    "name": "Strange Good Night Songs"
+  },
+  {
+    "id": 104,
+    "name": "Studded Shield"
+  },
+  {
+    "id": 105,
+    "name": "Tempest Shield"
+  },
+  {
+    "id": 106,
+    "name": "Terran Rainbow Shield"
+  },
+  {
+    "id": 107,
+    "name": "The Shield Nevermourn"
+  },
+  {
+    "id": 108,
+    "name": "Tortoise Shield"
+  },
+  {
+    "id": 109,
+    "name": "Tower Shield"
+  },
+  {
+    "id": 110,
+    "name": "Traditional Stein"
+  },
+  {
+    "id": 111,
+    "name": "Tusk Shield"
+  },
+  {
+    "id": 112,
+    "name": "Umbral Master Spellbook"
+  },
+  {
+    "id": 113,
+    "name": "Umbral Spellbook"
+  },
+  {
+    "id": 114,
+    "name": "Vampire Shield"
+  },
+  {
+    "id": 115,
+    "name": "Viking Shield"
+  },
+  {
+    "id": 116,
+    "name": "Warrior's Shield"
+  },
+  {
+    "id": 117,
+    "name": "Wooden Shield"
+  },
+  {
+    "id": 118,
+    "name": "Wooden Spellbook"
+  }
+]
