@@ -2,7 +2,7 @@ import spellOrderingRaw from "@data/spell-ordering.json";
 import spellsRaw from "@data/spells.json";
 
 export type SpellType = "auto" | "spell" | "rune";
-export type ScalesWith = "magic" | "melee" | "fist" | "distance" | "none";
+export type ScalesWith = "magic" | "melee" | "shielding" | "distance" | "none";
 export type Element = "ice" | "fire" | "earth" | "energy" | "physical" | "holy" | "death";
 export type SpellElement = Element | "weapon";
 export type Rounding = "floor" | "round" | "ceil";

@@ -1488,5 +1488,35 @@
       "monk"
     ],
     "rounding": "round"
+  },
+  {
+    "id": 89,
+    "scope": "shield-bash",
+    "name": "Shield Bash",
+    "spellType": "spell",
+    "scalesWith": "shielding",
+    "element": "physical",
+    "power": 55,
+    "skillFactor": 1000,
+    "buckets": 4,
+    "vocations": [
+      "knight"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": 89,
+    "scope": "shield-slam",
+    "name": "Shield Slam",
+    "spellType": "spell",
+    "scalesWith": "shielding",
+    "element": "physical",
+    "power": 52,
+    "skillFactor": 1000,
+    "buckets": 4,
+    "vocations": [
+      "knight"
+    ],
+    "rounding": "floor"
   }
 ]
