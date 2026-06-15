@@ -177,7 +177,6 @@ function applyHpBasedDmgBonuses(
   }
   const creatureHp = creatureChoice?.creature.hitpoints ?? 0;
   const multiplier = hpBonusMultiplier(mixture, creatureHp, brackets);
-  console.log(multiplier);
 
   // Apply multiplier to every spell
   return spellDamages.map((sd) => ({
