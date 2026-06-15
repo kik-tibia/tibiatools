@@ -33,6 +33,7 @@
   ];
   const selectablePerks = $derived(
     allPerks.filter((p) => {
+      if (!p.visible) return false;
       if (p.spell) {
         const spell = allSpells.find((s) => s.scope == p.scope);
         return (
