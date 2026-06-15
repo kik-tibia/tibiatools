@@ -135,7 +135,7 @@
           </span>
         {:else if (perkRegistry.get(perkId)?.bonusType === "alpha-strike" || perkRegistry.get(perkId)?.bonusType === "omega-strike") && (build.rotation.length == 0 || build.targets.length == 0)}
           <span class="perk-toggle input-{buildId}">
-            <Tooltip tip="Requires setting Rotation and Targets">Error</Tooltip>
+            <Tooltip tip="For more accurate results,<br/>set Rotation and Targets">Error</Tooltip>
           </span>
           <input
             type="number"

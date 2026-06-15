@@ -12,6 +12,34 @@ export type HpBasedDmgBracket = {
 // Optimisation for high HP targets: we cap how many buckets the sweep arrays below use
 const maxBuckets = 4096;
 
+// Combined bonus multiplier at a given HP fraction (0 = full HP, 1 = dead). Overlapping brackets
+// combine multiplicatively.
+function boostAtFraction(frac: number, brackets: HpBasedDmgBracket[]): number {
+  let boost = 1;
+  for (const { from, to, bonus } of brackets) {
+    // TODO: Once the combat mastery perk is updated, we need to check if this is additive or multiplicative.
+    if (frac >= from && frac < to) boost *= 1 + bonus;
+  }
+  return boost;
+}
+
+// Average bonus multiplier assuming the creature is at a random HP
+function averageBoostOverHp(brackets: HpBasedDmgBracket[]): number {
+  const edges = new Set([0, 1]);
+  for (const { from, to } of brackets) {
+    edges.add(Math.min(1, Math.max(0, from)));
+    edges.add(Math.min(1, Math.max(0, to)));
+  }
+  const sorted = [...edges].sort((a, b) => a - b);
+  let avg = 0;
+  for (let i = 0; i < sorted.length - 1; i++) {
+    const lo = sorted[i];
+    const hi = sorted[i + 1];
+    avg += boostAtFraction((lo + hi) / 2, brackets) * (hi - lo);
+  }
+  return avg;
+}
+
 // Average damage multiplier for HP based damage perks against a single target. Spells and charms share
 // one kill trajectory but are credited separately (see the per-bucket split below), so we return one
 // multiplier for each: apply `spell` to spell damage and `charm` to elemental charm damage.
@@ -20,7 +48,14 @@ export function hpBonusMultiplier(
   hp: number,
   brackets: HpBasedDmgBracket[],
 ): { spell: number; charm: number } {
-  if (hp <= 0 || mixture.length == 0 || brackets.every((b) => b.bonus == 0)) return { spell: 1, charm: 1 };
+  // Without a spell rotation we can't model a kill trajectory, so we fall back to assuming the creature
+  // sits at a random HP fraction and return the average bonus over that range.
+  if (mixture.length == 0) {
+    const avg = averageBoostOverHp(brackets);
+    return { spell: avg, charm: avg };
+  }
+
+  if (hp <= 0 || brackets.every((b) => b.bonus == 0)) return { spell: 1, charm: 1 };
 
   let totalWeight = 0;
   for (const m of mixture) totalWeight += m.weight;
@@ -43,15 +78,7 @@ export function hpBonusMultiplier(
   for (const m of normalisedMixture) if (m.isCharm) charmWeight += m.weight;
   const spellWeight = 1 - charmWeight; // normalisedMixture weights sum to 1
 
-  const bonusMultiplierAt = (lostHp: number): number => {
-    const frac = lostHp / nBuckets;
-    let boost = 1;
-    for (const { from, to, bonus } of brackets) {
-      // TODO: Once the combat mastery perk is updated, we need to check if this is additive or multiplicative.
-      if (frac >= from && frac < to) boost *= 1 + bonus;
-    }
-    return boost;
-  };
+  const bonusMultiplierAt = (lostHp: number): number => boostAtFraction(lostHp / nBuckets, brackets);
 
   // Probability of ever being on this HP (range [0..1], hpProbability[0] = full HP = 1)
   const hpProbability = new Float64Array(nBuckets);
