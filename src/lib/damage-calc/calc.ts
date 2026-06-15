@@ -108,7 +108,7 @@ export function computeResults(
       const raw = computeRaw(spellState, buildStats);
       return { ...spellState.spell, raw, effective: breakdown.effective };
     });
-    results = applyHpBasedDmgBonuses(results, spellChoices, buildStats, hpBasedDmgBrackets);
+    results = applyHpBasedDmgBonusesBasic(results, hpBasedDmgBrackets);
   }
 
   return results;
@@ -194,6 +194,25 @@ function applyHpBasedDmgBonuses(
   }));
 }
 
+// Basic version of above where we don't use rotation/targets
+function applyHpBasedDmgBonusesBasic(
+  spellDamages: SpellRawEffective[],
+  brackets: HpBasedDmgBracket[],
+): SpellRawEffective[] {
+  if (brackets.length === 0) return spellDamages;
+
+  const multiplier = hpBonusMultiplier([], 0, brackets);
+
+  // Apply multiplier to every spell
+  return spellDamages.map((sd) => ({
+    ...sd,
+    effective: {
+      elementalCharmDmg: sd.effective.elementalCharmDmg * multiplier.charm,
+      avg: sd.effective.avg * multiplier.spell,
+      critCharmDmg: sd.effective.critCharmDmg * multiplier.spell,
+    },
+  }));
+}
 function buildDamageMixture(
   spellChoices: SpellChoice[],
   creatureChoice: CreatureChoice,
