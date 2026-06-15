@@ -6,7 +6,7 @@ import {
   type SpellRawEffective,
 } from "@data/spells";
 import type { Stance } from "@data/stances.ts";
-import { type SkillType } from "@data/weapons";
+import { type SkillType, type Weapon } from "@data/weapons";
 import type { BuildStats, Vocation } from "@lib/build-state";
 import type {
   CharacterState,
@@ -72,7 +72,7 @@ export function computeResults(
   let results: SpellRawEffective[] = [];
 
   // Brackets for alpha/omega strike
-  const hpBasedDmgBrackets = buildHpBasedDmgBrackets(perkChoices);
+  const hpBasedDmgBrackets = buildHpBasedDmgBrackets(perkChoices, weaponChoice.weapon);
 
   if (ratioAdjustedHp > 0) {
     // for each creature, weight its spell damages by that creature's share of total HP and accumulate
@@ -153,12 +153,28 @@ function initialSpellState(characterState: CharacterState, spell: Spell): SpellS
   };
 }
 
-function buildHpBasedDmgBrackets(perkChoices: PerkChoice[]): HpBasedDmgBracket[] {
+function buildHpBasedDmgBrackets(perkChoices: PerkChoice[], weapon: Weapon): HpBasedDmgBracket[] {
   const brackets: HpBasedDmgBracket[] = [];
+
   const alpha = perkChoices.find((p) => p.perk.bonusType === "alpha-strike");
   if (alpha && alpha.value > 0) brackets.push({ from: 0, to: 0.05, bonus: alpha.value / 100 });
+
   const omega = perkChoices.find((p) => p.perk.bonusType === "omega-strike");
   if (omega && omega.value > 0) brackets.push({ from: 0.7, to: 1, bonus: omega.value / 100 });
+
+  const combatMastery = perkChoices.find((p) => p.perk.bonusType === "combat-mastery");
+  if (combatMastery && combatMastery.value > 0) {
+    const cmBonus = weapon.hands == "two" ? 2 : 1;
+    const missingHpPerStep = combatMastery.value === 1 ? 0.12 : combatMastery.value === 2 ? 0.1 : 0.08;
+    for (let step = 1; step * missingHpPerStep < 1; step++) {
+      brackets.push({
+        from: step * missingHpPerStep,
+        to: Math.min(1, (step + 1) * missingHpPerStep),
+        bonus: (step * cmBonus) / 100,
+      });
+    }
+  }
+
   return brackets;
 }
 

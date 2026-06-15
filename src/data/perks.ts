@@ -52,7 +52,8 @@ export type PerkBonusType =
   | "damage-vermin"
   | "base-harmony-bonus"
   | "alpha-strike"
-  | "omega-strike";
+  | "omega-strike"
+  | "combat-mastery";
 
 export type Perk = {
   id: number;

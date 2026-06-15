@@ -27,9 +27,9 @@
   const perkRegistry = new Map(allPerks.map((p) => [p.id, p]));
   const revelationTiers: { label: string; value: number }[] = [
     { label: "—", value: 0 },
-    { label: "T1", value: 1 },
-    { label: "T2", value: 2 },
-    { label: "T3", value: 3 },
+    { label: "Stage 1", value: 1 },
+    { label: "Stage 2", value: 2 },
+    { label: "Stage 3", value: 3 },
   ];
   const selectablePerks = $derived(
     allPerks.filter((p) => {
