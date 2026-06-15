@@ -7,7 +7,7 @@ import type { CreatureChoice, SpellChoice, SpellState, WeaponChoice } from "@lib
 export function computeRaw(state: SpellState, buildStats: BuildStats): DamageRange {
   if (state.spell.spellType === "auto") {
     const attackValueWithoutFlat = (Math.floor((6 * state.weaponAttack) / 5) * (state.skill + 4)) / 28;
-    const attackIncrease = buildStats.vocation == "monk" ? 1.5 : 1;
+    const attackIncrease = buildStats.vocation == "monk" ? 2 : 1;
     let min, avg, max;
     if (state.weaponDamage) {
       min = undefined;
