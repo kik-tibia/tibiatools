@@ -1659,5 +1659,89 @@
     "scope": "all",
     "revelation": "true",
     "bonusType": "combat-mastery"
+  },
+  {
+    "id": 250,
+    "name": "Death Echo base damage",
+    "scope": "death-echo",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": 251,
+    "name": "Death Echo critical hit damage",
+    "scope": "death-echo",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": 252,
+    "name": "Death Echo critical hit chance",
+    "scope": "death-echo",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": 253,
+    "name": "Forked Glacier base damage",
+    "scope": "forked-glacier",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": 254,
+    "name": "Forked Glacier critical hit damage",
+    "scope": "forked-glacier",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": 255,
+    "name": "Forked Glacier critical hit chance",
+    "scope": "forked-glacier",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": 256,
+    "name": "Forked Thorns base damage",
+    "scope": "forked-thorns",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": 257,
+    "name": "Forked Thorns critical hit damage",
+    "scope": "forked-thorns",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": 258,
+    "name": "Forked Thorns critical hit chance",
+    "scope": "forked-thorns",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": 259,
+    "name": "Thousand Fist Blows base damage",
+    "scope": "thounsand-fist-blows",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": 260,
+    "name": "Thousand Fist Blows critical hit damage",
+    "scope": "thounsand-fist-blows",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": 261,
+    "name": "Thousand Fist Blows critical hit chance",
+    "scope": "thounsand-fist-blows",
+    "spell": true,
+    "bonusType": "crit-chance"
   }
 ]

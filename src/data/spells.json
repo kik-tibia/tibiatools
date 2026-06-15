@@ -1427,5 +1427,66 @@
       "paladin"
     ],
     "rounding": "floor"
+  },
+  {
+    "id": 85,
+    "scope": "death-echo",
+    "name": "Death Echo",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "death",
+    "power": 85,
+    "skillFactor": 25,
+    "buckets": 0,
+    "additionalDamageMultiplier": 1.5,
+    "vocations": [
+      "sorcerer"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": 86,
+    "scope": "forked-glacier",
+    "name": "Forked Glacier",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "ice",
+    "power": 97,
+    "skillFactor": 25,
+    "buckets": 0,
+    "vocations": [
+      "druid"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": 87,
+    "scope": "forked-thorns",
+    "name": "Forked Thorns",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "earth",
+    "power": 105,
+    "skillFactor": 25,
+    "buckets": 0,
+    "vocations": [
+      "druid"
+    ],
+    "rounding": "floor"
+  },
+  {
+    "id": 88,
+    "scope": "thousand-fist-blows",
+    "name": "Thousand Fist Blows",
+    "spellType": "spell",
+    "scalesWith": "melee",
+    "element": "weapon",
+    "power": 62,
+    "skillFactor": 1000,
+    "buckets": 0,
+    "vocations": [
+      "monk"
+    ],
+    "rounding": "round"
   }
 ]

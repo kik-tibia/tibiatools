@@ -4,9 +4,9 @@
     "order": [
       "auto-attack",
       "fierce-berserk",
+      "front-sweep",
       "berserk",
       "groundshaker",
-      "front-sweep",
       "exec-throw",
       "annihilation",
       "brutal-strike",
@@ -53,6 +53,7 @@
     "vocation": "sorcerer",
     "order": [
       "auto-attack",
+      "death-echo",
       "energy-wave",
       "great-fire-wave",
       "great-fireball",
@@ -88,6 +89,8 @@
     "vocation": "druid",
     "order": [
       "auto-attack",
+      "forked-thorns",
+      "forked-glacier",
       "terra-wave",
       "ice-burst",
       "terra-burst",
@@ -124,6 +127,7 @@
       "chained-penance",
       "greater-flurry-of-blows",
       "flurry-of-blows",
+      "thousand-fist-blows",
       "sweeping-takedown",
       "spiritual-outburst",
       "mystic-repulse",

@@ -113,7 +113,11 @@
           <tr class:highlight={showHighlighting && isHigher(r.id)}>
             <td class="spell">
               <div class="spell-name">
-                {r.name}
+                {#if r.scope === "death-echo"}
+                  <Tooltip label={r.name} tip="Damage includes both hits" right={true} />
+                {:else}
+                  {r.name}
+                {/if}
               </div>
             </td>
             <td class="num" data-label="Effective Avg">{r.effective.avg.toFixed(1)}</td>
