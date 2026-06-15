@@ -21,6 +21,21 @@
 
   const vocations: Vocation[] = ["knight", "paladin", "sorcerer", "druid", "monk"];
 
+  const stanceTips: Record<Vocation | StanceGroup, string> = {
+    knight:
+      "Choosing Blood Rage has no effect, you still need to enter your final skill after utito. Choosing Protector reduces your final damage by 15%.",
+    paladin: "Paladin tip…",
+    sorcerer: "",
+    druid: "Druid tip…",
+    monk: "Only VoH has any effect. If you choose VoJ, you still need to input your final fist skill.",
+    elemental: "Sorcerer elemental tip…",
+    curse: "Sorcerer curse tip…",
+  };
+
+  function tipFor(vocation: Vocation, group: StanceGroup | null): string {
+    return stanceTips[group ?? vocation];
+  }
+
   function setStatA<K extends keyof BuildStats>(key: K, value: BuildStats[K]) {
     buildA = { ...buildA, stats: { ...buildA.stats, [key]: value } };
   }
@@ -38,7 +53,23 @@
   const stanceById: Record<number, Stance> = Object.fromEntries(allStances.map((s) => [s.id, s]));
 
   function stancesFor(vocation: Vocation, group: StanceGroup | null): Stance[] {
-    return allStances.filter((s) => s.vocation === vocation && (group === null || s.group === group));
+    return allStances.filter(
+      (s) => s.visible && s.vocation === vocation && (group === null || s.group === group),
+    );
+  }
+
+  function groupFor(vocation: Vocation, position: 0 | 1): StanceGroup | null {
+    if (vocation !== "sorcerer") return null;
+    return position === 0 ? "elemental" : "curse";
+  }
+
+  function hasStanceCell(build: Build, position: 0 | 1): boolean {
+    if (build.stats.vocation !== "sorcerer" && position === 1) return false;
+    return stancesFor(build.stats.vocation, groupFor(build.stats.vocation, position)).length > 0;
+  }
+
+  function stanceRowVisible(position: 0 | 1): boolean {
+    return hasStanceCell(buildA, position) || (showSecondBuild && hasStanceCell(buildB, position));
   }
 
   function selectedStanceIdFor(stanceIds: number[], group: StanceGroup | null): number | null {
@@ -156,19 +187,22 @@
   group: StanceGroup | null,
   setStat: (key: keyof BuildStats, value: BuildStats[keyof BuildStats]) => void,
 )}
-  <select
-    class="input-{buildId}"
-    value={selectedStanceIdFor(build.stats.stanceIds, group) ?? ""}
-    onchange={(e) => {
-      const raw = e.currentTarget.value;
-      const newId = raw === "" ? null : Number(raw);
-      setStat("stanceIds", replaceStanceForGroup(build.stats.stanceIds, group, newId));
-    }}>
-    <option value="">No stance</option>
-    {#each stancesFor(build.stats.vocation, group) as s}
-      <option value={s.id}>{s.name}</option>
-    {/each}
-  </select>
+  {@const tip = tipFor(build.stats.vocation, group)}
+  <Tooltip {tip} wrap>
+    <select
+      class="input-{buildId}"
+      value={selectedStanceIdFor(build.stats.stanceIds, group) ?? ""}
+      onchange={(e) => {
+        const raw = e.currentTarget.value;
+        const newId = raw === "" ? null : Number(raw);
+        setStat("stanceIds", replaceStanceForGroup(build.stats.stanceIds, group, newId));
+      }}>
+      <option value="">No stance</option>
+      {#each stancesFor(build.stats.vocation, group) as s}
+        <option value={s.id}>{s.name}</option>
+      {/each}
+    </select>
+  </Tooltip>
 {/snippet}
 
 {#snippet stanceCell(
@@ -178,10 +212,8 @@
   setStat: (key: keyof BuildStats, value: BuildStats[keyof BuildStats]) => void,
 )}
   <td>
-    {#if build.stats.vocation === "sorcerer"}
-      {@render stanceDropdown(build, buildId, position === 0 ? "elemental" : "curse", setStat)}
-    {:else if position === 0}
-      {@render stanceDropdown(build, buildId, null, setStat)}
+    {#if hasStanceCell(build, position)}
+      {@render stanceDropdown(build, buildId, groupFor(build.stats.vocation, position), setStat)}
     {/if}
   </td>
 {/snippet}
@@ -212,14 +244,16 @@
     {/if}
   </tr>
 
-  <tr class="data-row">
-    <td>Stance</td>
-    {@render stanceCell(buildA, "a", 0, setStatA)}
-    {#if showSecondBuild}
-      {@render stanceCell(buildB, "b", 0, setStatB)}
-    {/if}
-  </tr>
-  {#if buildA.stats.vocation === "sorcerer" || (showSecondBuild && buildB.stats.vocation === "sorcerer")}
+  {#if stanceRowVisible(0)}
+    <tr class="data-row">
+      <td>Stance</td>
+      {@render stanceCell(buildA, "a", 0, setStatA)}
+      {#if showSecondBuild}
+        {@render stanceCell(buildB, "b", 0, setStatB)}
+      {/if}
+    </tr>
+  {/if}
+  {#if stanceRowVisible(1)}
     <tr class="data-row">
       <td></td>
       {@render stanceCell(buildA, "a", 1, setStatA)}

@@ -21,6 +21,7 @@ export type StanceGroup = "elemental" | "curse";
 export type Stance = {
   id: number;
   name: string;
+  visible: boolean;
   effect: StanceEffect;
   vocation: string;
   group?: StanceGroup;
