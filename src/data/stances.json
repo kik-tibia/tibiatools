@@ -38,7 +38,7 @@
   {
     "id": 6,
     "name": "Master of Thunder",
-    "visible": false,
+    "visible": true,
     "effect": "master-of-thunder",
     "vocation": "sorcerer",
     "group": "elemental"
@@ -46,7 +46,7 @@
   {
     "id": 7,
     "name": "Master of Decay",
-    "visible": false,
+    "visible": true,
     "effect": "master-of-decay",
     "vocation": "sorcerer",
     "group": "elemental"

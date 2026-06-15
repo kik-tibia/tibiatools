@@ -53,7 +53,10 @@ export type PerkBonusType =
   | "base-harmony-bonus"
   | "alpha-strike"
   | "omega-strike"
-  | "combat-mastery";
+  | "combat-mastery"
+  | "master-of-flames"
+  | "master-of-thunder"
+  | "master-of-decay";
 
 export type Perk = {
   id: number;
@@ -62,10 +65,12 @@ export type Perk = {
   spell: boolean;
   revelation: boolean;
   bonusType: PerkBonusType;
+  visible: boolean;
 };
 
 export const allPerks: Perk[] = (perksRaw as unknown[] as Perk[]).map((p) => ({
   ...p,
   spell: p.spell ?? false,
   revelation: p.revelation ?? false,
+  visible: p.visible ?? true,
 }));

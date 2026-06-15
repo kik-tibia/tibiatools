@@ -1,5 +1,5 @@
 import type { Creature } from "@data/creatures";
-import type { DamageBreakdown, DamageRange, Element, Spell } from "@data/spells";
+import type { DamageBreakdown, DamageRange, Element, Spell, SpellElement } from "@data/spells";
 import type { Weapon } from "@data/weapons";
 import type { BuildStats } from "@lib/build-state";
 import type { CreatureChoice, SpellChoice, SpellState, WeaponChoice } from "@lib/damage-calc";
@@ -34,6 +34,7 @@ export function computeDamageBreakdown(
   weaponChoice: WeaponChoice,
   spellChoices: SpellChoice[],
   creatureChoice?: CreatureChoice,
+  masteryElement?: SpellElement,
 ): DamageBreakdown {
   let charmCritChance = 0;
   let charmCritDamage = 0;
@@ -92,6 +93,7 @@ export function computeDamageBreakdown(
       mergedWeaponChoice,
       spellChoices,
       creatureChoice,
+      masteryElement,
     );
   }
 
@@ -316,7 +318,7 @@ function computeEffectiveAuto(
 }
 
 function computeEffectiveSpell(
-  spell: Spell,
+  originalSpell: Spell,
   buildStats: BuildStats,
   state: SpellState,
   pCrit: number,
@@ -327,9 +329,14 @@ function computeEffectiveSpell(
   weaponChoice: WeaponChoice,
   spellChoices: SpellChoice[],
   creatureChoice?: CreatureChoice,
+  masteryElement?: SpellElement,
 ): DamageBreakdown {
   let weapon = weaponChoice.weapon;
   weapon = applyElementalAttackImbuement(weapon, false, buildStats);
+  const spell =
+    masteryElement && originalSpell.spellType == "spell"
+      ? { ...originalSpell, element: masteryElement }
+      : originalSpell;
 
   let min, avg, max;
   const minElements = initElements();

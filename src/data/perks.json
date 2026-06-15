@@ -1743,5 +1743,26 @@
     "scope": "thounsand-fist-blows",
     "spell": true,
     "bonusType": "crit-chance"
+  },
+  {
+    "id": 262,
+    "name": "Master of Flames",
+    "scope": "fire",
+    "bonusType": "base-damage",
+    "visible": false
+  },
+  {
+    "id": 263,
+    "name": "Master of Thunder",
+    "scope": "energy",
+    "bonusType": "crit-chance",
+    "visible": false
+  },
+  {
+    "id": 264,
+    "name": "Master of Decay",
+    "scope": "death",
+    "bonusType": "crit-damage",
+    "visible": false
   }
 ]

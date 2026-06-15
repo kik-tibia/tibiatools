@@ -28,8 +28,8 @@
     sorcerer: "",
     druid: "Druid tip…",
     monk: "Only VoH has any effect. If you choose VoJ, you still need to input your final fist skill.",
-    elemental: "Sorcerer elemental tip…",
-    curse: "Sorcerer curse tip…",
+    elemental: "Assumes that all of your spells receive the mastery element.",
+    curse: "",
   };
 
   function tipFor(vocation: Vocation, group: StanceGroup | null): string {
@@ -53,9 +53,7 @@
   const stanceById: Record<number, Stance> = Object.fromEntries(allStances.map((s) => [s.id, s]));
 
   function stancesFor(vocation: Vocation, group: StanceGroup | null): Stance[] {
-    return allStances.filter(
-      (s) => s.visible && s.vocation === vocation && (group === null || s.group === group),
-    );
+    return allStances.filter((s) => s.visible && s.vocation === vocation && (group === null || s.group === group));
   }
 
   function groupFor(vocation: Vocation, position: 0 | 1): StanceGroup | null {
@@ -188,7 +186,7 @@
   setStat: (key: keyof BuildStats, value: BuildStats[keyof BuildStats]) => void,
 )}
   {@const tip = tipFor(build.stats.vocation, group)}
-  <Tooltip {tip} wrap>
+  {#snippet stanceSelect()}
     <select
       class="input-{buildId}"
       value={selectedStanceIdFor(build.stats.stanceIds, group) ?? ""}
@@ -197,12 +195,19 @@
         const newId = raw === "" ? null : Number(raw);
         setStat("stanceIds", replaceStanceForGroup(build.stats.stanceIds, group, newId));
       }}>
-      <option value="">No stance</option>
+      <option value="">—</option>
       {#each stancesFor(build.stats.vocation, group) as s}
         <option value={s.id}>{s.name}</option>
       {/each}
     </select>
-  </Tooltip>
+  {/snippet}
+  {#if tip}
+    <Tooltip {tip} wrap>
+      {@render stanceSelect()}
+    </Tooltip>
+  {:else}
+    {@render stanceSelect()}
+  {/if}
 {/snippet}
 
 {#snippet stanceCell(

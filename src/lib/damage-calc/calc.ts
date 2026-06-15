@@ -1,7 +1,9 @@
+import { allPerks, type Perk } from "@data/perks.ts";
 import {
   allSpells,
   type DamageEffective,
   type Spell,
+  type SpellElement,
   type SpellRawBreakdown,
   type SpellRawEffective,
 } from "@data/spells";
@@ -43,14 +45,14 @@ export function computeResults(
   creatureChoices: CreatureChoice[],
 ): SpellRawEffective[] {
   const characterState = deriveCharacterState(buildStats, weaponChoice);
-  console.log(weaponChoice.weapon.hands);
-  console.log(weaponChoice.weapon.defenseMod);
+
+  const effectivePerks = [...perkChoices, ...stancePerks(stances)];
 
   const spellStates = allSpells
     .filter((s) => s.vocations.includes(buildStats.vocation))
     .map((spell) => {
       const initial: SpellState = initialSpellState(characterState, spell);
-      let spellState: SpellState = perkChoices.reduce(
+      let spellState: SpellState = effectivePerks.reduce(
         (acc, perkChoice) => applyPerkToSpell(spell, perkChoice, weaponChoice.weapon.skill, buildStats.vocation, acc),
         initial,
       );
@@ -72,16 +74,31 @@ export function computeResults(
   let results: SpellRawEffective[] = [];
 
   // Brackets for alpha/omega strike
-  const hpBasedDmgBrackets = buildHpBasedDmgBrackets(perkChoices, weaponChoice.weapon);
+  const hpBasedDmgBrackets = buildHpBasedDmgBrackets(effectivePerks, weaponChoice.weapon);
 
   if (ratioAdjustedHp > 0) {
+    let masteryElement: SpellElement | undefined;
+    if (stances.some((s) => s.effect == "master-of-flames")) {
+      masteryElement = "fire";
+    } else if (stances.some((s) => s.effect == "master-of-thunder")) {
+      masteryElement = "energy";
+    } else if (stances.some((s) => s.effect == "master-of-decay")) {
+      masteryElement = "death";
+    }
     // for each creature, weight its spell damages by that creature's share of total HP and accumulate
     results = creatureChoices.reduce((acc: SpellRawEffective[], creatureChoice) => {
       const multiplier = (creatureChoice.ratio * creatureChoice.creature.hitpoints) / ratioAdjustedHp;
 
       // calculate all of the spell damages to this creature
       let spellDamages: SpellRawBreakdown[] = spellStates.map((spellState) => {
-        const breakdown = computeDamageBreakdown(spellState, buildStats, weaponChoice, spellChoices, creatureChoice);
+        const breakdown = computeDamageBreakdown(
+          spellState,
+          buildStats,
+          weaponChoice,
+          spellChoices,
+          creatureChoice,
+          masteryElement,
+        );
         const raw = computeRaw(spellState, buildStats);
         return { ...spellState.spell, raw, breakdown };
       });
@@ -112,6 +129,41 @@ export function computeResults(
   }
 
   return results;
+}
+
+function stancePerks(stances: Stance[]): PerkChoice[] {
+  const perks: PerkChoice[] = [];
+
+  function pushPerk(value: number, predicate: (p: Perk) => boolean) {
+    const perk = allPerks.find(predicate);
+    if (perk) {
+      perks.push({ id: perk.id, value, perk });
+    }
+  }
+
+  if (stances.some((s) => s.effect == "expose-weakness")) {
+    const piercePerks = [
+      "death-pierce",
+      "earth-pierce",
+      "energy-pierce",
+      "fire-pierce",
+      "holy-pierce",
+      "ice-pierce",
+      "physical-pierce",
+    ];
+    piercePerks.forEach((bonusType) => pushPerk(8, (p) => p.bonusType == bonusType));
+  }
+  if (stances.some((s) => s.effect == "master-of-flames")) {
+    pushPerk(4, (p) => p.scope == "fire" && p.bonusType == "base-damage");
+  }
+  if (stances.some((s) => s.effect == "master-of-thunder")) {
+    pushPerk(4, (p) => p.scope == "energy" && p.bonusType == "crit-chance");
+  }
+  if (stances.some((s) => s.effect == "master-of-decay")) {
+    pushPerk(30, (p) => p.scope == "death" && p.bonusType == "crit-damage");
+  }
+
+  return perks;
 }
 
 function initialSpellState(characterState: CharacterState, spell: Spell): SpellState {
@@ -432,19 +484,19 @@ function applyPerkToSpell(
       case "armor-penetration":
         return { ...state, armorPenetration: perkChoice.value / 100 };
       case "death-pierce":
-        return { ...state, deathPierce: perkChoice.value / 100 };
+        return { ...state, deathPierce: state.deathPierce + perkChoice.value / 100 };
       case "earth-pierce":
-        return { ...state, earthPierce: perkChoice.value / 100 };
+        return { ...state, earthPierce: state.earthPierce + perkChoice.value / 100 };
       case "energy-pierce":
-        return { ...state, energyPierce: perkChoice.value / 100 };
+        return { ...state, energyPierce: state.energyPierce + perkChoice.value / 100 };
       case "fire-pierce":
-        return { ...state, firePierce: perkChoice.value / 100 };
+        return { ...state, firePierce: state.firePierce + perkChoice.value / 100 };
       case "holy-pierce":
-        return { ...state, holyPierce: perkChoice.value / 100 };
+        return { ...state, holyPierce: state.holyPierce + perkChoice.value / 100 };
       case "ice-pierce":
-        return { ...state, icePierce: perkChoice.value / 100 };
+        return { ...state, icePierce: state.icePierce + perkChoice.value / 100 };
       case "physical-pierce":
-        return { ...state, physicalPierce: perkChoice.value / 100 };
+        return { ...state, physicalPierce: state.physicalPierce + perkChoice.value / 100 };
       case "damage-amphibic":
         return { ...state, damageAmphibic: perkChoice.value / 100 };
       case "damage-aquatic":
