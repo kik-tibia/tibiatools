@@ -59,10 +59,12 @@ export type Perk = {
   name: string;
   scope: string;
   spell: boolean;
+  revelation: boolean;
   bonusType: PerkBonusType;
 };
 
 export const allPerks: Perk[] = (perksRaw as unknown[] as Perk[]).map((p) => ({
   ...p,
   spell: p.spell ?? false,
+  revelation: p.revelation ?? false,
 }));

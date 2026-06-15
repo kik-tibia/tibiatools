@@ -1596,6 +1596,7 @@
     "id": 240,
     "name": "Ascetic",
     "scope": "spell",
+    "revelation": "true",
     "bonusType": "base-harmony-bonus"
   },
   {
@@ -1651,5 +1652,12 @@
     "scope": "divine-barrage",
     "spell": true,
     "bonusType": "crit-chance"
+  },
+  {
+    "id": 249,
+    "name": "Combat Mastery",
+    "scope": "all",
+    "revelation": "true",
+    "bonusType": "combat-mastery"
   }
 ]

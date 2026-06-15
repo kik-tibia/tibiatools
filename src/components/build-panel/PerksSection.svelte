@@ -25,6 +25,12 @@
   } = $props();
 
   const perkRegistry = new Map(allPerks.map((p) => [p.id, p]));
+  const revelationTiers: { label: string; value: number }[] = [
+    { label: "—", value: 0 },
+    { label: "T1", value: 1 },
+    { label: "T2", value: 2 },
+    { label: "T3", value: 3 },
+  ];
   const selectablePerks = $derived(
     allPerks.filter((p) => {
       if (p.spell) {
@@ -122,10 +128,20 @@
   removePerk: (id: number) => void,
 )}
   {@const binary = perkRegistry.get(perkId)?.bonusType === "runic-mastery"}
+  {@const revelation = perkRegistry.get(perkId)?.revelation ?? false}
   <td>
     {#if build.perks.some((p) => p.id === perkId)}
       <div class="input-with-remove">
-        {#if binary && !build.stats.baseMagicLevel}
+        {#if revelation}
+          <select
+            class="tiered-select-tier input-{buildId}"
+            value={build.perks.find((p) => p.id === perkId)?.value ?? 0}
+            onchange={(e) => setPerkValue(perkId, Number(e.currentTarget.value))}>
+            {#each revelationTiers as tier}
+              <option value={tier.value}>{tier.label}</option>
+            {/each}
+          </select>
+        {:else if binary && !build.stats.baseMagicLevel}
           <span class="perk-toggle input-{buildId}">
             <Tooltip tip="Requires setting Base Magic Level<br/>in Advanced Stats">Error</Tooltip>
           </span>
