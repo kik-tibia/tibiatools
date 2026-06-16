@@ -1,6 +1,7 @@
 import { allCharms, type Charm } from "@data/charms";
 import { allCreatures, type Creature } from "@data/creatures";
 import { allPerks, type Perk } from "@data/perks";
+import { allShields, type Shield } from "@data/shields";
 import { allSpells, type Spell, type SpellRawEffective } from "@data/spells";
 import { allStances, type Stance } from "@data/stances";
 import { allAmmo, allWeapons, type Ammo, type Weapon } from "@data/weapons";
@@ -9,6 +10,7 @@ import type { CreatureChoice, PerkChoice, SpellChoice, SpellDamageChoice, Weapon
 
 const weaponsById: Record<number, Weapon> = Object.fromEntries(allWeapons.map((i) => [i.id, i]));
 const ammoById: Record<number, Ammo> = Object.fromEntries(allAmmo.map((i) => [i.id, i]));
+const shieldsById: Record<number, Shield> = Object.fromEntries(allShields.map((i) => [i.id, i]));
 const perkDefsById: Record<number, Perk> = Object.fromEntries(allPerks.map((i) => [i.id, i]));
 const spellDefsById: Record<number, Spell> = Object.fromEntries(allSpells.map((i) => [i.id, i]));
 const creaturesById: Record<number, Creature> = Object.fromEntries(allCreatures.map((i) => [i.id, i]));
@@ -31,7 +33,8 @@ export function resolveStances(stanceIds: number[]): Stance[] {
 export function resolveWeapon(weaponChoiceRef: WeaponChoiceRef): WeaponChoice {
   const weapon = weaponsById[weaponChoiceRef.id];
   const ammo = weaponChoiceRef.ammoId ? ammoById[weaponChoiceRef.ammoId] : undefined;
-  return { ...weaponChoiceRef, weapon, ammo };
+  const shield = weaponChoiceRef.shieldId ? shieldsById[weaponChoiceRef.shieldId] : undefined;
+  return { ...weaponChoiceRef, weapon, ammo, shield };
 }
 
 export function resolvePerks(perkChoiceRefs: PerkChoiceRef[]): PerkChoice[] {

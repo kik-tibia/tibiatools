@@ -16,7 +16,7 @@ import type {
  * State = [BuildA, BuildB, showSecondBuild]
  * Build = [Stats, Weapon, Perks, Rotation]
  * Stats = [presenceBitmask, ...nonNullValues]
- * Weapon = "id" | ["id", "ammoId"]
+ * Weapon = "id" | ["id", "ammoId"] | ["id", "ammoId", "shieldId"]
  * Perks = [[id, value], ...]
  * Rotation = [[id, targets, ratio], ...]
  */
@@ -57,7 +57,7 @@ const IMBUE_VAL_TO_TIER: Record<number, number> = { 0.1: 1, 0.25: 2, 0.5: 3 };
 const TIER_TO_IMBUE_VAL: Record<number, number> = { 1: 0.1, 2: 0.25, 3: 0.5 };
 
 type CompactStats = (number | number[] | null)[];
-type CompactWeapon = number | [number, number];
+type CompactWeapon = number | [number, number] | [number, number, number];
 type CompactPerk = [number, number];
 type CompactRotation = [number, number, number, number];
 type CompactTarget = [number, number] | [number, number, number, number];
@@ -110,14 +110,22 @@ export function expandStats(compact: CompactStats): BuildStats {
 }
 
 export function compactWeapon(weapon: WeaponChoiceRef): CompactWeapon {
-  return weapon.ammoId ? [weapon.id, weapon.ammoId] : weapon.id;
+  // shieldId needs the 3-tuple form; ammoId fits the legacy 2-tuple.
+  if (weapon.shieldId) return [weapon.id, weapon.ammoId ?? 0, weapon.shieldId];
+  if (weapon.ammoId) return [weapon.id, weapon.ammoId];
+  return weapon.id;
 }
 
 export function expandWeapon(compact: CompactWeapon): WeaponChoiceRef {
   if (typeof compact === "number") {
     return { id: compact };
   }
-  return { id: compact[0], ammoId: compact[1] };
+  const [id, ammoId, shieldId] = compact;
+  return {
+    id,
+    ammoId: ammoId || undefined,
+    shieldId: shieldId || undefined,
+  };
 }
 
 export function compactPerks(perks: PerkChoiceRef[]): CompactPerk[] {

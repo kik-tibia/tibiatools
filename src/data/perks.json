@@ -1771,5 +1771,47 @@
     "scope": "all",
     "revelation": true,
     "bonusType": "lord-of-destruction"
+  },
+  {
+    "id": 266,
+    "name": "Shield Bash base damage",
+    "scope": "shield-bash",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": 267,
+    "name": "Shield Bash critical hit damage",
+    "scope": "shield-bash",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": 268,
+    "name": "Shield Bash critical hit chance",
+    "scope": "shield-bash",
+    "spell": true,
+    "bonusType": "crit-chance"
+  },
+  {
+    "id": 269,
+    "name": "Shield Slam base damage",
+    "scope": "shield-slam",
+    "spell": true,
+    "bonusType": "base-damage"
+  },
+  {
+    "id": 270,
+    "name": "Shield Slam critical hit damage",
+    "scope": "shield-slam",
+    "spell": true,
+    "bonusType": "crit-damage"
+  },
+  {
+    "id": 271,
+    "name": "Shield Slam critical hit chance",
+    "scope": "shield-slam",
+    "spell": true,
+    "bonusType": "crit-chance"
   }
 ]

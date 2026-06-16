@@ -128,6 +128,13 @@ export function computeResults(
     results = applyHpBasedDmgBonusesBasic(results, hpBasedDmgBrackets);
   }
 
+  if (!weaponChoice.shield) {
+    results = results.map((r) =>
+      r.scalesWith === "shielding"
+        ? { ...r, raw: { min: 0, avg: 0, max: 0 }, effective: { avg: 0, elementalCharmDmg: 0, critCharmDmg: 0 } }
+        : r,
+    );
+  }
   return results;
 }
 
@@ -575,6 +582,7 @@ function deriveCharacterState(buildStats: BuildStats, weaponChoice: WeaponChoice
   const flat = step * 100 - 450 + Math.floor((L + 1000) / step - 50 * step) + B;
   const weaponAttack = (weaponChoice.weapon.attack ?? 0) + (weaponChoice.ammo?.attack ?? 0);
   const weaponDamage = weaponChoice.weapon.damage ?? 0;
+  const shieldDef = weaponChoice.shield?.defense ?? 0;
   return {
     flat,
     magicLevel,
@@ -593,5 +601,6 @@ function deriveCharacterState(buildStats: BuildStats, weaponChoice: WeaponChoice
     distance,
     shielding,
     fishing,
+    shieldDef,
   };
 }

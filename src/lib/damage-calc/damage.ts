@@ -438,27 +438,31 @@ function updateElementsFromWeapon(elements: Record<Element, number>, damage: num
 }
 
 function computeAvg(spell: Spell, state: SpellState): number {
-  const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W } = state;
+  const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W, shieldDef: D } = state;
   const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
   const damage =
     spell.element === "weapon"
       ? F + round((P / spell.skillFactor) * S * W + P / 4)
-      : spell.scalesWith === "distance"
-        ? F + round((P / spell.skillFactor) * S + P / 4)
-        : F + round((P / spell.skillFactor) * ML + P / 4);
+      : spell.scalesWith === "shielding"
+        ? F + round((P / spell.skillFactor) * state.shielding * D + P / 4)
+        : spell.scalesWith === "distance"
+          ? F + round((P / spell.skillFactor) * S + P / 4)
+          : F + round((P / spell.skillFactor) * ML + P / 4);
   return Math.ceil(damage * spell.additionalDamageMultiplier);
 }
 
 function computeMinMax(spell: Spell, minMax: number, state: SpellState): number {
-  const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W } = state;
+  const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W, shieldDef: D } = state;
   const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
   const variation = spell.buckets / P / 2;
   const damage =
     spell.element === "weapon"
       ? F + round((1 + minMax * variation) * ((P / spell.skillFactor) * S * W + P / 4))
-      : spell.scalesWith === "distance"
-        ? F + round((1 + minMax * variation) * ((P / spell.skillFactor) * S + P / 4))
-        : F + round((1 + minMax * variation) * ((P / spell.skillFactor) * ML + P / 4));
+      : spell.scalesWith === "shielding"
+        ? F + round((1 + minMax * variation) * ((P / spell.skillFactor) * state.shielding * D + P / 4))
+        : spell.scalesWith === "distance"
+          ? F + round((1 + minMax * variation) * ((P / spell.skillFactor) * S + P / 4))
+          : F + round((1 + minMax * variation) * ((P / spell.skillFactor) * ML + P / 4));
   return Math.ceil(damage * spell.additionalDamageMultiplier);
 }
 

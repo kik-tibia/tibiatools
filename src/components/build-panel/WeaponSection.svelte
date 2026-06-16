@@ -3,6 +3,7 @@
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
+  import { allShields } from "@data/shields";
   import { allAmmo, allWeapons } from "@data/weapons";
   import type { Build } from "@lib/build-state";
   import { packSection, SECTION_TAG } from "@lib/section-clipboard";
@@ -22,6 +23,7 @@
 
   const weaponRegistry = new Map(allWeapons.map((w) => [w.id, w]));
   const ammoRegistry = new Map(allAmmo.map((a) => [a.id, a]));
+  const shieldRegistry = new Map(allShields.map((s) => [s.id, s]));
 
   let weaponsForA = $derived(
     allWeapons
@@ -40,15 +42,20 @@
   let availableAmmoA = $derived(weaponA?.ammo ? allAmmo.filter((a) => a.type === weaponA.ammo) : []);
   let availableAmmoB = $derived(weaponB?.ammo ? allAmmo.filter((a) => a.type === weaponB.ammo) : []);
 
+  let canShieldA = $derived(weaponA?.hands === "one");
+  let canShieldB = $derived(weaponB?.hands === "one");
+
   function setWeaponA(id: number) {
     const weapon = weaponRegistry.get(id);
     const currentAmmo = buildA.weapon.ammoId ? ammoRegistry.get(buildA.weapon.ammoId) : null;
     const keepAmmo = weapon?.ammo && currentAmmo && currentAmmo.type === weapon.ammo;
+    const keepShield = weapon?.hands === "one";
     buildA = {
       ...buildA,
       weapon: {
         id,
         ammoId: keepAmmo ? buildA.weapon.ammoId : undefined,
+        shieldId: keepShield ? buildA.weapon.shieldId : undefined,
       },
     };
   }
@@ -57,11 +64,13 @@
     const weapon = weaponRegistry.get(id);
     const currentAmmo = buildB.weapon.ammoId ? ammoRegistry.get(buildB.weapon.ammoId) : null;
     const keepAmmo = weapon?.ammo && currentAmmo && currentAmmo.type === weapon.ammo;
+    const keepShield = weapon?.hands === "one";
     buildB = {
       ...buildB,
       weapon: {
         id,
         ammoId: keepAmmo ? buildB.weapon.ammoId : undefined,
+        shieldId: keepShield ? buildB.weapon.shieldId : undefined,
       },
     };
   }
@@ -72,6 +81,14 @@
 
   function setAmmoB(id: number) {
     buildB = { ...buildB, weapon: { ...buildB.weapon, ammoId: id } };
+  }
+
+  function setShieldA(id: number) {
+    buildA = { ...buildA, weapon: { ...buildA.weapon, shieldId: id } };
+  }
+
+  function setShieldB(id: number) {
+    buildB = { ...buildB, weapon: { ...buildB.weapon, shieldId: id } };
   }
 
   function clearWeaponA() {
@@ -88,6 +105,14 @@
 
   function clearAmmoB() {
     buildB = { ...buildB, weapon: { ...buildB.weapon, ammoId: undefined } };
+  }
+
+  function clearShieldA() {
+    buildA = { ...buildA, weapon: { ...buildA.weapon, shieldId: undefined } };
+  }
+
+  function clearShieldB() {
+    buildB = { ...buildB, weapon: { ...buildB.weapon, shieldId: undefined } };
   }
 
   function copyAtoB() {
@@ -209,6 +234,51 @@
                   <RemoveButton onclick={clearAmmoB} />
                 </div>
               {/if}
+            {/if}
+          {/if}
+        </td>
+      {/if}
+    </tr>
+  {/if}
+
+  {#if canShieldA || (showSecondBuild && canShieldB)}
+    <tr class="data-row">
+      <td></td>
+      <td>
+        {#if canShieldA}
+          <FuzzySelect selectType="shields" build="a" all={allShields} selectedIds={[]} onAdd={setShieldA} />
+        {/if}
+      </td>
+      {#if showSecondBuild}
+        <td>
+          {#if canShieldB}
+            <FuzzySelect selectType="shields" build="b" all={allShields} selectedIds={[]} onAdd={setShieldB} />
+          {/if}
+        </td>
+      {/if}
+    </tr>
+    <tr class="data-row">
+      <td></td>
+      <td>
+        {#if canShieldA && buildA.weapon.shieldId}
+          {@const selectedShield = shieldRegistry.get(buildA.weapon.shieldId)}
+          {#if selectedShield}
+            <div class="selected-item">
+              <span class="selected-name selected-name-a">{selectedShield.name}</span>
+              <RemoveButton onclick={clearShieldA} />
+            </div>
+          {/if}
+        {/if}
+      </td>
+      {#if showSecondBuild}
+        <td>
+          {#if canShieldB && buildB.weapon.shieldId}
+            {@const selectedShield = shieldRegistry.get(buildB.weapon.shieldId)}
+            {#if selectedShield}
+              <div class="selected-item">
+                <span class="selected-name selected-name-b">{selectedShield.name}</span>
+                <RemoveButton onclick={clearShieldB} />
+              </div>
             {/if}
           {/if}
         </td>

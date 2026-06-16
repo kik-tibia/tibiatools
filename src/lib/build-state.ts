@@ -1,7 +1,7 @@
 export type Vocation = "knight" | "paladin" | "sorcerer" | "druid" | "monk";
 export type ImbuementElement = "death" | "earth" | "energy" | "fire" | "ice";
 
-export type WeaponChoiceRef = { id: number; ammoId?: number };
+export type WeaponChoiceRef = { id: number; ammoId?: number; shieldId?: number };
 export type PerkChoiceRef = { id: number; value: number };
 export type SpellChoiceRef = { id: number; targets: number; ratio: number; extraSpell: boolean };
 export type CreatureChoiceRef = { id: number; ratio: number; charmId?: number; charmTier?: number };

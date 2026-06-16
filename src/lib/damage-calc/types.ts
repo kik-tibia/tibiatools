@@ -1,11 +1,12 @@
 import type { Charm } from "@data/charms";
 import type { Creature } from "@data/creatures";
 import type { Perk } from "@data/perks";
+import type { Shield } from "@data/shields";
 import type { Spell, SpellRawEffective } from "@data/spells";
 import type { Ammo, Weapon } from "@data/weapons";
 import type { CreatureChoiceRef, PerkChoiceRef, SpellChoiceRef, WeaponChoiceRef } from "@lib/build-state";
 
-export type WeaponChoice = WeaponChoiceRef & { weapon: Weapon; ammo?: Ammo };
+export type WeaponChoice = WeaponChoiceRef & { weapon: Weapon; ammo?: Ammo; shield?: Shield };
 export type PerkChoice = PerkChoiceRef & { perk: Perk };
 export type SpellChoice = SpellChoiceRef & { spell: Spell };
 export type SpellDamageChoice = SpellChoiceRef & { spellDamage: SpellRawEffective };
@@ -29,6 +30,7 @@ export type CharacterState = {
   distance: number;
   shielding: number;
   fishing: number;
+  shieldDef: number;
 };
 
 export type SpellState = CharacterState & {
