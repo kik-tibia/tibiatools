@@ -72,7 +72,7 @@
 
   function setRatioA(id: number, v: number) {
     const scope = spellRegistry.get(id)?.scope;
-    const matchedSpells = allSpells.filter((s) => s.scope == scope).map((s) => s.id);
+    const matchedSpells = allSpells.filter((s) => s.scope == scope && (s.id == id || s.isExtra)).map((s) => s.id);
     buildA = {
       ...buildA,
       rotation: buildA.rotation.map((r) => (matchedSpells.includes(r.id) ? { ...r, ratio: v } : r)),
@@ -81,7 +81,7 @@
 
   function setRatioB(id: number, v: number) {
     const scope = spellRegistry.get(id)?.scope;
-    const matchedSpells = allSpells.filter((s) => s.scope == scope).map((s) => s.id);
+    const matchedSpells = allSpells.filter((s) => s.scope == scope && (s.id == id || s.isExtra)).map((s) => s.id);
     buildB = {
       ...buildB,
       rotation: buildB.rotation.map((r) => (matchedSpells.includes(r.id) ? { ...r, ratio: v } : r)),
@@ -97,26 +97,40 @@
   }
 
   function addRotationA(id: number) {
-    const scope = spellRegistry.get(id)?.scope;
-    const spellsToAdd =
-      allSpells
-        .filter((s) => s.scope == scope)
-        .map((spell, i) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
+    const rotationBSpells = buildB.rotation.flatMap((s) => spellRegistry.get(s.id) ?? []);
+    const spellsIdsToAdd = Array.from(
+      new Set(
+        rotationBSpells.flatMap((s) => {
+          if (s.spells.includes(id)) return s.spells;
+          else return [];
+        }),
+      ),
+    );
+    const spellsToAdd = allSpells
+      .filter((s) => spellsIdsToAdd.includes(s.id))
+      .map((spell) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: spell.isExtra }));
     buildA = { ...buildA, rotation: [...buildA.rotation, ...spellsToAdd] };
   }
 
   function addRotationB(id: number) {
-    const scope = spellRegistry.get(id)?.scope;
-    const spellsToAdd =
-      allSpells
-        .filter((s) => s.scope == scope)
-        .map((spell, i) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: i > 0 })) ?? [];
+    const rotationASpells = buildA.rotation.flatMap((s) => spellRegistry.get(s.id) ?? []);
+    const spellsIdsToAdd = Array.from(
+      new Set(
+        rotationASpells.flatMap((s) => {
+          if (s.spells.includes(id)) return s.spells;
+          else return [];
+        }),
+      ),
+    );
+    const spellsToAdd = allSpells
+      .filter((s) => spellsIdsToAdd.includes(s.id))
+      .map((spell) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: spell.isExtra }));
     buildB = { ...buildB, rotation: [...buildB.rotation, ...spellsToAdd] };
   }
 
   function removeRotationA(id: number) {
     const scope = spellRegistry.get(id)?.scope;
-    const spellsToRemove = allSpells.filter((s) => s.scope == scope).map((s) => s.id);
+    const spellsToRemove = allSpells.filter((s) => s.scope == scope && (s.id == id || s.isExtra)).map((s) => s.id);
     buildA = { ...buildA, rotation: buildA.rotation.filter((a) => !spellsToRemove.includes(a.id)) };
     if (!buildB.rotation.some((r) => r.id === id)) {
       rotationOrder = rotationOrder.filter((x) => !spellsToRemove.includes(x));
@@ -125,7 +139,7 @@
 
   function removeRotationB(id: number) {
     const scope = spellRegistry.get(id)?.scope;
-    const spellsToRemove = allSpells.filter((s) => s.scope == scope).map((s) => s.id);
+    const spellsToRemove = allSpells.filter((s) => s.scope == scope && (s.id == id || s.isExtra)).map((s) => s.id);
     buildB = { ...buildB, rotation: buildB.rotation.filter((a) => !spellsToRemove.includes(a.id)) };
     if (!buildA.rotation.some((r) => r.id === id)) {
       rotationOrder = rotationOrder.filter((x) => !spellsToRemove.includes(x));
