@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { untrack } from "svelte";
   import ClipboardPasteRow from "@components/build-panel/ClipboardPasteRow.svelte";
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import FuzzySelect from "@components/FuzzySelect.svelte";
@@ -23,6 +24,18 @@
   } = $props();
 
   const spellRegistry = new Map(allSpells.map((s) => [s.id, s]));
+
+  // Keep rotationOrder in sync
+  $effect(() => {
+    const allIds = new Set([...buildA.rotation.map((r) => r.id), ...buildB.rotation.map((r) => r.id)]);
+    untrack(() => {
+      const kept = rotationOrder.filter((id) => allIds.has(id));
+      const added = [...allIds].filter((id) => !kept.includes(id));
+      if (added.length || kept.length !== rotationOrder.length) {
+        rotationOrder = [...kept, ...added];
+      }
+    });
+  });
 
   const isAutoAttack = (id: number) => id === 1;
 
@@ -119,19 +132,11 @@
     }
   }
 
-  function syncOrder() {
-    const allIds = new Set([...buildA.rotation.map((r) => r.id), ...buildB.rotation.map((r) => r.id)]);
-    const kept = rotationOrder.filter((id) => allIds.has(id));
-    const added = [...allIds].filter((id) => !kept.includes(id));
-    rotationOrder = [...kept, ...added];
-  }
   function copyAtoB() {
     buildB = { ...buildB, rotation: buildA.rotation.map((r) => ({ ...r })) };
-    syncOrder();
   }
   function copyBtoA() {
     buildA = { ...buildA, rotation: buildB.rotation.map((r) => ({ ...r })) };
-    syncOrder();
   }
 
   let pasteTarget: "a" | "b" | null = $state(null);
@@ -152,7 +157,6 @@
     } else {
       buildB = { ...buildB, rotation: pasted };
     }
-    syncOrder();
     pasteTarget = null;
   }
 </script>
