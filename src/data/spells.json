@@ -1453,7 +1453,7 @@
     "element": "ice",
     "power": 97,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 4,
     "vocations": [
       "druid"
     ],
@@ -1468,7 +1468,7 @@
     "element": "earth",
     "power": 105,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 4,
     "vocations": [
       "druid"
     ],
