@@ -11,6 +11,7 @@ export type Spell = {
   id: number;
   scope: string;
   name: string;
+  displayName: string;
   spellType: SpellType;
   scalesWith: ScalesWith;
   element: SpellElement;
@@ -18,6 +19,7 @@ export type Spell = {
   skillFactor: number;
   buckets: number;
   additionalDamageMultiplier: number;
+  targetsLabel?: string;
   spells: number[];
   isSpender: boolean;
   isSelectable: boolean;
@@ -75,7 +77,7 @@ export type SpellRawEffective = Spell & RawEffective;
 
 export const allSpells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) => ({
   ...s,
-  scope: s.scope,
+  displayName: s.displayName ?? s.name,
   additionalDamageMultiplier: s.additionalDamageMultiplier ?? 1,
   spells: s.spells ?? [s.id],
   isSpender: s.isSpender ?? false,

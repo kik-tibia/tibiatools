@@ -82,14 +82,15 @@
     "id": 6,
     "scope": "exec-throw",
     "name": "Executioner's Throw (No Bonus)",
+    "displayName": "Executioner's Throw",
     "spellType": "spell",
     "scalesWith": "melee",
     "element": "weapon",
     "power": 60,
     "skillFactor": 1000,
     "buckets": 10,
-    "isSelectable": false,
     "isExtra": true,
+    "targetsLabel": "No bonus",
     "vocations": [
       "knight"
     ],
@@ -106,10 +107,12 @@
     "skillFactor": 1000,
     "buckets": 10,
     "additionalDamageMultiplier": 2,
+    "targetsLabel": "Red HP",
     "spells": [
       7,
       6
     ],
+    "isSelectable": false,
     "vocations": [
       "knight"
     ],
@@ -126,10 +129,12 @@
     "skillFactor": 1000,
     "buckets": 10,
     "additionalDamageMultiplier": 2.25,
+    "targetsLabel": "Red HP",
     "spells": [
       8,
       6
     ],
+    "isSelectable": false,
     "vocations": [
       "knight"
     ],
@@ -146,10 +151,12 @@
     "skillFactor": 1000,
     "buckets": 10,
     "additionalDamageMultiplier": 2.5,
+    "targetsLabel": "Red HP",
     "spells": [
       9,
       6
     ],
+    "isSelectable": false,
     "vocations": [
       "knight"
     ],
@@ -219,6 +226,7 @@
     "id": 14,
     "scope": "divine-grenade",
     "name": "Divine Grenade (Stage 1)",
+    "displayName": "Divine Grenade",
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "holy",
@@ -240,6 +248,7 @@
     "power": 220,
     "skillFactor": 25,
     "buckets": 100,
+    "isSelectable": false,
     "vocations": [
       "paladin"
     ],
@@ -255,6 +264,7 @@
     "power": 250,
     "skillFactor": 25,
     "buckets": 100,
+    "isSelectable": false,
     "vocations": [
       "paladin"
     ],
@@ -402,6 +412,7 @@
     "id": 26,
     "scope": "great-death-beam",
     "name": "Great Death Beam (Stage 1)",
+    "displayName": "Great Death Beam",
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "death",
@@ -423,6 +434,7 @@
     "power": 180,
     "skillFactor": 25,
     "buckets": 0,
+    "isSelectable": false,
     "vocations": [
       "sorcerer"
     ],
@@ -438,6 +450,7 @@
     "power": 190,
     "skillFactor": 25,
     "buckets": 0,
+    "isSelectable": false,
     "vocations": [
       "sorcerer"
     ],
@@ -582,14 +595,15 @@
     "id": 38,
     "scope": "ice-burst",
     "name": "Ice Burst (No Bonus)",
+    "displayName": "Ice Burst",
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "ice",
     "power": 115,
     "skillFactor": 25,
     "buckets": 60,
-    "isSelectable": false,
     "isExtra": true,
+    "targetsLabel": "No bonus",
     "vocations": [
       "druid"
     ],
@@ -606,10 +620,12 @@
     "skillFactor": 25,
     "buckets": 60,
     "additionalDamageMultiplier": 1.2,
+    "targetsLabel": "Green HP",
     "spells": [
       39,
       38
     ],
+    "isSelectable": false,
     "vocations": [
       "druid"
     ],
@@ -626,10 +642,12 @@
     "skillFactor": 25,
     "buckets": 60,
     "additionalDamageMultiplier": 1.4,
+    "targetsLabel": "Green HP",
     "spells": [
       40,
       38
     ],
+    "isSelectable": false,
     "vocations": [
       "druid"
     ],
@@ -646,10 +664,12 @@
     "skillFactor": 25,
     "buckets": 60,
     "additionalDamageMultiplier": 1.6,
+    "targetsLabel": "Green HP",
     "spells": [
       41,
       38
     ],
+    "isSelectable": false,
     "vocations": [
       "druid"
     ],
@@ -659,14 +679,15 @@
     "id": 42,
     "scope": "terra-burst",
     "name": "Terra Burst (No Bonus)",
+    "displayName": "Terra Burst",
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "earth",
     "power": 115,
     "skillFactor": 25,
     "buckets": 60,
-    "isSelectable": false,
     "isExtra": true,
+    "targetsLabel": "No bonus",
     "vocations": [
       "druid"
     ],
@@ -683,10 +704,12 @@
     "skillFactor": 25,
     "buckets": 60,
     "additionalDamageMultiplier": 1.2,
+    "targetsLabel": "Green HP",
     "spells": [
       43,
       42
     ],
+    "isSelectable": false,
     "vocations": [
       "druid"
     ],
@@ -703,10 +726,12 @@
     "skillFactor": 25,
     "buckets": 60,
     "additionalDamageMultiplier": 1.4,
+    "targetsLabel": "Green HP",
     "spells": [
       44,
       42
     ],
+    "isSelectable": false,
     "vocations": [
       "druid"
     ],
@@ -723,10 +748,12 @@
     "skillFactor": 25,
     "buckets": 60,
     "additionalDamageMultiplier": 1.6,
+    "targetsLabel": "Green HP",
     "spells": [
       45,
       42
     ],
+    "isSelectable": false,
     "vocations": [
       "druid"
     ],
@@ -932,6 +959,7 @@
     "id": 59,
     "scope": "spiritual-outburst",
     "name": "Spiritual Outburst (Primary)",
+    "displayName": "Spiritual Outburst",
     "spellType": "spell",
     "scalesWith": "melee",
     "element": "weapon",
@@ -939,7 +967,8 @@
     "skillFactor": 1000,
     "buckets": 0,
     "isSpender": true,
-    "isSelectable": false,
+    "isExtra": true,
+    "targetsLabel": "Primary",
     "vocations": [
       "monk"
     ],
@@ -956,12 +985,13 @@
     "skillFactor": 1000,
     "buckets": 0,
     "additionalDamageMultiplier": 0.375,
+    "targetsLabel": "Repeat",
     "spells": [
       59,
       60
     ],
     "isSpender": true,
-    "isExtra": true,
+    "isSelectable": false,
     "vocations": [
       "monk"
     ],
@@ -978,12 +1008,13 @@
     "skillFactor": 1000,
     "buckets": 0,
     "additionalDamageMultiplier": 0.5,
+    "targetsLabel": "Repeat",
     "spells": [
       59,
       61
     ],
     "isSpender": true,
-    "isExtra": true,
+    "isSelectable": false,
     "vocations": [
       "monk"
     ],
@@ -1000,12 +1031,13 @@
     "skillFactor": 1000,
     "buckets": 0,
     "additionalDamageMultiplier": 0.625,
+    "targetsLabel": "Repeat",
     "spells": [
       59,
       62
     ],
     "isSpender": true,
-    "isExtra": true,
+    "isSelectable": false,
     "vocations": [
       "monk"
     ],

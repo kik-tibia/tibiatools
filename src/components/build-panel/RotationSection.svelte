@@ -5,7 +5,7 @@
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
   import { allSpells, type Spell } from "@data/spells";
-  import type { Build } from "@lib/build-state";
+  import type { Build, SpellChoiceRef } from "@lib/build-state";
   import { packSection, SECTION_TAG } from "@lib/section-clipboard";
   import { compactRotation, expandRotation } from "@lib/url-pack";
 
@@ -24,126 +24,155 @@
   } = $props();
 
   const spellRegistry = new Map(allSpells.map((s) => [s.id, s]));
+  const AUTO_ATTACK_ID = 1;
+  const isAutoAttack = (id: number) => id === AUTO_ATTACK_ID;
 
-  // Keep rotationOrder in sync
+  // E.g. ("ice-burst" -> [39, 40, 41]), but not 38, which is the extra no bonus spell.
+  const mainSpellIdsByScope = new Map<string, number[]>();
+  for (const s of allSpells) {
+    if (s.isExtra) continue;
+    mainSpellIdsByScope.set(s.scope, [...(mainSpellIdsByScope.get(s.scope) ?? []), s.id]);
+  }
+  for (const arr of mainSpellIdsByScope.values()) arr.sort((a, b) => a - b);
+  const mainFromScope = (scope: string) => mainSpellIdsByScope.get(scope)?.[0] ?? -1;
+
+  const groupScopes = new Set(
+    [...mainSpellIdsByScope]
+      .filter(([, mains]) => mains.length > 1 || mains.some((id) => (spellRegistry.get(id)?.spells.length ?? 1) > 1))
+      .map(([scope]) => scope),
+  );
+
+  const displayNameByScope = new Map<string, string>();
+  for (const s of allSpells) {
+    if (s.isSelectable && !displayNameByScope.has(s.scope)) displayNameByScope.set(s.scope, s.displayName);
+  }
+  const displayNameFromScope = (scope: string) =>
+    displayNameByScope.get(scope) ?? spellRegistry.get(mainFromScope(scope))?.displayName ?? scope;
+
+  // e.g. stageNumber("ice-burst", 40) = 2
+  const stageNumber = (scope: string, mainId: number) => (mainSpellIdsByScope.get(scope)?.indexOf(mainId) ?? 0) + 1;
+  // Includes the main stages but not the extra spell
+  const stagesOf = (scope: string) =>
+    (mainSpellIdsByScope.get(scope) ?? []).map((id) => spellRegistry.get(id)).filter((s): s is Spell => !!s);
+  const vocationCanCast = (scope: string, vocation: string) =>
+    (mainSpellIdsByScope.get(scope) ?? []).some((id) => spellRegistry.get(id)?.vocations.includes(vocation));
+
+  const buildOf = (b: string) => (b === "a" ? buildA : buildB);
+  function setRotation(b: string, rotation: SpellChoiceRef[]) {
+    if (b === "a") buildA = { ...buildA, rotation };
+    else buildB = { ...buildB, rotation };
+  }
+  const rotationHasGroupSpell = (build: Build, scope: string) =>
+    build.rotation.some((r) => spellRegistry.get(r.id)?.scope === scope);
+  const currentMainSpellOfGroup = (build: Build, scope: string) =>
+    build.rotation.map((r) => spellRegistry.get(r.id)).find((d): d is Spell => !!d && d.scope === scope && !d.isExtra);
+  const spellChoiceRefById = (build: Build, id: number) => build.rotation.find((r) => r.id === id);
+
+  // Keep rotationOrder in sync. Group spells just use the main spell id.
   $effect(() => {
-    const allIds = new Set([...buildA.rotation.map((r) => r.id), ...buildB.rotation.map((r) => r.id)]);
+    const presentKeys: number[] = [];
+    const seen = new Set<number>();
+    for (const r of [...buildA.rotation, ...buildB.rotation]) {
+      const d = spellRegistry.get(r.id);
+      if (!d) continue;
+      const key = groupScopes.has(d.scope) ? mainFromScope(d.scope) : d.isExtra ? -1 : d.id;
+      if (key < 0 || seen.has(key)) continue;
+      seen.add(key);
+      presentKeys.push(key);
+    }
     untrack(() => {
-      const kept = rotationOrder.filter((id) => allIds.has(id));
-      const added = [...allIds].filter((id) => !kept.includes(id));
-      if (added.length || kept.length !== rotationOrder.length) {
-        rotationOrder = [...kept, ...added];
-      }
+      const wanted = new Set(presentKeys);
+      const kept = rotationOrder.filter((id) => wanted.has(id));
+      const added = presentKeys.filter((id) => !kept.includes(id));
+      let next = [...kept, ...added];
+      if (next.includes(AUTO_ATTACK_ID)) next = [AUTO_ATTACK_ID, ...next.filter((x) => x !== AUTO_ATTACK_ID)];
+      const changed = next.length !== rotationOrder.length || next.some((v, i) => v !== rotationOrder[i]);
+      if (changed) rotationOrder = next;
     });
   });
 
-  const isAutoAttack = (id: number) => id === 1;
+  let selectableEntries = $derived.by(() => {
+    const entries: { id: number; name: string }[] = [];
+    const seenGroups = new Set<string>();
+    for (const s of allSpells) {
+      if (!s.isSelectable) continue;
+      const vocOk =
+        s.vocations.includes(buildA.stats.vocation) || (showSecondBuild && s.vocations.includes(buildB.stats.vocation));
+      if (!vocOk) continue;
+      if (groupScopes.has(s.scope)) {
+        if (seenGroups.has(s.scope)) continue;
+        seenGroups.add(s.scope);
+        entries.push({ id: mainFromScope(s.scope), name: s.displayName });
+      } else {
+        entries.push({ id: s.id, name: s.displayName });
+      }
+    }
+    return entries;
+  });
 
-  let selectableSpells = $derived(
-    allSpells.filter(
-      (s) =>
-        s.isSelectable &&
-        (s.vocations.includes(buildA.stats.vocation) ||
-          (showSecondBuild && s.vocations.includes(buildB.stats.vocation))),
-    ),
-  );
+  function spellEntries(mainId: number, vocation: string): SpellChoiceRef[] {
+    return (spellRegistry.get(mainId)?.spells ?? [mainId])
+      .map((sid) => spellRegistry.get(sid))
+      .filter((d): d is Spell => !!d && d.vocations.includes(vocation))
+      .map((d) => ({ id: d.id, targets: 1, ratio: 1, extraSpell: !!d.isExtra }));
+  }
 
   function addSpellToRotation(id: number) {
-    const spellsToAdd = (spellRegistry.get(id)?.spells ?? []).flatMap((s) => spellRegistry.get(s) ?? []);
-    const spellsToAddA = spellsToAdd
-      .filter((s) => s.vocations.includes(buildA.stats.vocation))
-      .map((spell, i) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: i > 0 }));
-    const spellsToAddB = spellsToAdd
-      .filter((s) => s.vocations.includes(buildB.stats.vocation))
-      .map((spell, i) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: i > 0 }));
-
-    buildA = { ...buildA, rotation: [...buildA.rotation, ...spellsToAddA] };
-    if (showSecondBuild) {
-      buildB = { ...buildB, rotation: [...buildB.rotation, ...spellsToAddB] };
-    }
-    if (!rotationOrder.includes(id)) {
-      if (isAutoAttack(id)) rotationOrder = [id, ...rotationOrder];
-      else
-        rotationOrder = [
-          ...new Set([...rotationOrder, ...spellsToAddA.map((s) => s.id), ...spellsToAddB.map((s) => s.id)]),
-        ];
-    }
+    buildA = { ...buildA, rotation: [...buildA.rotation, ...spellEntries(id, buildA.stats.vocation)] };
+    if (showSecondBuild)
+      buildB = { ...buildB, rotation: [...buildB.rotation, ...spellEntries(id, buildB.stats.vocation)] };
   }
 
-  function setRatioA(id: number, v: number) {
-    const scope = spellRegistry.get(id)?.scope;
-    const matchedSpells = allSpells.filter((s) => s.scope == scope && (s.id == id || s.isExtra)).map((s) => s.id);
-    buildA = {
-      ...buildA,
-      rotation: buildA.rotation.map((r) => (matchedSpells.includes(r.id) ? { ...r, ratio: v } : r)),
-    };
+  function addGroup(b: string, scope: string) {
+    const other = b === "a" ? buildB : buildA;
+    const mainId = currentMainSpellOfGroup(other, scope)?.id ?? mainFromScope(scope);
+    setRotation(b, [...buildOf(b).rotation, ...spellEntries(mainId, buildOf(b).stats.vocation)]);
+  }
+  function addId(b: string, id: number) {
+    setRotation(b, [...buildOf(b).rotation, ...spellEntries(id, buildOf(b).stats.vocation)]);
   }
 
-  function setRatioB(id: number, v: number) {
-    const scope = spellRegistry.get(id)?.scope;
-    const matchedSpells = allSpells.filter((s) => s.scope == scope && (s.id == id || s.isExtra)).map((s) => s.id);
-    buildB = {
-      ...buildB,
-      rotation: buildB.rotation.map((r) => (matchedSpells.includes(r.id) ? { ...r, ratio: v } : r)),
-    };
-  }
-
-  function setTargetsA(id: number, v: number) {
-    buildA = { ...buildA, rotation: buildA.rotation.map((r) => (r.id === id ? { ...r, targets: v } : r)) };
-  }
-
-  function setTargetsB(id: number, v: number) {
-    buildB = { ...buildB, rotation: buildB.rotation.map((r) => (r.id === id ? { ...r, targets: v } : r)) };
-  }
-
-  function addRotationA(id: number) {
-    const rotationBSpells = buildB.rotation.flatMap((s) => spellRegistry.get(s.id) ?? []);
-    const spellsIdsToAdd = Array.from(
-      new Set(
-        rotationBSpells.flatMap((s) => {
-          if (s.spells.includes(id)) return s.spells;
-          else return [];
-        }),
-      ),
+  function removeScope(b: string, scope: string) {
+    setRotation(
+      b,
+      buildOf(b).rotation.filter((r) => spellRegistry.get(r.id)?.scope !== scope),
     );
-    const spellsToAdd = allSpells
-      .filter((s) => spellsIdsToAdd.includes(s.id))
-      .map((spell) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: spell.isExtra }));
-    buildA = { ...buildA, rotation: [...buildA.rotation, ...spellsToAdd] };
   }
-
-  function addRotationB(id: number) {
-    const rotationASpells = buildA.rotation.flatMap((s) => spellRegistry.get(s.id) ?? []);
-    const spellsIdsToAdd = Array.from(
-      new Set(
-        rotationASpells.flatMap((s) => {
-          if (s.spells.includes(id)) return s.spells;
-          else return [];
-        }),
-      ),
+  function removeId(b: string, id: number) {
+    setRotation(
+      b,
+      buildOf(b).rotation.filter((r) => r.id !== id),
     );
-    const spellsToAdd = allSpells
-      .filter((s) => spellsIdsToAdd.includes(s.id))
-      .map((spell) => ({ id: spell.id, targets: 1, ratio: 1, extraSpell: spell.isExtra }));
-    buildB = { ...buildB, rotation: [...buildB.rotation, ...spellsToAdd] };
   }
 
-  function removeRotationA(id: number) {
-    const scope = spellRegistry.get(id)?.scope;
-    const spellsToRemove = allSpells.filter((s) => s.scope == scope && (s.id == id || s.isExtra)).map((s) => s.id);
-    buildA = { ...buildA, rotation: buildA.rotation.filter((a) => !spellsToRemove.includes(a.id)) };
-    if (!buildB.rotation.some((r) => r.id === id)) {
-      rotationOrder = rotationOrder.filter((x) => !spellsToRemove.includes(x));
-    }
+  function setStage(b: string, scope: string, newMainId: number) {
+    const build = buildOf(b);
+    const newMain = spellRegistry.get(newMainId);
+    if (!newMain) return;
+    const oldMain = currentMainSpellOfGroup(build, scope);
+    const sharedRatio = oldMain ? (spellChoiceRefById(build, oldMain.id)?.ratio ?? 1) : 1;
+    const oldMainTargets = oldMain ? (spellChoiceRefById(build, oldMain.id)?.targets ?? 1) : 1;
+    const newEntries: SpellChoiceRef[] = newMain.spells.map((sid) => {
+      const existing = spellChoiceRefById(build, sid);
+      const targets = existing?.targets ?? (sid === newMainId ? oldMainTargets : 1);
+      return { id: sid, targets, ratio: sharedRatio, extraSpell: !!spellRegistry.get(sid)?.isExtra };
+    });
+    setRotation(b, [...build.rotation.filter((r) => spellRegistry.get(r.id)?.scope !== scope), ...newEntries]);
   }
 
-  function removeRotationB(id: number) {
+  function setRatio(b: string, id: number, v: number) {
     const scope = spellRegistry.get(id)?.scope;
-    const spellsToRemove = allSpells.filter((s) => s.scope == scope && (s.id == id || s.isExtra)).map((s) => s.id);
-    buildB = { ...buildB, rotation: buildB.rotation.filter((a) => !spellsToRemove.includes(a.id)) };
-    if (!buildA.rotation.some((r) => r.id === id)) {
-      rotationOrder = rotationOrder.filter((x) => !spellsToRemove.includes(x));
-    }
+    const matched = new Set(allSpells.filter((s) => s.scope === scope && (s.id === id || s.isExtra)).map((s) => s.id));
+    setRotation(
+      b,
+      buildOf(b).rotation.map((r) => (matched.has(r.id) ? { ...r, ratio: v } : r)),
+    );
+  }
+  function setTargets(b: string, id: number, v: number) {
+    setRotation(
+      b,
+      buildOf(b).rotation.map((r) => (r.id === id ? { ...r, targets: v } : r)),
+    );
   }
 
   function copyAtoB() {
@@ -156,7 +185,12 @@
   let pasteTarget: "a" | "b" | null = $state(null);
 
   function orderedRotation(build: Build) {
-    return rotationOrder.flatMap((id) => build.rotation.filter((r) => r.id === id));
+    return rotationOrder.flatMap((key) => {
+      const d = spellRegistry.get(key);
+      if (!d) return [];
+      if (groupScopes.has(d.scope)) return build.rotation.filter((r) => spellRegistry.get(r.id)?.scope === d.scope);
+      return build.rotation.filter((r) => r.id === key);
+    });
   }
   function onCopyA(): string {
     return packSection(SECTION_TAG.rotation, compactRotation(orderedRotation(buildA)));
@@ -166,53 +200,122 @@
   }
   function handlePaste(data: unknown) {
     const pasted = expandRotation(data as any);
-    if (pasteTarget === "a") {
-      buildA = { ...buildA, rotation: pasted };
-    } else {
-      buildB = { ...buildB, rotation: pasted };
-    }
+    if (pasteTarget === "a") buildA = { ...buildA, rotation: pasted };
+    else buildB = { ...buildB, rotation: pasted };
     pasteTarget = null;
   }
 </script>
 
-{#snippet rotationCell(
-  build: Build,
-  buildId: string,
-  spell: Spell,
-  setTargets: (id: number, v: number) => void,
-  setRatio: (id: number, v: number) => void,
-  addRotation: (id: number) => void,
-  removeRotation: (id: number) => void,
-)}
-  {@const isAuto = isAutoAttack(spell.id)}
+{#snippet labels()}
+  <td class="sub-header">
+    {#if rotationOrder.length > 0}
+      <div class="rotation-labels">
+        <span>Ratio</span>
+        <span>Targets</span>
+      </div>
+    {/if}
+  </td>
+{/snippet}
+
+{#snippet groupCell(b: string, scope: string)}
+  {@const build = buildOf(b)}
   <td>
-    {#if build.rotation.some((r) => r.id === spell.id)}
-      <div class="input-with-remove">
-        <input
-          type="number"
-          step="any"
-          class="input-{buildId}"
-          value={build.rotation.find((r) => r.id === spell.id)?.targets ?? 1}
-          oninput={(e) => setTargets(spell.id, Number(e.currentTarget.value))} />
-        {#if spell.isExtra}
-          <span class="corner-ratio" aria-hidden="true"></span>
-          <span class="corner-remove" aria-hidden="true"></span>
-        {:else if isAuto}
-          <span class="phantom-input" aria-hidden="true"></span>
-          <RemoveButton onclick={() => removeRotation(spell.id)} />
+    {#if rotationHasGroupSpell(build, scope)}
+      {@const cur = currentMainSpellOfGroup(build, scope)}
+      {@const stages = stagesOf(scope)}
+      <div class="group-cell">
+        <div class="group-head">
+          {#if stages.length > 1 && cur}
+            <select
+              class="stage-select input-{b}"
+              value={cur.id}
+              onchange={(e) => setStage(b, scope, Number(e.currentTarget.value))}>
+              {#each stages as st (st.id)}
+                <option value={st.id}>Stage {stageNumber(scope, st.id)}</option>
+              {/each}
+            </select>
+          {:else if cur}
+            <span class="stage-static">Stage {stageNumber(scope, cur.id)}</span>
+          {/if}
+          <RemoveButton onclick={() => removeScope(b, scope)} />
+        </div>
+        {#if cur && cur.spells.length > 1}
+          <!-- Bundled group: shared ratio on its own row, then a labelled targets row each. -->
+          <div class="ratio-line">
+            <input
+              type="number"
+              step="any"
+              class="input-{b}"
+              value={spellChoiceRefById(build, cur.id)?.ratio ?? 1}
+              oninput={(e) => setRatio(b, cur.id, Number(e.currentTarget.value))} />
+          </div>
+          {#each cur.spells as sid, k (k)}
+            {@const entry = spellChoiceRefById(build, sid)}
+            <div class="targets-line">
+              <span class="row-label">{spellRegistry.get(sid)?.targetsLabel ?? ""}</span>
+              <input
+                type="number"
+                step="any"
+                class="input-{b}"
+                value={entry?.targets ?? 1}
+                oninput={(e) => setTargets(b, sid, Number(e.currentTarget.value))} />
+            </div>
+          {/each}
+        {:else if cur}
+          <!-- Single spell (no bundled sub-spells): ratio + targets on one line, like a regular spell. -->
+          {@const entry = spellChoiceRefById(build, cur.id)}
+          <div class="sub-grid">
+            <input
+              type="number"
+              step="any"
+              class="input-{b}"
+              value={entry?.ratio ?? 1}
+              oninput={(e) => setRatio(b, cur.id, Number(e.currentTarget.value))} />
+            <input
+              type="number"
+              step="any"
+              class="input-{b}"
+              value={entry?.targets ?? 1}
+              oninput={(e) => setTargets(b, cur.id, Number(e.currentTarget.value))} />
+            <span class="cell-spacer" aria-hidden="true"></span>
+          </div>
+        {/if}
+      </div>
+    {:else if vocationCanCast(scope, build.stats.vocation)}
+      <div class="add-placeholder">
+        <button type="button" class="add-btn input-{b}" onclick={() => addGroup(b, scope)}>+</button>
+      </div>
+    {/if}
+  </td>
+{/snippet}
+
+{#snippet singleCell(b: string, def: Spell)}
+  {@const build = buildOf(b)}
+  <td>
+    {#if spellChoiceRefById(build, def.id)}
+      {@const entry = spellChoiceRefById(build, def.id)}
+      <div class="sub-grid">
+        {#if isAutoAttack(def.id)}
+          <span class="cell-spacer" aria-hidden="true"></span>
         {:else}
           <input
             type="number"
             step="any"
-            class="input-{buildId}"
-            value={build.rotation.find((r) => r.id === spell.id)?.ratio ?? 1}
-            oninput={(e) => setRatio(spell.id, Number(e.currentTarget.value))} />
-          <RemoveButton onclick={() => removeRotation(spell.id)} />
+            class="input-{b}"
+            value={entry?.ratio ?? 1}
+            oninput={(e) => setRatio(b, def.id, Number(e.currentTarget.value))} />
         {/if}
+        <input
+          type="number"
+          step="any"
+          class="input-{b}"
+          value={entry?.targets ?? 1}
+          oninput={(e) => setTargets(b, def.id, Number(e.currentTarget.value))} />
+        <RemoveButton onclick={() => removeId(b, def.id)} />
       </div>
-    {:else if !spell.isExtra}
+    {:else if vocationCanCast(def.scope, build.stats.vocation)}
       <div class="add-placeholder">
-        <button type="button" class="add-btn input-{buildId}" onclick={() => addRotation(spell.id)}>+</button>
+        <button type="button" class="add-btn input-{b}" onclick={() => addId(b, def.id)}>+</button>
       </div>
     {/if}
   </td>
@@ -235,36 +338,31 @@
 {#if !collapsed}
   <tr class="data-row">
     <td>
-      <FuzzySelect selectType="spells" all={selectableSpells} selectedIds={rotationOrder} onAdd={addSpellToRotation} />
+      <FuzzySelect selectType="spells" all={selectableEntries} selectedIds={rotationOrder} onAdd={addSpellToRotation} />
     </td>
-    <td class="sub-header">
-      {#if rotationOrder.length > 0}
-        <div class="rotation-labels">
-          <span>Targets</span>
-          <span>Ratio</span>
-        </div>
-      {/if}
-    </td>
+    {@render labels()}
     {#if showSecondBuild}
-      <td class="sub-header">
-        {#if rotationOrder.length > 0}
-          <div class="rotation-labels">
-            <span>Targets</span>
-            <span>Ratio</span>
-          </div>
-        {/if}
-      </td>
+      {@render labels()}
     {/if}
   </tr>
 
-  {#each rotationOrder as id (id)}
-    {@const def = spellRegistry.get(id)}
-    {#if def}
-      <tr class="data-row">
-        <td class="item-name">{def.name}</td>
-        {@render rotationCell(buildA, "a", def, setTargetsA, setRatioA, addRotationA, removeRotationA)}
+  {#each rotationOrder as key (key)}
+    {@const def = spellRegistry.get(key)}
+    {#if def && groupScopes.has(def.scope)}
+      {@const scope = def.scope}
+      <tr class="data-row group-start">
+        <td class="item-name group-title">{displayNameFromScope(scope)}</td>
+        {@render groupCell("a", scope)}
         {#if showSecondBuild}
-          {@render rotationCell(buildB, "b", def, setTargetsB, setRatioB, addRotationB, removeRotationB)}
+          {@render groupCell("b", scope)}
+        {/if}
+      </tr>
+    {:else if def}
+      <tr class="data-row group-start">
+        <td class="item-name">{def.displayName}</td>
+        {@render singleCell("a", def)}
+        {#if showSecondBuild}
+          {@render singleCell("b", def)}
         {/if}
       </tr>
     {/if}
@@ -279,45 +377,75 @@
     vertical-align: bottom;
   }
 
-  /* Fixed col 3 lets the extra-row connectors below position against known
-     geometry. :global(.build-table) outweighs the global flex rule on
-     .input-with-remove; the column-gap is needed by .rotation-labels (the
-     global rule doesn't apply to it). */
-  :global(.build-table) .input-with-remove,
-  :global(.build-table) .rotation-labels {
+  /* Single-spell rows and the column-header labels share one 3-column grid
+     (ratio | targets | remove) so they line up under the headers. */
+  .sub-grid,
+  .rotation-labels {
     display: grid;
     grid-template-columns: 1fr 1fr var(--remove-btn-width);
     column-gap: 0.25rem;
-    position: relative;
+    align-items: center;
   }
 
   .rotation-labels span {
     text-align: center;
   }
 
-  /* Connector to parent row, drawn as two overlapping boxes with only
-     right + bottom borders. One-box corners avoid the subpixel gap that
-     adjacent-line rendering can leave. Both start at grid_left; col 1's
-     input (z-index: 1) covers the overlap so the visible bar begins past
-     the input. */
-  .corner-ratio,
-  .corner-remove {
-    position: absolute;
-    left: 0;
-    top: -1.2rem;
-    bottom: 50%;
-    border-right: 1px solid var(--text-muted);
-    border-bottom: 1px solid var(--text-muted);
-    pointer-events: none;
+  /* Grouped spells stack vertically: a stage-select header, a dedicated ratio row
+     (so the ratio reads as applying to the whole spell), then one targets row per
+     bundled spell with its label sitting just left of the input. Each line reuses the
+     same ratio | targets | remove columns as the headers. */
+  .group-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
   }
 
-  /* Right edge at col 2 center; assumes col_1 = col_2 = 1fr. */
-  .corner-ratio {
-    right: calc(25% + 0.125rem + 0.75 * var(--remove-btn-width));
+  .group-cell > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr var(--remove-btn-width);
+    column-gap: 0.25rem;
+    align-items: center;
   }
 
-  /* Right edge at col 3 center. */
-  .corner-remove {
-    right: calc(var(--remove-btn-width) / 2);
+  /* The stage <select> spans the ratio + targets columns; the × lands in the remove column. */
+  .group-head > .stage-select,
+  .group-head > .stage-static {
+    grid-column: 1 / 3;
+    width: 100%;
+  }
+
+  .stage-select {
+    text-align: center;
+    text-align-last: center;
+  }
+
+  .stage-static {
+    padding: 0.2rem 0.4rem;
+  }
+
+  .ratio-line > input {
+    grid-column: 1;
+  }
+
+  .targets-line > .row-label {
+    grid-column: 1;
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .targets-line > input {
+    grid-column: 2;
+  }
+
+  /* Keep a group's title aligned with the top (stage-select) line of its cell. */
+  .group-title {
+    vertical-align: top;
+  }
+
+  /* Horizontal divider between rotation entries. */
+  .group-start td {
+    border-top: 1px solid var(--sub-border-color);
   }
 </style>

@@ -2,8 +2,9 @@
   import ClipboardPasteRow from "@components/build-panel/ClipboardPasteRow.svelte";
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import Tooltip from "@components/Tooltip.svelte";
+  import { allSpells } from "@data/spells";
   import { allStances, type Stance, type StanceGroup } from "@data/stances";
-  import type { Build, BuildStats, Vocation } from "@lib/build-state";
+  import type { Build, BuildStats, SpellChoiceRef, Vocation } from "@lib/build-state";
   import { packSection, SECTION_TAG } from "@lib/section-clipboard";
   import { compactStats, expandStats } from "@lib/url-pack";
 
@@ -43,11 +44,24 @@
     buildB = { ...buildB, stats: { ...buildB.stats, [key]: value } };
   }
 
+  const spellVocations = new Map(allSpells.map((s) => [s.id, s.vocations]));
+  function castableBy(rotation: SpellChoiceRef[], voc: Vocation): SpellChoiceRef[] {
+    return rotation.filter((r) => (spellVocations.get(r.id) ?? []).includes(voc));
+  }
+
   function setVocationA(voc: Vocation) {
-    buildA = { ...buildA, stats: { ...buildA.stats, vocation: voc, stanceIds: [] } };
+    buildA = {
+      ...buildA,
+      stats: { ...buildA.stats, vocation: voc, stanceIds: [] },
+      rotation: castableBy(buildA.rotation, voc),
+    };
   }
   function setVocationB(voc: Vocation) {
-    buildB = { ...buildB, stats: { ...buildB.stats, vocation: voc, stanceIds: [] } };
+    buildB = {
+      ...buildB,
+      stats: { ...buildB.stats, vocation: voc, stanceIds: [] },
+      rotation: castableBy(buildB.rotation, voc),
+    };
   }
 
   const stanceById: Record<number, Stance> = Object.fromEntries(allStances.map((s) => [s.id, s]));

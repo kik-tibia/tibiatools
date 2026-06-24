@@ -263,7 +263,7 @@
   {#each targetOrder as id (id)}
     {@const def = creatureRegistry.get(id)}
     {#if def}
-      <tr class="data-row">
+      <tr class="data-row group-start">
         <td class="item-name" rowspan="2">{def.name}</td>
         {@render ratioCell(buildA, "a", id, setTargetRatioA, removeTargetA)}
         {#if showSecondBuild}
@@ -297,5 +297,10 @@
   .ratio-label span {
     flex: 1;
     text-align: center;
+  }
+
+  /* Horizontal divider between target entries (each target spans a ratio + charm row). */
+  .group-start td {
+    border-top: 1px solid var(--sub-border-color);
   }
 </style>
