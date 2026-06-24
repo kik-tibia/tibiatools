@@ -27,20 +27,20 @@
   const AUTO_ATTACK_ID = 1;
   const isAutoAttack = (id: number) => id === AUTO_ATTACK_ID;
 
-  // E.g. ("ice-burst" -> [39, 40, 41]), but not 38, which is the extra no bonus spell.
-  const mainSpellIdsByScope = new Map<string, number[]>();
+  // e.g. "ice-burst" -> [39, 40, 41]. GDB includes the central beam spell here too.
+  const stagedSpellsByScope = new Map<string, Spell[]>();
   for (const s of allSpells) {
-    if (s.isExtra) continue;
-    mainSpellIdsByScope.set(s.scope, [...(mainSpellIdsByScope.get(s.scope) ?? []), s.id]);
+    if (s.stage == null) continue;
+    stagedSpellsByScope.set(s.scope, [...(stagedSpellsByScope.get(s.scope) ?? []), s]);
   }
-  for (const arr of mainSpellIdsByScope.values()) arr.sort((a, b) => a - b);
-  const mainFromScope = (scope: string) => mainSpellIdsByScope.get(scope)?.[0] ?? -1;
+  for (const arr of stagedSpellsByScope.values()) arr.sort((a, b) => a.stage! - b.stage!);
 
-  const groupScopes = new Set(
-    [...mainSpellIdsByScope]
-      .filter(([, mains]) => mains.length > 1 || mains.some((id) => (spellRegistry.get(id)?.spells.length ?? 1) > 1))
-      .map(([scope]) => scope),
-  );
+  const groupScopes = new Set(stagedSpellsByScope.keys());
+  const stagesOf = (scope: string) => stagedSpellsByScope.get(scope) ?? [];
+  // The lowest stage is the default added from search and the stable rotationOrder key.
+  const mainFromScope = (scope: string) => stagesOf(scope)[0]?.id ?? -1;
+  const vocationCanCast = (scope: string, vocation: string) =>
+    stagesOf(scope).some((s) => s.vocations.includes(vocation));
 
   const displayNameByScope = new Map<string, string>();
   for (const s of allSpells) {
@@ -49,14 +49,6 @@
   const displayNameFromScope = (scope: string) =>
     displayNameByScope.get(scope) ?? spellRegistry.get(mainFromScope(scope))?.displayName ?? scope;
 
-  // e.g. stageNumber("ice-burst", 40) = 2
-  const stageNumber = (scope: string, mainId: number) => (mainSpellIdsByScope.get(scope)?.indexOf(mainId) ?? 0) + 1;
-  // Includes the main stages but not the extra spell
-  const stagesOf = (scope: string) =>
-    (mainSpellIdsByScope.get(scope) ?? []).map((id) => spellRegistry.get(id)).filter((s): s is Spell => !!s);
-  const vocationCanCast = (scope: string, vocation: string) =>
-    (mainSpellIdsByScope.get(scope) ?? []).some((id) => spellRegistry.get(id)?.vocations.includes(vocation));
-
   const buildOf = (b: string) => (b === "a" ? buildA : buildB);
   function setRotation(b: string, rotation: SpellChoiceRef[]) {
     if (b === "a") buildA = { ...buildA, rotation };
@@ -64,8 +56,18 @@
   }
   const rotationHasGroupSpell = (build: Build, scope: string) =>
     build.rotation.some((r) => spellRegistry.get(r.id)?.scope === scope);
-  const currentMainSpellOfGroup = (build: Build, scope: string) =>
+  const scopeRatioOwner = (build: Build, scope: string) =>
     build.rotation.map((r) => spellRegistry.get(r.id)).find((d): d is Spell => !!d && d.scope === scope && !d.isExtra);
+  // The selected stage: the highest-`stage` spell present (a stage-0 base spell loses to it).
+  const currentStageSpellFromScope = (build: Build, scope: string) => {
+    let best: Spell | undefined;
+    for (const r of build.rotation) {
+      const d = spellRegistry.get(r.id);
+      if (!d || d.scope !== scope || d.stage == null) continue;
+      if (!best || d.stage > best.stage!) best = d;
+    }
+    return best;
+  };
   const spellChoiceRefById = (build: Build, id: number) => build.rotation.find((r) => r.id === id);
 
   // Keep rotationOrder in sync. Group spells just use the main spell id.
@@ -125,8 +127,8 @@
 
   function addGroup(b: string, scope: string) {
     const other = b === "a" ? buildB : buildA;
-    const mainId = currentMainSpellOfGroup(other, scope)?.id ?? mainFromScope(scope);
-    setRotation(b, [...buildOf(b).rotation, ...spellEntries(mainId, buildOf(b).stats.vocation)]);
+    const stageId = currentStageSpellFromScope(other, scope)?.id ?? mainFromScope(scope);
+    setRotation(b, [...buildOf(b).rotation, ...spellEntries(stageId, buildOf(b).stats.vocation)]);
   }
   function addId(b: string, id: number) {
     setRotation(b, [...buildOf(b).rotation, ...spellEntries(id, buildOf(b).stats.vocation)]);
@@ -145,16 +147,17 @@
     );
   }
 
-  function setStage(b: string, scope: string, newMainId: number) {
+  function setStage(b: string, scope: string, newStageId: number) {
     const build = buildOf(b);
-    const newMain = spellRegistry.get(newMainId);
-    if (!newMain) return;
-    const oldMain = currentMainSpellOfGroup(build, scope);
-    const sharedRatio = oldMain ? (spellChoiceRefById(build, oldMain.id)?.ratio ?? 1) : 1;
-    const oldMainTargets = oldMain ? (spellChoiceRefById(build, oldMain.id)?.targets ?? 1) : 1;
-    const newEntries: SpellChoiceRef[] = newMain.spells.map((sid) => {
+    const newStage = spellRegistry.get(newStageId);
+    if (!newStage) return;
+    const owner = scopeRatioOwner(build, scope);
+    const oldStage = currentStageSpellFromScope(build, scope);
+    const sharedRatio = owner ? (spellChoiceRefById(build, owner.id)?.ratio ?? 1) : 1;
+    const oldStageTargets = oldStage ? (spellChoiceRefById(build, oldStage.id)?.targets ?? 1) : 1;
+    const newEntries: SpellChoiceRef[] = newStage.spells.map((sid) => {
       const existing = spellChoiceRefById(build, sid);
-      const targets = existing?.targets ?? (sid === newMainId ? oldMainTargets : 1);
+      const targets = existing?.targets ?? (sid === newStageId ? oldStageTargets : 1);
       return { id: sid, targets, ratio: sharedRatio, extraSpell: !!spellRegistry.get(sid)?.isExtra };
     });
     setRotation(b, [...build.rotation.filter((r) => spellRegistry.get(r.id)?.scope !== scope), ...newEntries]);
@@ -221,35 +224,38 @@
   {@const build = buildOf(b)}
   <td>
     {#if rotationHasGroupSpell(build, scope)}
-      {@const cur = currentMainSpellOfGroup(build, scope)}
+      {@const stageSpell = currentStageSpellFromScope(build, scope)}
+      {@const owner = scopeRatioOwner(build, scope)}
       {@const stages = stagesOf(scope)}
       <div class="group-cell">
         <div class="group-head">
-          {#if stages.length > 1 && cur}
+          {#if stages.length > 1 && stageSpell}
             <select
               class="stage-select input-{b}"
-              value={cur.id}
+              value={stageSpell.id}
               onchange={(e) => setStage(b, scope, Number(e.currentTarget.value))}>
               {#each stages as st (st.id)}
-                <option value={st.id}>Stage {stageNumber(scope, st.id)}</option>
+                <option value={st.id}>Stage {st.stage}</option>
               {/each}
             </select>
-          {:else if cur}
-            <span class="stage-static">Stage {stageNumber(scope, cur.id)}</span>
+          {:else if stageSpell}
+            <span class="stage-static">Stage {stageSpell.stage}</span>
           {/if}
           <RemoveButton onclick={() => removeScope(b, scope)} />
         </div>
-        {#if cur && cur.spells.length > 1}
-          <!-- Bundled group: shared ratio on its own row, then a labelled targets row each. -->
-          <div class="ratio-line">
-            <input
-              type="number"
-              step="any"
-              class="input-{b}"
-              value={spellChoiceRefById(build, cur.id)?.ratio ?? 1}
-              oninput={(e) => setRatio(b, cur.id, Number(e.currentTarget.value))} />
-          </div>
-          {#each cur.spells as sid, k (k)}
+        {#if stageSpell && stageSpell.spells.length > 1}
+          <!-- Bundled stage: shared ratio (on the owner) on its own row, then a labelled targets row each. -->
+          {#if owner}
+            <div class="ratio-line">
+              <input
+                type="number"
+                step="any"
+                class="input-{b}"
+                value={spellChoiceRefById(build, owner.id)?.ratio ?? 1}
+                oninput={(e) => setRatio(b, owner.id, Number(e.currentTarget.value))} />
+            </div>
+          {/if}
+          {#each stageSpell.spells as sid, k (k)}
             {@const entry = spellChoiceRefById(build, sid)}
             <div class="targets-line">
               <span class="row-label">{spellRegistry.get(sid)?.targetsLabel ?? ""}</span>
@@ -261,22 +267,22 @@
                 oninput={(e) => setTargets(b, sid, Number(e.currentTarget.value))} />
             </div>
           {/each}
-        {:else if cur}
-          <!-- Single spell (no bundled sub-spells): ratio + targets on one line, like a regular spell. -->
-          {@const entry = spellChoiceRefById(build, cur.id)}
+        {:else if stageSpell}
+          <!-- Single spell (e.g. stage 0, or Divine Grenade): ratio + targets on one line, like a regular spell. -->
+          {@const entry = spellChoiceRefById(build, stageSpell.id)}
           <div class="sub-grid">
             <input
               type="number"
               step="any"
               class="input-{b}"
               value={entry?.ratio ?? 1}
-              oninput={(e) => setRatio(b, cur.id, Number(e.currentTarget.value))} />
+              oninput={(e) => setRatio(b, stageSpell.id, Number(e.currentTarget.value))} />
             <input
               type="number"
               step="any"
               class="input-{b}"
               value={entry?.targets ?? 1}
-              oninput={(e) => setTargets(b, cur.id, Number(e.currentTarget.value))} />
+              oninput={(e) => setTargets(b, stageSpell.id, Number(e.currentTarget.value))} />
             <span class="cell-spacer" aria-hidden="true"></span>
           </div>
         {/if}

@@ -18,15 +18,16 @@ export type Spell = {
   power: number;
   skillFactor: number;
   buckets: number;
+  rounding: Rounding;
   additionalDamageMultiplier: number;
-  targetsLabel?: string;
-  spells: number[];
   isSpender: boolean;
-  isSelectable: boolean;
-  isExtra: boolean;
   vocations: string[];
   runic: string[];
-  rounding: Rounding;
+  spells: number[];
+  stage?: number;
+  isSelectable: boolean;
+  isExtra: boolean;
+  targetsLabel?: string;
 };
 
 export type SpellOrdering = {
