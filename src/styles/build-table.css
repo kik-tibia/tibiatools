@@ -52,6 +52,11 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+/* Rows whose value differs between the two builds */
+.build-table tr.diff td {
+  background-color: var(--table-body-diff-bg);
+}
+
 /* Section headers */
 .build-table h4 {
   margin: 0;

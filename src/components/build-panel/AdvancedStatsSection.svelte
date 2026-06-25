@@ -25,6 +25,17 @@
     buildB = { ...buildB, stats: { ...buildB.stats, [key]: value } };
   }
 
+  function statDiffers(key: keyof BuildStats): boolean {
+    return showSecondBuild && buildA.stats[key] !== buildB.stats[key];
+  }
+  function imbuementDiffers(): boolean {
+    return (
+      showSecondBuild &&
+      (buildA.stats.imbuementElement !== buildB.stats.imbuementElement ||
+        buildA.stats.imbuementValue !== buildB.stats.imbuementValue)
+    );
+  }
+
   const imbuementElements: ImbuementElement[] = ["death", "earth", "energy", "fire", "ice"];
   const imbuementTiers: { label: string; value: number }[] = [
     { label: "T1", value: 0.1 },
@@ -225,7 +236,7 @@
 
 {#if !collapsed}
   {#each statFields as field}
-    <tr class="data-row">
+    <tr class="data-row" class:diff={statDiffers(field.key)}>
       {#if field.tooltip}
         <td>
           <Tooltip label={field.label} tip={field.tooltip} />
@@ -240,7 +251,7 @@
     </tr>
   {/each}
 
-  <tr class="data-row">
+  <tr class="data-row" class:diff={imbuementDiffers()}>
     <td>
       <Tooltip
         label="Elemental Attack Imbuement"

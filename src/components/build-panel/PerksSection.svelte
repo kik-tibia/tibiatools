@@ -44,6 +44,13 @@
     }),
   );
 
+  function perkDiffers(id: number): boolean {
+    if (!showSecondBuild) return false;
+    const a = buildA.perks.find((p) => p.id === id);
+    const b = buildB.perks.find((p) => p.id === id);
+    return (a?.value ?? null) !== (b?.value ?? null);
+  }
+
   function addPerk(id: number) {
     buildA = { ...buildA, perks: [...buildA.perks, { id, value: 0 }] };
     if (showSecondBuild) {
@@ -204,7 +211,7 @@
   {#each perkOrder as id (id)}
     {@const def = perkRegistry.get(id)}
     {#if def}
-      <tr class="data-row">
+      <tr class="data-row" class:diff={perkDiffers(id)}>
         <td class="item-name">{def.name}</td>
         {@render perkCell(buildA, "a", id, setPerkValueA, removePerkA)}
         {#if showSecondBuild}

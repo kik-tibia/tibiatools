@@ -45,6 +45,10 @@
   let canShieldA = $derived(weaponA?.hands === "one");
   let canShieldB = $derived(weaponB?.hands === "one");
 
+  let weaponDiffers = $derived(showSecondBuild && buildA.weapon.id !== buildB.weapon.id);
+  let ammoDiffers = $derived(showSecondBuild && (buildA.weapon.ammoId ?? null) !== (buildB.weapon.ammoId ?? null));
+  let shieldDiffers = $derived(showSecondBuild && (buildA.weapon.shieldId ?? null) !== (buildB.weapon.shieldId ?? null));
+
   function setWeaponA(id: number) {
     const weapon = weaponRegistry.get(id);
     const currentAmmo = buildA.weapon.ammoId ? ammoRegistry.get(buildA.weapon.ammoId) : null;
@@ -166,7 +170,7 @@
       </td>
     {/if}
   </tr>
-  <tr class="data-row">
+  <tr class="data-row" class:diff={weaponDiffers}>
     <td></td>
     <td>
       {#if weaponA}
@@ -208,7 +212,7 @@
         </td>
       {/if}
     </tr>
-    <tr class="data-row">
+    <tr class="data-row" class:diff={ammoDiffers}>
       <td></td>
       <td>
         {#if weaponA?.ammo}
@@ -257,7 +261,7 @@
         </td>
       {/if}
     </tr>
-    <tr class="data-row">
+    <tr class="data-row" class:diff={shieldDiffers}>
       <td></td>
       <td>
         {#if canShieldA && buildA.weapon.shieldId}

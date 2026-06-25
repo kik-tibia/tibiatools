@@ -164,6 +164,16 @@
   function capitalize(s: string): string {
     return s.charAt(0).toUpperCase() + s.slice(1);
   }
+
+  function statDiffers(key: keyof BuildStats): boolean {
+    return showSecondBuild && buildA.stats[key] !== buildB.stats[key];
+  }
+  function stanceDiffers(position: 0 | 1): boolean {
+    if (!showSecondBuild) return false;
+    const a = selectedStanceIdFor(buildA.stats.stanceIds, groupFor(buildA.stats.vocation, position));
+    const b = selectedStanceIdFor(buildB.stats.stanceIds, groupFor(buildB.stats.vocation, position));
+    return a !== b;
+  }
 </script>
 
 <tr class="section-header">
@@ -255,7 +265,7 @@
 {/snippet}
 
 {#if !collapsed}
-  <tr class="data-row">
+  <tr class="data-row" class:diff={statDiffers("vocation")}>
     <td>Vocation</td>
     {@render vocCell(buildA, "a", setVocationA)}
     {#if showSecondBuild}
@@ -264,7 +274,7 @@
   </tr>
 
   {#if stanceRowVisible(0)}
-    <tr class="data-row">
+    <tr class="data-row" class:diff={stanceDiffers(0)}>
       <td>Stance</td>
       {@render stanceCell(buildA, "a", 0, setStatA)}
       {#if showSecondBuild}
@@ -273,7 +283,7 @@
     </tr>
   {/if}
   {#if stanceRowVisible(1)}
-    <tr class="data-row">
+    <tr class="data-row" class:diff={stanceDiffers(1)}>
       <td></td>
       {@render stanceCell(buildA, "a", 1, setStatA)}
       {#if showSecondBuild}
@@ -283,7 +293,7 @@
   {/if}
 
   {#each statFields as field}
-    <tr class="data-row">
+    <tr class="data-row" class:diff={statDiffers(field.key)}>
       {#if field.tooltip}
         <td>
           <Tooltip label={field.label} tip={field.tooltip} />

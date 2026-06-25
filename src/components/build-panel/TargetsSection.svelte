@@ -30,6 +30,13 @@
   const charmTiers: number[] = [1, 2, 3];
   const DEFAULT_CHARM_TIER = 2;
 
+  function targetDiffers(id: number): boolean {
+    if (!showSecondBuild) return false;
+    const signature = (t: CreatureChoiceRef | undefined) =>
+      t ? `${t.ratio}:${t.charmId ?? ""}:${t.charmTier ?? ""}` : "";
+    return signature(buildA.targets.find((t) => t.id === id)) !== signature(buildB.targets.find((t) => t.id === id));
+  }
+
   function addTarget(id: number) {
     buildA = { ...buildA, targets: [...buildA.targets, { id, ratio: 1 }] };
     if (showSecondBuild) {
@@ -263,14 +270,14 @@
   {#each targetOrder as id (id)}
     {@const def = creatureRegistry.get(id)}
     {#if def}
-      <tr class="data-row group-start">
+      <tr class="data-row group-start" class:diff={targetDiffers(id)}>
         <td class="item-name" rowspan="2">{def.name}</td>
         {@render ratioCell(buildA, "a", id, setTargetRatioA, removeTargetA)}
         {#if showSecondBuild}
           {@render ratioCell(buildB, "b", id, setTargetRatioB, removeTargetB)}
         {/if}
       </tr>
-      <tr class="data-row">
+      <tr class="data-row" class:diff={targetDiffers(id)}>
         {@render charmCell(buildA, "a", id, setTargetCharmA)}
         {#if showSecondBuild}
           {@render charmCell(buildB, "b", id, setTargetCharmB)}

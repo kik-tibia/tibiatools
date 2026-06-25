@@ -70,6 +70,21 @@
   };
   const spellChoiceRefById = (build: Build, id: number) => build.rotation.find((r) => r.id === id);
 
+  function rotationKeyDiffers(key: number): boolean {
+    if (!showSecondBuild) return false;
+    const def = spellRegistry.get(key);
+    if (!def) return false;
+    const signature = (build: Build) =>
+      (groupScopes.has(def.scope)
+        ? build.rotation.filter((r) => spellRegistry.get(r.id)?.scope === def.scope)
+        : build.rotation.filter((r) => r.id === key)
+      )
+        .map((r) => `${r.id}:${r.ratio}:${r.targets}`)
+        .sort()
+        .join("|");
+    return signature(buildA) !== signature(buildB);
+  }
+
   // Keep rotationOrder in sync. Group spells just use the main spell id.
   $effect(() => {
     const presentKeys: number[] = [];
@@ -370,7 +385,7 @@
     {@const def = spellRegistry.get(key)}
     {#if def && groupScopes.has(def.scope)}
       {@const scope = def.scope}
-      <tr class="data-row group-start">
+      <tr class="data-row group-start" class:diff={rotationKeyDiffers(key)}>
         <td class="item-name group-title">{displayNameFromScope(scope)}</td>
         {@render groupCell("a", scope)}
         {#if showSecondBuild}
@@ -378,7 +393,7 @@
         {/if}
       </tr>
     {:else if def}
-      <tr class="data-row group-start">
+      <tr class="data-row group-start" class:diff={rotationKeyDiffers(key)}>
         <td class="item-name">{def.displayName}</td>
         {@render singleCell("a", def)}
         {#if showSecondBuild}

@@ -22,8 +22,9 @@
   --header-bg: hsl(220 5% 14%);
 
   /* Table */
-  --table-header-bg: hsl(220 5% 14%);
+  --table-header-bg: hsl(220 5% 18%);
   --table-body-bg: hsl(220 5% 12%);
+  --table-body-diff-bg: hsl(220 5% 15%);
 
   /* Buttons */
   --btn-hover-bg: hsl(220 10% 20%);
@@ -88,8 +89,9 @@
   --header-bg: hsl(220 8% 94%);
 
   /* Table */
-  --table-header-bg: hsl(220 8% 94%);
+  --table-header-bg: hsl(220 8% 86%);
   --table-body-bg: hsl(220 8% 97%);
+  --table-body-diff-bg: hsl(220 8% 92%);
 
   /* Buttons */
   --btn-hover-bg: hsl(220 10% 92%);
