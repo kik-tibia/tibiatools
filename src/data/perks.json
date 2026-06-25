@@ -1816,7 +1816,7 @@
   },
   {
     "id": 272,
-    "name": "Charm Upgrade",
+    "name": "Charm upgrade",
     "scope": "all",
     "bonusType": "charm-upgrade"
   }
