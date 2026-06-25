@@ -80,11 +80,11 @@ export const allSpells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) =>
   ...s,
   displayName: s.displayName ?? s.name,
   additionalDamageMultiplier: s.additionalDamageMultiplier ?? 1,
-  spells: s.spells ?? [s.id],
   isSpender: s.isSpender ?? false,
+  runic: s.runic ?? [],
+  spells: s.spells ?? [s.id],
   isSelectable: s.isSelectable ?? true,
   isExtra: s.isExtra ?? false,
-  runic: s.runic ?? [],
 }));
 
 export const spellOrdering: SpellOrdering[] = spellOrderingRaw as SpellOrdering[];

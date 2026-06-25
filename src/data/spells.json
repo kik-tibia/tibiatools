@@ -404,7 +404,8 @@
   {
     "id": 25,
     "scope": "great-energy-beam",
-    "name": "Great Energy Beam",
+    "name": "Great Energy Beam (Central)",
+    "displayName": "Great Energy Beam",
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "energy",
@@ -414,7 +415,9 @@
     "rounding": "floor",
     "vocations": [
       "sorcerer"
-    ]
+    ],
+    "stage": 0,
+    "targetsLabel": "Central"
   },
   {
     "id": 26,
@@ -527,7 +530,8 @@
   {
     "id": 35,
     "scope": "energy-beam",
-    "name": "Energy Beam",
+    "name": "Energy Beam (Central)",
+    "displayName": "Energy Beam",
     "spellType": "spell",
     "scalesWith": "magic",
     "element": "energy",
@@ -537,7 +541,9 @@
     "rounding": "floor",
     "vocations": [
       "sorcerer"
-    ]
+    ],
+    "stage": 0,
+    "targetsLabel": "Central"
   },
   {
     "id": 36,
@@ -1462,7 +1468,7 @@
     "element": "death",
     "power": 85,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 4,
     "rounding": "floor",
     "additionalDamageMultiplier": 1.5,
     "vocations": [
@@ -1610,6 +1616,150 @@
     "spells": [
       26,
       93
+    ],
+    "stage": 3,
+    "isSelectable": false,
+    "isExtra": true,
+    "targetsLabel": "Sides"
+  },
+  {
+    "id": 94,
+    "scope": "great-energy-beam",
+    "name": "Great Energy Beam (Stage 1 Sides)",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "energy",
+    "power": 170,
+    "skillFactor": 25,
+    "buckets": 60,
+    "rounding": "floor",
+    "additionalDamageMultiplier": 0.4,
+    "vocations": [
+      "sorcerer"
+    ],
+    "spells": [
+      25,
+      94
+    ],
+    "stage": 1,
+    "isSelectable": false,
+    "isExtra": true,
+    "targetsLabel": "Sides"
+  },
+  {
+    "id": 95,
+    "scope": "great-energy-beam",
+    "name": "Great Energy Beam (Stage 2 Sides)",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "energy",
+    "power": 170,
+    "skillFactor": 25,
+    "buckets": 60,
+    "rounding": "floor",
+    "additionalDamageMultiplier": 0.6,
+    "vocations": [
+      "sorcerer"
+    ],
+    "spells": [
+      25,
+      95
+    ],
+    "stage": 2,
+    "isSelectable": false,
+    "isExtra": true,
+    "targetsLabel": "Sides"
+  },
+  {
+    "id": 96,
+    "scope": "great-energy-beam",
+    "name": "Great Energy Beam (Stage 3 Sides)",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "energy",
+    "power": 170,
+    "skillFactor": 25,
+    "buckets": 60,
+    "rounding": "floor",
+    "additionalDamageMultiplier": 0.8,
+    "vocations": [
+      "sorcerer"
+    ],
+    "spells": [
+      25,
+      96
+    ],
+    "stage": 3,
+    "isSelectable": false,
+    "isExtra": true,
+    "targetsLabel": "Sides"
+  },
+  {
+    "id": 97,
+    "scope": "energy-beam",
+    "name": "Energy Beam (Stage 1 Sides)",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "energy",
+    "power": 60,
+    "skillFactor": 25,
+    "buckets": 0,
+    "rounding": "floor",
+    "additionalDamageMultiplier": 0.4,
+    "vocations": [
+      "sorcerer"
+    ],
+    "spells": [
+      35,
+      97
+    ],
+    "stage": 1,
+    "isSelectable": false,
+    "isExtra": true,
+    "targetsLabel": "Sides"
+  },
+  {
+    "id": 98,
+    "scope": "energy-beam",
+    "name": "Energy Beam (Stage 2 Sides)",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "energy",
+    "power": 60,
+    "skillFactor": 25,
+    "buckets": 0,
+    "rounding": "floor",
+    "additionalDamageMultiplier": 0.6,
+    "vocations": [
+      "sorcerer"
+    ],
+    "spells": [
+      35,
+      98
+    ],
+    "stage": 2,
+    "isSelectable": false,
+    "isExtra": true,
+    "targetsLabel": "Sides"
+  },
+  {
+    "id": 99,
+    "scope": "energy-beam",
+    "name": "Energy Beam (Stage 3 Sides)",
+    "spellType": "spell",
+    "scalesWith": "magic",
+    "element": "energy",
+    "power": 60,
+    "skillFactor": 25,
+    "buckets": 0,
+    "rounding": "floor",
+    "additionalDamageMultiplier": 0.8,
+    "vocations": [
+      "sorcerer"
+    ],
+    "spells": [
+      35,
+      99
     ],
     "stage": 3,
     "isSelectable": false,

@@ -336,12 +336,22 @@ function computeEffectiveSpell(
   const spell =
     masteryElement && originalSpell.spellType == "spell"
       ? { ...originalSpell, element: masteryElement }
-      : originalSpell;
+      : { ...originalSpell };
 
   let min, avg, max;
   const minElements = initElements();
   const avgElements = initElements();
   const maxElements = initElements();
+
+  // Beam mastery: for each target hit by a beam spell, the damage of beam spells is increased by 10%/12%/14% (up to a maximum of 30%/36%/42%).
+  if (["great-death-beam", "great-energy-beam", "energy-beam"].includes(state.spell.scope)) {
+    const centralBeam = spellChoices.find((s) => s.spell.scope == state.spell.scope && s.spell.stage == 0);
+    const cappedCentralTargets = Math.min(3, centralBeam?.targets ?? 0);
+    const groupStages = spellChoices.filter((s) => s.spell.scope == state.spell.scope).map((s) => s.spell.stage ?? 0);
+    const maxStage = Math.max(0, ...groupStages);
+    const bmBaseBonus = maxStage == 0 ? 0 : (8 + 2 * maxStage) / 100;
+    spell.additionalDamageMultiplier *= 1 + cappedCentralTargets * bmBaseBonus;
+  }
 
   if (state.runicIncrease == 0) {
     // TODO: we removed the buckets==0 check here, make sure everything still looks good for 0 bucket spells
