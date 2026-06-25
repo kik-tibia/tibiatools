@@ -217,6 +217,7 @@ function initialSpellState(characterState: CharacterState, spell: Spell): SpellS
     damageSlime: 0,
     damageUndead: 0,
     damageVermin: 0,
+    charmUpgrade: 0,
   };
 }
 
@@ -554,6 +555,8 @@ function applyPerkToSpell(
         return { ...state, damageUndead: perkChoice.value / 100 };
       case "damage-vermin":
         return { ...state, damageVermin: perkChoice.value / 100 };
+      case "charm-upgrade":
+        return { ...state, charmUpgrade: perkChoice.value / 100 };
     }
   }
 

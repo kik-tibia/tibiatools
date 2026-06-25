@@ -57,7 +57,8 @@ export type PerkBonusType =
   | "master-of-flames"
   | "master-of-thunder"
   | "master-of-decay"
-  | "lord-of-destruction";
+  | "lord-of-destruction"
+  | "charm-upgrade";
 
 export type Perk = {
   id: number;

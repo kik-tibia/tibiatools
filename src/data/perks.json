@@ -1813,5 +1813,11 @@
     "scope": "shield-slam",
     "spell": true,
     "bonusType": "crit-chance"
+  },
+  {
+    "id": 272,
+    "name": "Charm Upgrade",
+    "scope": "all",
+    "bonusType": "charm-upgrade"
   }
 ]
