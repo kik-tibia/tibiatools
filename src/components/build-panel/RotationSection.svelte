@@ -4,7 +4,7 @@
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
-  import { allSpells, type Spell } from "@data/spells";
+  import { allSpells, beamScopes, type Spell } from "@data/spells";
   import type { Build, SpellChoiceRef } from "@lib/build-state";
   import { packSection, SECTION_TAG } from "@lib/section-clipboard";
   import { compactRotation, expandRotation } from "@lib/url-pack";
@@ -147,20 +147,34 @@
     );
   }
 
-  function setStage(b: string, scope: string, newStageId: number) {
-    const build = buildOf(b);
-    const newStage = spellRegistry.get(newStageId);
-    if (!newStage) return;
+  function restageScope(build: Build, scope: string, stageNum: number): SpellChoiceRef[] | null {
+    const newStage = stagesOf(scope).find((s) => s.stage === stageNum);
+    if (!newStage) return null;
     const owner = scopeRatioOwner(build, scope);
     const oldStage = currentStageSpellFromScope(build, scope);
     const sharedRatio = owner ? (spellChoiceRefById(build, owner.id)?.ratio ?? 1) : 1;
     const oldStageTargets = oldStage ? (spellChoiceRefById(build, oldStage.id)?.targets ?? 1) : 1;
-    const newEntries: SpellChoiceRef[] = newStage.spells.map((sid) => {
+    return newStage.spells.map((sid) => {
       const existing = spellChoiceRefById(build, sid);
-      const targets = existing?.targets ?? (sid === newStageId ? oldStageTargets : 1);
+      const targets = existing?.targets ?? (sid === newStage.id ? oldStageTargets : 1);
       return { id: sid, targets, ratio: sharedRatio, extraSpell: !!spellRegistry.get(sid)?.isExtra };
     });
-    setRotation(b, [...build.rotation.filter((r) => spellRegistry.get(r.id)?.scope !== scope), ...newEntries]);
+  }
+
+  function setStage(b: string, scope: string, newStageId: number) {
+    const build = buildOf(b);
+    const stageNum = spellRegistry.get(newStageId)?.stage;
+    if (stageNum == null) return;
+    const scopes = beamScopes.includes(scope)
+      ? beamScopes.filter((sc) => sc === scope || rotationHasGroupSpell(build, sc))
+      : [scope];
+    let rotation = build.rotation;
+    for (const sc of scopes) {
+      const newEntries = restageScope(build, sc, stageNum);
+      if (!newEntries) continue;
+      rotation = [...rotation.filter((r) => spellRegistry.get(r.id)?.scope !== sc), ...newEntries];
+    }
+    setRotation(b, rotation);
   }
 
   function setRatio(b: string, id: number, v: number) {

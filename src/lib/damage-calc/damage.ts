@@ -1,5 +1,12 @@
 import type { Creature } from "@data/creatures";
-import type { DamageBreakdown, DamageRange, Element, Spell, SpellElement } from "@data/spells";
+import {
+  beamScopes,
+  type DamageBreakdown,
+  type DamageRange,
+  type Element,
+  type Spell,
+  type SpellElement,
+} from "@data/spells";
 import type { Weapon } from "@data/weapons";
 import type { BuildStats } from "@lib/build-state";
 import type { CreatureChoice, SpellChoice, SpellState, WeaponChoice } from "@lib/damage-calc";
@@ -344,7 +351,7 @@ function computeEffectiveSpell(
   const maxElements = initElements();
 
   // Beam mastery: for each target hit by a beam spell, the damage of beam spells is increased by 10%/12%/14% (up to a maximum of 30%/36%/42%).
-  if (["great-death-beam", "great-energy-beam", "energy-beam"].includes(state.spell.scope)) {
+  if (beamScopes.includes(state.spell.scope)) {
     const centralBeam = spellChoices.find((s) => s.spell.scope == state.spell.scope && s.spell.stage == 0);
     const cappedCentralTargets = Math.min(3, centralBeam?.targets ?? 0);
     const groupStages = spellChoices.filter((s) => s.spell.scope == state.spell.scope).map((s) => s.spell.stage ?? 0);

@@ -88,3 +88,5 @@ export const allSpells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) =>
 }));
 
 export const spellOrdering: SpellOrdering[] = spellOrderingRaw as SpellOrdering[];
+
+export const beamScopes: string[] = ["great-death-beam", "great-energy-beam", "energy-beam"];
