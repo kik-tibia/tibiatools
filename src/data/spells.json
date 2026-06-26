@@ -332,7 +332,7 @@
     "element": "holy",
     "power": 70,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 50,
     "rounding": "floor",
     "vocations": [
       "paladin"
@@ -429,7 +429,7 @@
     "element": "death",
     "power": 170,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 50,
     "rounding": "floor",
     "vocations": [
       "sorcerer"
@@ -521,7 +521,7 @@
     "element": "death",
     "power": 45,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 20,
     "rounding": "floor",
     "vocations": [
       "sorcerer"
@@ -777,7 +777,7 @@
     "element": "earth",
     "power": 175,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 70,
     "rounding": "floor",
     "vocations": [
       "druid"
@@ -1128,7 +1128,7 @@
     "element": "fire",
     "power": 45,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 20,
     "rounding": "floor",
     "vocations": [
       "sorcerer",
@@ -1144,7 +1144,7 @@
     "element": "energy",
     "power": 45,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 20,
     "rounding": "floor",
     "vocations": [
       "sorcerer",
@@ -1160,7 +1160,7 @@
     "element": "ice",
     "power": 45,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 20,
     "rounding": "floor",
     "vocations": [
       "sorcerer",
@@ -1176,7 +1176,7 @@
     "element": "earth",
     "power": 45,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 20,
     "rounding": "floor",
     "vocations": [
       "sorcerer",
@@ -1325,7 +1325,7 @@
     "element": "ice",
     "power": 60,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 30,
     "rounding": "floor",
     "vocations": [
       "druid",
@@ -1347,7 +1347,7 @@
     "element": "fire",
     "power": 60,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 30,
     "rounding": "floor",
     "vocations": [
       "druid",
@@ -1369,7 +1369,7 @@
     "element": "earth",
     "power": 30,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 20,
     "rounding": "floor",
     "vocations": [
       "druid",
@@ -1392,7 +1392,7 @@
     "element": "energy",
     "power": 30,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 20,
     "rounding": "floor",
     "vocations": [
       "druid",
@@ -1415,7 +1415,7 @@
     "element": "energy",
     "power": 15,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 10,
     "rounding": "floor",
     "vocations": [
       "druid",
@@ -1559,7 +1559,7 @@
     "element": "death",
     "power": 170,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 50,
     "rounding": "floor",
     "additionalDamageMultiplier": 0.4,
     "vocations": [
@@ -1583,7 +1583,7 @@
     "element": "death",
     "power": 170,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 50,
     "rounding": "floor",
     "additionalDamageMultiplier": 0.6,
     "vocations": [
@@ -1607,7 +1607,7 @@
     "element": "death",
     "power": 170,
     "skillFactor": 25,
-    "buckets": 0,
+    "buckets": 50,
     "rounding": "floor",
     "additionalDamageMultiplier": 0.8,
     "vocations": [
