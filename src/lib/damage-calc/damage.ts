@@ -47,8 +47,8 @@ export function computeDamageBreakdown(
   let charmCritDamage = 0;
   if (creatureChoice?.charm && creatureChoice.charmTier) {
     if (creatureChoice.charm.effect == "low-blow") {
-      if (creatureChoice.charmTier == 1) charmCritChance += 0.04;
-      else if (creatureChoice.charmTier == 2) charmCritChance += 0.08;
+      if (creatureChoice.charmTier == 1) charmCritChance = 0.04;
+      else if (creatureChoice.charmTier == 2) charmCritChance = 0.08;
       else charmCritChance = 0.09;
     } else if (creatureChoice.charm.effect == "savage-blow") {
       if (creatureChoice.charmTier == 1) charmCritDamage = 0.2;
