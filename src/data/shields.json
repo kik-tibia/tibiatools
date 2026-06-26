@@ -7,152 +7,152 @@
   {
     "id": 2,
     "name": "Alchemist's Notepad",
-    "defense": 20
+    "defense": 32
   },
   {
     "id": 3,
     "name": "Amazon Shield",
-    "defense": 32
+    "defense": 42
   },
   {
     "id": 4,
     "name": "Ancient Shield",
-    "defense": 27
+    "defense": 36
   },
   {
     "id": 5,
     "name": "Arboreal Tome",
-    "defense": 22
+    "defense": 36
   },
   {
     "id": 6,
     "name": "Arcanomancer Folio",
-    "defense": 22
+    "defense": 36
   },
   {
     "id": 7,
     "name": "Battle Shield",
-    "defense": 23
+    "defense": 30
   },
   {
     "id": 8,
     "name": "Biscuit Barrier",
-    "defense": 36
+    "defense": 47
   },
   {
     "id": 9,
     "name": "Black Shield",
-    "defense": 18
+    "defense": 24
   },
   {
     "id": 10,
     "name": "Blessed Shield",
-    "defense": 40
+    "defense": 52
   },
   {
     "id": 11,
     "name": "Bone Shield",
-    "defense": 20
+    "defense": 26
   },
   {
     "id": 12,
     "name": "Bonelord Shield",
-    "defense": 28
+    "defense": 37
   },
   {
     "id": 13,
     "name": "Book of Lies",
-    "defense": 18
+    "defense": 29
   },
   {
     "id": 14,
     "name": "Brain in a Jar",
-    "defense": 19
+    "defense": 31
   },
   {
     "id": 15,
     "name": "Brass Shield",
-    "defense": 16
+    "defense": 21
   },
   {
     "id": 16,
     "name": "Broken Wooden Shield",
-    "defense": 11
+    "defense": 15
   },
   {
     "id": 17,
     "name": "Carapace Shield",
-    "defense": 36
+    "defense": 47
   },
   {
     "id": 18,
     "name": "Castle Shield",
-    "defense": 28
+    "defense": 37
   },
   {
     "id": 19,
     "name": "Cocoa Grimoire",
-    "defense": 19
+    "defense": 31
   },
   {
     "id": 20,
     "name": "Copper Shield",
-    "defense": 19
+    "defense": 25
   },
   {
     "id": 21,
     "name": "Creamy Grimoire",
-    "defense": 19
+    "defense": 31
   },
   {
     "id": 22,
     "name": "Crown Shield",
-    "defense": 32
+    "defense": 42
   },
   {
     "id": 23,
     "name": "Crude Umbral Spellbook",
-    "defense": 14
+    "defense": 23
   },
   {
     "id": 24,
     "name": "Dark Shield",
-    "defense": 25
+    "defense": 33
   },
   {
     "id": 25,
     "name": "Death Gaze",
-    "defense": 38
+    "defense": 50
   },
   {
     "id": 26,
     "name": "Demon Shield",
-    "defense": 35
+    "defense": 46
   },
   {
     "id": 27,
     "name": "Depth Scutum",
-    "defense": 25
+    "defense": 33
   },
   {
     "id": 28,
     "name": "Dragon Shield",
-    "defense": 31
+    "defense": 41
   },
   {
     "id": 29,
     "name": "Dwarven Shield",
-    "defense": 26
+    "defense": 34
   },
   {
     "id": 30,
     "name": "Eagle Shield",
-    "defense": 32
+    "defense": 42
   },
   {
     "id": 31,
     "name": "Ectoplasmic Shield",
-    "defense": 37
+    "defense": 49
   },
   {
     "id": 32,
@@ -162,37 +162,37 @@
   {
     "id": 33,
     "name": "Eldritch Folio",
-    "defense": 21
+    "defense": 34
   },
   {
     "id": 34,
     "name": "Eldritch Shield",
-    "defense": 39
+    "defense": 51
   },
   {
     "id": 35,
     "name": "Eldritch Tome",
-    "defense": 21
+    "defense": 34
   },
   {
     "id": 36,
     "name": "Falcon Escutcheon",
-    "defense": 40
+    "defense": 52
   },
   {
     "id": 37,
     "name": "Falcon Shield",
-    "defense": 39
+    "defense": 51
   },
   {
     "id": 38,
     "name": "Fiery Rainbow Shield",
-    "defense": 36
+    "defense": 47
   },
   {
     "id": 39,
     "name": "Gnome Shield",
-    "defense": 38
+    "defense": 50
   },
   {
     "id": 40,
@@ -207,27 +207,27 @@
   {
     "id": 42,
     "name": "Great Shield",
-    "defense": 38
+    "defense": 50
   },
   {
     "id": 43,
     "name": "Griffin Shield",
-    "defense": 29
+    "defense": 38
   },
   {
     "id": 44,
     "name": "Guardian Shield",
-    "defense": 30
+    "defense": 39
   },
   {
     "id": 45,
     "name": "Haunted Mirror Piece",
-    "defense": 34
+    "defense": 45
   },
   {
     "id": 46,
     "name": "Icy Rainbow Shield",
-    "defense": 39
+    "defense": 51
   },
   {
     "id": 47,
@@ -237,17 +237,17 @@
   {
     "id": 48,
     "name": "Lion Shield",
-    "defense": 39
+    "defense": 51
   },
   {
     "id": 49,
     "name": "Lion Spellbook",
-    "defense": 20
+    "defense": 32
   },
   {
     "id": 50,
     "name": "Mastermind Shield",
-    "defense": 37
+    "defense": 49
   },
   {
     "id": 51,
@@ -262,17 +262,17 @@
   {
     "id": 53,
     "name": "Meat Shield",
-    "defense": 10
+    "defense": 13
   },
   {
     "id": 54,
     "name": "Medusa Shield",
-    "defense": 33
+    "defense": 43
   },
   {
     "id": 55,
     "name": "Mino Shield",
-    "defense": 31
+    "defense": 41
   },
   {
     "id": 56,
@@ -282,27 +282,27 @@
   {
     "id": 57,
     "name": "Necromancer Shield",
-    "defense": 37
+    "defense": 49
   },
   {
     "id": 58,
     "name": "Nightmare Shield",
-    "defense": 37
+    "defense": 49
   },
   {
     "id": 59,
     "name": "Norse Shield",
-    "defense": 28
+    "defense": 37
   },
   {
     "id": 60,
     "name": "Ornamented Shield",
-    "defense": 22
+    "defense": 29
   },
   {
     "id": 61,
     "name": "Ornate Shield",
-    "defense": 36
+    "defense": 47
   },
   {
     "id": 62,
@@ -312,22 +312,22 @@
   {
     "id": 63,
     "name": "Phoenix Shield",
-    "defense": 34
+    "defense": 45
   },
   {
     "id": 64,
     "name": "Plate Shield",
-    "defense": 17
+    "defense": 23
   },
   {
     "id": 65,
     "name": "Prismatic Shield",
-    "defense": 37
+    "defense": 49
   },
   {
     "id": 66,
     "name": "Rainbow Shield",
-    "defense": 30
+    "defense": 39
   },
   {
     "id": 67,
@@ -337,47 +337,47 @@
   {
     "id": 68,
     "name": "Refined Stag Shield",
-    "defense": 41
+    "defense": 54
   },
   {
     "id": 69,
     "name": "Rift Shield",
-    "defense": 37
+    "defense": 49
   },
   {
     "id": 70,
     "name": "Rose Shield",
-    "defense": 27
+    "defense": 36
   },
   {
     "id": 71,
     "name": "Runic Ice Shield",
-    "defense": 31
+    "defense": 41
   },
   {
     "id": 72,
     "name": "Salamander Shield",
-    "defense": 26
+    "defense": 34
   },
   {
     "id": 73,
     "name": "Scarab Shield",
-    "defense": 25
+    "defense": 33
   },
   {
     "id": 74,
     "name": "Sentinel Shield",
-    "defense": 22
+    "defense": 29
   },
   {
     "id": 75,
     "name": "Shield of Care",
-    "defense": 8
+    "defense": 11
   },
   {
     "id": 76,
     "name": "Shield of Corruption",
-    "defense": 36
+    "defense": 47
   },
   {
     "id": 77,
@@ -397,17 +397,17 @@
   {
     "id": 80,
     "name": "Shield of Honour",
-    "defense": 33
+    "defense": 43
   },
   {
     "id": 81,
     "name": "Shield of the White Knight",
-    "defense": 8
+    "defense": 11
   },
   {
     "id": 82,
     "name": "Shoulder Plate",
-    "defense": 26
+    "defense": 34
   },
   {
     "id": 83,
@@ -417,97 +417,97 @@
   {
     "id": 84,
     "name": "Snake God's Wristguard",
-    "defense": 14
+    "defense": 23
   },
   {
     "id": 85,
     "name": "Soulbastion",
-    "defense": 42
+    "defense": 55
   },
   {
     "id": 86,
     "name": "Sparking Rainbow Shield",
-    "defense": 36
+    "defense": 49
   },
   {
     "id": 87,
     "name": "Spellbook",
-    "defense": 14
+    "defense": 23
   },
   {
     "id": 88,
     "name": "Spellbook of Ancient Arcana",
-    "defense": 19
+    "defense": 31
   },
   {
     "id": 89,
     "name": "Spellbook of Dark Mysteries",
-    "defense": 16
+    "defense": 26
   },
   {
     "id": 90,
     "name": "Spellbook of Enlightenment",
-    "defense": 18
+    "defense": 29
   },
   {
     "id": 91,
     "name": "Spellbook of Lost Souls",
-    "defense": 20
+    "defense": 32
   },
   {
     "id": 92,
     "name": "Spellbook of Mind Control",
-    "defense": 16
+    "defense": 26
   },
   {
     "id": 93,
     "name": "Spellbook of Vigilance",
-    "defense": 20
+    "defense": 32
   },
   {
     "id": 94,
     "name": "Spellbook of Warding",
-    "defense": 22
+    "defense": 36
   },
   {
     "id": 95,
     "name": "Spellbook of the Novice",
-    "defense": 8
+    "defense": 13
   },
   {
     "id": 96,
     "name": "Spellscroll of Prophecies",
-    "defense": 12
+    "defense": 20
   },
   {
     "id": 97,
     "name": "Spike Shield",
-    "defense": 28
+    "defense": 37
   },
   {
     "id": 98,
     "name": "Spirit Guide",
-    "defense": 17
+    "defense": 28
   },
   {
     "id": 99,
     "name": "Stag Scrolls",
-    "defense": 21
+    "defense": 34
   },
   {
     "id": 100,
     "name": "Stag Shield",
-    "defense": 40
+    "defense": 52
   },
   {
     "id": 101,
     "name": "Stag Spellbook",
-    "defense": 21
+    "defense": 34
   },
   {
     "id": 102,
     "name": "Steel Shield",
-    "defense": 21
+    "defense": 28
   },
   {
     "id": 103,
@@ -517,32 +517,32 @@
   {
     "id": 104,
     "name": "Studded Shield",
-    "defense": 15
+    "defense": 20
   },
   {
     "id": 105,
     "name": "Tempest Shield",
-    "defense": 36
+    "defense": 47
   },
   {
     "id": 106,
     "name": "Terran Rainbow Shield",
-    "defense": 37
+    "defense": 49
   },
   {
     "id": 107,
     "name": "The Shield Nevermourn",
-    "defense": 25
+    "defense": 33
   },
   {
     "id": 108,
     "name": "Tortoise Shield",
-    "defense": 26
+    "defense": 34
   },
   {
     "id": 109,
     "name": "Tower Shield",
-    "defense": 32
+    "defense": 42
   },
   {
     "id": 110,
@@ -552,41 +552,41 @@
   {
     "id": 111,
     "name": "Tusk Shield",
-    "defense": 27
+    "defense": 36
   },
   {
     "id": 112,
     "name": "Umbral Master Spellbook",
-    "defense": 20
+    "defense": 32
   },
   {
     "id": 113,
     "name": "Umbral Spellbook",
-    "defense": 16
+    "defense": 26
   },
   {
     "id": 114,
     "name": "Vampire Shield",
-    "defense": 34
+    "defense": 45
   },
   {
     "id": 115,
     "name": "Viking Shield",
-    "defense": 22
+    "defense": 29
   },
   {
     "id": 116,
     "name": "Warrior's Shield",
-    "defense": 33
+    "defense": 43
   },
   {
     "id": 117,
     "name": "Wooden Shield",
-    "defense": 14
+    "defense": 19
   },
   {
     "id": 118,
     "name": "Wooden Spellbook",
-    "defense": 16
+    "defense": 26
   }
 ]
