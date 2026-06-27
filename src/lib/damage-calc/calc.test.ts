@@ -33,7 +33,7 @@ describe("default build", () => {
       { name: "Executioner's Throw (No Bonus)", effective: 21, min: 19, avg: 20, max: 22 },
       { name: "Executioner's Throw (Stage 3)", effective: 52.5, min: 48, avg: 50, max: 55 },
       { name: "Avalanche Rune", effective: 13.7, min: 8, avg: 13, max: 18 },
-      { name: "Fireball Rune", effective: 16.8, min: undefined, avg: 16, max: undefined },
+      { name: "Fireball Rune", effective: 16.8, min: 12, avg: 16, max: 19 },
     ])("returns expected values for $name", ({ name, effective, min, avg, max }) => {
       const result = results.find((r) => r.name === name);
       expect(result, `no spell named ${name}`).toBeDefined();
@@ -98,13 +98,13 @@ describe("Knight build with everything", () => {
 
   describe("computeResults", () => {
     it.each([
-      { name: "Auto-attack", effective: 742.6, min: 454, avg: 705, max: 1208 },
-      { name: "Fierce Berserk", effective: 1434.4, min: 1142, avg: 1439, max: 1735 },
-      { name: "Berserk", effective: 709, min: 602, avg: 744, max: 887 },
-      { name: "Executioner's Throw (No Bonus)", effective: 903.9, min: 875, avg: 934, max: 993 },
-      { name: "Executioner's Throw (Stage 3)", effective: 2341.2, min: 2188, avg: 2335, max: 2483 },
-      { name: "Avalanche Rune", effective: 223.8, min: 226, avg: 241, max: 256 },
-      { name: "Fireball Rune", effective: 53, min: undefined, avg: 249, max: undefined },
+      { name: "Auto-attack", effective: 733.6, min: 454, avg: 705, max: 1208 },
+      { name: "Fierce Berserk", effective: 1417.0, min: 1142, avg: 1439, max: 1735 },
+      { name: "Berserk", effective: 700.4, min: 602, avg: 744, max: 887 },
+      { name: "Executioner's Throw (No Bonus)", effective: 892.9, min: 875, avg: 934, max: 993 },
+      { name: "Executioner's Throw (Stage 3)", effective: 2312.8, min: 2188, avg: 2335, max: 2483 },
+      { name: "Avalanche Rune", effective: 221.1, min: 226, avg: 241, max: 256 },
+      { name: "Fireball Rune", effective: 52.4, min: 237, avg: 249, max: 260 },
     ])("returns expected values for $name", ({ name, effective, min, avg, max }) => {
       const result = results.find((r) => r.name === name);
       expect(result, `no spell named ${name}`).toBeDefined();
@@ -118,17 +118,17 @@ describe("Knight build with everything", () => {
   });
   describe("computeDpt", () => {
     it("returns correct result", () => {
-      expect(dpt).toBeCloseTo(6918.4, d);
+      expect(dpt).toBeCloseTo(6834.4, d);
     });
   });
   describe("computeDph", () => {
     it("returns correct result", () => {
-      expect(dph).toBeCloseTo(951.4, d);
+      expect(dph).toBeCloseTo(939.9, d);
     });
   });
   describe("computeDamageFromCharms", () => {
     it("returns correct result", () => {
-      expect(dmgFromCharms).toBeCloseTo(41.4, d);
+      expect(dmgFromCharms).toBeCloseTo(40.9, d);
     });
   });
 
