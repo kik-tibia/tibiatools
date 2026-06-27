@@ -382,6 +382,7 @@
     "skillFactor": 25,
     "buckets": 100,
     "rounding": "floor",
+    "turnCooldown": 2,
     "vocations": [
       "sorcerer"
     ]
@@ -397,6 +398,7 @@
     "skillFactor": 25,
     "buckets": 0,
     "rounding": "floor",
+    "turnCooldown": 2,
     "vocations": [
       "sorcerer"
     ]
@@ -764,6 +766,7 @@
     "skillFactor": 25,
     "buckets": 130,
     "rounding": "floor",
+    "turnCooldown": 2,
     "vocations": [
       "druid"
     ]
@@ -779,6 +782,7 @@
     "skillFactor": 25,
     "buckets": 70,
     "rounding": "floor",
+    "turnCooldown": 2,
     "vocations": [
       "druid"
     ]

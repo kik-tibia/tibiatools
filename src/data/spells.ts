@@ -21,6 +21,7 @@ export type Spell = {
   rounding: Rounding;
   additionalDamageMultiplier: number;
   isSpender: boolean;
+  turnCooldown: number;
   vocations: string[];
   runic: string[];
   spells: number[];
@@ -81,6 +82,7 @@ export const allSpells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) =>
   displayName: s.displayName ?? s.name,
   additionalDamageMultiplier: s.additionalDamageMultiplier ?? 1,
   isSpender: s.isSpender ?? false,
+  turnCooldown: s.turnCooldown ?? 1,
   runic: s.runic ?? [],
   spells: s.spells ?? [s.id],
   isSelectable: s.isSelectable ?? true,
