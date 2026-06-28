@@ -383,6 +383,7 @@
     "buckets": 100,
     "rounding": "floor",
     "turnCooldown": 2,
+    "isFocus": true,
     "vocations": [
       "sorcerer"
     ]
@@ -399,6 +400,7 @@
     "buckets": 0,
     "rounding": "floor",
     "turnCooldown": 2,
+    "isFocus": true,
     "vocations": [
       "sorcerer"
     ]
@@ -767,6 +769,7 @@
     "buckets": 130,
     "rounding": "floor",
     "turnCooldown": 2,
+    "isFocus": true,
     "vocations": [
       "druid"
     ]
@@ -783,6 +786,7 @@
     "buckets": 70,
     "rounding": "floor",
     "turnCooldown": 2,
+    "isFocus": true,
     "vocations": [
       "druid"
     ]

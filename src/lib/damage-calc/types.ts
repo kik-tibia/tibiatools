@@ -68,4 +68,5 @@ export type SpellState = CharacterState & {
   damageUndead: number;
   damageVermin: number;
   charmUpgrade: number;
+  focusMasteryIncrease: number;
 };

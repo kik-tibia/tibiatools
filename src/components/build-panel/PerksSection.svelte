@@ -25,6 +25,18 @@
   } = $props();
 
   const perkRegistry = new Map(allPerks.map((p) => [p.id, p]));
+  const spellRegistry = new Map(allSpells.map((s) => [s.id, s]));
+  function focusMasteryOptions(build: Build): { id: number; name: string }[] {
+    const seen = new Set<string>();
+    const options: { id: number; name: string }[] = [];
+    for (const r of build.rotation) {
+      const spell = spellRegistry.get(r.id);
+      if (!spell || spell.isExtra || spell.spellType != "spell" || seen.has(spell.scope)) continue;
+      seen.add(spell.scope);
+      options.push({ id: spell.id, name: spell.displayName });
+    }
+    return options;
+  }
   const revelationTiers: { label: string; value: number }[] = [
     { label: "—", value: 0 },
     { label: "Stage 1", value: 1 },
@@ -149,6 +161,17 @@
               <option value={tier.value}>{tier.label}</option>
             {/each}
           </select>
+        {:else if perkRegistry.get(perkId)?.bonusType === "focus-mastery"}
+          {@const options = focusMasteryOptions(build)}
+          <select
+            class="tiered-select-tier focus-spell-select input-{buildId}"
+            value={build.perks.find((p) => p.id === perkId)?.value ?? 0}
+            onchange={(e) => setPerkValue(perkId, Number(e.currentTarget.value))}>
+            <option value={0}>Choose spell</option>
+            {#each options as opt (opt.id)}
+              <option value={opt.id}>{opt.name}</option>
+            {/each}
+          </select>
         {:else if binary && !build.stats.baseMagicLevel}
           <span class="perk-toggle input-{buildId}">
             <Tooltip tip="Requires setting Base Magic Level<br/>in Advanced Stats">Error</Tooltip>
@@ -221,3 +244,13 @@
     {/if}
   {/each}
 {/if}
+
+<style>
+  .focus-spell-select {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+</style>

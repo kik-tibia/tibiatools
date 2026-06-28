@@ -18,13 +18,20 @@
 
   let { initial }: { initial: CalculatorState } = $props();
 
-  let A: Build = $state(initial.A);
-  let B: Build = $state(initial.B);
-  let perkOrder: number[] = $state(initial.perkOrder ?? []);
-  let rotationOrder: number[] = $state(initial.rotationOrder ?? []);
-  let targetOrder: number[] = $state(initial.targetOrder ?? []);
-  let showSecondBuild: boolean = $state(!!initial.showSecondBuild);
-  let collapsed: CollapsedSections = $state(initial.collapsed ?? defaultCollapsed());
+  // Seed from the live URL, not just `initial`: replaceState keeps it current, so
+  // in-progress edits survive HMR re-init. On a fresh load this equals `initial`.
+  const seed: CalculatorState =
+    typeof window !== "undefined"
+      ? (unpackState(new URLSearchParams(window.location.search).get("s")) ?? initial)
+      : initial;
+
+  let A: Build = $state(seed.A);
+  let B: Build = $state(seed.B);
+  let perkOrder: number[] = $state(seed.perkOrder ?? []);
+  let rotationOrder: number[] = $state(seed.rotationOrder ?? []);
+  let targetOrder: number[] = $state(seed.targetOrder ?? []);
+  let showSecondBuild: boolean = $state(!!seed.showSecondBuild);
+  let collapsed: CollapsedSections = $state(seed.collapsed ?? defaultCollapsed());
 
   function currentState(): CalculatorState {
     return { version: 2, A, B, perkOrder, rotationOrder, targetOrder, showSecondBuild, collapsed };

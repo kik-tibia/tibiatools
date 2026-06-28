@@ -345,6 +345,21 @@ function computeEffectiveSpell(
       ? { ...originalSpell, element: masteryElement }
       : { ...originalSpell };
 
+  if (state.focusMasteryIncrease > 0) {
+    const focusRatioSum = spellChoices
+      .filter((s) => !s.extraSpell && s.spell.isFocus)
+      .reduce((sum, r) => sum + r.ratio, 0);
+    const currentSpellRatioSum = spellChoices
+      .filter((s) => !s.extraSpell && s.id == spell.id)
+      .reduce((sum, r) => sum + r.ratio, 0);
+    if (currentSpellRatioSum > 0) {
+      console.log(spell.additionalDamageMultiplier);
+      spell.additionalDamageMultiplier *=
+        1 + state.focusMasteryIncrease * Math.min(1, focusRatioSum / currentSpellRatioSum);
+      console.log(spell.additionalDamageMultiplier);
+    }
+  }
+
   let min, avg, max;
   const minElements = initElements();
   const avgElements = initElements();
@@ -361,7 +376,6 @@ function computeEffectiveSpell(
   }
 
   if (state.runicIncrease == 0) {
-    // TODO: we removed the buckets==0 check here, make sure everything still looks good for 0 bucket spells
     min = computeMinMax(spell, -1, state);
     avg = computeAvg(spell, state);
     max = computeMinMax(spell, 1, state);

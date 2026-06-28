@@ -218,6 +218,7 @@ function initialSpellState(characterState: CharacterState, spell: Spell): SpellS
     damageUndead: 0,
     damageVermin: 0,
     charmUpgrade: 0,
+    focusMasteryIncrease: 0,
   };
 }
 
@@ -562,6 +563,14 @@ function applyPerkToSpell(
         return { ...state, damageVermin: perkChoice.value / 100 };
       case "charm-upgrade":
         return { ...state, charmUpgrade: perkChoice.value / 100 };
+      case "focus-mastery": {
+        const focusMasteryIncrease = state.spell.id == perkChoice.value ? 0.35 : 0;
+        return {
+          ...state,
+          focusMasteryIncrease,
+          spell: { ...state.spell, turnCooldown: 1 },
+        };
+      }
     }
   }
 

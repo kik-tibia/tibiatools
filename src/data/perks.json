@@ -1819,5 +1819,11 @@
     "name": "Charm upgrade",
     "scope": "all",
     "bonusType": "charm-upgrade"
+  },
+  {
+    "id": 273,
+    "name": "Focus Mastery",
+    "scope": "all",
+    "bonusType": "focus-mastery"
   }
 ]
