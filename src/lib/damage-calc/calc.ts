@@ -346,11 +346,16 @@ function buildDamageMixture(
 /** Damage per turn */
 export function computeDpt(spellDamageChoices: SpellDamageChoice[]): number {
   const spellRotation = spellDamageChoices.filter((s) => s.id !== AUTO_ATTACK_ID);
-  const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
+  const ratioSum = spellRotation
+    .filter((s) => !s.extraSpell)
+    .reduce((sum, r) => sum + r.ratio * r.spellDamage.turnCooldown, 0);
+  const aaRatioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
 
   const autoAttack = spellDamageChoices.find((s) => s.id === AUTO_ATTACK_ID);
   const autoAttackDamage = autoAttack
-    ? (autoAttack.spellDamage.effective.avg + autoAttack.spellDamage.effective.elementalCharmDmg) * autoAttack.targets
+    ? (aaRatioSum / ratioSum) *
+      (autoAttack.spellDamage.effective.avg + autoAttack.spellDamage.effective.elementalCharmDmg) *
+      autoAttack.targets
     : 0;
 
   return (
