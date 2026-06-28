@@ -31,7 +31,7 @@
     const options: { id: number; name: string }[] = [];
     for (const r of build.rotation) {
       const spell = spellRegistry.get(r.id);
-      if (!spell || spell.isExtra || spell.spellType != "spell" || seen.has(spell.scope)) continue;
+      if (!spell || spell.isExtra || spell.spellType != "spell" || spell.isFocus || seen.has(spell.scope)) continue;
       seen.add(spell.scope);
       options.push({ id: spell.id, name: spell.displayName });
     }
@@ -163,15 +163,18 @@
           </select>
         {:else if perkRegistry.get(perkId)?.bonusType === "focus-mastery"}
           {@const options = focusMasteryOptions(build)}
-          <select
-            class="tiered-select-tier focus-spell-select input-{buildId}"
-            value={build.perks.find((p) => p.id === perkId)?.value ?? 0}
-            onchange={(e) => setPerkValue(perkId, Number(e.currentTarget.value))}>
-            <option value={0}>Choose spell</option>
-            {#each options as opt (opt.id)}
-              <option value={opt.id}>{opt.name}</option>
-            {/each}
-          </select>
+
+          <Tooltip tip="Choose the spell that you cast after UE<br/> that receives the bonus damage." wrap>
+            <select
+              class="tiered-select-tier focus-spell-select input-{buildId}"
+              value={build.perks.find((p) => p.id === perkId)?.value ?? 0}
+              onchange={(e) => setPerkValue(perkId, Number(e.currentTarget.value))}>
+              <option value={0}>Choose spell</option>
+              {#each options as opt (opt.id)}
+                <option value={opt.id}>{opt.name}</option>
+              {/each}
+            </select>
+          </Tooltip>
         {:else if binary && !build.stats.baseMagicLevel}
           <span class="perk-toggle input-{buildId}">
             <Tooltip tip="Requires setting Base Magic Level<br/>in Advanced Stats">Error</Tooltip>
