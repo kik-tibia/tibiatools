@@ -350,13 +350,11 @@ function computeEffectiveSpell(
       .filter((s) => !s.extraSpell && s.spell.isFocus)
       .reduce((sum, r) => sum + r.ratio, 0);
     const currentSpellRatioSum = spellChoices
-      .filter((s) => !s.extraSpell && s.id == spell.id)
+      .filter((s) => !s.extraSpell && s.spell.scope == spell.scope)
       .reduce((sum, r) => sum + r.ratio, 0);
     if (currentSpellRatioSum > 0) {
-      console.log(spell.additionalDamageMultiplier);
       spell.additionalDamageMultiplier *=
         1 + state.focusMasteryIncrease * Math.min(1, focusRatioSum / currentSpellRatioSum);
-      console.log(spell.additionalDamageMultiplier);
     }
   }
 

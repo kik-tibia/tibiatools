@@ -24,6 +24,8 @@ import { hpBonusMultiplier, type DamageMixtureComponent, type HpBasedDmgBracket 
 
 const AUTO_ATTACK_ID = 1;
 
+const spellScopeById = new Map(allSpells.map((s) => [s.id, s.scope]));
+
 /* calculate power via base power and any perks
  * use the updated power and your skills to calculate base damage
  * add on flat damage from level, wheel, and any extra damage perks
@@ -564,7 +566,8 @@ function applyPerkToSpell(
       case "charm-upgrade":
         return { ...state, charmUpgrade: perkChoice.value / 100 };
       case "focus-mastery": {
-        const focusMasteryIncrease = state.spell.id == perkChoice.value ? 0.35 : 0;
+        const focusScope = spellScopeById.get(perkChoice.value);
+        const focusMasteryIncrease = focusScope && state.spell.scope == focusScope ? 0.35 : 0;
         return {
           ...state,
           focusMasteryIncrease,
