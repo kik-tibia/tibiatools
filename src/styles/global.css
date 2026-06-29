@@ -102,8 +102,8 @@
   /* Build A / B */
   --build-a-border: hsl(210, 50%, 55%);
   --build-b-border: hsl(30, 50%, 50%);
-  --build-a-bg: rgba(100, 180, 255, 0.15);
-  --build-b-bg: rgba(255, 180, 100, 0.15);
+  --build-a-bg: rgba(100, 180, 255, 0.35);
+  --build-b-bg: rgba(255, 180, 100, 0.35);
   --build-a-text: hsl(210, 80%, 40%);
   --build-b-text: hsl(30, 80%, 35%);
   --build-a-focus-ring: 0 0 0 2px hsl(220 90% 55% / 0.25);
