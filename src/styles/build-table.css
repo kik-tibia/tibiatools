@@ -204,6 +204,25 @@
   background: var(--add-btn-hover-b);
 }
 
+/* Small copy/paste buttons (section headers and the build header row) */
+.build-table .copy-btn {
+  padding: 0.1rem 0.4rem;
+  font-size: 0.7rem;
+  line-height: 1.2;
+  background: transparent;
+  border: 1px solid var(--input-border);
+  border-radius: 0.25rem;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.build-table .copy-btn:hover,
+.build-table .copy-btn.active {
+  opacity: 1;
+  background: var(--input-bg);
+}
+
 .build-table .section-toggle {
   background: none;
   border: none;

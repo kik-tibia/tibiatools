@@ -26,6 +26,13 @@
     showSecondBuild?: boolean;
     collapsed: CollapsedSections;
   } = $props();
+
+  function copyAtoB() {
+    buildB = $state.snapshot(buildA);
+  }
+  function copyBtoA() {
+    buildA = $state.snapshot(buildB);
+  }
 </script>
 
 <table class="build-table" class:two-builds={showSecondBuild}>
@@ -41,12 +48,18 @@
       <th>Build Stats</th>
       <th>
         {#if showSecondBuild}
-          <BuildBadge build="a">Build A</BuildBadge>
+          <div class="build-header">
+            <BuildBadge build="a">Build A</BuildBadge>
+            <button class="copy-btn" onclick={copyBtoA}>Copy entire build from B</button>
+          </div>
         {/if}
       </th>
       {#if showSecondBuild}
         <th>
-          <BuildBadge build="b">Build B</BuildBadge>
+          <div class="build-header">
+            <BuildBadge build="b">Build B</BuildBadge>
+            <button class="copy-btn" onclick={copyAtoB}>Copy entire build from A</button>
+          </div>
         </th>
       {/if}
     </tr>
@@ -76,7 +89,15 @@
   /* Header row */
   thead th {
     text-align: left;
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.4rem;
     border: 1px solid var(--border-color);
+    vertical-align: top;
+  }
+
+  .build-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
   }
 </style>

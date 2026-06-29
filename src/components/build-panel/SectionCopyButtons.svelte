@@ -83,28 +83,6 @@
     align-items: center;
   }
 
-  .copy-btn {
-    padding: 0.1rem 0.4rem;
-    font-size: 0.7rem;
-    line-height: 1.2;
-    background: transparent;
-    border: 1px solid var(--input-border);
-    border-radius: 0.25rem;
-    color: inherit;
-    cursor: pointer;
-    opacity: 0.5;
-  }
-
-  .copy-btn:hover {
-    opacity: 1;
-    background: var(--input-bg);
-  }
-
-  .copy-btn.active {
-    opacity: 1;
-    background: var(--input-bg);
-  }
-
   .icon-btn {
     margin-left: auto;
     padding: 0.15rem;
