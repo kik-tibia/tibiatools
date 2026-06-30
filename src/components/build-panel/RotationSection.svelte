@@ -27,9 +27,11 @@
   const AUTO_ATTACK_ID = 1;
   const isAutoAttack = (id: number) => id === AUTO_ATTACK_ID;
 
+  const spellsByScope = new Map<string, Spell[]>();
   // e.g. "ice-burst" -> [39, 40, 41]. GDB includes the central beam spell here too.
   const stagedSpellsByScope = new Map<string, Spell[]>();
   for (const s of allSpells) {
+    spellsByScope.set(s.scope, [...(spellsByScope.get(s.scope) ?? []), s]);
     if (s.stage == null) continue;
     stagedSpellsByScope.set(s.scope, [...(stagedSpellsByScope.get(s.scope) ?? []), s]);
   }
@@ -40,7 +42,7 @@
   // The lowest stage is the default added from search and the stable rotationOrder key.
   const mainFromScope = (scope: string) => stagesOf(scope)[0]?.id ?? -1;
   const vocationCanCast = (scope: string, vocation: string) =>
-    stagesOf(scope).some((s) => s.vocations.includes(vocation));
+    (spellsByScope.get(scope) ?? []).some((s) => s.vocations.includes(vocation));
 
   const displayNameByScope = new Map<string, string>();
   for (const s of allSpells) {
