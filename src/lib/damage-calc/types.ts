@@ -31,21 +31,22 @@ export type CharacterState = {
   shielding: number;
   fishing: number;
   shieldDef: number;
-};
-
-export type SpellState = CharacterState & {
-  spell: Spell;
-  basePower: number;
-  runicIncrease: number;
   baseHarmonyBonus: number;
   armorPenetration: number;
-  deathPierce: number;
-  earthPierce: number;
-  energyPierce: number;
-  firePierce: number;
-  holyPierce: number;
-  icePierce: number;
-  physicalPierce: number;
+  deathPierceRegular: number;
+  earthPierceRegular: number;
+  energyPierceRegular: number;
+  firePierceRegular: number;
+  holyPierceRegular: number;
+  icePierceRegular: number;
+  physicalPierceRegular: number;
+  deathPierceWeapon: number;
+  earthPierceWeapon: number;
+  energyPierceWeapon: number;
+  firePierceWeapon: number;
+  holyPierceWeapon: number;
+  icePierceWeapon: number;
+  physicalPierceWeapon: number;
   damageAmphibic: number;
   damageAquatic: number;
   damageBird: number;
@@ -68,5 +69,11 @@ export type SpellState = CharacterState & {
   damageUndead: number;
   damageVermin: number;
   charmUpgrade: number;
+};
+
+export type SpellState = CharacterState & {
+  spell: Spell;
+  basePower: number;
+  runicIncrease: number;
   focusMasteryIncrease: number;
 };

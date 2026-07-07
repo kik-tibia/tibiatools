@@ -1421,194 +1421,194 @@
   {
     "id": 211,
     "name": "Armor penetration",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "armor-penetration"
   },
   {
     "id": 212,
-    "name": "Death pierce",
-    "scope": "all",
-    "bonusType": "death-pierce"
+    "name": "Death pierce (regular)",
+    "scope": "character",
+    "bonusType": "death-pierce-regular"
   },
   {
     "id": 213,
-    "name": "Earth pierce",
-    "scope": "all",
-    "bonusType": "earth-pierce"
+    "name": "Earth pierce (regular)",
+    "scope": "character",
+    "bonusType": "earth-pierce-regular"
   },
   {
     "id": 214,
-    "name": "Energy pierce",
-    "scope": "all",
-    "bonusType": "energy-pierce"
+    "name": "Energy pierce (regular)",
+    "scope": "character",
+    "bonusType": "energy-pierce-regular"
   },
   {
     "id": 215,
-    "name": "Fire pierce",
-    "scope": "all",
-    "bonusType": "fire-pierce"
+    "name": "Fire pierce (regular)",
+    "scope": "character",
+    "bonusType": "fire-pierce-regular"
   },
   {
     "id": 216,
-    "name": "Holy pierce",
-    "scope": "all",
-    "bonusType": "holy-pierce"
+    "name": "Holy pierce (regular)",
+    "scope": "character",
+    "bonusType": "holy-pierce-regular"
   },
   {
     "id": 217,
-    "name": "Ice pierce",
-    "scope": "all",
-    "bonusType": "ice-pierce"
+    "name": "Ice pierce (regular)",
+    "scope": "character",
+    "bonusType": "ice-pierce-regular"
   },
   {
     "id": 218,
-    "name": "Physical pierce",
-    "scope": "all",
-    "bonusType": "physical-pierce"
+    "name": "Physical pierce (regular)",
+    "scope": "character",
+    "bonusType": "physical-pierce-regular"
   },
   {
     "id": 219,
     "name": "Damage against Amphibic",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-amphibic"
   },
   {
     "id": 220,
     "name": "Damage against Aquatic",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-aquatic"
   },
   {
     "id": 221,
     "name": "Damage against Bird",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-bird"
   },
   {
     "id": 222,
     "name": "Damage against Construct",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-construct"
   },
   {
     "id": 223,
     "name": "Damage against Demon",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-demon"
   },
   {
     "id": 224,
     "name": "Damage against Dragon",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-dragon"
   },
   {
     "id": 225,
     "name": "Damage against Elemental",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-elemental"
   },
   {
     "id": 226,
     "name": "Damage against Extra Dimensional",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-extra-dimensional"
   },
   {
     "id": 227,
     "name": "Damage against Fey",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-fey"
   },
   {
     "id": 228,
     "name": "Damage against Giant",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-giant"
   },
   {
     "id": 229,
     "name": "Damage against Human",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-human"
   },
   {
     "id": 230,
     "name": "Damage against Humanoid",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-humanoid"
   },
   {
     "id": 231,
     "name": "Damage against Inkborn",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-inkborn"
   },
   {
     "id": 232,
     "name": "Damage against Lycanthrope",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-lycanthrope"
   },
   {
     "id": 233,
     "name": "Damage against Magical",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-magical"
   },
   {
     "id": 234,
     "name": "Damage against Mammal",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-mammal"
   },
   {
     "id": 235,
     "name": "Damage against Plant",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-plant"
   },
   {
     "id": 236,
     "name": "Damage against Reptile",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-reptile"
   },
   {
     "id": 237,
     "name": "Damage against Slime",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-slime"
   },
   {
     "id": 238,
     "name": "Damage against Undead",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-undead"
   },
   {
     "id": 239,
     "name": "Damage against Vermin",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "damage-vermin"
   },
   {
     "id": 240,
     "name": "Ascetic",
-    "scope": "spell",
+    "scope": "character",
     "revelation": "true",
     "bonusType": "base-harmony-bonus"
   },
   {
     "id": 241,
     "name": "Alpha Strike",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "alpha-strike"
   },
   {
     "id": 242,
     "name": "Omega Strike",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "omega-strike"
   },
   {
@@ -1656,7 +1656,7 @@
   {
     "id": 249,
     "name": "Combat Mastery",
-    "scope": "all",
+    "scope": "character",
     "revelation": "true",
     "bonusType": "combat-mastery"
   },
@@ -1726,21 +1726,21 @@
   {
     "id": 259,
     "name": "Thousand Fist Blows base damage",
-    "scope": "thounsand-fist-blows",
+    "scope": "thousand-fist-blows",
     "spell": true,
     "bonusType": "base-damage"
   },
   {
     "id": 260,
     "name": "Thousand Fist Blows critical hit damage",
-    "scope": "thounsand-fist-blows",
+    "scope": "thousand-fist-blows",
     "spell": true,
     "bonusType": "crit-damage"
   },
   {
     "id": 261,
     "name": "Thousand Fist Blows critical hit chance",
-    "scope": "thounsand-fist-blows",
+    "scope": "thousand-fist-blows",
     "spell": true,
     "bonusType": "crit-chance"
   },
@@ -1768,7 +1768,7 @@
   {
     "id": 265,
     "name": "Lord of Destruction",
-    "scope": "all",
+    "scope": "character",
     "revelation": true,
     "bonusType": "lord-of-destruction"
   },
@@ -1817,7 +1817,7 @@
   {
     "id": 272,
     "name": "Charm upgrade",
-    "scope": "all",
+    "scope": "character",
     "bonusType": "charm-upgrade"
   },
   {
@@ -1825,5 +1825,47 @@
     "name": "Focus Mastery",
     "scope": "all",
     "bonusType": "focus-mastery"
+  },
+  {
+    "id": 274,
+    "name": "Death pierce (weapon)",
+    "scope": "character",
+    "bonusType": "death-pierce-weapon"
+  },
+  {
+    "id": 275,
+    "name": "Earth pierce (weapon)",
+    "scope": "character",
+    "bonusType": "earth-pierce-weapon"
+  },
+  {
+    "id": 276,
+    "name": "Energy pierce (weapon)",
+    "scope": "character",
+    "bonusType": "energy-pierce-weapon"
+  },
+  {
+    "id": 277,
+    "name": "Fire pierce (weapon)",
+    "scope": "character",
+    "bonusType": "fire-pierce-weapon"
+  },
+  {
+    "id": 278,
+    "name": "Holy pierce (weapon)",
+    "scope": "character",
+    "bonusType": "holy-pierce-weapon"
+  },
+  {
+    "id": 279,
+    "name": "Ice pierce (weapon)",
+    "scope": "character",
+    "bonusType": "ice-pierce-weapon"
+  },
+  {
+    "id": 280,
+    "name": "Physical pierce (weapon)",
+    "scope": "character",
+    "bonusType": "physical-pierce-weapon"
   }
 ]

@@ -46,15 +46,17 @@ export function computeResults(
   spellChoices: SpellChoice[],
   creatureChoices: CreatureChoice[],
 ): SpellRawEffective[] {
-  const characterState = deriveCharacterState(buildStats, weaponChoice);
-
   const effectivePerks = [...perkChoices, ...stancePerks(stances, perkChoices)];
+  const characterPerks = effectivePerks.filter((p) => p.perk.scope == "character");
+  const spellPerks = effectivePerks.filter((p) => p.perk.scope != "character");
+
+  const characterState = deriveCharacterState(buildStats, weaponChoice, characterPerks);
 
   const spellStates = allSpells
     .filter((s) => s.vocations.includes(buildStats.vocation))
     .map((spell) => {
       const initial: SpellState = initialSpellState(characterState, spell);
-      let spellState: SpellState = effectivePerks.reduce(
+      let spellState: SpellState = spellPerks.reduce(
         (acc, perkChoice) => applyPerkToSpell(spell, perkChoice, weaponChoice.weapon.skill, buildStats.vocation, acc),
         initial,
       );
@@ -76,7 +78,7 @@ export function computeResults(
   let results: SpellRawEffective[] = [];
 
   // Brackets for alpha/omega strike
-  const hpBasedDmgBrackets = buildHpBasedDmgBrackets(effectivePerks, weaponChoice.weapon);
+  const hpBasedDmgBrackets = buildHpBasedDmgBrackets(characterPerks, weaponChoice.weapon);
 
   if (ratioAdjustedHp > 0) {
     let masteryElement: SpellElement | undefined;
@@ -106,7 +108,14 @@ export function computeResults(
       });
 
       // Apply alpha/omega strike
-      spellDamages = applyHpBasedDmgBonuses(spellDamages, spellChoices, buildStats, hpBasedDmgBrackets, creatureChoice);
+      spellDamages = applyHpBasedDmgBonuses(
+        spellDamages,
+        spellChoices,
+        buildStats,
+        characterState,
+        hpBasedDmgBrackets,
+        creatureChoice,
+      );
 
       // The first creature contributes raw and its weighted effective
       if (acc.length == 0) {
@@ -152,13 +161,13 @@ function stancePerks(stances: Stance[], currentPerks: PerkChoice[]): PerkChoice[
 
   if (stances.some((s) => s.effect == "expose-weakness")) {
     const piercePerks = [
-      "death-pierce",
-      "earth-pierce",
-      "energy-pierce",
-      "fire-pierce",
-      "holy-pierce",
-      "ice-pierce",
-      "physical-pierce",
+      "death-pierce-regular",
+      "earth-pierce-regular",
+      "energy-pierce-regular",
+      "fire-pierce-regular",
+      "holy-pierce-regular",
+      "ice-pierce-regular",
+      "physical-pierce-regular",
     ];
     piercePerks.forEach((bonusType) => pushPerk(8, (p) => p.bonusType == bonusType));
   }
@@ -189,37 +198,6 @@ function initialSpellState(characterState: CharacterState, spell: Spell): SpellS
     spell,
     basePower: spell.power,
     runicIncrease: 0,
-    baseHarmonyBonus: 0,
-    armorPenetration: 0,
-    deathPierce: 0,
-    earthPierce: 0,
-    energyPierce: 0,
-    firePierce: 0,
-    holyPierce: 0,
-    icePierce: 0,
-    physicalPierce: 0,
-    damageAmphibic: 0,
-    damageAquatic: 0,
-    damageBird: 0,
-    damageConstruct: 0,
-    damageDemon: 0,
-    damageDragon: 0,
-    damageElemental: 0,
-    damageExtraDimensional: 0,
-    damageFey: 0,
-    damageGiant: 0,
-    damageHuman: 0,
-    damageHumanoid: 0,
-    damageInkborn: 0,
-    damageLycanthrope: 0,
-    damageMagical: 0,
-    damageMammal: 0,
-    damagePlant: 0,
-    damageReptile: 0,
-    damageSlime: 0,
-    damageUndead: 0,
-    damageVermin: 0,
-    charmUpgrade: 0,
     focusMasteryIncrease: 0,
   };
 }
@@ -254,6 +232,7 @@ function applyHpBasedDmgBonuses(
   spellDamages: SpellRawBreakdown[],
   spellChoices: SpellChoice[],
   buildStats: BuildStats,
+  characterState: CharacterState,
   brackets: HpBasedDmgBracket[],
   creatureChoice?: CreatureChoice,
 ): SpellRawBreakdown[] {
@@ -262,7 +241,7 @@ function applyHpBasedDmgBonuses(
   const spellDamageById = new Map(spellDamages.map((sd) => [sd.id, sd]));
   let mixture: DamageMixtureComponent[] = [];
   if (creatureChoice) {
-    mixture = buildDamageMixture(spellChoices, creatureChoice, buildStats, spellDamageById);
+    mixture = buildDamageMixture(spellChoices, creatureChoice, buildStats, characterState, spellDamageById);
   }
   const creatureHp = creatureChoice?.creature.hitpoints ?? 0;
   const multiplier = hpBonusMultiplier(mixture, creatureHp, brackets);
@@ -304,6 +283,7 @@ function buildDamageMixture(
   spellChoices: SpellChoice[],
   creatureChoice: CreatureChoice,
   buildStats: BuildStats,
+  characterState: CharacterState,
   spellDamageById: Map<number, SpellRawBreakdown>,
 ): DamageMixtureComponent[] {
   const spellRotation = spellChoices.filter((s) => s.id !== AUTO_ATTACK_ID);
@@ -313,18 +293,19 @@ function buildDamageMixture(
 
   const mixture: DamageMixtureComponent[] = [];
 
-  const charmDamage = calculateElementalCharmDmg(creatureChoice, buildStats);
+  // TODO: charm charm-upgrade
+  const charmDamage = calculateElementalCharmDmg(creatureChoice, buildStats, characterState);
   if (creatureChoice.charm && creatureChoice.charmTier && charmDamage > 0) {
-    let charmChance = 0;
+    let charmChance = characterState.charmUpgrade;
     switch (creatureChoice.charmTier) {
       case 1:
-        charmChance = 0.05;
+        charmChance += 0.05;
         break;
       case 2:
-        charmChance = 0.1;
+        charmChance += 0.1;
         break;
       case 3:
-        charmChance = 0.11;
+        charmChance += 0.11;
         break;
     }
     mixture.push({ weight: charmChance, lo: charmDamage, hi: charmDamage, isCharm: true });
@@ -503,68 +484,6 @@ function applyPerkToSpell(
         else return { ...state, distance: state.distance + perkChoice.value };
       case "magic-level":
         return { ...state, magicLevel: ML + perkChoice.value };
-      case "base-harmony-bonus":
-        return { ...state, baseHarmonyBonus: perkChoice.value };
-      case "armor-penetration":
-        return { ...state, armorPenetration: perkChoice.value / 100 };
-      case "death-pierce":
-        return { ...state, deathPierce: state.deathPierce + perkChoice.value / 100 };
-      case "earth-pierce":
-        return { ...state, earthPierce: state.earthPierce + perkChoice.value / 100 };
-      case "energy-pierce":
-        return { ...state, energyPierce: state.energyPierce + perkChoice.value / 100 };
-      case "fire-pierce":
-        return { ...state, firePierce: state.firePierce + perkChoice.value / 100 };
-      case "holy-pierce":
-        return { ...state, holyPierce: state.holyPierce + perkChoice.value / 100 };
-      case "ice-pierce":
-        return { ...state, icePierce: state.icePierce + perkChoice.value / 100 };
-      case "physical-pierce":
-        return { ...state, physicalPierce: state.physicalPierce + perkChoice.value / 100 };
-      case "damage-amphibic":
-        return { ...state, damageAmphibic: perkChoice.value / 100 };
-      case "damage-aquatic":
-        return { ...state, damageAquatic: perkChoice.value / 100 };
-      case "damage-bird":
-        return { ...state, damageBird: perkChoice.value / 100 };
-      case "damage-construct":
-        return { ...state, damageConstruct: perkChoice.value / 100 };
-      case "damage-demon":
-        return { ...state, damageDemon: perkChoice.value / 100 };
-      case "damage-dragon":
-        return { ...state, damageDragon: perkChoice.value / 100 };
-      case "damage-elemental":
-        return { ...state, damageElemental: perkChoice.value / 100 };
-      case "damage-extra-dimensional":
-        return { ...state, damageExtraDimensional: perkChoice.value / 100 };
-      case "damage-fey":
-        return { ...state, damageFey: perkChoice.value / 100 };
-      case "damage-giant":
-        return { ...state, damageGiant: perkChoice.value / 100 };
-      case "damage-human":
-        return { ...state, damageHuman: perkChoice.value / 100 };
-      case "damage-humanoid":
-        return { ...state, damageHumanoid: perkChoice.value / 100 };
-      case "damage-inkborn":
-        return { ...state, damageInkborn: perkChoice.value / 100 };
-      case "damage-lycanthrope":
-        return { ...state, damageLycanthrope: perkChoice.value / 100 };
-      case "damage-magical":
-        return { ...state, damageMagical: perkChoice.value / 100 };
-      case "damage-mammal":
-        return { ...state, damageMammal: perkChoice.value / 100 };
-      case "damage-plant":
-        return { ...state, damagePlant: perkChoice.value / 100 };
-      case "damage-reptile":
-        return { ...state, damageReptile: perkChoice.value / 100 };
-      case "damage-slime":
-        return { ...state, damageSlime: perkChoice.value / 100 };
-      case "damage-undead":
-        return { ...state, damageUndead: perkChoice.value / 100 };
-      case "damage-vermin":
-        return { ...state, damageVermin: perkChoice.value / 100 };
-      case "charm-upgrade":
-        return { ...state, charmUpgrade: perkChoice.value / 100 };
       case "focus-mastery": {
         const focusScope = spellScopeById.get(perkChoice.value);
         const focusMasteryIncrease = focusScope && state.spell.scope == focusScope ? 0.35 : 0;
@@ -580,7 +499,11 @@ function applyPerkToSpell(
   return state;
 }
 
-function deriveCharacterState(buildStats: BuildStats, weaponChoice: WeaponChoice): CharacterState {
+function deriveCharacterState(
+  buildStats: BuildStats,
+  weaponChoice: WeaponChoice,
+  characterPerks: PerkChoice[],
+): CharacterState {
   const n = (v: unknown) => Number((v ?? "").toString().trim()) || 0;
   const L = n(buildStats.level);
   const B = n(buildStats.bonus);
@@ -603,7 +526,7 @@ function deriveCharacterState(buildStats: BuildStats, weaponChoice: WeaponChoice
   const weaponAttack = (weaponChoice.weapon.attack ?? 0) + (weaponChoice.ammo?.attack ?? 0);
   const weaponDamage = weaponChoice.weapon.damage ?? 0;
   const shieldDef = weaponChoice.shield?.defense ?? 0;
-  return {
+  const characterState: CharacterState = {
     flat,
     magicLevel,
     skill,
@@ -622,5 +545,163 @@ function deriveCharacterState(buildStats: BuildStats, weaponChoice: WeaponChoice
     shielding,
     fishing,
     shieldDef,
+    baseHarmonyBonus: 0,
+    armorPenetration: 0,
+    deathPierceRegular: 0,
+    earthPierceRegular: 0,
+    energyPierceRegular: 0,
+    firePierceRegular: 0,
+    holyPierceRegular: 0,
+    icePierceRegular: 0,
+    physicalPierceRegular: 0,
+    deathPierceWeapon: 0,
+    earthPierceWeapon: 0,
+    energyPierceWeapon: 0,
+    firePierceWeapon: 0,
+    holyPierceWeapon: 0,
+    icePierceWeapon: 0,
+    physicalPierceWeapon: 0,
+    damageAmphibic: 0,
+    damageAquatic: 0,
+    damageBird: 0,
+    damageConstruct: 0,
+    damageDemon: 0,
+    damageDragon: 0,
+    damageElemental: 0,
+    damageExtraDimensional: 0,
+    damageFey: 0,
+    damageGiant: 0,
+    damageHuman: 0,
+    damageHumanoid: 0,
+    damageInkborn: 0,
+    damageLycanthrope: 0,
+    damageMagical: 0,
+    damageMammal: 0,
+    damagePlant: 0,
+    damageReptile: 0,
+    damageSlime: 0,
+    damageUndead: 0,
+    damageVermin: 0,
+    charmUpgrade: 0,
   };
+
+  characterPerks.forEach((p) => {
+    switch (p.perk.bonusType) {
+      case "base-harmony-bonus":
+        characterState.baseHarmonyBonus += p.value;
+        break;
+      case "armor-penetration":
+        characterState.armorPenetration += p.value / 100;
+        break;
+      case "death-pierce-regular":
+        characterState.deathPierceRegular += p.value / 100;
+        break;
+      case "earth-pierce-regular":
+        characterState.earthPierceRegular += p.value / 100;
+        break;
+      case "energy-pierce-regular":
+        characterState.energyPierceRegular += p.value / 100;
+        break;
+      case "fire-pierce-regular":
+        characterState.firePierceRegular += p.value / 100;
+        break;
+      case "holy-pierce-regular":
+        characterState.holyPierceRegular += p.value / 100;
+        break;
+      case "ice-pierce-regular":
+        characterState.icePierceRegular += p.value / 100;
+        break;
+      case "physical-pierce-regular":
+        characterState.physicalPierceRegular += p.value / 100;
+        break;
+      case "death-pierce-weapon":
+        characterState.deathPierceWeapon += p.value / 100;
+        break;
+      case "earth-pierce-weapon":
+        characterState.earthPierceWeapon += p.value / 100;
+        break;
+      case "energy-pierce-weapon":
+        characterState.energyPierceWeapon += p.value / 100;
+        break;
+      case "fire-pierce-weapon":
+        characterState.firePierceWeapon += p.value / 100;
+        break;
+      case "holy-pierce-weapon":
+        characterState.holyPierceWeapon += p.value / 100;
+        break;
+      case "ice-pierce-weapon":
+        characterState.icePierceWeapon += p.value / 100;
+        break;
+      case "physical-pierce-weapon":
+        characterState.physicalPierceWeapon += p.value / 100;
+        break;
+      case "damage-amphibic":
+        characterState.damageAmphibic += p.value / 100;
+        break;
+      case "damage-aquatic":
+        characterState.damageAquatic += p.value / 100;
+        break;
+      case "damage-bird":
+        characterState.damageBird += p.value / 100;
+        break;
+      case "damage-construct":
+        characterState.damageConstruct += p.value / 100;
+        break;
+      case "damage-demon":
+        characterState.damageDemon += p.value / 100;
+        break;
+      case "damage-dragon":
+        characterState.damageDragon += p.value / 100;
+        break;
+      case "damage-elemental":
+        characterState.damageElemental += p.value / 100;
+        break;
+      case "damage-extra-dimensional":
+        characterState.damageExtraDimensional += p.value / 100;
+        break;
+      case "damage-fey":
+        characterState.damageFey += p.value / 100;
+        break;
+      case "damage-giant":
+        characterState.damageGiant += p.value / 100;
+        break;
+      case "damage-human":
+        characterState.damageHuman += p.value / 100;
+        break;
+      case "damage-humanoid":
+        characterState.damageHumanoid += p.value / 100;
+        break;
+      case "damage-inkborn":
+        characterState.damageInkborn += p.value / 100;
+        break;
+      case "damage-lycanthrope":
+        characterState.damageLycanthrope += p.value / 100;
+        break;
+      case "damage-magical":
+        characterState.damageMagical += p.value / 100;
+        break;
+      case "damage-mammal":
+        characterState.damageMammal += p.value / 100;
+        break;
+      case "damage-plant":
+        characterState.damagePlant += p.value / 100;
+        break;
+      case "damage-reptile":
+        characterState.damageReptile += p.value / 100;
+        break;
+      case "damage-slime":
+        characterState.damageSlime += p.value / 100;
+        break;
+      case "damage-undead":
+        characterState.damageUndead += p.value / 100;
+        break;
+      case "damage-vermin":
+        characterState.damageVermin += p.value / 100;
+        break;
+      case "charm-upgrade":
+        characterState.charmUpgrade += p.value / 100;
+        break;
+    }
+  });
+  return characterState;
 }

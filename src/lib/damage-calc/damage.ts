@@ -9,7 +9,7 @@ import {
 } from "@data/spells";
 import type { Weapon } from "@data/weapons";
 import type { BuildStats } from "@lib/build-state";
-import type { CreatureChoice, SpellChoice, SpellState, WeaponChoice } from "@lib/damage-calc";
+import type { CharacterState, CreatureChoice, SpellChoice, SpellState, WeaponChoice } from "@lib/damage-calc";
 
 export function computeRaw(state: SpellState, buildStats: BuildStats): DamageRange {
   if (state.spell.spellType === "auto") {
@@ -128,7 +128,7 @@ export function computeDamageBreakdown(
       });
       critCharmDmg = breakdown.effective.avg - breakdownWithoutCharm.effective.avg;
     } else {
-      elementalCharmDmg = elementalChance * calculateElementalCharmDmg(creatureChoice, buildStats);
+      elementalCharmDmg = elementalChance * calculateElementalCharmDmg(creatureChoice, buildStats, state);
     }
   }
 
@@ -148,32 +148,36 @@ export function computeDamageBreakdown(
 }
 
 // Calculates the full charm damage, ignoring the chance
-export function calculateElementalCharmDmg(creatureChoice: CreatureChoice, buildStats: BuildStats): number {
+export function calculateElementalCharmDmg(
+  creatureChoice: CreatureChoice,
+  buildStats: BuildStats,
+  state: CharacterState,
+): number {
   if (!creatureChoice.charm) return 0;
   if (creatureChoice.charm.element) {
     const cap = Math.min((buildStats.level ?? 0) * 2, creatureChoice.creature.hitpoints * 0.05);
     let resistance;
     switch (creatureChoice.charm.element) {
-      case "ice":
-        resistance = creatureChoice.creature.iceDmgMod;
-        break;
-      case "fire":
-        resistance = creatureChoice.creature.fireDmgMod;
+      case "death":
+        resistance = applyPierce(creatureChoice.creature.deathDmgMod, state.deathPierceRegular);
         break;
       case "earth":
-        resistance = creatureChoice.creature.earthDmgMod;
+        resistance = applyPierce(creatureChoice.creature.earthDmgMod, state.earthPierceRegular);
         break;
       case "energy":
-        resistance = creatureChoice.creature.energyDmgMod;
+        resistance = applyPierce(creatureChoice.creature.energyDmgMod, state.energyPierceRegular);
         break;
-      case "physical":
-        resistance = creatureChoice.creature.physicalDmgMod;
+      case "fire":
+        resistance = applyPierce(creatureChoice.creature.fireDmgMod, state.firePierceRegular);
         break;
       case "holy":
-        resistance = creatureChoice.creature.holyDmgMod;
+        resistance = applyPierce(creatureChoice.creature.holyDmgMod, state.holyPierceRegular);
         break;
-      case "death":
-        resistance = creatureChoice.creature.deathDmgMod;
+      case "ice":
+        resistance = applyPierce(creatureChoice.creature.iceDmgMod, state.icePierceRegular);
+        break;
+      case "physical":
+        resistance = applyPierce(creatureChoice.creature.physicalDmgMod, state.physicalPierceRegular);
         break;
     }
     return cap * resistance * (1 - creatureChoice.creature.mitigation / 100);
@@ -505,15 +509,32 @@ function elementalEffective(
   const armor = Math.round(creatureChoice.creature.armor * (1 - spellState.armorPenetration));
   const extraDamage = 1 + bestiaryExtraDamage(creatureChoice.creature, spellState);
   return (
-    (elementsAvg.death * applyPierce(creatureChoice.creature.deathDmgMod, spellState.deathPierce) +
-      elementsAvg.earth * applyPierce(creatureChoice.creature.earthDmgMod, spellState.earthPierce) +
-      elementsAvg.energy * applyPierce(creatureChoice.creature.energyDmgMod, spellState.energyPierce) +
-      elementsAvg.fire * applyPierce(creatureChoice.creature.fireDmgMod, spellState.firePierce) +
-      elementsAvg.holy * applyPierce(creatureChoice.creature.holyDmgMod, spellState.holyPierce) +
-      elementsAvg.ice * applyPierce(creatureChoice.creature.iceDmgMod, spellState.icePierce) +
+    (elementsAvg.death *
+      applyPierce(creatureChoice.creature.deathDmgMod, spellState.deathPierceRegular + spellState.deathPierceWeapon) +
+      elementsAvg.earth *
+        applyPierce(creatureChoice.creature.earthDmgMod, spellState.earthPierceRegular + spellState.earthPierceWeapon) +
+      elementsAvg.energy *
+        applyPierce(
+          creatureChoice.creature.energyDmgMod,
+          spellState.energyPierceRegular + spellState.energyPierceWeapon,
+        ) +
+      elementsAvg.fire *
+        applyPierce(creatureChoice.creature.fireDmgMod, spellState.firePierceRegular + spellState.firePierceWeapon) +
+      elementsAvg.holy *
+        applyPierce(creatureChoice.creature.holyDmgMod, spellState.holyPierceRegular + spellState.holyPierceWeapon) +
+      elementsAvg.ice *
+        applyPierce(creatureChoice.creature.iceDmgMod, spellState.icePierceRegular + spellState.icePierceWeapon) +
       avgDamageVsArmor(
-        elementsMin.physical * applyPierce(creatureChoice.creature.physicalDmgMod, spellState.physicalPierce),
-        elementsMax.physical * applyPierce(creatureChoice.creature.physicalDmgMod, spellState.physicalPierce),
+        elementsMin.physical *
+          applyPierce(
+            creatureChoice.creature.physicalDmgMod,
+            spellState.physicalPierceRegular + spellState.physicalPierceWeapon,
+          ),
+        elementsMax.physical *
+          applyPierce(
+            creatureChoice.creature.physicalDmgMod,
+            spellState.physicalPierceRegular + spellState.physicalPierceWeapon,
+          ),
         Math.max(Math.floor(armor / 2), 0),
         Math.max(Math.floor(armor / 2) * 2 - 1, 0),
       )) *
