@@ -236,7 +236,7 @@ function buildHpBasedDmgBrackets(perkChoices: PerkChoice[], weapon: Weapon): HpB
   const combatMastery = perkChoices.find((p) => p.perk.bonusType === "combat-mastery");
   if (combatMastery && combatMastery.value > 0) {
     const cmBonus = weapon.hands == "two" ? 2 : 1;
-    const missingHpPerStep = combatMastery.value === 1 ? 0.12 : combatMastery.value === 2 ? 0.1 : 0.08;
+    const missingHpPerStep = combatMastery.value === 1 ? 0.14 : combatMastery.value === 2 ? 0.12 : 0.1;
     for (let step = 1; step * missingHpPerStep < 1; step++) {
       brackets.push({
         from: step * missingHpPerStep,
