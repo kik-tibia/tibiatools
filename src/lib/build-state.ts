@@ -57,6 +57,12 @@ export type CalculatorState = {
   targetOrder: number[];
   showSecondBuild: boolean;
   collapsed: CollapsedSections;
+  buildName: string;
+};
+
+export const buildTabTitle = (buildName: string): string => {
+  const name = buildName.trim();
+  return name ? `${name} – Damage Calculator` : "Damage Calculator";
 };
 
 const defaultStats = (): BuildStats => ({
@@ -114,4 +120,5 @@ export const defaultState = (): CalculatorState => ({
   targetOrder: [],
   showSecondBuild: false,
   collapsed: defaultCollapsed(),
+  buildName: "",
 });

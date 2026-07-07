@@ -4,7 +4,13 @@
   import BuildBadge from "@components/BuildBadge.svelte";
   import ResultsTable from "@components/ResultsTable.svelte";
   import type { SpellRawEffective } from "@data/spells";
-  import { defaultCollapsed, type Build, type CalculatorState, type CollapsedSections } from "@lib/build-state";
+  import {
+    buildTabTitle,
+    defaultCollapsed,
+    type Build,
+    type CalculatorState,
+    type CollapsedSections,
+  } from "@lib/build-state";
   import { computeDamageFromCharms, computeDph, computeDpt, computeResults } from "@lib/damage-calc";
   import {
     resolveCreatures,
@@ -32,9 +38,10 @@
   let targetOrder: number[] = $state(seed.targetOrder ?? []);
   let showSecondBuild: boolean = $state(!!seed.showSecondBuild);
   let collapsed: CollapsedSections = $state(seed.collapsed ?? defaultCollapsed());
+  let buildName: string = $state(seed.buildName ?? "");
 
   function currentState(): CalculatorState {
-    return { version: 2, A, B, perkOrder, rotationOrder, targetOrder, showSecondBuild, collapsed };
+    return { version: 2, A, B, perkOrder, rotationOrder, targetOrder, showSecondBuild, collapsed, buildName };
   }
 
   let stancesA = $derived(resolveStances(A.stats.stanceIds));
@@ -113,6 +120,7 @@
       targetOrder = st.targetOrder ?? [];
       showSecondBuild = !!st.showSecondBuild;
       collapsed = st.collapsed ?? defaultCollapsed();
+      buildName = st.buildName ?? "";
     };
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
@@ -125,6 +133,7 @@
     rotationOrder;
     targetOrder;
     showSecondBuild;
+    buildName;
     collapsed.basicStats;
     collapsed.advancedStats;
     collapsed.weapon;
@@ -134,6 +143,10 @@
     scheduleWrite();
   });
 
+  $effect(() => {
+    document.title = buildTabTitle(buildName);
+  });
+
   let copied = $state(false);
   async function copyLink() {
     await navigator.clipboard.writeText(window.location.href);
@@ -141,6 +154,13 @@
     setTimeout(() => (copied = false), 1200);
   }
 </script>
+
+<section class="toolbar">
+  <label class="build-name">
+    Build name:
+    <input type="text" bind:value={buildName} />
+  </label>
+</section>
 
 <section class="toolbar">
   <button type="button" onclick={copyLink}>{copied ? "Copied!" : "Share"}</button>
@@ -244,6 +264,27 @@
   .compare-btn.active {
     background: var(--btn-active-bg);
     border-color: var(--btn-active-border);
+  }
+
+  .build-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .build-name input {
+    padding: 0.25rem 0.4rem;
+    font: inherit;
+    border: 1px solid var(--input-border);
+    border-radius: 0.25rem;
+    background: var(--input-bg);
+    color: inherit;
+  }
+
+  .build-name input:focus {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-color: var(--focus-border);
   }
 
   .panel {

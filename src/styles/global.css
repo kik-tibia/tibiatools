@@ -15,8 +15,8 @@
   --border-color: hsl(0 0% 30%);
   --sub-border-color: hsl(0 0% 18%);
   --footer-border: hsl(0 0% 27%);
-  --focus-ring: 0 0 0 2px hsl(220 90% 65% / 0.3);
-  --focus-border: hsl(220 90% 65%);
+  --focus-ring: 0 0 0 2px hsl(0 0% 60% / 0.3);
+  --focus-border: hsl(0 0% 60%);
 
   /* Header */
   --header-bg: hsl(220 5% 14%);
@@ -81,8 +81,8 @@
   --input-border: hsl(0 0% 72%);
   --border-color: hsl(0 0% 80%);
   --sub-border-color: hsl(0 0% 88%);
-  --focus-ring: 0 0 0 2px hsl(220 90% 55% / 0.25);
-  --focus-border: hsl(220 80% 55%);
+  --focus-ring: 0 0 0 2px hsl(0 0% 50% / 0.3);
+  --focus-border: hsl(0 0% 50%);
   --footer-border: hsl(0 0% 82%);
 
   /* Header */

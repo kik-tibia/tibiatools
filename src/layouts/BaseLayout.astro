@@ -1,7 +1,7 @@
 ---
 import "@styles/global.css";
 import "@styles/theme-toggle.css";
-const { title = "Tibia Tools" } = Astro.props;
+const { title = "Tibia Tools", tabTitle = title } = Astro.props;
 const headerTitle = Astro.url.hostname.startsWith("test.") ? "Tibia Tools (Test)" : "Tibia Tools";
 ---
 <html lang="en">
@@ -12,7 +12,7 @@ const headerTitle = Astro.url.hostname.startsWith("test.") ? "Tibia Tools (Test)
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <title>{title}</title>
+    <title>{tabTitle}</title>
     <script is:inline>
       (function() {
         var pref = localStorage.getItem("theme");
