@@ -3,9 +3,11 @@ import spellsRaw from "@data/spells.json";
 
 export type SpellType = "auto" | "spell" | "rune";
 export type ScalesWith = "magic" | "melee" | "shielding" | "distance" | "none";
-export type Element = "ice" | "fire" | "earth" | "energy" | "physical" | "holy" | "death";
+export type Element = "death" | "earth" | "energy" | "fire" | "holy" | "ice" | "physical";
 export type SpellElement = Element | "weapon";
 export type Rounding = "floor" | "round" | "ceil";
+
+export const allElements: Element[] = ["death", "earth", "energy", "fire", "holy", "ice", "physical"];
 
 export type Spell = {
   id: number;

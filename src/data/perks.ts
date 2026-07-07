@@ -1,4 +1,7 @@
 import perksRaw from "@data/perks.json";
+import type { Element } from "@data/spells";
+
+export type PierceKind = "pierceRegular" | "pierceWeapon";
 
 export type PerkBonusType =
   | "attack"
@@ -22,20 +25,8 @@ export type PerkBonusType =
   | "sword-fighting"
   | "sword-percent-extra"
   | "armor-penetration"
-  | "death-pierce-regular"
-  | "earth-pierce-regular"
-  | "energy-pierce-regular"
-  | "fire-pierce-regular"
-  | "holy-pierce-regular"
-  | "ice-pierce-regular"
-  | "physical-pierce-regular"
-  | "death-pierce-weapon"
-  | "earth-pierce-weapon"
-  | "energy-pierce-weapon"
-  | "fire-pierce-weapon"
-  | "holy-pierce-weapon"
-  | "ice-pierce-weapon"
-  | "physical-pierce-weapon"
+  | `${Element}-pierce-regular`
+  | `${Element}-pierce-weapon`
   | "damage-amphibic"
   | "damage-aquatic"
   | "damage-bird"

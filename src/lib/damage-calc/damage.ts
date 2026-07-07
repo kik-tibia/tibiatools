@@ -1,5 +1,6 @@
 import type { Creature } from "@data/creatures";
 import {
+  allElements,
   beamScopes,
   type DamageBreakdown,
   type DamageRange,
@@ -155,31 +156,10 @@ export function calculateElementalCharmDmg(
 ): number {
   if (!creatureChoice.charm) return 0;
   if (creatureChoice.charm.element) {
+    const element = creatureChoice.charm.element;
     const cap = Math.min((buildStats.level ?? 0) * 2, creatureChoice.creature.hitpoints * 0.05);
-    let resistance;
-    switch (creatureChoice.charm.element) {
-      case "death":
-        resistance = applyPierce(creatureChoice.creature.deathDmgMod, state.deathPierceRegular);
-        break;
-      case "earth":
-        resistance = applyPierce(creatureChoice.creature.earthDmgMod, state.earthPierceRegular);
-        break;
-      case "energy":
-        resistance = applyPierce(creatureChoice.creature.energyDmgMod, state.energyPierceRegular);
-        break;
-      case "fire":
-        resistance = applyPierce(creatureChoice.creature.fireDmgMod, state.firePierceRegular);
-        break;
-      case "holy":
-        resistance = applyPierce(creatureChoice.creature.holyDmgMod, state.holyPierceRegular);
-        break;
-      case "ice":
-        resistance = applyPierce(creatureChoice.creature.iceDmgMod, state.icePierceRegular);
-        break;
-      case "physical":
-        resistance = applyPierce(creatureChoice.creature.physicalDmgMod, state.physicalPierceRegular);
-        break;
-    }
+    // Weapon pierce doesn't affect charms
+    const resistance = applyPierce(creatureDmgMod(creatureChoice.creature, element), state.pierceRegular[element]);
     return cap * resistance * (1 - creatureChoice.creature.mitigation / 100);
   } else if (creatureChoice.charm.effect == "overpower") {
     return Math.min((buildStats.hitPoints ?? 0) * 0.05, creatureChoice.creature.hitpoints * 0.08);
@@ -444,7 +424,7 @@ function computeEffectiveSpell(
   return breakdown;
 }
 
-function initElements(): Record<Element, number> {
+export function initElements(): Record<Element, number> {
   return {
     death: 0,
     earth: 0,
@@ -508,39 +488,30 @@ function elementalEffective(
 ): number {
   const armor = Math.round(creatureChoice.creature.armor * (1 - spellState.armorPenetration));
   const extraDamage = 1 + bestiaryExtraDamage(creatureChoice.creature, spellState);
+  const piercedDmgMod = (element: Element) =>
+    applyPierce(
+      creatureDmgMod(creatureChoice.creature, element),
+      spellState.pierceRegular[element] + spellState.pierceWeapon[element],
+    );
+  const elementalDmg = allElements
+    .filter((element) => element != "physical")
+    .reduce((sum, element) => sum + elementsAvg[element] * piercedDmgMod(element), 0);
+  const physicalDmgMod = piercedDmgMod("physical");
   return (
-    (elementsAvg.death *
-      applyPierce(creatureChoice.creature.deathDmgMod, spellState.deathPierceRegular + spellState.deathPierceWeapon) +
-      elementsAvg.earth *
-        applyPierce(creatureChoice.creature.earthDmgMod, spellState.earthPierceRegular + spellState.earthPierceWeapon) +
-      elementsAvg.energy *
-        applyPierce(
-          creatureChoice.creature.energyDmgMod,
-          spellState.energyPierceRegular + spellState.energyPierceWeapon,
-        ) +
-      elementsAvg.fire *
-        applyPierce(creatureChoice.creature.fireDmgMod, spellState.firePierceRegular + spellState.firePierceWeapon) +
-      elementsAvg.holy *
-        applyPierce(creatureChoice.creature.holyDmgMod, spellState.holyPierceRegular + spellState.holyPierceWeapon) +
-      elementsAvg.ice *
-        applyPierce(creatureChoice.creature.iceDmgMod, spellState.icePierceRegular + spellState.icePierceWeapon) +
+    (elementalDmg +
       avgDamageVsArmor(
-        elementsMin.physical *
-          applyPierce(
-            creatureChoice.creature.physicalDmgMod,
-            spellState.physicalPierceRegular + spellState.physicalPierceWeapon,
-          ),
-        elementsMax.physical *
-          applyPierce(
-            creatureChoice.creature.physicalDmgMod,
-            spellState.physicalPierceRegular + spellState.physicalPierceWeapon,
-          ),
+        elementsMin.physical * physicalDmgMod,
+        elementsMax.physical * physicalDmgMod,
         Math.max(Math.floor(armor / 2), 0),
         Math.max(Math.floor(armor / 2) * 2 - 1, 0),
       )) *
     (1 - creatureChoice.creature.mitigation / 100) *
     extraDamage
   );
+}
+
+function creatureDmgMod(creature: Creature, element: Element): number {
+  return creature[`${element}DmgMod`];
 }
 
 /** The best single-variable model that predicts Fist Fighting for the regular mon files with R² = 0.8348

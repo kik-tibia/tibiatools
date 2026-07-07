@@ -1,7 +1,9 @@
-import { allPerks, type Perk } from "@data/perks.ts";
+import { allPerks, type Perk, type PerkBonusType, type PierceKind } from "@data/perks.ts";
 import {
+  allElements,
   allSpells,
   type DamageEffective,
+  type Element,
   type Spell,
   type SpellElement,
   type SpellRawBreakdown,
@@ -19,7 +21,7 @@ import type {
   SpellState,
   WeaponChoice,
 } from "@lib/damage-calc";
-import { calculateElementalCharmDmg, computeDamageBreakdown, computeRaw } from "./damage.ts";
+import { calculateElementalCharmDmg, computeDamageBreakdown, computeRaw, initElements } from "./damage.ts";
 import { hpBonusMultiplier, type DamageMixtureComponent, type HpBasedDmgBracket } from "./hp-bonus.ts";
 
 const AUTO_ATTACK_ID = 1;
@@ -160,16 +162,7 @@ function stancePerks(stances: Stance[], currentPerks: PerkChoice[]): PerkChoice[
   }
 
   if (stances.some((s) => s.effect == "expose-weakness")) {
-    const piercePerks = [
-      "death-pierce-regular",
-      "earth-pierce-regular",
-      "energy-pierce-regular",
-      "fire-pierce-regular",
-      "holy-pierce-regular",
-      "ice-pierce-regular",
-      "physical-pierce-regular",
-    ];
-    piercePerks.forEach((bonusType) => pushPerk(8, (p) => p.bonusType == bonusType));
+    allElements.forEach((element) => pushPerk(8, (p) => p.bonusType == `${element}-pierce-regular`));
   }
 
   const lodPerkStage = currentPerks.find((p) => p.perk.bonusType == "lord-of-destruction")?.value ?? 0;
@@ -193,6 +186,8 @@ function stancePerks(stances: Stance[], currentPerks: PerkChoice[]): PerkChoice[
 }
 
 function initialSpellState(characterState: CharacterState, spell: Spell): SpellState {
+  // Shallow copy: every spell state shares the same pierceRegular/pierceWeapon records,
+  // so a per-spell pierce change must replace the record ({ ...state.pierceRegular }), never mutate it
   return {
     ...characterState,
     spell,
@@ -499,6 +494,65 @@ function applyPerkToSpell(
   return state;
 }
 
+type NumericCharacterField = {
+  [K in keyof CharacterState]: CharacterState[K] extends number ? K : never;
+}[keyof CharacterState];
+
+// Character perks that add value/100 to a flat CharacterState field
+const characterPercentBonuses: Partial<Record<PerkBonusType, NumericCharacterField>> = {
+  "armor-penetration": "armorPenetration",
+  "damage-amphibic": "damageAmphibic",
+  "damage-aquatic": "damageAquatic",
+  "damage-bird": "damageBird",
+  "damage-construct": "damageConstruct",
+  "damage-demon": "damageDemon",
+  "damage-dragon": "damageDragon",
+  "damage-elemental": "damageElemental",
+  "damage-extra-dimensional": "damageExtraDimensional",
+  "damage-fey": "damageFey",
+  "damage-giant": "damageGiant",
+  "damage-human": "damageHuman",
+  "damage-humanoid": "damageHumanoid",
+  "damage-inkborn": "damageInkborn",
+  "damage-lycanthrope": "damageLycanthrope",
+  "damage-magical": "damageMagical",
+  "damage-mammal": "damageMammal",
+  "damage-plant": "damagePlant",
+  "damage-reptile": "damageReptile",
+  "damage-slime": "damageSlime",
+  "damage-undead": "damageUndead",
+  "damage-vermin": "damageVermin",
+  "charm-upgrade": "charmUpgrade",
+};
+
+const pierceBonuses = new Map<PerkBonusType, { kind: PierceKind; element: Element }>();
+for (const element of allElements) {
+  pierceBonuses.set(`${element}-pierce-regular`, { kind: "pierceRegular", element });
+  pierceBonuses.set(`${element}-pierce-weapon`, { kind: "pierceWeapon", element });
+}
+
+const characterBonusesHandledElsewhere: PerkBonusType[] = [
+  "base-harmony-bonus", // deriveCharacterState, added without /100
+  "alpha-strike", // buildHpBasedDmgBrackets
+  "omega-strike", // buildHpBasedDmgBrackets
+  "combat-mastery", // buildHpBasedDmgBrackets
+  "lord-of-destruction", // stancePerks
+];
+
+// Check for unhandled perks and throw error if found
+const unhandledCharacterPerks = allPerks.filter(
+  (p) =>
+    p.scope == "character" &&
+    !(p.bonusType in characterPercentBonuses) &&
+    !pierceBonuses.has(p.bonusType) &&
+    !characterBonusesHandledElsewhere.includes(p.bonusType),
+);
+if (unhandledCharacterPerks.length > 0) {
+  throw new Error(
+    `Perks with scope "character" but no handler: ${unhandledCharacterPerks.map((p) => p.name).join(", ")}`,
+  );
+}
+
 function deriveCharacterState(
   buildStats: BuildStats,
   weaponChoice: WeaponChoice,
@@ -547,20 +601,8 @@ function deriveCharacterState(
     shieldDef,
     baseHarmonyBonus: 0,
     armorPenetration: 0,
-    deathPierceRegular: 0,
-    earthPierceRegular: 0,
-    energyPierceRegular: 0,
-    firePierceRegular: 0,
-    holyPierceRegular: 0,
-    icePierceRegular: 0,
-    physicalPierceRegular: 0,
-    deathPierceWeapon: 0,
-    earthPierceWeapon: 0,
-    energyPierceWeapon: 0,
-    firePierceWeapon: 0,
-    holyPierceWeapon: 0,
-    icePierceWeapon: 0,
-    physicalPierceWeapon: 0,
+    pierceRegular: initElements(),
+    pierceWeapon: initElements(),
     damageAmphibic: 0,
     damageAquatic: 0,
     damageBird: 0,
@@ -586,122 +628,17 @@ function deriveCharacterState(
   };
 
   characterPerks.forEach((p) => {
-    switch (p.perk.bonusType) {
-      case "base-harmony-bonus":
-        characterState.baseHarmonyBonus += p.value;
-        break;
-      case "armor-penetration":
-        characterState.armorPenetration += p.value / 100;
-        break;
-      case "death-pierce-regular":
-        characterState.deathPierceRegular += p.value / 100;
-        break;
-      case "earth-pierce-regular":
-        characterState.earthPierceRegular += p.value / 100;
-        break;
-      case "energy-pierce-regular":
-        characterState.energyPierceRegular += p.value / 100;
-        break;
-      case "fire-pierce-regular":
-        characterState.firePierceRegular += p.value / 100;
-        break;
-      case "holy-pierce-regular":
-        characterState.holyPierceRegular += p.value / 100;
-        break;
-      case "ice-pierce-regular":
-        characterState.icePierceRegular += p.value / 100;
-        break;
-      case "physical-pierce-regular":
-        characterState.physicalPierceRegular += p.value / 100;
-        break;
-      case "death-pierce-weapon":
-        characterState.deathPierceWeapon += p.value / 100;
-        break;
-      case "earth-pierce-weapon":
-        characterState.earthPierceWeapon += p.value / 100;
-        break;
-      case "energy-pierce-weapon":
-        characterState.energyPierceWeapon += p.value / 100;
-        break;
-      case "fire-pierce-weapon":
-        characterState.firePierceWeapon += p.value / 100;
-        break;
-      case "holy-pierce-weapon":
-        characterState.holyPierceWeapon += p.value / 100;
-        break;
-      case "ice-pierce-weapon":
-        characterState.icePierceWeapon += p.value / 100;
-        break;
-      case "physical-pierce-weapon":
-        characterState.physicalPierceWeapon += p.value / 100;
-        break;
-      case "damage-amphibic":
-        characterState.damageAmphibic += p.value / 100;
-        break;
-      case "damage-aquatic":
-        characterState.damageAquatic += p.value / 100;
-        break;
-      case "damage-bird":
-        characterState.damageBird += p.value / 100;
-        break;
-      case "damage-construct":
-        characterState.damageConstruct += p.value / 100;
-        break;
-      case "damage-demon":
-        characterState.damageDemon += p.value / 100;
-        break;
-      case "damage-dragon":
-        characterState.damageDragon += p.value / 100;
-        break;
-      case "damage-elemental":
-        characterState.damageElemental += p.value / 100;
-        break;
-      case "damage-extra-dimensional":
-        characterState.damageExtraDimensional += p.value / 100;
-        break;
-      case "damage-fey":
-        characterState.damageFey += p.value / 100;
-        break;
-      case "damage-giant":
-        characterState.damageGiant += p.value / 100;
-        break;
-      case "damage-human":
-        characterState.damageHuman += p.value / 100;
-        break;
-      case "damage-humanoid":
-        characterState.damageHumanoid += p.value / 100;
-        break;
-      case "damage-inkborn":
-        characterState.damageInkborn += p.value / 100;
-        break;
-      case "damage-lycanthrope":
-        characterState.damageLycanthrope += p.value / 100;
-        break;
-      case "damage-magical":
-        characterState.damageMagical += p.value / 100;
-        break;
-      case "damage-mammal":
-        characterState.damageMammal += p.value / 100;
-        break;
-      case "damage-plant":
-        characterState.damagePlant += p.value / 100;
-        break;
-      case "damage-reptile":
-        characterState.damageReptile += p.value / 100;
-        break;
-      case "damage-slime":
-        characterState.damageSlime += p.value / 100;
-        break;
-      case "damage-undead":
-        characterState.damageUndead += p.value / 100;
-        break;
-      case "damage-vermin":
-        characterState.damageVermin += p.value / 100;
-        break;
-      case "charm-upgrade":
-        characterState.charmUpgrade += p.value / 100;
-        break;
+    if (p.perk.bonusType == "base-harmony-bonus") {
+      characterState.baseHarmonyBonus += p.value;
+      return;
     }
+    const pierce = pierceBonuses.get(p.perk.bonusType);
+    if (pierce) {
+      characterState[pierce.kind][pierce.element] += p.value / 100;
+      return;
+    }
+    const field = characterPercentBonuses[p.perk.bonusType];
+    if (field) characterState[field] += p.value / 100;
   });
   return characterState;
 }
