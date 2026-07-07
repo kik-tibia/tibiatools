@@ -1,4 +1,4 @@
-import type { Creature } from "@data/creatures";
+import type { BestiaryClass, Creature } from "@data/creatures";
 import {
   allElements,
   beamScopes,
@@ -524,28 +524,7 @@ function estimatedAverageBlock(creature: Creature): number {
 }
 
 function bestiaryExtraDamage(creature: Creature, spellState: SpellState): number {
-  if (creature.bestiaryClass == "Amphibic") return spellState.damageAmphibic;
-  if (creature.bestiaryClass == "Aquatic") return spellState.damageAquatic;
-  if (creature.bestiaryClass == "Bird") return spellState.damageBird;
-  if (creature.bestiaryClass == "Construct") return spellState.damageConstruct;
-  if (creature.bestiaryClass == "Demon") return spellState.damageDemon;
-  if (creature.bestiaryClass == "Dragon") return spellState.damageDragon;
-  if (creature.bestiaryClass == "Elemental") return spellState.damageElemental;
-  if (creature.bestiaryClass == "Extra Dimensional") return spellState.damageExtraDimensional;
-  if (creature.bestiaryClass == "Fey") return spellState.damageFey;
-  if (creature.bestiaryClass == "Giant") return spellState.damageGiant;
-  if (creature.bestiaryClass == "Human") return spellState.damageHuman;
-  if (creature.bestiaryClass == "Humanoid") return spellState.damageHumanoid;
-  if (creature.bestiaryClass == "Inkborn") return spellState.damageInkborn;
-  if (creature.bestiaryClass == "Lycanthrope") return spellState.damageLycanthrope;
-  if (creature.bestiaryClass == "Magical") return spellState.damageMagical;
-  if (creature.bestiaryClass == "Mammal") return spellState.damageMammal;
-  if (creature.bestiaryClass == "Plant") return spellState.damagePlant;
-  if (creature.bestiaryClass == "Reptile") return spellState.damageReptile;
-  if (creature.bestiaryClass == "Slime") return spellState.damageSlime;
-  if (creature.bestiaryClass == "Undead") return spellState.damageUndead;
-  if (creature.bestiaryClass == "Vermin") return spellState.damageVermin;
-  return 0;
+  return spellState.bestiaryDamage[creature.bestiaryClass as BestiaryClass] ?? 0;
 }
 
 function applyPierce(resistance: number, pierce: number): number {

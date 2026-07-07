@@ -1,7 +1,16 @@
 import perksRaw from "@data/perks.json";
+import type { BestiaryClass } from "@data/creatures";
 import type { Element } from "@data/spells";
 
 export type PierceKind = "pierceRegular" | "pierceWeapon";
+
+type SpaceToDash<S extends string> = S extends `${infer Head} ${infer Tail}` ? `${Head}-${SpaceToDash<Tail>}` : S;
+export type BestiaryDamageBonusType = `damage-${Lowercase<SpaceToDash<BestiaryClass>>}`;
+
+// Runtime mirror of BestiaryDamageBonusType, e.g. "Extra Dimensional" -> "damage-extra-dimensional"
+export function bestiaryDamageBonusType(bestiaryClass: BestiaryClass): BestiaryDamageBonusType {
+  return `damage-${bestiaryClass.toLowerCase().split(" ").join("-")}` as BestiaryDamageBonusType;
+}
 
 export type PerkBonusType =
   | "attack"
@@ -27,27 +36,7 @@ export type PerkBonusType =
   | "armor-penetration"
   | `${Element}-pierce-regular`
   | `${Element}-pierce-weapon`
-  | "damage-amphibic"
-  | "damage-aquatic"
-  | "damage-bird"
-  | "damage-construct"
-  | "damage-demon"
-  | "damage-dragon"
-  | "damage-elemental"
-  | "damage-extra-dimensional"
-  | "damage-fey"
-  | "damage-giant"
-  | "damage-human"
-  | "damage-humanoid"
-  | "damage-inkborn"
-  | "damage-lycanthrope"
-  | "damage-magical"
-  | "damage-mammal"
-  | "damage-plant"
-  | "damage-reptile"
-  | "damage-slime"
-  | "damage-undead"
-  | "damage-vermin"
+  | BestiaryDamageBonusType
   | "base-harmony-bonus"
   | "alpha-strike"
   | "omega-strike"

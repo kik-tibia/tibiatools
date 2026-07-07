@@ -1,4 +1,5 @@
-import { allPerks, type Perk, type PerkBonusType, type PierceKind } from "@data/perks.ts";
+import { allBestiaryClasses, initBestiaryDamage, type BestiaryClass } from "@data/creatures";
+import { allPerks, bestiaryDamageBonusType, type Perk, type PerkBonusType, type PierceKind } from "@data/perks.ts";
 import {
   allElements,
   allSpells,
@@ -186,8 +187,8 @@ function stancePerks(stances: Stance[], currentPerks: PerkChoice[]): PerkChoice[
 }
 
 function initialSpellState(characterState: CharacterState, spell: Spell): SpellState {
-  // Shallow copy: every spell state shares the same pierceRegular/pierceWeapon records,
-  // so a per-spell pierce change must replace the record ({ ...state.pierceRegular }), never mutate it
+  // Shallow copy: every spell state shares the same pierceRegular/pierceWeapon/bestiaryDamage records,
+  // so a per-spell change must replace the record ({ ...state.pierceRegular }), never mutate it
   return {
     ...characterState,
     spell,
@@ -501,27 +502,6 @@ type NumericCharacterField = {
 // Character perks that add value/100 to a flat CharacterState field
 const characterPercentBonuses: Partial<Record<PerkBonusType, NumericCharacterField>> = {
   "armor-penetration": "armorPenetration",
-  "damage-amphibic": "damageAmphibic",
-  "damage-aquatic": "damageAquatic",
-  "damage-bird": "damageBird",
-  "damage-construct": "damageConstruct",
-  "damage-demon": "damageDemon",
-  "damage-dragon": "damageDragon",
-  "damage-elemental": "damageElemental",
-  "damage-extra-dimensional": "damageExtraDimensional",
-  "damage-fey": "damageFey",
-  "damage-giant": "damageGiant",
-  "damage-human": "damageHuman",
-  "damage-humanoid": "damageHumanoid",
-  "damage-inkborn": "damageInkborn",
-  "damage-lycanthrope": "damageLycanthrope",
-  "damage-magical": "damageMagical",
-  "damage-mammal": "damageMammal",
-  "damage-plant": "damagePlant",
-  "damage-reptile": "damageReptile",
-  "damage-slime": "damageSlime",
-  "damage-undead": "damageUndead",
-  "damage-vermin": "damageVermin",
   "charm-upgrade": "charmUpgrade",
 };
 
@@ -529,6 +509,11 @@ const pierceBonuses = new Map<PerkBonusType, { kind: PierceKind; element: Elemen
 for (const element of allElements) {
   pierceBonuses.set(`${element}-pierce-regular`, { kind: "pierceRegular", element });
   pierceBonuses.set(`${element}-pierce-weapon`, { kind: "pierceWeapon", element });
+}
+
+const bestiaryDamageBonuses = new Map<PerkBonusType, BestiaryClass>();
+for (const bestiaryClass of allBestiaryClasses) {
+  bestiaryDamageBonuses.set(bestiaryDamageBonusType(bestiaryClass), bestiaryClass);
 }
 
 const characterBonusesHandledElsewhere: PerkBonusType[] = [
@@ -545,6 +530,7 @@ const unhandledCharacterPerks = allPerks.filter(
     p.scope == "character" &&
     !(p.bonusType in characterPercentBonuses) &&
     !pierceBonuses.has(p.bonusType) &&
+    !bestiaryDamageBonuses.has(p.bonusType) &&
     !characterBonusesHandledElsewhere.includes(p.bonusType),
 );
 if (unhandledCharacterPerks.length > 0) {
@@ -603,27 +589,7 @@ function deriveCharacterState(
     armorPenetration: 0,
     pierceRegular: initElements(),
     pierceWeapon: initElements(),
-    damageAmphibic: 0,
-    damageAquatic: 0,
-    damageBird: 0,
-    damageConstruct: 0,
-    damageDemon: 0,
-    damageDragon: 0,
-    damageElemental: 0,
-    damageExtraDimensional: 0,
-    damageFey: 0,
-    damageGiant: 0,
-    damageHuman: 0,
-    damageHumanoid: 0,
-    damageInkborn: 0,
-    damageLycanthrope: 0,
-    damageMagical: 0,
-    damageMammal: 0,
-    damagePlant: 0,
-    damageReptile: 0,
-    damageSlime: 0,
-    damageUndead: 0,
-    damageVermin: 0,
+    bestiaryDamage: initBestiaryDamage(),
     charmUpgrade: 0,
   };
 
@@ -635,6 +601,11 @@ function deriveCharacterState(
     const pierce = pierceBonuses.get(p.perk.bonusType);
     if (pierce) {
       characterState[pierce.kind][pierce.element] += p.value / 100;
+      return;
+    }
+    const bestiaryClass = bestiaryDamageBonuses.get(p.perk.bonusType);
+    if (bestiaryClass) {
+      characterState.bestiaryDamage[bestiaryClass] += p.value / 100;
       return;
     }
     const field = characterPercentBonuses[p.perk.bonusType];

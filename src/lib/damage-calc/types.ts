@@ -1,5 +1,5 @@
 import type { Charm } from "@data/charms";
-import type { Creature } from "@data/creatures";
+import type { BestiaryClass, Creature } from "@data/creatures";
 import type { Perk } from "@data/perks";
 import type { Shield } from "@data/shields";
 import type { Element, Spell, SpellRawEffective } from "@data/spells";
@@ -35,27 +35,7 @@ export type CharacterState = {
   armorPenetration: number;
   pierceRegular: Record<Element, number>;
   pierceWeapon: Record<Element, number>;
-  damageAmphibic: number;
-  damageAquatic: number;
-  damageBird: number;
-  damageConstruct: number;
-  damageDemon: number;
-  damageDragon: number;
-  damageElemental: number;
-  damageExtraDimensional: number;
-  damageFey: number;
-  damageGiant: number;
-  damageHuman: number;
-  damageHumanoid: number;
-  damageInkborn: number;
-  damageLycanthrope: number;
-  damageMagical: number;
-  damageMammal: number;
-  damagePlant: number;
-  damageReptile: number;
-  damageSlime: number;
-  damageUndead: number;
-  damageVermin: number;
+  bestiaryDamage: Record<BestiaryClass, number>;
   charmUpgrade: number;
 };
 
