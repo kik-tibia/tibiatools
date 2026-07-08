@@ -238,7 +238,16 @@
     {@const def = perkRegistry.get(id)}
     {#if def}
       <tr class="data-row" class:diff={perkDiffers(id)}>
-        <td class="item-name">{def.name}</td>
+        {#if def.bonusType.includes("pierce")}
+          <td class="item-name">
+            <Tooltip
+              tip="If this pierce perk comes from a weapon proficiency, choose the <b>weapon</b> pierce type which does not affect charms. Otherwise choose the <b>regular</b> pierce type which does affect charms.">
+              {def.name}
+            </Tooltip>
+          </td>
+        {:else}
+          <td class="item-name">{def.name}</td>
+        {/if}
         {@render perkCell(buildA, "a", id, setPerkValueA, removePerkA)}
         {#if showSecondBuild}
           {@render perkCell(buildB, "b", id, setPerkValueB, removePerkB)}
