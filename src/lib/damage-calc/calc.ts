@@ -332,8 +332,9 @@ export function computeDpt(spellDamageChoices: SpellDamageChoice[]): number {
   const aaRatioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
 
   const autoAttack = spellDamageChoices.find((s) => s.id === AUTO_ATTACK_ID);
+  const aaRatio = ratioSum > 0 ? aaRatioSum / ratioSum : 1;
   const autoAttackDamage = autoAttack
-    ? (aaRatioSum / ratioSum) *
+    ? aaRatio *
       (autoAttack.spellDamage.effective.avg + autoAttack.spellDamage.effective.elementalCharmDmg) *
       autoAttack.targets
     : 0;
