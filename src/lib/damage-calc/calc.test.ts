@@ -146,7 +146,7 @@ describe("Knight build with everything", () => {
       expect(computeDpt(aoeSpellDamageChoices)).toBeCloseTo(dpt + 3 * autoAttackAvg, d);
     });
 
-    it("only applies low blow to the main target", () => {
+    it("applies low blow to all targets", () => {
       const lowBlowTargets = resolveCreatures([
         { id: 105, ratio: 208, charmId: 1, charmTier: 2 },
         { id: 618, ratio: 173 },
@@ -161,16 +161,16 @@ describe("Knight build with everything", () => {
         computeResults(stats, stances, weapon, perks, aoeRotation, lowBlowTargets),
       );
 
-      expect(computeDamageFromCharms(aoeChoices)).toBeCloseTo(computeDamageFromCharms(baseChoices), d);
       const effective = aoeChoices.find((s) => s.id === 1)!.spellDamage.effective;
-      const baseEffective = baseChoices.find((s) => s.id === 1)!.spellDamage.effective;
-      expect(effective.critCharmDmg).toBeGreaterThan(0);
-      expect(effective.critCharmDmg).toBeCloseTo(baseEffective.critCharmDmg / 4, d);
-      expect(effective.avg).toBeCloseTo(baseEffective.avg - 3 * effective.critCharmDmg, d);
-      expect(computeDpt(aoeChoices)).toBeCloseTo(
-        computeDpt(baseChoices) + 3 * (effective.avg - effective.critCharmDmg),
+      expect(computeDamageFromCharms(aoeChoices)).toBeCloseTo(
+        computeDamageFromCharms(baseChoices) + 3 * effective.critCharmDmg,
         d,
       );
+      const baseEffective = baseChoices.find((s) => s.id === 1)!.spellDamage.effective;
+      expect(effective.critCharmDmg).toBeGreaterThan(0);
+      expect(effective.critCharmDmg).toBeCloseTo(baseEffective.critCharmDmg, d);
+      expect(effective.avg).toBeCloseTo(baseEffective.avg, d);
+      expect(computeDpt(aoeChoices)).toBeCloseTo(computeDpt(baseChoices) + 3 * effective.avg, d);
     });
   });
 });

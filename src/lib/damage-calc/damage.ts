@@ -135,8 +135,8 @@ export function computeDamageBreakdown(
 
   let effectiveAvg = breakdown.effective.avg;
 
-  // AOE auto-attacks only proc charms on the primary target
-  if (state.spell.spellType == "auto") {
+  // AOE auto-attacks only proc charms on the primary target (except low blow which is exempt)
+  if (state.spell.spellType == "auto" && creatureChoice?.charm?.effect != "low-blow") {
     const autoAttack = spellChoices.find((s) => s.spell.spellType == "auto");
     const targets = Math.max(autoAttack?.targets ?? 1, 1);
     effectiveAvg -= critCharmDmg * (1 - 1 / targets);
