@@ -1482,6 +1482,32 @@
     "vocation": "knights"
   },
   {
+    "name": "Moonsilver Claymore",
+    "attack": "6",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "54",
+    "attackHoly": "",
+    "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
+    "vocation": "knights"
+  },
+  {
+    "name": "Moonsilver Epee",
+    "attack": "6",
+    "attackDeath": "",
+    "attackEarth": "50",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
+    "vocation": "knights"
+  },
+  {
     "name": "Mystic Blade",
     "attack": "44",
     "attackDeath": "",
@@ -2182,6 +2208,32 @@
     "defenseMod": "+2",
     "hands": "One",
     "vocation": ""
+  },
+  {
+    "name": "Stellar Moonsilver Claymore",
+    "attack": "6",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "54",
+    "attackHoly": "",
+    "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
+    "vocation": "knights"
+  },
+  {
+    "name": "Stellar Moonsilver Epee",
+    "attack": "6",
+    "attackDeath": "",
+    "attackEarth": "50",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
+    "vocation": "knights"
   },
   {
     "name": "Summerblade",

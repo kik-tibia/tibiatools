@@ -91,7 +91,7 @@ function parseVocations(raw) {
 }
 
 function processWeapon(weapon, skill, ammo, idsByName) {
-  const { vocation, ...rest } = weapon;
+  const { vocation, hit_mod, ...rest } = weapon;
 
   // Remove fields with empty string values
   for (const key of Object.keys(rest)) {
@@ -118,6 +118,9 @@ function processWeapon(weapon, skill, ammo, idsByName) {
   if (rest.defenseMod) {
     rest.defenseMod = parseInt(rest.defenseMod);
   }
+
+  // Convert hit_mod to a number if present (can be signed, e.g. "+6" or "-2")
+  const hitMod = hit_mod ? parseInt(hit_mod) : undefined;
 
   // For wands/rods, convert damageRange to damage and remove attack
   if ("damageRange" in weapon) {
@@ -164,6 +167,7 @@ function processWeapon(weapon, skill, ammo, idsByName) {
     name,
     ...(hasAttack && { attack: totalAttack }),
     ...elementalFields,
+    ...(hitMod != null && { hitMod }),
     ...(skill && { skill }),
     ...(ammo && { ammo }),
     ...remaining,

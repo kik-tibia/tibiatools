@@ -1690,6 +1690,32 @@
     "vocation": ""
   },
   {
+    "name": "Moonsilver Crusher",
+    "attack": "6",
+    "attackDeath": "",
+    "attackEarth": "50",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
+    "vocation": "knights"
+  },
+  {
+    "name": "Moonsilver Mace",
+    "attack": "6",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "54",
+    "defenseMod": "",
+    "hands": "Two",
+    "vocation": "knights"
+  },
+  {
     "name": "Morning Star",
     "attack": "25",
     "attackDeath": "",
@@ -2035,7 +2061,7 @@
     "attackEnergy": "",
     "attackFire": "",
     "attackHoly": "",
-    "attackIce": "46",
+    "attackIce": "45",
     "defenseMod": "",
     "hands": "Two",
     "vocation": "knights"
@@ -2260,6 +2286,32 @@
     "defenseMod": "",
     "hands": "One",
     "vocation": ""
+  },
+  {
+    "name": "Stellar Moonsilver Crusher",
+    "attack": "6",
+    "attackDeath": "",
+    "attackEarth": "50",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "defenseMod": "+3",
+    "hands": "One",
+    "vocation": "knights"
+  },
+  {
+    "name": "Stellar Moonsilver Mace",
+    "attack": "6",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "54",
+    "defenseMod": "",
+    "hands": "Two",
+    "vocation": "knights"
   },
   {
     "name": "Strange Mallet",

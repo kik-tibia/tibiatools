@@ -102,6 +102,12 @@
     "vocation": "monks"
   },
   {
+    "name": "Moonsilver Katar",
+    "attack": "46",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
     "name": "Naga Katar",
     "attack": "43",
     "bond": "Earth",
@@ -183,6 +189,12 @@
     "name": "Staff",
     "attack": "22",
     "bond": "Earth",
+    "vocation": "monks"
+  },
+  {
+    "name": "Stellar Moonsilver Katar",
+    "attack": "46",
+    "bond": "Energy",
     "vocation": "monks"
   },
   {

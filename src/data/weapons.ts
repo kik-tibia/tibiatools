@@ -16,6 +16,7 @@ export type Weapon = {
   attackFire?: number;
   attackIce?: number;
   attackPhysical?: number;
+  hitMod?: number;
   bond?: Element;
   ammo?: AmmoType;
   damageType?: Element;
@@ -49,6 +50,7 @@ type AmmoRaw = {
   attackEnergy?: number;
   attackFire?: number;
   attackIce?: number;
+  hitChance: number;
   aoe: boolean;
 };
 
@@ -70,6 +72,7 @@ const resolveAmmo = (a: AmmoRaw, type: AmmoType): Ammo => ({
   attackPhysical:
     a.attack -
     ((a.attackDeath ?? 0) + (a.attackEarth ?? 0) + (a.attackEnergy ?? 0) + (a.attackFire ?? 0) + (a.attackIce ?? 0)),
+  hitChance: (a.hitChance ?? 100) / 100,
 });
 
 export const allAmmo: Ammo[] = [

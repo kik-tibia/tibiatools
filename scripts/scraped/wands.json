@@ -26,7 +26,7 @@
   {
     "name": "Crypt Bile",
     "damageType": "Physical",
-    "damageRange": "110",
+    "damageRange": "110 (85-135)",
     "vocation": "sorcerers"
   },
   {
@@ -183,6 +183,18 @@
     "name": "Moonlight Rod",
     "damageType": "Ice",
     "damageRange": "13-25",
+    "vocation": "druids"
+  },
+  {
+    "name": "Moonsilver Channeler",
+    "damageType": "Death",
+    "damageRange": "103-133",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Moonsilver Sceptre",
+    "damageType": "Ice",
+    "damageRange": "103-127",
     "vocation": "druids"
   },
   {
@@ -453,6 +465,18 @@
     "name": "Springsprout Rod",
     "damageType": "Earth",
     "damageRange": "56-74",
+    "vocation": "druids"
+  },
+  {
+    "name": "Stellar Moonsilver Channeler",
+    "damageType": "Death",
+    "damageRange": "6",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Stellar Moonsilver Sceptre",
+    "damageType": "Ice",
+    "damageRange": "6",
     "vocation": "druids"
   },
   {

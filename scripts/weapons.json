@@ -1547,6 +1547,28 @@
     ]
   },
   {
+    "id": 839,
+    "name": "Moonsilver Axe",
+    "attack": 56,
+    "attackEarth": 50,
+    "skill": "axe",
+    "hands": "one",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
+    "id": 842,
+    "name": "Moonsilver Chopper",
+    "attack": 60,
+    "attackEnergy": 54,
+    "skill": "axe",
+    "hands": "two",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
     "id": 124,
     "name": "Mythril Axe",
     "attack": 48,
@@ -2098,6 +2120,28 @@
     ]
   },
   {
+    "id": 850,
+    "name": "Stellar Moonsilver Axe",
+    "attack": 56,
+    "attackEarth": 50,
+    "skill": "axe",
+    "hands": "one",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
+    "id": 853,
+    "name": "Stellar Moonsilver Chopper",
+    "attack": 60,
+    "attackEnergy": 54,
+    "skill": "axe",
+    "hands": "two",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
     "id": 165,
     "name": "Stonecutter Axe",
     "attack": 50,
@@ -2326,6 +2370,7 @@
     "id": 183,
     "name": "Amber Bow",
     "attack": 7,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2350,6 +2395,7 @@
     "id": 185,
     "name": "Bow of Carving",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2360,6 +2406,7 @@
     "id": 186,
     "name": "Bow of Carving (Charged)",
     "attack": 4,
+    "hitMod": 4,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2370,6 +2417,7 @@
     "id": 187,
     "name": "Bow of Carving (Heavily Charged)",
     "attack": 5,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2380,6 +2428,7 @@
     "id": 188,
     "name": "Bow of Carving (Overcharged)",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2390,6 +2439,7 @@
     "id": 189,
     "name": "Bow of Cataclysm",
     "attack": 6,
+    "hitMod": 4,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2400,6 +2450,7 @@
     "id": 190,
     "name": "Bow of Destruction",
     "attack": 5,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2424,6 +2475,7 @@
     "id": 192,
     "name": "Bow of Mayhem",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2434,6 +2486,7 @@
     "id": 193,
     "name": "Bow of Mayhem (Charged)",
     "attack": 4,
+    "hitMod": 4,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2444,6 +2497,7 @@
     "id": 194,
     "name": "Bow of Mayhem (Heavily Charged)",
     "attack": 5,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2454,6 +2508,7 @@
     "id": 195,
     "name": "Bow of Mayhem (Overcharged)",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2464,6 +2519,7 @@
     "id": 196,
     "name": "Bow of Remedy",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2474,6 +2530,7 @@
     "id": 197,
     "name": "Bow of Remedy (Charged)",
     "attack": 4,
+    "hitMod": 4,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2484,6 +2541,7 @@
     "id": 198,
     "name": "Bow of Remedy (Heavily Charged)",
     "attack": 5,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2494,6 +2552,7 @@
     "id": 199,
     "name": "Bow of Remedy (Overcharged)",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2504,6 +2563,7 @@
     "id": 200,
     "name": "Composite Hornbow",
     "attack": 2,
+    "hitMod": 2,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2514,6 +2574,7 @@
     "id": 201,
     "name": "Crude Umbral Bow",
     "attack": 2,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2524,6 +2585,7 @@
     "id": 202,
     "name": "Crypt Spine",
     "attack": 8,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2534,6 +2596,7 @@
     "id": 203,
     "name": "Draining Inferniarch Bow",
     "attack": 7,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2544,6 +2607,7 @@
     "id": 204,
     "name": "Eldritch Bow",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2564,6 +2628,7 @@
     "id": 206,
     "name": "Elvish Bow",
     "attack": 0,
+    "hitMod": 3,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2578,6 +2643,7 @@
     "id": 207,
     "name": "Falcon Bow",
     "attack": 6,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2588,6 +2654,7 @@
     "id": 208,
     "name": "Gilded Eldritch Bow",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2598,6 +2665,7 @@
     "id": 209,
     "name": "Grand Sanguine Bow",
     "attack": 9,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2608,6 +2676,7 @@
     "id": 210,
     "name": "Hive Bow",
     "attack": 2,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2618,6 +2687,7 @@
     "id": 211,
     "name": "Icicle Bow",
     "attack": 1,
+    "hitMod": 4,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2632,6 +2702,7 @@
     "id": 212,
     "name": "Inferniarch Bow",
     "attack": 6,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2642,6 +2713,7 @@
     "id": 213,
     "name": "Jungle Bow",
     "attack": 6,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2652,6 +2724,7 @@
     "id": 214,
     "name": "Lion Longbow",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2662,6 +2735,18 @@
     "id": 215,
     "name": "Living Vine Bow",
     "attack": 5,
+    "hitMod": 5,
+    "skill": "distance",
+    "ammo": "arrows",
+    "vocations": [
+      "paladin"
+    ]
+  },
+  {
+    "id": 840,
+    "name": "Moonsilver Bow",
+    "attack": 10,
+    "hitMod": 7,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2686,6 +2771,7 @@
     "id": 217,
     "name": "Mycological Bow",
     "attack": 4,
+    "hitMod": 4,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2780,6 +2866,7 @@
     "id": 224,
     "name": "Refined Bow",
     "attack": 0,
+    "hitMod": 1,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2794,6 +2881,7 @@
     "id": 225,
     "name": "Rending Inferniarch Bow",
     "attack": 7,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2804,6 +2892,7 @@
     "id": 226,
     "name": "Rift Bow",
     "attack": 5,
+    "hitMod": 3,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2814,6 +2903,7 @@
     "id": 227,
     "name": "Sanguine Bow",
     "attack": 9,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2824,6 +2914,7 @@
     "id": 228,
     "name": "Shimmer Bow",
     "attack": 1,
+    "hitMod": 7,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2834,6 +2925,7 @@
     "id": 229,
     "name": "Silkweaver Bow",
     "attack": 0,
+    "hitMod": 3,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2844,6 +2936,7 @@
     "id": 230,
     "name": "Siphoning Inferniarch Bow",
     "attack": 7,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2854,6 +2947,18 @@
     "id": 231,
     "name": "Soulbleeder",
     "attack": 8,
+    "hitMod": 5,
+    "skill": "distance",
+    "ammo": "arrows",
+    "vocations": [
+      "paladin"
+    ]
+  },
+  {
+    "id": 851,
+    "name": "Stellar Moonsilver Bow",
+    "attack": 10,
+    "hitMod": 7,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2864,6 +2969,7 @@
     "id": 232,
     "name": "Umbral Bow",
     "attack": 4,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2874,6 +2980,7 @@
     "id": 233,
     "name": "Umbral Master Bow",
     "attack": 6,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2940,6 +3047,7 @@
     "id": 238,
     "name": "Warsinger Bow",
     "attack": 3,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -2950,6 +3058,7 @@
     "id": 239,
     "name": "Yol's Bow",
     "attack": 0,
+    "hitMod": 7,
     "skill": "distance",
     "ammo": "arrows",
     "vocations": [
@@ -4633,6 +4742,29 @@
     ]
   },
   {
+    "id": 845,
+    "name": "Moonsilver Crusher",
+    "attack": 56,
+    "attackEarth": 50,
+    "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
+    "id": 848,
+    "name": "Moonsilver Mace",
+    "attack": 60,
+    "attackIce": 54,
+    "skill": "club",
+    "hands": "two",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
     "id": 370,
     "name": "Morning Star",
     "attack": 25,
@@ -4993,8 +5125,8 @@
   {
     "id": 396,
     "name": "Resizer",
-    "attack": 57,
-    "attackIce": 46,
+    "attack": 56,
+    "attackIce": 45,
     "skill": "club",
     "hands": "two",
     "vocations": [
@@ -5219,6 +5351,29 @@
       "monk",
       "paladin",
       "sorcerer"
+    ]
+  },
+  {
+    "id": 856,
+    "name": "Stellar Moonsilver Crusher",
+    "attack": 56,
+    "attackEarth": 50,
+    "skill": "club",
+    "defenseMod": 3,
+    "hands": "one",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
+    "id": 859,
+    "name": "Stellar Moonsilver Mace",
+    "attack": 60,
+    "attackIce": 54,
+    "skill": "club",
+    "hands": "two",
+    "vocations": [
+      "knight"
     ]
   },
   {
@@ -5486,6 +5641,7 @@
     "id": 434,
     "name": "Amber Crossbow",
     "attack": 8,
+    "hitMod": 7,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5496,6 +5652,7 @@
     "id": 435,
     "name": "Arbalest",
     "attack": 2,
+    "hitMod": 2,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5516,6 +5673,7 @@
     "id": 437,
     "name": "Cobra Crossbow",
     "attack": 7,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5540,6 +5698,7 @@
     "id": 439,
     "name": "Crossbow of Carving",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5550,6 +5709,7 @@
     "id": 440,
     "name": "Crossbow of Carving (Charged)",
     "attack": 4,
+    "hitMod": 4,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5560,6 +5720,7 @@
     "id": 441,
     "name": "Crossbow of Carving (Heavily Charged)",
     "attack": 5,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5570,6 +5731,7 @@
     "id": 442,
     "name": "Crossbow of Carving (Overcharged)",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5580,6 +5742,7 @@
     "id": 443,
     "name": "Crossbow of Destruction",
     "attack": 6,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5590,6 +5753,7 @@
     "id": 444,
     "name": "Crossbow of Mayhem",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5600,6 +5764,7 @@
     "id": 445,
     "name": "Crossbow of Mayhem (Charged)",
     "attack": 4,
+    "hitMod": 4,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5610,6 +5775,7 @@
     "id": 446,
     "name": "Crossbow of Mayhem (Heavily Charged)",
     "attack": 5,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5620,6 +5786,7 @@
     "id": 447,
     "name": "Crossbow of Mayhem (Overcharged)",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5630,6 +5797,7 @@
     "id": 448,
     "name": "Crossbow of Remedy",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5640,6 +5808,7 @@
     "id": 449,
     "name": "Crossbow of Remedy (Charged)",
     "attack": 4,
+    "hitMod": 4,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5650,6 +5819,7 @@
     "id": 450,
     "name": "Crossbow of Remedy (Heavily Charged)",
     "attack": 5,
+    "hitMod": 5,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5660,6 +5830,7 @@
     "id": 451,
     "name": "Crossbow of Remedy (Overcharged)",
     "attack": 6,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5670,6 +5841,7 @@
     "id": 452,
     "name": "Crude Umbral Crossbow",
     "attack": 3,
+    "hitMod": 1,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5680,6 +5852,7 @@
     "id": 453,
     "name": "Crystal Crossbow",
     "attack": 4,
+    "hitMod": 3,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5690,6 +5863,7 @@
     "id": 454,
     "name": "Draining Inferniarch Arbalest",
     "attack": 8,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5700,6 +5874,7 @@
     "id": 455,
     "name": "Grand Sanguine Crossbow",
     "attack": 10,
+    "hitMod": 7,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5710,6 +5885,7 @@
     "id": 456,
     "name": "Inferniarch Arbalest",
     "attack": 7,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5720,6 +5896,18 @@
     "id": 457,
     "name": "Modified Crossbow",
     "attack": 0,
+    "hitMod": 1,
+    "skill": "distance",
+    "ammo": "bolts",
+    "vocations": [
+      "paladin"
+    ]
+  },
+  {
+    "id": 844,
+    "name": "Moonsilver Crossbow",
+    "attack": 11,
+    "hitMod": 8,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5730,6 +5918,7 @@
     "id": 458,
     "name": "Naga Crossbow",
     "attack": 8,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5754,6 +5943,7 @@
     "id": 460,
     "name": "Ornate Crossbow",
     "attack": 1,
+    "hitMod": 2,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5834,6 +6024,7 @@
     "id": 466,
     "name": "Rending Inferniarch Arbalest",
     "attack": 8,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5844,6 +6035,7 @@
     "id": 467,
     "name": "Rift Crossbow",
     "attack": 5,
+    "hitMod": 3,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5854,6 +6046,7 @@
     "id": 468,
     "name": "Royal Crossbow",
     "attack": 5,
+    "hitMod": 3,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5864,6 +6057,7 @@
     "id": 469,
     "name": "Sanguine Crossbow",
     "attack": 10,
+    "hitMod": 7,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5874,6 +6068,7 @@
     "id": 470,
     "name": "Siphoning Inferniarch Arbalest",
     "attack": 8,
+    "hitMod": 6,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5884,6 +6079,18 @@
     "id": 471,
     "name": "Soulpiercer",
     "attack": 9,
+    "hitMod": 6,
+    "skill": "distance",
+    "ammo": "bolts",
+    "vocations": [
+      "paladin"
+    ]
+  },
+  {
+    "id": 855,
+    "name": "Stellar Moonsilver Crossbow",
+    "attack": 11,
+    "hitMod": 8,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5894,6 +6101,7 @@
     "id": 472,
     "name": "The Devileye",
     "attack": 20,
+    "hitMod": -20,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5914,6 +6122,7 @@
     "id": 474,
     "name": "Thorn Spitter",
     "attack": 9,
+    "hitMod": 1,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5924,6 +6133,7 @@
     "id": 475,
     "name": "Triple Bolt Crossbow",
     "attack": 3,
+    "hitMod": 2,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5934,6 +6144,7 @@
     "id": 476,
     "name": "Umbral Crossbow",
     "attack": 6,
+    "hitMod": 2,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -5944,6 +6155,7 @@
     "id": 477,
     "name": "Umbral Master Crossbow",
     "attack": 9,
+    "hitMod": 4,
     "skill": "distance",
     "ammo": "bolts",
     "vocations": [
@@ -6163,6 +6375,16 @@
     ]
   },
   {
+    "id": 847,
+    "name": "Moonsilver Katar",
+    "attack": 46,
+    "skill": "fist",
+    "bond": "energy",
+    "vocations": [
+      "monk"
+    ]
+  },
+  {
     "id": 498,
     "name": "Naga Katar",
     "attack": 43,
@@ -6298,6 +6520,16 @@
     "attack": 22,
     "skill": "fist",
     "bond": "earth",
+    "vocations": [
+      "monk"
+    ]
+  },
+  {
+    "id": 858,
+    "name": "Stellar Moonsilver Katar",
+    "attack": 46,
+    "skill": "fist",
+    "bond": "energy",
     "vocations": [
       "monk"
     ]
@@ -7801,6 +8033,29 @@
     ]
   },
   {
+    "id": 843,
+    "name": "Moonsilver Claymore",
+    "attack": 60,
+    "attackFire": 54,
+    "skill": "sword",
+    "hands": "two",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
+    "id": 846,
+    "name": "Moonsilver Epee",
+    "attack": 56,
+    "attackEarth": 50,
+    "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
     "id": 629,
     "name": "Mystic Blade",
     "attack": 44,
@@ -8496,6 +8751,29 @@
       "monk",
       "paladin",
       "sorcerer"
+    ]
+  },
+  {
+    "id": 854,
+    "name": "Stellar Moonsilver Claymore",
+    "attack": 60,
+    "attackFire": 54,
+    "skill": "sword",
+    "hands": "two",
+    "vocations": [
+      "knight"
+    ]
+  },
+  {
+    "id": 857,
+    "name": "Stellar Moonsilver Epee",
+    "attack": 56,
+    "attackEarth": 50,
+    "skill": "sword",
+    "defenseMod": 3,
+    "hands": "one",
+    "vocations": [
+      "knight"
     ]
   },
   {
@@ -9341,6 +9619,24 @@
     ]
   },
   {
+    "id": 841,
+    "name": "Moonsilver Channeler",
+    "damageType": "death",
+    "damage": 118,
+    "vocations": [
+      "sorcerer"
+    ]
+  },
+  {
+    "id": 849,
+    "name": "Moonsilver Sceptre",
+    "damageType": "ice",
+    "damage": 115,
+    "vocations": [
+      "druid"
+    ]
+  },
+  {
     "id": 758,
     "name": "Muck Rod",
     "damageType": "earth",
@@ -9796,6 +10092,24 @@
     "name": "Springsprout Rod",
     "damageType": "earth",
     "damage": 65,
+    "vocations": [
+      "druid"
+    ]
+  },
+  {
+    "id": 852,
+    "name": "Stellar Moonsilver Channeler",
+    "damageType": "death",
+    "damage": 6,
+    "vocations": [
+      "sorcerer"
+    ]
+  },
+  {
+    "id": 860,
+    "name": "Stellar Moonsilver Sceptre",
+    "damageType": "ice",
+    "damage": 6,
     "vocations": [
       "druid"
     ]

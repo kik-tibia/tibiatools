@@ -1586,6 +1586,32 @@
     "vocation": ""
   },
   {
+    "name": "Moonsilver Axe",
+    "attack": "6",
+    "attackDeath": "",
+    "attackEarth": "50",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
+    "vocation": "knights"
+  },
+  {
+    "name": "Moonsilver Chopper",
+    "attack": "6",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "54",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
+    "vocation": "knights"
+  },
+  {
     "name": "Mythril Axe",
     "attack": "48",
     "attackDeath": "",
@@ -2117,6 +2143,32 @@
     "defenseMod": "",
     "hands": "One",
     "vocation": ""
+  },
+  {
+    "name": "Stellar Moonsilver Axe",
+    "attack": "6",
+    "attackDeath": "",
+    "attackEarth": "50",
+    "attackEnergy": "",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "defenseMod": "",
+    "hands": "One",
+    "vocation": "knights"
+  },
+  {
+    "name": "Stellar Moonsilver Chopper",
+    "attack": "6",
+    "attackDeath": "",
+    "attackEarth": "",
+    "attackEnergy": "54",
+    "attackFire": "",
+    "attackHoly": "",
+    "attackIce": "",
+    "defenseMod": "",
+    "hands": "Two",
+    "vocation": "knights"
   },
   {
     "name": "Stonecutter Axe",

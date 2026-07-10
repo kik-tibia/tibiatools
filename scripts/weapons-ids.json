@@ -3350,5 +3350,93 @@
   {
     "id": 838,
     "name": "Wand of Vortex"
+  },
+  {
+    "id": 839,
+    "name": "Moonsilver Axe"
+  },
+  {
+    "id": 840,
+    "name": "Moonsilver Bow"
+  },
+  {
+    "id": 841,
+    "name": "Moonsilver Channeler"
+  },
+  {
+    "id": 842,
+    "name": "Moonsilver Chopper"
+  },
+  {
+    "id": 843,
+    "name": "Moonsilver Claymore"
+  },
+  {
+    "id": 844,
+    "name": "Moonsilver Crossbow"
+  },
+  {
+    "id": 845,
+    "name": "Moonsilver Crusher"
+  },
+  {
+    "id": 846,
+    "name": "Moonsilver Epee"
+  },
+  {
+    "id": 847,
+    "name": "Moonsilver Katar"
+  },
+  {
+    "id": 848,
+    "name": "Moonsilver Mace"
+  },
+  {
+    "id": 849,
+    "name": "Moonsilver Sceptre"
+  },
+  {
+    "id": 850,
+    "name": "Stellar Moonsilver Axe"
+  },
+  {
+    "id": 851,
+    "name": "Stellar Moonsilver Bow"
+  },
+  {
+    "id": 852,
+    "name": "Stellar Moonsilver Channeler"
+  },
+  {
+    "id": 853,
+    "name": "Stellar Moonsilver Chopper"
+  },
+  {
+    "id": 854,
+    "name": "Stellar Moonsilver Claymore"
+  },
+  {
+    "id": 855,
+    "name": "Stellar Moonsilver Crossbow"
+  },
+  {
+    "id": 856,
+    "name": "Stellar Moonsilver Crusher"
+  },
+  {
+    "id": 857,
+    "name": "Stellar Moonsilver Epee"
+  },
+  {
+    "id": 858,
+    "name": "Stellar Moonsilver Katar"
+  },
+  {
+    "id": 859,
+    "name": "Stellar Moonsilver Mace"
+  },
+  {
+    "id": 860,
+    "name": "Stellar Moonsilver Sceptre"
   }
 ]

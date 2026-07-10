@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "Arrow"
+  },
+  {
+    "id": 2,
+    "name": "Burst Arrow"
+  },
+  {
+    "id": 3,
+    "name": "Crystalline Arrow"
+  },
+  {
+    "id": 4,
+    "name": "Diamond Arrow"
+  },
+  {
+    "id": 5,
+    "name": "Earth Arrow"
+  },
+  {
+    "id": 6,
+    "name": "Envenomed Arrow"
+  },
+  {
+    "id": 7,
+    "name": "Flaming Arrow"
+  },
+  {
+    "id": 8,
+    "name": "Flash Arrow"
+  },
+  {
+    "id": 9,
+    "name": "Onyx Arrow"
+  },
+  {
+    "id": 10,
+    "name": "Poison Arrow"
+  },
+  {
+    "id": 11,
+    "name": "Shiver Arrow"
+  },
+  {
+    "id": 12,
+    "name": "Simple Arrow"
+  },
+  {
+    "id": 13,
+    "name": "Sniper Arrow"
+  },
+  {
+    "id": 14,
+    "name": "Tarsal Arrow"
+  },
+  {
+    "id": 15,
+    "name": "Bolt"
+  },
+  {
+    "id": 16,
+    "name": "Drill Bolt"
+  },
+  {
+    "id": 17,
+    "name": "Infernal Bolt"
+  },
+  {
+    "id": 18,
+    "name": "Piercing Bolt"
+  },
+  {
+    "id": 19,
+    "name": "Power Bolt"
+  },
+  {
+    "id": 20,
+    "name": "Prismatic Bolt"
+  },
+  {
+    "id": 21,
+    "name": "Spectral Bolt"
+  },
+  {
+    "id": 22,
+    "name": "Vortex Bolt"
+  },
+  {
+    "id": 23,
+    "name": "Shatterstorm Arrow"
+  },
+  {
+    "id": 24,
+    "name": "Firestorm Arrow"
+  },
+  {
+    "id": 25,
+    "name": "Terrastorm Arrow"
+  },
+  {
+    "id": 26,
+    "name": "Froststorm Arrow"
+  },
+  {
+    "id": 27,
+    "name": "Thunderstorm Arrow"
+  }
+]
