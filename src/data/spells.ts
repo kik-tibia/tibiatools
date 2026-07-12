@@ -63,6 +63,7 @@ export type DamageBreakdown = {
   crit: BreakdownDamageRange;
   fatal: BreakdownDamageRange;
   critFatal: BreakdownDamageRange;
+  missChance: number;
   effective: DamageEffective;
 };
 

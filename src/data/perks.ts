@@ -47,7 +47,8 @@ export type PerkBonusType =
   | "lord-of-destruction"
   | "charm-upgrade"
   | "focus-mastery"
-  | `homing-missile-${Element}`;
+  | `homing-missile-${Element}`
+  | "hit-chance";
 
 export type Perk = {
   id: number;

@@ -1822,7 +1822,7 @@
   },
   {
     "id": 273,
-    "name": "Focus Mastery",
+    "name": "Focus mastery",
     "scope": "all",
     "bonusType": "focus-mastery"
   },
@@ -1870,44 +1870,50 @@
   },
   {
     "id": 281,
-    "name": "Homing Missile (death)",
+    "name": "Homing missile (death)",
     "scope": "spell",
     "bonusType": "homing-missile-death"
   },
   {
     "id": 282,
-    "name": "Homing Missile (earth)",
+    "name": "Homing missile (earth)",
     "scope": "spell",
     "bonusType": "homing-missile-earth"
   },
   {
     "id": 283,
-    "name": "Homing Missile (energy)",
+    "name": "Homing missile (energy)",
     "scope": "spell",
     "bonusType": "homing-missile-energy"
   },
   {
     "id": 284,
-    "name": "Homing Missile (fire)",
+    "name": "Homing missile (fire)",
     "scope": "spell",
     "bonusType": "homing-missile-fire"
   },
   {
     "id": 285,
-    "name": "Homing Missile (holy)",
+    "name": "Homing missile (holy)",
     "scope": "spell",
     "bonusType": "homing-missile-holy"
   },
   {
     "id": 286,
-    "name": "Homing Missile (ice)",
+    "name": "Homing missile (ice)",
     "scope": "spell",
     "bonusType": "homing-missile-ice"
   },
   {
     "id": 287,
-    "name": "Homing Missile (physical)",
+    "name": "Homing missile (physical)",
     "scope": "spell",
     "bonusType": "homing-missile-physical"
+  },
+  {
+    "id": 288,
+    "name": "Hit chance",
+    "scope": "melee",
+    "bonusType": "hit-chance"
   }
 ]

@@ -38,6 +38,7 @@ export const allWeapons: Weapon[] = (weaponsRaw as Weapon[]).map((w) => ({
           (w.attackEnergy ?? 0) +
           (w.attackFire ?? 0) +
           (w.attackIce ?? 0)),
+  hitMod: w.hitMod == null ? undefined : w.hitMod / 100,
   defenseMod: w.defenseMod ?? 0,
 }));
 
