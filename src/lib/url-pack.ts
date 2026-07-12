@@ -257,7 +257,6 @@ function expandState(compact: CompactState): CalculatorState {
 export function packState(state: CalculatorState): string {
   const compact = compactState(state);
   const json = JSON.stringify(compact);
-  console.log(json);
   return LZString.compressToEncodedURIComponent(json);
 }
 
