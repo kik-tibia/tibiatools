@@ -199,31 +199,32 @@
             ? "Mana Points"
             : null}
       <div class="tiered-select-cell">
-        <select
-          class="tiered-select-type input-{buildId}"
-          value={target?.charmId ?? ""}
-          onchange={(e) => setCharmIdFor(target, setCharm, targetId, e.currentTarget.value)}>
-          <option value="">No charm</option>
-          {#each allCharms as charm}
-            <option value={charm.id}>{charm.displayName}</option>
-          {/each}
-        </select>
-        {#if missingStat}
-          <span class="tiered-select-tier tiered-select-warn input-{buildId}">
-            <Tooltip label="×" tip="Requires setting {missingStat}<br/>in Advanced Stats" />
-          </span>
-        {:else}
+        <div class="tiered-select-type-wrap" class:has-warn={missingStat !== null}>
+          {#if missingStat}
+            <span class="tiered-select-warn input-{buildId}">
+              <Tooltip tip="Requires setting {missingStat}<br/>in Advanced Stats">Error</Tooltip>
+            </span>
+          {/if}
           <select
-            class="tiered-select-tier input-{buildId}"
-            disabled={target?.charmId == null}
-            value={target?.charmTier ?? ""}
-            onchange={(e) => setCharmTierFor(target, setCharm, e.currentTarget.value)}>
-            <option value="" disabled>—</option>
-            {#each charmTiers as tier}
-              <option value={tier}>T{tier}</option>
+            class="tiered-select-type input-{buildId}"
+            value={target?.charmId ?? ""}
+            onchange={(e) => setCharmIdFor(target, setCharm, targetId, e.currentTarget.value)}>
+            <option value="">No charm</option>
+            {#each allCharms as charm}
+              <option value={charm.id}>{charm.displayName}</option>
             {/each}
           </select>
-        {/if}
+        </div>
+        <select
+          class="tiered-select-tier input-{buildId}"
+          disabled={target?.charmId == null}
+          value={target?.charmTier ?? ""}
+          onchange={(e) => setCharmTierFor(target, setCharm, e.currentTarget.value)}>
+          <option value="" disabled>—</option>
+          {#each charmTiers as tier}
+            <option value={tier}>T{tier}</option>
+          {/each}
+        </select>
       </div>
     {/if}
   </td>
