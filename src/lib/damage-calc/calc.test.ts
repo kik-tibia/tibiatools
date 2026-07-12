@@ -199,19 +199,19 @@ describe("UE spells", () => {
     const dph = computeDph(spellDamageChoices);
     const dmgFromCharms = computeDamageFromCharms(spellDamageChoices);
     describe("computeResults", () => {
-      it.each([{ name: "Hell's Core", effective: 1731.5, min: 1453, avg: 1765, max: 2078 }])(
+      it.each([{ name: "Hell's Core", effective: 1666.2, min: 1453, avg: 1765, max: 2078 }])(
         "returns expected values for $name",
         (expected) => expectResultValues(results, expected),
       );
     });
     describe("computeDpt", () => {
       it("returns correct result", () => {
-        expect(dpt).toBeCloseTo(865.7, d);
+        expect(dpt).toBeCloseTo(833.1, d);
       });
     });
     describe("computeDph", () => {
       it("returns correct result", () => {
-        expect(dph).toBeCloseTo(1731.5, d);
+        expect(dph).toBeCloseTo(1666.2, d);
       });
     });
     describe("computeDamageFromCharms", () => {
@@ -233,12 +233,12 @@ describe("UE spells", () => {
     const dph = computeDph(spellDamageChoices);
     describe("computeDpt", () => {
       it("returns correct result", () => {
-        expect(dpt).toBeCloseTo(1971.8, d);
+        expect(dpt).toBeCloseTo(1897.4, d);
       });
     });
     describe("computeDph", () => {
       it("returns correct result", () => {
-        expect(dph).toBeCloseTo(985.9, d);
+        expect(dph).toBeCloseTo(948.7, d);
       });
     });
   });
@@ -269,8 +269,8 @@ describe("homing missile perks", () => {
   const energy = effectiveAvg([{ id: 283, value: 6 }]);
 
   it("adds homing damage on top of spell damage", () => {
-    // 1% chance * 10%/100 of level 1000 * (1 - 1.9% mitigation)
-    expect(death - none).toBeCloseTo(0.981, 2);
+    // 1% chance * 10%/100 of level 1000 * (1 - 5.6% mitigation)
+    expect(death - none).toBeCloseTo(0.944, 2);
   });
 
   it("applies missiles of different elements independently", () => {
