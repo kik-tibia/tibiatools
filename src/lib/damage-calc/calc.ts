@@ -195,7 +195,6 @@ function initialSpellState(characterState: CharacterState, spell: Spell): SpellS
     basePower: spell.power,
     runicIncrease: 0,
     focusMasteryIncrease: 0,
-    homingMissiles: [],
   };
 }
 
@@ -501,6 +500,8 @@ function applyPerkToSpell(
           spell: { ...state.spell, turnCooldown: 1 },
         };
       }
+      case "hit-chance":
+        return { ...state, extraHitChance: state.extraHitChance + perkChoice.value / 100 };
     }
   }
 
@@ -608,6 +609,8 @@ function deriveCharacterState(
     pierceWeapon: initElements(),
     bestiaryDamage: initBestiaryDamage(),
     charmUpgrade: 0,
+    homingMissiles: [],
+    extraHitChance: 0,
   };
 
   characterPerks.forEach((p) => {

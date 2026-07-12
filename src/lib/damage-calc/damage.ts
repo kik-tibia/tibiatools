@@ -129,7 +129,8 @@ export function computeDamageBreakdown(
       });
       critCharmDmg = breakdown.effective.avg - breakdownWithoutCharm.effective.avg;
     } else {
-      elementalCharmDmg = elementalChance * calculateElementalCharmDmg(creatureChoice, buildStats, state);
+      elementalCharmDmg =
+        elementalChance * (1 - breakdown.missChance) * calculateElementalCharmDmg(creatureChoice, buildStats, state);
     }
   }
 
@@ -288,23 +289,28 @@ function computeEffectiveAuto(
         pCritFatal * hrEffectiveAvg * (1.6 + critDamage);
   }
 
-  const hitRate = weaponChoice.ammo?.hitChance ?? 1;
+  const hitRate = Math.min(
+    1,
+    state.extraHitChance + (weaponChoice.weapon.hitMod ?? 0) + (weaponChoice.ammo?.hitChance ?? 1),
+  );
+  console.log(hitRate);
   const breakdown: DamageBreakdown = {
     noBonus: { min, avg, max, probability: pNoBonus },
     crit: {
       min: hrMin * (1 + critDamage),
       avg: hrAvg * (1 + critDamage),
       max: hrMax * (1 + critDamage),
-      probability: pCrit,
+      probability: pCrit * hitRate,
     },
-    fatal: { min: hrMin * 1.6, avg: hrAvg * 1.6, max: hrMax * 1.6, probability: pFatal },
+    fatal: { min: hrMin * 1.6, avg: hrAvg * 1.6, max: hrMax * 1.6, probability: pFatal * hitRate },
     critFatal: {
       min: hrMin * (1.6 + critDamage),
       avg: hrAvg * (1.6 + critDamage),
       max: hrMax * (1.6 + critDamage),
-      probability: pCritFatal,
+      probability: pCritFatal * hitRate,
     },
-    effective: { avg: effectiveAvg, elementalCharmDmg: 0, critCharmDmg: 0 },
+    missChance: 1 - hitRate,
+    effective: { avg: effectiveAvg * hitRate, elementalCharmDmg: 0, critCharmDmg: 0 },
   };
   return breakdown;
 }
@@ -439,6 +445,7 @@ function computeEffectiveSpell(
       max: max * (1.6 + critDamage),
       probability: pCritFatal,
     },
+    missChance: 0,
     effective: { avg: effectiveAvg, elementalCharmDmg: 0, critCharmDmg: 0 },
   };
   return breakdown;
