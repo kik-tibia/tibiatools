@@ -221,9 +221,6 @@ nav a.active {
   text-decoration: underline;
 }
 
-/* Shared generic table style. Opt in by adding class="data-table".
-   Component overrides (max-width, colspan header tweaks, etc.) live
-   alongside the component. */
 table.data-table {
   width: 100%;
   border-collapse: collapse;
@@ -248,7 +245,7 @@ table.data-table {
   text-align: right;
 }
 
-@media (max-width: 899px) {
+@media (max-width: 749px) {
   .data-table thead {
     display: none;
   }

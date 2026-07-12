@@ -208,7 +208,7 @@
     font-weight: 600;
   }
 
-  @media (max-width: 899px) {
+  @media (max-width: 749px) {
     .data-table td.spell {
       grid-template-columns: 1fr;
     }

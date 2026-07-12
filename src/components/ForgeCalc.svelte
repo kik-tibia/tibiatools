@@ -289,7 +289,7 @@
     text-align: center;
   }
 
-  @media (min-width: 900px) {
+  @media (min-width: 750px) {
     .data-table {
       table-layout: fixed;
     }
@@ -302,7 +302,7 @@
     }
   }
 
-  @media (max-width: 899px) {
+  @media (max-width: 749px) {
     .data-table td.tier {
       grid-template-columns: 1fr;
     }

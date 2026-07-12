@@ -316,7 +316,7 @@
     color: var(--negative-color);
   }
 
-  @media (min-width: 900px) {
+  @media (min-width: 750px) {
     .main-grid {
       display: grid;
       gap: 1rem;
@@ -340,7 +340,7 @@
     }
   }
 
-  @media (max-width: 899px) {
+  @media (max-width: 749px) {
     .main-grid {
       display: flex;
       flex-direction: column;
@@ -357,15 +357,30 @@
     }
 
     .main-grid.comparing {
-      flex-wrap: wrap;
-      flex-direction: row;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-areas:
+        "build build"
+        "resultsA resultsB";
+    }
+
+    .main-grid.comparing .build-panel {
+      grid-area: build;
     }
 
     .main-grid.comparing .results-panel-a,
     .main-grid.comparing .results-panel-b {
-      flex: 1 1 0;
       border-top: 1px solid var(--border-color);
       padding-top: 1rem;
+    }
+
+    .main-grid.comparing .results-panel-a {
+      grid-area: resultsA;
+    }
+
+    .main-grid.comparing .results-panel-b {
+      grid-area: resultsB;
     }
   }
 </style>
