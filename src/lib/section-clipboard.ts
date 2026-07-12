@@ -18,7 +18,6 @@ export function packSection(tag: SectionTag, compactData: unknown): string {
 export function unpackSection(str: string, expectedTag: SectionTag): unknown | null {
   try {
     const json = LZString.decompressFromEncodedURIComponent(str);
-    console.log(json);
     if (!json) return null;
     const parsed = JSON.parse(json);
     if (!Array.isArray(parsed) || parsed[0] !== expectedTag) return null;

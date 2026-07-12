@@ -293,7 +293,6 @@ function computeEffectiveAuto(
     1,
     state.extraHitChance + (weaponChoice.weapon.hitMod ?? 0) + (weaponChoice.ammo?.hitChance ?? 1),
   );
-  console.log(hitRate);
   const breakdown: DamageBreakdown = {
     noBonus: { min, avg, max, probability: pNoBonus },
     crit: {
