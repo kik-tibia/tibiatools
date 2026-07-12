@@ -1867,5 +1867,47 @@
     "name": "Physical pierce (weapon)",
     "scope": "character",
     "bonusType": "physical-pierce-weapon"
+  },
+  {
+    "id": 281,
+    "name": "Homing Missile (death)",
+    "scope": "spell",
+    "bonusType": "homing-missile-death"
+  },
+  {
+    "id": 282,
+    "name": "Homing Missile (earth)",
+    "scope": "spell",
+    "bonusType": "homing-missile-earth"
+  },
+  {
+    "id": 283,
+    "name": "Homing Missile (energy)",
+    "scope": "spell",
+    "bonusType": "homing-missile-energy"
+  },
+  {
+    "id": 284,
+    "name": "Homing Missile (fire)",
+    "scope": "spell",
+    "bonusType": "homing-missile-fire"
+  },
+  {
+    "id": 285,
+    "name": "Homing Missile (holy)",
+    "scope": "spell",
+    "bonusType": "homing-missile-holy"
+  },
+  {
+    "id": 286,
+    "name": "Homing Missile (ice)",
+    "scope": "spell",
+    "bonusType": "homing-missile-ice"
+  },
+  {
+    "id": 287,
+    "name": "Homing Missile (physical)",
+    "scope": "spell",
+    "bonusType": "homing-missile-physical"
   }
 ]

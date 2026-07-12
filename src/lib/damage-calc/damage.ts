@@ -288,6 +288,7 @@ function computeEffectiveAuto(
         pCritFatal * hrEffectiveAvg * (1.6 + critDamage);
   }
 
+  const hitRate = weaponChoice.ammo?.hitChance ?? 1;
   const breakdown: DamageBreakdown = {
     noBonus: { min, avg, max, probability: pNoBonus },
     crit: {
@@ -407,7 +408,26 @@ function computeEffectiveSpell(
     effectiveAvg = avg;
   }
 
-  effectiveAvg = effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
+  let avgHomingDamage = 0;
+  for (const homingMissile of state.homingMissiles) {
+    let missileDamage = homingMissile.chance * homingMissile.levelDamage * (buildStats.level ?? 0);
+    if (creatureChoice) {
+      const avgHomingElements = initElements();
+      avgHomingElements[homingMissile.element] = missileDamage;
+      missileDamage = elementalEffective(
+        avgHomingElements,
+        avgHomingElements,
+        avgHomingElements,
+        state,
+        creatureChoice,
+      );
+    }
+    avgHomingDamage += missileDamage;
+  }
+
+  effectiveAvg =
+    effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage)) +
+    avgHomingDamage;
 
   const breakdown: DamageBreakdown = {
     noBonus: { min, avg, max, probability: pNoBonus },

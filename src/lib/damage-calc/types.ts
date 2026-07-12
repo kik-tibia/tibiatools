@@ -39,9 +39,16 @@ export type CharacterState = {
   charmUpgrade: number;
 };
 
+export type HomingMissile = {
+  element: Element;
+  chance: number;
+  levelDamage: number;
+};
+
 export type SpellState = CharacterState & {
   spell: Spell;
   basePower: number;
   runicIncrease: number;
   focusMasteryIncrease: number;
+  homingMissiles: HomingMissile[];
 };

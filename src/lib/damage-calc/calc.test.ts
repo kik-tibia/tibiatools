@@ -243,3 +243,49 @@ describe("UE spells", () => {
     });
   });
 });
+
+describe("homing missile perks", () => {
+  const stats: BuildStats = {
+    ...base.stats,
+    vocation: "sorcerer",
+    level: 1000,
+    bonus: 20,
+    skill: 10,
+    magicLevel: 150,
+    critChance: 0,
+    critDamage: 0,
+  };
+  const stances = resolveStances(stats.stanceIds);
+  const weapon = resolveWeapon({ id: 801 });
+  const rotation = resolveSpells([{ id: 23, targets: 1, ratio: 1, extraSpell: false }]);
+  const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
+  const effectiveAvg = (perkRefs: Parameters<typeof resolvePerks>[0]) => {
+    const results = computeResults(stats, stances, weapon, resolvePerks(perkRefs), rotation, targets);
+    return results.find((r) => r.name === "Hell's Core")!.effective.avg;
+  };
+
+  const none = effectiveAvg([]);
+  const death = effectiveAvg([{ id: 281, value: 10 }]);
+  const energy = effectiveAvg([{ id: 283, value: 6 }]);
+
+  it("adds homing damage on top of spell damage", () => {
+    // 1% chance * 10%/100 of level 1000 * (1 - 1.9% mitigation)
+    expect(death - none).toBeCloseTo(0.981, 2);
+  });
+
+  it("applies missiles of different elements independently", () => {
+    const both = effectiveAvg([
+      { id: 281, value: 10 },
+      { id: 283, value: 6 },
+    ]);
+    expect(both - none).toBeCloseTo(death - none + (energy - none), 2);
+  });
+
+  it("stacks same-element missiles additively", () => {
+    const split = effectiveAvg([
+      { id: 281, value: 4 },
+      { id: 281, value: 6 },
+    ]);
+    expect(split).toBeCloseTo(death, 2);
+  });
+});

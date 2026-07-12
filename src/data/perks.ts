@@ -1,5 +1,5 @@
-import perksRaw from "@data/perks.json";
 import type { BestiaryClass } from "@data/creatures";
+import perksRaw from "@data/perks.json";
 import type { Element } from "@data/spells";
 
 export type PierceKind = "pierceRegular" | "pierceWeapon";
@@ -46,7 +46,8 @@ export type PerkBonusType =
   | "master-of-decay"
   | "lord-of-destruction"
   | "charm-upgrade"
-  | "focus-mastery";
+  | "focus-mastery"
+  | `homing-missile-${Element}`;
 
 export type Perk = {
   id: number;

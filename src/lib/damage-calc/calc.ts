@@ -195,6 +195,7 @@ function initialSpellState(characterState: CharacterState, spell: Spell): SpellS
     basePower: spell.power,
     runicIncrease: 0,
     focusMasteryIncrease: 0,
+    homingMissiles: [],
   };
 }
 
@@ -423,6 +424,16 @@ function applyPerkToSpell(
     perkChoice.perk.scope === spell.element ||
     perkChoice.perk.scope === spell.scalesWith
   ) {
+    const homingElement = homingMissileElements.get(perkChoice.perk.bonusType);
+    if (homingElement) {
+      const existing = state.homingMissiles.find((m) => m.element === homingElement);
+      const homingMissiles = existing
+        ? state.homingMissiles.map((m) =>
+            m.element === homingElement ? { ...m, levelDamage: m.levelDamage + perkChoice.value / 100 } : m,
+          )
+        : [...state.homingMissiles, { element: homingElement, chance: 0.01, levelDamage: perkChoice.value / 100 }];
+      return { ...state, homingMissiles };
+    }
     switch (perkChoice.perk.bonusType) {
       case "base-damage":
         return { ...state, basePower: P * (1 + perkChoice.value / 100) };
@@ -510,6 +521,11 @@ const pierceBonuses = new Map<PerkBonusType, { kind: PierceKind; element: Elemen
 for (const element of allElements) {
   pierceBonuses.set(`${element}-pierce-regular`, { kind: "pierceRegular", element });
   pierceBonuses.set(`${element}-pierce-weapon`, { kind: "pierceWeapon", element });
+}
+
+const homingMissileElements = new Map<PerkBonusType, Element>();
+for (const element of allElements) {
+  homingMissileElements.set(`homing-missile-${element}`, element);
 }
 
 const bestiaryDamageBonuses = new Map<PerkBonusType, BestiaryClass>();

@@ -245,6 +245,12 @@
               {def.name}
             </Tooltip>
           </td>
+        {:else if def.bonusType.startsWith("homing-missile")}
+          <td class="item-name">
+            <Tooltip tip="Enter the level% damage (200 or 300)">
+              {def.name}
+            </Tooltip>
+          </td>
         {:else}
           <td class="item-name">{def.name}</td>
         {/if}
