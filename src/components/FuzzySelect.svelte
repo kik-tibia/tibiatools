@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Fzf, byLengthAsc } from "fzf";
+  import { byLengthAsc, Fzf } from "fzf";
 
   let {
     selectType,
@@ -31,7 +31,10 @@
 
   let available = $derived(all.filter((x) => !selectedIds.includes(getId(x))));
   let fzf = $derived(
-    new Fzf(available as any, { selector: (x: any) => getLabel(x), tiebreakers: [byLengthAsc] } as any),
+    new Fzf(
+      available as any,
+      { selector: (x: any) => getLabel(x), casing: "case-insensitive", tiebreakers: [byLengthAsc] } as any,
+    ),
   );
   let results = $derived(q ? fzf.find(q).map((r: any) => r.item) : available);
 
