@@ -333,7 +333,7 @@ export function openApiSpec(): Record<string, unknown> {
   return {
     openapi: "3.1.0",
     info: {
-      title: "TibiaTools Damage Calculator API",
+      title: "Damage Calculator API",
       version: "1.0.0",
       description,
     },
