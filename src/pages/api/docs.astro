@@ -1,0 +1,55 @@
+---
+import swaggerUiBundleUrl from "swagger-ui-dist/swagger-ui-bundle.js?url";
+import "swagger-ui-dist/swagger-ui.css";
+import "@styles/swagger-ui-theme.css";
+import { openApiSpec } from "@lib/api/openapi";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const spec = openApiSpec();
+---
+<BaseLayout tabTitle="Damage Calculator API">
+  <div id="swagger-ui"></div>
+  <script is:inline src={swaggerUiBundleUrl}></script>
+  <script is:inline define:vars={{ spec }}>
+    (function () {
+      var container = document.getElementById("swagger-ui");
+      var isLight = function () {
+        return document.documentElement.getAttribute("data-theme") === "light";
+      };
+
+      function render() {
+        var fresh = document.createElement("div");
+        fresh.id = "swagger-ui";
+        container.replaceWith(fresh);
+        container = fresh;
+
+        SwaggerUIBundle({
+          spec: spec,
+          dom_id: "#swagger-ui",
+          presets: [SwaggerUIBundle.presets.apis],
+          deepLinking: true,
+          tryItOutEnabled: true,
+          docExpansion: "list",
+          defaultModelsExpandDepth: 1,
+          defaultModelExpandDepth: 4,
+          syntaxHighlight: { activated: true, theme: isLight() ? "idea" : "agate" },
+        });
+      }
+
+      render();
+
+      var wasLight = isLight();
+      new MutationObserver(function () {
+        if (isLight() === wasLight) return;
+        wasLight = isLight();
+        render();
+      }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    })();
+  </script>
+</BaseLayout>
+
+<style is:global>
+  .swagger-ui .info {
+    margin: 1rem 0;
+  }
+</style>

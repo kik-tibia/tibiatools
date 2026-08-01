@@ -17,6 +17,7 @@
     "jsdom": "^27.4.0",
     "lz-string": "^1.5.0",
     "svelte": "^5.38.2",
+    "swagger-ui-dist": "^5.32.11",
     "typescript": "^5.9.2"
   },
   "devDependencies": {

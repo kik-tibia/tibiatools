@@ -1,0 +1,194 @@
+.swagger-ui {
+  --sw-tint: hsl(0 0% 100% / 0.05);
+  --sw-tint-hover: hsl(0 0% 100% / 0.08);
+  --sw-code-bg: hsl(220 10% 7%);
+  --sw-code-text: hsl(0 0% 88%);
+  --sw-inline-code: hsl(280 75% 78%);
+  --sw-select-arrow: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%23b7bcbf' d='M13.418 7.859a.695.695 0 0 1 .978 0 .68.68 0 0 1 0 .969l-3.908 3.83a.697.697 0 0 1-.979 0l-3.908-3.83a.68.68 0 0 1 0-.969.695.695 0 0 1 .978 0L10 11z'/></svg>");
+
+  line-height: normal;
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] .swagger-ui {
+  --sw-tint: hsl(0 0% 0% / 0.04);
+  --sw-tint-hover: hsl(0 0% 0% / 0.07);
+  --sw-code-bg: hsl(220 8% 95%);
+  --sw-code-text: hsl(0 0% 15%);
+  --sw-inline-code: hsl(280 70% 40%);
+  --sw-select-arrow: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%2341474e' d='M13.418 7.859a.695.695 0 0 1 .978 0 .68.68 0 0 1 0 .969l-3.908 3.83a.697.697 0 0 1-.979 0l-3.908-3.83a.68.68 0 0 1 0-.969.695.695 0 0 1 .978 0L10 11z'/></svg>");
+
+  color-scheme: light;
+}
+
+.swagger-ui button {
+  background: transparent;
+}
+
+.swagger-ui,
+.swagger-ui h1,
+.swagger-ui h2,
+.swagger-ui h3,
+.swagger-ui h4,
+.swagger-ui h5,
+.swagger-ui p,
+.swagger-ui li,
+.swagger-ui label,
+.swagger-ui td,
+.swagger-ui th,
+.swagger-ui .opblock-tag,
+.swagger-ui .opblock-summary-path,
+.swagger-ui .opblock-summary-path a,
+.swagger-ui .opblock-summary-operation-id,
+.swagger-ui .opblock-summary-description,
+.swagger-ui .tab li,
+.swagger-ui .parameter__name,
+.swagger-ui .parameter__type,
+.swagger-ui .response-col_status,
+.swagger-ui .response-col_links,
+.swagger-ui .model,
+.swagger-ui .model-title,
+.swagger-ui .btn:not(.execute):not(.cancel):not(.authorize),
+.swagger-ui .json-schema-2020-12__title,
+.swagger-ui .json-schema-2020-12-keyword__name--primary,
+.swagger-ui .json-schema-2020-12-keyword__value--primary,
+.swagger-ui .json-schema-2020-12-json-viewer__name--primary,
+.swagger-ui .json-schema-2020-12-json-viewer__value--primary {
+  color: var(--text-color) !important;
+}
+
+.swagger-ui .opblock-tag small,
+.swagger-ui .parameter__in,
+.swagger-ui .parameter__extension,
+.swagger-ui .prop-format,
+.swagger-ui .json-schema-2020-12__attribute,
+.swagger-ui .json-schema-2020-12-keyword--description,
+.swagger-ui .json-schema-2020-12-keyword__name--secondary,
+.swagger-ui .json-schema-2020-12-keyword__value--secondary,
+.swagger-ui .json-schema-2020-12-keyword__name--extension,
+.swagger-ui .json-schema-2020-12-keyword__value--extension,
+.swagger-ui .json-schema-2020-12-json-viewer__name--secondary,
+.swagger-ui .json-schema-2020-12-json-viewer__value--secondary,
+.swagger-ui .json-schema-2020-12-json-viewer__name--extension,
+.swagger-ui .json-schema-2020-12-json-viewer__value--extension,
+.swagger-ui .json-schema-2020-12-expand-deep-button {
+  color: var(--text-muted) !important;
+}
+
+.swagger-ui .info a {
+  color: var(--link-color) !important;
+}
+
+:root:not([data-theme="light"]) .swagger-ui .expand-operation svg,
+:root:not([data-theme="light"]) .swagger-ui .opblock-control-arrow svg,
+:root:not([data-theme="light"]) .swagger-ui .authorization__btn svg,
+:root:not([data-theme="light"]) .swagger-ui .models-control svg,
+:root:not([data-theme="light"]) .swagger-ui .json-schema-2020-12 button svg,
+:root:not([data-theme="light"]) .swagger-ui .dialog-ux .modal-ux-header .close-modal svg {
+  fill: var(--text-color);
+  opacity: 1;
+}
+
+.swagger-ui .opblock .opblock-section-header {
+  background: var(--table-header-bg) !important;
+  box-shadow: none !important;
+}
+
+.swagger-ui .scheme-container {
+  background: var(--header-bg) !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.swagger-ui .opblock-tag,
+.swagger-ui section.models,
+.swagger-ui section.models.is-open h4,
+.swagger-ui table thead tr td,
+.swagger-ui table thead tr th,
+.swagger-ui .dialog-ux .modal-ux,
+.swagger-ui .dialog-ux .modal-ux-header {
+  border-color: var(--border-color) !important;
+}
+
+.swagger-ui .dialog-ux .modal-ux {
+  background: var(--page-bg) !important;
+}
+
+.swagger-ui .model-box,
+.swagger-ui section.models .model-container {
+  background: var(--sw-tint) !important;
+}
+
+.swagger-ui section.models .model-box {
+  background: none !important;
+}
+
+.swagger-ui .opblock-tag:hover,
+.swagger-ui section.models h4:hover,
+.swagger-ui section.models .model-container:hover {
+  background: var(--sw-tint-hover) !important;
+}
+
+.swagger-ui .json-schema-2020-12 {
+  background-color: var(--sw-tint) !important;
+}
+
+.swagger-ui .json-schema-2020-12 .json-schema-2020-12 {
+  background-color: transparent !important;
+}
+
+.swagger-ui .json-schema-2020-12-body,
+.swagger-ui .json-schema-2020-12-keyword__children,
+.swagger-ui .json-schema-2020-12-json-viewer__children,
+.swagger-ui .json-schema-2020-12-keyword--\$vocabulary ul {
+  border-left-color: var(--border-color) !important;
+}
+
+.swagger-ui thead th,
+.swagger-ui tbody td {
+  background: transparent;
+}
+
+.swagger-ui input[type="text"],
+.swagger-ui input[type="password"],
+.swagger-ui input[type="email"],
+.swagger-ui input[type="search"],
+.swagger-ui input[type="file"],
+.swagger-ui input[type="number"] {
+  background: var(--input-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--input-border) !important;
+}
+
+.swagger-ui select {
+  background: var(--input-bg) var(--sw-select-arrow) right 10px center / 20px no-repeat !important;
+  color: var(--text-color) !important;
+  border-color: var(--input-border) !important;
+}
+
+.swagger-ui select[multiple] {
+  background: var(--input-bg) !important;
+}
+
+.swagger-ui input::placeholder,
+.swagger-ui textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.swagger-ui textarea,
+.swagger-ui textarea.curl,
+.swagger-ui pre.microlight {
+  background: var(--sw-code-bg) !important;
+  color: var(--sw-code-text) !important;
+}
+
+.swagger-ui .markdown code,
+.swagger-ui .renderedMarkdown code {
+  background: var(--sw-tint) !important;
+  color: var(--sw-inline-code) !important;
+}
+
+.swagger-ui .btn.cancel {
+  background-color: transparent !important;
+}
