@@ -1,7 +1,7 @@
 ---
 import "@styles/global.css";
 import "@styles/theme-toggle.css";
-const { title = "Tibia Tools", tabTitle = title } = Astro.props;
+const { title, tabTitle = title ?? "Tibia Tools" } = Astro.props;
 const headerTitle = Astro.url.hostname.startsWith("test.") ? "Tibia Tools (Test)" : "Tibia Tools";
 ---
 <html lang="en">
@@ -111,7 +111,7 @@ const headerTitle = Astro.url.hostname.startsWith("test.") ? "Tibia Tools (Test)
         })();
       </script>
     </header></div>
-    <div class="page-title"><h2>{title}</h2></div>
+    {title && <div class="page-title"><h2>{title}</h2></div>}
     <main>
       <slot />
     </main>
