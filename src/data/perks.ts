@@ -54,6 +54,7 @@ export type Perk = {
   id: number;
   name: string;
   scope: string;
+  priority: number;
   spell: boolean;
   revelation: boolean;
   bonusType: PerkBonusType;
