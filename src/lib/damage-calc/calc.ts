@@ -49,7 +49,9 @@ export function computeResults(
   spellChoices: SpellChoice[],
   creatureChoices: CreatureChoice[],
 ): SpellRawEffective[] {
-  const effectivePerks = [...perkChoices, ...stancePerks(stances, perkChoices)];
+  const effectivePerks = [...perkChoices, ...stancePerks(stances, perkChoices)].sort(
+    (a, b) => a.perk.priority - b.perk.priority,
+  );
   const characterPerks = effectivePerks.filter((p) => p.perk.scope == "character");
   const spellPerks = effectivePerks.filter((p) => p.perk.scope != "character");
 

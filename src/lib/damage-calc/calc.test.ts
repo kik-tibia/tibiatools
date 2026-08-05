@@ -289,3 +289,47 @@ describe("homing missile perks", () => {
     expect(split).toBeCloseTo(death, 2);
   });
 });
+
+describe("applies perks in the correct order", () => {
+  const stats: BuildStats = {
+    ...base.stats,
+    vocation: "druid",
+    level: 1000,
+    bonus: 20,
+    skill: 10,
+    magicLevel: 150,
+    critChance: 0,
+    critDamage: 0,
+  };
+  const stances = resolveStances(stats.stanceIds);
+  const weapon = resolveWeapon({ id: 800 });
+  const rotation = resolveSpells([{ id: 86, targets: 1, ratio: 1, extraSpell: false }]);
+  const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
+  const effectiveAvg = (perkRefs: Parameters<typeof resolvePerks>[0]) => {
+    const results = computeResults(stats, stances, weapon, resolvePerks(perkRefs), rotation, targets);
+    return results.find((r) => r.name === "Forked Glacier")!.effective.avg;
+  };
+
+  it("applies +magic level first, then % magic level bonus to spells, no matter the order in the input", () => {
+    const mlIncreaseFirst = effectiveAvg([
+      { id: 210, value: 20 },
+      { id: 19, value: 20 },
+    ]);
+    const mlToSpellsFirst = effectiveAvg([
+      { id: 19, value: 20 },
+      { id: 210, value: 20 },
+    ]);
+    expect(mlIncreaseFirst).toBeCloseTo(mlToSpellsFirst, d);
+  });
+  it("applies % magic level bonus to spells, then ice magic level, no matter the order in the input", () => {
+    const mlIncreaseFirst = effectiveAvg([
+      { id: 41, value: 20 },
+      { id: 19, value: 20 },
+    ]);
+    const mlToSpellsFirst = effectiveAvg([
+      { id: 19, value: 20 },
+      { id: 41, value: 20 },
+    ]);
+    expect(mlIncreaseFirst).toBeCloseTo(mlToSpellsFirst, d);
+  });
+});
