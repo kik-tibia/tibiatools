@@ -9,14 +9,14 @@
   {
     "id": 2,
     "name": "Critical hit extra damage",
-    "scope": "all",
+    "scope": "character",
     "priority": 1,
     "bonusType": "crit-damage"
   },
   {
     "id": 3,
     "name": "Critical hit chance",
-    "scope": "all",
+    "scope": "character",
     "priority": 1,
     "bonusType": "crit-chance"
   },
@@ -51,42 +51,42 @@
   {
     "id": 205,
     "name": "+ axe fighting",
-    "scope": "all",
+    "scope": "character",
     "priority": 1,
     "bonusType": "axe-fighting"
   },
   {
     "id": 206,
     "name": "+ club fighting",
-    "scope": "all",
+    "scope": "character",
     "priority": 1,
     "bonusType": "club-fighting"
   },
   {
     "id": 207,
     "name": "+ sword fighting",
-    "scope": "all",
+    "scope": "character",
     "priority": 1,
     "bonusType": "sword-fighting"
   },
   {
     "id": 208,
     "name": "+ fist fighting",
-    "scope": "all",
+    "scope": "character",
     "priority": 1,
     "bonusType": "fist-fighting"
   },
   {
     "id": 209,
     "name": "+ distance fighting",
-    "scope": "all",
+    "scope": "character",
     "priority": 1,
     "bonusType": "distance-fighting"
   },
   {
     "id": 210,
     "name": "+ magic level",
-    "scope": "all",
+    "scope": "character",
     "priority": 1,
     "bonusType": "magic-level"
   },
@@ -2095,7 +2095,7 @@
   {
     "id": 273,
     "name": "Focus mastery",
-    "scope": "all",
+    "scope": "spell",
     "priority": 1,
     "bonusType": "focus-mastery"
   },

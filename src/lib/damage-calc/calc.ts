@@ -419,7 +419,6 @@ function applyPerkToSpell(
   const { basePower: P, flat: F, magicLevel: ML, weaponAttack: W } = state;
 
   if (
-    perkChoice.perk.scope === "all" ||
     perkChoice.perk.scope === spell.scope ||
     perkChoice.perk.scope === spell.spellType ||
     perkChoice.perk.scope === spell.element ||
@@ -476,23 +475,6 @@ function applyPerkToSpell(
           const runicIncrease = Math.round(state.baseMagicLevel * increaseAmount);
           return { ...state, runicIncrease };
         } else return state;
-      case "axe-fighting":
-        if (skillType === "axe") return { ...state, skill: state.skill + perkChoice.value };
-        else return { ...state, axe: state.axe + perkChoice.value };
-      case "club-fighting":
-        if (skillType === "club") return { ...state, skill: state.skill + perkChoice.value };
-        else return { ...state, club: state.club + perkChoice.value };
-      case "sword-fighting":
-        if (skillType === "sword") return { ...state, skill: state.skill + perkChoice.value };
-        else return { ...state, sword: state.sword + perkChoice.value };
-      case "fist-fighting":
-        if (skillType === "fist") return { ...state, skill: state.skill + perkChoice.value };
-        else return { ...state, fist: state.fist + perkChoice.value };
-      case "distance-fighting":
-        if (skillType === "distance") return { ...state, skill: state.skill + perkChoice.value };
-        else return { ...state, distance: state.distance + perkChoice.value };
-      case "magic-level":
-        return { ...state, magicLevel: ML + perkChoice.value };
       case "focus-mastery": {
         const focusScope = spellScopeById.get(perkChoice.value);
         const focusMasteryIncrease = focusScope && state.spell.scope == focusScope ? 0.35 : 0;
@@ -514,8 +496,19 @@ type NumericCharacterField = {
   [K in keyof CharacterState]: CharacterState[K] extends number ? K : never;
 }[keyof CharacterState];
 
+// Character perks that add value to a flat CharacterState field
+const characterBonuses: Partial<Record<PerkBonusType, NumericCharacterField>> = {
+  "axe-fighting": "axe",
+  "club-fighting": "club",
+  "sword-fighting": "sword",
+  "fist-fighting": "fist",
+  "distance-fighting": "distance",
+  "magic-level": "magicLevel",
+};
 // Character perks that add value/100 to a flat CharacterState field
 const characterPercentBonuses: Partial<Record<PerkBonusType, NumericCharacterField>> = {
+  "crit-damage": "critDamage",
+  "crit-chance": "critChance",
   "armor-penetration": "armorPenetration",
   "charm-upgrade": "charmUpgrade",
 };
@@ -534,29 +527,6 @@ for (const element of allElements) {
 const bestiaryDamageBonuses = new Map<PerkBonusType, BestiaryClass>();
 for (const bestiaryClass of allBestiaryClasses) {
   bestiaryDamageBonuses.set(bestiaryDamageBonusType(bestiaryClass), bestiaryClass);
-}
-
-const characterBonusesHandledElsewhere: PerkBonusType[] = [
-  "base-harmony-bonus", // deriveCharacterState, added without /100
-  "alpha-strike", // buildHpBasedDmgBrackets
-  "omega-strike", // buildHpBasedDmgBrackets
-  "combat-mastery", // buildHpBasedDmgBrackets
-  "lord-of-destruction", // stancePerks
-];
-
-// Check for unhandled perks and throw error if found
-const unhandledCharacterPerks = allPerks.filter(
-  (p) =>
-    p.scope == "character" &&
-    !(p.bonusType in characterPercentBonuses) &&
-    !pierceBonuses.has(p.bonusType) &&
-    !bestiaryDamageBonuses.has(p.bonusType) &&
-    !characterBonusesHandledElsewhere.includes(p.bonusType),
-);
-if (unhandledCharacterPerks.length > 0) {
-  throw new Error(
-    `Perks with scope "character" but no handler: ${unhandledCharacterPerks.map((p) => p.name).join(", ")}`,
-  );
 }
 
 function deriveCharacterState(
@@ -615,6 +585,8 @@ function deriveCharacterState(
     extraHitChance: 0,
   };
 
+  const skillType = weaponChoice.weapon.skill;
+
   characterPerks.forEach((p) => {
     if (p.perk.bonusType == "base-harmony-bonus") {
       characterState.baseHarmonyBonus += p.value;
@@ -630,8 +602,42 @@ function deriveCharacterState(
       characterState.bestiaryDamage[bestiaryClass] += p.value / 100;
       return;
     }
-    const field = characterPercentBonuses[p.perk.bonusType];
-    if (field) characterState[field] += p.value / 100;
+    const percentBonusField = characterPercentBonuses[p.perk.bonusType];
+    if (percentBonusField) {
+      characterState[percentBonusField] += p.value / 100;
+      return;
+    }
+    if (p.perk.bonusType == "axe-fighting") {
+      if (skillType == "axe") characterState.skill += p.value;
+      else characterState.axe += p.value;
+      return;
+    }
+    if (p.perk.bonusType == "club-fighting") {
+      if (skillType == "club") characterState.skill += p.value;
+      else characterState.club += p.value;
+      return;
+    }
+    if (p.perk.bonusType == "sword-fighting") {
+      if (skillType == "sword") characterState.skill += p.value;
+      else characterState.sword += p.value;
+      return;
+    }
+    if (p.perk.bonusType == "distance-fighting") {
+      if (skillType == "distance") characterState.skill += p.value;
+      else characterState.distance += p.value;
+      return;
+    }
+    if (p.perk.bonusType == "fist-fighting") {
+      if (skillType == "fist") characterState.skill += p.value;
+      else characterState.fist += p.value;
+      return;
+    }
+    if (p.perk.bonusType == "magic-level") {
+      characterState.magicLevel += p.value;
+      return;
+    }
+    const bonusField = characterBonuses[p.perk.bonusType];
+    if (bonusField) characterState[bonusField] += p.value;
   });
   return characterState;
 }
