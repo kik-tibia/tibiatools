@@ -504,6 +504,7 @@ const characterBonuses: Partial<Record<PerkBonusType, NumericCharacterField>> = 
   "fist-fighting": "fist",
   "distance-fighting": "distance",
   "magic-level": "magicLevel",
+  "base-harmony-bonus": "baseHarmonyBonus",
 };
 // Character perks that add value/100 to a flat CharacterState field
 const characterPercentBonuses: Partial<Record<PerkBonusType, NumericCharacterField>> = {
@@ -588,10 +589,6 @@ function deriveCharacterState(
   const skillType = weaponChoice.weapon.skill;
 
   characterPerks.forEach((p) => {
-    if (p.perk.bonusType == "base-harmony-bonus") {
-      characterState.baseHarmonyBonus += p.value;
-      return;
-    }
     const pierce = pierceBonuses.get(p.perk.bonusType);
     if (pierce) {
       characterState[pierce.kind][pierce.element] += p.value / 100;
@@ -605,6 +602,11 @@ function deriveCharacterState(
     const percentBonusField = characterPercentBonuses[p.perk.bonusType];
     if (percentBonusField) {
       characterState[percentBonusField] += p.value / 100;
+      return;
+    }
+    const bonusField = characterBonuses[p.perk.bonusType];
+    if (bonusField) {
+      characterState[bonusField] += p.value;
       return;
     }
     if (p.perk.bonusType == "axe-fighting") {
@@ -636,8 +638,6 @@ function deriveCharacterState(
       characterState.magicLevel += p.value;
       return;
     }
-    const bonusField = characterBonuses[p.perk.bonusType];
-    if (bonusField) characterState[bonusField] += p.value;
   });
   return characterState;
 }
