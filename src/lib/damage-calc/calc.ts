@@ -442,6 +442,8 @@ function applyPerkToSpell(
       case "crit-chance":
         return { ...state, critChance: state.critChance + perkChoice.value / 100 };
       case "attack":
+        // TODO: this doesn't keep the ratio of phys/elemental the same
+        // probably fine for +1 or +2 atk, but would be good to fix it properly
         return { ...state, weaponAttack: W + perkChoice.value };
       case "axe-percent-extra": {
         const S = skillType === "axe" ? state.skill : state.axe;
@@ -505,6 +507,7 @@ const characterBonuses: Partial<Record<PerkBonusType, NumericCharacterField>> = 
   "distance-fighting": "distance",
   "magic-level": "magicLevel",
   "base-harmony-bonus": "baseHarmonyBonus",
+  "def-mod": "defenseMod",
 };
 // Character perks that add value/100 to a flat CharacterState field
 const characterPercentBonuses: Partial<Record<PerkBonusType, NumericCharacterField>> = {
@@ -556,7 +559,7 @@ function deriveCharacterState(
   const flat = step * 100 - 450 + Math.floor((L + 1000) / step - 50 * step) + B;
   const weaponAttack = (weaponChoice.weapon.attack ?? 0) + (weaponChoice.ammo?.attack ?? 0);
   const weaponDamage = weaponChoice.weapon.damage ?? 0;
-  const shieldDef = weaponChoice.shield?.defense ?? 0;
+  const shieldDef = (weaponChoice.shield?.defense ?? 0) + (weaponChoice.weapon.defenseMod ?? 0);
   const characterState: CharacterState = {
     flat,
     magicLevel,
@@ -584,6 +587,7 @@ function deriveCharacterState(
     charmUpgrade: 0,
     homingMissiles: [],
     extraHitChance: 0,
+    defenseMod: 0,
   };
 
   const skillType = weaponChoice.weapon.skill;
