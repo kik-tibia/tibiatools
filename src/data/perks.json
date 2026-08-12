@@ -2203,5 +2203,12 @@
     "scope": "melee",
     "priority": 1,
     "bonusType": "hit-chance"
+  },
+  {
+    "id": 289,
+    "name": "Defense modifier",
+    "scope": "character",
+    "priority": 1,
+    "bonusType": "def-mod"
   }
 ]

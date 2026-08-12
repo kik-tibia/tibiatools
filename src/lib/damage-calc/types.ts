@@ -45,6 +45,7 @@ export type CharacterState = {
   charmUpgrade: number;
   homingMissiles: HomingMissile[];
   extraHitChance: number;
+  defenseMod: number;
 };
 
 export type SpellState = CharacterState & {

@@ -477,7 +477,8 @@ function updateElementsFromWeapon(elements: Record<Element, number>, damage: num
 }
 
 function computeAvg(spell: Spell, state: SpellState): number {
-  const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W, shieldDef: D } = state;
+  const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W } = state;
+  const D = state.shieldDef + state.defenseMod;
   const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
   const damage =
     spell.element === "weapon"
@@ -491,7 +492,8 @@ function computeAvg(spell: Spell, state: SpellState): number {
 }
 
 function computeMinMax(spell: Spell, minMax: number, state: SpellState): number {
-  const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W, shieldDef: D } = state;
+  const { basePower: P, flat: F, magicLevel: ML, skill: S, weaponAttack: W } = state;
+  const D = state.shieldDef + state.defenseMod;
   const round = spell.rounding === "floor" ? Math.floor : spell.rounding === "ceil" ? Math.ceil : Math.round;
   const variation = spell.buckets / P / 2;
   const damage =

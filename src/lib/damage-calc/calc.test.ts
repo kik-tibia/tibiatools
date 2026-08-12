@@ -290,6 +290,71 @@ describe("homing missile perks", () => {
   });
 });
 
+describe("shield defense", () => {
+  const stats: BuildStats = {
+    ...base.stats,
+    vocation: "knight",
+    level: 1000,
+    bonus: 20,
+    skill: 150,
+    shielding: 150,
+    magicLevel: 13,
+    critChance: 0,
+    critDamage: 0,
+  };
+  const stances = resolveStances(stats.stanceIds);
+  const rotation = resolveSpells([{ id: 89, targets: 1, ratio: 1, extraSpell: false }]);
+  const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
+  // Blade of Destruction has no defense modifier, Sanguine Blade has +3, Nightmare Blade has -3
+  const noDefMod = 525;
+  const plus3DefMod = 657;
+  const minus3DefMod = 631;
+  // Guardian Shield 39 def, Amazon Shield 42 def, Vampire Shield 45 def
+  const shield39 = 44;
+  const shield42 = 3;
+  const shield45 = 114;
+
+  const shieldBash = (
+    weaponId: number,
+    shieldId: number | undefined,
+    perkRefs: Parameters<typeof resolvePerks>[0] = [],
+  ) => {
+    const results = computeResults(
+      stats,
+      stances,
+      resolveWeapon({ id: weaponId, shieldId }),
+      resolvePerks(perkRefs),
+      rotation,
+      targets,
+    );
+    return results.find((r) => r.name === "Shield Bash")!;
+  };
+
+  it("adds the weapon's defense modifier to the shield's defense", () => {
+    expect(shieldBash(plus3DefMod, shield42).raw).toEqual(shieldBash(noDefMod, shield45).raw);
+    expect(shieldBash(minus3DefMod, shield42).raw).toEqual(shieldBash(noDefMod, shield39).raw);
+  });
+
+  it("adds the defense modifier perk on top of the weapon's defense modifier", () => {
+    const perk = [{ id: 289, value: 3 }];
+    expect(shieldBash(noDefMod, shield42, perk).raw).toEqual(shieldBash(noDefMod, shield45).raw);
+    expect(shieldBash(plus3DefMod, shield39, perk).raw).toEqual(shieldBash(noDefMod, shield45).raw);
+    expect(shieldBash(minus3DefMod, shield45, perk).raw).toEqual(shieldBash(noDefMod, shield45).raw);
+  });
+
+  it("stacks multiple defense modifier perks additively", () => {
+    const split = shieldBash(noDefMod, shield39, [
+      { id: 289, value: 2 },
+      { id: 289, value: 4 },
+    ]);
+    expect(split.raw).toEqual(shieldBash(noDefMod, shield45).raw);
+  });
+
+  it("deals no damage without a shield, whatever the defense modifier", () => {
+    expect(shieldBash(plus3DefMod, undefined, [{ id: 289, value: 3 }]).raw).toEqual({ min: 0, avg: 0, max: 0 });
+  });
+});
+
 describe("applies perks in the correct order", () => {
   const stats: BuildStats = {
     ...base.stats,
