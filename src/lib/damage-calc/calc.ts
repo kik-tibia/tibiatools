@@ -9,10 +9,11 @@ import {
   type SpellElement,
   type SpellRawBreakdown,
   type SpellRawEffective,
+  type SpellType,
 } from "@data/spells";
 import type { Stance } from "@data/stances.ts";
 import { type SkillType, type Weapon } from "@data/weapons";
-import type { BuildStats, Vocation } from "@lib/build-state";
+import type { BuildStats, SpellChoiceRef, Vocation } from "@lib/build-state";
 import type {
   CharacterState,
   CreatureChoice,
@@ -59,6 +60,12 @@ export function computeResults(
 
   const spellStates = allSpells
     .filter((s) => s.vocations.includes(buildStats.vocation))
+    // Only missiles for which the build has a perk are returned in the results.
+    // Without this guard, we would add every missile as 0 damage hits, diluting dph and proccing charms.
+    .filter(
+      (s) =>
+        s.spellType !== "homing-missile" || (s.element !== "weapon" && characterState.homingMissiles[s.element] > 0),
+    )
     .map((spell) => {
       const initial: SpellState = initialSpellState(characterState, spell);
       let spellState: SpellState = spellPerks.reduce(
@@ -286,7 +293,15 @@ function buildDamageMixture(
 ): DamageMixtureComponent[] {
   const spellRotation = spellChoices.filter((s) => s.id !== AUTO_ATTACK_ID);
   const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
-  const fullRotation = spellChoices.map((s) => (s.id === AUTO_ATTACK_ID ? { ...s, ratio: ratioSum || 1 } : s));
+
+  const homingChoices = homingMissileChoices(
+    spellChoices.map((s) => ({ ...s, spellType: s.spell.spellType })),
+    [...spellDamageById.values()],
+  );
+  const fullRotation: SpellChoiceRef[] = [
+    ...spellChoices.map((s) => (s.id === AUTO_ATTACK_ID ? { ...s, ratio: ratioSum || 1 } : s)),
+    ...homingChoices,
+  ];
   const ratioTargetSum = fullRotation.reduce((sum, s) => sum + s.targets * s.ratio, 0);
 
   const mixture: DamageMixtureComponent[] = [];
@@ -323,6 +338,29 @@ function buildDamageMixture(
     }
   }
   return mixture;
+}
+
+type RotationEntry = { ratio: number; extraSpell: boolean; spellType: SpellType };
+type HomingMissileDamage = { id: number; spellType: SpellType };
+
+export function homingMissileChoices<T extends HomingMissileDamage>(
+  rotation: RotationEntry[],
+  spellDamages: T[],
+): (SpellChoiceRef & { spellDamage: T })[] {
+  const castRatio = rotation
+    .filter((s) => s.spellType === "spell" && !s.extraSpell)
+    .reduce((sum, s) => sum + s.ratio, 0);
+  if (castRatio <= 0) return [];
+
+  return spellDamages
+    .filter((sd) => sd.spellType === "homing-missile")
+    .map((sd) => ({
+      id: sd.id,
+      targets: 1,
+      ratio: 0.01 * castRatio,
+      extraSpell: true,
+      spellDamage: sd,
+    }));
 }
 
 /** Damage per turn */
@@ -424,16 +462,6 @@ function applyPerkToSpell(
     perkChoice.perk.scope === spell.element ||
     perkChoice.perk.scope === spell.scalesWith
   ) {
-    const homingElement = homingMissileElements.get(perkChoice.perk.bonusType);
-    if (homingElement) {
-      const existing = state.homingMissiles.find((m) => m.element === homingElement);
-      const homingMissiles = existing
-        ? state.homingMissiles.map((m) =>
-            m.element === homingElement ? { ...m, levelDamage: m.levelDamage + perkChoice.value / 100 } : m,
-          )
-        : [...state.homingMissiles, { element: homingElement, chance: 0.01, levelDamage: perkChoice.value / 100 }];
-      return { ...state, homingMissiles };
-    }
     switch (perkChoice.perk.bonusType) {
       case "base-damage":
         return { ...state, basePower: P * (1 + perkChoice.value / 100) };
@@ -585,7 +613,7 @@ function deriveCharacterState(
     pierceWeapon: initElements(),
     bestiaryDamage: initBestiaryDamage(),
     charmUpgrade: 0,
-    homingMissiles: [],
+    homingMissiles: initElements(),
     extraHitChance: 0,
     defenseMod: 0,
   };
@@ -601,6 +629,11 @@ function deriveCharacterState(
     const bestiaryClass = bestiaryDamageBonuses.get(p.perk.bonusType);
     if (bestiaryClass) {
       characterState.bestiaryDamage[bestiaryClass] += p.value / 100;
+      return;
+    }
+    const homingElement = homingMissileElements.get(p.perk.bonusType);
+    if (homingElement) {
+      characterState.homingMissiles[homingElement] += p.value / 100;
       return;
     }
     const percentBonusField = characterPercentBonuses[p.perk.bonusType];

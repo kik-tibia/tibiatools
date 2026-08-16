@@ -88,6 +88,17 @@ export function computeDamageBreakdown(
       mergedWeaponChoice,
       creatureChoice,
     );
+  } else if (state.spell.spellType === "homing-missile") {
+    breakdown = computeEffectiveHomingMissile(
+      state,
+      buildStats,
+      pCrit,
+      pFatal,
+      pCritFatal,
+      pNoBonus,
+      critDamage,
+      creatureChoice,
+    );
   } else {
     breakdown = computeEffectiveSpell(
       state.spell,
@@ -413,26 +424,7 @@ function computeEffectiveSpell(
     effectiveAvg = avg;
   }
 
-  let avgHomingDamage = 0;
-  for (const homingMissile of state.homingMissiles) {
-    let missileDamage = homingMissile.chance * homingMissile.levelDamage * (buildStats.level ?? 0);
-    if (creatureChoice) {
-      const avgHomingElements = initElements();
-      avgHomingElements[homingMissile.element] = missileDamage;
-      missileDamage = elementalEffective(
-        avgHomingElements,
-        avgHomingElements,
-        avgHomingElements,
-        state,
-        creatureChoice,
-      );
-    }
-    avgHomingDamage += missileDamage;
-  }
-
-  effectiveAvg =
-    effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage)) +
-    avgHomingDamage;
+  effectiveAvg = effectiveAvg * (pNoBonus + pCrit * (1 + critDamage) + pFatal * 1.6 + pCritFatal * (1.6 + critDamage));
 
   const breakdown: DamageBreakdown = {
     noBonus: { min, avg, max, probability: pNoBonus },
@@ -443,6 +435,62 @@ function computeEffectiveSpell(
       avg: avg * (1.6 + critDamage),
       max: max * (1.6 + critDamage),
       probability: pCritFatal,
+    },
+    missChance: 0,
+    effective: { avg: effectiveAvg, elementalCharmDmg: 0, critCharmDmg: 0 },
+  };
+  return breakdown;
+}
+
+/**
+ * We are making some assumptions here:
+ * 1) Assuming that homing missiles cannot crit
+ * 2) Assuming that homing missiles are affected by creature's resistance, elemental pierce, mitigation
+ * 3) And due to how this function is called, it also assumes that homing missiles can proc charms
+ * Will investigate each of these assumptions and update accordingly in the future.
+ */
+function computeEffectiveHomingMissile(
+  state: SpellState,
+  buildStats: BuildStats,
+  pCrit: number,
+  pFatal: number,
+  pCritFatal: number,
+  pNoBonus: number,
+  critDamage: number,
+  creatureChoice?: CreatureChoice,
+): DamageBreakdown {
+  const element = state.spell.element;
+  const elements = initElements();
+  let avg = 0;
+  if (element !== "weapon") {
+    avg = (buildStats.level ?? 0) * state.homingMissiles[element];
+    elements[element] = avg;
+  }
+  let effectiveAvg = avg;
+
+  if (creatureChoice) {
+    effectiveAvg = elementalEffective(elements, elements, elements, state, creatureChoice);
+  }
+
+  const breakdown: DamageBreakdown = {
+    noBonus: { min: avg, avg, max: avg, probability: 1 },
+    crit: {
+      min: 0,
+      avg: 0,
+      max: 0,
+      probability: 0,
+    },
+    fatal: {
+      min: 0,
+      avg: 0,
+      max: 0,
+      probability: 0,
+    },
+    critFatal: {
+      min: 0,
+      avg: 0,
+      max: 0,
+      probability: 0,
     },
     missChance: 0,
     effective: { avg: effectiveAvg, elementalCharmDmg: 0, critCharmDmg: 0 },

@@ -1,7 +1,7 @@
 import spellOrderingRaw from "@data/spell-ordering.json";
 import spellsRaw from "@data/spells.json";
 
-export type SpellType = "auto" | "spell" | "rune";
+export type SpellType = "auto" | "spell" | "rune" | "homing-missile";
 export type ScalesWith = "magic" | "melee" | "shielding" | "distance" | "none";
 export type Element = "death" | "earth" | "energy" | "fire" | "holy" | "ice" | "physical";
 export type SpellElement = Element | "weapon";
@@ -31,6 +31,7 @@ export type Spell = {
   stage?: number;
   isSelectable: boolean;
   isExtra: boolean;
+  visible: boolean;
   targetsLabel?: string;
 };
 
@@ -92,6 +93,7 @@ export const allSpells: Spell[] = (spellsRaw as unknown[] as Spell[]).map((s) =>
   spells: s.spells ?? [s.id],
   isSelectable: s.isSelectable ?? true,
   isExtra: s.isExtra ?? false,
+  visible: s.visible ?? true,
 }));
 
 export const spellOrdering: SpellOrdering[] = spellOrderingRaw as SpellOrdering[];

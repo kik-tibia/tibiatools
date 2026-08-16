@@ -1773,5 +1773,159 @@
     "isSelectable": false,
     "isExtra": true,
     "targetsLabel": "Sides"
+  },
+  {
+    "id": 100,
+    "scope": "homing-missile-death",
+    "name": "Homing missile (death)",
+    "spellType": "homing-missile",
+    "scalesWith": "none",
+    "element": "death",
+    "power": 0,
+    "skillFactor": 0,
+    "buckets": 0,
+    "rounding": "floor",
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "isSelectable": false,
+    "isExtra": true,
+    "visible": false
+  },
+  {
+    "id": 101,
+    "scope": "homing-missile-earth",
+    "name": "Homing missile (earth)",
+    "spellType": "homing-missile",
+    "scalesWith": "none",
+    "element": "earth",
+    "power": 0,
+    "skillFactor": 0,
+    "buckets": 0,
+    "rounding": "floor",
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "isSelectable": false,
+    "isExtra": true,
+    "visible": false
+  },
+  {
+    "id": 102,
+    "scope": "homing-missile-energy",
+    "name": "Homing missile (energy)",
+    "spellType": "homing-missile",
+    "scalesWith": "none",
+    "element": "energy",
+    "power": 0,
+    "skillFactor": 0,
+    "buckets": 0,
+    "rounding": "floor",
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "isSelectable": false,
+    "isExtra": true,
+    "visible": false
+  },
+  {
+    "id": 103,
+    "scope": "homing-missile-fire",
+    "name": "Homing missile (fire)",
+    "spellType": "homing-missile",
+    "scalesWith": "none",
+    "element": "fire",
+    "power": 0,
+    "skillFactor": 0,
+    "buckets": 0,
+    "rounding": "floor",
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "isSelectable": false,
+    "isExtra": true,
+    "visible": false
+  },
+  {
+    "id": 104,
+    "scope": "homing-missile-ice",
+    "name": "Homing missile (ice)",
+    "spellType": "homing-missile",
+    "scalesWith": "none",
+    "element": "ice",
+    "power": 0,
+    "skillFactor": 0,
+    "buckets": 0,
+    "rounding": "floor",
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "isSelectable": false,
+    "isExtra": true,
+    "visible": false
+  },
+  {
+    "id": 105,
+    "scope": "homing-missile-holy",
+    "name": "Homing missile (holy)",
+    "spellType": "homing-missile",
+    "scalesWith": "none",
+    "element": "holy",
+    "power": 0,
+    "skillFactor": 0,
+    "buckets": 0,
+    "rounding": "floor",
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "isSelectable": false,
+    "isExtra": true,
+    "visible": false
+  },
+  {
+    "id": 106,
+    "scope": "homing-missile-physical",
+    "name": "Homing missile (physical)",
+    "spellType": "homing-missile",
+    "scalesWith": "none",
+    "element": "physical",
+    "power": 0,
+    "skillFactor": 0,
+    "buckets": 0,
+    "rounding": "floor",
+    "vocations": [
+      "druid",
+      "knight",
+      "monk",
+      "paladin",
+      "sorcerer"
+    ],
+    "isSelectable": false,
+    "isExtra": true,
+    "visible": false
   }
 ]

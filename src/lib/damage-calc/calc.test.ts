@@ -244,7 +244,7 @@ describe("UE spells", () => {
   });
 });
 
-describe("homing missile perks", () => {
+describe("homing missiles", () => {
   const stats: BuildStats = {
     ...base.stats,
     vocation: "sorcerer",
@@ -257,36 +257,82 @@ describe("homing missile perks", () => {
   };
   const stances = resolveStances(stats.stanceIds);
   const weapon = resolveWeapon({ id: 801 });
-  const rotation = resolveSpells([{ id: 23, targets: 1, ratio: 1, extraSpell: false }]);
-  const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
-  const effectiveAvg = (perkRefs: Parameters<typeof resolvePerks>[0]) => {
+  const bloodjaw = resolveCreatures([{ id: 813, ratio: 1 }]);
+  // A single cast per cycle, of a spell with a turn cooldown of 2
+  const hellsCore = resolveSpells([{ id: 23, targets: 1, ratio: 1, extraSpell: false }]);
+
+  const damages = (perkRefs: Parameters<typeof resolvePerks>[0], rotation = hellsCore, targets = bloodjaw) => {
     const results = computeResults(stats, stances, weapon, resolvePerks(perkRefs), rotation, targets);
-    return results.find((r) => r.name === "Hell's Core")!.effective.avg;
+    const spellDamageChoices = resolveSpellDamages(rotation, results);
+    return {
+      avgOf: (name: string) => results.find((r) => r.name === name)?.effective.avg,
+      dpt: computeDpt(spellDamageChoices),
+      dph: computeDph(spellDamageChoices),
+    };
   };
 
-  const none = effectiveAvg([]);
-  const death = effectiveAvg([{ id: 281, value: 10 }]);
-  const energy = effectiveAvg([{ id: 283, value: 6 }]);
+  const none = damages([]);
+  const death = damages([{ id: 281, value: 10 }]);
+  const energy = damages([{ id: 283, value: 6 }]);
 
-  it("adds homing damage on top of spell damage", () => {
-    // 1% chance * 10%/100 of level 1000 * (1 - 5.6% mitigation)
-    expect(death - none).toBeCloseTo(0.944, 2);
+  // 10% of level 1000, minus Bloodjaw's 5.6% mitigation
+  const deathMissile = 94.4;
+  const missileRatio = 0.01;
+
+  it("only exists for elements the build has a perk for", () => {
+    expect(none.avgOf("Homing missile (death)")).toBeUndefined();
+    expect(death.avgOf("Homing missile (energy)")).toBeUndefined();
+    expect(death.avgOf("Homing missile (death)")).toBeCloseTo(deathMissile, d);
+  });
+
+  it("leaves the damage of the spell that fired it untouched", () => {
+    expect(death.avgOf("Hell's Core")).toBeCloseTo(none.avgOf("Hell's Core")!, d);
+  });
+
+  it("adds damage per turn at the activation chance", () => {
+    expect(death.dpt - none.dpt).toBeCloseTo((missileRatio * deathMissile) / 2, d);
+  });
+
+  it("counts as a full hit for damage per hit", () => {
+    expect(death.dph).toBeCloseTo((none.dph + missileRatio * deathMissile) / (1 + missileRatio), d);
   });
 
   it("applies missiles of different elements independently", () => {
-    const both = effectiveAvg([
+    const both = damages([
       { id: 281, value: 10 },
       { id: 283, value: 6 },
     ]);
-    expect(both - none).toBeCloseTo(death - none + (energy - none), 2);
+    expect(both.dpt - none.dpt).toBeCloseTo(death.dpt - none.dpt + (energy.dpt - none.dpt), d);
   });
 
   it("stacks same-element missiles additively", () => {
-    const split = effectiveAvg([
+    const split = damages([
       { id: 281, value: 4 },
       { id: 281, value: 6 },
     ]);
-    expect(split).toBeCloseTo(death, 2);
+    expect(split.avgOf("Homing missile (death)")).toBeCloseTo(deathMissile, d);
+    expect(split.dpt).toBeCloseTo(death.dpt, d);
+  });
+
+  it("is never fired by auto attacks or runes", () => {
+    const noSpells = resolveSpells([
+      { id: 1, targets: 1, ratio: 1, extraSpell: false },
+      { id: 76, targets: 1, ratio: 1, extraSpell: false },
+    ]);
+    const withPerk = damages([{ id: 281, value: 10 }], noSpells);
+    const withoutPerk = damages([], noSpells);
+    expect(withPerk.dpt).toBeCloseTo(withoutPerk.dpt, d);
+    expect(withPerk.dph).toBeCloseTo(withoutPerk.dph, d);
+  });
+
+  it("still dilutes damage per hit when the creature is immune to it", () => {
+    // Acid Blob takes no death damage, but the missile lands on it all the same
+    const acidBlob = resolveCreatures([{ id: 2, ratio: 1 }]);
+    const immuneNone = damages([], hellsCore, acidBlob);
+    const immuneDeath = damages([{ id: 281, value: 10 }], hellsCore, acidBlob);
+    expect(immuneDeath.avgOf("Homing missile (death)")).toBe(0);
+    expect(immuneDeath.dpt).toBeCloseTo(immuneNone.dpt, d);
+    expect(immuneDeath.dph).toBeCloseTo(immuneNone.dph / (1 + missileRatio), d);
   });
 });
 
