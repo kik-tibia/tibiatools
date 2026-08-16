@@ -4,7 +4,7 @@
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
-  import { allSpells, beamScopes, type Spell } from "@data/spells";
+  import { allSpells, AUTO_ATTACK_ID, beamScopes, type Spell } from "@data/spells";
   import type { Build, SpellChoiceRef } from "@lib/build-state";
   import { packSection, SECTION_TAG } from "@lib/section-clipboard";
   import { compactRotation, expandRotation } from "@lib/url-pack";
@@ -24,7 +24,6 @@
   } = $props();
 
   const spellRegistry = new Map(allSpells.map((s) => [s.id, s]));
-  const AUTO_ATTACK_ID = 1;
   const isAutoAttack = (id: number) => id === AUTO_ATTACK_ID;
 
   const spellsByScope = new Map<string, Spell[]>();

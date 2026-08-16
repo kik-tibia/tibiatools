@@ -11,7 +11,7 @@
     type CalculatorState,
     type CollapsedSections,
   } from "@lib/build-state";
-  import { computeDamageFromCharms, computeDph, computeDpt, computeResults } from "@lib/damage-calc";
+  import { computeDamageFromCharms, computeDamagePerHit, computeDamagePerTurn, computeResults } from "@lib/damage-calc";
   import {
     resolveCreatures,
     resolvePerks,
@@ -62,10 +62,10 @@
   );
   let spellDamageChoicesA = $derived(resolveSpellDamages(A.rotation, resultsA));
   let spellDamageChoicesB = $derived(resolveSpellDamages(B.rotation, resultsB));
-  let effectiveDptA = $derived(computeDpt(spellDamageChoicesA));
-  let effectiveDptB = $derived(computeDpt(spellDamageChoicesB));
-  let effectiveDphA = $derived(computeDph(spellDamageChoicesA));
-  let effectiveDphB = $derived(computeDph(spellDamageChoicesB));
+  let effectiveDptA = $derived(computeDamagePerTurn(spellDamageChoicesA));
+  let effectiveDptB = $derived(computeDamagePerTurn(spellDamageChoicesB));
+  let effectiveDphA = $derived(computeDamagePerHit(spellDamageChoicesA));
+  let effectiveDphB = $derived(computeDamagePerHit(spellDamageChoicesB));
   let damageFromCharmsA = $derived(computeDamageFromCharms(spellDamageChoicesA));
   let damageFromCharmsB = $derived(computeDamageFromCharms(spellDamageChoicesB));
 

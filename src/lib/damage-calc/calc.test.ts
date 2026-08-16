@@ -9,7 +9,8 @@ import {
   resolveStances,
   resolveWeapon,
 } from "./build-state-resolver.ts";
-import { computeDamageFromCharms, computeDph, computeDpt, computeResults } from "./calc.ts";
+import { computeResults } from "./calc.ts";
+import { computeDamageFromCharms, computeDamagePerHit, computeDamagePerTurn } from "./rotation-metrics.ts";
 
 // `toBeCloseTo` numDigits
 const d = 1;
@@ -36,8 +37,8 @@ describe("default build", () => {
   const targets = resolveCreatures(base.targets);
   const results = computeResults(base.stats, stances, weapon, perks, rotation, targets);
   const spellDamageChoices = resolveSpellDamages(base.rotation, results);
-  const dpt = computeDpt(spellDamageChoices);
-  const dph = computeDph(spellDamageChoices);
+  const dpt = computeDamagePerTurn(spellDamageChoices);
+  const dph = computeDamagePerHit(spellDamageChoices);
 
   describe("computeResults", () => {
     it.each([
@@ -97,8 +98,8 @@ describe("Knight build with everything", () => {
   ]);
   const results = computeResults(stats, stances, weapon, perks, rotation, targets);
   const spellDamageChoices = resolveSpellDamages(rotation, results);
-  const dpt = computeDpt(spellDamageChoices);
-  const dph = computeDph(spellDamageChoices);
+  const dpt = computeDamagePerTurn(spellDamageChoices);
+  const dph = computeDamagePerHit(spellDamageChoices);
   const dmgFromCharms = computeDamageFromCharms(spellDamageChoices);
 
   describe("computeResults", () => {
@@ -143,7 +144,7 @@ describe("Knight build with everything", () => {
     it("only triggers charms on the main target", () => {
       expect(computeDamageFromCharms(aoeSpellDamageChoices)).toBeCloseTo(dmgFromCharms, d);
       const autoAttackAvg = aoeSpellDamageChoices.find((s) => s.id === 1)!.spellDamage.effective.avg;
-      expect(computeDpt(aoeSpellDamageChoices)).toBeCloseTo(dpt + 3 * autoAttackAvg, d);
+      expect(computeDamagePerTurn(aoeSpellDamageChoices)).toBeCloseTo(dpt + 3 * autoAttackAvg, d);
     });
 
     it("applies low blow to all targets", () => {
@@ -170,7 +171,7 @@ describe("Knight build with everything", () => {
       expect(effective.critCharmDmg).toBeGreaterThan(0);
       expect(effective.critCharmDmg).toBeCloseTo(baseEffective.critCharmDmg, d);
       expect(effective.avg).toBeCloseTo(baseEffective.avg, d);
-      expect(computeDpt(aoeChoices)).toBeCloseTo(computeDpt(baseChoices) + 3 * effective.avg, d);
+      expect(computeDamagePerTurn(aoeChoices)).toBeCloseTo(computeDamagePerTurn(baseChoices) + 3 * effective.avg, d);
     });
   });
 });
@@ -195,8 +196,8 @@ describe("UE spells", () => {
     const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
     const results = computeResults(stats, stances, weapon, perks, rotation, targets);
     const spellDamageChoices = resolveSpellDamages(rotation, results);
-    const dpt = computeDpt(spellDamageChoices);
-    const dph = computeDph(spellDamageChoices);
+    const dpt = computeDamagePerTurn(spellDamageChoices);
+    const dph = computeDamagePerHit(spellDamageChoices);
     const dmgFromCharms = computeDamageFromCharms(spellDamageChoices);
     describe("computeResults", () => {
       it.each([{ name: "Hell's Core", effective: 1666.2, min: 1453, avg: 1765, max: 2078 }])(
@@ -229,8 +230,8 @@ describe("UE spells", () => {
     const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
     const results = computeResults(stats, stances, weapon, perks, rotation, targets);
     const spellDamageChoices = resolveSpellDamages(rotation, results);
-    const dpt = computeDpt(spellDamageChoices);
-    const dph = computeDph(spellDamageChoices);
+    const dpt = computeDamagePerTurn(spellDamageChoices);
+    const dph = computeDamagePerHit(spellDamageChoices);
     describe("computeDpt", () => {
       it("returns correct result", () => {
         expect(dpt).toBeCloseTo(1897.4, d);
@@ -266,8 +267,8 @@ describe("homing missiles", () => {
     const spellDamageChoices = resolveSpellDamages(rotation, results);
     return {
       avgOf: (name: string) => results.find((r) => r.name === name)?.effective.avg,
-      dpt: computeDpt(spellDamageChoices),
-      dph: computeDph(spellDamageChoices),
+      dpt: computeDamagePerTurn(spellDamageChoices),
+      dph: computeDamagePerHit(spellDamageChoices),
     };
   };
 
@@ -398,6 +399,83 @@ describe("shield defense", () => {
 
   it("deals no damage without a shield, whatever the defense modifier", () => {
     expect(shieldBash(plus3DefMod, undefined, [{ id: 289, value: 3 }]).raw).toEqual({ min: 0, avg: 0, max: 0 });
+  });
+});
+
+describe("elemental magic level perks", () => {
+  const stats: BuildStats = {
+    ...base.stats,
+    vocation: "druid",
+    level: 1000,
+    bonus: 20,
+    skill: 10,
+    magicLevel: 150,
+    critChance: 0,
+    critDamage: 0,
+  };
+  const stances = resolveStances(stats.stanceIds);
+  const weapon = resolveWeapon({ id: 800 });
+  const rotation = resolveSpells([
+    { id: 86, targets: 1, ratio: 1, extraSpell: false }, // forked glacier (ice)
+    { id: 61, targets: 1, ratio: 1, extraSpell: false }, // terra wave (earth)
+  ]);
+  const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
+  const raws = (perkRefs: Parameters<typeof resolvePerks>[0], magicLevel = stats.magicLevel) => {
+    const results = computeResults(
+      { ...stats, magicLevel },
+      stances,
+      weapon,
+      resolvePerks(perkRefs),
+      rotation,
+      targets,
+    );
+    return {
+      ice: results.find((r) => r.name === "Forked Glacier")!.raw!.avg,
+      earth: results.find((r) => r.name === "Terra Wave")!.raw!.avg,
+    };
+  };
+
+  it("raises ice spells by +ice magic level, exactly as if magic level itself were higher", () => {
+    const none = raws([]);
+    const icePerk = raws([{ id: 41, value: 20 }]);
+    const higherMl = raws([], 170);
+    expect(icePerk.ice).toBeGreaterThan(none.ice);
+    expect(icePerk.ice).toBe(higherMl.ice);
+  });
+
+  it("leaves spells of other elements untouched", () => {
+    expect(raws([{ id: 41, value: 20 }]).earth).toBe(raws([]).earth);
+  });
+});
+
+describe("melee skill perks", () => {
+  const stats: BuildStats = {
+    ...base.stats,
+    vocation: "knight",
+    level: 1000,
+    bonus: 20,
+    skill: 150,
+    magicLevel: 13,
+    critChance: 0,
+    critDamage: 0,
+  };
+  const stances = resolveStances(stats.stanceIds);
+  const axe = resolveWeapon({ id: 10 });
+  const rotation = resolveSpells([{ id: 2, targets: 1, ratio: 1, extraSpell: false }]);
+  const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
+  const berserkAvg = (perkRefs: Parameters<typeof resolvePerks>[0], skill = stats.skill) => {
+    const results = computeResults({ ...stats, skill }, stances, axe, resolvePerks(perkRefs), rotation, targets);
+    return results.find((r) => r.name === "Fierce Berserk")!.raw!.avg;
+  };
+
+  it("adds the matching weapon skill to the main skill", () => {
+    const axePerk = berserkAvg([{ id: 205, value: 10 }]);
+    expect(axePerk).toBeGreaterThan(berserkAvg([]));
+    expect(axePerk).toBe(berserkAvg([], 160));
+  });
+
+  it("does not add a non-matching weapon skill to the main skill", () => {
+    expect(berserkAvg([{ id: 207, value: 10 }])).toBe(berserkAvg([]));
   });
 });
 

@@ -6,7 +6,7 @@ import { allSpells, type Spell, type SpellRawEffective } from "@data/spells";
 import { allStances, type Stance } from "@data/stances";
 import { allAmmo, allWeapons, type Ammo, type Weapon } from "@data/weapons";
 import type { CreatureChoiceRef, PerkChoiceRef, SpellChoiceRef, WeaponChoiceRef } from "@lib/build-state";
-import { homingMissileChoices } from "./calc";
+import { homingMissileChoices } from "./rotation-metrics";
 import type { CreatureChoice, PerkChoice, SpellChoice, SpellDamageChoice, WeaponChoice } from "./types";
 
 const weaponsById: Record<number, Weapon> = Object.fromEntries(allWeapons.map((i) => [i.id, i]));

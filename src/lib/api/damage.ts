@@ -1,6 +1,6 @@
 import { spellOrdering } from "@data/spells";
 import type { Build } from "@lib/build-state";
-import { computeDamageFromCharms, computeDph, computeDpt, computeResults } from "@lib/damage-calc";
+import { computeDamageFromCharms, computeDamagePerHit, computeDamagePerTurn, computeResults } from "@lib/damage-calc";
 import {
   resolveCreatures,
   resolvePerks,
@@ -49,8 +49,8 @@ export function computeDamage(build: Build): DamageResult {
 
   return {
     summary: {
-      effectiveDamagePerTurn: round(computeDpt(spellDamageChoices)),
-      effectiveDamagePerHit: round(computeDph(spellDamageChoices)),
+      effectiveDamagePerTurn: round(computeDamagePerTurn(spellDamageChoices)),
+      effectiveDamagePerHit: round(computeDamagePerHit(spellDamageChoices)),
       damageFromCharms: round(computeDamageFromCharms(spellDamageChoices)),
     },
     spells: ordered.map((r) => ({
