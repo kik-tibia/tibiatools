@@ -1,146 +1,142 @@
-// There will be one of these for every spell and crit state
-export type DamageMixtureComponent = { weight: number; lo: number; hi: number; isCharm: boolean };
+import { AUTO_ATTACK_ID, type SpellRawBreakdown, type SpellRawEffective } from "@data/spells";
+import type { Weapon } from "@data/weapons";
+import type { BuildStats, SpellChoiceRef } from "@lib/build-state";
+import { calculateElementalCharmDmg } from "./damage.ts";
+import { hpBonusMultiplier, type DamageMixtureComponent, type HpBasedDmgBracket } from "./hp-bonus-multiplier.ts";
+import { homingMissileChoices } from "./rotation-metrics.ts";
+import type { CharacterState, CreatureChoice, PerkChoice, SpellChoice } from "./types.ts";
 
-// From and to range from 0 (full hp) to 1 (dead).
-// E.g. for alpha strike it would be { from: 0, to: 0.05, bonus: 0.1 }
-export type HpBasedDmgBracket = {
-  from: number;
-  to: number;
-  bonus: number;
-};
+// Brackets for alpha/omega strike and combat mastery
+export function buildHpBasedDmgBrackets(perkChoices: PerkChoice[], weapon: Weapon): HpBasedDmgBracket[] {
+  const brackets: HpBasedDmgBracket[] = [];
 
-// Optimisation for high HP targets: we cap how many buckets the sweep arrays below use
-const maxBuckets = 4096;
+  const alpha = perkChoices.find((p) => p.perk.bonusType === "alpha-strike");
+  if (alpha && alpha.value > 0) brackets.push({ from: 0, to: 0.05, bonus: alpha.value / 100 });
 
-// Combined bonus multiplier at a given HP fraction (0 = full HP, 1 = dead). Overlapping brackets
-// combine multiplicatively.
-function boostAtFraction(frac: number, brackets: HpBasedDmgBracket[]): number {
-  let boost = 1;
-  for (const { from, to, bonus } of brackets) {
-    // TODO: Once the combat mastery perk is updated, we need to check if this is additive or multiplicative.
-    if (frac >= from && frac < to) boost *= 1 + bonus;
-  }
-  return boost;
-}
+  const omega = perkChoices.find((p) => p.perk.bonusType === "omega-strike");
+  if (omega && omega.value > 0) brackets.push({ from: 0.7, to: 1, bonus: omega.value / 100 });
 
-// Average bonus multiplier assuming the creature is at a random HP
-function averageBoostOverHp(brackets: HpBasedDmgBracket[]): number {
-  const edges = new Set([0, 1]);
-  for (const { from, to } of brackets) {
-    edges.add(Math.min(1, Math.max(0, from)));
-    edges.add(Math.min(1, Math.max(0, to)));
-  }
-  const sorted = [...edges].sort((a, b) => a - b);
-  let avg = 0;
-  for (let i = 0; i < sorted.length - 1; i++) {
-    const lo = sorted[i];
-    const hi = sorted[i + 1];
-    avg += boostAtFraction((lo + hi) / 2, brackets) * (hi - lo);
-  }
-  return avg;
-}
-
-// Average damage multiplier for HP based damage perks against a single target. Spells and charms share
-// one kill trajectory but are credited separately (see the per-bucket split below), so we return one
-// multiplier for each: apply `spell` to spell damage and `charm` to elemental charm damage.
-export function hpBonusMultiplier(
-  mixture: DamageMixtureComponent[],
-  hp: number,
-  brackets: HpBasedDmgBracket[],
-): { spell: number; charm: number } {
-  // Without a spell rotation we can't model a kill trajectory, so we fall back to assuming the creature
-  // sits at a random HP fraction and return the average bonus over that range.
-  if (mixture.length == 0) {
-    const avg = averageBoostOverHp(brackets);
-    return { spell: avg, charm: avg };
-  }
-
-  if (hp <= 0 || brackets.every((b) => b.bonus == 0)) return { spell: 1, charm: 1 };
-
-  let totalWeight = 0;
-  for (const m of mixture) totalWeight += m.weight;
-  if (totalWeight <= 0) return { spell: 1, charm: 1 };
-
-  const bucketSize = Math.ceil(hp / maxBuckets);
-  const nBuckets = Math.round(hp / bucketSize);
-  const normalisedMixture: DamageMixtureComponent[] = mixture
-    .filter((m) => m.weight > 0)
-    .map((m) => {
-      const lo = Math.max(1, Math.round(m.lo / bucketSize)); // Always do at least 1 dmg to not break the recurrence
-      const hi = Math.max(lo, Math.round(m.hi / bucketSize));
-      return { weight: m.weight / totalWeight, lo, hi, isCharm: m.isCharm };
-    });
-  if (normalisedMixture.length == 0) return { spell: 1, charm: 1 };
-
-  // A charm only fires after a spell, so it can never be the opening hit. `spellWeight` lets us both
-  // renormalise that opening hit to spells only and split the spell vs charm multipliers at the end.
-  let charmWeight = 0;
-  for (const m of normalisedMixture) if (m.isCharm) charmWeight += m.weight;
-  const spellWeight = 1 - charmWeight; // normalisedMixture weights sum to 1
-
-  const bonusMultiplierAt = (lostHp: number): number => boostAtFraction(lostHp / nBuckets, brackets);
-
-  // Probability of ever being on this HP (range [0..1], hpProbability[0] = full HP = 1)
-  const hpProbability = new Float64Array(nBuckets);
-  // `pendingArrivals` is a difference array we fill as we go: each hit posts the probability it lands on
-  // the buckets ahead of it, and `arrivals` reads that back as a running sum. The posting uses a cool
-  // add-then-subtract trick (explained at the posting site below where we do `+= / -= density`)
-  // so each hit costs O(1) no matter how wide its damage range is.
-  const pendingArrivals = new Float64Array(nBuckets);
-  let arrivals = 0;
-
-  for (let lostHp = 0; lostHp < nBuckets; lostHp++) {
-    arrivals += pendingArrivals[lostHp];
-    // The fight always starts at full HP (bucket 0), so that bucket gets one guaranteed hit. Every other
-    // bucket's probability is just whatever earlier hits landed on it (the `arrivals` running sum).
-    const reachProbability = (lostHp === 0 ? 1 : 0) + arrivals;
-    hpProbability[lostHp] = reachProbability;
-
-    const boost = bonusMultiplierAt(lostHp);
-    for (const { weight, lo, hi, isCharm } of normalisedMixture) {
-      // At the opening hit (bucket 0) charms can't fire, so we drop them and renormalise the spell
-      // weights (÷ spellWeight) so that guaranteed first hit still carries the full unit of probability.
-      const w = lostHp === 0 ? (isCharm ? 0 : weight / spellWeight) : weight;
-      if (w <= 0) continue;
-      const loScaled = Math.max(1, Math.round(lo * boost)); // keep at least 1 so a hit always advances
-      const hiScaled = Math.max(loScaled, Math.round(hi * boost));
-      const landFrom = lostHp + loScaled;
-      if (landFrom >= nBuckets) continue; // this hit (and any higher roll) overkills, so it doesn't seed any arrival bucket
-      const damageRangeWidth = hiScaled - loScaled + 1;
-      // This hit lands the target uniformly somewhere in [landFrom, landTo] (every roll equally likely),
-      // so each of those buckets should gain an equal share of this bucket's probability: `density`.
-      const density = (reachProbability * w) / damageRangeWidth;
-      // Rather than add `density` to every bucket in that run, we mark only its two edges and let the
-      // left-to-right sweep do the filling. `arrivals` is the running total of every mark we've passed.
-      // The +density at landFrom switches on this hit's contribution, and the matching -density one step
-      // past landTo switches it back off. So every bucket inside the run picks up `density` and every
-      // bucket outside it nets to zero.
-      pendingArrivals[landFrom] += density;
-      const landToExclusive = lostHp + hiScaled + 1;
-      if (landToExclusive < nBuckets) pendingArrivals[landToExclusive] -= density;
+  const combatMastery = perkChoices.find((p) => p.perk.bonusType === "combat-mastery");
+  if (combatMastery && combatMastery.value > 0) {
+    const cmBonus = weapon.hands == "two" ? 2 : 1;
+    const missingHpPerStep = combatMastery.value === 1 ? 0.14 : combatMastery.value === 2 ? 0.12 : 0.1;
+    for (let step = 1; step * missingHpPerStep < 1; step++) {
+      brackets.push({
+        from: step * missingHpPerStep,
+        to: Math.min(1, (step + 1) * missingHpPerStep),
+        bonus: (step * cmBonus) / 100,
+      });
     }
   }
 
-  // Each multiplier is the average factor its hits are scaled by over the whole kill. Spells and charms
-  // share the trajectory above but are credited separately: the opening hit (bucket 0) is always a spell,
-  // and every later bucket's hits split into spells vs charms by their share of the mixture weight.
-  let spellBonusHits = 0;
-  let spellHits = 0;
-  let charmBonusHits = 0;
-  let charmHits = 0;
-  for (let lostHp = 0; lostHp < nBuckets; lostHp++) {
-    const bonus = bonusMultiplierAt(lostHp) - 1;
-    const reachProbability = hpProbability[lostHp];
-    const spellShare = lostHp === 0 ? 1 : spellWeight;
-    const charmShare = lostHp === 0 ? 0 : charmWeight;
-    spellHits += reachProbability * spellShare;
-    spellBonusHits += reachProbability * spellShare * bonus;
-    charmHits += reachProbability * charmShare;
-    charmBonusHits += reachProbability * charmShare * bonus;
+  return brackets;
+}
+
+// Scale every spell's effective damage by the multiplier for all HP-based damage perks against this creature
+export function applyHpBasedDmgBonuses(
+  spellDamages: SpellRawBreakdown[],
+  spellChoices: SpellChoice[],
+  buildStats: BuildStats,
+  characterState: CharacterState,
+  brackets: HpBasedDmgBracket[],
+  creatureChoice?: CreatureChoice,
+): SpellRawBreakdown[] {
+  if (brackets.length === 0) return spellDamages;
+
+  const spellDamageById = new Map(spellDamages.map((sd) => [sd.id, sd]));
+  let mixture: DamageMixtureComponent[] = [];
+  if (creatureChoice) {
+    mixture = buildDamageMixture(spellChoices, creatureChoice, buildStats, characterState, spellDamageById);
+  }
+  const creatureHp = creatureChoice?.creature.hitpoints ?? 0;
+  const multiplier = hpBonusMultiplier(mixture, creatureHp, brackets);
+
+  // Apply multiplier to every spell
+  return spellDamages.map((sd) => ({
+    ...sd,
+    breakdown: {
+      ...sd.breakdown,
+      effective: {
+        elementalCharmDmg: sd.breakdown.effective.elementalCharmDmg * multiplier.charm,
+        avg: sd.breakdown.effective.avg * multiplier.spell,
+        critCharmDmg: sd.breakdown.effective.critCharmDmg * multiplier.spell,
+      },
+    },
+  }));
+}
+
+// Basic version of above where we don't use rotation/targets
+export function applyHpBasedDmgBonusesBasic(
+  spellDamages: SpellRawEffective[],
+  brackets: HpBasedDmgBracket[],
+): SpellRawEffective[] {
+  if (brackets.length === 0) return spellDamages;
+
+  const multiplier = hpBonusMultiplier([], 0, brackets);
+
+  // Apply multiplier to every spell
+  return spellDamages.map((sd) => ({
+    ...sd,
+    effective: {
+      elementalCharmDmg: sd.effective.elementalCharmDmg * multiplier.charm,
+      avg: sd.effective.avg * multiplier.spell,
+      critCharmDmg: sd.effective.critCharmDmg * multiplier.spell,
+    },
+  }));
+}
+
+function buildDamageMixture(
+  spellChoices: SpellChoice[],
+  creatureChoice: CreatureChoice,
+  buildStats: BuildStats,
+  characterState: CharacterState,
+  spellDamageById: Map<number, SpellRawBreakdown>,
+): DamageMixtureComponent[] {
+  const spellRotation = spellChoices.filter((s) => s.id !== AUTO_ATTACK_ID);
+  const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
+
+  const homingChoices = homingMissileChoices(
+    spellChoices.map((s) => ({ ...s, spellType: s.spell.spellType })),
+    [...spellDamageById.values()],
+  );
+  const fullRotation: SpellChoiceRef[] = [
+    ...spellChoices.map((s) => (s.id === AUTO_ATTACK_ID ? { ...s, ratio: ratioSum || 1 } : s)),
+    ...homingChoices,
+  ];
+  const ratioTargetSum = fullRotation.reduce((sum, s) => sum + s.targets * s.ratio, 0);
+
+  const mixture: DamageMixtureComponent[] = [];
+
+  // TODO: charm charm-upgrade
+  const charmDamage = calculateElementalCharmDmg(creatureChoice, buildStats, characterState);
+  if (creatureChoice.charm && creatureChoice.charmTier && charmDamage > 0) {
+    let charmChance = characterState.charmUpgrade;
+    switch (creatureChoice.charmTier) {
+      case 1:
+        charmChance += 0.05;
+        break;
+      case 2:
+        charmChance += 0.1;
+        break;
+      case 3:
+        charmChance += 0.11;
+        break;
+    }
+    mixture.push({ weight: charmChance, lo: charmDamage, hi: charmDamage, isCharm: true });
   }
 
-  return {
-    spell: spellHits > 0 ? 1 + spellBonusHits / spellHits : 1,
-    charm: charmHits > 0 ? 1 + charmBonusHits / charmHits : 1,
-  };
+  for (const spellChoice of fullRotation) {
+    const spellDamage = spellDamageById.get(spellChoice.id);
+    if (!spellDamage) continue;
+
+    const weight: number = ratioTargetSum > 0 ? (spellChoice.ratio / ratioTargetSum) * spellChoice.targets : 0;
+    if (weight <= 0) continue;
+
+    const { noBonus, crit, fatal, critFatal } = spellDamage.breakdown;
+    for (const atom of [noBonus, crit, fatal, critFatal]) {
+      if (atom.probability <= 0) continue;
+      mixture.push({ weight: weight * atom.probability, lo: atom.min, hi: atom.max, isCharm: false });
+    }
+  }
+  return mixture;
 }

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { hpBonusMultiplier, type DamageMixtureComponent, type HpBasedDmgBracket } from "./hp-bonus.ts";
+import { hpBonusMultiplier, type DamageMixtureComponent, type HpBasedDmgBracket } from "./hp-bonus-multiplier.ts";
 
 describe("hpBonusMultiplier", () => {
   // 50% omega strike

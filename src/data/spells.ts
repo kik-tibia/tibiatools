@@ -9,6 +9,8 @@ export type Rounding = "floor" | "round" | "ceil";
 
 export const allElements: Element[] = ["death", "earth", "energy", "fire", "holy", "ice", "physical"];
 
+export const AUTO_ATTACK_ID = 1;
+
 export type Spell = {
   id: number;
   scope: string;
