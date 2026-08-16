@@ -29,7 +29,7 @@
     isHigher?: (id: number) => boolean;
   } = $props();
 
-  let vocResults = $derived(results.filter((i) => i.vocations.includes(vocation)));
+  let vocResults = $derived(results.filter((i) => i.visible && i.vocations.includes(vocation)));
   let vocSpellOrdering = $derived(spellOrdering.find((s) => s.vocation == vocation)?.order ?? []);
   let rotationIds = $derived(rotation.map((r) => r.id));
   let resultsOrdered = $derived(

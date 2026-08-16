@@ -2151,49 +2151,49 @@
   {
     "id": 281,
     "name": "Homing missile (death)",
-    "scope": "spell",
+    "scope": "character",
     "priority": 1,
     "bonusType": "homing-missile-death"
   },
   {
     "id": 282,
     "name": "Homing missile (earth)",
-    "scope": "spell",
+    "scope": "character",
     "priority": 1,
     "bonusType": "homing-missile-earth"
   },
   {
     "id": 283,
     "name": "Homing missile (energy)",
-    "scope": "spell",
+    "scope": "character",
     "priority": 1,
     "bonusType": "homing-missile-energy"
   },
   {
     "id": 284,
     "name": "Homing missile (fire)",
-    "scope": "spell",
+    "scope": "character",
     "priority": 1,
     "bonusType": "homing-missile-fire"
   },
   {
     "id": 285,
     "name": "Homing missile (holy)",
-    "scope": "spell",
+    "scope": "character",
     "priority": 1,
     "bonusType": "homing-missile-holy"
   },
   {
     "id": 286,
     "name": "Homing missile (ice)",
-    "scope": "spell",
+    "scope": "character",
     "priority": 1,
     "bonusType": "homing-missile-ice"
   },
   {
     "id": 287,
     "name": "Homing missile (physical)",
-    "scope": "spell",
+    "scope": "character",
     "priority": 1,
     "bonusType": "homing-missile-physical"
   },

@@ -6,6 +6,7 @@ import { allSpells, type Spell, type SpellRawEffective } from "@data/spells";
 import { allStances, type Stance } from "@data/stances";
 import { allAmmo, allWeapons, type Ammo, type Weapon } from "@data/weapons";
 import type { CreatureChoiceRef, PerkChoiceRef, SpellChoiceRef, WeaponChoiceRef } from "@lib/build-state";
+import { homingMissileChoices } from "./calc";
 import type { CreatureChoice, PerkChoice, SpellChoice, SpellDamageChoice, WeaponChoice } from "./types";
 
 const weaponsById: Record<number, Weapon> = Object.fromEntries(allWeapons.map((i) => [i.id, i]));
@@ -68,7 +69,7 @@ export function resolveSpellDamages(
   spellDamages: SpellRawEffective[],
 ): SpellDamageChoice[] {
   const spellDamagesById: Record<number, SpellRawEffective> = Object.fromEntries(spellDamages.map((i) => [i.id, i]));
-  return spellChoiceRefs
+  const rotation = spellChoiceRefs
     .map((s) => {
       const spellDamage = spellDamagesById[s.id];
       if (!spellDamage) {
@@ -78,6 +79,12 @@ export function resolveSpellDamages(
       return { ...s, spellDamage };
     })
     .filter((x): x is SpellDamageChoice => x !== null);
+
+  const homingMissiles = homingMissileChoices(
+    rotation.map((s) => ({ ...s, spellType: s.spellDamage.spellType })),
+    spellDamages,
+  );
+  return [...rotation, ...homingMissiles];
 }
 
 export function resolveCreatures(creatureChoiceRefs: CreatureChoiceRef[]): CreatureChoice[] {

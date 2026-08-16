@@ -12,12 +12,6 @@ export type SpellChoice = SpellChoiceRef & { spell: Spell };
 export type SpellDamageChoice = SpellChoiceRef & { spellDamage: SpellRawEffective };
 export type CreatureChoice = CreatureChoiceRef & { creature: Creature; charm?: Charm };
 
-export type HomingMissile = {
-  element: Element;
-  chance: number;
-  levelDamage: number;
-};
-
 export type CharacterState = {
   flat: number;
   magicLevel: number;
@@ -43,7 +37,7 @@ export type CharacterState = {
   pierceWeapon: Record<Element, number>;
   bestiaryDamage: Record<BestiaryClass, number>;
   charmUpgrade: number;
-  homingMissiles: HomingMissile[];
+  homingMissiles: Record<Element, number>;
   extraHitChance: number;
   defenseMod: number;
 };
