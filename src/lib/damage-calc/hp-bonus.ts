@@ -1,7 +1,7 @@
 import { AUTO_ATTACK_ID, type SpellRawBreakdown, type SpellRawEffective } from "@data/spells";
 import type { Weapon } from "@data/weapons";
 import type { BuildStats, SpellChoiceRef } from "@lib/build-state";
-import { calculateElementalCharmDmg } from "./damage.ts";
+import { calculateElementalCharmDmg } from "./creature-damage.ts";
 import { hpBonusMultiplier, type DamageMixtureComponent, type HpBasedDmgBracket } from "./hp-bonus-multiplier.ts";
 import { homingMissileChoices } from "./rotation-metrics.ts";
 import type { CharacterState, CreatureChoice, PerkChoice, SpellChoice } from "./types.ts";

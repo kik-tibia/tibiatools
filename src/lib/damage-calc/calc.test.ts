@@ -51,12 +51,12 @@ describe("default build", () => {
       { name: "Fireball Rune", effective: 16.8, min: 12, avg: 16, max: 19 },
     ])("returns expected values for $name", (expected) => expectResultValues(results, expected));
   });
-  describe("computeDpt", () => {
+  describe("computeDamagePerTurn", () => {
     it("returns correct result", () => {
       expect(dpt).equals(0);
     });
   });
-  describe("computeDph", () => {
+  describe("computeDamagePerHit", () => {
     it("returns correct result", () => {
       expect(dph).equals(0);
     });
