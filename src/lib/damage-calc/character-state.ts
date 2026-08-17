@@ -3,7 +3,7 @@ import { bestiaryDamageBonusType, type PerkBonusType, type PierceKind } from "@d
 import { allElements, type Element } from "@data/spells";
 import type { SkillType } from "@data/weapons";
 import type { BuildStats } from "@lib/build-state";
-import { initElements } from "./damage.ts";
+import { initElements } from "./creature-damage.ts";
 import type { CharacterState, PerkChoice, WeaponChoice } from "./types.ts";
 
 type NumericCharacterField = {
