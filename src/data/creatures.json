@@ -3412,7 +3412,7 @@
     "mitigation": 4.97,
     "physicalDmgMod": 0.9,
     "earthDmgMod": 1.15,
-    "fireDmgMod": 1.25,
+    "fireDmgMod": 1.2,
     "deathDmgMod": 1,
     "energyDmgMod": 0.65,
     "holyDmgMod": 0.9,
