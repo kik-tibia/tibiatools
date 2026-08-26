@@ -3250,5 +3250,89 @@
   {
     "id": 813,
     "name": "Bloodjaw"
+  },
+  {
+    "id": 814,
+    "name": "Devoted Radiant Acolyte"
+  },
+  {
+    "id": 815,
+    "name": "Devoted Radiant Inquisitor"
+  },
+  {
+    "id": 816,
+    "name": "Devoted Radiant Paragon"
+  },
+  {
+    "id": 817,
+    "name": "Devoted Radiant Templar"
+  },
+  {
+    "id": 818,
+    "name": "Devoted Radiant Warden"
+  },
+  {
+    "id": 819,
+    "name": "Devoted Radiant Zealot"
+  },
+  {
+    "id": 820,
+    "name": "Iceplume Strider"
+  },
+  {
+    "id": 821,
+    "name": "Jaracal"
+  },
+  {
+    "id": 822,
+    "name": "Moonspawn Blightspitter"
+  },
+  {
+    "id": 823,
+    "name": "Moonspawn Oozecrown"
+  },
+  {
+    "id": 824,
+    "name": "Moonstone Excavator"
+  },
+  {
+    "id": 825,
+    "name": "Moonstone Overseer"
+  },
+  {
+    "id": 826,
+    "name": "Radiant Acolyte"
+  },
+  {
+    "id": 827,
+    "name": "Radiant Inquisitor"
+  },
+  {
+    "id": 828,
+    "name": "Radiant Paragon"
+  },
+  {
+    "id": 829,
+    "name": "Radiant Templar"
+  },
+  {
+    "id": 830,
+    "name": "Radiant Warden"
+  },
+  {
+    "id": 831,
+    "name": "Radiant Zealot"
+  },
+  {
+    "id": 832,
+    "name": "Silverfrost Sentinel"
+  },
+  {
+    "id": 833,
+    "name": "True Feverbloom Asura"
+  },
+  {
+    "id": 834,
+    "name": "Winged Jaracal"
   }
 ]
