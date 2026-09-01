@@ -58,8 +58,8 @@ export function computeResults(
       );
 
       if (spell.isSpender) {
-        const harmonyBase =
-          spellState.baseHarmonyBonus + (stances.some((s) => s.effect == "virtue-of-harmony") ? 13 : 7);
+        const vohMultiplier = stances.some((s) => s.effect == "virtue-of-harmony") ? 2 : 1;
+        const harmonyBase = (spellState.baseHarmonyBonus + 7 + 0.005 * (buildStats.level ?? 0)) * vohMultiplier;
         const spenderHarmonyBonus = (16 * harmonyBase + 100) / 100;
         spellState = { ...spellState, basePower: spellState.basePower * spenderHarmonyBonus };
       }
