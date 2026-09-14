@@ -156,7 +156,7 @@ function parseRotation(issues: ApiIssue[], value: unknown): SpellChoiceRef[] {
 
   return arr.flatMap((raw, i) => {
     const base = index("rotation", i);
-    const obj = objectAt(issues, base, raw, ["id", "targets", "ratio", "extraSpell"]);
+    const obj = objectAt(issues, base, raw, ["id", "targets", "ratio"]);
     if (!obj) return [];
 
     const spell = lookUpItemById(issues, child(base, "id"), obj.id, spellsById, "spell");
@@ -167,7 +167,6 @@ function parseRotation(issues: ApiIssue[], value: unknown): SpellChoiceRef[] {
         id: spell.id,
         targets: optionalNumber(issues, child(base, "targets"), obj.targets) ?? 1,
         ratio: optionalNumber(issues, child(base, "ratio"), obj.ratio) ?? 1,
-        extraSpell: spell.isExtra,
       },
     ];
   });

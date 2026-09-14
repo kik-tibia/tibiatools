@@ -3,7 +3,10 @@ export type ImbuementElement = "death" | "earth" | "energy" | "fire" | "ice";
 
 export type WeaponChoiceRef = { id: number; ammoId?: number; shieldId?: number };
 export type PerkChoiceRef = { id: number; value: number };
-export type SpellChoiceRef = { id: number; targets: number; ratio: number; extraSpell: boolean };
+// TODO: thinking about how to implement activatable buffs (empowerment, sanctuary).
+// Might need a new field on this type that references the buff perk, along with a fraction to indicate how often it's active.
+// We also need to allow for different targets for when the buff is active.
+export type SpellChoiceRef = { id: number; targets: number; ratio: number };
 export type CreatureChoiceRef = { id: number; ratio: number; charmId?: number; charmTier?: number };
 
 export type BuildStats = {

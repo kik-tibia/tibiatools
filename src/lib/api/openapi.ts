@@ -167,11 +167,6 @@ const schemas = {
         description:
           "How often this spell is cast relative to the others; only the proportions matter. Ignored for auto-attack.",
       },
-      extraSpell: {
-        type: "boolean",
-        readOnly: true,
-        description: "Accepted but ignored: taken from the spell definition.",
-      },
     },
   },
   TargetChoice: {

@@ -132,7 +132,7 @@
     return (spellRegistry.get(mainId)?.spells ?? [mainId])
       .map((sid) => spellRegistry.get(sid))
       .filter((d): d is Spell => !!d && d.vocations.includes(vocation))
-      .map((d) => ({ id: d.id, targets: 1, ratio: 1, extraSpell: !!d.isExtra }));
+      .map((d) => ({ id: d.id, targets: 1, ratio: 1 }));
   }
 
   function addSpellToRotation(id: number) {
@@ -173,7 +173,7 @@
     return newStage.spells.map((sid) => {
       const existing = spellChoiceRefById(build, sid);
       const targets = existing?.targets ?? (sid === newStage.id ? oldStageTargets : 1);
-      return { id: sid, targets, ratio: sharedRatio, extraSpell: !!spellRegistry.get(sid)?.isExtra };
+      return { id: sid, targets, ratio: sharedRatio };
     });
   }
 

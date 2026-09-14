@@ -316,10 +316,10 @@ function computeEffectiveSpell(
 
   if (state.focusMasteryIncrease > 0) {
     const focusRatioSum = spellChoices
-      .filter((s) => !s.extraSpell && s.spell.isFocus)
+      .filter((s) => !s.spell.isExtra && s.spell.isFocus)
       .reduce((sum, r) => sum + r.ratio, 0);
     const currentSpellRatioSum = spellChoices
-      .filter((s) => !s.extraSpell && s.spell.scope == spell.scope)
+      .filter((s) => !s.spell.isExtra && s.spell.scope == spell.scope)
       .reduce((sum, r) => sum + r.ratio, 0);
     if (currentSpellRatioSum > 0) {
       spell.additionalDamageMultiplier *=
