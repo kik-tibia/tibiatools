@@ -81,7 +81,7 @@ export function resolveSpellDamages(
     .filter((x): x is SpellDamageChoice => x !== null);
 
   const homingMissiles = homingMissileChoices(
-    rotation.map((s) => ({ ...s, spellType: s.spellDamage.spellType })),
+    rotation.map((s) => ({ ...s, spellType: s.spellDamage.spellType, isExtra: s.spellDamage.isExtra })),
     spellDamages,
   );
   return [...rotation, ...homingMissiles];

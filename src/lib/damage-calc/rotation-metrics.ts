@@ -5,9 +5,9 @@ import type { SpellDamageChoice } from "./types.ts";
 export function computeDamagePerTurn(spellDamageChoices: SpellDamageChoice[]): number {
   const spellRotation = spellDamageChoices.filter((s) => s.id !== AUTO_ATTACK_ID);
   const ratioSum = spellRotation
-    .filter((s) => !s.extraSpell)
+    .filter((s) => !s.spellDamage.isExtra)
     .reduce((sum, r) => sum + r.ratio * r.spellDamage.turnCooldown, 0);
-  const aaRatioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
+  const aaRatioSum = spellRotation.filter((s) => !s.spellDamage.isExtra).reduce((sum, r) => sum + r.ratio, 0);
 
   const autoAttack = spellDamageChoices.find((s) => s.id === AUTO_ATTACK_ID);
   const aaRatio = ratioSum > 0 ? aaRatioSum / ratioSum : 1;
@@ -31,7 +31,7 @@ export function computeDamagePerTurn(spellDamageChoices: SpellDamageChoice[]): n
 
 export function computeDamagePerHit(spellDamageChoices: SpellDamageChoice[]): number {
   const spellRotation = spellDamageChoices.filter((s) => s.id !== AUTO_ATTACK_ID);
-  const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
+  const ratioSum = spellRotation.filter((s) => !s.spellDamage.isExtra).reduce((sum, r) => sum + r.ratio, 0);
   const fullRotation = spellDamageChoices.map((s) => (s.id === AUTO_ATTACK_ID ? { ...s, ratio: ratioSum || 1 } : s));
   const ratioTargetSum = fullRotation.reduce((sum, s) => sum + s.targets * s.ratio, 0);
 
@@ -47,7 +47,7 @@ export function computeDamagePerHit(spellDamageChoices: SpellDamageChoice[]): nu
 
 export function computeDamageFromCharms(spellDamageChoices: SpellDamageChoice[]): number {
   const spellRotation = spellDamageChoices.filter((s) => s.id !== AUTO_ATTACK_ID);
-  const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
+  const ratioSum = spellRotation.filter((s) => !s.spellDamage.isExtra).reduce((sum, r) => sum + r.ratio, 0);
 
   const autoAttack = spellDamageChoices.find((s) => s.id === AUTO_ATTACK_ID);
   const autoAttackDamage = autoAttack
@@ -68,7 +68,7 @@ export function computeDamageFromCharms(spellDamageChoices: SpellDamageChoice[])
   );
 }
 
-type RotationEntry = { ratio: number; extraSpell: boolean; spellType: SpellType };
+type RotationEntry = { ratio: number; isExtra: boolean; spellType: SpellType };
 type HomingMissileDamage = { id: number; spellType: SpellType };
 
 export function homingMissileChoices<T extends HomingMissileDamage>(
@@ -76,7 +76,7 @@ export function homingMissileChoices<T extends HomingMissileDamage>(
   spellDamages: T[],
 ): (SpellChoiceRef & { spellDamage: T })[] {
   const castRatio = rotation
-    .filter((s) => s.spellType === "spell" && !s.extraSpell)
+    .filter((s) => s.spellType === "spell" && !s.isExtra)
     .reduce((sum, s) => sum + s.ratio, 0);
   if (castRatio <= 0) return [];
 
@@ -86,7 +86,6 @@ export function homingMissileChoices<T extends HomingMissileDamage>(
       id: sd.id,
       targets: 1,
       ratio: 0.01 * castRatio,
-      extraSpell: true,
       spellDamage: sd,
     }));
 }

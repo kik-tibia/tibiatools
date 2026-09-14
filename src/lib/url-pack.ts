@@ -59,7 +59,7 @@ const TIER_TO_IMBUE_VAL: Record<number, number> = { 1: 0.1, 2: 0.25, 3: 0.5 };
 type CompactStats = (number | number[] | null)[];
 type CompactWeapon = number | [number, number] | [number, number, number];
 type CompactPerk = [number, number];
-type CompactRotation = [number, number, number, number];
+type CompactRotation = [number, number, number];
 type CompactTarget = [number, number] | [number, number, number, number];
 type CompactBuildV1 = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation[]];
 type CompactBuild = [CompactStats, CompactWeapon, CompactPerk[], CompactRotation[], CompactTarget[]];
@@ -137,11 +137,11 @@ export function expandPerks(compact: CompactPerk[]): PerkChoiceRef[] {
 }
 
 export function compactRotation(rotation: SpellChoiceRef[]): CompactRotation[] {
-  return rotation.map((r) => [r.id, r.targets, r.ratio, +r.extraSpell]);
+  return rotation.map((r) => [r.id, r.targets, r.ratio]);
 }
 
 export function expandRotation(compact: CompactRotation[]): SpellChoiceRef[] {
-  return compact.map(([id, targets, ratio, extraSpell]) => ({ id, targets, ratio, extraSpell: !!extraSpell }));
+  return compact.map(([id, targets, ratio]) => ({ id, targets, ratio }));
 }
 
 export function compactTargets(targets: CreatureChoiceRef[]): CompactTarget[] {

@@ -93,10 +93,10 @@ function buildDamageMixture(
   spellDamageById: Map<number, SpellRawBreakdown>,
 ): DamageMixtureComponent[] {
   const spellRotation = spellChoices.filter((s) => s.id !== AUTO_ATTACK_ID);
-  const ratioSum = spellRotation.filter((s) => !s.extraSpell).reduce((sum, r) => sum + r.ratio, 0);
+  const ratioSum = spellRotation.filter((s) => !s.spell.isExtra).reduce((sum, r) => sum + r.ratio, 0);
 
   const homingChoices = homingMissileChoices(
-    spellChoices.map((s) => ({ ...s, spellType: s.spell.spellType })),
+    spellChoices.map((s) => ({ ...s, spellType: s.spell.spellType, isExtra: s.spell.isExtra })),
     [...spellDamageById.values()],
   );
   const fullRotation: SpellChoiceRef[] = [

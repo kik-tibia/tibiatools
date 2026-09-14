@@ -84,12 +84,12 @@ describe("Knight build with everything", () => {
     { id: 13, value: 10 },
   ]);
   const rotation = resolveSpells([
-    { id: 1, targets: 1, ratio: 1, extraSpell: false },
-    { id: 2, targets: 6.5, ratio: 30, extraSpell: false },
-    { id: 3, targets: 6, ratio: 28, extraSpell: false },
-    { id: 4, targets: 7, ratio: 26, extraSpell: false },
-    { id: 8, targets: 3, ratio: 8, extraSpell: false },
-    { id: 6, targets: 0.5, ratio: 8, extraSpell: true },
+    { id: 1, targets: 1, ratio: 1 },
+    { id: 2, targets: 6.5, ratio: 30 },
+    { id: 3, targets: 6, ratio: 28 },
+    { id: 4, targets: 7, ratio: 26 },
+    { id: 8, targets: 3, ratio: 8 },
+    { id: 6, targets: 0.5, ratio: 8 },
   ]);
   const targets = resolveCreatures([
     { id: 105, ratio: 208, charmId: 5, charmTier: 2 },
@@ -131,12 +131,12 @@ describe("Knight build with everything", () => {
 
   describe("AOE auto-attack", () => {
     const aoeRotation = resolveSpells([
-      { id: 1, targets: 4, ratio: 1, extraSpell: false },
-      { id: 2, targets: 6.5, ratio: 30, extraSpell: false },
-      { id: 3, targets: 6, ratio: 28, extraSpell: false },
-      { id: 4, targets: 7, ratio: 26, extraSpell: false },
-      { id: 8, targets: 3, ratio: 8, extraSpell: false },
-      { id: 6, targets: 0.5, ratio: 8, extraSpell: true },
+      { id: 1, targets: 4, ratio: 1 },
+      { id: 2, targets: 6.5, ratio: 30 },
+      { id: 3, targets: 6, ratio: 28 },
+      { id: 4, targets: 7, ratio: 26 },
+      { id: 8, targets: 3, ratio: 8 },
+      { id: 6, targets: 0.5, ratio: 8 },
     ]);
     const aoeResults = computeResults(stats, stances, weapon, perks, aoeRotation, targets);
     const aoeSpellDamageChoices = resolveSpellDamages(aoeRotation, aoeResults);
@@ -192,7 +192,7 @@ describe("UE spells", () => {
   const perks = resolvePerks([]);
 
   describe("UE only", () => {
-    const rotation = resolveSpells([{ id: 23, targets: 1, ratio: 1, extraSpell: false }]);
+    const rotation = resolveSpells([{ id: 23, targets: 1, ratio: 1 }]);
     const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
     const results = computeResults(stats, stances, weapon, perks, rotation, targets);
     const spellDamageChoices = resolveSpellDamages(rotation, results);
@@ -223,9 +223,9 @@ describe("UE spells", () => {
   });
   describe("UE, AA, spell", () => {
     const rotation = resolveSpells([
-      { id: 1, targets: 1, ratio: 1, extraSpell: false },
-      { id: 21, targets: 2, ratio: 1, extraSpell: false },
-      { id: 23, targets: 2, ratio: 1, extraSpell: false },
+      { id: 1, targets: 1, ratio: 1 },
+      { id: 21, targets: 2, ratio: 1 },
+      { id: 23, targets: 2, ratio: 1 },
     ]);
     const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
     const results = computeResults(stats, stances, weapon, perks, rotation, targets);
@@ -260,7 +260,7 @@ describe("homing missiles", () => {
   const weapon = resolveWeapon({ id: 801 });
   const bloodjaw = resolveCreatures([{ id: 813, ratio: 1 }]);
   // A single cast per cycle, of a spell with a turn cooldown of 2
-  const hellsCore = resolveSpells([{ id: 23, targets: 1, ratio: 1, extraSpell: false }]);
+  const hellsCore = resolveSpells([{ id: 23, targets: 1, ratio: 1 }]);
 
   const damages = (perkRefs: Parameters<typeof resolvePerks>[0], rotation = hellsCore, targets = bloodjaw) => {
     const results = computeResults(stats, stances, weapon, resolvePerks(perkRefs), rotation, targets);
@@ -317,8 +317,8 @@ describe("homing missiles", () => {
 
   it("is never fired by auto attacks or runes", () => {
     const noSpells = resolveSpells([
-      { id: 1, targets: 1, ratio: 1, extraSpell: false },
-      { id: 76, targets: 1, ratio: 1, extraSpell: false },
+      { id: 1, targets: 1, ratio: 1 },
+      { id: 76, targets: 1, ratio: 1 },
     ]);
     const withPerk = damages([{ id: 281, value: 10 }], noSpells);
     const withoutPerk = damages([], noSpells);
@@ -350,7 +350,7 @@ describe("shield defense", () => {
     critDamage: 0,
   };
   const stances = resolveStances(stats.stanceIds);
-  const rotation = resolveSpells([{ id: 89, targets: 1, ratio: 1, extraSpell: false }]);
+  const rotation = resolveSpells([{ id: 89, targets: 1, ratio: 1 }]);
   const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
   // Blade of Destruction has no defense modifier, Sanguine Blade has +3, Nightmare Blade has -3
   const noDefMod = 525;
@@ -416,8 +416,8 @@ describe("elemental magic level perks", () => {
   const stances = resolveStances(stats.stanceIds);
   const weapon = resolveWeapon({ id: 800 });
   const rotation = resolveSpells([
-    { id: 86, targets: 1, ratio: 1, extraSpell: false }, // forked glacier (ice)
-    { id: 61, targets: 1, ratio: 1, extraSpell: false }, // terra wave (earth)
+    { id: 86, targets: 1, ratio: 1 }, // forked glacier (ice)
+    { id: 61, targets: 1, ratio: 1 }, // terra wave (earth)
   ]);
   const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
   const raws = (perkRefs: Parameters<typeof resolvePerks>[0], magicLevel = stats.magicLevel) => {
@@ -461,7 +461,7 @@ describe("melee skill perks", () => {
   };
   const stances = resolveStances(stats.stanceIds);
   const axe = resolveWeapon({ id: 10 });
-  const rotation = resolveSpells([{ id: 2, targets: 1, ratio: 1, extraSpell: false }]);
+  const rotation = resolveSpells([{ id: 2, targets: 1, ratio: 1 }]);
   const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
   const berserkAvg = (perkRefs: Parameters<typeof resolvePerks>[0], skill = stats.skill) => {
     const results = computeResults({ ...stats, skill }, stances, axe, resolvePerks(perkRefs), rotation, targets);
@@ -492,7 +492,7 @@ describe("applies perks in the correct order", () => {
   };
   const stances = resolveStances(stats.stanceIds);
   const weapon = resolveWeapon({ id: 800 });
-  const rotation = resolveSpells([{ id: 86, targets: 1, ratio: 1, extraSpell: false }]);
+  const rotation = resolveSpells([{ id: 86, targets: 1, ratio: 1 }]);
   const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
   const effectiveAvg = (perkRefs: Parameters<typeof resolvePerks>[0]) => {
     const results = computeResults(stats, stances, weapon, resolvePerks(perkRefs), rotation, targets);
