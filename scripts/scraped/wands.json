@@ -488,13 +488,13 @@
   {
     "name": "The Chiller",
     "damageType": "Ice",
-    "damageRange": "4-8",
+    "damageRange": "6-10",
     "vocation": "druids"
   },
   {
     "name": "The Scorcher",
     "damageType": "Fire",
-    "damageRange": "4-8",
+    "damageRange": "6-10",
     "vocation": "sorcerers"
   },
   {

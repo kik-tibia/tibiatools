@@ -6447,7 +6447,7 @@
   {
     "id": 504,
     "name": "Rending Inferniarch Claws",
-    "attack": 45,
+    "attack": 43,
     "skill": "fist",
     "bond": "energy",
     "vocations": [
@@ -9348,7 +9348,7 @@
     "id": 728,
     "name": "Amber Wand",
     "damageType": "energy",
-    "damage": 106,
+    "damage": 0,
     "vocations": [
       "sorcerer"
     ]
@@ -10127,7 +10127,7 @@
     "id": 804,
     "name": "The Chiller",
     "damageType": "ice",
-    "damage": 6,
+    "damage": 8,
     "vocations": [
       "druid"
     ]
@@ -10136,7 +10136,7 @@
     "id": 805,
     "name": "The Scorcher",
     "damageType": "fire",
-    "damage": 6,
+    "damage": 8,
     "vocations": [
       "sorcerer"
     ]
