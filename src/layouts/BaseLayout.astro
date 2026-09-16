@@ -116,7 +116,14 @@ const headerTitle = Astro.url.hostname.startsWith("test.") ? "Tibia Tools (Test)
       <slot />
     </main>
     <footer>
-      <p>&copy; 2025&ndash;{new Date().getFullYear()} TibiaTools.io</p>
+      <p>&copy; 2025&ndash;{new Date().getFullYear()} Kikaro · TibiaTools.io</p>
+      <p>
+        <a href="https://github.com/kik-tibia/tibiatools" target="_blank" rel="noopener">Source code</a> available under the
+        <a href="https://github.com/kik-tibia/tibiatools/blob/main/LICENCE" target="_blank" rel="noopener">EUPL-1.2</a> on GitHub.
+      </p>
+      <p>
+        Game data referenced from <a href="https://tibia.fandom.com" target="_blank" rel="noopener">TibiaWiki</a>.
+      </p>
       <p>
         <a href="https://www.tibia.com" target="_blank" rel="noopener">Tibia</a> is a registered trademark of
         <a href="https://www.cipsoft.com" target="_blank" rel="noopener">CipSoft GmbH</a>.
