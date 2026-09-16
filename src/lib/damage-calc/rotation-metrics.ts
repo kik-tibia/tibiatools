@@ -75,9 +75,7 @@ export function homingMissileChoices<T extends HomingMissileDamage>(
   rotation: RotationEntry[],
   spellDamages: T[],
 ): (SpellChoiceRef & { spellDamage: T })[] {
-  const castRatio = rotation
-    .filter((s) => s.spellType === "spell" && !s.isExtra)
-    .reduce((sum, s) => sum + s.ratio, 0);
+  const castRatio = rotation.filter((s) => s.spellType === "spell" && !s.isExtra).reduce((sum, s) => sum + s.ratio, 0);
   if (castRatio <= 0) return [];
 
   return spellDamages
