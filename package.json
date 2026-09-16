@@ -2,6 +2,18 @@
   "name": "tibiatools",
   "type": "module",
   "version": "0.0.1",
+  "description": "Tibia fansite with a damage calculator and an Exaltation Forge cost calculator.",
+  "author": "Kikaro",
+  "license": "EUPL-1.2",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kik-tibia/tibiatools.git"
+  },
+  "homepage": "https://tibiatools.io",
+  "bugs": {
+    "url": "https://github.com/kik-tibia/tibiatools/issues"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

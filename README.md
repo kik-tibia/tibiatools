@@ -1,43 +1,29 @@
-# Astro Starter Kit: Minimal
+This is the source code for my Tibia fansite. It contains various tools that were originally spreadsheets, but have been ported to the web.
 
-```sh
-npm create astro@latest -- --template minimal
-```
+The site is written in TypeScript, plain CSS, Astro 5, Svelte 5, and tested with Vitest.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Build instructions
 
-## 🚀 Project Structure
+`npm install` and `npm run dev`. Run test suite with `npm run test`.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Damage Calculator
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+A comprehensive tool for calculating damages.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Forge Calculator
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+A basic tool for calculating expected costs for the Exaltation Forge.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Attribution
 
-## 🧞 Commands
+Weapon, creature and spell data were compiled with reference to TibiaWiki and verified against in-game values. Tibia and all game content and materials are the property of CipSoft GmbH. This project is unofficial and not affiliated with or endorsed by CipSoft.
 
-All commands are run from the root of the project, from a terminal:
+## Licence
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Copyright (c) 2025-2026 Kikaro
 
-## 👀 Want to learn more?
+Licensed under the EUPL
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The source code in this repository is licensed under the [European Union Public Licence v1.2](LICENCE) (EUPL-1.2) or – as soon they will be approved by the European Commission - subsequent versions of the EUPL (the "Licence"). You may not use this work except in compliance with the Licence.
+
+The licence covers the source code only. Game data and numerical values are factual information about Tibia and are not covered by this licence.
