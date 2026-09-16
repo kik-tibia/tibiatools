@@ -5,9 +5,9 @@
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
   import { allSpells, AUTO_ATTACK_ID, beamScopes, type Spell } from "@data/spells";
-  import type { Build, SpellChoiceRef } from "@lib/build-state";
-  import { packSection, SECTION_TAG } from "@lib/section-clipboard";
-  import { compactRotation, expandRotation } from "@lib/url-pack";
+  import type { Build, SpellChoiceRef } from "@lib/damage-calc/build-state";
+  import { packSection, SECTION_TAG } from "@lib/damage-calc/section-clipboard";
+  import { compactRotation, expandRotation } from "@lib/damage-calc/url-pack";
 
   let {
     buildA = $bindable(),

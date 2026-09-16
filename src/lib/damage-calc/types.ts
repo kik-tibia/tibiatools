@@ -4,7 +4,7 @@ import type { Perk } from "@data/perks";
 import type { Shield } from "@data/shields";
 import type { Element, Spell, SpellRawEffective } from "@data/spells";
 import type { Ammo, Weapon } from "@data/weapons";
-import type { CreatureChoiceRef, PerkChoiceRef, SpellChoiceRef, WeaponChoiceRef } from "@lib/build-state";
+import type { CreatureChoiceRef, PerkChoiceRef, SpellChoiceRef, WeaponChoiceRef } from "./build-state";
 
 export type WeaponChoice = WeaponChoiceRef & { weapon: Weapon; ammo?: Ammo; shield?: Shield };
 export type PerkChoice = PerkChoiceRef & { perk: Perk };

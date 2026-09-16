@@ -7,7 +7,7 @@ import {
   type SpellRawEffective,
 } from "@data/spells";
 import type { Stance } from "@data/stances.ts";
-import type { BuildStats } from "@lib/build-state";
+import type { BuildStats } from "./build-state.ts";
 import { deriveCharacterState } from "./character-state.ts";
 import { computeDamageBreakdown, computeRaw } from "./damage.ts";
 import { applyHpBasedDmgBonuses, applyHpBasedDmgBonusesBasic, buildHpBasedDmgBrackets } from "./hp-bonus.ts";

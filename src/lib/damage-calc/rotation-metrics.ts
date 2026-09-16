@@ -1,5 +1,5 @@
 import { AUTO_ATTACK_ID, type SpellType } from "@data/spells";
-import type { SpellChoiceRef } from "@lib/build-state";
+import type { SpellChoiceRef } from "./build-state.ts";
 import type { SpellDamageChoice } from "./types.ts";
 
 export function computeDamagePerTurn(spellDamageChoices: SpellDamageChoice[]): number {

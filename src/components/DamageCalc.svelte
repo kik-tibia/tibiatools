@@ -4,14 +4,14 @@
   import BuildBadge from "@components/BuildBadge.svelte";
   import ResultsTable from "@components/ResultsTable.svelte";
   import type { SpellRawEffective } from "@data/spells";
+  import { computeDamageFromCharms, computeDamagePerHit, computeDamagePerTurn, computeResults } from "@lib/damage-calc";
   import {
     buildTabTitle,
     defaultCollapsed,
     type Build,
     type CalculatorState,
     type CollapsedSections,
-  } from "@lib/build-state";
-  import { computeDamageFromCharms, computeDamagePerHit, computeDamagePerTurn, computeResults } from "@lib/damage-calc";
+  } from "@lib/damage-calc/build-state";
   import {
     resolveCreatures,
     resolvePerks,
@@ -20,7 +20,7 @@
     resolveStances,
     resolveWeapon,
   } from "@lib/damage-calc/build-state-resolver";
-  import { packState, unpackState } from "@lib/url-pack";
+  import { packState, unpackState } from "@lib/damage-calc/url-pack";
 
   let { initial }: { initial: CalculatorState } = $props();
 

@@ -4,9 +4,9 @@
   import Tooltip from "@components/Tooltip.svelte";
   import { allSpells } from "@data/spells";
   import { allStances, type Stance, type StanceGroup } from "@data/stances";
-  import type { Build, BuildStats, SpellChoiceRef, Vocation } from "@lib/build-state";
-  import { packSection, SECTION_TAG } from "@lib/section-clipboard";
-  import { compactStats, expandStats } from "@lib/url-pack";
+  import type { Build, BuildStats, SpellChoiceRef, Vocation } from "@lib/damage-calc/build-state";
+  import { packSection, SECTION_TAG } from "@lib/damage-calc/section-clipboard";
+  import { compactStats, expandStats } from "@lib/damage-calc/url-pack";
 
   let {
     buildA = $bindable(),

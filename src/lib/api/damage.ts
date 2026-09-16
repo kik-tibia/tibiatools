@@ -1,6 +1,6 @@
 import { spellOrdering } from "@data/spells";
-import type { Build } from "@lib/build-state";
 import { computeDamageFromCharms, computeDamagePerHit, computeDamagePerTurn, computeResults } from "@lib/damage-calc";
+import type { Build } from "@lib/damage-calc/build-state";
 import {
   resolveCreatures,
   resolvePerks,

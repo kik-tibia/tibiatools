@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { unpackSection, type SectionTag } from "@lib/section-clipboard";
+  import { unpackSection, type SectionTag } from "@lib/damage-calc/section-clipboard";
 
   let {
     sectionTag,

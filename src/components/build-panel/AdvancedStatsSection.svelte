@@ -2,9 +2,9 @@
   import ClipboardPasteRow from "@components/build-panel/ClipboardPasteRow.svelte";
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import Tooltip from "@components/Tooltip.svelte";
-  import type { Build, BuildStats, ImbuementElement } from "@lib/build-state";
-  import { packSection, SECTION_TAG } from "@lib/section-clipboard";
-  import { compactStats, expandStats } from "@lib/url-pack";
+  import type { Build, BuildStats, ImbuementElement } from "@lib/damage-calc/build-state";
+  import { packSection, SECTION_TAG } from "@lib/damage-calc/section-clipboard";
+  import { compactStats, expandStats } from "@lib/damage-calc/url-pack";
 
   let {
     buildA = $bindable(),

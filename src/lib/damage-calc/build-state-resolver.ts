@@ -5,7 +5,7 @@ import { allShields, type Shield } from "@data/shields";
 import { allSpells, type Spell, type SpellRawEffective } from "@data/spells";
 import { allStances, type Stance } from "@data/stances";
 import { allAmmo, allWeapons, type Ammo, type Weapon } from "@data/weapons";
-import type { CreatureChoiceRef, PerkChoiceRef, SpellChoiceRef, WeaponChoiceRef } from "@lib/build-state";
+import type { CreatureChoiceRef, PerkChoiceRef, SpellChoiceRef, WeaponChoiceRef } from "./build-state";
 import { homingMissileChoices } from "./rotation-metrics";
 import type { CreatureChoice, PerkChoice, SpellChoice, SpellDamageChoice, WeaponChoice } from "./types";
 

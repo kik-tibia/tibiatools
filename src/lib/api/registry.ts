@@ -5,7 +5,7 @@ import { allShields, type Shield } from "@data/shields";
 import { allSpells, type Spell } from "@data/spells";
 import { allStances, type Stance } from "@data/stances";
 import { allAmmo, allWeapons, type Ammo, type Weapon } from "@data/weapons";
-import type { ImbuementElement, Vocation } from "@lib/build-state";
+import type { ImbuementElement, Vocation } from "@lib/damage-calc/build-state";
 
 export const weaponsById: Map<number, Weapon> = new Map(allWeapons.map((w) => [w.id, w]));
 export const ammoById: Map<number, Ammo> = new Map(allAmmo.map((a) => [a.id, a]));

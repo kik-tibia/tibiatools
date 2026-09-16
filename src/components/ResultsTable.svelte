@@ -1,7 +1,7 @@
 <script lang="ts">
   import Tooltip from "@components/Tooltip.svelte";
   import { spellOrdering, type SpellRawEffective } from "@data/spells";
-  import type { SpellChoiceRef, Vocation } from "@lib/build-state";
+  import type { SpellChoiceRef, Vocation } from "@lib/damage-calc/build-state";
 
   let {
     results = [],

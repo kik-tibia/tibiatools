@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import type { SpellRawEffective } from "@data/spells.ts";
-import { defaultBuild, type BuildStats } from "@lib/build-state";
 import {
   resolveCreatures,
   resolvePerks,
@@ -9,6 +8,7 @@ import {
   resolveStances,
   resolveWeapon,
 } from "./build-state-resolver.ts";
+import { defaultBuild, type BuildStats } from "./build-state.ts";
 import { computeResults } from "./calc.ts";
 import { computeDamageFromCharms, computeDamagePerHit, computeDamagePerTurn } from "./rotation-metrics.ts";
 

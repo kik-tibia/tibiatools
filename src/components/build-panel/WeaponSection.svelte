@@ -5,9 +5,9 @@
   import RemoveButton from "@components/RemoveButton.svelte";
   import { allShields } from "@data/shields";
   import { allAmmo, allWeapons } from "@data/weapons";
-  import type { Build } from "@lib/build-state";
-  import { packSection, SECTION_TAG } from "@lib/section-clipboard";
-  import { compactWeapon, expandWeapon } from "@lib/url-pack";
+  import type { Build } from "@lib/damage-calc/build-state";
+  import { packSection, SECTION_TAG } from "@lib/damage-calc/section-clipboard";
+  import { compactWeapon, expandWeapon } from "@lib/damage-calc/url-pack";
 
   let {
     buildA = $bindable(),
@@ -47,7 +47,9 @@
 
   let weaponDiffers = $derived(showSecondBuild && buildA.weapon.id !== buildB.weapon.id);
   let ammoDiffers = $derived(showSecondBuild && (buildA.weapon.ammoId ?? null) !== (buildB.weapon.ammoId ?? null));
-  let shieldDiffers = $derived(showSecondBuild && (buildA.weapon.shieldId ?? null) !== (buildB.weapon.shieldId ?? null));
+  let shieldDiffers = $derived(
+    showSecondBuild && (buildA.weapon.shieldId ?? null) !== (buildB.weapon.shieldId ?? null),
+  );
 
   function setWeaponA(id: number) {
     const weapon = weaponRegistry.get(id);
