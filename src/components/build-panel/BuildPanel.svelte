@@ -6,7 +6,7 @@
   import TargetsSection from "@components/build-panel/TargetsSection.svelte";
   import WeaponSection from "@components/build-panel/WeaponSection.svelte";
   import BuildBadge from "@components/BuildBadge.svelte";
-  import type { Build, CollapsedSections } from "@lib/build-state";
+  import type { Build, CollapsedSections } from "@lib/damage-calc/build-state";
   import "@styles/build-table.css";
 
   let {

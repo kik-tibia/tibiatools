@@ -1,8 +1,8 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import DamageCalc from "@components/DamageCalc.svelte";
-import { unpackState } from "@lib/url-pack";
-import { buildTabTitle, defaultState } from "@lib/build-state";
+import { unpackState } from "@lib/damage-calc/url-pack";
+import { buildTabTitle, defaultState } from "@lib/damage-calc/build-state";
 const s = Astro.url.searchParams.get('s')
 const initial = unpackState(s) ?? defaultState();
 const tabTitle = buildTabTitle(initial.buildName);

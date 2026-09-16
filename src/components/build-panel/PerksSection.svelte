@@ -6,9 +6,9 @@
   import Tooltip from "@components/Tooltip.svelte";
   import { allPerks } from "@data/perks";
   import { allSpells } from "@data/spells";
-  import type { Build } from "@lib/build-state";
-  import { packSection, SECTION_TAG } from "@lib/section-clipboard";
-  import { compactPerks, expandPerks } from "@lib/url-pack";
+  import type { Build } from "@lib/damage-calc/build-state";
+  import { packSection, SECTION_TAG } from "@lib/damage-calc/section-clipboard";
+  import { compactPerks, expandPerks } from "@lib/damage-calc/url-pack";
 
   let {
     buildA = $bindable(),

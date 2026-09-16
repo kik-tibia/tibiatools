@@ -2,7 +2,7 @@ import { allPerks, type Perk } from "@data/perks.ts";
 import { allElements, allSpells, type Spell } from "@data/spells";
 import type { Stance } from "@data/stances.ts";
 import { type SkillType } from "@data/weapons";
-import type { Vocation } from "@lib/build-state";
+import type { Vocation } from "./build-state";
 import type { PerkChoice, SpellState } from "./types.ts";
 
 const spellScopeById = new Map(allSpells.map((s) => [s.id, s.scope]));

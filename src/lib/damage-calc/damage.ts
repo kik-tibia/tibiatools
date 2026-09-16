@@ -1,6 +1,6 @@
 import { beamScopes, type DamageBreakdown, type DamageRange, type Spell, type SpellElement } from "@data/spells";
-import type { BuildStats } from "@lib/build-state";
 import type { CreatureChoice, SpellChoice, SpellState, WeaponChoice } from "@lib/damage-calc";
+import type { BuildStats } from "./build-state";
 import {
   applyElementalAttackImbuement,
   calculateElementalCharmDmg,

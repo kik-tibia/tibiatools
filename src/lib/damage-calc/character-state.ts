@@ -2,7 +2,7 @@ import { allBestiaryClasses, initBestiaryDamage, type BestiaryClass } from "@dat
 import { bestiaryDamageBonusType, type PerkBonusType, type PierceKind } from "@data/perks.ts";
 import { allElements, type Element } from "@data/spells";
 import type { SkillType } from "@data/weapons";
-import type { BuildStats } from "@lib/build-state";
+import type { BuildStats } from "./build-state.ts";
 import { initElements } from "./creature-damage.ts";
 import type { CharacterState, PerkChoice, WeaponChoice } from "./types.ts";
 

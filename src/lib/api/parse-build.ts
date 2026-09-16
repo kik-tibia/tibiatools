@@ -6,7 +6,7 @@ import type {
   PerkChoiceRef,
   SpellChoiceRef,
   WeaponChoiceRef,
-} from "@lib/build-state";
+} from "@lib/damage-calc/build-state";
 import type { ApiIssue } from "./http";
 import {
   ammoById,

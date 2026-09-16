@@ -1,8 +1,8 @@
 import type { BestiaryClass, Creature } from "@data/creatures";
 import { allElements, type Element } from "@data/spells";
 import type { Weapon } from "@data/weapons";
-import type { BuildStats } from "@lib/build-state";
 import type { CharacterState, CreatureChoice, SpellState } from "@lib/damage-calc";
+import type { BuildStats } from "./build-state";
 
 export function initElements(): Record<Element, number> {
   return {
