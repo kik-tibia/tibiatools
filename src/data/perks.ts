@@ -54,7 +54,11 @@ export type PerkBonusType =
 export type Perk = {
   id: number;
   name: string;
-  scope: string;
+  tag?: string;
+  // A spell must match on every scope of a perk for the perk to be applied (e.g. master of flames needs "spell" AND "fire")
+  // If, in the future, there's a need to scope for something like "spells OR runes" (i.e. excluding AAs),
+  // then it wouldn't be possible using the current implementation and we'd need to rework this again
+  scopes: string[];
   priority: number;
   spell: boolean;
   revelation: boolean;

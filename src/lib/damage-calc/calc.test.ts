@@ -479,6 +479,44 @@ describe("melee skill perks", () => {
   });
 });
 
+describe("master of flames", () => {
+  const stats: BuildStats = {
+    ...base.stats,
+    vocation: "sorcerer",
+    level: 1000,
+    bonus: 20,
+    skill: 10,
+    magicLevel: 150,
+    critChance: 0,
+    critDamage: 0,
+  };
+  const weapon = resolveWeapon({ id: 801 });
+  const perks = resolvePerks([]);
+  const rotation = resolveSpells([
+    { id: 23, targets: 1, ratio: 1 }, // Hell's Core
+    { id: 73, targets: 1, ratio: 1 }, // GFB
+  ]);
+  const targets = resolveCreatures([{ id: 813, ratio: 1 }]);
+  const raws = (stanceIds: number[]) => {
+    const results = computeResults(stats, resolveStances(stanceIds), weapon, perks, rotation, targets);
+    return {
+      spell: results.find((r) => r.name === "Hell's Core")!.raw!.avg,
+      rune: results.find((r) => r.name === "Great Fireball Rune")!.raw!.avg,
+    };
+  };
+
+  const none = raws([]);
+  const stance = raws([5]);
+
+  it("buffs fire spells", () => {
+    expect(stance.spell).toBeGreaterThan(none.spell);
+  });
+
+  it("doesn't buff fire runes", () => {
+    expect(stance.rune).toBeCloseTo(none.rune, d);
+  });
+});
+
 describe("applies perks in the correct order", () => {
   const stats: BuildStats = {
     ...base.stats,

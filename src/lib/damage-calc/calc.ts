@@ -37,8 +37,8 @@ export function computeResults(
   const effectivePerks = [...perkChoices, ...stancePerks(stances, perkChoices)].sort(
     (a, b) => a.perk.priority - b.perk.priority,
   );
-  const characterPerks = effectivePerks.filter((p) => p.perk.scope == "character");
-  const spellPerks = effectivePerks.filter((p) => p.perk.scope != "character");
+  const characterPerks = effectivePerks.filter((p) => p.perk.scopes.includes("character"));
+  const spellPerks = effectivePerks.filter((p) => !p.perk.scopes.includes("character"));
 
   const characterState = deriveCharacterState(buildStats, weaponChoice, characterPerks);
 
@@ -73,7 +73,7 @@ export function computeResults(
 
   let results: SpellRawEffective[] = [];
 
-  // Brackets for alpha/omega strike
+  // Brackets for alpha/omega strike and combat mastery
   const hpBasedDmgBrackets = buildHpBasedDmgBrackets(characterPerks, weaponChoice.weapon);
 
   if (ratioAdjustedHp > 0) {
@@ -103,7 +103,7 @@ export function computeResults(
         return { ...spellState.spell, raw, breakdown };
       });
 
-      // Apply alpha/omega strike
+      // Apply alpha/omega strike and combat mastery
       spellDamages = applyHpBasedDmgBonuses(
         spellDamages,
         spellChoices,

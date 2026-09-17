@@ -6,6 +6,7 @@ import { allSpells, type Spell } from "@data/spells";
 import { allStances, type Stance } from "@data/stances";
 import { allAmmo, allWeapons, type Ammo, type Weapon } from "@data/weapons";
 import type { ImbuementElement, Vocation } from "@lib/damage-calc/build-state";
+import { perkAppliesToSpell } from "@lib/damage-calc/spell-perks";
 
 export const weaponsById: Map<number, Weapon> = new Map(allWeapons.map((w) => [w.id, w]));
 export const ammoById: Map<number, Ammo> = new Map(allAmmo.map((a) => [a.id, a]));
@@ -26,8 +27,8 @@ export const DEFAULT_WEAPON_ID = 1;
 
 export const capitalize = (s: string): string => s.charAt(0).toUpperCase() + s.slice(1);
 
-export const vocationCanCastScope = (scope: string, vocation: Vocation): boolean =>
-  allSpells.some((s) => s.scope === scope && s.vocations.includes(vocation));
+export const vocationCanUsePerk = (perk: Perk, vocation: Vocation): boolean =>
+  allSpells.some((s) => s.vocations.includes(vocation) && perkAppliesToSpell(perk, s));
 
 export const bundledSpellIds = (spell: Spell): number[] => (spell.spells.length > 0 ? spell.spells : [spell.id]);
 
