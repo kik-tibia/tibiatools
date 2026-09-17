@@ -9348,7 +9348,7 @@
     "id": 728,
     "name": "Amber Wand",
     "damageType": "energy",
-    "damage": 0,
+    "damage": 106,
     "vocations": [
       "sorcerer"
     ]
