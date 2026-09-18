@@ -10,13 +10,7 @@
     "skillFactor": 0,
     "buckets": 150,
     "rounding": "round",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ]
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"]
   },
   {
     "id": 2,
@@ -29,9 +23,7 @@
     "skillFactor": 1000,
     "buckets": 50,
     "rounding": "round",
-    "vocations": [
-      "knight"
-    ]
+    "vocations": ["knight"]
   },
   {
     "id": 3,
@@ -44,9 +36,7 @@
     "skillFactor": 1000,
     "buckets": 24,
     "rounding": "round",
-    "vocations": [
-      "knight"
-    ]
+    "vocations": ["knight"]
   },
   {
     "id": 4,
@@ -59,9 +49,7 @@
     "skillFactor": 1000,
     "buckets": 18,
     "rounding": "round",
-    "vocations": [
-      "knight"
-    ]
+    "vocations": ["knight"]
   },
   {
     "id": 5,
@@ -74,9 +62,7 @@
     "skillFactor": 1000,
     "buckets": 40,
     "rounding": "round",
-    "vocations": [
-      "knight"
-    ]
+    "vocations": ["knight"]
   },
   {
     "id": 6,
@@ -90,9 +76,7 @@
     "skillFactor": 1000,
     "buckets": 10,
     "rounding": "round",
-    "vocations": [
-      "knight"
-    ],
+    "vocations": ["knight"],
     "targetsLabel": "No bonus"
   },
   {
@@ -107,13 +91,8 @@
     "buckets": 10,
     "rounding": "round",
     "additionalDamageMultiplier": 2,
-    "vocations": [
-      "knight"
-    ],
-    "spells": [
-      7,
-      6
-    ],
+    "vocations": ["knight"],
+    "spells": [7, 6],
     "stage": 1,
     "isSelectable": false,
     "isExtra": true,
@@ -131,13 +110,8 @@
     "buckets": 10,
     "rounding": "round",
     "additionalDamageMultiplier": 2.25,
-    "vocations": [
-      "knight"
-    ],
-    "spells": [
-      8,
-      6
-    ],
+    "vocations": ["knight"],
+    "spells": [8, 6],
     "stage": 2,
     "isSelectable": false,
     "isExtra": true,
@@ -155,13 +129,8 @@
     "buckets": 10,
     "rounding": "round",
     "additionalDamageMultiplier": 2.5,
-    "vocations": [
-      "knight"
-    ],
-    "spells": [
-      9,
-      6
-    ],
+    "vocations": ["knight"],
+    "spells": [9, 6],
     "stage": 3,
     "isSelectable": false,
     "isExtra": true,
@@ -178,9 +147,7 @@
     "skillFactor": 1000,
     "buckets": 80,
     "rounding": "round",
-    "vocations": [
-      "knight"
-    ]
+    "vocations": ["knight"]
   },
   {
     "id": 11,
@@ -193,9 +160,7 @@
     "skillFactor": 1000,
     "buckets": 20,
     "rounding": "round",
-    "vocations": [
-      "knight"
-    ]
+    "vocations": ["knight"]
   },
   {
     "id": 12,
@@ -208,9 +173,7 @@
     "skillFactor": 1000,
     "buckets": 18,
     "rounding": "round",
-    "vocations": [
-      "knight"
-    ]
+    "vocations": ["knight"]
   },
   {
     "id": 13,
@@ -223,9 +186,7 @@
     "skillFactor": 25,
     "buckets": 40,
     "rounding": "floor",
-    "vocations": [
-      "paladin"
-    ]
+    "vocations": ["paladin"]
   },
   {
     "id": 14,
@@ -239,9 +200,7 @@
     "skillFactor": 25,
     "buckets": 100,
     "rounding": "floor",
-    "vocations": [
-      "paladin"
-    ],
+    "vocations": ["paladin"],
     "stage": 1
   },
   {
@@ -255,9 +214,7 @@
     "skillFactor": 25,
     "buckets": 100,
     "rounding": "floor",
-    "vocations": [
-      "paladin"
-    ],
+    "vocations": ["paladin"],
     "stage": 2,
     "isSelectable": false
   },
@@ -272,9 +229,7 @@
     "skillFactor": 25,
     "buckets": 100,
     "rounding": "floor",
-    "vocations": [
-      "paladin"
-    ],
+    "vocations": ["paladin"],
     "stage": 3,
     "isSelectable": false
   },
@@ -289,9 +244,7 @@
     "skillFactor": 19.23077,
     "buckets": 10,
     "rounding": "floor",
-    "vocations": [
-      "paladin"
-    ]
+    "vocations": ["paladin"]
   },
   {
     "id": 18,
@@ -304,9 +257,7 @@
     "skillFactor": 30.30303,
     "buckets": 10,
     "rounding": "floor",
-    "vocations": [
-      "paladin"
-    ]
+    "vocations": ["paladin"]
   },
   {
     "id": 19,
@@ -319,9 +270,7 @@
     "skillFactor": 25,
     "buckets": 30,
     "rounding": "floor",
-    "vocations": [
-      "paladin"
-    ]
+    "vocations": ["paladin"]
   },
   {
     "id": 20,
@@ -334,12 +283,8 @@
     "skillFactor": 25,
     "buckets": 50,
     "rounding": "floor",
-    "vocations": [
-      "paladin"
-    ],
-    "runic": [
-      "paladin"
-    ]
+    "vocations": ["paladin"],
+    "runic": ["paladin"]
   },
   {
     "id": 21,
@@ -352,9 +297,7 @@
     "skillFactor": 25,
     "buckets": 80,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer"
-    ]
+    "vocations": ["sorcerer"]
   },
   {
     "id": 22,
@@ -367,9 +310,7 @@
     "skillFactor": 25,
     "buckets": 50,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer"
-    ]
+    "vocations": ["sorcerer"]
   },
   {
     "id": 23,
@@ -384,9 +325,7 @@
     "rounding": "floor",
     "turnCooldown": 2,
     "isFocus": true,
-    "vocations": [
-      "sorcerer"
-    ]
+    "vocations": ["sorcerer"]
   },
   {
     "id": 24,
@@ -401,9 +340,7 @@
     "rounding": "floor",
     "turnCooldown": 2,
     "isFocus": true,
-    "vocations": [
-      "sorcerer"
-    ]
+    "vocations": ["sorcerer"]
   },
   {
     "id": 25,
@@ -417,9 +354,7 @@
     "skillFactor": 25,
     "buckets": 60,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer"
-    ],
+    "vocations": ["sorcerer"],
     "stage": 0,
     "targetsLabel": "Central"
   },
@@ -435,9 +370,7 @@
     "skillFactor": 25,
     "buckets": 50,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer"
-    ],
+    "vocations": ["sorcerer"],
     "stage": 0,
     "targetsLabel": "Central"
   },
@@ -452,9 +385,7 @@
     "skillFactor": 25,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer"
-    ]
+    "vocations": ["sorcerer"]
   },
   {
     "id": 30,
@@ -467,9 +398,7 @@
     "skillFactor": 25,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer"
-    ]
+    "vocations": ["sorcerer"]
   },
   {
     "id": 31,
@@ -482,9 +411,7 @@
     "skillFactor": 25,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer"
-    ]
+    "vocations": ["sorcerer"]
   },
   {
     "id": 32,
@@ -497,9 +424,7 @@
     "skillFactor": 25,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer"
-    ]
+    "vocations": ["sorcerer"]
   },
   {
     "id": 33,
@@ -512,9 +437,7 @@
     "skillFactor": 25,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer"
-    ]
+    "vocations": ["sorcerer"]
   },
   {
     "id": 34,
@@ -527,9 +450,7 @@
     "skillFactor": 25,
     "buckets": 20,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer"
-    ]
+    "vocations": ["sorcerer"]
   },
   {
     "id": 35,
@@ -543,9 +464,7 @@
     "skillFactor": 25,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer"
-    ],
+    "vocations": ["sorcerer"],
     "stage": 0,
     "targetsLabel": "Central"
   },
@@ -560,9 +479,7 @@
     "skillFactor": 25,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer"
-    ]
+    "vocations": ["sorcerer"]
   },
   {
     "id": 37,
@@ -575,9 +492,7 @@
     "skillFactor": 25,
     "buckets": 80,
     "rounding": "floor",
-    "vocations": [
-      "druid"
-    ]
+    "vocations": ["druid"]
   },
   {
     "id": 38,
@@ -591,9 +506,7 @@
     "skillFactor": 25,
     "buckets": 60,
     "rounding": "floor",
-    "vocations": [
-      "druid"
-    ],
+    "vocations": ["druid"],
     "targetsLabel": "No bonus"
   },
   {
@@ -608,13 +521,8 @@
     "buckets": 60,
     "rounding": "floor",
     "additionalDamageMultiplier": 1.2,
-    "vocations": [
-      "druid"
-    ],
-    "spells": [
-      39,
-      38
-    ],
+    "vocations": ["druid"],
+    "spells": [39, 38],
     "stage": 1,
     "isSelectable": false,
     "isExtra": true,
@@ -632,13 +540,8 @@
     "buckets": 60,
     "rounding": "floor",
     "additionalDamageMultiplier": 1.4,
-    "vocations": [
-      "druid"
-    ],
-    "spells": [
-      40,
-      38
-    ],
+    "vocations": ["druid"],
+    "spells": [40, 38],
     "stage": 2,
     "isSelectable": false,
     "isExtra": true,
@@ -656,13 +559,8 @@
     "buckets": 60,
     "rounding": "floor",
     "additionalDamageMultiplier": 1.6,
-    "vocations": [
-      "druid"
-    ],
-    "spells": [
-      41,
-      38
-    ],
+    "vocations": ["druid"],
+    "spells": [41, 38],
     "stage": 3,
     "isSelectable": false,
     "isExtra": true,
@@ -680,9 +578,7 @@
     "skillFactor": 25,
     "buckets": 60,
     "rounding": "floor",
-    "vocations": [
-      "druid"
-    ],
+    "vocations": ["druid"],
     "targetsLabel": "No bonus"
   },
   {
@@ -697,13 +593,8 @@
     "buckets": 60,
     "rounding": "floor",
     "additionalDamageMultiplier": 1.2,
-    "vocations": [
-      "druid"
-    ],
-    "spells": [
-      43,
-      42
-    ],
+    "vocations": ["druid"],
+    "spells": [43, 42],
     "stage": 1,
     "isSelectable": false,
     "isExtra": true,
@@ -721,13 +612,8 @@
     "buckets": 60,
     "rounding": "floor",
     "additionalDamageMultiplier": 1.4,
-    "vocations": [
-      "druid"
-    ],
-    "spells": [
-      44,
-      42
-    ],
+    "vocations": ["druid"],
+    "spells": [44, 42],
     "stage": 2,
     "isSelectable": false,
     "isExtra": true,
@@ -745,13 +631,8 @@
     "buckets": 60,
     "rounding": "floor",
     "additionalDamageMultiplier": 1.6,
-    "vocations": [
-      "druid"
-    ],
-    "spells": [
-      45,
-      42
-    ],
+    "vocations": ["druid"],
+    "spells": [45, 42],
     "stage": 3,
     "isSelectable": false,
     "isExtra": true,
@@ -770,9 +651,7 @@
     "rounding": "floor",
     "turnCooldown": 2,
     "isFocus": true,
-    "vocations": [
-      "druid"
-    ]
+    "vocations": ["druid"]
   },
   {
     "id": 47,
@@ -787,9 +666,7 @@
     "rounding": "floor",
     "turnCooldown": 2,
     "isFocus": true,
-    "vocations": [
-      "druid"
-    ]
+    "vocations": ["druid"]
   },
   {
     "id": 48,
@@ -802,9 +679,7 @@
     "skillFactor": 25,
     "buckets": 80,
     "rounding": "floor",
-    "vocations": [
-      "druid"
-    ]
+    "vocations": ["druid"]
   },
   {
     "id": 49,
@@ -817,9 +692,7 @@
     "skillFactor": 25,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "druid"
-    ]
+    "vocations": ["druid"]
   },
   {
     "id": 50,
@@ -832,9 +705,7 @@
     "skillFactor": 25,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "druid"
-    ]
+    "vocations": ["druid"]
   },
   {
     "id": 51,
@@ -847,9 +718,7 @@
     "skillFactor": 25,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "druid"
-    ]
+    "vocations": ["druid"]
   },
   {
     "id": 52,
@@ -862,9 +731,7 @@
     "skillFactor": 25,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "druid"
-    ]
+    "vocations": ["druid"]
   },
   {
     "id": 53,
@@ -877,9 +744,7 @@
     "skillFactor": 25,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "druid"
-    ]
+    "vocations": ["druid"]
   },
   {
     "id": 54,
@@ -892,9 +757,7 @@
     "skillFactor": 25,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "druid"
-    ]
+    "vocations": ["druid"]
   },
   {
     "id": 55,
@@ -907,9 +770,7 @@
     "skillFactor": 1000,
     "buckets": 0,
     "rounding": "round",
-    "vocations": [
-      "monk"
-    ]
+    "vocations": ["monk"]
   },
   {
     "id": 56,
@@ -922,9 +783,7 @@
     "skillFactor": 1000,
     "buckets": 0,
     "rounding": "round",
-    "vocations": [
-      "monk"
-    ]
+    "vocations": ["monk"]
   },
   {
     "id": 57,
@@ -937,9 +796,7 @@
     "skillFactor": 1000,
     "buckets": 0,
     "rounding": "round",
-    "vocations": [
-      "monk"
-    ]
+    "vocations": ["monk"]
   },
   {
     "id": 58,
@@ -953,9 +810,7 @@
     "buckets": 0,
     "rounding": "round",
     "isSpender": true,
-    "vocations": [
-      "monk"
-    ]
+    "vocations": ["monk"]
   },
   {
     "id": 59,
@@ -970,9 +825,7 @@
     "buckets": 0,
     "rounding": "round",
     "isSpender": true,
-    "vocations": [
-      "monk"
-    ],
+    "vocations": ["monk"],
     "targetsLabel": "Primary"
   },
   {
@@ -988,13 +841,8 @@
     "rounding": "round",
     "additionalDamageMultiplier": 0.375,
     "isSpender": true,
-    "vocations": [
-      "monk"
-    ],
-    "spells": [
-      59,
-      60
-    ],
+    "vocations": ["monk"],
+    "spells": [59, 60],
     "stage": 1,
     "isSelectable": false,
     "isExtra": true,
@@ -1013,13 +861,8 @@
     "rounding": "round",
     "additionalDamageMultiplier": 0.5,
     "isSpender": true,
-    "vocations": [
-      "monk"
-    ],
-    "spells": [
-      59,
-      61
-    ],
+    "vocations": ["monk"],
+    "spells": [59, 61],
     "stage": 2,
     "isSelectable": false,
     "isExtra": true,
@@ -1038,13 +881,8 @@
     "rounding": "round",
     "additionalDamageMultiplier": 0.625,
     "isSpender": true,
-    "vocations": [
-      "monk"
-    ],
-    "spells": [
-      59,
-      62
-    ],
+    "vocations": ["monk"],
+    "spells": [59, 62],
     "stage": 3,
     "isSelectable": false,
     "isExtra": true,
@@ -1061,9 +899,7 @@
     "skillFactor": 1000,
     "buckets": 0,
     "rounding": "round",
-    "vocations": [
-      "monk"
-    ]
+    "vocations": ["monk"]
   },
   {
     "id": 64,
@@ -1076,9 +912,7 @@
     "skillFactor": 1000,
     "buckets": 0,
     "rounding": "round",
-    "vocations": [
-      "monk"
-    ]
+    "vocations": ["monk"]
   },
   {
     "id": 65,
@@ -1092,9 +926,7 @@
     "buckets": 0,
     "rounding": "round",
     "isSpender": true,
-    "vocations": [
-      "monk"
-    ]
+    "vocations": ["monk"]
   },
   {
     "id": 66,
@@ -1107,9 +939,7 @@
     "skillFactor": 1000,
     "buckets": 0,
     "rounding": "round",
-    "vocations": [
-      "monk"
-    ]
+    "vocations": ["monk"]
   },
   {
     "id": 67,
@@ -1123,9 +953,7 @@
     "buckets": 0,
     "rounding": "round",
     "isSpender": true,
-    "vocations": [
-      "monk"
-    ]
+    "vocations": ["monk"]
   },
   {
     "id": 68,
@@ -1138,10 +966,7 @@
     "skillFactor": 25,
     "buckets": 20,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer",
-      "druid"
-    ]
+    "vocations": ["sorcerer", "druid"]
   },
   {
     "id": 69,
@@ -1154,10 +979,7 @@
     "skillFactor": 25,
     "buckets": 20,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer",
-      "druid"
-    ]
+    "vocations": ["sorcerer", "druid"]
   },
   {
     "id": 70,
@@ -1170,10 +992,7 @@
     "skillFactor": 25,
     "buckets": 20,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer",
-      "druid"
-    ]
+    "vocations": ["sorcerer", "druid"]
   },
   {
     "id": 71,
@@ -1186,10 +1005,7 @@
     "skillFactor": 25,
     "buckets": 20,
     "rounding": "floor",
-    "vocations": [
-      "sorcerer",
-      "druid"
-    ]
+    "vocations": ["sorcerer", "druid"]
   },
   {
     "id": 72,
@@ -1202,16 +1018,8 @@
     "skillFactor": 25,
     "buckets": 40,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
-    "runic": [
-      "druid"
-    ]
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
+    "runic": ["druid"]
   },
   {
     "id": 73,
@@ -1224,16 +1032,8 @@
     "skillFactor": 25,
     "buckets": 40,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
-    "runic": [
-      "sorcerer"
-    ]
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
+    "runic": ["sorcerer"]
   },
   {
     "id": 74,
@@ -1246,16 +1046,8 @@
     "skillFactor": 25,
     "buckets": 40,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
-    "runic": [
-      "sorcerer"
-    ]
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
+    "runic": ["sorcerer"]
   },
   {
     "id": 75,
@@ -1268,16 +1060,8 @@
     "skillFactor": 25,
     "buckets": 40,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
-    "runic": [
-      "druid"
-    ]
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
+    "runic": ["druid"]
   },
   {
     "id": 76,
@@ -1290,16 +1074,8 @@
     "skillFactor": 25,
     "buckets": 70,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
-    "runic": [
-      "sorcerer"
-    ]
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
+    "runic": ["sorcerer"]
   },
   {
     "id": 77,
@@ -1312,17 +1088,8 @@
     "skillFactor": 25,
     "buckets": 40,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
-    "runic": [
-      "sorcerer",
-      "druid"
-    ]
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
+    "runic": ["sorcerer", "druid"]
   },
   {
     "id": 78,
@@ -1335,16 +1102,8 @@
     "skillFactor": 25,
     "buckets": 30,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
-    "runic": [
-      "druid"
-    ]
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
+    "runic": ["druid"]
   },
   {
     "id": 79,
@@ -1357,16 +1116,8 @@
     "skillFactor": 25,
     "buckets": 30,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
-    "runic": [
-      "sorcerer"
-    ]
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
+    "runic": ["sorcerer"]
   },
   {
     "id": 80,
@@ -1379,17 +1130,8 @@
     "skillFactor": 25,
     "buckets": 20,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
-    "runic": [
-      "sorcerer",
-      "druid"
-    ]
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
+    "runic": ["sorcerer", "druid"]
   },
   {
     "id": 81,
@@ -1402,17 +1144,8 @@
     "skillFactor": 25,
     "buckets": 20,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
-    "runic": [
-      "sorcerer",
-      "druid"
-    ]
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
+    "runic": ["sorcerer", "druid"]
   },
   {
     "id": 82,
@@ -1425,17 +1158,8 @@
     "skillFactor": 25,
     "buckets": 10,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
-    "runic": [
-      "sorcerer",
-      "druid"
-    ]
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
+    "runic": ["sorcerer", "druid"]
   },
   {
     "id": 83,
@@ -1448,9 +1172,7 @@
     "skillFactor": 17.8571,
     "buckets": 6,
     "rounding": "floor",
-    "vocations": [
-      "paladin"
-    ]
+    "vocations": ["paladin"]
   },
   {
     "id": 84,
@@ -1463,9 +1185,7 @@
     "skillFactor": 25,
     "buckets": 20,
     "rounding": "floor",
-    "vocations": [
-      "paladin"
-    ]
+    "vocations": ["paladin"]
   },
   {
     "id": 85,
@@ -1479,9 +1199,7 @@
     "buckets": 4,
     "rounding": "floor",
     "additionalDamageMultiplier": 1.5,
-    "vocations": [
-      "sorcerer"
-    ]
+    "vocations": ["sorcerer"]
   },
   {
     "id": 86,
@@ -1494,9 +1212,7 @@
     "skillFactor": 25,
     "buckets": 4,
     "rounding": "floor",
-    "vocations": [
-      "druid"
-    ]
+    "vocations": ["druid"]
   },
   {
     "id": 87,
@@ -1509,9 +1225,7 @@
     "skillFactor": 25,
     "buckets": 4,
     "rounding": "floor",
-    "vocations": [
-      "druid"
-    ]
+    "vocations": ["druid"]
   },
   {
     "id": 88,
@@ -1524,9 +1238,7 @@
     "skillFactor": 1000,
     "buckets": 0,
     "rounding": "round",
-    "vocations": [
-      "monk"
-    ]
+    "vocations": ["monk"]
   },
   {
     "id": 89,
@@ -1539,9 +1251,7 @@
     "skillFactor": 1000,
     "buckets": 4,
     "rounding": "floor",
-    "vocations": [
-      "knight"
-    ]
+    "vocations": ["knight"]
   },
   {
     "id": 90,
@@ -1554,9 +1264,7 @@
     "skillFactor": 1000,
     "buckets": 4,
     "rounding": "floor",
-    "vocations": [
-      "knight"
-    ]
+    "vocations": ["knight"]
   },
   {
     "id": 91,
@@ -1570,13 +1278,8 @@
     "buckets": 50,
     "rounding": "floor",
     "additionalDamageMultiplier": 0.25,
-    "vocations": [
-      "sorcerer"
-    ],
-    "spells": [
-      26,
-      91
-    ],
+    "vocations": ["sorcerer"],
+    "spells": [26, 91],
     "stage": 1,
     "isSelectable": false,
     "isExtra": true,
@@ -1594,13 +1297,8 @@
     "buckets": 50,
     "rounding": "floor",
     "additionalDamageMultiplier": 0.4,
-    "vocations": [
-      "sorcerer"
-    ],
-    "spells": [
-      26,
-      92
-    ],
+    "vocations": ["sorcerer"],
+    "spells": [26, 92],
     "stage": 2,
     "isSelectable": false,
     "isExtra": true,
@@ -1618,13 +1316,8 @@
     "buckets": 50,
     "rounding": "floor",
     "additionalDamageMultiplier": 0.7,
-    "vocations": [
-      "sorcerer"
-    ],
-    "spells": [
-      26,
-      93
-    ],
+    "vocations": ["sorcerer"],
+    "spells": [26, 93],
     "stage": 3,
     "isSelectable": false,
     "isExtra": true,
@@ -1642,13 +1335,8 @@
     "buckets": 60,
     "rounding": "floor",
     "additionalDamageMultiplier": 0.25,
-    "vocations": [
-      "sorcerer"
-    ],
-    "spells": [
-      25,
-      94
-    ],
+    "vocations": ["sorcerer"],
+    "spells": [25, 94],
     "stage": 1,
     "isSelectable": false,
     "isExtra": true,
@@ -1666,13 +1354,8 @@
     "buckets": 60,
     "rounding": "floor",
     "additionalDamageMultiplier": 0.4,
-    "vocations": [
-      "sorcerer"
-    ],
-    "spells": [
-      25,
-      95
-    ],
+    "vocations": ["sorcerer"],
+    "spells": [25, 95],
     "stage": 2,
     "isSelectable": false,
     "isExtra": true,
@@ -1690,13 +1373,8 @@
     "buckets": 60,
     "rounding": "floor",
     "additionalDamageMultiplier": 0.7,
-    "vocations": [
-      "sorcerer"
-    ],
-    "spells": [
-      25,
-      96
-    ],
+    "vocations": ["sorcerer"],
+    "spells": [25, 96],
     "stage": 3,
     "isSelectable": false,
     "isExtra": true,
@@ -1714,13 +1392,8 @@
     "buckets": 0,
     "rounding": "floor",
     "additionalDamageMultiplier": 0.25,
-    "vocations": [
-      "sorcerer"
-    ],
-    "spells": [
-      35,
-      97
-    ],
+    "vocations": ["sorcerer"],
+    "spells": [35, 97],
     "stage": 1,
     "isSelectable": false,
     "isExtra": true,
@@ -1738,13 +1411,8 @@
     "buckets": 0,
     "rounding": "floor",
     "additionalDamageMultiplier": 0.4,
-    "vocations": [
-      "sorcerer"
-    ],
-    "spells": [
-      35,
-      98
-    ],
+    "vocations": ["sorcerer"],
+    "spells": [35, 98],
     "stage": 2,
     "isSelectable": false,
     "isExtra": true,
@@ -1762,13 +1430,8 @@
     "buckets": 0,
     "rounding": "floor",
     "additionalDamageMultiplier": 0.7,
-    "vocations": [
-      "sorcerer"
-    ],
-    "spells": [
-      35,
-      99
-    ],
+    "vocations": ["sorcerer"],
+    "spells": [35, 99],
     "stage": 3,
     "isSelectable": false,
     "isExtra": true,
@@ -1785,13 +1448,7 @@
     "skillFactor": 0,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
     "isSelectable": false,
     "isExtra": true,
     "visible": false
@@ -1807,13 +1464,7 @@
     "skillFactor": 0,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
     "isSelectable": false,
     "isExtra": true,
     "visible": false
@@ -1829,13 +1480,7 @@
     "skillFactor": 0,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
     "isSelectable": false,
     "isExtra": true,
     "visible": false
@@ -1851,13 +1496,7 @@
     "skillFactor": 0,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
     "isSelectable": false,
     "isExtra": true,
     "visible": false
@@ -1873,13 +1512,7 @@
     "skillFactor": 0,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
     "isSelectable": false,
     "isExtra": true,
     "visible": false
@@ -1895,13 +1528,7 @@
     "skillFactor": 0,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
     "isSelectable": false,
     "isExtra": true,
     "visible": false
@@ -1917,13 +1544,7 @@
     "skillFactor": 0,
     "buckets": 0,
     "rounding": "floor",
-    "vocations": [
-      "druid",
-      "knight",
-      "monk",
-      "paladin",
-      "sorcerer"
-    ],
+    "vocations": ["druid", "knight", "monk", "paladin", "sorcerer"],
     "isSelectable": false,
     "isExtra": true,
     "visible": false

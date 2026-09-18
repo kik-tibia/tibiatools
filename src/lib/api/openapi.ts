@@ -82,7 +82,7 @@ Unknown fields, wrong types and ids that don't exist are rejected with \`400\` a
 
 ### Rate limits
 
-There are currently no rate limits. Please use the API responsibly so that I don't need to add any.
+The \`/api/v1/damage\` endpoint has a limit of 1 request per second, with an initial burst of 10 requests.
 
 `;
 

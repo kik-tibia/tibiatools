@@ -14,9 +14,10 @@
  */
 
 import { JSDOM } from "jsdom";
-import { mkdirSync, readFileSync, writeFileSync } from "fs";
+import { readFileSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { writeJson } from "./write-json.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -73,10 +74,8 @@ async function main() {
     return { id, ...shield, defense: Number(shield.defense) };
   });
 
-  const outDir = join(__dirname, "scraped");
-  mkdirSync(outDir, { recursive: true });
-  const outPath = join(outDir, "shields.json");
-  writeFileSync(outPath, JSON.stringify(withIds, null, 2) + "\n");
+  const outPath = join(__dirname, "processed", "shields.json");
+  await writeJson(outPath, withIds);
   console.error(`Wrote ${outPath}`);
 }
 

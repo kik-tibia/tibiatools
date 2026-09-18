@@ -1,357 +1,62 @@
 [
-  {
-    "name": "Amber Bow",
-    "attack": "7",
-    "hit_mod": "+6",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Bow",
-    "attack": "",
-    "hit_mod": "",
-    "vocation": ""
-  },
-  {
-    "name": "Bow of Carving",
-    "attack": "6",
-    "hit_mod": "6",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Bow of Carving (Charged)",
-    "attack": "4",
-    "hit_mod": "4",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Bow of Carving (Heavily Charged)",
-    "attack": "5",
-    "hit_mod": "5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Bow of Carving (Overcharged)",
-    "attack": "6",
-    "hit_mod": "6",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Bow of Cataclysm",
-    "attack": "6",
-    "hit_mod": "+4",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Bow of Destruction",
-    "attack": "5",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Bow of Destruction Test",
-    "attack": "",
-    "hit_mod": "",
-    "vocation": ""
-  },
-  {
-    "name": "Bow of Mayhem",
-    "attack": "6",
-    "hit_mod": "6",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Bow of Mayhem (Charged)",
-    "attack": "4",
-    "hit_mod": "4",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Bow of Mayhem (Heavily Charged)",
-    "attack": "5",
-    "hit_mod": "5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Bow of Mayhem (Overcharged)",
-    "attack": "6",
-    "hit_mod": "6",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Bow of Remedy",
-    "attack": "6",
-    "hit_mod": "6",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Bow of Remedy (Charged)",
-    "attack": "4",
-    "hit_mod": "4",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Bow of Remedy (Heavily Charged)",
-    "attack": "5",
-    "hit_mod": "5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Bow of Remedy (Overcharged)",
-    "attack": "6",
-    "hit_mod": "6",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Composite Hornbow",
-    "attack": "2",
-    "hit_mod": "+2",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Crude Umbral Bow",
-    "attack": "2",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Crypt Spine",
-    "attack": "8",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Draining Inferniarch Bow",
-    "attack": "7",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Eldritch Bow",
-    "attack": "6",
-    "hit_mod": "+6",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Elethriel's Elemental Bow",
-    "attack": "7",
-    "hit_mod": "",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Elvish Bow",
-    "attack": "",
-    "hit_mod": "+3",
-    "vocation": "None"
-  },
-  {
-    "name": "Falcon Bow",
-    "attack": "6",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Gilded Eldritch Bow",
-    "attack": "6",
-    "hit_mod": "+6",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Grand Sanguine Bow",
-    "attack": "9",
-    "hit_mod": "+6",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Hive Bow",
-    "attack": "2",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Icicle Bow",
-    "attack": "1",
-    "hit_mod": "+4",
-    "vocation": ""
-  },
-  {
-    "name": "Inferniarch Bow",
-    "attack": "6",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Jungle Bow",
-    "attack": "6",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Lion Longbow",
-    "attack": "6",
-    "hit_mod": "+6",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Living Vine Bow",
-    "attack": "5",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Moonsilver Bow",
-    "attack": "10",
-    "hit_mod": "+7",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Musician's Bow",
-    "attack": "",
-    "hit_mod": "",
-    "vocation": ""
-  },
-  {
-    "name": "Mycological Bow",
-    "attack": "4",
-    "hit_mod": "+4",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Ornate Carving Bow",
-    "attack": "",
-    "hit_mod": "",
-    "vocation": ""
-  },
-  {
-    "name": "Ornate Mayhem Bow",
-    "attack": "",
-    "hit_mod": "",
-    "vocation": ""
-  },
-  {
-    "name": "Ornate Remedy Bow",
-    "attack": "",
-    "hit_mod": "",
-    "vocation": ""
-  },
-  {
-    "name": "Plain Carving Bow",
-    "attack": "",
-    "hit_mod": "",
-    "vocation": ""
-  },
-  {
-    "name": "Plain Mayhem Bow",
-    "attack": "",
-    "hit_mod": "",
-    "vocation": ""
-  },
-  {
-    "name": "Plain Remedy Bow",
-    "attack": "",
-    "hit_mod": "",
-    "vocation": ""
-  },
-  {
-    "name": "Refined Bow",
-    "attack": "",
-    "hit_mod": "+1",
-    "vocation": ""
-  },
-  {
-    "name": "Rending Inferniarch Bow",
-    "attack": "7",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Rift Bow",
-    "attack": "5",
-    "hit_mod": "+3",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Sanguine Bow",
-    "attack": "9",
-    "hit_mod": "+6",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Shimmer Bow",
-    "attack": "1",
-    "hit_mod": "+7",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Silkweaver Bow",
-    "attack": "",
-    "hit_mod": "+3",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Siphoning Inferniarch Bow",
-    "attack": "7",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Soulbleeder",
-    "attack": "8",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Stellar Moonsilver Bow",
-    "attack": "10",
-    "hit_mod": "+7",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Umbral Bow",
-    "attack": "4",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Umbral Master Bow",
-    "attack": "6",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Umbral Master Bow Test",
-    "attack": "",
-    "hit_mod": "",
-    "vocation": ""
-  },
-  {
-    "name": "Valuable Carving Bow",
-    "attack": "",
-    "hit_mod": "",
-    "vocation": ""
-  },
-  {
-    "name": "Valuable Mayhem Bow",
-    "attack": "",
-    "hit_mod": "",
-    "vocation": ""
-  },
-  {
-    "name": "Valuable Remedy Bow",
-    "attack": "",
-    "hit_mod": "",
-    "vocation": ""
-  },
-  {
-    "name": "Warsinger Bow",
-    "attack": "3",
-    "hit_mod": "+5",
-    "vocation": "paladins"
-  },
-  {
-    "name": "Yol's Bow",
-    "attack": "",
-    "hit_mod": "+7",
-    "vocation": "paladins"
-  },
+  { "name": "Amber Bow", "attack": "7", "hit_mod": "+6", "vocation": "paladins" },
+  { "name": "Bow", "attack": "", "hit_mod": "", "vocation": "" },
+  { "name": "Bow of Carving", "attack": "6", "hit_mod": "6", "vocation": "paladins" },
+  { "name": "Bow of Carving (Charged)", "attack": "4", "hit_mod": "4", "vocation": "paladins" },
+  { "name": "Bow of Carving (Heavily Charged)", "attack": "5", "hit_mod": "5", "vocation": "paladins" },
+  { "name": "Bow of Carving (Overcharged)", "attack": "6", "hit_mod": "6", "vocation": "paladins" },
+  { "name": "Bow of Cataclysm", "attack": "6", "hit_mod": "+4", "vocation": "paladins" },
+  { "name": "Bow of Destruction", "attack": "5", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Bow of Destruction Test", "attack": "", "hit_mod": "", "vocation": "" },
+  { "name": "Bow of Mayhem", "attack": "6", "hit_mod": "6", "vocation": "paladins" },
+  { "name": "Bow of Mayhem (Charged)", "attack": "4", "hit_mod": "4", "vocation": "paladins" },
+  { "name": "Bow of Mayhem (Heavily Charged)", "attack": "5", "hit_mod": "5", "vocation": "paladins" },
+  { "name": "Bow of Mayhem (Overcharged)", "attack": "6", "hit_mod": "6", "vocation": "paladins" },
+  { "name": "Bow of Remedy", "attack": "6", "hit_mod": "6", "vocation": "paladins" },
+  { "name": "Bow of Remedy (Charged)", "attack": "4", "hit_mod": "4", "vocation": "paladins" },
+  { "name": "Bow of Remedy (Heavily Charged)", "attack": "5", "hit_mod": "5", "vocation": "paladins" },
+  { "name": "Bow of Remedy (Overcharged)", "attack": "6", "hit_mod": "6", "vocation": "paladins" },
+  { "name": "Composite Hornbow", "attack": "2", "hit_mod": "+2", "vocation": "paladins" },
+  { "name": "Crude Umbral Bow", "attack": "2", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Crypt Spine", "attack": "8", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Draining Inferniarch Bow", "attack": "7", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Eldritch Bow", "attack": "6", "hit_mod": "+6", "vocation": "paladins" },
+  { "name": "Elethriel's Elemental Bow", "attack": "7", "hit_mod": "", "vocation": "paladins" },
+  { "name": "Elvish Bow", "attack": "", "hit_mod": "+3", "vocation": "None" },
+  { "name": "Falcon Bow", "attack": "6", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Gilded Eldritch Bow", "attack": "6", "hit_mod": "+6", "vocation": "paladins" },
+  { "name": "Grand Sanguine Bow", "attack": "9", "hit_mod": "+6", "vocation": "paladins" },
+  { "name": "Hive Bow", "attack": "2", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Icicle Bow", "attack": "1", "hit_mod": "+4", "vocation": "" },
+  { "name": "Inferniarch Bow", "attack": "6", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Jungle Bow", "attack": "6", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Lion Longbow", "attack": "6", "hit_mod": "+6", "vocation": "paladins" },
+  { "name": "Living Vine Bow", "attack": "5", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Moonsilver Bow", "attack": "10", "hit_mod": "+7", "vocation": "paladins" },
+  { "name": "Musician's Bow", "attack": "", "hit_mod": "", "vocation": "" },
+  { "name": "Mycological Bow", "attack": "4", "hit_mod": "+4", "vocation": "paladins" },
+  { "name": "Ornate Carving Bow", "attack": "", "hit_mod": "", "vocation": "" },
+  { "name": "Ornate Mayhem Bow", "attack": "", "hit_mod": "", "vocation": "" },
+  { "name": "Ornate Remedy Bow", "attack": "", "hit_mod": "", "vocation": "" },
+  { "name": "Plain Carving Bow", "attack": "", "hit_mod": "", "vocation": "" },
+  { "name": "Plain Mayhem Bow", "attack": "", "hit_mod": "", "vocation": "" },
+  { "name": "Plain Remedy Bow", "attack": "", "hit_mod": "", "vocation": "" },
+  { "name": "Refined Bow", "attack": "", "hit_mod": "+1", "vocation": "" },
+  { "name": "Rending Inferniarch Bow", "attack": "7", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Rift Bow", "attack": "5", "hit_mod": "+3", "vocation": "paladins" },
+  { "name": "Sanguine Bow", "attack": "9", "hit_mod": "+6", "vocation": "paladins" },
+  { "name": "Shimmer Bow", "attack": "1", "hit_mod": "+7", "vocation": "paladins" },
+  { "name": "Silkweaver Bow", "attack": "", "hit_mod": "+3", "vocation": "paladins" },
+  { "name": "Siphoning Inferniarch Bow", "attack": "7", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Soulbleeder", "attack": "8", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Stellar Moonsilver Bow", "attack": "10", "hit_mod": "+7", "vocation": "paladins" },
+  { "name": "Umbral Bow", "attack": "4", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Umbral Master Bow", "attack": "6", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Umbral Master Bow Test", "attack": "", "hit_mod": "", "vocation": "" },
+  { "name": "Valuable Carving Bow", "attack": "", "hit_mod": "", "vocation": "" },
+  { "name": "Valuable Mayhem Bow", "attack": "", "hit_mod": "", "vocation": "" },
+  { "name": "Valuable Remedy Bow", "attack": "", "hit_mod": "", "vocation": "" },
+  { "name": "Warsinger Bow", "attack": "3", "hit_mod": "+5", "vocation": "paladins" },
+  { "name": "Yol's Bow", "attack": "", "hit_mod": "+7", "vocation": "paladins" },
   {}
 ]
