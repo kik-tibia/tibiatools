@@ -2,364 +2,468 @@
   {
     "id": 1,
     "name": "+ attack",
-    "scope": "melee",
+    "scopes": [
+      "melee"
+    ],
     "priority": 1,
     "bonusType": "attack"
   },
   {
     "id": 2,
     "name": "Critical hit extra damage",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "crit-damage"
   },
   {
     "id": 3,
     "name": "Critical hit chance",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "crit-chance"
   },
   {
     "id": 4,
     "name": "Critical % extra damage for auto‑attacks",
-    "scope": "auto-attack",
+    "scopes": [
+      "auto-attack"
+    ],
     "priority": 1,
     "bonusType": "crit-damage"
   },
   {
     "id": 5,
     "name": "Critical hit chance for auto‑attacks",
-    "scope": "auto-attack",
+    "scopes": [
+      "auto-attack"
+    ],
     "priority": 1,
     "bonusType": "crit-chance"
   },
   {
     "id": 6,
     "name": "Critical % extra damage for runes",
-    "scope": "rune",
+    "scopes": [
+      "rune"
+    ],
     "priority": 1,
     "bonusType": "crit-damage"
   },
   {
     "id": 7,
     "name": "Critical hit chance for runes",
-    "scope": "rune",
+    "scopes": [
+      "rune"
+    ],
     "priority": 1,
     "bonusType": "crit-chance"
   },
   {
     "id": 205,
     "name": "+ axe fighting",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "axe-fighting"
   },
   {
     "id": 206,
     "name": "+ club fighting",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "club-fighting"
   },
   {
     "id": 207,
     "name": "+ sword fighting",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "sword-fighting"
   },
   {
     "id": 208,
     "name": "+ fist fighting",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "fist-fighting"
   },
   {
     "id": 209,
     "name": "+ distance fighting",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "distance-fighting"
   },
   {
     "id": 210,
     "name": "+ magic level",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "magic-level"
   },
   {
     "id": 204,
     "name": "Runic mastery",
-    "scope": "rune",
+    "scopes": [
+      "rune"
+    ],
     "priority": 1,
     "bonusType": "runic-mastery"
   },
   {
     "id": 8,
     "name": "% axe fighting as extra damage for auto‑attacks",
-    "scope": "auto-attack",
+    "scopes": [
+      "auto-attack"
+    ],
     "priority": 2,
     "bonusType": "axe-percent-extra"
   },
   {
     "id": 9,
     "name": "% axe fighting as extra damage for spells",
-    "scope": "spell",
+    "scopes": [
+      "spell"
+    ],
     "priority": 2,
     "bonusType": "axe-percent-extra"
   },
   {
     "id": 10,
     "name": "% club fighting as extra damage for auto‑attacks",
-    "scope": "auto-attack",
+    "scopes": [
+      "auto-attack"
+    ],
     "priority": 2,
     "bonusType": "club-percent-extra"
   },
   {
     "id": 11,
     "name": "% club fighting as extra damage for spells",
-    "scope": "spell",
+    "scopes": [
+      "spell"
+    ],
     "priority": 2,
     "bonusType": "club-percent-extra"
   },
   {
     "id": 12,
     "name": "% sword fighting as extra damage for auto‑attacks",
-    "scope": "auto-attack",
+    "scopes": [
+      "auto-attack"
+    ],
     "priority": 2,
     "bonusType": "sword-percent-extra"
   },
   {
     "id": 13,
     "name": "% sword fighting as extra damage for spells",
-    "scope": "spell",
+    "scopes": [
+      "spell"
+    ],
     "priority": 2,
     "bonusType": "sword-percent-extra"
   },
   {
     "id": 14,
     "name": "% fist fighting as extra damage for auto‑attacks",
-    "scope": "auto-attack",
+    "scopes": [
+      "auto-attack"
+    ],
     "priority": 2,
     "bonusType": "fist-percent-extra"
   },
   {
     "id": 15,
     "name": "% fist fighting as extra damage for spells",
-    "scope": "spell",
+    "scopes": [
+      "spell"
+    ],
     "priority": 2,
     "bonusType": "fist-percent-extra"
   },
   {
     "id": 16,
     "name": "% distance fighting as extra damage for auto‑attacks",
-    "scope": "auto-attack",
+    "scopes": [
+      "auto-attack"
+    ],
     "priority": 2,
     "bonusType": "distance-percent-extra"
   },
   {
     "id": 17,
     "name": "% distance fighting as extra damage for spells",
-    "scope": "spell",
+    "scopes": [
+      "spell"
+    ],
     "priority": 2,
     "bonusType": "distance-percent-extra"
   },
   {
     "id": 18,
     "name": "% magic level as extra damage for auto‑attacks",
-    "scope": "auto-attack",
+    "scopes": [
+      "auto-attack"
+    ],
     "priority": 2,
     "bonusType": "magic-level-percent-extra"
   },
   {
     "id": 19,
     "name": "% magic level as extra damage for spells",
-    "scope": "spell",
+    "scopes": [
+      "spell"
+    ],
     "priority": 2,
     "bonusType": "magic-level-percent-extra"
   },
   {
     "id": 20,
     "name": "% shielding as extra damage for auto-attacks",
-    "scope": "auto-attack",
+    "scopes": [
+      "auto-attack"
+    ],
     "priority": 2,
     "bonusType": "shield-percent-extra"
   },
   {
     "id": 21,
     "name": "% shielding as extra damage for spells",
-    "scope": "spell",
+    "scopes": [
+      "spell"
+    ],
     "priority": 2,
     "bonusType": "shield-percent-extra"
   },
   {
     "id": 22,
     "name": "% fishing as extra damage for auto‑attacks",
-    "scope": "auto-attack",
+    "scopes": [
+      "auto-attack"
+    ],
     "priority": 2,
     "bonusType": "fishing-percent-extra"
   },
   {
     "id": 23,
     "name": "% fishing as extra damage for spells",
-    "scope": "spell",
+    "scopes": [
+      "spell"
+    ],
     "priority": 2,
     "bonusType": "fishing-percent-extra"
   },
   {
     "id": 24,
     "name": "Critical % extra damage for death spells and runes",
-    "scope": "death",
+    "scopes": [
+      "death"
+    ],
     "priority": 1,
     "bonusType": "crit-damage"
   },
   {
     "id": 25,
     "name": "Death critical hit chance",
-    "scope": "death",
+    "scopes": [
+      "death"
+    ],
     "priority": 1,
     "bonusType": "crit-chance"
   },
   {
     "id": 26,
     "name": "+ death magic level",
-    "scope": "death",
+    "scopes": [
+      "death"
+    ],
     "priority": 3,
     "bonusType": "magic-level"
   },
   {
     "id": 27,
     "name": "Critical % extra damage for earth spells and runes",
-    "scope": "earth",
+    "scopes": [
+      "earth"
+    ],
     "priority": 1,
     "bonusType": "crit-damage"
   },
   {
     "id": 28,
     "name": "Earth critical hit chance",
-    "scope": "earth",
+    "scopes": [
+      "earth"
+    ],
     "priority": 1,
     "bonusType": "crit-chance"
   },
   {
     "id": 29,
     "name": "+ earth magic level",
-    "scope": "earth",
+    "scopes": [
+      "earth"
+    ],
     "priority": 3,
     "bonusType": "magic-level"
   },
   {
     "id": 30,
     "name": "Critical % extra damage for energy spells and runes",
-    "scope": "energy",
+    "scopes": [
+      "energy"
+    ],
     "priority": 1,
     "bonusType": "crit-damage"
   },
   {
     "id": 31,
     "name": "Energy critical hit chance",
-    "scope": "energy",
+    "scopes": [
+      "energy"
+    ],
     "priority": 1,
     "bonusType": "crit-chance"
   },
   {
     "id": 32,
     "name": "+ energy magic level",
-    "scope": "energy",
+    "scopes": [
+      "energy"
+    ],
     "priority": 3,
     "bonusType": "magic-level"
   },
   {
     "id": 33,
     "name": "Critical % extra damage for fire spells and runes",
-    "scope": "fire",
+    "scopes": [
+      "fire"
+    ],
     "priority": 1,
     "bonusType": "crit-damage"
   },
   {
     "id": 34,
     "name": "Fire critical hit chance",
-    "scope": "fire",
+    "scopes": [
+      "fire"
+    ],
     "priority": 1,
     "bonusType": "crit-chance"
   },
   {
     "id": 35,
     "name": "+ fire magic level",
-    "scope": "fire",
+    "scopes": [
+      "fire"
+    ],
     "priority": 3,
     "bonusType": "magic-level"
   },
   {
     "id": 36,
     "name": "Critical % extra damage for holy spells and runes",
-    "scope": "holy",
+    "scopes": [
+      "holy"
+    ],
     "priority": 1,
     "bonusType": "crit-damage"
   },
   {
     "id": 37,
     "name": "Holy critical hit chance",
-    "scope": "holy",
+    "scopes": [
+      "holy"
+    ],
     "priority": 1,
     "bonusType": "crit-chance"
   },
   {
     "id": 38,
     "name": " + holy magic level",
-    "scope": "holy",
+    "scopes": [
+      "holy"
+    ],
     "priority": 3,
     "bonusType": "magic-level"
   },
   {
     "id": 39,
     "name": "Critical % extra damage for ice spells and runes",
-    "scope": "ice",
+    "scopes": [
+      "ice"
+    ],
     "priority": 1,
     "bonusType": "crit-damage"
   },
   {
     "id": 40,
     "name": "Ice critical hit chance",
-    "scope": "ice",
+    "scopes": [
+      "ice"
+    ],
     "priority": 1,
     "bonusType": "crit-chance"
   },
   {
     "id": 41,
     "name": "+ ice magic level",
-    "scope": "ice",
+    "scopes": [
+      "ice"
+    ],
     "priority": 3,
     "bonusType": "magic-level"
   },
   {
     "id": 42,
     "name": "Critical % extra damage for physical spells and runes",
-    "scope": "physical",
+    "scopes": [
+      "physical"
+    ],
     "priority": 1,
     "bonusType": "crit-damage"
   },
   {
     "id": 43,
     "name": "Physical critical hit chance",
-    "scope": "physical",
+    "scopes": [
+      "physical"
+    ],
     "priority": 1,
     "bonusType": "crit-chance"
   },
   {
     "id": 44,
     "name": "+ physical magic level",
-    "scope": "physical",
+    "scopes": [
+      "physical"
+    ],
     "priority": 3,
     "bonusType": "magic-level"
   },
   {
     "id": 45,
     "name": "Fierce Berserk base damage",
-    "scope": "fierce-berserk",
+    "scopes": [
+      "fierce-berserk"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -367,7 +471,9 @@
   {
     "id": 46,
     "name": "Fierce Berserk critical hit damage",
-    "scope": "fierce-berserk",
+    "scopes": [
+      "fierce-berserk"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -375,7 +481,9 @@
   {
     "id": 47,
     "name": "Fierce Berserk critical hit chance",
-    "scope": "fierce-berserk",
+    "scopes": [
+      "fierce-berserk"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -383,7 +491,9 @@
   {
     "id": 48,
     "name": "Berserk base damage",
-    "scope": "berserk",
+    "scopes": [
+      "berserk"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -391,7 +501,9 @@
   {
     "id": 49,
     "name": "Berserk critical hit damage",
-    "scope": "berserk",
+    "scopes": [
+      "berserk"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -399,7 +511,9 @@
   {
     "id": 50,
     "name": "Berserk critical hit chance",
-    "scope": "berserk",
+    "scopes": [
+      "berserk"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -407,7 +521,9 @@
   {
     "id": 51,
     "name": "Groundshaker base damage",
-    "scope": "groundshaker",
+    "scopes": [
+      "groundshaker"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -415,7 +531,9 @@
   {
     "id": 52,
     "name": "Groundshaker critical hit damage",
-    "scope": "groundshaker",
+    "scopes": [
+      "groundshaker"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -423,7 +541,9 @@
   {
     "id": 53,
     "name": "Groundshaker critical hit chance",
-    "scope": "groundshaker",
+    "scopes": [
+      "groundshaker"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -431,7 +551,9 @@
   {
     "id": 54,
     "name": "Front Sweep base damage",
-    "scope": "front-sweep",
+    "scopes": [
+      "front-sweep"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -439,7 +561,9 @@
   {
     "id": 55,
     "name": "Front Sweep critical hit damage",
-    "scope": "front-sweep",
+    "scopes": [
+      "front-sweep"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -447,7 +571,9 @@
   {
     "id": 56,
     "name": "Front Sweep critical hit chance",
-    "scope": "front-sweep",
+    "scopes": [
+      "front-sweep"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -455,7 +581,9 @@
   {
     "id": 57,
     "name": "Executioner's Throw base damage",
-    "scope": "exec-throw",
+    "scopes": [
+      "exec-throw"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -463,7 +591,9 @@
   {
     "id": 58,
     "name": "Executioner's Throw critical hit damage",
-    "scope": "exec-throw",
+    "scopes": [
+      "exec-throw"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -471,7 +601,9 @@
   {
     "id": 59,
     "name": "Executioner's Throw critical hit chance",
-    "scope": "exec-throw",
+    "scopes": [
+      "exec-throw"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -479,7 +611,9 @@
   {
     "id": 60,
     "name": "Annihilation base damage",
-    "scope": "annihilation",
+    "scopes": [
+      "annihilation"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -487,7 +621,9 @@
   {
     "id": 61,
     "name": "Annihilation critical hit damage",
-    "scope": "annihilation",
+    "scopes": [
+      "annihilation"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -495,7 +631,9 @@
   {
     "id": 62,
     "name": "Annihilation critical hit chance",
-    "scope": "annihilation",
+    "scopes": [
+      "annihilation"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -503,7 +641,9 @@
   {
     "id": 63,
     "name": "Brutal Strike base damage",
-    "scope": "brutal-strike",
+    "scopes": [
+      "brutal-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -511,7 +651,9 @@
   {
     "id": 64,
     "name": "Brutal Strike critical hit damage",
-    "scope": "brutal-strike",
+    "scopes": [
+      "brutal-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -519,7 +661,9 @@
   {
     "id": 65,
     "name": "Brutal Strike critical hit chance",
-    "scope": "brutal-strike",
+    "scopes": [
+      "brutal-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -527,7 +671,9 @@
   {
     "id": 66,
     "name": "Whirlwind Throw base damage",
-    "scope": "whirlwind-throw",
+    "scopes": [
+      "whirlwind-throw"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -535,7 +681,9 @@
   {
     "id": 67,
     "name": "Whirlwind Throw critical hit damage",
-    "scope": "whirlwind-throw",
+    "scopes": [
+      "whirlwind-throw"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -543,7 +691,9 @@
   {
     "id": 68,
     "name": "Whirlwind Throw critical hit chance",
-    "scope": "whirlwind-throw",
+    "scopes": [
+      "whirlwind-throw"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -551,7 +701,9 @@
   {
     "id": 69,
     "name": "Divine Caldera base damage",
-    "scope": "divine-caldera",
+    "scopes": [
+      "divine-caldera"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -559,7 +711,9 @@
   {
     "id": 70,
     "name": "Divine Caldera critical hit damage",
-    "scope": "divine-caldera",
+    "scopes": [
+      "divine-caldera"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -567,7 +721,9 @@
   {
     "id": 71,
     "name": "Divine Caldera critical hit chance",
-    "scope": "divine-caldera",
+    "scopes": [
+      "divine-caldera"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -575,7 +731,9 @@
   {
     "id": 72,
     "name": "Divine Grenade base damage",
-    "scope": "divine-grenade",
+    "scopes": [
+      "divine-grenade"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -583,7 +741,9 @@
   {
     "id": 73,
     "name": "Divine Grenade critical hit damage",
-    "scope": "divine-grenade",
+    "scopes": [
+      "divine-grenade"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -591,7 +751,9 @@
   {
     "id": 74,
     "name": "Divine Grenade critical hit chance",
-    "scope": "divine-grenade",
+    "scopes": [
+      "divine-grenade"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -599,7 +761,9 @@
   {
     "id": 75,
     "name": "Strong Ethereal Spear base damage",
-    "scope": "strong-ethereal-spear",
+    "scopes": [
+      "strong-ethereal-spear"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -607,7 +771,9 @@
   {
     "id": 76,
     "name": "Strong Ethereal Spear critical hit damage",
-    "scope": "strong-ethereal-spear",
+    "scopes": [
+      "strong-ethereal-spear"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -615,7 +781,9 @@
   {
     "id": 77,
     "name": "Strong Ethereal Spear critical hit chance",
-    "scope": "strong-ethereal-spear",
+    "scopes": [
+      "strong-ethereal-spear"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -623,7 +791,9 @@
   {
     "id": 78,
     "name": "Ethereal Spear base damage",
-    "scope": "ethereal-spear",
+    "scopes": [
+      "ethereal-spear"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -631,7 +801,9 @@
   {
     "id": 79,
     "name": "Ethereal Spear critical hit damage",
-    "scope": "ethereal-spear",
+    "scopes": [
+      "ethereal-spear"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -639,7 +811,9 @@
   {
     "id": 80,
     "name": "Ethereal Spear critical hit chance",
-    "scope": "ethereal-spear",
+    "scopes": [
+      "ethereal-spear"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -647,7 +821,9 @@
   {
     "id": 81,
     "name": "Divine Missile base damage",
-    "scope": "divine-missile",
+    "scopes": [
+      "divine-missile"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -655,7 +831,9 @@
   {
     "id": 82,
     "name": "Divine Missile critical hit damage",
-    "scope": "divine-missile",
+    "scopes": [
+      "divine-missile"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -663,7 +841,9 @@
   {
     "id": 83,
     "name": "Divine Missile critical hit chance",
-    "scope": "divine-missile",
+    "scopes": [
+      "divine-missile"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -671,7 +851,9 @@
   {
     "id": 84,
     "name": "Energy Wave base damage",
-    "scope": "energy-wave",
+    "scopes": [
+      "energy-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -679,7 +861,9 @@
   {
     "id": 85,
     "name": "Energy Wave critical hit damage",
-    "scope": "energy-wave",
+    "scopes": [
+      "energy-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -687,7 +871,9 @@
   {
     "id": 86,
     "name": "Energy Wave critical hit chance",
-    "scope": "energy-wave",
+    "scopes": [
+      "energy-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -695,7 +881,9 @@
   {
     "id": 87,
     "name": "Great Fire Wave base damage",
-    "scope": "great-fire-wave",
+    "scopes": [
+      "great-fire-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -703,7 +891,9 @@
   {
     "id": 88,
     "name": "Great Fire Wave critical hit damage",
-    "scope": "great-fire-wave",
+    "scopes": [
+      "great-fire-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -711,7 +901,9 @@
   {
     "id": 89,
     "name": "Great Fire Wave critical hit chance",
-    "scope": "great-fire-wave",
+    "scopes": [
+      "great-fire-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -719,7 +911,9 @@
   {
     "id": 90,
     "name": "Hell's Core base damage",
-    "scope": "hells-core",
+    "scopes": [
+      "hells-core"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -727,7 +921,9 @@
   {
     "id": 91,
     "name": "Hell's Core critical hit damage",
-    "scope": "hells-core",
+    "scopes": [
+      "hells-core"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -735,7 +931,9 @@
   {
     "id": 92,
     "name": "Hell's Core critical hit chance",
-    "scope": "hells-core",
+    "scopes": [
+      "hells-core"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -743,7 +941,9 @@
   {
     "id": 93,
     "name": "Rage of the Skies base damage",
-    "scope": "rage-of-the-skies",
+    "scopes": [
+      "rage-of-the-skies"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -751,7 +951,9 @@
   {
     "id": 94,
     "name": "Rage of the Skies critical hit damage",
-    "scope": "rage-of-the-skies",
+    "scopes": [
+      "rage-of-the-skies"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -759,7 +961,9 @@
   {
     "id": 95,
     "name": "Rage of the Skies critical hit chance",
-    "scope": "rage-of-the-skies",
+    "scopes": [
+      "rage-of-the-skies"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -767,7 +971,9 @@
   {
     "id": 96,
     "name": "Great Energy Beam base damage",
-    "scope": "great-energy-beam",
+    "scopes": [
+      "great-energy-beam"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -775,7 +981,9 @@
   {
     "id": 97,
     "name": "Great Energy Beam critical hit damage",
-    "scope": "great-energy-beam",
+    "scopes": [
+      "great-energy-beam"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -783,7 +991,9 @@
   {
     "id": 98,
     "name": "Great Energy Beam critical hit chance",
-    "scope": "great-energy-beam",
+    "scopes": [
+      "great-energy-beam"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -791,7 +1001,9 @@
   {
     "id": 99,
     "name": "Great Death Beam base damage",
-    "scope": "great-death-beam",
+    "scopes": [
+      "great-death-beam"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -799,7 +1011,9 @@
   {
     "id": 100,
     "name": "Great Death Beam critical hit damage",
-    "scope": "great-death-beam",
+    "scopes": [
+      "great-death-beam"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -807,7 +1021,9 @@
   {
     "id": 101,
     "name": "Great Death Beam critical hit chance",
-    "scope": "great-death-beam",
+    "scopes": [
+      "great-death-beam"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -815,7 +1031,9 @@
   {
     "id": 102,
     "name": "Fire Wave base damage",
-    "scope": "fire-wave",
+    "scopes": [
+      "fire-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -823,7 +1041,9 @@
   {
     "id": 103,
     "name": "Fire Wave critical hit damage",
-    "scope": "fire-wave",
+    "scopes": [
+      "fire-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -831,7 +1051,9 @@
   {
     "id": 104,
     "name": "Fire Wave critical hit chance",
-    "scope": "fire-wave",
+    "scopes": [
+      "fire-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -839,7 +1061,9 @@
   {
     "id": 105,
     "name": "Strong Flame Strike base damage",
-    "scope": "strong-flame-strike",
+    "scopes": [
+      "strong-flame-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -847,7 +1071,9 @@
   {
     "id": 106,
     "name": "Strong Flame Strike critical hit damage",
-    "scope": "strong-flame-strike",
+    "scopes": [
+      "strong-flame-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -855,7 +1081,9 @@
   {
     "id": 107,
     "name": "Strong Flame Strike critical hit chance",
-    "scope": "strong-flame-strike",
+    "scopes": [
+      "strong-flame-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -863,7 +1091,9 @@
   {
     "id": 108,
     "name": "Strong Energy Strike base damage",
-    "scope": "strong-energy-strike",
+    "scopes": [
+      "strong-energy-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -871,7 +1101,9 @@
   {
     "id": 109,
     "name": "Strong Energy Strike critical hit damage",
-    "scope": "strong-energy-strike",
+    "scopes": [
+      "strong-energy-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -879,7 +1111,9 @@
   {
     "id": 110,
     "name": "Strong Energy Strike critical hit chance",
-    "scope": "strong-energy-strike",
+    "scopes": [
+      "strong-energy-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -887,7 +1121,9 @@
   {
     "id": 111,
     "name": "Ultimate Flame Strike base damage",
-    "scope": "ultimate-flame-strike",
+    "scopes": [
+      "ultimate-flame-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -895,7 +1131,9 @@
   {
     "id": 112,
     "name": "Ultimate Flame Strike critical hit damage",
-    "scope": "ultimate-flame-strike",
+    "scopes": [
+      "ultimate-flame-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -903,7 +1141,9 @@
   {
     "id": 113,
     "name": "Ultimate Flame Strike critical hit chance",
-    "scope": "ultimate-flame-strike",
+    "scopes": [
+      "ultimate-flame-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -911,7 +1151,9 @@
   {
     "id": 114,
     "name": "Ultimate Energy Strike base damage",
-    "scope": "ultimate-energy-strike",
+    "scopes": [
+      "ultimate-energy-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -919,7 +1161,9 @@
   {
     "id": 115,
     "name": "Ultimate Energy Strike critical hit damage",
-    "scope": "ultimate-energy-strike",
+    "scopes": [
+      "ultimate-energy-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -927,7 +1171,9 @@
   {
     "id": 116,
     "name": "Ultimate Energy Strike critical hit chance",
-    "scope": "ultimate-energy-strike",
+    "scopes": [
+      "ultimate-energy-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -935,7 +1181,9 @@
   {
     "id": 117,
     "name": "Death Strike base damage",
-    "scope": "death-strike",
+    "scopes": [
+      "death-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -943,7 +1191,9 @@
   {
     "id": 118,
     "name": "Death Strike critical hit damage",
-    "scope": "death-strike",
+    "scopes": [
+      "death-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -951,7 +1201,9 @@
   {
     "id": 119,
     "name": "Death Strike critical hit chance",
-    "scope": "death-strike",
+    "scopes": [
+      "death-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -959,7 +1211,9 @@
   {
     "id": 120,
     "name": "Energy Beam base damage",
-    "scope": "energy-beam",
+    "scopes": [
+      "energy-beam"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -967,7 +1221,9 @@
   {
     "id": 121,
     "name": "Energy Beam critical hit damage",
-    "scope": "energy-beam",
+    "scopes": [
+      "energy-beam"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -975,7 +1231,9 @@
   {
     "id": 122,
     "name": "Energy Beam critical hit chance",
-    "scope": "energy-beam",
+    "scopes": [
+      "energy-beam"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -983,7 +1241,9 @@
   {
     "id": 123,
     "name": "Lightning base damage",
-    "scope": "lightning",
+    "scopes": [
+      "lightning"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -991,7 +1251,9 @@
   {
     "id": 124,
     "name": "Lightning critical hit damage",
-    "scope": "lightning",
+    "scopes": [
+      "lightning"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -999,7 +1261,9 @@
   {
     "id": 125,
     "name": "Lightning critical hit chance",
-    "scope": "lightning",
+    "scopes": [
+      "lightning"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1007,7 +1271,9 @@
   {
     "id": 126,
     "name": "Terra Wave base damage",
-    "scope": "terra-wave",
+    "scopes": [
+      "terra-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1015,7 +1281,9 @@
   {
     "id": 127,
     "name": "Terra Wave critical hit damage",
-    "scope": "terra-wave",
+    "scopes": [
+      "terra-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1023,7 +1291,9 @@
   {
     "id": 128,
     "name": "Terra Wave critical hit chance",
-    "scope": "terra-wave",
+    "scopes": [
+      "terra-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1031,7 +1301,9 @@
   {
     "id": 129,
     "name": "Ice Burst base damage",
-    "scope": "ice-burst",
+    "scopes": [
+      "ice-burst"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1039,7 +1311,9 @@
   {
     "id": 130,
     "name": "Ice Burst critical hit damage",
-    "scope": "ice-burst",
+    "scopes": [
+      "ice-burst"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1047,7 +1321,9 @@
   {
     "id": 131,
     "name": "Ice Burst critical hit chance",
-    "scope": "ice-burst",
+    "scopes": [
+      "ice-burst"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1055,7 +1331,9 @@
   {
     "id": 132,
     "name": "Terra Burst base damage",
-    "scope": "terra-burst",
+    "scopes": [
+      "terra-burst"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1063,7 +1341,9 @@
   {
     "id": 133,
     "name": "Terra Burst critical hit damage",
-    "scope": "terra-burst",
+    "scopes": [
+      "terra-burst"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1071,7 +1351,9 @@
   {
     "id": 134,
     "name": "Terra Burst critical hit chance",
-    "scope": "terra-burst",
+    "scopes": [
+      "terra-burst"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1079,7 +1361,9 @@
   {
     "id": 135,
     "name": "Eternal Winter base damage",
-    "scope": "eternal-winter",
+    "scopes": [
+      "eternal-winter"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1087,7 +1371,9 @@
   {
     "id": 136,
     "name": "Eternal Winter critical hit damage",
-    "scope": "eternal-winter",
+    "scopes": [
+      "eternal-winter"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1095,7 +1381,9 @@
   {
     "id": 137,
     "name": "Eternal Winter critical hit chance",
-    "scope": "eternal-winter",
+    "scopes": [
+      "eternal-winter"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1103,7 +1391,9 @@
   {
     "id": 138,
     "name": "Wrath of Nature base damage",
-    "scope": "wrath-of-nature",
+    "scopes": [
+      "wrath-of-nature"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1111,7 +1401,9 @@
   {
     "id": 139,
     "name": "Wrath of Nature critical hit damage",
-    "scope": "wrath-of-nature",
+    "scopes": [
+      "wrath-of-nature"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1119,7 +1411,9 @@
   {
     "id": 140,
     "name": "Wrath of Nature critical hit chance",
-    "scope": "wrath-of-nature",
+    "scopes": [
+      "wrath-of-nature"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1127,7 +1421,9 @@
   {
     "id": 141,
     "name": "Strong Ice Wave base damage",
-    "scope": "strong-ice-wave",
+    "scopes": [
+      "strong-ice-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1135,7 +1431,9 @@
   {
     "id": 142,
     "name": "Strong Ice Wave critical hit damage",
-    "scope": "strong-ice-wave",
+    "scopes": [
+      "strong-ice-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1143,7 +1441,9 @@
   {
     "id": 143,
     "name": "Strong Ice Wave critical hit chance",
-    "scope": "strong-ice-wave",
+    "scopes": [
+      "strong-ice-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1151,7 +1451,9 @@
   {
     "id": 144,
     "name": "Strong Ice Strike base damage",
-    "scope": "strong-ice-strike",
+    "scopes": [
+      "strong-ice-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1159,7 +1461,9 @@
   {
     "id": 145,
     "name": "Strong Ice Strike critical hit damage",
-    "scope": "strong-ice-strike",
+    "scopes": [
+      "strong-ice-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1167,7 +1471,9 @@
   {
     "id": 146,
     "name": "Strong Ice Strike critical hit chance",
-    "scope": "strong-ice-strike",
+    "scopes": [
+      "strong-ice-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1175,7 +1481,9 @@
   {
     "id": 147,
     "name": "Strong Terra Strike base damage",
-    "scope": "strong-terra-strike",
+    "scopes": [
+      "strong-terra-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1183,7 +1491,9 @@
   {
     "id": 148,
     "name": "Strong Terra Strike critical hit damage",
-    "scope": "strong-terra-strike",
+    "scopes": [
+      "strong-terra-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1191,7 +1501,9 @@
   {
     "id": 149,
     "name": "Strong Terra Strike critical hit chance",
-    "scope": "strong-terra-strike",
+    "scopes": [
+      "strong-terra-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1199,7 +1511,9 @@
   {
     "id": 150,
     "name": "Ultimate Ice Strike base damage",
-    "scope": "ultimate-ice-strike",
+    "scopes": [
+      "ultimate-ice-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1207,7 +1521,9 @@
   {
     "id": 151,
     "name": "Ultimate Ice Strike critical hit damage",
-    "scope": "ultimate-ice-strike",
+    "scopes": [
+      "ultimate-ice-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1215,7 +1531,9 @@
   {
     "id": 152,
     "name": "Ultimate Ice Strike critical hit chance",
-    "scope": "ultimate-ice-strike",
+    "scopes": [
+      "ultimate-ice-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1223,7 +1541,9 @@
   {
     "id": 153,
     "name": "Ultimate Terra Strike base damage",
-    "scope": "ultimate-terra-strike",
+    "scopes": [
+      "ultimate-terra-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1231,7 +1551,9 @@
   {
     "id": 154,
     "name": "Ultimate Terra Strike critical hit damage",
-    "scope": "ultimate-terra-strike",
+    "scopes": [
+      "ultimate-terra-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1239,7 +1561,9 @@
   {
     "id": 155,
     "name": "Ultimate Terra Strike critical hit chance",
-    "scope": "ultimate-terra-strike",
+    "scopes": [
+      "ultimate-terra-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1247,7 +1571,9 @@
   {
     "id": 156,
     "name": "Physical Strike base damage",
-    "scope": "physical-strike",
+    "scopes": [
+      "physical-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1255,7 +1581,9 @@
   {
     "id": 157,
     "name": "Physical Strike critical hit damage",
-    "scope": "physical-strike",
+    "scopes": [
+      "physical-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1263,7 +1591,9 @@
   {
     "id": 158,
     "name": "Physical Strike critical hit chance",
-    "scope": "physical-strike",
+    "scopes": [
+      "physical-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1271,7 +1601,9 @@
   {
     "id": 159,
     "name": "Ice Wave base damage",
-    "scope": "ice-wave",
+    "scopes": [
+      "ice-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1279,7 +1611,9 @@
   {
     "id": 160,
     "name": "Ice Wave critical hit damage",
-    "scope": "ice-wave",
+    "scopes": [
+      "ice-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1287,7 +1621,9 @@
   {
     "id": 161,
     "name": "Ice Wave critical hit chance",
-    "scope": "ice-wave",
+    "scopes": [
+      "ice-wave"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1295,7 +1631,9 @@
   {
     "id": 162,
     "name": "Chained Penance base damage",
-    "scope": "chained-penance",
+    "scopes": [
+      "chained-penance"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1303,7 +1641,9 @@
   {
     "id": 163,
     "name": "Chained Penance critical hit damage",
-    "scope": "chained-penance",
+    "scopes": [
+      "chained-penance"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1311,7 +1651,9 @@
   {
     "id": 164,
     "name": "Chained Penance critical hit chance",
-    "scope": "chained-penance",
+    "scopes": [
+      "chained-penance"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1319,7 +1661,9 @@
   {
     "id": 165,
     "name": "Greater Flurry of Blows base damage",
-    "scope": "greater-flurry-of-blows",
+    "scopes": [
+      "greater-flurry-of-blows"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1327,7 +1671,9 @@
   {
     "id": 166,
     "name": "Greater Flurry of Blows critical hit damage",
-    "scope": "greater-flurry-of-blows",
+    "scopes": [
+      "greater-flurry-of-blows"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1335,7 +1681,9 @@
   {
     "id": 167,
     "name": "Greater Flurry of Blows critical hit chance",
-    "scope": "greater-flurry-of-blows",
+    "scopes": [
+      "greater-flurry-of-blows"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1343,7 +1691,9 @@
   {
     "id": 168,
     "name": "Flurry of Blows base damage",
-    "scope": "flurry-of-blows",
+    "scopes": [
+      "flurry-of-blows"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1351,7 +1701,9 @@
   {
     "id": 169,
     "name": "Flurry of Blows critical hit damage",
-    "scope": "flurry-of-blows",
+    "scopes": [
+      "flurry-of-blows"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1359,7 +1711,9 @@
   {
     "id": 170,
     "name": "Flurry of Blows critical hit chance",
-    "scope": "flurry-of-blows",
+    "scopes": [
+      "flurry-of-blows"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1367,7 +1721,9 @@
   {
     "id": 171,
     "name": "Sweeping Takedown base damage",
-    "scope": "sweeping-takedown",
+    "scopes": [
+      "sweeping-takedown"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1375,7 +1731,9 @@
   {
     "id": 172,
     "name": "Sweeping Takedown critical hit damage",
-    "scope": "sweeping-takedown",
+    "scopes": [
+      "sweeping-takedown"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1383,7 +1741,9 @@
   {
     "id": 173,
     "name": "Sweeping Takedown critical hit chance",
-    "scope": "sweeping-takedown",
+    "scopes": [
+      "sweeping-takedown"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1391,7 +1751,9 @@
   {
     "id": 174,
     "name": "Spiritual Outburst base damage",
-    "scope": "spiritual-outburst",
+    "scopes": [
+      "spiritual-outburst"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1399,7 +1761,9 @@
   {
     "id": 175,
     "name": "Spiritual Outburst critical hit damage",
-    "scope": "spiritual-outburst",
+    "scopes": [
+      "spiritual-outburst"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1407,7 +1771,9 @@
   {
     "id": 176,
     "name": "Spiritual Outburst critical hit chance",
-    "scope": "spiritual-outburst",
+    "scopes": [
+      "spiritual-outburst"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1415,7 +1781,9 @@
   {
     "id": 177,
     "name": "Mystic Repulse base damage",
-    "scope": "mystic-repulse",
+    "scopes": [
+      "mystic-repulse"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1423,7 +1791,9 @@
   {
     "id": 178,
     "name": "Mystic Repulse critical hit damage",
-    "scope": "mystic-repulse",
+    "scopes": [
+      "mystic-repulse"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1431,7 +1801,9 @@
   {
     "id": 179,
     "name": "Mystic Repulse critical hit chance",
-    "scope": "mystic-repulse",
+    "scopes": [
+      "mystic-repulse"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1439,7 +1811,9 @@
   {
     "id": 180,
     "name": "Forceful Uppercut base damage",
-    "scope": "forceful-uppercut",
+    "scopes": [
+      "forceful-uppercut"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1447,7 +1821,9 @@
   {
     "id": 181,
     "name": "Forceful Uppercut critical hit damage",
-    "scope": "forceful-uppercut",
+    "scopes": [
+      "forceful-uppercut"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1455,7 +1831,9 @@
   {
     "id": 182,
     "name": "Forceful Uppercut critical hit chance",
-    "scope": "forceful-uppercut",
+    "scopes": [
+      "forceful-uppercut"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1463,7 +1841,9 @@
   {
     "id": 183,
     "name": "Devastating Knockout base damage",
-    "scope": "devastating-knockout",
+    "scopes": [
+      "devastating-knockout"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1471,7 +1851,9 @@
   {
     "id": 184,
     "name": "Devastating Knockout critical hit damage",
-    "scope": "devastating-knockout",
+    "scopes": [
+      "devastating-knockout"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1479,7 +1861,9 @@
   {
     "id": 185,
     "name": "Devastating Knockout critical hit chance",
-    "scope": "devastating-knockout",
+    "scopes": [
+      "devastating-knockout"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1487,7 +1871,9 @@
   {
     "id": 186,
     "name": "Double Jab base damage",
-    "scope": "double-jab",
+    "scopes": [
+      "double-jab"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1495,7 +1881,9 @@
   {
     "id": 187,
     "name": "Double Jab critical hit damage",
-    "scope": "double-jab",
+    "scopes": [
+      "double-jab"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1503,7 +1891,9 @@
   {
     "id": 188,
     "name": "Double Jab critical hit chance",
-    "scope": "double-jab",
+    "scopes": [
+      "double-jab"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1511,7 +1901,9 @@
   {
     "id": 189,
     "name": "Greater Tiger Clash base damage",
-    "scope": "greater-tiger-clash",
+    "scopes": [
+      "greater-tiger-clash"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1519,7 +1911,9 @@
   {
     "id": 190,
     "name": "Greater Tiger Clash critical hit damage",
-    "scope": "greater-tiger-clash",
+    "scopes": [
+      "greater-tiger-clash"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1527,7 +1921,9 @@
   {
     "id": 191,
     "name": "Greater Tiger Clash critical hit chance",
-    "scope": "greater-tiger-clash",
+    "scopes": [
+      "greater-tiger-clash"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1535,7 +1931,9 @@
   {
     "id": 192,
     "name": "Flame Strike base damage",
-    "scope": "flame-strike",
+    "scopes": [
+      "flame-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1543,7 +1941,9 @@
   {
     "id": 193,
     "name": "Flame Strike critical hit damage",
-    "scope": "flame-strike",
+    "scopes": [
+      "flame-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1551,7 +1951,9 @@
   {
     "id": 194,
     "name": "Flame Strike critical hit chance",
-    "scope": "flame-strike",
+    "scopes": [
+      "flame-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1559,7 +1961,9 @@
   {
     "id": 195,
     "name": "Energy Strike base damage",
-    "scope": "energy-strike",
+    "scopes": [
+      "energy-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1567,7 +1971,9 @@
   {
     "id": 196,
     "name": "Energy Strike critical hit damage",
-    "scope": "energy-strike",
+    "scopes": [
+      "energy-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1575,7 +1981,9 @@
   {
     "id": 197,
     "name": "Energy Strike critical hit chance",
-    "scope": "energy-strike",
+    "scopes": [
+      "energy-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1583,7 +1991,9 @@
   {
     "id": 198,
     "name": "Ice Strike base damage",
-    "scope": "ice-strike",
+    "scopes": [
+      "ice-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1591,7 +2001,9 @@
   {
     "id": 199,
     "name": "Ice Strike critical hit damage",
-    "scope": "ice-strike",
+    "scopes": [
+      "ice-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1599,7 +2011,9 @@
   {
     "id": 200,
     "name": "Ice Strike critical hit chance",
-    "scope": "ice-strike",
+    "scopes": [
+      "ice-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1607,7 +2021,9 @@
   {
     "id": 201,
     "name": "Terra Strike base damage",
-    "scope": "terra-strike",
+    "scopes": [
+      "terra-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1615,7 +2031,9 @@
   {
     "id": 202,
     "name": "Terra Strike critical hit damage",
-    "scope": "terra-strike",
+    "scopes": [
+      "terra-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1623,7 +2041,9 @@
   {
     "id": 203,
     "name": "Terra Strike critical hit chance",
-    "scope": "terra-strike",
+    "scopes": [
+      "terra-strike"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1631,210 +2051,270 @@
   {
     "id": 211,
     "name": "Armor penetration",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "armor-penetration"
   },
   {
     "id": 212,
     "name": "Death pierce (regular)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "death-pierce-regular"
   },
   {
     "id": 213,
     "name": "Earth pierce (regular)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "earth-pierce-regular"
   },
   {
     "id": 214,
     "name": "Energy pierce (regular)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "energy-pierce-regular"
   },
   {
     "id": 215,
     "name": "Fire pierce (regular)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "fire-pierce-regular"
   },
   {
     "id": 216,
     "name": "Holy pierce (regular)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "holy-pierce-regular"
   },
   {
     "id": 217,
     "name": "Ice pierce (regular)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "ice-pierce-regular"
   },
   {
     "id": 218,
     "name": "Physical pierce (regular)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "physical-pierce-regular"
   },
   {
     "id": 219,
     "name": "Damage against Amphibic",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-amphibic"
   },
   {
     "id": 220,
     "name": "Damage against Aquatic",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-aquatic"
   },
   {
     "id": 221,
     "name": "Damage against Bird",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-bird"
   },
   {
     "id": 222,
     "name": "Damage against Construct",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-construct"
   },
   {
     "id": 223,
     "name": "Damage against Demon",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-demon"
   },
   {
     "id": 224,
     "name": "Damage against Dragon",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-dragon"
   },
   {
     "id": 225,
     "name": "Damage against Elemental",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-elemental"
   },
   {
     "id": 226,
     "name": "Damage against Extra Dimensional",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-extra-dimensional"
   },
   {
     "id": 227,
     "name": "Damage against Fey",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-fey"
   },
   {
     "id": 228,
     "name": "Damage against Giant",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-giant"
   },
   {
     "id": 229,
     "name": "Damage against Human",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-human"
   },
   {
     "id": 230,
     "name": "Damage against Humanoid",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-humanoid"
   },
   {
     "id": 231,
     "name": "Damage against Inkborn",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-inkborn"
   },
   {
     "id": 232,
     "name": "Damage against Lycanthrope",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-lycanthrope"
   },
   {
     "id": 233,
     "name": "Damage against Magical",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-magical"
   },
   {
     "id": 234,
     "name": "Damage against Mammal",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-mammal"
   },
   {
     "id": 235,
     "name": "Damage against Plant",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-plant"
   },
   {
     "id": 236,
     "name": "Damage against Reptile",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-reptile"
   },
   {
     "id": 237,
     "name": "Damage against Slime",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-slime"
   },
   {
     "id": 238,
     "name": "Damage against Undead",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-undead"
   },
   {
     "id": 239,
     "name": "Damage against Vermin",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "damage-vermin"
   },
   {
     "id": 240,
     "name": "Ascetic",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "revelation": "true",
     "bonusType": "base-harmony-bonus"
@@ -1842,21 +2322,27 @@
   {
     "id": 241,
     "name": "Alpha Strike",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "alpha-strike"
   },
   {
     "id": 242,
     "name": "Omega Strike",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "omega-strike"
   },
   {
     "id": 243,
     "name": "Ethereal Barrage base damage",
-    "scope": "ethereal-barrage",
+    "scopes": [
+      "ethereal-barrage"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1864,7 +2350,9 @@
   {
     "id": 244,
     "name": "Ethereal Barrage critical hit damage",
-    "scope": "ethereal-barrage",
+    "scopes": [
+      "ethereal-barrage"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1872,7 +2360,9 @@
   {
     "id": 245,
     "name": "Ethereal Barrage critical hit chance",
-    "scope": "ethereal-barrage",
+    "scopes": [
+      "ethereal-barrage"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1880,7 +2370,9 @@
   {
     "id": 246,
     "name": "Divine Barrage base damage",
-    "scope": "divine-barrage",
+    "scopes": [
+      "divine-barrage"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1888,7 +2380,9 @@
   {
     "id": 247,
     "name": "Divine Barrage critical hit damage",
-    "scope": "divine-barrage",
+    "scopes": [
+      "divine-barrage"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1896,7 +2390,9 @@
   {
     "id": 248,
     "name": "Divine Barrage critical hit chance",
-    "scope": "divine-barrage",
+    "scopes": [
+      "divine-barrage"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1904,7 +2400,9 @@
   {
     "id": 249,
     "name": "Combat Mastery",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "revelation": "true",
     "bonusType": "combat-mastery"
@@ -1912,7 +2410,9 @@
   {
     "id": 250,
     "name": "Death Echo base damage",
-    "scope": "death-echo",
+    "scopes": [
+      "death-echo"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1920,7 +2420,9 @@
   {
     "id": 251,
     "name": "Death Echo critical hit damage",
-    "scope": "death-echo",
+    "scopes": [
+      "death-echo"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1928,7 +2430,9 @@
   {
     "id": 252,
     "name": "Death Echo critical hit chance",
-    "scope": "death-echo",
+    "scopes": [
+      "death-echo"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1936,7 +2440,9 @@
   {
     "id": 253,
     "name": "Forked Glacier base damage",
-    "scope": "forked-glacier",
+    "scopes": [
+      "forked-glacier"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1944,7 +2450,9 @@
   {
     "id": 254,
     "name": "Forked Glacier critical hit damage",
-    "scope": "forked-glacier",
+    "scopes": [
+      "forked-glacier"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1952,7 +2460,9 @@
   {
     "id": 255,
     "name": "Forked Glacier critical hit chance",
-    "scope": "forked-glacier",
+    "scopes": [
+      "forked-glacier"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1960,7 +2470,9 @@
   {
     "id": 256,
     "name": "Forked Thorns base damage",
-    "scope": "forked-thorns",
+    "scopes": [
+      "forked-thorns"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1968,7 +2480,9 @@
   {
     "id": 257,
     "name": "Forked Thorns critical hit damage",
-    "scope": "forked-thorns",
+    "scopes": [
+      "forked-thorns"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -1976,7 +2490,9 @@
   {
     "id": 258,
     "name": "Forked Thorns critical hit chance",
-    "scope": "forked-thorns",
+    "scopes": [
+      "forked-thorns"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -1984,7 +2500,9 @@
   {
     "id": 259,
     "name": "Thousand Fist Blows base damage",
-    "scope": "thousand-fist-blows",
+    "scopes": [
+      "thousand-fist-blows"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -1992,7 +2510,9 @@
   {
     "id": 260,
     "name": "Thousand Fist Blows critical hit damage",
-    "scope": "thousand-fist-blows",
+    "scopes": [
+      "thousand-fist-blows"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -2000,7 +2520,9 @@
   {
     "id": 261,
     "name": "Thousand Fist Blows critical hit chance",
-    "scope": "thousand-fist-blows",
+    "scopes": [
+      "thousand-fist-blows"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -2008,7 +2530,11 @@
   {
     "id": 262,
     "name": "Master of Flames",
-    "scope": "fire",
+    "tag": "master-of-flames",
+    "scopes": [
+      "spell",
+      "fire"
+    ],
     "priority": 1,
     "bonusType": "base-damage",
     "visible": false
@@ -2016,7 +2542,11 @@
   {
     "id": 263,
     "name": "Master of Thunder",
-    "scope": "energy",
+    "tag": "master-of-thunder",
+    "scopes": [
+      "spell",
+      "energy"
+    ],
     "priority": 1,
     "bonusType": "crit-chance",
     "visible": false
@@ -2024,7 +2554,11 @@
   {
     "id": 264,
     "name": "Master of Decay",
-    "scope": "death",
+    "tag": "master-of-decay",
+    "scopes": [
+      "spell",
+      "death"
+    ],
     "priority": 1,
     "bonusType": "crit-damage",
     "visible": false
@@ -2032,7 +2566,9 @@
   {
     "id": 265,
     "name": "Lord of Destruction",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "revelation": true,
     "bonusType": "lord-of-destruction"
@@ -2040,7 +2576,9 @@
   {
     "id": 266,
     "name": "Shield Bash base damage",
-    "scope": "shield-bash",
+    "scopes": [
+      "shield-bash"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -2048,7 +2586,9 @@
   {
     "id": 267,
     "name": "Shield Bash critical hit damage",
-    "scope": "shield-bash",
+    "scopes": [
+      "shield-bash"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -2056,7 +2596,9 @@
   {
     "id": 268,
     "name": "Shield Bash critical hit chance",
-    "scope": "shield-bash",
+    "scopes": [
+      "shield-bash"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -2064,7 +2606,9 @@
   {
     "id": 269,
     "name": "Shield Slam base damage",
-    "scope": "shield-slam",
+    "scopes": [
+      "shield-slam"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "base-damage"
@@ -2072,7 +2616,9 @@
   {
     "id": 270,
     "name": "Shield Slam critical hit damage",
-    "scope": "shield-slam",
+    "scopes": [
+      "shield-slam"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-damage"
@@ -2080,7 +2626,9 @@
   {
     "id": 271,
     "name": "Shield Slam critical hit chance",
-    "scope": "shield-slam",
+    "scopes": [
+      "shield-slam"
+    ],
     "priority": 1,
     "spell": true,
     "bonusType": "crit-chance"
@@ -2088,126 +2636,162 @@
   {
     "id": 272,
     "name": "Charm upgrade",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "charm-upgrade"
   },
   {
     "id": 273,
     "name": "Focus mastery",
-    "scope": "spell",
+    "scopes": [
+      "spell"
+    ],
     "priority": 1,
     "bonusType": "focus-mastery"
   },
   {
     "id": 274,
     "name": "Death pierce (weapon)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "death-pierce-weapon"
   },
   {
     "id": 275,
     "name": "Earth pierce (weapon)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "earth-pierce-weapon"
   },
   {
     "id": 276,
     "name": "Energy pierce (weapon)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "energy-pierce-weapon"
   },
   {
     "id": 277,
     "name": "Fire pierce (weapon)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "fire-pierce-weapon"
   },
   {
     "id": 278,
     "name": "Holy pierce (weapon)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "holy-pierce-weapon"
   },
   {
     "id": 279,
     "name": "Ice pierce (weapon)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "ice-pierce-weapon"
   },
   {
     "id": 280,
     "name": "Physical pierce (weapon)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "physical-pierce-weapon"
   },
   {
     "id": 281,
     "name": "Homing missile (death)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "homing-missile-death"
   },
   {
     "id": 282,
     "name": "Homing missile (earth)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "homing-missile-earth"
   },
   {
     "id": 283,
     "name": "Homing missile (energy)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "homing-missile-energy"
   },
   {
     "id": 284,
     "name": "Homing missile (fire)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "homing-missile-fire"
   },
   {
     "id": 285,
     "name": "Homing missile (holy)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "homing-missile-holy"
   },
   {
     "id": 286,
     "name": "Homing missile (ice)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "homing-missile-ice"
   },
   {
     "id": 287,
     "name": "Homing missile (physical)",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "homing-missile-physical"
   },
   {
     "id": 288,
     "name": "Hit chance",
-    "scope": "melee",
+    "scopes": [
+      "melee"
+    ],
     "priority": 1,
     "bonusType": "hit-chance"
   },
   {
     "id": 289,
     "name": "Defense modifier",
-    "scope": "character",
+    "scopes": [
+      "character"
+    ],
     "priority": 1,
     "bonusType": "def-mod"
   }

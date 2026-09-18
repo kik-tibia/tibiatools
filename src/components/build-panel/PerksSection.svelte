@@ -47,7 +47,7 @@
     allPerks.filter((p) => {
       if (!p.visible) return false;
       if (p.spell) {
-        const spell = allSpells.find((s) => s.scope == p.scope);
+        const spell = allSpells.find((s) => p.scopes.includes(s.scope));
         return (
           spell?.vocations.includes(buildA.stats.vocation) ||
           (showSecondBuild && spell?.vocations.includes(buildB.stats.vocation))

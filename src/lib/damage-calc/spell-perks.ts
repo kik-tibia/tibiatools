@@ -25,20 +25,26 @@ export function stancePerks(stances: Stance[], currentPerks: PerkChoice[]): Perk
   if (stances.some((s) => s.effect == "master-of-flames")) {
     const lodBonuses = [0, 2, 3, 4];
     const value = 4 + (lodBonuses[lodPerkStage] ?? 0);
-    pushPerk(value, (p) => p.scope == "fire" && p.bonusType == "base-damage");
+    pushPerk(value, (p) => p.tag == "master-of-flames");
   }
   if (stances.some((s) => s.effect == "master-of-thunder")) {
     const lodBonuses = [0, 2, 3, 4];
     const value = 4 + (lodBonuses[lodPerkStage] ?? 0);
-    pushPerk(value, (p) => p.scope == "energy" && p.bonusType == "crit-chance");
+    pushPerk(value, (p) => p.tag == "master-of-thunder");
   }
   if (stances.some((s) => s.effect == "master-of-decay")) {
     const lodBonuses = [0, 15, 22.5, 30];
     const value = 30 + (lodBonuses[lodPerkStage] ?? 0);
-    pushPerk(value, (p) => p.scope == "death" && p.bonusType == "crit-damage");
+    pushPerk(value, (p) => p.tag == "master-of-decay");
   }
 
   return extraPerks;
+}
+
+export function perkAppliesToSpell(perk: Perk, spell: Spell): boolean {
+  return perk.scopes.every(
+    (scope) => scope == spell.scope || scope == spell.spellType || scope == spell.element || scope == spell.scalesWith,
+  );
 }
 
 export function applyPerkToSpell(
@@ -50,12 +56,7 @@ export function applyPerkToSpell(
 ): SpellState {
   const { basePower: P, flat: F, magicLevel: ML, weaponAttack: W } = state;
 
-  if (
-    perkChoice.perk.scope === spell.scope ||
-    perkChoice.perk.scope === spell.spellType ||
-    perkChoice.perk.scope === spell.element ||
-    perkChoice.perk.scope === spell.scalesWith
-  ) {
+  if (perkAppliesToSpell(perkChoice.perk, spell)) {
     switch (perkChoice.perk.bonusType) {
       case "base-damage":
         return { ...state, basePower: P * (1 + perkChoice.value / 100) };
