@@ -11,9 +11,9 @@
  */
 
 import { JSDOM } from "jsdom";
-import { mkdirSync, writeFileSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { writeJson } from "./write-json.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -65,12 +65,11 @@ async function fetchWeaponJson(page) {
 
 async function main() {
   const outDir = join(__dirname, "scraped");
-  mkdirSync(outDir, { recursive: true });
 
   for (const [name, page] of Object.entries(PAGES)) {
     const weapons = await fetchWeaponJson(page);
     const outPath = join(outDir, `${name}.json`);
-    writeFileSync(outPath, JSON.stringify(weapons, null, 2) + "\n");
+    await writeJson(outPath, weapons);
     console.error(`Wrote ${outPath}`);
   }
 }

@@ -2,7 +2,7 @@
 
 /**
  * Merges bestiary.json, additional-creatures.json and bestiary-ids.json into
- * src/data/creatures.json.
+ * scripts/processed/creatures.json.
  *
  * additional-creatures.json holds creatures that are missing from the scraped
  * bestiary.json (e.g. bosses without a bestiary entry) and are maintained by
@@ -13,9 +13,10 @@
  *   node merge-bestiary.js
  */
 
-import { readFileSync, writeFileSync } from "fs";
+import { readFileSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { writeJson } from "./write-json.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -44,6 +45,6 @@ const creatures = merged.map((creature) => {
 	return { id, ...creature };
 });
 
-const outPath = join(__dirname, "..", "src", "data", "creatures.json");
-writeFileSync(outPath, JSON.stringify(creatures, null, "\t") + "\n");
-console.error(`Wrote ${creatures.length} creatures to src/data/creatures.json`);
+const outPath = join(__dirname, "processed", "creatures.json");
+await writeJson(outPath, creatures);
+console.error(`Wrote ${creatures.length} creatures to ${outPath}`);

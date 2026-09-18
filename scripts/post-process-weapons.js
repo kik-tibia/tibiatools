@@ -2,7 +2,7 @@
 
 /**
  * Post-processes scraped weapon JSON files from scripts/scraped/
- * and combines them into scripts/weapons.json.
+ * and combines them into scripts/processed/weapons.json.
  *
  * Stable integer ids are assigned by name from scripts/weapons-ids.json.
  * New weapons must be added there (otherwise their id is left undefined).
@@ -11,13 +11,14 @@
  *   node post-process-weapons.js
  */
 
-import { readFileSync, readdirSync, writeFileSync } from "fs";
+import { readFileSync, readdirSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { writeJson } from "./write-json.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const scrapedDir = join(__dirname, "scraped");
-const outPath = join(__dirname, "weapons.json");
+const outPath = join(__dirname, "processed", "weapons.json");
 const idsPath = join(__dirname, "weapons-ids.json");
 
 const ALL_VOCATIONS = ["druid", "knight", "monk", "paladin", "sorcerer"];
@@ -175,7 +176,7 @@ function processWeapon(weapon, skill, ammo, idsByName) {
   };
 }
 
-function main() {
+async function main() {
   const files = readdirSync(scrapedDir).filter((f) => f.endsWith(".json"));
 
   if (files.length === 0) {
@@ -220,8 +221,11 @@ function main() {
     allWeapons = allWeapons.concat(processed);
   }
 
-  writeFileSync(outPath, JSON.stringify(allWeapons, null, 2) + "\n");
+  await writeJson(outPath, allWeapons);
   console.error(`Wrote ${allWeapons.length} weapons to ${outPath}`);
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
