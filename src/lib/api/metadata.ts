@@ -10,7 +10,7 @@ import {
   capitalize,
   perkValueDescription,
   perkValueType,
-  vocationCanCastScope,
+  vocationCanUsePerk,
   vocations,
 } from "./registry";
 
@@ -88,7 +88,8 @@ const definitions: Record<MetaResourceName, ResourceDefinition> = {
     build: () => allShields.map((s) => compact({ id: s.id, name: s.name, defense: s.defense })),
   },
   perks: {
-    description: "The valueType says what type to send.",
+    description:
+      "The valueType says what type to send. A perk only applies to a spell matching every one of its scopes.",
     build: () =>
       allPerks
         .filter((p) => p.visible)
@@ -96,14 +97,14 @@ const definitions: Record<MetaResourceName, ResourceDefinition> = {
           compact({
             id: p.id,
             name: p.name,
-            scope: p.scope,
+            scopes: p.scopes,
             bonusType: p.bonusType,
             valueType: perkValueType(p),
             valueDescription: perkValueDescription(p),
             appliesToSpell: p.spell,
             revelation: p.revelation,
             selectable: p.visible,
-            vocations: p.spell ? vocations.filter((v) => vocationCanCastScope(p.scope, v)) : [...vocations],
+            vocations: p.spell ? vocations.filter((v) => vocationCanUsePerk(p, v)) : [...vocations],
           }),
         ),
   },

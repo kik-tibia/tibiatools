@@ -40,6 +40,14 @@ const FILE_TO_AMMO = {
 };
 
 /**
+ * Wiki page titles that carry a disambiguation suffix because another page
+ * (usually a creature) shares the name. Keyed by scraped name.
+ */
+const NAME_OVERRIDES = {
+  "Souleater (Axe)": "Souleater",
+};
+
+/**
  * Map of known vocation strings to their canonical singular forms.
  */
 const VOCATION_MAP = {
@@ -93,6 +101,10 @@ function parseVocations(raw) {
 
 function processWeapon(weapon, skill, ammo, idsByName) {
   const { vocation, hit_mod, ...rest } = weapon;
+
+  if (rest.name in NAME_OVERRIDES) {
+    rest.name = NAME_OVERRIDES[rest.name];
+  }
 
   // Remove fields with empty string values
   for (const key of Object.keys(rest)) {
@@ -157,9 +169,9 @@ function processWeapon(weapon, skill, ammo, idsByName) {
     }
   }
 
-  const id = idsByName.get(weapon.name);
+  const id = idsByName.get(name);
   if (id == null) {
-    console.error(`Warning: no id found for "${weapon.name}" (add it to weapons-ids.json)`);
+    console.error(`Warning: no id found for "${name}" (add it to weapons-ids.json)`);
   }
 
   const hasAttack = !("damageRange" in weapon);
