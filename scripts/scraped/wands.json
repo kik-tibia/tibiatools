@@ -1,144 +1,699 @@
 [
-  { "name": "Amber Rod", "damageType": "ice", "damageRange": "106", "vocation": "druids" },
-  { "name": "Amber Wand", "damageType": "energy", "damageRange": "", "vocation": "sorcerers" },
-  { "name": "Cobra Rod", "damageType": "Earth", "damageRange": "70-110", "vocation": "druids" },
-  { "name": "Cobra Wand", "damageType": "Energy", "damageRange": "97 (94-100)", "vocation": "sorcerers" },
-  { "name": "Crypt Bile", "damageType": "Physical", "damageRange": "110 (85-135)", "vocation": "sorcerers" },
-  { "name": "Crypt Jaw", "damageType": "Physical", "damageRange": "110 (85-135)", "vocation": "druids" },
+  {
+    "name": "Amber Rod",
+    "damageType": "ice",
+    "damageRange": "106",
+    "vocation": "druids"
+  },
+  {
+    "name": "Amber Wand",
+    "damageType": "energy",
+    "damageRange": "",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Cobra Rod",
+    "damageType": "Earth",
+    "damageRange": "70-110",
+    "vocation": "druids"
+  },
+  {
+    "name": "Cobra Wand",
+    "damageType": "Energy",
+    "damageRange": "97 (94-100)",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Crypt Bile",
+    "damageType": "Physical",
+    "damageRange": "110 (85-135)",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Crypt Jaw",
+    "damageType": "Physical",
+    "damageRange": "110 (85-135)",
+    "vocation": "druids"
+  },
   {
     "name": "Deepling Ceremonial Dagger",
     "damageType": "Ice",
     "damageRange": "92 (86-98)",
     "vocation": "sorcerers and druids"
   },
-  { "name": "Deepling Fork", "damageType": "Ice", "damageRange": "100 (80-120)", "vocation": "sorcerers and druids" },
-  { "name": "Draining Inferniarch Rod", "damageType": "Earth", "damageRange": "102", "vocation": "druids" },
-  { "name": "Draining Inferniarch Wand", "damageType": "Death", "damageRange": "100-120", "vocation": "sorcerers" },
+  {
+    "name": "Deepling Fork",
+    "damageType": "Ice",
+    "damageRange": "100 (80-120)",
+    "vocation": "sorcerers and druids"
+  },
+  {
+    "name": "Draining Inferniarch Rod",
+    "damageType": "Earth",
+    "damageRange": "102",
+    "vocation": "druids"
+  },
+  {
+    "name": "Draining Inferniarch Wand",
+    "damageType": "Death",
+    "damageRange": "100-120",
+    "vocation": "sorcerers"
+  },
   {
     "name": "Dream Blossom Staff",
     "damageType": "Energy",
     "damageRange": "70 (63-77)",
     "vocation": "sorcerers and druids"
   },
-  { "name": "Eldritch Rod", "damageType": "Ice", "damageRange": "85-105", "vocation": "druids" },
-  { "name": "Eldritch Wand", "damageType": "Fire", "damageRange": "95 (85-105)", "vocation": "sorcerers" },
-  { "name": "Energized Limb", "damageType": "Fire", "damageRange": "98 (88-108)", "vocation": "sorcerers and druids" },
-  { "name": "Falcon Rod", "damageType": "Earth", "damageRange": "87-101", "vocation": "druids" },
-  { "name": "Falcon Wand", "damageType": "Energy", "damageRange": "86-102", "vocation": "sorcerers" },
-  { "name": "Ferumbras' Staff (Enchanted)", "damageType": "Energy", "damageRange": "80-110", "vocation": "sorcerer" },
-  { "name": "Ferumbras' Staff (Failed)", "damageType": "Energy", "damageRange": "65-95", "vocation": "sorcerer" },
-  { "name": "Gilded Eldritch Rod", "damageType": "Ice", "damageRange": "85-105", "vocation": "druids" },
-  { "name": "Gilded Eldritch Wand", "damageType": "Fire", "damageRange": "85-105", "vocation": "sorcerers" },
-  { "name": "Glacial Rod", "damageType": "Ice", "damageRange": "75-95", "vocation": "druids" },
-  { "name": "Grand Sanguine Coil", "damageType": "Fire", "damageRange": "103-125", "vocation": "sorcerers" },
-  { "name": "Grand Sanguine Rod", "damageType": "earth", "damageRange": "100-124", "vocation": "druids" },
-  { "name": "Hailstorm Rod", "damageType": "Ice", "damageRange": "56-74", "vocation": "druids" },
-  { "name": "Inferniarch Rod", "damageType": "Earth", "damageRange": "102", "vocation": "druids" },
-  { "name": "Inferniarch Wand", "damageType": "Death", "damageRange": "107 (98-116)", "vocation": "sorcerers" },
-  { "name": "Jungle Rod", "damageType": "Ice", "damageRange": "80-100", "vocation": "druids" },
-  { "name": "Jungle Wand", "damageType": "Earth", "damageRange": "80-100", "vocation": "sorcerers" },
-  { "name": "Lion Rod", "damageType": "Ice", "damageRange": "85-105", "vocation": "druids" },
-  { "name": "Lion Wand", "damageType": "Ice", "damageRange": "89-109", "vocation": "sorcerers" },
-  { "name": "Moonlight Rod", "damageType": "Ice", "damageRange": "13-25", "vocation": "druids" },
-  { "name": "Moonsilver Channeler", "damageType": "Death", "damageRange": "103-133", "vocation": "sorcerers" },
-  { "name": "Moonsilver Sceptre", "damageType": "Ice", "damageRange": "103-127", "vocation": "druids" },
-  { "name": "Muck Rod", "damageType": "Earth", "damageRange": "75-95", "vocation": "druids" },
-  { "name": "Naga Rod", "damageType": "Ice", "damageRange": "90-110", "vocation": "druids" },
-  { "name": "Naga Wand", "damageType": "Energy", "damageRange": "90-120", "vocation": "sorcerers" },
-  { "name": "Necrotic Rod", "damageType": "Death", "damageRange": "23-37", "vocation": "druids" },
-  { "name": "Northwind Rod", "damageType": "Ice", "damageRange": "23-37", "vocation": "druids" },
-  { "name": "Ogre Scepta", "damageType": "Earth", "damageRange": "56-74", "vocation": "druids" },
-  { "name": "Ornate Carving Rod", "damageType": "Ice", "damageRange": "0-10", "vocation": "" },
-  { "name": "Ornate Carving Wand", "damageType": "Energy", "damageRange": "0-10", "vocation": "" },
-  { "name": "Ornate Mayhem Rod", "damageType": "Ice", "damageRange": "0-10", "vocation": "" },
-  { "name": "Ornate Mayhem Wand", "damageType": "Energy", "damageRange": "0-10", "vocation": "" },
-  { "name": "Ornate Remedy Rod", "damageType": "Ice", "damageRange": "0-10", "vocation": "" },
-  { "name": "Ornate Remedy Wand", "damageType": "Energy", "damageRange": "0-10", "vocation": "" },
-  { "name": "Plain Carving Rod", "damageType": "Ice", "damageRange": "0-10", "vocation": "" },
-  { "name": "Plain Carving Wand", "damageType": "Energy", "damageRange": "0-10", "vocation": "" },
-  { "name": "Plain Mayhem Rod", "damageType": "Ice", "damageRange": "0-10", "vocation": "" },
-  { "name": "Plain Mayhem Wand", "damageType": "Energy", "damageRange": "0-10", "vocation": "" },
-  { "name": "Plain Remedy Rod", "damageType": "Ice", "damageRange": "0-10", "vocation": "" },
-  { "name": "Plain Remedy Wand", "damageType": "Energy", "damageRange": "0-10", "vocation": "" },
-  { "name": "Rending Inferniarch Rod", "damageType": "Earth", "damageRange": "102", "vocation": "druids" },
-  { "name": "Rending Inferniarch Wand", "damageType": "Death", "damageRange": "100-120", "vocation": "sorcerers" },
-  { "name": "Rod of Carving", "damageType": "Ice", "damageRange": "70-105", "vocation": "druids" },
-  { "name": "Rod of Carving (Charged)", "damageType": "Ice", "damageRange": "70-105", "vocation": "druids" },
-  { "name": "Rod of Carving (Heavily Charged)", "damageType": "Ice", "damageRange": "70-105", "vocation": "druids" },
-  { "name": "Rod of Carving (Overcharged)", "damageType": "Ice", "damageRange": "70-105", "vocation": "druids" },
-  { "name": "Rod of Destruction", "damageType": "Ice", "damageRange": "80-110", "vocation": "druids" },
-  { "name": "Rod of Mayhem", "damageType": "Ice", "damageRange": "70-105", "vocation": "druids" },
-  { "name": "Rod of Mayhem (Charged)", "damageType": "Ice", "damageRange": "70-105", "vocation": "druids" },
-  { "name": "Rod of Mayhem (Heavily Charged)", "damageType": "Ice", "damageRange": "70-105", "vocation": "druids" },
-  { "name": "Rod of Mayhem (Overcharged)", "damageType": "Ice", "damageRange": "85-120", "vocation": "druids" },
-  { "name": "Rod of Remedy", "damageType": "Ice", "damageRange": "70-105", "vocation": "druids" },
-  { "name": "Rod of Remedy (Charged)", "damageType": "Ice", "damageRange": "70-105", "vocation": "druids" },
-  { "name": "Rod of Remedy (Heavily Charged)", "damageType": "Ice", "damageRange": "70-105", "vocation": "druids" },
-  { "name": "Rod of Remedy (Overcharged)", "damageType": "Ice", "damageRange": "70-105", "vocation": "druids" },
-  { "name": "Sanguine Coil", "damageType": "fire", "damageRange": "113-125", "vocation": "sorcerers" },
-  { "name": "Sanguine Rod", "damageType": "earth", "damageRange": "100-124", "vocation": "druids" },
-  { "name": "Shimmer Rod", "damageType": "Ice", "damageRange": "56-74", "vocation": "druids" },
-  { "name": "Shimmer Wand", "damageType": "Energy", "damageRange": "56-74", "vocation": "sorcerers" },
-  { "name": "Siphoning Inferniarch Rod", "damageType": "Earth", "damageRange": "102", "vocation": "druids" },
-  { "name": "Siphoning Inferniarch Wand", "damageType": "Death", "damageRange": "100-120", "vocation": "sorcerers" },
-  { "name": "Snakebite Rod", "damageType": "Earth", "damageRange": "8-18", "vocation": "druids" },
-  { "name": "Sorcerer Test Weapon Test", "damageType": "", "damageRange": "", "vocation": "" },
-  { "name": "Sorcerer and Druid Staff", "damageType": "Energy", "damageRange": "8-18", "vocation": "without" },
-  { "name": "Soulhexer", "damageType": "Ice", "damageRange": "98-118", "vocation": "druids" },
-  { "name": "Soultainter", "damageType": "Death", "damageRange": "100-120", "vocation": "sorcerers" },
-  { "name": "Springsprout Rod", "damageType": "Earth", "damageRange": "56-74", "vocation": "druids" },
-  { "name": "Stellar Moonsilver Channeler", "damageType": "Death", "damageRange": "6", "vocation": "sorcerers" },
-  { "name": "Stellar Moonsilver Sceptre", "damageType": "Ice", "damageRange": "6", "vocation": "druids" },
-  { "name": "Terra Rod", "damageType": "Earth", "damageRange": "37-53", "vocation": "druids" },
-  { "name": "The Chiller", "damageType": "Ice", "damageRange": "6-10", "vocation": "druids" },
-  { "name": "The Scorcher", "damageType": "Fire", "damageRange": "6-10", "vocation": "sorcerers" },
-  { "name": "Underworld Rod", "damageType": "Death", "damageRange": "56-74", "vocation": "druids" },
-  { "name": "Valuable Carving Rod", "damageType": "Ice", "damageRange": "0-10", "vocation": "" },
-  { "name": "Valuable Carving Wand", "damageType": "Energy", "damageRange": "0-10", "vocation": "" },
-  { "name": "Valuable Mayhem Rod", "damageType": "Ice", "damageRange": "0-10", "vocation": "" },
-  { "name": "Valuable Mayhem Wand", "damageType": "Energy", "damageRange": "0-10", "vocation": "" },
-  { "name": "Valuable Remedy Rod", "damageType": "Ice", "damageRange": "0-10", "vocation": "" },
-  { "name": "Valuable Remedy Wand", "damageType": "Energy", "damageRange": "0-10", "vocation": "" },
-  { "name": "Wand of Carving", "damageType": "Energy", "damageRange": "70-105", "vocation": "sorcerers" },
-  { "name": "Wand of Carving (Charged)", "damageType": "Energy", "damageRange": "70-105", "vocation": "sorcerers" },
+  {
+    "name": "Eldritch Rod",
+    "damageType": "Ice",
+    "damageRange": "85-105",
+    "vocation": "druids"
+  },
+  {
+    "name": "Eldritch Wand",
+    "damageType": "Fire",
+    "damageRange": "95 (85-105)",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Energized Limb",
+    "damageType": "Fire",
+    "damageRange": "98 (88-108)",
+    "vocation": "sorcerers and druids"
+  },
+  {
+    "name": "Falcon Rod",
+    "damageType": "Earth",
+    "damageRange": "87-101",
+    "vocation": "druids"
+  },
+  {
+    "name": "Falcon Wand",
+    "damageType": "Energy",
+    "damageRange": "86-102",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Ferumbras' Staff (Enchanted)",
+    "damageType": "Energy",
+    "damageRange": "80-110",
+    "vocation": "sorcerer"
+  },
+  {
+    "name": "Ferumbras' Staff (Failed)",
+    "damageType": "Energy",
+    "damageRange": "65-95",
+    "vocation": "sorcerer"
+  },
+  {
+    "name": "Gilded Eldritch Rod",
+    "damageType": "Ice",
+    "damageRange": "85-105",
+    "vocation": "druids"
+  },
+  {
+    "name": "Gilded Eldritch Wand",
+    "damageType": "Fire",
+    "damageRange": "85-105",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Glacial Rod",
+    "damageType": "Ice",
+    "damageRange": "75-95",
+    "vocation": "druids"
+  },
+  {
+    "name": "Grand Sanguine Coil",
+    "damageType": "Fire",
+    "damageRange": "103-125",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Grand Sanguine Rod",
+    "damageType": "earth",
+    "damageRange": "100-124",
+    "vocation": "druids"
+  },
+  {
+    "name": "Hailstorm Rod",
+    "damageType": "Ice",
+    "damageRange": "56-74",
+    "vocation": "druids"
+  },
+  {
+    "name": "Inferniarch Rod",
+    "damageType": "Earth",
+    "damageRange": "102",
+    "vocation": "druids"
+  },
+  {
+    "name": "Inferniarch Wand",
+    "damageType": "Death",
+    "damageRange": "107 (98-116)",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Jungle Rod",
+    "damageType": "Ice",
+    "damageRange": "80-100",
+    "vocation": "druids"
+  },
+  {
+    "name": "Jungle Wand",
+    "damageType": "Earth",
+    "damageRange": "80-100",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Lion Rod",
+    "damageType": "Ice",
+    "damageRange": "85-105",
+    "vocation": "druids"
+  },
+  {
+    "name": "Lion Wand",
+    "damageType": "Ice",
+    "damageRange": "89-109",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Moonlight Rod",
+    "damageType": "Ice",
+    "damageRange": "13-25",
+    "vocation": "druids"
+  },
+  {
+    "name": "Moonsilver Channeler",
+    "damageType": "Death",
+    "damageRange": "103-133",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Moonsilver Sceptre",
+    "damageType": "Ice",
+    "damageRange": "103-127",
+    "vocation": "druids"
+  },
+  {
+    "name": "Muck Rod",
+    "damageType": "Earth",
+    "damageRange": "75-95",
+    "vocation": "druids"
+  },
+  {
+    "name": "Naga Rod",
+    "damageType": "Ice",
+    "damageRange": "90-110",
+    "vocation": "druids"
+  },
+  {
+    "name": "Naga Wand",
+    "damageType": "Energy",
+    "damageRange": "90-120",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Necrotic Rod",
+    "damageType": "Death",
+    "damageRange": "23-37",
+    "vocation": "druids"
+  },
+  {
+    "name": "Northwind Rod",
+    "damageType": "Ice",
+    "damageRange": "23-37",
+    "vocation": "druids"
+  },
+  {
+    "name": "Ogre Scepta",
+    "damageType": "Earth",
+    "damageRange": "56-74",
+    "vocation": "druids"
+  },
+  {
+    "name": "Ornate Carving Rod",
+    "damageType": "Ice",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Ornate Carving Wand",
+    "damageType": "Energy",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Ornate Mayhem Rod",
+    "damageType": "Ice",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Ornate Mayhem Wand",
+    "damageType": "Energy",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Ornate Remedy Rod",
+    "damageType": "Ice",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Ornate Remedy Wand",
+    "damageType": "Energy",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Plain Carving Rod",
+    "damageType": "Ice",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Plain Carving Wand",
+    "damageType": "Energy",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Plain Mayhem Rod",
+    "damageType": "Ice",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Plain Mayhem Wand",
+    "damageType": "Energy",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Plain Remedy Rod",
+    "damageType": "Ice",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Plain Remedy Wand",
+    "damageType": "Energy",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Rending Inferniarch Rod",
+    "damageType": "Earth",
+    "damageRange": "102",
+    "vocation": "druids"
+  },
+  {
+    "name": "Rending Inferniarch Wand",
+    "damageType": "Death",
+    "damageRange": "100-120",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Rod of Carving",
+    "damageType": "Ice",
+    "damageRange": "70-105",
+    "vocation": "druids"
+  },
+  {
+    "name": "Rod of Carving (Charged)",
+    "damageType": "Ice",
+    "damageRange": "70-105",
+    "vocation": "druids"
+  },
+  {
+    "name": "Rod of Carving (Heavily Charged)",
+    "damageType": "Ice",
+    "damageRange": "70-105",
+    "vocation": "druids"
+  },
+  {
+    "name": "Rod of Carving (Overcharged)",
+    "damageType": "Ice",
+    "damageRange": "70-105",
+    "vocation": "druids"
+  },
+  {
+    "name": "Rod of Destruction",
+    "damageType": "Ice",
+    "damageRange": "80-110",
+    "vocation": "druids"
+  },
+  {
+    "name": "Rod of Mayhem",
+    "damageType": "Ice",
+    "damageRange": "70-105",
+    "vocation": "druids"
+  },
+  {
+    "name": "Rod of Mayhem (Charged)",
+    "damageType": "Ice",
+    "damageRange": "70-105",
+    "vocation": "druids"
+  },
+  {
+    "name": "Rod of Mayhem (Heavily Charged)",
+    "damageType": "Ice",
+    "damageRange": "70-105",
+    "vocation": "druids"
+  },
+  {
+    "name": "Rod of Mayhem (Overcharged)",
+    "damageType": "Ice",
+    "damageRange": "85-120",
+    "vocation": "druids"
+  },
+  {
+    "name": "Rod of Remedy",
+    "damageType": "Ice",
+    "damageRange": "70-105",
+    "vocation": "druids"
+  },
+  {
+    "name": "Rod of Remedy (Charged)",
+    "damageType": "Ice",
+    "damageRange": "70-105",
+    "vocation": "druids"
+  },
+  {
+    "name": "Rod of Remedy (Heavily Charged)",
+    "damageType": "Ice",
+    "damageRange": "70-105",
+    "vocation": "druids"
+  },
+  {
+    "name": "Rod of Remedy (Overcharged)",
+    "damageType": "Ice",
+    "damageRange": "70-105",
+    "vocation": "druids"
+  },
+  {
+    "name": "Sanguine Coil",
+    "damageType": "fire",
+    "damageRange": "113-125",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Sanguine Rod",
+    "damageType": "earth",
+    "damageRange": "100-124",
+    "vocation": "druids"
+  },
+  {
+    "name": "Shimmer Rod",
+    "damageType": "Ice",
+    "damageRange": "56-74",
+    "vocation": "druids"
+  },
+  {
+    "name": "Shimmer Wand",
+    "damageType": "Energy",
+    "damageRange": "56-74",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Siphoning Inferniarch Rod",
+    "damageType": "Earth",
+    "damageRange": "102",
+    "vocation": "druids"
+  },
+  {
+    "name": "Siphoning Inferniarch Wand",
+    "damageType": "Death",
+    "damageRange": "100-120",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Snakebite Rod",
+    "damageType": "Earth",
+    "damageRange": "8-18",
+    "vocation": "druids"
+  },
+  {
+    "name": "Sorcerer Test Weapon Test",
+    "damageType": "",
+    "damageRange": "",
+    "vocation": ""
+  },
+  {
+    "name": "Sorcerer and Druid Staff",
+    "damageType": "Energy",
+    "damageRange": "8-18",
+    "vocation": "without"
+  },
+  {
+    "name": "Soulhexer",
+    "damageType": "Ice",
+    "damageRange": "98-118",
+    "vocation": "druids"
+  },
+  {
+    "name": "Soultainter",
+    "damageType": "Death",
+    "damageRange": "100-120",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Springsprout Rod",
+    "damageType": "Earth",
+    "damageRange": "56-74",
+    "vocation": "druids"
+  },
+  {
+    "name": "Stellar Moonsilver Channeler",
+    "damageType": "Death",
+    "damageRange": "6",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Stellar Moonsilver Sceptre",
+    "damageType": "Ice",
+    "damageRange": "6",
+    "vocation": "druids"
+  },
+  {
+    "name": "Terra Rod",
+    "damageType": "Earth",
+    "damageRange": "37-53",
+    "vocation": "druids"
+  },
+  {
+    "name": "The Chiller",
+    "damageType": "Ice",
+    "damageRange": "6-10",
+    "vocation": "druids"
+  },
+  {
+    "name": "The Scorcher",
+    "damageType": "Fire",
+    "damageRange": "6-10",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Underworld Rod",
+    "damageType": "Death",
+    "damageRange": "56-74",
+    "vocation": "druids"
+  },
+  {
+    "name": "Valuable Carving Rod",
+    "damageType": "Ice",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Valuable Carving Wand",
+    "damageType": "Energy",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Valuable Mayhem Rod",
+    "damageType": "Ice",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Valuable Mayhem Wand",
+    "damageType": "Energy",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Valuable Remedy Rod",
+    "damageType": "Ice",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Valuable Remedy Wand",
+    "damageType": "Energy",
+    "damageRange": "0-10",
+    "vocation": ""
+  },
+  {
+    "name": "Wand of Carving",
+    "damageType": "Energy",
+    "damageRange": "70-105",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Carving (Charged)",
+    "damageType": "Energy",
+    "damageRange": "70-105",
+    "vocation": "sorcerers"
+  },
   {
     "name": "Wand of Carving (Heavily Charged)",
     "damageType": "Energy",
     "damageRange": "70-105",
     "vocation": "sorcerers"
   },
-  { "name": "Wand of Carving (Overcharged)", "damageType": "Energy", "damageRange": "70-105", "vocation": "sorcerers" },
-  { "name": "Wand of Cosmic Energy", "damageType": "Energy", "damageRange": "45 (37-53)", "vocation": "sorcerers" },
-  { "name": "Wand of Darkness", "damageType": "Death", "damageRange": "75-95", "vocation": "sorcerers" },
-  { "name": "Wand of Decay", "damageType": "Death", "damageRange": "30 (23-37)", "vocation": "sorcerers" },
-  { "name": "Wand of Defiance", "damageType": "Energy", "damageRange": "75-95", "vocation": "sorcerers" },
-  { "name": "Wand of Destruction", "damageType": "Energy", "damageRange": "95 (80-110)", "vocation": "sorcerers" },
-  { "name": "Wand of Destruction Test", "damageType": "", "damageRange": "", "vocation": "" },
-  { "name": "Wand of Dimensions", "damageType": "Energy", "damageRange": "44-62", "vocation": "sorcerers" },
-  { "name": "Wand of Draconia", "damageType": "Fire", "damageRange": "30 (23-37)", "vocation": "sorcerers" },
-  { "name": "Wand of Dragonbreath", "damageType": "Fire", "damageRange": "19 (13-25)", "vocation": "sorcerers" },
-  { "name": "Wand of Everblazing", "damageType": "Fire", "damageRange": "85 (75-95)", "vocation": "sorcerers" },
-  { "name": "Wand of Inferno", "damageType": "Fire", "damageRange": "65 (56-74)", "vocation": "sorcerers" },
-  { "name": "Wand of Mayhem", "damageType": "Energy", "damageRange": "70-105", "vocation": "sorcerers" },
-  { "name": "Wand of Mayhem (Charged)", "damageType": "Energy", "damageRange": "70-105", "vocation": "sorcerers" },
+  {
+    "name": "Wand of Carving (Overcharged)",
+    "damageType": "Energy",
+    "damageRange": "70-105",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Cosmic Energy",
+    "damageType": "Energy",
+    "damageRange": "45 (37-53)",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Darkness",
+    "damageType": "Death",
+    "damageRange": "75-95",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Decay",
+    "damageType": "Death",
+    "damageRange": "30 (23-37)",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Defiance",
+    "damageType": "Energy",
+    "damageRange": "75-95",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Destruction",
+    "damageType": "Energy",
+    "damageRange": "95 (80-110)",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Destruction Test",
+    "damageType": "",
+    "damageRange": "",
+    "vocation": ""
+  },
+  {
+    "name": "Wand of Dimensions",
+    "damageType": "Energy",
+    "damageRange": "44-62",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Draconia",
+    "damageType": "Fire",
+    "damageRange": "30 (23-37)",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Dragonbreath",
+    "damageType": "Fire",
+    "damageRange": "19 (13-25)",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Everblazing",
+    "damageType": "Fire",
+    "damageRange": "85 (75-95)",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Inferno",
+    "damageType": "Fire",
+    "damageRange": "65 (56-74)",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Mayhem",
+    "damageType": "Energy",
+    "damageRange": "70-105",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Mayhem (Charged)",
+    "damageType": "Energy",
+    "damageRange": "70-105",
+    "vocation": "sorcerers"
+  },
   {
     "name": "Wand of Mayhem (Heavily Charged)",
     "damageType": "Energy",
     "damageRange": "70-105",
     "vocation": "sorcerers"
   },
-  { "name": "Wand of Mayhem (Overcharged)", "damageType": "Energy", "damageRange": "85-120", "vocation": "sorcerers" },
-  { "name": "Wand of Remedy", "damageType": "Energy", "damageRange": "70-105", "vocation": "sorcerers" },
-  { "name": "Wand of Remedy (Charged)", "damageType": "Energy", "damageRange": "70-105", "vocation": "sorcerers" },
+  {
+    "name": "Wand of Mayhem (Overcharged)",
+    "damageType": "Energy",
+    "damageRange": "85-120",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Remedy",
+    "damageType": "Energy",
+    "damageRange": "70-105",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Remedy (Charged)",
+    "damageType": "Energy",
+    "damageRange": "70-105",
+    "vocation": "sorcerers"
+  },
   {
     "name": "Wand of Remedy (Heavily Charged)",
     "damageType": "Energy",
     "damageRange": "70-105",
     "vocation": "sorcerers"
   },
-  { "name": "Wand of Remedy (Overcharged)", "damageType": "Energy", "damageRange": "70-105", "vocation": "sorcerers" },
-  { "name": "Wand of Starstorm", "damageType": "Energy", "damageRange": "65 (56-74)", "vocation": "sorcerers" },
-  { "name": "Wand of Voodoo", "damageType": "Death", "damageRange": "65 (56-74)", "vocation": "sorcerers" },
-  { "name": "Wand of Vortex", "damageType": "Energy", "damageRange": "13 (8-18)", "vocation": "sorcerers" },
+  {
+    "name": "Wand of Remedy (Overcharged)",
+    "damageType": "Energy",
+    "damageRange": "70-105",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Starstorm",
+    "damageType": "Energy",
+    "damageRange": "65 (56-74)",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Voodoo",
+    "damageType": "Death",
+    "damageRange": "65 (56-74)",
+    "vocation": "sorcerers"
+  },
+  {
+    "name": "Wand of Vortex",
+    "damageType": "Energy",
+    "damageRange": "13 (8-18)",
+    "vocation": "sorcerers"
+  },
   {}
 ]

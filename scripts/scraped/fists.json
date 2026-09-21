@@ -1,39 +1,219 @@
 [
-  { "name": "Amber Kusarigama", "attack": "44", "bond": "Physical", "vocation": "monks" },
-  { "name": "Bambus Jo", "attack": "40", "bond": "Earth", "vocation": "monks" },
-  { "name": "Cobra Bo", "attack": "42", "bond": "Earth", "vocation": "monks" },
-  { "name": "Crude Umbral Katar", "attack": "39", "bond": "Physical", "vocation": "monks" },
-  { "name": "Crypt Strike", "attack": "45", "bond": "Physical", "vocation": "monks" },
-  { "name": "Depth Claws", "attack": "40", "bond": "Energy", "vocation": "monks" },
-  { "name": "Drachaku", "attack": "39", "bond": "Energy", "vocation": "monks" },
-  { "name": "Draining Inferniarch Claws", "attack": "43", "bond": "Energy", "vocation": "monks" },
-  { "name": "Eldritch Crescent Moon Spade", "attack": "42", "bond": "Energy", "vocation": "monks" },
-  { "name": "Falcon Sai", "attack": "43", "bond": "Physical", "vocation": "monks" },
-  { "name": "Fists of Enlightenment", "attack": "23", "bond": "Energy", "vocation": "monks" },
-  { "name": "Gilded Eldritch Crescent Moon Spade", "attack": "42", "bond": "Energy", "vocation": "monks" },
-  { "name": "Grand Sanguine Claws", "attack": "45", "bond": "Earth", "vocation": "monks" },
-  { "name": "Inferniarch Claws", "attack": "43", "bond": "Energy", "vocation": "monks" },
-  { "name": "Jo Staff", "attack": "17", "bond": "Energy", "vocation": "monks" },
-  { "name": "Light Jo Staff", "attack": "10", "bond": "Energy", "vocation": "monks" },
-  { "name": "Lion Claws", "attack": "43", "bond": "Energy", "vocation": "monks" },
-  { "name": "Moonsilver Katar", "attack": "46", "bond": "Energy", "vocation": "monks" },
-  { "name": "Naga Katar", "attack": "43", "bond": "Earth", "vocation": "monks" },
-  { "name": "Nunchaku", "attack": "31", "bond": "Earth", "vocation": "monks" },
-  { "name": "Nunchaku of Destruction", "attack": "40", "bond": "Physical", "vocation": "monks" },
-  { "name": "Nunchaku of Enlightenment", "attack": "33", "bond": "Physical", "vocation": "monks" },
-  { "name": "Pair of Iron Fists", "attack": "38", "bond": "Physical", "vocation": "monks" },
-  { "name": "Pair of Monk Fists", "attack": "21", "bond": "Physical", "vocation": "monks" },
-  { "name": "Rending Inferniarch Claws", "attack": "43", "bond": "Energy", "vocation": "monks" },
-  { "name": "Sai", "attack": "36", "bond": "Energy", "vocation": "monks" },
-  { "name": "Sai of Enlightenment", "attack": "40", "bond": "Earth", "vocation": "monks" },
-  { "name": "Sanguine Claws", "attack": "45", "bond": "Earth", "vocation": "monks" },
-  { "name": "Simple Jo Staff", "attack": "12", "bond": "Earth", "vocation": "monks" },
-  { "name": "Siphoning Inferniarch Claws", "attack": "43", "bond": "Energy", "vocation": "monks" },
-  { "name": "Soulkamas", "attack": "44", "bond": "Energy", "vocation": "monks" },
-  { "name": "Staff", "attack": "22", "bond": "Earth", "vocation": "monks" },
-  { "name": "Stellar Moonsilver Katar", "attack": "46", "bond": "Energy", "vocation": "monks" },
-  { "name": "Traditional Sai", "attack": "27", "bond": "Physical", "vocation": "monks" },
-  { "name": "Umbral Katar", "attack": "40", "bond": "Physical", "vocation": "monks" },
-  { "name": "Umbral Master Katar", "attack": "41", "bond": "Physical", "vocation": "monks" },
+  {
+    "name": "Amber Kusarigama",
+    "attack": "44",
+    "bond": "Physical",
+    "vocation": "monks"
+  },
+  {
+    "name": "Bambus Jo",
+    "attack": "40",
+    "bond": "Earth",
+    "vocation": "monks"
+  },
+  {
+    "name": "Cobra Bo",
+    "attack": "42",
+    "bond": "Earth",
+    "vocation": "monks"
+  },
+  {
+    "name": "Crude Umbral Katar",
+    "attack": "39",
+    "bond": "Physical",
+    "vocation": "monks"
+  },
+  {
+    "name": "Crypt Strike",
+    "attack": "45",
+    "bond": "Physical",
+    "vocation": "monks"
+  },
+  {
+    "name": "Depth Claws",
+    "attack": "40",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Drachaku",
+    "attack": "39",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Draining Inferniarch Claws",
+    "attack": "43",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Eldritch Crescent Moon Spade",
+    "attack": "42",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Falcon Sai",
+    "attack": "43",
+    "bond": "Physical",
+    "vocation": "monks"
+  },
+  {
+    "name": "Fists of Enlightenment",
+    "attack": "23",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Gilded Eldritch Crescent Moon Spade",
+    "attack": "42",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Grand Sanguine Claws",
+    "attack": "45",
+    "bond": "Earth",
+    "vocation": "monks"
+  },
+  {
+    "name": "Inferniarch Claws",
+    "attack": "43",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Jo Staff",
+    "attack": "17",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Light Jo Staff",
+    "attack": "10",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Lion Claws",
+    "attack": "43",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Moonsilver Katar",
+    "attack": "46",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Naga Katar",
+    "attack": "43",
+    "bond": "Earth",
+    "vocation": "monks"
+  },
+  {
+    "name": "Nunchaku",
+    "attack": "31",
+    "bond": "Earth",
+    "vocation": "monks"
+  },
+  {
+    "name": "Nunchaku of Destruction",
+    "attack": "40",
+    "bond": "Physical",
+    "vocation": "monks"
+  },
+  {
+    "name": "Nunchaku of Enlightenment",
+    "attack": "33",
+    "bond": "Physical",
+    "vocation": "monks"
+  },
+  {
+    "name": "Pair of Iron Fists",
+    "attack": "38",
+    "bond": "Physical",
+    "vocation": "monks"
+  },
+  {
+    "name": "Pair of Monk Fists",
+    "attack": "21",
+    "bond": "Physical",
+    "vocation": "monks"
+  },
+  {
+    "name": "Rending Inferniarch Claws",
+    "attack": "43",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Sai",
+    "attack": "36",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Sai of Enlightenment",
+    "attack": "40",
+    "bond": "Earth",
+    "vocation": "monks"
+  },
+  {
+    "name": "Sanguine Claws",
+    "attack": "45",
+    "bond": "Earth",
+    "vocation": "monks"
+  },
+  {
+    "name": "Simple Jo Staff",
+    "attack": "12",
+    "bond": "Earth",
+    "vocation": "monks"
+  },
+  {
+    "name": "Siphoning Inferniarch Claws",
+    "attack": "43",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Soulkamas",
+    "attack": "44",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Staff",
+    "attack": "22",
+    "bond": "Earth",
+    "vocation": "monks"
+  },
+  {
+    "name": "Stellar Moonsilver Katar",
+    "attack": "46",
+    "bond": "Energy",
+    "vocation": "monks"
+  },
+  {
+    "name": "Traditional Sai",
+    "attack": "27",
+    "bond": "Physical",
+    "vocation": "monks"
+  },
+  {
+    "name": "Umbral Katar",
+    "attack": "40",
+    "bond": "Physical",
+    "vocation": "monks"
+  },
+  {
+    "name": "Umbral Master Katar",
+    "attack": "41",
+    "bond": "Physical",
+    "vocation": "monks"
+  },
   {}
 ]
