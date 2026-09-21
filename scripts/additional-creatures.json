@@ -1,21 +1,21 @@
 [
-	{
-		"name": "Bloodjaw",
-		"bestiaryClass": "",
-		"bestiaryLevel": "",
-		"occurrence": "",
-		"charmPoints": 0,
-		"experience": 24000,
-		"hitpoints": 40000,
-		"armor": 100,
-		"mitigation": 5.6,
-		"physicalDmgMod": 1,
-		"earthDmgMod": 1,
-		"fireDmgMod": 1,
-		"deathDmgMod": 1,
-		"energyDmgMod": 1,
-		"holyDmgMod": 1,
-		"iceDmgMod": 1,
-		"healMod": 1
-	}
+  {
+    "name": "Bloodjaw",
+    "bestiaryClass": "",
+    "bestiaryLevel": "",
+    "occurrence": "",
+    "charmPoints": 0,
+    "experience": 24000,
+    "hitpoints": 40000,
+    "armor": 124,
+    "mitigation": 5.6,
+    "physicalDmgMod": 1,
+    "earthDmgMod": 1,
+    "fireDmgMod": 1,
+    "deathDmgMod": 1,
+    "energyDmgMod": 1,
+    "holyDmgMod": 1,
+    "iceDmgMod": 1,
+    "healMod": 1
+  }
 ]
