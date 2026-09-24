@@ -4,7 +4,7 @@
   import SectionCopyButtons from "@components/build-panel/SectionCopyButtons.svelte";
   import FuzzySelect from "@components/FuzzySelect.svelte";
   import RemoveButton from "@components/RemoveButton.svelte";
-  import { allSpells, AUTO_ATTACK_ID, beamScopes, type Spell } from "@data/spells";
+  import { allSpells, AUTO_ATTACK_ID, beamScopes, spellOrdering, type Spell } from "@data/spells";
   import type { Build, SpellChoiceRef } from "@lib/damage-calc/build-state";
   import { packSection, SECTION_TAG } from "@lib/damage-calc/section-clipboard";
   import { compactRotation, expandRotation } from "@lib/damage-calc/url-pack";
@@ -109,8 +109,8 @@
     });
   });
 
-  let selectableEntries = $derived.by(() => {
-    const entries: { id: number; name: string }[] = [];
+  let selectableSpells = $derived.by(() => {
+    const entries: { id: number; name: string; scope: string }[] = [];
     const seenGroups = new Set<string>();
     for (const s of allSpells) {
       if (!s.isSelectable) continue;
@@ -120,12 +120,34 @@
       if (groupScopes.has(s.scope)) {
         if (seenGroups.has(s.scope)) continue;
         seenGroups.add(s.scope);
-        entries.push({ id: mainFromScope(s.scope), name: s.displayName });
+        entries.push({ id: mainFromScope(s.scope), name: s.displayName, scope: s.scope });
       } else {
-        entries.push({ id: s.id, name: s.displayName });
+        entries.push({ id: s.id, name: s.displayName, scope: s.scope });
       }
     }
-    return entries;
+
+    // Order the selectable spells as per the spell ordering file (and if two vocations, interleave them)
+    const vocSpellOrderings: string[][] = spellOrdering
+      .filter((s) => s.vocation == buildA.stats.vocation || (showSecondBuild && s.vocation == buildB.stats.vocation))
+      .map((s) => s.order);
+    const acc: string[] = [];
+    const max = Math.max(0, ...vocSpellOrderings.map((a) => a.length));
+    for (let i = 0; i < max; i++) {
+      for (const a of vocSpellOrderings) {
+        if (i < a.length) acc.push(a[i]);
+      }
+    }
+    const ordering = [...new Set(acc)];
+    return entries.toSorted((a, b) => {
+      let ai = ordering.indexOf(a.scope);
+      let bi = ordering.indexOf(b.scope);
+
+      // Force spells to the bottom if they aren't included in the ordering
+      if (ai == -1) ai = ordering.length;
+      if (bi == -1) bi = ordering.length;
+
+      return ai - bi;
+    });
   });
 
   function spellEntries(mainId: number, vocation: string): SpellChoiceRef[] {
@@ -374,7 +396,7 @@
 {#if !collapsed}
   <tr class="data-row">
     <td>
-      <FuzzySelect selectType="spells" all={selectableEntries} selectedIds={rotationOrder} onAdd={addSpellToRotation} />
+      <FuzzySelect selectType="spells" all={selectableSpells} selectedIds={rotationOrder} onAdd={addSpellToRotation} />
     </td>
     {@render labels()}
     {#if showSecondBuild}
