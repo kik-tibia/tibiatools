@@ -121,11 +121,18 @@ export function computeDamageBreakdown(
         break;
     }
     if (creatureChoice.charm.effect == "low-blow" || creatureChoice.charm.effect == "savage-blow") {
-      const breakdownWithoutCharm = computeDamageBreakdown(state, buildStats, mergedWeaponChoice, spellChoices, {
-        ...creatureChoice,
-        charm: undefined,
-        charmTier: undefined,
-      });
+      const breakdownWithoutCharm = computeDamageBreakdown(
+        state,
+        buildStats,
+        mergedWeaponChoice,
+        spellChoices,
+        {
+          ...creatureChoice,
+          charm: undefined,
+          charmTier: undefined,
+        },
+        masteryElement,
+      );
       critCharmDmg = breakdown.effective.avg - breakdownWithoutCharm.effective.avg;
     } else {
       elementalCharmDmg =
