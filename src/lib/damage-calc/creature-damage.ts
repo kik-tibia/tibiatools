@@ -57,7 +57,7 @@ export function elementalEffective(
   spellState: SpellState,
   creatureChoice: CreatureChoice,
 ): number {
-  const armor = Math.round(creatureChoice.creature.armor * (1 - spellState.armorPenetration));
+  const armor = Math.ceil(creatureChoice.creature.armor * (1 - spellState.armorPenetration));
   const extraDamage = 1 + bestiaryExtraDamage(creatureChoice.creature, spellState);
   const piercedDmgMod = (element: Element) =>
     applyPierce(
