@@ -59,7 +59,7 @@ export function computeDamageBreakdown(
   if (state.spell.spellType === "auto") nTranscendenceAttacks = 3;
   else nTranscendenceAttacks = 3.9;
   const pT = state.transcendenceChance;
-  const pTCrit = (nTranscendenceAttacks * pT) / (nTranscendenceAttacks * pT - pT + 1);
+  const pTCrit = (nTranscendenceAttacks * pT) / (nTranscendenceAttacks * pT + 1);
   const critChance = Math.min(state.critChance + charmCritChance, 1);
   const c = 1 - (1 - critChance) * (1 - pTCrit);
   const o = state.fatalChance;
